@@ -1,0 +1,73 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            cache: true,
+            type: "get",
+            async: true,
+            url: '@Href("~/Library/GetTopCompleted")',
+            data: { "id": '@Model.ID' },
+            dataType: "json",
+            success: function (result) {
+                if (result.returnCode == '@Ivs.Core.Common.CommonData.DbReturnCode.AccessDenied') {
+                    //                    window.location.href = 'Href("~/Home/Index")';
+                } else {
+                    var html = '';
+                    $.each(result.members, function (i, member) {
+                        //render html
+                        html += '<div class="row">';
+                        html += '   <div class="brdr-top bgc-fff pad-10 box-shad btm-mrg-20 property-listing">';
+                        html += '       <div class="media">';
+                        html += '           <div class="col-md-4">';
+                        html += '               <img class="img-rounded" src="' + member.UserUrlImage + '" alt="Avatar" height="50px" width="100%">';
+                        html += '           </div>';
+                        html += '           <div class="col-md-8">';
+                        html += '               <div class="media-body fnt-smaller">';
+                        html += '                   <a href="#" target="_parent"></a>';
+                        html += '                   <h5 class="media-heading">';
+                        html += '                   <a href="#" target="_parent" >' + member.UserDisplayName + '</a></h5>';
+                        html += '                   <span class="fnt-smaller fnt-lighter fnt-arial">';
+                        html += '                   TG: ' + member.CompletedTime + ' giây</span>';
+                        html += '                   </br><span class="fnt-smaller fnt-lighter fnt-arial">';
+                        html += '                   Đúng: ' + member.NumOfCorrectVocas + '/' + member.NumOfVocas + ' từ</span>';
+                        html += '               </div>';
+                        html += '           </div>';
+                        html += '       </div>';
+                        html += '   </div>';
+                        html += '</div>';
+                        html += '<div class="row">';
+                    });
+
+                    $('#divResult').html(html);
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.responseText);
+                return false;
+            }
+        });
+    });
+
+</script>
+
+<div class="text-info text-center">
+    <strong>HOÀN THÀNH KIỂM TRA NHANH NHẤT</strong>
+</div>
+<div id="divResult">
+@*<div class="row">
+    <div class="brdr-top bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+        <div class="media">
+            <div class="col-md-4">
+                <img class="img-rounded" src='~/Images/photo-4.jpg' alt="Avatar" height="50px" width="100%">
+            </div>
+            <div class="col-md-8">
+                <div class="media-body fnt-smaller">
+                    <a href="#" target="_parent"></a>
+                    <h5 class="media-heading">
+                        <a href="#" target="_parent">Ken Chu</a></h5>
+                    <span class="fnt-smaller fnt-lighter fnt-arial">TG: 5 giây</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+</div>

@@ -1,0 +1,20 @@
+﻿@model System.Collections.Generic.IEnumerable<Nihongo.Models.MS_VocaSetsModels>
+
+<div class="suggest-content">
+    <span class="suggest-content-title-top">Bộ từ vựng nổi bật</span>
+    <ul>
+    @foreach (var set in Model)
+    {
+        <li>
+            <a rel="nofollow" href="@Url.Action("bo-tu-vung", "Library", new { id = set.ID, urlDisplay = set.UrlDisplay})" title="@set.Name1">
+                <img width="61" height="61" src="@set.UrlImage" alt="bo-tu-vung-tieng-nhat"></a>
+            <a class="suggest-content-title" href="@Url.Action("bo-tu-vung", "Library", new { id = set.ID, urlDisplay = set.UrlDisplay})" title="@set.Name1">
+                @set.Name1
+            </a>
+            <i>Số bài: @set.NumOfCategories</i>
+            <i>Số từ vựng: @set.NumOfVocas</i>
+        </li>
+
+    }
+    </ul>
+</div>

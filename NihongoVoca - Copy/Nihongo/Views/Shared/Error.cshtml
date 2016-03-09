@@ -1,0 +1,47 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "THÔNG BÁO";
+}
+
+<header id="head" class="secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1>
+                    THÔNG BÁO</h1>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <section id="portfolio" class="page-section section appear clearfix text-center">
+                <br />
+                <br />
+                <br />
+                
+                    @if (CommonMethod.IsNullOrEmpty(ViewBag.Message))
+                    {
+                        <p class="text-center">Có lỗi xảy ra: @Model.Exception.InnerException</p>
+                    }
+                    else{
+                        <p class="text-center">@ViewBag.Message</p>
+                    }
+                
+                <p class="text-center">
+                    Chúng tôi xin lỗi vì sự bất tiện này!</p>
+                <button type="button" class="btn btn-default btn-lg" onclick="window.history.back();">Trở về</button>
+            </section>
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+

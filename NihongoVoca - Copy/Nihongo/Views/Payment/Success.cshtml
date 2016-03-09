@@ -1,0 +1,46 @@
+﻿@model Nihongo.Models.MS_RegistedVocaModels
+@{
+    ViewBag.Title = "Thanh toán thành công";
+}
+<header id="head" class="secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1>
+                    THÔNG BÁO</h1>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <section id="portfolio" class="page-section section appear clearfix text-center">
+                <br />
+                <br />
+                <br />
+                <p>
+                    Bạn đã đăng ký thành công bộ tự vựng: <strong>@Model.VocaSetName1</strong>
+                </p>
+                <p>
+                    Thời gian có hiệu lực của lần đăng ký này của bạn là <strong>@Model.UsefulLife</strong>
+                    tháng. Ngày hết hiệu lực của bộ từ vựng này là ngày <strong>@Model.EndDate.Value.ToString(Ivs.Core.Common.CommonData.DateFormat.DdMMyyyy)</strong>
+                </p>
+                <p>
+                    Nếu có bất kì thắc mắc nào, xin đừng ngại ngần và hãy liên hệ với chúng tôi</p>
+                <p>
+                    Xin cám ơn!</p>
+                <a href='@Href("~/Library/bo-tu-vung/")@Model.VocaSetID/@Model.VocaSetUrlDisplay' class="btn btn-navigator btn-lg require-login">
+                    Bắt đầu học</a> <a href='@Href("~/Account/HomePage/")@Session["UserName"]' class="btn btn-navigator btn-lg require-login">
+                        Trang cá nhân</a>
+            </section>
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

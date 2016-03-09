@@ -1,0 +1,2029 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ChangePass_001" xml:space="preserve">
+    <value>99-[Mật Khẩu Cũ] không phù hợp với mật khẩu của tài khoản hiện tại!</value>
+  </data>
+  <data name="ChangePass_002" xml:space="preserve">
+    <value>99-[Mật Khẩu Mới] phải được nhập!</value>
+  </data>
+  <data name="ChangePass_003" xml:space="preserve">
+    <value>99-[Xác Nhận Mật Khẩu Mới]  phải được nhập!</value>
+  </data>
+  <data name="ChangePass_004" xml:space="preserve">
+    <value>99-[Mật Khẩu Mới] không phù hợp với [Xác Nhận Mật Khẩu Mới].</value>
+  </data>
+  <data name="COM_MSG_ACCESS_DENIED" xml:space="preserve">
+    <value>99-Không thể truy cập.</value>
+  </data>
+  <data name="COM_MSG_ACT_FAILED" xml:space="preserve">
+    <value>97-{0} thất bại.</value>
+  </data>
+  <data name="COM_MSG_ACT_SUCCESSFULLY" xml:space="preserve">
+    <value>97-{0} thành công.</value>
+  </data>
+  <data name="COM_MSG_ACT_SUCCESSFULLY_AND_ROWS" xml:space="preserve">
+    <value>97-{0} thành công: {1} dòng.</value>
+  </data>
+  <data name="COM_MSG_CANCEL_SUCCESSFULLY" xml:space="preserve">
+    <value>95-Hủy bỏ thành công.</value>
+  </data>
+  <data name="COM_MSG_CAN_NOT_PRINT" xml:space="preserve">
+    <value>98-Không thể in nhiều hơn {0} lần.</value>
+  </data>
+  <data name="COM_MSG_CONCURRENCY_VIOLATION" xml:space="preserve">
+    <value>99-Dữ liệu đã bị quá hạn.</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_ACT" xml:space="preserve">
+    <value>96-Bạn có muốn {0} không?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_CANCEL" xml:space="preserve">
+    <value>96-Bạn có muốn hủy bỏ dữ liệu không?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_CLOSE" xml:space="preserve">
+    <value>96-Bạn có muốn đóng kỳ này không?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_DELETE" xml:space="preserve">
+    <value>96-Bạn có muốn xóa không?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_EXIT" xml:space="preserve">
+    <value>96-Thông tin đã được thay đổi. Bạn có muốn lưu trước khi thoát không?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_LOCK" xml:space="preserve">
+    <value>96-Bạn có chắc chắn bạn muốn khóa kỳ này?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_OPEN" xml:space="preserve">
+    <value>96-Bạn có muốn mở kỳ này không?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_PROCESS" xml:space="preserve">
+    <value>96-Bạn có chắc chắn bạn muốn xử lí?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_SAVE" xml:space="preserve">
+    <value>96-Bạn có muốn lưu dữ liệu không?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_UNLOCK" xml:space="preserve">
+    <value>96-Bạn có chắc chắn bạn muốn mở khóa kỳ này?</value>
+  </data>
+  <data name="COM_MSG_CONNECTION_LOST" xml:space="preserve">
+    <value>99-Không thể kết nối.</value>
+  </data>
+  <data name="COM_MSG_CURRENT_PERIOD_NOT_ENTRY_PRICE" xml:space="preserve">
+    <value>99-Kỳ {0} chưa được nhập giá.</value>
+  </data>
+  <data name="COM_MSG_DATA_BEING_USED" xml:space="preserve">
+    <value>99-Không thể thay đổi {0}, dữ liệu đã được sử dụng.</value>
+  </data>
+  <data name="COM_MSG_DATA_IN_OUT_NOT_FOUND" xml:space="preserve">
+    <value>99-Không có dữ liệu đầu vào/đầu ra, bạn không thể đóng kỳ này.</value>
+  </data>
+  <data name="COM_MSG_DATA_NOT_FOUND" xml:space="preserve">
+    <value>99-Không tìm thấy dữ liệu.</value>
+  </data>
+  <data name="COM_MSG_DATA_OR_FILE_NOT_FOUND" xml:space="preserve">
+    <value>99-Không tìm thấy [{0}] .</value>
+  </data>
+  <data name="COM_MSG_DEADLOCK_FOUND" xml:space="preserve">
+    <value>99-Đã xảy ra việc trì trệ hệ thống(deadlock).</value>
+  </data>
+  <data name="COM_MSG_DELETE_SUCCESSFULLY" xml:space="preserve">
+    <value>95-Xóa thành công.</value>
+  </data>
+  <data name="COM_MSG_DUPPLICATE_KEY" xml:space="preserve">
+    <value>99-Dữ liệu đã tồn tại. Xin vui lòng nhập lại!</value>
+  </data>
+  <data name="COM_MSG_EXISTED" xml:space="preserve">
+    <value>99-[{0}] đã tồn tại.</value>
+  </data>
+  <data name="COM_MSG_EXPORT_SUCCESSFULLY1" xml:space="preserve">
+    <value>95-Xuất thành công!</value>
+  </data>
+  <data name="COM_MSG_FILE_BEING_USED" xml:space="preserve">
+    <value>99-Không thể truy cập tập tin [{0}] vì tập tin đang được mở bởi chương trình khác.</value>
+  </data>
+  <data name="COM_MSG_FOREIGN_KEY_NOT_EXIST" xml:space="preserve">
+    <value>99-Khóa ngoại không tồn tại.</value>
+  </data>
+  <data name="COM_MSG_FOREIGN_KEY_VIOLATION" xml:space="preserve">
+    <value>99-Không thể xóa, dữ liệu đang được sử dụng.</value>
+  </data>
+  <data name="COM_MSG_GENERAL_EXCEPTION" xml:space="preserve">
+    <value>99-Đã xảy ra lỗi hệ thống.</value>
+  </data>
+  <data name="COM_MSG_GREATER_THAN" xml:space="preserve">
+    <value>99-[{0}] phải lớn hơn [{1}]!</value>
+  </data>
+  <data name="COM_MSG_GREATER_THAN_OR_EQUAL" xml:space="preserve">
+    <value>99-[{0}] phải lớn hơn hoặc bằng [{1}]!</value>
+  </data>
+  <data name="COM_MSG_GRID_DETAIL_DUPPLICATED" xml:space="preserve">
+    <value>99-Danh sách xuất/nhập trên lưới {0} và lưới {1} bị trùng lắp.</value>
+  </data>
+  <data name="COM_MSG_GRID_DETAIL_LINE_EXISTED" xml:space="preserve">
+    <value>99-Lưới [{0}]: Dòng [{1}]: [{2}] đã tồn tại.</value>
+  </data>
+  <data name="COM_MSG_GRID_DETAIL_LINE_GREATER_THAN" xml:space="preserve">
+    <value>99-Lưới {0}: Dòng {1} - [{2}] phải lớn hơn [{3}]!</value>
+  </data>
+  <data name="COM_MSG_GRID_DETAIL_LINE_INVALID" xml:space="preserve">
+    <value>99-Lưới {0}: Dòng {1} - [{2}] không hợp lệ.</value>
+  </data>
+  <data name="COM_MSG_GRID_DETAIL_LINE_REQUIRED" xml:space="preserve">
+    <value>99-Lưới {0}: Dòng {1} - [{2}] bắt buộc nhập.</value>
+  </data>
+  <data name="COM_MSG_GRID_DETAIL_REQUIRED" xml:space="preserve">
+    <value>99-Danh sách các giao dịch nghiệp vụ [{0}] bắt buộc nhập.</value>
+  </data>
+  <data name="COM_MSG_GRID_INVENTORY_COUNTED_QTY_REQUIRED" xml:space="preserve">
+    <value>99-Dòng [{0}]: [{1}] bắt buộc nhập.</value>
+  </data>
+  <data name="COM_MSG_GRID_INVENTORY_DUPLICATED" xml:space="preserve">
+    <value>99-Danh sách Mã hàng trong kho bị trùng.</value>
+  </data>
+  <data name="COM_MSG_GRID_INVENTORY_REQUIRED" xml:space="preserve">
+    <value>99-Danh sách Mã hàng kho bắt buộc nhập.</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_EXISTED" xml:space="preserve">
+    <value>99-Dòng [{0}]: [{1}] đã tồn tại.</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_GREATER_THAN" xml:space="preserve">
+    <value>99-Dòng {0}: [{1}] phải lớn hơn [{2}]!</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_INVALID" xml:space="preserve">
+    <value>99-Dòng {0}: [{1}] không hợp lệ.</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_REQUIRED" xml:space="preserve">
+    <value>99-Dòng {0}: [{1}] bắt buộc nhập.</value>
+  </data>
+  <data name="COM_MSG_GRID_RECORD_OF_TOTAL" xml:space="preserve">
+    <value>Mẫu tin {0} của {1}</value>
+  </data>
+  <data name="COM_MSG_GRID_REQUIRED" xml:space="preserve">
+    <value>99-Danh sách các giao dịch nghiệp vụ bắt buộc nhập!</value>
+  </data>
+  <data name="COM_MSG_HAS_INVENTORY" xml:space="preserve">
+    <value>99-Sản phẩm đã có tồn kho.</value>
+  </data>
+  <data name="COM_MSG_HAVING_CHANGE" xml:space="preserve">
+    <value>96-Thông tin đã được thay đổi. Bạn có muốn lưu dữ liệu trước khi thoát không?</value>
+  </data>
+  <data name="COM_MSG_HEADERGRID_DRAG" xml:space="preserve">
+    <value>Kéo thả tiêu đề của cột vào đây để nhóm theo cột đó!</value>
+  </data>
+  <data name="COM_MSG_IMPORT_LINE_INVALID" xml:space="preserve">
+    <value>99-Dòng {0}: Cột [{1}] không hợp lệ.</value>
+  </data>
+  <data name="COM_MSG_IMPORT_LINE_NOT_EXIST" xml:space="preserve">
+    <value>99-Dòng {0}: Cột [{1}] không tồn tại.</value>
+  </data>
+  <data name="COM_MSG_INSERT_SUCCESSFULLY" xml:space="preserve">
+    <value>95-Thêm mới thành công.</value>
+  </data>
+  <data name="COM_MSG_INVALID_DATABASE" xml:space="preserve">
+    <value>99-Không tìm thấy Cơ sở dữ liệu. </value>
+  </data>
+  <data name="COM_MSG_INVALID_DATA_OR_ACTION" xml:space="preserve">
+    <value>99-{0} không hợp lệ.</value>
+  </data>
+  <data name="COM_MSG_INVALID_EMAIL" xml:space="preserve">
+    <value>99-[Địa chỉ Email] không hợp lệ.</value>
+  </data>
+  <data name="COM_MSG_INVALID_HOST" xml:space="preserve">
+    <value>99-Thông tin Máy chủ không hợp lệ.</value>
+  </data>
+  <data name="COM_MSG_LESS_THAN" xml:space="preserve">
+    <value>99-[{0}] phải nhỏ hơn [{1}]!</value>
+  </data>
+  <data name="COM_MSG_LESS_THAN_OR_EQUAL" xml:space="preserve">
+    <value>99-[{0}] phải nhỏ hơn hoặc bằng [{1}]!</value>
+  </data>
+  <data name="COM_MSG_LOCK_WAIT_TIMEOUT_EXCEEDED" xml:space="preserve">
+    <value>99-Vượt quá thời gian truy cập hệ thống</value>
+  </data>
+  <data name="COM_MSG_MATCHED_PASSWORD" xml:space="preserve">
+    <value>99-[{0}] phải khớp với [{1}]!</value>
+  </data>
+  <data name="COM_MSG_MORE_ONE_ROW_SELECTED" xml:space="preserve">
+    <value>98-Có nhiều hơn 1 dòng được chọn.</value>
+  </data>
+  <data name="COM_MSG_NEXT_PERIOD_NOT_LOCK" xml:space="preserve">
+    <value>99-Kỳ {0} chưa được khóa.</value>
+  </data>
+  <data name="COM_MSG_NEXT_PERIOD_NOT_UNLOCK" xml:space="preserve">
+    <value>99-Kỳ {0} chưa được mở khóa.</value>
+  </data>
+  <data name="COM_MSG_NOT_EQUAL" xml:space="preserve">
+    <value>99-[{0}] phải khác [{1}]!</value>
+  </data>
+  <data name="COM_MSG_NOT_EXIST" xml:space="preserve">
+    <value>99-[{0}] không tồn tại!</value>
+  </data>
+  <data name="COM_MSG_NOT_MATCH" xml:space="preserve">
+    <value>99-[{0}] chưa trùng khớp [{1}].</value>
+  </data>
+  <data name="COM_MSG_NOT_MATCH_WARNING" xml:space="preserve">
+    <value>98-[{0}] chưa trùng khớp [{1}]</value>
+  </data>
+  <data name="COM_MSG_NOT_OPEN_PERIOD" xml:space="preserve">
+    <value>99-Kỳ trước chưa được đóng, bạn không thể mở kỳ này.</value>
+  </data>
+  <data name="COM_MSG_NOT_PERMISSION_EDIT" xml:space="preserve">
+    <value>99-Bạn không có quyền thao tác dữ liệu hệ thống.</value>
+  </data>
+  <data name="COM_MSG_NOT_REOPEN_PERIOD" xml:space="preserve">
+    <value>99-Bạn không thể mở kỳ này.</value>
+  </data>
+  <data name="COM_MSG_NO_ROW_SELECTED" xml:space="preserve">
+    <value>98-Không có dòng nào được chọn.</value>
+  </data>
+  <data name="COM_MSG_PERIOD_NOT_UNLOCK" xml:space="preserve">
+    <value>99-Bạn không thể mở khóa cho kỳ này.</value>
+  </data>
+  <data name="COM_MSG_PREVIOUS_PERIOD_NOT_CLOSE" xml:space="preserve">
+    <value>99-Kỳ trước chưa được đóng.</value>
+  </data>
+  <data name="COM_MSG_PROCESS_NOT_VALID" xml:space="preserve">
+    <value>99-Không thể xử lí thao tác này. Thao tác không hợp lệ.</value>
+  </data>
+  <data name="COM_MSG_PROCESS_SUCCESSFULLY" xml:space="preserve">
+    <value>95-Xử lí thành công!</value>
+  </data>
+  <data name="COM_MSG_REQUIRED" xml:space="preserve">
+    <value>99-[{0}] bắt buộc nhập.</value>
+  </data>
+  <data name="COM_MSG_ROW_FOUND" xml:space="preserve">
+    <value>97-{0} dòng đã được tìm thấy.</value>
+  </data>
+  <data name="COM_MSG_SAME_PERIOD" xml:space="preserve">
+    <value>99-[{0}], [{1}] phải cùng kỳ.</value>
+  </data>
+  <data name="COM_MSG_SIZE_LIMITED" xml:space="preserve">
+    <value>99-Dung lượng file đã vượt quá giới hạn cho phép ({0} KB) và hệ thống không thể thực hiện tác vụ này.</value>
+  </data>
+  <data name="COM_MSG_STOCK_ARRIVING_DATE_NO_NULL" xml:space="preserve">
+    <value>99-[Ngày đến] bắt buộc nhập.</value>
+  </data>
+  <data name="COM_MSG_STOCK_CANCEL_FAIL" xml:space="preserve">
+    <value>99-Hủy bỏ thất bại.</value>
+  </data>
+  <data name="COM_MSG_STOCK_CANCEL_RELATED_FAIL" xml:space="preserve">
+    <value>99-Chứng từ đã phát sinh nghiệp vụ liên quan. Không thể hủy bỏ.</value>
+  </data>
+  <data name="COM_MSG_STOCK_CUSTOMER_NO_NULL" xml:space="preserve">
+    <value>99-[Khách hàng] bắt buộc nhập.</value>
+  </data>
+  <data name="COM_MSG_STOCK_DOCUMENT_NO_NULL" xml:space="preserve">
+    <value>99-[Số chứng từ] bắt buộc nhập.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_DATA_NOT_FOUND" xml:space="preserve">
+    <value>99-Dòng {0}: [Dây chuyền sản xuất] không tìm thấy.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_MINUS_NG" xml:space="preserve">
+    <value>99-Dòng {0}: Không được phép xuất kho âm.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_MINUS_OK" xml:space="preserve">
+    <value>99-Dòng {0}: Được phép xuất kho âm.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_OUT_ENOUGH" xml:space="preserve">
+    <value>99-Dòng {0}: Hàng đủ.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_OUT_LACK" xml:space="preserve">
+    <value>99-Dòng {0}: Thiếu số lượng cần xuất kho</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_PRODUCTION_LINE_NOT_EXIST" xml:space="preserve">
+    <value>99-Dòng {0}: [Công đoạn] không tồn tại trong kho.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_QUALITY_STATUS_NOT_EXIST" xml:space="preserve">
+    <value>99-Dòng {0}: [Trạng thái] không tồn tại trong kho.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_RELATED_DOCUMENT_QTY_NOT_VALID" xml:space="preserve">
+    <value>99-Dòng {0}: Số lượng sản phẩm của chứng từ liên quan không hợp lệ.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_SAFETY_DANGEROUS" xml:space="preserve">
+    <value>98-Dòng {0}: Cảnh báo vi phạm tồn kho an toàn.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_STOCK_TYPE_NOT_VALID" xml:space="preserve">
+    <value>99-Dòng {0}: [Loại nhập kho] không hợp lệ.</value>
+  </data>
+  <data name="COM_MSG_STOCK_ITEM_CODE_NULL" xml:space="preserve">
+    <value>99-[Mã hàng] bắt buộc nhập.</value>
+  </data>
+  <data name="COM_MSG_STOCK_MINUS_NG" xml:space="preserve">
+    <value>99-Được phép xuất kho âm.</value>
+  </data>
+  <data name="COM_MSG_STOCK_MINUS_OK" xml:space="preserve">
+    <value>97-Không được phép xuất kho âm.</value>
+  </data>
+  <data name="COM_MSG_STOCK_OUT_ENOUGH" xml:space="preserve">
+    <value>97-Đủ số lượng cần xuất kho.</value>
+  </data>
+  <data name="COM_MSG_STOCK_OUT_LACK" xml:space="preserve">
+    <value>99-Thiếu số lượng cần xuất kho.</value>
+  </data>
+  <data name="COM_MSG_STOCK_PERIOD_CLOSE" xml:space="preserve">
+    <value>99-Kỳ kho đã bị đóng.</value>
+  </data>
+  <data name="COM_MSG_STOCK_PERIOD_LOCK" xml:space="preserve">
+    <value>99-Kì kiểm kho đã khóa.</value>
+  </data>
+  <data name="COM_MSG_STOCK_PERIOD_NOT_EXIST" xml:space="preserve">
+    <value>99-Kỳ kho không tồn tại.</value>
+  </data>
+  <data name="COM_MSG_STOCK_PRINT_CONFIRM" xml:space="preserve">
+    <value>96-Bạn có muốn in phiếu không?</value>
+  </data>
+  <data name="COM_MSG_STOCK_SAFETY_DANGEROUS" xml:space="preserve">
+    <value>98-Cảnh báo vi phạm tồn kho an toàn. Bạn có muốn tiếp tục không?</value>
+  </data>
+  <data name="COM_MSG_STOCK_SHIPPING_DATE_NO_NULL" xml:space="preserve">
+    <value>99-[Ngày xuất] bắt buộc nhập.</value>
+  </data>
+  <data name="COM_MSG_STOCK_SUPPLIER_NO_NULL" xml:space="preserve">
+    <value>99-[Nhà cung cấp] bắt buộc nhập.</value>
+  </data>
+  <data name="COM_MSG_STOCK_WAREHOUSE2_NOT_EXIST" xml:space="preserve">
+    <value>99-[Kho nhận] không tồn tại.</value>
+  </data>
+  <data name="COM_MSG_STOCK_WAREHOUSE2_NO_NULL" xml:space="preserve">
+    <value>99-[Kho nhận] bắt buộc nhập.</value>
+  </data>
+  <data name="COM_MSG_UPDATE_SUCCESSFULLY" xml:space="preserve">
+    <value>95-Cập nhật thành công.</value>
+  </data>
+  <data name="COM_MSG_WAREHOUSE_MAIN_NOT_TRANSFER_WIP" xml:space="preserve">
+    <value>99-Kho main không cho phép chuyển WIP</value>
+  </data>
+  <data name="FG" xml:space="preserve">
+    <value>Thành Phẩm</value>
+  </data>
+  <data name="FilePathExisting" xml:space="preserve">
+    <value>Tập tin không tồn tại.</value>
+  </data>
+  <data name="ItemCodeField" xml:space="preserve">
+    <value>Tên Hàng</value>
+  </data>
+  <data name="ItemNameField" xml:space="preserve">
+    <value>Mã Hàng</value>
+  </data>
+  <data name="ItemType" xml:space="preserve">
+    <value>Loại Hàng</value>
+  </data>
+  <data name="IV_ArrivingIssueInquiry_Search_Form" xml:space="preserve">
+    <value>Danh Sách Giao Dịch Hàng Tồn Kho</value>
+  </data>
+  <data name="IV_ArrivingIssueInquiry_Search_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt; Danh Sách Giao Dịch Hàng Tồn Kho</value>
+  </data>
+  <data name="IV_ArrivingIssueInquiry_View_Form" xml:space="preserve">
+    <value>Xem Chi Tiết</value>
+  </data>
+  <data name="IV_ArrivingIssueInquiry_View_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt; Danh Sách Giao Dịch Hàng Tồn Kho &gt; Xem Chi Tiết</value>
+  </data>
+  <data name="IV_InventoryInquiry_Edit_Form" xml:space="preserve">
+    <value>Xem Chi Tiết</value>
+  </data>
+  <data name="IV_InventoryInquiry_Edit_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt; Thống Kê Tồn Kho &gt; Xem Chi Tiết</value>
+  </data>
+  <data name="IV_InventoryInquiry_New_Form" xml:space="preserve">
+    <value>Thêm</value>
+  </data>
+  <data name="IV_InventoryInquiry_New_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt; Thống Kê Tồn Kho &gt; Thêm</value>
+  </data>
+  <data name="IV_InventoryInquiry_Search_Form" xml:space="preserve">
+    <value>Thống Kê Tồn Kho</value>
+  </data>
+  <data name="IV_InventoryInquiry_Search_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt; Thống Kê Tồn Kho</value>
+  </data>
+  <data name="IV_InventoryInquiry_View_Form" xml:space="preserve">
+    <value>Xem Chi Tiết</value>
+  </data>
+  <data name="IV_InventoryInquiry_View_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt; Thống Kê Tồn Kho &gt; Xem Chi Tiết</value>
+  </data>
+  <data name="IV_MSG_CurrentPeriodNotEntryPrice" xml:space="preserve">
+    <value>99-Giao dịch chưa nhập giá vẫn còn tồn tại trong kì. Vui lòng xừ lí trước.</value>
+  </data>
+  <data name="IV_MSG_CurrentPeriodNotEntryPrice_Detail" xml:space="preserve">
+    <value>99-Giao dịch chưa nhập giá vẫn còn tồn tại. Kì: {0}, Chứng từ: {1}, Kho: {2}, Mã mặt hàng: {3}</value>
+  </data>
+  <data name="IV_MSG_HavingTransferTransactionNotCompletedInOnePeriod" xml:space="preserve">
+    <value>99-Giao dịch luân chuyển kho không hoàn tất trong một kì vẫn còn tồn tại. Vui lòng xừ lí trước.</value>
+  </data>
+  <data name="IV_MSG_HavingTransferTransactionNotCompletedInOnePeriod_Detail" xml:space="preserve">
+    <value>99-Giao dịch luân chuyển kho không hoàn tất trong cùng một kì. Kì: {0}, Chứng từ: {1}, Kho Đi: {2}, Kho đến: {3}</value>
+  </data>
+  <data name="IV_MSG_MonthlyProcessOK" xml:space="preserve">
+    <value>97-Không có lỗi.</value>
+  </data>
+  <data name="IV_MSG_NegativeStockExist" xml:space="preserve">
+    <value>99-Tồn kho âm vẫn còn tồn tại trong kì. Vui lòng xừ lí trước.</value>
+  </data>
+  <data name="IV_MSG_NegativeStockExist_Detail" xml:space="preserve">
+    <value>99-Tồn kho âm vẫn còn tồn tại. Kì: {0}, Kho: {1}, Mã mặt hàng: {2}, Trạng thái: {3}, Công đoạn: {4}</value>
+  </data>
+  <data name="IV_MSG_NextPeriodNotOpened_Detail" xml:space="preserve">
+    <value>99-Kì sau chưa mở.</value>
+  </data>
+  <data name="IV_MSG_PendingTransferTransactionExist" xml:space="preserve">
+    <value>99-Giao dịch luân chuyển kho đang trì hoãn vẫn còn tồn tại. Vui lòng xừ lí trước.</value>
+  </data>
+  <data name="IV_MSG_PendingTransferTransactionExist_Detail" xml:space="preserve">
+    <value>99-Giao dịch luân chuyển kho đang trì hoãn vẫn còn tồn tại. Kì: {0}, Chứng từ: {1}, Kho: {2}</value>
+  </data>
+  <data name="IV_MSG_PreviousPeriodNotClose" xml:space="preserve">
+    <value>99-Kì trước chưa đóng. Vui lòng xừ lí trước.</value>
+  </data>
+  <data name="IV_MSG_PreviousPeriodNotClose_Detail" xml:space="preserve">
+    <value>99-Kì trước chưa đóng.</value>
+  </data>
+  <data name="IV_MSG_TwoPeriodAreOpening_Detail" xml:space="preserve">
+    <value>99-Kì {0} và {1} đang mở. Không thể mở kì {2}.</value>
+  </data>
+  <data name="IV_OpenClose_Close" xml:space="preserve">
+    <value>Đóng</value>
+  </data>
+  <data name="IV_OpenClose_Edit_Form" xml:space="preserve">
+    <value>Mở/Đóng</value>
+  </data>
+  <data name="IV_OpenClose_Edit_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt; Mở/Đóng</value>
+  </data>
+  <data name="IV_OpenClose_Future" xml:space="preserve">
+    <value>Tương Lai</value>
+  </data>
+  <data name="IV_OpenClose_Open" xml:space="preserve">
+    <value>Mở</value>
+  </data>
+  <data name="IV_OpenClose_View_Form" xml:space="preserve">
+    <value>Mở/Đóng</value>
+  </data>
+  <data name="IV_OpenClose_View_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt; Mở/Đóng</value>
+  </data>
+  <data name="IV_PhysicalInventory_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Phiếu Kiểm Kho</value>
+  </data>
+  <data name="IV_PhysicalInventory_Edit_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt; Kiểm Kho &gt; Cập Nhật Phiếu Kiểm Kho</value>
+  </data>
+  <data name="IV_PhysicalInventory_New_Form" xml:space="preserve">
+    <value>Thêm Phiếu Kiểm Kho</value>
+  </data>
+  <data name="IV_PhysicalInventory_New_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt; Kiểm Kho &gt; Thêm Phiếu Kiểm Kho</value>
+  </data>
+  <data name="IV_PhysicalInventory_Search_Form" xml:space="preserve">
+    <value>Kiểm Kho</value>
+  </data>
+  <data name="IV_PhysicalInventory_Search_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt; Kiểm Kho</value>
+  </data>
+  <data name="IV_PhysicalInventory_View_Form" xml:space="preserve">
+    <value>Xem Phiếu Kiểm Kho</value>
+  </data>
+  <data name="IV_PhysicalInventory_View_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt; Kiểm Kho &gt; Xem Phiếu Kiểm Kho</value>
+  </data>
+  <data name="IV_StockModify_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật</value>
+  </data>
+  <data name="IV_StockModify_Edit_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt; Điều Chỉnh Kho &gt; Cập Nhật</value>
+  </data>
+  <data name="IV_StockModify_MSG_DONT_HAVE_ANY_CHANGE" xml:space="preserve">
+    <value>99-Vui Lòng Điều Chỉnh Dữ Liệu Trên Lưới Sau Đó Kiểm Tra Lại!</value>
+  </data>
+  <data name="IV_StockModify_MSG_ModifyQuantity_Difference_CurrentQuantity" xml:space="preserve">
+    <value>99-Dòng [{0}]: {1} phải khác với {2}</value>
+  </data>
+  <data name="IV_StockModify_MSG_YOU_CAN_MODIFY_STOCK" xml:space="preserve">
+    <value>97-Bạn có thể chỉnh sửa dữ liệu này.</value>
+  </data>
+  <data name="IV_StockModify_New_Form" xml:space="preserve">
+    <value>Thêm</value>
+  </data>
+  <data name="IV_StockModify_New_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt; Điều Chỉnh Kho &gt; Thêm</value>
+  </data>
+  <data name="IV_StockModify_Search_Form" xml:space="preserve">
+    <value>Điều Chỉnh Kho</value>
+  </data>
+  <data name="IV_StockModify_Search_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt; Điều Chỉnh Kho</value>
+  </data>
+  <data name="IV_StockModify_View_Form" xml:space="preserve">
+    <value>Xem</value>
+  </data>
+  <data name="IV_StockModify_View_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt; Điều Chỉnh Kho &gt; Xem</value>
+  </data>
+  <data name="Login_001" xml:space="preserve">
+    <value>99-' Mã người dùng ' bắt buộc nhập.</value>
+  </data>
+  <data name="Login_002" xml:space="preserve">
+    <value>99-' Mật khẩu ' bắt buộc nhập.</value>
+  </data>
+  <data name="Login_003" xml:space="preserve">
+    <value>99-' Mã người dùng ' hoặc ' Mật khẩu '  không hợp lệ.</value>
+  </data>
+  <data name="Login_004" xml:space="preserve">
+    <value>99-Kết nối thất bại</value>
+  </data>
+  <data name="Login_005" xml:space="preserve">
+    <value>99-Tài khoản đăng nhập vô hiệu.</value>
+  </data>
+  <data name="Login_006" xml:space="preserve">
+    <value>99-Tài khoản đã được đăng nhập, Máy: {0} 
+IP: {1}</value>
+  </data>
+  <data name="MasterEditForm_Clear" xml:space="preserve">
+    <value>Xóa trắng</value>
+  </data>
+  <data name="MasterEditForm_Edit" xml:space="preserve">
+    <value>Sửa</value>
+  </data>
+  <data name="MasterEditForm_Next" xml:space="preserve">
+    <value>Tiếp tục</value>
+  </data>
+  <data name="MasterEditForm_Reset" xml:space="preserve">
+    <value>Phục hồi</value>
+  </data>
+  <data name="MasterEditForm_SaveAndNext" xml:space="preserve">
+    <value>Lưu và tiếp tục</value>
+  </data>
+  <data name="MessageBoxs" xml:space="preserve">
+    <value>Thông báo</value>
+  </data>
+  <data name="MonthlyInventoryTitle" xml:space="preserve">
+    <value>Báo Cáo Tồn Kho Cuối Tháng</value>
+  </data>
+  <data name="MS_Customers_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Khách Hàng</value>
+  </data>
+  <data name="MS_Customers_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Đối Tác &gt; Khách Hàng &gt; Chi Tiết Khách Hàng</value>
+  </data>
+  <data name="MS_Customers_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Khách Hàng</value>
+  </data>
+  <data name="MS_Customers_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Đối Tác &gt; Khách Hàng &gt; Chi Tiết Khách Hàng</value>
+  </data>
+  <data name="MS_Customers_Search_Form" xml:space="preserve">
+    <value>Khách Hàng</value>
+  </data>
+  <data name="MS_Customers_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Đối Tác &gt; Khách Hàng</value>
+  </data>
+  <data name="MS_Customers_View_Form" xml:space="preserve">
+    <value>Chi Tiết Khách Hàng</value>
+  </data>
+  <data name="MS_Customers_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Đối Tác &gt; Khách Hàng &gt; Chi Tiết Khách Hàng</value>
+  </data>
+  <data name="MS_Departments_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Phòng Ban</value>
+  </data>
+  <data name="MS_Departments_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Phòng Ban &gt; Chi Tiết Phòng Ban</value>
+  </data>
+  <data name="MS_Departments_New_Form" xml:space="preserve">
+    <value>Thêm  Chi Tiết Phòng Ban</value>
+  </data>
+  <data name="MS_Departments_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Phòng Ban &gt; Chi Tiết Phòng Ban</value>
+  </data>
+  <data name="MS_Departments_Search_Form" xml:space="preserve">
+    <value>Phòng Ban</value>
+  </data>
+  <data name="MS_Departments_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Phòng Ban</value>
+  </data>
+  <data name="MS_Departments_View_Form" xml:space="preserve">
+    <value>Chi Tiết Phòng Ban</value>
+  </data>
+  <data name="MS_Departments_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Phòng Ban &gt; Chi Tiết Phòng Ban</value>
+  </data>
+  <data name="MS_Employees_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Nhân Viên</value>
+  </data>
+  <data name="MS_Employees_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Nhân Viên &gt; Nhân Viên &gt; Chi Tiết Nhân Viên</value>
+  </data>
+  <data name="MS_Employees_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Nhân Viên</value>
+  </data>
+  <data name="MS_Employees_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Nhân Viên &gt; Nhân Viên &gt; Chi Tiết Nhân Viên</value>
+  </data>
+  <data name="MS_Employees_Search_Form" xml:space="preserve">
+    <value>Nhân Viên</value>
+  </data>
+  <data name="MS_Employees_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Nhân Viên &gt; Nhân Viên</value>
+  </data>
+  <data name="MS_Employees_View_Form" xml:space="preserve">
+    <value>Chi Tiết Nhân Viên</value>
+  </data>
+  <data name="MS_Employees_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Nhân Viên &gt; Nhân Viên &gt; Chi Tiết Nhân Viên</value>
+  </data>
+  <data name="MS_ErrorReasons_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Lý Do Lỗi</value>
+  </data>
+  <data name="MS_ErrorReasons_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Lý Do Lỗi &gt; Chi Tiết Lý Do Lỗi</value>
+  </data>
+  <data name="MS_ErrorReasons_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Lý Do Lỗi</value>
+  </data>
+  <data name="MS_ErrorReasons_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Lý Do Lỗi &gt; Chi Tiết Lý Do Lỗi</value>
+  </data>
+  <data name="MS_ErrorReasons_Search_Form" xml:space="preserve">
+    <value>Lý Do Lỗi</value>
+  </data>
+  <data name="MS_ErrorReasons_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Lý Do Lỗi</value>
+  </data>
+  <data name="MS_ErrorReasons_View_Form" xml:space="preserve">
+    <value>Chi Tiết Lý Do Lỗi</value>
+  </data>
+  <data name="MS_ErrorReasons_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Lý Do Lỗi &gt; Chi Tiết Lý Do Lỗi</value>
+  </data>
+  <data name="MS_Factories_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Nhà Máy</value>
+  </data>
+  <data name="MS_Factories_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Nhà Máy &gt; Chi Tiết Nhà Máy</value>
+  </data>
+  <data name="MS_Factories_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Nhà Máy</value>
+  </data>
+  <data name="MS_Factories_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Nhà Máy &gt; Chi Tiết Nhà Máy</value>
+  </data>
+  <data name="MS_Factories_Search_Form" xml:space="preserve">
+    <value>Nhà Máy</value>
+  </data>
+  <data name="MS_Factories_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Nhà Máy</value>
+  </data>
+  <data name="MS_Factories_View_Form" xml:space="preserve">
+    <value>Chi Tiết Nhà Máy</value>
+  </data>
+  <data name="MS_Factories_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Nhà Máy &gt; Chi Tiết Nhà Máy</value>
+  </data>
+  <data name="MS_InventoryPeriods_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Kỳ Kho</value>
+  </data>
+  <data name="MS_InventoryPeriods_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Kỳ Kho &gt; Chi Tiết Kỳ Kho</value>
+  </data>
+  <data name="MS_InventoryPeriods_New_Form" xml:space="preserve">
+    <value>Thêm Thông Tin Chi Kỳ Kho</value>
+  </data>
+  <data name="MS_InventoryPeriods_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Kỳ Kho &gt; Chi Tiết Kỳ Kho</value>
+  </data>
+  <data name="MS_InventoryPeriods_Search_Form" xml:space="preserve">
+    <value>Chi Tiết Kỳ Kho</value>
+  </data>
+  <data name="MS_InventoryPeriods_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Kỳ Kho</value>
+  </data>
+  <data name="MS_InventoryPeriods_View_Form" xml:space="preserve">
+    <value>Chi Tiết Kỳ Kho</value>
+  </data>
+  <data name="MS_InventoryPeriods_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt;Kỳ Kho&gt; Chi Tiết Kỳ Kho</value>
+  </data>
+  <data name="MS_ItemGroups_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Nhóm Hàng</value>
+  </data>
+  <data name="MS_ItemGroups_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Hàng &gt; Nhóm Hàng &gt; Chi Tiết Nhóm Hàng</value>
+  </data>
+  <data name="MS_ItemGroups_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Nhóm Hàng</value>
+  </data>
+  <data name="MS_ItemGroups_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Hàng &gt; Nhóm Hàng &gt; Chi Tiết Nhóm Hàng</value>
+  </data>
+  <data name="MS_ItemGroups_Search_Form" xml:space="preserve">
+    <value>Nhóm Hàng</value>
+  </data>
+  <data name="MS_ItemGroups_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Hàng &gt; Nhóm Hàng</value>
+  </data>
+  <data name="MS_ItemGroups_View_Form" xml:space="preserve">
+    <value>Chi Tiết Nhóm Hàng</value>
+  </data>
+  <data name="MS_ItemGroups_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Hàng &gt; Nhóm Hàng &gt; Chi Tiết Nhóm Hàng</value>
+  </data>
+  <data name="MS_Items_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Hàng</value>
+  </data>
+  <data name="MS_Items_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Hàng &gt; Hàng &gt; Chi Tiết Hàng</value>
+  </data>
+  <data name="MS_Items_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Hàng</value>
+  </data>
+  <data name="MS_Items_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Hàng &gt; Hàng &gt; Chi Tiết Hàng</value>
+  </data>
+  <data name="MS_Items_Search_Form" xml:space="preserve">
+    <value>Hàng</value>
+  </data>
+  <data name="MS_Items_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Hàng &gt; Hàng</value>
+  </data>
+  <data name="MS_Items_View_Form" xml:space="preserve">
+    <value>Chi Tiết Hàng</value>
+  </data>
+  <data name="MS_Items_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Hàng &gt; Hàng &gt; Chi Tiết Hàng</value>
+  </data>
+  <data name="MS_ProductionLines_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Công Đoạn</value>
+  </data>
+  <data name="MS_ProductionLines_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Công Đoạn &gt; Chi Tiết Công Đoạn</value>
+  </data>
+  <data name="MS_ProductionLines_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Công Đoạn</value>
+  </data>
+  <data name="MS_ProductionLines_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Công Đoạn &gt; Chi Tiết Công Đoạn</value>
+  </data>
+  <data name="MS_ProductionLines_Search_Form" xml:space="preserve">
+    <value>Công Đoạn</value>
+  </data>
+  <data name="MS_ProductionLines_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Công Đoạn</value>
+  </data>
+  <data name="MS_ProductionLines_View_Form" xml:space="preserve">
+    <value>Chi Tiết Công Đoạn</value>
+  </data>
+  <data name="MS_ProductionLines_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Công Đoạn &gt; Chi Tiết Công Đoạn</value>
+  </data>
+  <data name="MS_Suppliers_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết NCC Nguyên Vật Liệu</value>
+  </data>
+  <data name="MS_Suppliers_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Đối Tác &gt; NCC Nguyên Vật Liệu &gt; Chi Tiết NCC Nguyên Vật Liệu</value>
+  </data>
+  <data name="MS_Suppliers_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết NCC Nguyên Vật Liệu</value>
+  </data>
+  <data name="MS_Suppliers_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Đối Tác &gt; NCC Nguyên Vật Liệu &gt; Chi Tiết NCC Nguyên Vật Liệu</value>
+  </data>
+  <data name="MS_Suppliers_Search_Form" xml:space="preserve">
+    <value>NCC Nguyên Vật Liệu</value>
+  </data>
+  <data name="MS_Suppliers_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Đối Tác &gt; NCC Nguyên Vật Liệu</value>
+  </data>
+  <data name="MS_Suppliers_View_Form" xml:space="preserve">
+    <value>Chi Tiết NCC Nguyên Vật Liệu</value>
+  </data>
+  <data name="MS_Suppliers_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Đối Tác &gt; NCC Nguyên Vật Liệu &gt; Chi Tiết NCC Nguyên Vật Liệu</value>
+  </data>
+  <data name="MS_Units_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Đơn Vị Tính</value>
+  </data>
+  <data name="MS_Units_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Hàng &gt; Đơn Vị Tính &gt; Chi Tiết Đơn Vị Tính</value>
+  </data>
+  <data name="MS_Units_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Đơn Vị Tính</value>
+  </data>
+  <data name="MS_Units_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Hàng &gt; Đơn Vị Tính &gt; Chi Tiết Đơn Vị Tính</value>
+  </data>
+  <data name="MS_Units_Search_Form" xml:space="preserve">
+    <value>Đơn Vị Tính</value>
+  </data>
+  <data name="MS_Units_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Hàng &gt; Đơn Vị Tính</value>
+  </data>
+  <data name="MS_Units_View_Form" xml:space="preserve">
+    <value>Chi Tiết Đơn Vị Tính</value>
+  </data>
+  <data name="MS_Units_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Hàng &gt; Đơn Vị Tính &gt; Chi Tiết Đơn Vị Tính</value>
+  </data>
+  <data name="MS_Vendors_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Nhà Gia Công</value>
+  </data>
+  <data name="MS_Vendors_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Đối Tác &gt; Nhà Gia Công &gt; Chi Tiết Nhà Gia Công</value>
+  </data>
+  <data name="MS_Vendors_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Nhà Gia Công</value>
+  </data>
+  <data name="MS_Vendors_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Đối Tác &gt; Nhà Gia Công &gt; Chi Tiết Nhà Gia Công</value>
+  </data>
+  <data name="MS_Vendors_Search_Form" xml:space="preserve">
+    <value>Nhà Gia Công</value>
+  </data>
+  <data name="MS_Vendors_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Đối Tác &gt; Nhà Gia Công</value>
+  </data>
+  <data name="MS_Vendors_View_Form" xml:space="preserve">
+    <value>Chi Tiết Nhà Gia Công</value>
+  </data>
+  <data name="MS_Vendors_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Đối Tác &gt; Nhà Gia Công &gt; Chi Tiết Nhà Gia Công</value>
+  </data>
+  <data name="MS_Warehouses_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Kho</value>
+  </data>
+  <data name="MS_Warehouses_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Kho &gt; Chi Tiết Kho</value>
+  </data>
+  <data name="MS_Warehouses_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Kho</value>
+  </data>
+  <data name="MS_Warehouses_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Kho &gt; Chi Tiết Kho</value>
+  </data>
+  <data name="MS_Warehouses_Search_Form" xml:space="preserve">
+    <value>Kho</value>
+  </data>
+  <data name="MS_Warehouses_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Kho</value>
+  </data>
+  <data name="MS_Warehouses_View_Form" xml:space="preserve">
+    <value>Chi Tiết Kho</value>
+  </data>
+  <data name="MS_Warehouses_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Kho &gt; Kho &gt; Chi Tiết Kho</value>
+  </data>
+  <data name="PR_PriceUpdating_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Giá</value>
+  </data>
+  <data name="PR_PriceUpdating_Search_Form" xml:space="preserve">
+    <value>Cập Nhật Giá</value>
+  </data>
+  <data name="PR_PriceUpdating_Search_Path" xml:space="preserve">
+    <value>Giá &gt; Quản Lý Giá &gt; Cập Nhật Giá </value>
+  </data>
+  <data name="RP_DailyInventory_Search_Form" xml:space="preserve">
+    <value>Thống Kê Ngày</value>
+  </data>
+  <data name="RP_DailyInventory_Search_Path" xml:space="preserve">
+    <value>Tồn Kho &gt; Quản Lý Tồn Kho &gt;  Thống Kê Ngày</value>
+  </data>
+  <data name="RP_MonthlyInventory_Report_Form" xml:space="preserve">
+    <value>Báo Cáo Thống Kê Tháng</value>
+  </data>
+  <data name="RP_MonthlyInventory_Report_Path" xml:space="preserve">
+    <value>Báo Cáo &gt; Báo Cáo Tổng Quát &gt; Báo Cáo Thống Kê Tháng</value>
+  </data>
+  <data name="RP_MonthlyInventory_Search_Form" xml:space="preserve">
+    <value>Báo Cáo Tồn Kho Cuối Tháng</value>
+  </data>
+  <data name="RP_MonthlyInventory_Search_Path" xml:space="preserve">
+    <value>Báo Cáo &gt; Báo Cáo Tổng Quát &gt; Báo Cáo Tồn Kho Cuối Tháng</value>
+  </data>
+  <data name="RP_WarehouseInventoryMinutes_Search_Form" xml:space="preserve">
+    <value>Biên Bản Kiểm Kho</value>
+  </data>
+  <data name="RP_WarehouseInventoryMinutes_Search_Path" xml:space="preserve">
+    <value>Báo Cáo &gt; Báo Cáo Tổng Quát &gt; Biên Bản Kiểm Kho</value>
+  </data>
+  <data name="SH_DeliveryPrintConfirmForm_View_Form" xml:space="preserve">
+    <value>Lý Do In Phiếu</value>
+  </data>
+  <data name="StafetyStock" xml:space="preserve">
+    <value>Tồn Kho</value>
+  </data>
+  <data name="ST_PA_PhysicalAdjustmentInventory_CountSheet_View_Form" xml:space="preserve">
+    <value>Điều Chỉnh Tồn Kho Thực Tế ({0})</value>
+  </data>
+  <data name="ST_PA_PhysicalAdjustmentInventory_CountSheet_View_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Điều Chỉnh Tồn Kho Thực Tế ({0}) &gt; Thông Tin Chi Tiết</value>
+  </data>
+  <data name="ST_SA_ReturnFromCustomerShipping_New_Form" xml:space="preserve">
+    <value>Trả Hàng Từ Khách Hàng ({0})</value>
+  </data>
+  <data name="ST_SA_ReturnFromCustomerShipping_New_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Trả Hàng Từ Khách Hàng ({0}) &gt; Thêm</value>
+  </data>
+  <data name="ST_SA_ReturnFromCustomerShipping_View_Form" xml:space="preserve">
+    <value>Trả Hàng Từ Khách Hàng ({0})</value>
+  </data>
+  <data name="ST_SA_ReturnFromCustomerShipping_View_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Trả Hàng Từ Khách Hàng ({0}) &gt; Xem</value>
+  </data>
+  <data name="ST_SA_StockArrivingAdjustment_Edit_Form" xml:space="preserve">
+    <value>Điều Chỉnh Nhập Kho ({0})</value>
+  </data>
+  <data name="ST_SA_StockArrivingAdjustment_Edit_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Điều Chỉnh Nhập Kho ({0}) &gt; Thêm</value>
+  </data>
+  <data name="ST_SA_StockArrivingAdjustment_View_Form" xml:space="preserve">
+    <value>Điều Chỉnh Nhập Kho ({0})</value>
+  </data>
+  <data name="ST_SA_StockArrivingAdjustment_View_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Điều Chỉnh Nhập Kho ({0}) &gt; Xem</value>
+  </data>
+  <data name="ST_SA_StockArrivingForPurchaseOrder_New_Form" xml:space="preserve">
+    <value>Nhập Từ Đơn Mua Hàng ({0})</value>
+  </data>
+  <data name="ST_SA_StockArrivingForPurchaseOrder_New_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Nhập Từ Đơn Mua Hàng ({0}) &gt; Thêm</value>
+  </data>
+  <data name="ST_SA_StockArrivingForPurchaseOrder_View_Form" xml:space="preserve">
+    <value>Nhập Từ Đơn Mua Hàng ({0})</value>
+  </data>
+  <data name="ST_SA_StockArrivingForPurchaseOrder_View_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Nhập Từ Đơn Mua Hàng ({0}) &gt; Xem</value>
+  </data>
+  <data name="ST_SH_ReturnDeliveryToSupplier_New_Form" xml:space="preserve">
+    <value>Trả Hàng Cho Nhà Cung Cấp ({0})</value>
+  </data>
+  <data name="ST_SH_ReturnDeliveryToSupplier_New_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Trả Hàng Cho Nhà Cung Cấp ({0}) &gt; Thêm</value>
+  </data>
+  <data name="ST_SH_ReturnDeliveryToSupplier_View_Form" xml:space="preserve">
+    <value>Trả Hàng Cho Nhà Cung Cấp ({0})</value>
+  </data>
+  <data name="ST_SH_ReturnDeliveryToSupplier_View_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Trả Hàng Cho Nhà Cung Cấp ({0}) &gt; Xem</value>
+  </data>
+  <data name="ST_SH_ScrappingFromNG_New_Form" xml:space="preserve">
+    <value>Hủy Hàng NG ({0})</value>
+  </data>
+  <data name="ST_SH_ScrappingFromNG_New_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Hủy Hàng Ng ({0}) &gt; Thêm</value>
+  </data>
+  <data name="ST_SH_ScrappingFromNG_View_Form" xml:space="preserve">
+    <value>Hủy Hàng NG ({0})</value>
+  </data>
+  <data name="ST_SH_ScrappingFromNG_View_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất&gt; Hủy Hàng Ng ({0}) &gt; Xem</value>
+  </data>
+  <data name="ST_SH_StockShippingAdjustment_New_Form" xml:space="preserve">
+    <value>Điều Chỉnh Xuất Kho ({0})</value>
+  </data>
+  <data name="ST_SH_StockShippingAdjustment_New_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Điều Chỉnh Xuất Kho ({0}) &gt; Thêm</value>
+  </data>
+  <data name="ST_SH_StockShippingAdjustment_View_Form" xml:space="preserve">
+    <value>Điều Chỉnh Xuất Kho ({0})</value>
+  </data>
+  <data name="ST_SH_StockShippingAdjustment_View_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Điều Chỉnh Xuất Kho ({0}) &gt; Xem</value>
+  </data>
+  <data name="ST_SH_StockShippingForDelivery_New_Form" xml:space="preserve">
+    <value>Xuất Hàng Chuyển Giao {0}</value>
+  </data>
+  <data name="ST_SH_StockShippingForDelivery_New_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Xuất Hàng Chuyển Giao {0} &gt; Thêm</value>
+  </data>
+  <data name="ST_SH_StockShippingForDelivery_View_Form" xml:space="preserve">
+    <value>Xuất Hàng Chuyển Giao {0}</value>
+  </data>
+  <data name="ST_SH_StockShippingForDelivery_View_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Xuất Hàng Chuyển Giao {0} &gt; Xem</value>
+  </data>
+  <data name="ST_StockOverview_colAmount" xml:space="preserve">
+    <value>Thành Tiền</value>
+  </data>
+  <data name="ST_StockOverview_colBalanceFlag" xml:space="preserve">
+    <value>Xuất/Nhập</value>
+  </data>
+  <data name="ST_StockOverview_colInputQuantity" xml:space="preserve">
+    <value>Số Lượng</value>
+  </data>
+  <data name="ST_StockOverview_colInputUnit" xml:space="preserve">
+    <value>ĐVT</value>
+  </data>
+  <data name="ST_StockOverview_colItemCode" xml:space="preserve">
+    <value>Mã Hàng</value>
+  </data>
+  <data name="ST_StockOverview_colItemName" xml:space="preserve">
+    <value>Tên Hàng</value>
+  </data>
+  <data name="ST_StockOverview_colRemark" xml:space="preserve">
+    <value>Ghi Chú</value>
+  </data>
+  <data name="ST_StockOverview_colUnitPrice" xml:space="preserve">
+    <value>Đơn Giá</value>
+  </data>
+  <data name="ST_StockOverview_Search_Form" xml:space="preserve">
+    <value>Tổng Quan ({0})</value>
+  </data>
+  <data name="ST_StockOverview_Search_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Tổng Quan ({0})</value>
+  </data>
+  <data name="ST_ST_NGRecycleMaterial_New_Form" xml:space="preserve">
+    <value>Tái Sử Dụng NVL Từ NG ({0})</value>
+  </data>
+  <data name="ST_ST_NGRecycleMaterial_New_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Tái Sử Dụng NVL Từ NG ({0}) &gt; Thêm</value>
+  </data>
+  <data name="ST_ST_NGRecycleMaterial_View_Form" xml:space="preserve">
+    <value>Tái Sử Dụng NVL Từ NG ({0})</value>
+  </data>
+  <data name="ST_ST_NGRecycleMaterial_View_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Tái Sử Dụng NVL Từ NG ({0}) &gt; Xem</value>
+  </data>
+  <data name="ST_ST_StockTransferArrivingInStorage_Edit_Form" xml:space="preserve">
+    <value>Luân Chuyển - Nhập Kho ({0})</value>
+  </data>
+  <data name="ST_ST_StockTransferArrivingInStorage_Edit_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Luân Chuyển - Nhập Kho ({0}) &gt; Thêm</value>
+  </data>
+  <data name="ST_ST_StockTransferArrivingInStorage_View_Form" xml:space="preserve">
+    <value>Luân Chuyển - Nhập Kho ({0})</value>
+  </data>
+  <data name="ST_ST_StockTransferArrivingInStorage_View_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Luân Chuyển - Nhập Kho ({0}) &gt; Xem</value>
+  </data>
+  <data name="ST_ST_StockTransferShippingFromStorage_New_Form" xml:space="preserve">
+    <value>Luân Chuyển - Xuất Kho ({0})</value>
+  </data>
+  <data name="ST_ST_StockTransferShippingFromStorage_New_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Luân Chuyển - Xuất Kho ({0}) &gt; Thêm</value>
+  </data>
+  <data name="ST_ST_StockTransferShippingFromStorage_View_Form" xml:space="preserve">
+    <value>Luân Chuyển - Xuất Kho ({0})</value>
+  </data>
+  <data name="ST_ST_StockTransferShippingFromStorage_View_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Luân Chuyển - Xuất Kho ({0}) &gt; Xem</value>
+  </data>
+  <data name="ST_ST_TransferForProductionLine_New_Form" xml:space="preserve">
+    <value>Chuyển Công Đoạn ({0})</value>
+  </data>
+  <data name="ST_ST_TransferForProductionLine_New_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Chuyển Công Đoạn ({0}) &gt; Thêm</value>
+  </data>
+  <data name="ST_ST_TransferForProductionLine_View_Form" xml:space="preserve">
+    <value>Chuyển Công Đoạn ({0})</value>
+  </data>
+  <data name="ST_ST_TransferForProductionLine_View_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Chuyển Công Đoạn ({0}) &gt; Xem</value>
+  </data>
+  <data name="ST_ST_TransferPosting_New_Form" xml:space="preserve">
+    <value>Chuyển Trạng Thái ({0})</value>
+  </data>
+  <data name="ST_ST_TransferPosting_New_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Chuyển Trạng Thái ({0}) &gt; Thêm</value>
+  </data>
+  <data name="ST_ST_TransferPosting_View_Form" xml:space="preserve">
+    <value>Chuyển Trạng Thái ({0})</value>
+  </data>
+  <data name="ST_ST_TransferPosting_View_Path" xml:space="preserve">
+    <value>Nhập Xuất &gt; Quản Lý Nhập Xuất &gt; Chuyển Trạng Thái ({0}) &gt; Xem</value>
+  </data>
+  <data name="Sum" xml:space="preserve">
+    <value>Tổng Cộng</value>
+  </data>
+  <data name="SY_ChangePassword_001" xml:space="preserve">
+    <value>99-' {0} ' phải bằng ' Mật khẩu của ID ' đăng nhập</value>
+  </data>
+  <data name="SY_ChangePassword_Edit_Form" xml:space="preserve">
+    <value>Thay Đổi Mật Khẩu</value>
+  </data>
+  <data name="SY_ChangePassword_Edit_Path" xml:space="preserve">
+    <value>Hệ Thống &gt; Quản Lý Người Dùng &gt; Thay Đổi Mật Khẩu</value>
+  </data>
+  <data name="SY_CompanyInfomation_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Công Ty</value>
+  </data>
+  <data name="SY_CompanyInfomation_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Chung &gt; Thông Tin Công Ty</value>
+  </data>
+  <data name="SY_CompanyInfomation_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Thông Tin Công Ty</value>
+  </data>
+  <data name="SY_CompanyInfomation_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Chung &gt; Thông Tin Công Ty</value>
+  </data>
+  <data name="SY_Parameters_Edit_Form" xml:space="preserve">
+    <value>Thông Số Hệ Thống</value>
+  </data>
+  <data name="SY_Parameters_Edit_Path" xml:space="preserve">
+    <value>Hệ Thống &gt; Chung &gt; Thông Số Hệ Thống</value>
+  </data>
+  <data name="SY_SystemJournals_Search_Form" xml:space="preserve">
+    <value>Nhật Ký Hệ Thống</value>
+  </data>
+  <data name="SY_SystemJournals_Search_Path" xml:space="preserve">
+    <value>Hệ Thống &gt; Lịch Sử &gt; Nhật Ký Hệ Thống</value>
+  </data>
+  <data name="SY_UserGroupsPermission_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Quyền Thao Tác Của Nhóm Người Dùng</value>
+  </data>
+  <data name="SY_UserGroupsPermission_Edit_Path" xml:space="preserve">
+    <value>Hệ Thống &gt; Quản Lý Người Dùng &gt; Nhóm Người Dùng &gt; Chi Tiết Nhóm Người Dùng &gt; Quyền Thao Tác</value>
+  </data>
+  <data name="SY_UserGroupsPermission_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Quyền Thao Tác Của Nhóm Người Dùng</value>
+  </data>
+  <data name="SY_UserGroupsPermission_New_Path" xml:space="preserve">
+    <value>Hệ Thống &gt; Quản Lý Người Dùng &gt; Nhóm Người Dùng &gt; Chi Tiết Nhóm Người Dùng &gt; Quyền Thao Tác</value>
+  </data>
+  <data name="SY_UserGroupsPermission_View_Form" xml:space="preserve">
+    <value>Chi Tiết Quyền Thao Tác Của Nhóm Người Dùng</value>
+  </data>
+  <data name="SY_UserGroupsPermission_View_Path" xml:space="preserve">
+    <value>Hệ Thống &gt; Quản Lý Người Dùng &gt; Nhóm Người Dùng &gt; Chi Tiết Nhóm Người Dùng &gt; Quyền Thao Tác</value>
+  </data>
+  <data name="SY_UserGroups_colDisplayName" xml:space="preserve">
+    <value>Tên Người Dùng</value>
+  </data>
+  <data name="SY_UserGroups_colStatus" xml:space="preserve">
+    <value>Trạng Thái</value>
+  </data>
+  <data name="SY_UserGroups_colUserCode" xml:space="preserve">
+    <value>Mã Người Dùng</value>
+  </data>
+  <data name="SY_UserGroups_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Nhóm Người Dùng</value>
+  </data>
+  <data name="SY_UserGroups_Edit_Path" xml:space="preserve">
+    <value>Hệ Thống &gt; Quản Lý Người Dùng &gt; Nhóm Người Dùng &gt; Chi Tiết Nhóm Người Dùng</value>
+  </data>
+  <data name="SY_UserGroups_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Nhóm Người Dùng</value>
+  </data>
+  <data name="SY_UserGroups_New_Path" xml:space="preserve">
+    <value>Hệ Thống &gt; Quản Lý Người Dùng &gt; Nhóm Người Dùng &gt; Chi Tiết Nhóm Người Dùng</value>
+  </data>
+  <data name="SY_UserGroups_Search_Form" xml:space="preserve">
+    <value>Nhóm Người Dùng</value>
+  </data>
+  <data name="SY_UserGroups_Search_Path" xml:space="preserve">
+    <value>Hệ Thống &gt; Quản Lý Người Dùng &gt; Nhóm Người Dùng</value>
+  </data>
+  <data name="SY_UserGroups_View_Form" xml:space="preserve">
+    <value>Chi Tiết Nhóm Người Dùng</value>
+  </data>
+  <data name="SY_UserGroups_View_Path" xml:space="preserve">
+    <value>Hệ Thống &gt; Quản Lý Người Dùng &gt; Nhóm Người Dùng &gt; Chi Tiết Nhóm Người Dùng</value>
+  </data>
+  <data name="SY_Users_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Người Dùng</value>
+  </data>
+  <data name="SY_Users_Edit_Path" xml:space="preserve">
+    <value>Hệ Thống &gt; Quản Lý Người Dùng &gt; Người Dùng &gt; Chi Tiết Người Dùng</value>
+  </data>
+  <data name="SY_Users_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Người Dùng</value>
+  </data>
+  <data name="SY_Users_New_Path" xml:space="preserve">
+    <value>Hệ Thống &gt; Quản Lý Người Dùng &gt; Người Dùng &gt; Chi Tiết Người Dùng</value>
+  </data>
+  <data name="SY_Users_Search_Form" xml:space="preserve">
+    <value>Người Dùng</value>
+  </data>
+  <data name="SY_Users_Search_Path" xml:space="preserve">
+    <value>Hệ Thống &gt; Quản Lý Người Dùng &gt; Người Dùng</value>
+  </data>
+  <data name="SY_Users_View_Form" xml:space="preserve">
+    <value>Chi Tiết Người Dùng</value>
+  </data>
+  <data name="SY_Users_View_Path" xml:space="preserve">
+    <value>Hệ Thống &gt; Quản Lý Người Dùng &gt; Người Dùng &gt; Chi Tiết Người Dùng</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Tổng</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>ĐVT</value>
+  </data>
+  <data name="WarehouseInventoryFooter" xml:space="preserve">
+    <value>Chúng Tôi Cam Đoan Những Mã Hàng Trên Đã Được Kiểm Đếm Số Lượng 100%. Biên Bản Này Được Lập Thành 2 Bản Có Giá Trị Tương Đương Nhau Mỗi Bên Giữ 1 Bản(Brt Giữ Bản Chính, Đvgc Giữ Ban Lưu)</value>
+  </data>
+  <data name="WarehouseInventorySign1" xml:space="preserve">
+    <value>Đại Diện Brt</value>
+  </data>
+  <data name="WarehouseInventorySign2" xml:space="preserve">
+    <value>Đại Diện Kho/ Đvgc</value>
+  </data>
+  <data name="WarehouseInventorySign3" xml:space="preserve">
+    <value>Chữ Ký Của Bod</value>
+  </data>
+  <data name="IV_AdjustmentDateForm_View_Form" xml:space="preserve">
+    <value>Ngày Điều Chỉnh</value>
+  </data>
+  <data name="SY_UserState_Search_Form" xml:space="preserve">
+    <value>Trạng Thái Người Dùng</value>
+  </data>
+  <data name="SY_UserState_Search_Path" xml:space="preserve">
+    <value>Hệ Thống &gt; Quản Lý Người Dùng &gt; Trạng Thái Người Dùng</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_DISCONNECT" xml:space="preserve">
+    <value>96-Bạn có muốn ngắt kết nối không?</value>
+  </data>
+  <data name="COM_MSG_DISCONNECT_SUCCESSFULLY" xml:space="preserve">
+    <value>95-Ngắt kết nối thành công.</value>
+  </data>
+  <data name="COM_MSG_DATA_OF_BEING_USED" xml:space="preserve">
+    <value>Không thể thay đổi [{1}] của [{0}], dữ liệu đang được sử dụng.</value>
+  </data>
+  <data name="Login_007" xml:space="preserve">
+    <value>96-Người dùng bị ngắt kết nối bởi Người quản trị.</value>
+  </data>
+  <data name="Login_008" xml:space="preserve">
+    <value>96-Người dùng bị ngắt kết nối bởi quá trình Đóng/Mở kì.</value>
+  </data>
+  <data name="Login_009" xml:space="preserve">
+    <value>96-Người dùng bị mất kết nối.</value>
+  </data>
+  <data name="Reason_View_Form" xml:space="preserve">
+    <value>Lý Do</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_FG_NOT_OK" xml:space="preserve">
+    <value>98-Dòng {0}: Đây là sản phẩm NG, QI, NC.</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_WIP" xml:space="preserve">
+    <value>98-Dòng {0}: Đây là sản phẩm WIP.</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_PRODUCT_AND_FREE_PRODUCT" xml:space="preserve">
+    <value>98-Dòng {0}: Đây là Hàng gia công/Sản phẩm.</value>
+  </data>
+  <data name="COM_MSG_TAKE_SNAPSHOT_SUCCESS" xml:space="preserve">
+    <value>Lấy Dữ Liệu thành công!</value>
+  </data>
+  <data name="OpenClose_UserState_View_Form" xml:space="preserve">
+    <value>Người Dùng Trực Tuyến</value>
+  </data>
+  <data name="USER_MUST_BE_LOGOUT_BY_OPEN_CLOSE" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="RP_ShippingList_Search_Form" xml:space="preserve">
+    <value>Danh Sách Xuất Hàng</value>
+  </data>
+  <data name="RP_ShippingList_Search_Path" xml:space="preserve">
+    <value>Báo Cáo &gt; Báo Cáo Tổng Quát &gt; Danh Sách Xuất Hàng</value>
+  </data>
+  <data name="COM_MSG_PHYSICAL_COMPLETE" xml:space="preserve">
+    <value>Phiếu Kiểm Kho này đã được hoàn thành.</value>
+  </data>
+  <data name="COM_MSG_PHYSICAL_CANCEL" xml:space="preserve">
+    <value>Phiếu Kiểm Kho này đã hủy.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_RELATED_DOCUMENT_DATE_NOT_VALID" xml:space="preserve">
+    <value>99-Dòng {0}: Ngày của chứng từ liên quan phải nhỏ hơn hoặc bằng [Ngày Chứng Từ].</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_CLEAR" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn xóa trắng hết dữ liệu?</value>
+  </data>
+  <data name="MS_Companies_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Công Ty</value>
+  </data>
+  <data name="MS_Companies_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Đối Tác &gt; Công Ty &gt; Chi Tiết Công Ty</value>
+  </data>
+  <data name="MS_Companies_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Công Ty</value>
+  </data>
+  <data name="MS_Companies_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Đối Tác &gt; Công Ty &gt; Chi Tiết Công Ty</value>
+  </data>
+  <data name="MS_Companies_Search_Form" xml:space="preserve">
+    <value>Công Ty</value>
+  </data>
+  <data name="MS_Companies_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Đối Tác &gt; Công Ty</value>
+  </data>
+  <data name="MS_Companies_View_Form" xml:space="preserve">
+    <value>Chi Tiết Công Ty</value>
+  </data>
+  <data name="MS_Companies_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Đối Tác &gt; Công Ty &gt; Chi Tiết Công Ty</value>
+  </data>
+  <data name="COM_MSG_REQUIRED_SELECT" xml:space="preserve">
+    <value>99-[{0}] bắt buộc chọn.</value>
+  </data>
+  <data name="COM_MSG_STOCK_DOCUMENT_CANCELED" xml:space="preserve">
+    <value>99-Chứng từ này đã bị hủy!</value>
+  </data>
+  <data name="COM_MSG_WAREHOUSE_HAVING_COUNTSHEET" xml:space="preserve">
+    <value>99-Kho này đang kiểm kê.</value>
+  </data>
+  <data name="COM_MSG_WAREHOUSE_HAVING_STOCK" xml:space="preserve">
+    <value>99-Kho này đang có tồn kho.</value>
+  </data>
+  <data name="COM_MSG_INVALID_ADJUSTMENTDATE" xml:space="preserve">
+    <value>99-Ngày Điều Chỉnh phải thuộc ngày trong kì.</value>
+  </data>
+  <data name="COM_MSG_FACTOR_REQUIRED" xml:space="preserve">
+    <value>99-Line {0}: {1} bắt buộc nhập và phải lớn {2}.</value>
+  </data>
+  <data name="INV_Invoice_Search_Form" xml:space="preserve">
+    <value>Hóa Đơn</value>
+  </data>
+  <data name="INV_Invoice_Search_Path" xml:space="preserve">
+    <value>Hóa Đơn &gt; Quản Lý Hóa Đơn &gt; Hóa Đơn</value>
+  </data>
+  <data name="INV_InvoiceSelect_Search_Form" xml:space="preserve">
+    <value>Chọn Mặt Hàng</value>
+  </data>
+  <data name="INV_InvoiceSelect_Search_Path" xml:space="preserve">
+    <value>Hóa Đơn &gt; Quản Lý Hóa Đơn &gt; Hóa Đơn &gt; Chi Tiết Hóa Đơn &gt; Chọn Mặt Hàng</value>
+  </data>
+  <data name="INV_Invoice_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Hóa Đơn</value>
+  </data>
+  <data name="INV_Invoice_Edit_Path" xml:space="preserve">
+    <value>Hóa Đơn &gt; Quản Lý Hóa Đơn &gt; Hóa Đơn &gt; Chi Tiết Hóa Đơn</value>
+  </data>
+  <data name="INV_Invoice_New_Form" xml:space="preserve">
+    <value>Thêm Hóa Đơn</value>
+  </data>
+  <data name="INV_Invoice_New_Path" xml:space="preserve">
+    <value>Hóa Đơn &gt; Quản Lý Hóa Đơn &gt; Hóa Đơn &gt; Chi Tiết Hóa Đơn</value>
+  </data>
+  <data name="INV_Invoice_View_Form" xml:space="preserve">
+    <value>Xem Chi Tiết Hóa Đơn</value>
+  </data>
+  <data name="INV_Invoice_View_Path" xml:space="preserve">
+    <value>Hóa Đơn &gt; Quản Lý Hóa Đơn &gt; Hóa Đơn &gt; Chi Tiết Hóa Đơn</value>
+  </data>
+  <data name="COM_MSG_NUM_OF_ROW_INVOICE_INVALID" xml:space="preserve">
+    <value>99-Số lượng chi tiết hóa đơn trên lưới không hợp lệ.</value>
+  </data>
+  <data name="COM_MSG_FILE_FORMAT_INVALID" xml:space="preserve">
+    <value>99-Định dạng tập tin không hợp lệ.</value>
+  </data>
+  <data name="COM_MSG_FILE_NUM_OF_COLUMN_INVALID" xml:space="preserve">
+    <value>99-Số lượng cột không hợp lệ.</value>
+  </data>
+  <data name="COM_MSG_FILE_NUM_OF_ROW_INVALID" xml:space="preserve">
+    <value>99-Số lượng dòng không hợp lệ.</value>
+  </data>
+  <data name="MS_Items_Import_Form" xml:space="preserve">
+    <value>Import Giá Bán</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_LESS_THAN_OR_EQUAL" xml:space="preserve">
+    <value>99-Line {0}: [{1}] phải nhỏ hơn hoặc bằng [{2}]!</value>
+  </data>
+  <data name="COM_MSG_INVOICE_CANCEL_FAIL_1" xml:space="preserve">
+    <value>99-Hóa đơn này đã bị hủy!</value>
+  </data>
+  <data name="COM_MSG_INVOICE_CANCEL_FAIL_2" xml:space="preserve">
+    <value>99-Số hóa đơn chưa nhập.</value>
+  </data>
+  <data name="COM_MSG_INVOICE_QUANTITY_NOT_ENOUGH" xml:space="preserve">
+    <value>99-Dòng {0}: Số lượng xuất hàng không đủ. Mã chứng từ: {1}</value>
+  </data>
+  <data name="COM_MSG_STOCK_CANCEL_EXIST_INVOICE" xml:space="preserve">
+    <value>99-Chứng từ này đã tồn tại hóa đơn.</value>
+  </data>
+  <data name="RP_SalesList_Search_Form" xml:space="preserve">
+    <value>Danh Sách Bán Hàng</value>
+  </data>
+  <data name="RP_SalesList_Search_Path" xml:space="preserve">
+    <value>Báo Cáo &gt; Báo Cáo Tổng Quát &gt; Danh Sách Bán Hàng</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_PRINT" xml:space="preserve">
+    <value>96-Bạn có muốn in không?</value>
+  </data>
+  <data name="COM_MSG_PRINT_SUCCESSFULLY" xml:space="preserve">
+    <value>95-In thành công.</value>
+  </data>
+  <data name="COM_MSG_INVOICE_CANCEL_FAIL_3" xml:space="preserve">
+    <value>99-Hóa đơn này chưa được in.</value>
+  </data>
+  <data name="COM_MSG_PRINTER_INVALID" xml:space="preserve">
+    <value>Tên máy in không hợp lệ. Vui lòng kiểm tra cấu hình máy hình.</value>
+  </data>
+  <data name="COM_MSG_LENGTH_INVALID" xml:space="preserve">
+    <value>99-Độ dài của {0} không hợp lệ.</value>
+  </data>
+  <data name="CO_Cost_Export_Form" xml:space="preserve">
+    <value>Xuất Giá Thành</value>
+  </data>
+  <data name="CO_Cost_Export_Path" xml:space="preserve">
+    <value>Giá Thành &gt; Quản Lý Giá Thành &gt; Xuất</value>
+  </data>
+  <data name="COM_MSG_NOT_PERMISSION_VIEW" xml:space="preserve">
+    <value>99-Bạn không có quyền xem.</value>
+  </data>
+  <data name="RP_IncludedWarehouseInventoryMinutes_Search_Form" xml:space="preserve">
+    <value>Biên Bản Kiểm Kho - BOD</value>
+  </data>
+  <data name="RP_IncludedWarehouseInventoryMinutes_Search_Path" xml:space="preserve">
+    <value>Báo Cáo &gt; Báo Cáo Tổng Quát &gt; Biên Bản Kiểm Kho - BOD</value>
+  </data>
+  <data name="COM_MSG_RPC_SERVER_UNAVAILABLE" xml:space="preserve">
+    <value>99-RPC server is unavailable.</value>
+  </data>
+  <data name="COM_MSG_EXPORT_NOT_FLOW" xml:space="preserve">
+    <value>Không thể xuất thông tin cho loại sản phẩm này!</value>
+  </data>
+  <data name="RP_StockAging_Export_Form" xml:space="preserve">
+    <value>Xuất Tuổi Tồn Kho</value>
+  </data>
+  <data name="RP_StockAging_Export_Path" xml:space="preserve">
+    <value>Tuổi Tồn kho &gt; Quản Lý Tuổi Tồn Kho &gt; Xuất Tuổi Tồn Kho</value>
+  </data>
+  <data name="COM_MSG_STOCK_CANCEL_AGING" xml:space="preserve">
+    <value>99-Line {0}: xxx</value>
+  </data>
+  <data name="COM_MSG_GRID_WR_PRODUCTION_LINE_EXISTED" xml:space="preserve">
+    <value>99-Line [{0}]:Công đoạn [{1}] đã trùng với công đoạn khác.</value>
+  </data>
+  <data name="MS_WorkRouting_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Công Đoạn</value>
+  </data>
+  <data name="MS_WorkRouting_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Hàng &gt; Quy Trình SX &gt; Chi Tiết Quy Trình SX</value>
+  </data>
+  <data name="MS_WorkRouting_Search_Form" xml:space="preserve">
+    <value>Quy Trình SX</value>
+  </data>
+  <data name="MS_WorkRouting_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Hàng &gt; Quy Trình SX</value>
+  </data>
+  <data name="MS_WorkRouting_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Quy Trình SX</value>
+  </data>
+  <data name="MS_WorkRouting_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Hàng &gt; Quy Trình SX &gt; Chi Tiết Quy Trình SX</value>
+  </data>
+  <data name="MS_WorkRouting_View_Form" xml:space="preserve">
+    <value>Chi Tiết Quy Trình SX</value>
+  </data>
+  <data name="MS_WorkRouting_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Hàng &gt; Quy Trình SX &gt; Chi Tiết Quy Trình SX</value>
+  </data>
+  <data name="COM_MSG_WORKROUTING_CHECKEXIST" xml:space="preserve">
+    <value>99-Mã Hàng Không Được Trùng Với [{0}]</value>
+  </data>
+  <data name="COM_MSG_WORKROUTING_GRID" xml:space="preserve">
+    <value>99-Số Bước phải lớn hơn 0 và nhỏ hơn hoặc bằng 20</value>
+  </data>
+  <data name="A_CurrentAging_Search_Path" xml:space="preserve">
+    <value>Tuổi Tồn kho &gt; Quản Lý Tuổi Tồn Kho &gt; Cập Nhật Tuổi</value>
+  </data>
+  <data name="A_CurrentAging_Search_Form" xml:space="preserve">
+    <value>Cập Nhật Tuổi</value>
+  </data>
+  <data name="COM_MSG_AGING_CHECKLIKE" xml:space="preserve">
+    <value>99-{0} không được trùng với Mã Hàng Gốc khác</value>
+  </data>
+  <data name="RP_ArrivingList_Search_Form" xml:space="preserve">
+    <value>Danh Sách Nhập Hàng</value>
+  </data>
+  <data name="RP_ArrivingList_Search_Path" xml:space="preserve">
+    <value>Báo Cáo &gt; Báo Cáo Tổng Quát &gt; Danh Sách Nhập Hàng</value>
+  </data>
+  <data name="COM_MSG_DATA_DUPPLICATED" xml:space="preserve">
+    <value>99-[{0}] bị trùng lắp.</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_LENGTH_INVALID" xml:space="preserve">
+    <value>99-Dòng {0}: Độ dài [{1}] không hợp lệ.</value>
+  </data>
+  <data name="A_CurrentAging_Import_Form" xml:space="preserve">
+    <value>Import Giá Thành</value>
+  </data>
+  <data name="A_CurrentAging_Import_Path" xml:space="preserve">
+    <value>Tuổi Tồn kho &gt; Quản Lý Tuổi Tồn Kho &gt; Import Giá Thành</value>
+  </data>
+  <data name="COM_MSG_WORKROUTING_CHECK_ORGITEM" xml:space="preserve">
+    <value>99-[{0}] phải nhập trước</value>
+  </data>
+  <data name="SYS_Notifications_View_Form" xml:space="preserve">
+    <value>Nhắc Nhở</value>
+  </data>
+  <data name="SYS_Notifications_View_Path" xml:space="preserve">
+    <value>Hệ Thống &gt; Nhắc Nhở &gt; Nhắc Nhở</value>
+  </data>
+  <data name="COM_MSG_NOTIFICATION_NOTE" xml:space="preserve">
+    <value>97-Chưa có cảnh báo nào vào thời điểm này.</value>
+  </data>
+  <data name="RP_NG_NCRate_Search_Form" xml:space="preserve">
+    <value>Tỉ Lệ Hàng Lỗi</value>
+  </data>
+  <data name="RP_NG_NCRate_Search_Path" xml:space="preserve">
+    <value>Báo Cáo &gt; Báo Cáo Tổng Quát &gt; Tỉ Lệ Hàng Lỗi</value>
+  </data>
+  <data name="RP_InvTranList_Search_Form" xml:space="preserve">
+    <value>Danh Sách Tất Cả Giao Dịch Tồn Kho</value>
+  </data>
+  <data name="RP_InvTranList_Search_Path" xml:space="preserve">
+    <value>Báo Cáo &gt; Báo Cáo Tổng Quát &gt; Danh Sách Tất Cả Giao Dịch Tồn Kho</value>
+  </data>
+  <data name="DE_MonthlyPlan_Search_Form" xml:space="preserve">
+    <value>Kế Hoạch Tháng (Khách Hàng)</value>
+  </data>
+  <data name="DE_MonthlyPlan_Search_Path" xml:space="preserve">
+    <value>Giao Hàng &gt; Giao Hàng Khách Hàng Tổng Quát &gt; Kế Hoạch Tháng (Khách Hàng)</value>
+  </data>
+  <data name="DE_ResultDaily_Search_Form" xml:space="preserve">
+    <value>Kết Quả Hàng Ngày (Khách Hàng)</value>
+  </data>
+  <data name="DE_ResultDaily_Search_Path" xml:space="preserve">
+    <value>Giao Hàng &gt; Giao Hàng Khách Hàng Tổng Quát &gt; Kết Quả Hàng Ngày (Khách Hàng)</value>
+  </data>
+  <data name="Forecast" xml:space="preserve">
+    <value>Dự Báo</value>
+  </data>
+  <data name="DE_DailyPlan_Search_Form" xml:space="preserve">
+    <value>Kế Hoạch Ngày (Khách Hàng)</value>
+  </data>
+  <data name="DE_DailyPlan_Search_Path" xml:space="preserve">
+    <value>Giao Hàng &gt; Giao Hàng Khách Hàng Tổng Quát &gt; Kế Hoạch Ngày (Khách Hàng)</value>
+  </data>
+  <data name="DE_MonthlyPlan_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Kế Hoạch Tháng (Khách Hàng)</value>
+  </data>
+  <data name="DE_MonthlyPlan_Edit_Path" xml:space="preserve">
+    <value>Giao Hàng &gt; Giao Hàng Khách Hàng Tổng Quát &gt; Kế Hoạch Tháng (Khách Hàng) &gt; Chi Tiết Kế Hoạch Tháng (Khách Hàng)</value>
+  </data>
+  <data name="DE_MonthlyPlan_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Kế Hoạch Tháng (Khách Hàng)</value>
+  </data>
+  <data name="DE_MonthlyPlan_New_Path" xml:space="preserve">
+    <value>Giao Hàng &gt; Giao Hàng Khách Hàng Tổng Quát&gt; Kế Hoạch Tháng (Khách Hàng) &gt; Chi Tiết Kế Hoạch Tháng (Khách Hàng)</value>
+  </data>
+  <data name="DE_MonthlyPlan_View_Form" xml:space="preserve">
+    <value>Chi Tiết Kế Hoạch Tháng (Khách Hàng)</value>
+  </data>
+  <data name="DE_MonthlyPlan_View_Path" xml:space="preserve">
+    <value>Giao Hàng &gt; Giao Hàng Khách Hàng Tổng Quát &gt; Kế Hoạch Tháng (Khách Hàng) &gt; Chi Tiết Kế Hoạch Tháng (Khách Hàng)</value>
+  </data>
+  <data name="IT_ChooseItem_View_Form" xml:space="preserve">
+    <value>Chọn Mặt Hàng</value>
+  </data>
+  <data name="IT_ChooseItem_View_Path" xml:space="preserve">
+    <value>Giao Hàng &gt; Giao Hàng Tổng Quát &gt; Kế Hoạch Tháng &gt; Chi Tiết Kế Hoạch Tháng &gt; Chọn Mặt Hàng</value>
+  </data>
+  <data name="COM_MSG_NOT_UPDATE_OLD_VERSION" xml:space="preserve">
+    <value>99-Bạn không thể cập nhật hay xóa một phiên bản cũ.</value>
+  </data>
+  <data name="RP_SaleForecast_Search_Form" xml:space="preserve">
+    <value>Dự Báo Bán Hàng</value>
+  </data>
+  <data name="RP_SaleForecast_Search_Path" xml:space="preserve">
+    <value>Báo Cáo &gt; Báo Cáo Tổng Quát &gt; Dự Báo Bán Hàng</value>
+  </data>
+  <data name="MS_Exchrates_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Tỷ Giá</value>
+  </data>
+  <data name="MS_Exchrates_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Tỷ Giá &gt; Tỷ Giá &gt; Chi Tiết Tỷ Giá</value>
+  </data>
+  <data name="MS_Exchrates_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Tỷ Giá</value>
+  </data>
+  <data name="MS_Exchrates_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Tỷ Giá &gt; Tỷ Giá &gt; Chi Tiết Tỷ Giá</value>
+  </data>
+  <data name="MS_Exchrates_Search_Form" xml:space="preserve">
+    <value>Tỷ Giá</value>
+  </data>
+  <data name="MS_Exchrates_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Tỷ Giá &gt; Tỷ Giá</value>
+  </data>
+  <data name="MS_Exchrates_View_Form" xml:space="preserve">
+    <value>Chi Tiết Tỷ Giá</value>
+  </data>
+  <data name="MS_Exchrates_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý Tỷ Giá &gt; Tỷ Giá &gt; Chi Tiết Tỷ Giá</value>
+  </data>
+  <data name="A_ExportAging_Search_Form" xml:space="preserve">
+    <value>Xuất Tuổi Tồn Kho</value>
+  </data>
+  <data name="A_ExportAging_Search_Path" xml:space="preserve">
+    <value>Tuổi Tồn kho &gt; Quản Lý Tuổi Tồn Kho &gt; Xuất Tuổi Tồn Kho</value>
+  </data>
+  <data name="RP_StockAging_Search_Form" xml:space="preserve">
+    <value>Xuất Tuổi Tồn Kho</value>
+  </data>
+  <data name="RP_StockAging_Search_Path" xml:space="preserve">
+    <value>Tuổi Tồn kho &gt; Quản Lý Tuổi Tồn Kho &gt; Xuất Tuổi Tồn Kho</value>
+  </data>
+  <data name="DE_MonthlyPlanInternal_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Kế Hoạch Tháng (Nội Bộ)</value>
+  </data>
+  <data name="DE_MonthlyPlanInternal_Edit_Path" xml:space="preserve">
+    <value>Giao Hàng &gt; Luân Chuyển Nội Bộ Tổng Quát &gt; Kế Hoạch Tháng (Nội Bộ) &gt; Chi Tiết Kế Hoạch Tháng (Nội Bộ)</value>
+  </data>
+  <data name="DE_MonthlyPlanInternal_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Kế Hoạch Tháng (Nội Bộ)</value>
+  </data>
+  <data name="DE_MonthlyPlanInternal_New_Path" xml:space="preserve">
+    <value>Giao Hàng &gt; Luân Chuyển Nội Bộ Tổng Quát &gt; Kế Hoạch Tháng (Nội Bộ) &gt; Chi Tiết Kế Hoạch Tháng (Nội Bộ)</value>
+  </data>
+  <data name="DE_MonthlyPlanInternal_Search_Form" xml:space="preserve">
+    <value>Kế Hoạch Tháng (Nội Bộ)</value>
+  </data>
+  <data name="DE_MonthlyPlanInternal_Search_Path" xml:space="preserve">
+    <value>Giao Hàng &gt; Luân Chuyển Nội Bộ Tổng Quát &gt; Kế Hoạch Tháng (Nội Bộ)</value>
+  </data>
+  <data name="DE_MonthlyPlanInternal_View_Form" xml:space="preserve">
+    <value>Chi Tiết Kế Hoạch Tháng (Nội Bộ)</value>
+  </data>
+  <data name="DE_MonthlyPlanInternal_View_Path" xml:space="preserve">
+    <value>Giao Hàng &gt; Luân Chuyển Nội Bộ Tổng Quát &gt; Kế Hoạch Tháng (Nội Bộ) &gt; Chi Tiết Kế Hoạch Tháng (Nội Bộ)</value>
+  </data>
+  <data name="DE_DailyPlanInternal_Search_Form" xml:space="preserve">
+    <value>Kế Hoạch Ngày (Nội Bộ)</value>
+  </data>
+  <data name="DE_DailyPlanInternal_Search_Path" xml:space="preserve">
+    <value>Giao Hàng &gt; Luân Chuyển Nội Bộ Tổng Quát &gt; Kế Hoạch Ngày (Nội Bộ)</value>
+  </data>
+  <data name="DE_ResultDailyInternal_Search_Form" xml:space="preserve">
+    <value>Kết Quả Hàng Ngày (Nội Bộ)</value>
+  </data>
+  <data name="DE_ResultDailyInternal_Search_Path" xml:space="preserve">
+    <value>Giao Hàng &gt; Luân Chuyển Nội Bộ Tổng Quát &gt; Kết Quả Hàng Ngày (Nội Bộ)</value>
+  </data>
+  <data name="PR_PriceUpdating_InputPrice_Form" xml:space="preserve">
+    <value>Nhập Giá</value>
+  </data>
+  <data name="PR_PriceUpdating_InputPrice_Path" xml:space="preserve">
+    <value>Giá &gt; Quản Lý Giá &gt; Cập Nhật Giá &gt; Nhập Giá</value>
+  </data>
+  <data name="COM_MSG_GRID_WR_PRODUCTION_LINE_FG_LAST1" xml:space="preserve">
+    <value>99-Dòng [{0}]:Công đoạn [{1}] phải là công đoạn cuối cùng.</value>
+  </data>
+  <data name="COM_MSG_GRID_WR_PRODUCTION_LINE_FG_FIRST" xml:space="preserve">
+    <value>99-Dòng [{0}]:Công đoạn [{1}] không được là công đoạn đầu tiên</value>
+  </data>
+  <data name="RP_NG_NCRateSummary_Search_Form" xml:space="preserve">
+    <value>Tổng Kết Tỉ Lệ Hàng Lỗi</value>
+  </data>
+  <data name="RP_NG_NCRateSummary_Search_Path" xml:space="preserve">
+    <value>Báo Cáo &gt; Báo Cáo Tổng Quát &gt; Tổng Kết Tỉ Lệ Hàng Lỗi</value>
+  </data>
+  <data name="RP_NG_NCRateChart_Search_Form" xml:space="preserve">
+    <value>Biểu Đồ Tỉ Lệ Hàng Lỗi</value>
+  </data>
+  <data name="RP_NG_NCRateChart_Search_Path" xml:space="preserve">
+    <value>Báo Cáo &gt; Báo Cáo Tổng Quát &gt; Biểu Đồ Tỉ Lệ Hàng Lỗi</value>
+  </data>
+  <data name="COM_MSG_REPORT_NO_12_PERIOD" xml:space="preserve">
+    <value>99-Báo cáo này giới hạn trong 12 tháng.</value>
+  </data>
+  <data name="MS_Acquisitionreason_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Lý Do Tăng Giảm TSCĐ</value>
+  </data>
+  <data name="MS_Acquisitionreason_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý TSCĐ &gt; Lý Do Tăng Giảm TSCĐ &gt; Chi Tiết Lý Do Tăng Giảm TSCĐ</value>
+  </data>
+  <data name="MS_Acquisitionreason_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Lý Do Tăng Giảm TSCĐ</value>
+  </data>
+  <data name="MS_Acquisitionreason_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý TSCĐ &gt; Lý Do Tăng Giảm TSCĐ &gt; Chi Tiết Lý Do Tăng Giảm TSCĐ</value>
+  </data>
+  <data name="MS_Acquisitionreason_Search_Form" xml:space="preserve">
+    <value>Lý Do Tăng Giảm TSCĐ</value>
+  </data>
+  <data name="MS_Acquisitionreason_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý TSCĐ &gt; Lý Do Tăng Giảm TSCĐ</value>
+  </data>
+  <data name="MS_Acquisitionreason_View_Form" xml:space="preserve">
+    <value>Chi Tiết Lý Do Tăng Giảm TSCĐ</value>
+  </data>
+  <data name="MS_Acquisitionreason_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý TSCĐ &gt; Lý Do Tăng Giảm TSCĐ &gt; Chi Tiết Lý Do Tăng Giảm TSCĐ</value>
+  </data>
+  <data name="MS_Capital_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Nguồn Vốn</value>
+  </data>
+  <data name="MS_Capital_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý TSCĐ &gt; Nguồn Vốn &gt; Chi Tiết Nguồn Vốn</value>
+  </data>
+  <data name="MS_Capital_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Nguồn Vốn</value>
+  </data>
+  <data name="MS_Capital_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý TSCĐ &gt; Nguồn Vốn &gt; Chi Tiết Nguồn Vốn</value>
+  </data>
+  <data name="MS_Capital_Search_Form" xml:space="preserve">
+    <value>Nguồn Vốn</value>
+  </data>
+  <data name="MS_Capital_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý TSCĐ &gt; Nguồn Vốn</value>
+  </data>
+  <data name="MS_Capital_View_Form" xml:space="preserve">
+    <value>Chi Tiết Nguồn Vốn</value>
+  </data>
+  <data name="MS_Capital_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý TSCĐ &gt; Nguồn Vốn &gt; Chi Tiết Nguồn Vốn</value>
+  </data>
+  <data name="MS_FixedAssetsType_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Loại TSCĐ</value>
+  </data>
+  <data name="MS_FixedAssetsType_Edit_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý TSCĐ &gt; Loại TSCĐ &gt; Chi Tiết Loại TSCĐ</value>
+  </data>
+  <data name="MS_FixedAssetsType_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Loại TSCĐ</value>
+  </data>
+  <data name="MS_FixedAssetsType_New_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý TSCĐ &gt; Loại TSCĐ &gt; Chi Tiết Loại TSCĐ</value>
+  </data>
+  <data name="MS_FixedAssetsType_Search_Form" xml:space="preserve">
+    <value>Loại TSCĐ</value>
+  </data>
+  <data name="MS_FixedAssetsType_Search_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý TSCĐ &gt; Loại TSCĐ </value>
+  </data>
+  <data name="MS_FixedAssetsType_View_Form" xml:space="preserve">
+    <value>Chi Tiết Loại TSCĐ</value>
+  </data>
+  <data name="MS_FixedAssetsType_View_Path" xml:space="preserve">
+    <value>Danh Mục &gt; Quản Lý TSCĐ &gt; Loại TSCĐ &gt; Chi Tiết Loại TSCĐ</value>
+  </data>
+  <data name="FA_Information_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Thông Tin TSCĐ</value>
+  </data>
+  <data name="FA_Information_Edit_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Thông Tin TSCĐ &gt; Chi Tiết Thông Tin TSCĐ</value>
+  </data>
+  <data name="FA_Information_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Thông Tin TSCĐ</value>
+  </data>
+  <data name="FA_Information_New_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Thông Tin TSCĐ &gt; Chi Tiết Thông Tin TSCĐ</value>
+  </data>
+  <data name="FA_Information_Search_Form" xml:space="preserve">
+    <value>Thông Tin TSCĐ</value>
+  </data>
+  <data name="FA_Information_Search_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Thông Tin TSCĐ</value>
+  </data>
+  <data name="FA_Information_View_Form" xml:space="preserve">
+    <value>Chi Tiết Thông Tin TSCĐ</value>
+  </data>
+  <data name="FA_Information_View_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Thông Tin TSCĐ &gt; Chi Tiết Thông Tin TSCĐ</value>
+  </data>
+  <data name="FA_Decrease_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Ghi Giảm TSCĐ</value>
+  </data>
+  <data name="FA_Decrease_Edit_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt;  Chi Tiết Ghi Giảm TSCĐ</value>
+  </data>
+  <data name="FA_Decrease_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Ghi Giảm TSCĐ</value>
+  </data>
+  <data name="FA_Decrease_New_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Chi Tiết Ghi Giảm TSCĐ</value>
+  </data>
+  <data name="FA_Decrease_Search_Form" xml:space="preserve">
+    <value>Ghi Giảm TSCĐ</value>
+  </data>
+  <data name="FA_Decrease_Search_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Ghi Giảm TSCĐ</value>
+  </data>
+  <data name="FA_Decrease_View_Form" xml:space="preserve">
+    <value>Chi Tiết Ghi Giảm TSCĐ</value>
+  </data>
+  <data name="FA_Decrease_View_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Ghi Giảm TSCĐ &gt; Chi Tiết Ghi Giảm TSCĐ</value>
+  </data>
+  <data name="FA_Increase_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Ghi Tăng TSCĐ</value>
+  </data>
+  <data name="FA_Increase_Edit_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Chi Tiết Ghi Tăng TSCĐ</value>
+  </data>
+  <data name="FA_Increase_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Ghi Tăng TSCĐ</value>
+  </data>
+  <data name="FA_Increase_New_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt;  Chi Tiết Ghi Tăng TSCĐ</value>
+  </data>
+  <data name="FA_Increase_Search_Form" xml:space="preserve">
+    <value>Ghi Tăng TSCĐ</value>
+  </data>
+  <data name="FA_Increase_Search_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Ghi Tăng TSCĐ</value>
+  </data>
+  <data name="FA_Increase_View_Form" xml:space="preserve">
+    <value>Chi Tiết Ghi Tăng TSCĐ</value>
+  </data>
+  <data name="FA_Increase_View_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Ghi Tăng TSCĐ &gt; Chi Tiết Ghi Tăng TSCĐ</value>
+  </data>
+  <data name="FA_Transfer_New_Form" xml:space="preserve">
+    <value>Điều Chuyển Bộ Phận Sử Dụng</value>
+  </data>
+  <data name="FA_Transfer_New_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Điều Chuyển Bộ Phận Sử Dụng</value>
+  </data>
+  <data name="FA_Abandonment_Edit_Form" xml:space="preserve">
+    <value>Thôi Khấu Hao TSCĐ</value>
+  </data>
+  <data name="FA_Abandonment_Edit_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Thôi Khấu Hao TSCĐ</value>
+  </data>
+  <data name="FA_Revaluation_Edit_Form" xml:space="preserve">
+    <value>Cập Nhật Chi Tiết Điều Chỉnh Giá Trị TSCĐ</value>
+  </data>
+  <data name="FA_Revaluation_Edit_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Điều Chỉnh Giá Trị TSCĐ &gt; Chi Tiết Điều Chỉnh Giá Trị TSCĐ</value>
+  </data>
+  <data name="FA_Revaluation_New_Form" xml:space="preserve">
+    <value>Thêm Chi Tiết Điều Chỉnh Giá Trị TSCĐ</value>
+  </data>
+  <data name="FA_Revaluation_New_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Điều Chỉnh Giá Trị TSCĐ &gt; Chi Tiết Điều Chỉnh Giá Trị TSCĐ</value>
+  </data>
+  <data name="FA_Revaluation_Search_Form" xml:space="preserve">
+    <value>Điều Chỉnh Giá Trị TSCĐ</value>
+  </data>
+  <data name="FA_Revaluation_Search_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Điều Chỉnh Giá Trị TSCĐ</value>
+  </data>
+  <data name="FA_Revaluation_View_Form" xml:space="preserve">
+    <value>Chi Tiết Điều Chỉnh Giá Trị TSCĐ</value>
+  </data>
+  <data name="FA_Revaluation_View_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Điều Chỉnh Giá Trị TSCĐ &gt; Chi Tiết Điều Chỉnh Giá Trị TSCĐ</value>
+  </data>
+  <data name="FA_DepreciationCalculation_Search_Form" xml:space="preserve">
+    <value>Thông Tin Khấu Hao</value>
+  </data>
+  <data name="FA_DepreciationCalculation_Search_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý Khấu Hao &gt; Thông Tin Khấu Hao</value>
+  </data>
+  <data name="FA_MonthlyAdjustment_Edit_Form" xml:space="preserve">
+    <value>Điều Chỉnh Khấu Hao Tháng</value>
+  </data>
+  <data name="FA_MonthlyAdjustment_Edit_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Khấu Hao &gt; Thông Tin Khấu Hao &gt; Điều Chỉnh Khấu Hao Tháng</value>
+  </data>
+  <data name="FA_MonthlyAdjustment_View_Form" xml:space="preserve">
+    <value>Điều Chỉnh Khấu Hao Tháng</value>
+  </data>
+  <data name="FA_MonthlyAdjustment_View_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Khấu Hao &gt; Thông Tin Khấu Hao &gt; Điều Chỉnh Khấu Hao Tháng</value>
+  </data>
+  <data name="FA_Abandonment_New_Form" xml:space="preserve">
+    <value>Thôi Khấu Hao TSCĐ</value>
+  </data>
+  <data name="FA_Abandonment_New_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý TSCĐ &gt; Thôi Khấu Hao TSCĐ</value>
+  </data>
+  <data name="FA_DepreciationCalculation_Delete_Form" xml:space="preserve">
+    <value>Xóa Khấu hao TSCĐ</value>
+  </data>
+  <data name="FA_DepreciationCalculation_Delete_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý Khấu Hao &gt; Thông Tin Khấu Hao &gt; Xóa Khấu hao TSCĐ</value>
+  </data>
+  <data name="FA_DepreciationCalculation_Edit_Form" xml:space="preserve">
+    <value>Điều Chỉnh Khấu Hao Tháng TSCĐ</value>
+  </data>
+  <data name="FA_DepreciationCalculation_Edit_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý Khấu Hao &gt; Thông Tin Khấu Hao &gt; Điều Chỉnh Khấu Hao Tháng TSCĐ</value>
+  </data>
+  <data name="FA_DepreciationCalculation_New_Form" xml:space="preserve">
+    <value>Tính Khấu hao TSCĐ</value>
+  </data>
+  <data name="FA_DepreciationCalculation_New_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý Khấu Hao &gt; Thông Tin Khấu Hao &gt; Tính Khấu hao TSCĐ</value>
+  </data>
+  <data name="FA_DepreciationCalculation_View_Form" xml:space="preserve">
+    <value>Điều Chỉnh Khấu Hao Tháng TSCĐ</value>
+  </data>
+  <data name="FA_DepreciationCalculation_View_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý Khấu Hao &gt; Thông Tin Khấu Hao &gt; Điều Chỉnh Khấu Hao Tháng TSCĐ</value>
+  </data>
+  <data name="FA_DepreciationForecast_Search_Form" xml:space="preserve">
+    <value>Dự Báo Khấu Hao</value>
+  </data>
+  <data name="FA_DepreciationForecast_Search_Path" xml:space="preserve">
+    <value>TSCĐ &gt; Quản Lý Khấu Hao &gt; Dự Báo Khấu Hao</value>
+  </data>
+</root>

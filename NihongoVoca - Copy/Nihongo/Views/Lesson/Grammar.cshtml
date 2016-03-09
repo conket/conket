@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Nihongo.Models.MS_GrammarsModels>
+@{
+    ViewBag.Title = "Grammar";
+}
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+    });
+
+    var messageAudio;
+    function speak(url) {
+        if (messageAudio != null) {
+            messageAudio.pause();
+        }
+        var baseSiteURL = '@Url.Content("~/")';
+        messageAudio = new Audio(url);
+        messageAudio.play();
+    };
+
+</script>
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">
+                NGỮ PHÁP
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        @if (Model != null && Model.Count() > 0)
+        {
+            foreach (var grammar in Model)
+            {
+            <div class="col-lg-12">
+                <div class="panel panel-primary" id='@grammar.Code'>
+                    <div class="panel-heading">
+                        @grammar.Name1
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="col-lg-6">
+                            <ul>
+                                <li><strong>Ý nghĩa: </strong>@grammar.Definition</li>
+                                <li><strong>Cách dùng :</strong>
+                                    @if (grammar.Use != null && grammar.Use != "")
+                                    {
+                                        string[] notes = grammar.Use.Split('\n');
+                                        foreach (string str in notes)
+	                                    {
+		                                    <div>@str</div>
+	                                    }
+                                    }
+                                </li>
+                                <li><strong>Chú ý :</strong>@grammar.Note</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <strong>Ví dụ:</strong>
+                            <ol>
+                                @foreach (var ex in grammar.Examples)
+                                {
+                                    <li><button type="button" class="btn btn-link" onclick="speak('@ex.UrlAudio');" >@ex.Hiragana</button><br />
+                                    @ex.Romaji<br />
+                                    @ex.VMeaning<br />
+                                    </li>
+                                }
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- /.panel-body -->
+                    <div class="panel-footer">
+                    </div>
+                </div>
+                <!-- /.panel -->
+            </div>
+            }
+        }
+    </div>
+</div>

@@ -1,0 +1,4052 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ATBT00_002" xml:space="preserve">
+    <value>Không thể xóa dữ liệu trong quá khứ</value>
+  </data>
+  <data name="ATBT01_001" xml:space="preserve">
+    <value>' Nhân viên ' bắt buộc nhập</value>
+    <comment>Khi Employee Name bị null thì xuất message này</comment>
+  </data>
+  <data name="ATBT01_002" xml:space="preserve">
+    <value>' Ngày bắt đầu ' bắt buộc nhập</value>
+    <comment>Khi Start date bị null thì xuất message này</comment>
+  </data>
+  <data name="ATBT01_003" xml:space="preserve">
+    <value>'Ngày kết thúc' bắt buộc nhập.</value>
+    <comment>Khi Until date bị null thì xuất message này</comment>
+  </data>
+  <data name="ATBT01_004" xml:space="preserve">
+    <value>' Ngày bắt dầu ' phải nhỏ hơn hoặc bằng "Ngày kết thúc"</value>
+    <comment>Khi Start date lớn hơn End date thì xuất message này</comment>
+  </data>
+  <data name="ATBT01_005" xml:space="preserve">
+    <value>'Ngày bắt đầu' phải lớn hơn hoặc bằng 'Ngày hiện tại'</value>
+  </data>
+  <data name="ATBT01_006" xml:space="preserve">
+    <value>'Ngày kết thúc' phải lớn hơn hoặc bằng 'Ngày bắt đầu'</value>
+  </data>
+  <data name="ATBT01_007" xml:space="preserve">
+    <value>'Ngày kết thúc' phải lớn hơn 'Ngày hiện tại'</value>
+  </data>
+  <data name="ATBT01_008" xml:space="preserve">
+    <value>Nhân viên đã có kế hoạch làm việc </value>
+  </data>
+  <data name="ATBT01_009" xml:space="preserve">
+    <value>'Số ngày' phải lớn hơn 0</value>
+  </data>
+  <data name="ATIO_Import_001" xml:space="preserve">
+    <value>Dòng $: 'Mã nhân viên bắt buộc nhập.'</value>
+  </data>
+  <data name="ATIO_Import_002" xml:space="preserve">
+    <value>Dòng $: 'Mã nhân viên phải có trong danh sách nhân viên và có trạng thái khác nghỉ việc.'</value>
+  </data>
+  <data name="ATIO_Import_003" xml:space="preserve">
+    <value>Dòng $: 'Nhân viên này đã có trong danh sách vào/ra(máy chấm công) và thuộc diện không được cập nhật bằng file import.'</value>
+  </data>
+  <data name="ATIO_Import_004" xml:space="preserve">
+    <value>Dòng $: 'Mã nhân viên chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="ATIO_Import_005" xml:space="preserve">
+    <value>Dòng $: 'Ngày giờ quét thẻ bắt buộc nhập.'</value>
+  </data>
+  <data name="ATIO_Import_006" xml:space="preserve">
+    <value>Dòng $: 'Ngày giờ quét thẻ đã nhập sai định dạng.'</value>
+  </data>
+  <data name="ATIO_Import_007" xml:space="preserve">
+    <value>Dòng $: 'Giờ quét thẻ chỉ được nhập tối đa 8 ký tự. Xin hãy kiểm tra lại ngày giờ quét thẻ!'</value>
+  </data>
+  <data name="ATIO_Import_008" xml:space="preserve">
+    <value>Dòng $: 'Ngày quét thẻ chỉ được nhập tối đa 8 ký tự. Xin hãy kiểm tra lại ngày giờ quét thẻ!'</value>
+  </data>
+  <data name="ATIO_Import_009" xml:space="preserve">
+    <value>Dòng $: 'Vào/ra bắt buộc nhập.'</value>
+  </data>
+  <data name="ATIO_Import_010" xml:space="preserve">
+    <value>Dòng $: 'Vào/ra đã nhập sai định dạng.'</value>
+  </data>
+  <data name="ATIO_Import_011" xml:space="preserve">
+    <value>Dòng $: 'Mã máy chấm công bắt buộc nhập.'</value>
+  </data>
+  <data name="ATIO_Import_012" xml:space="preserve">
+    <value>Dòng $: 'Mã máy chấm công phải có trong danh sách máy chấm công và có trạng thái là "Kích hoạt".'</value>
+  </data>
+  <data name="ATIO_Import_013" xml:space="preserve">
+    <value>Dòng $: 'Mã máy chấm công chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="ATIO_Import_014" xml:space="preserve">
+    <value>Dòng $: 'Trùng dữ liệu trong file import. Xin hãy kiểm tra lại!.'</value>
+  </data>
+  <data name="ATLE01_001" xml:space="preserve">
+    <value>"Thời gian" bắt buộc nhập</value>
+  </data>
+  <data name="ATLE01_002" xml:space="preserve">
+    <value>"Thời gian" bắt buộc nhập</value>
+  </data>
+  <data name="ATLS00_002" xml:space="preserve">
+    <value>Không thể xóa dữ liệu trong quá khứ</value>
+  </data>
+  <data name="ATLS01_001" xml:space="preserve">
+    <value>' Nhân viên ' bắt buộc nhập</value>
+    <comment>Khi Employee Name bị null thì xuất message này</comment>
+  </data>
+  <data name="ATLS01_002" xml:space="preserve">
+    <value>' Loại nghỉ ' bắt buộc nhập</value>
+    <comment>Khi Category bị null thì xuất message này</comment>
+  </data>
+  <data name="ATLS01_003" xml:space="preserve">
+    <value>' Ngày bắt đầu ' bắt buộc nhập</value>
+    <comment>Khi Start date bị null thì xuất message này</comment>
+  </data>
+  <data name="ATLS01_004" xml:space="preserve">
+    <value>' Ngày kết thúc ' bắt buộc nhập</value>
+    <comment>Khi Until date bị null thì xuất message này</comment>
+  </data>
+  <data name="ATLS01_005" xml:space="preserve">
+    <value>'Ngày bắt đầu' phải lớn hơn hoặc bằng 'Ngày hiện tại'</value>
+  </data>
+  <data name="ATLS01_006" xml:space="preserve">
+    <value>'Ngày kết thúc' phải lớn hơn hoặc bằng 'Ngày bắt đầu'</value>
+  </data>
+  <data name="ATLS01_007" xml:space="preserve">
+    <value>'Ngày kết thúc' phải lớn hơn 'Ngày hiện tại'</value>
+  </data>
+  <data name="ATLS01_008" xml:space="preserve">
+    <value>Nhân viên đã có kế hoạch làm việc </value>
+  </data>
+  <data name="ATLS01_009" xml:space="preserve">
+    <value>'Số ngày' phải lớn hơn 0</value>
+  </data>
+  <data name="ATLS01_010" xml:space="preserve">
+    <value>Số ngày phép còn lại không đủ</value>
+  </data>
+  <data name="ATSD00_001" xml:space="preserve">
+    <value>'Kỳ' bắt buộc nhập</value>
+  </data>
+  <data name="ATSD00_002" xml:space="preserve">
+    <value>Không thể xóa dữ liệu trong quá khứ</value>
+  </data>
+  <data name="ATSD01_001" xml:space="preserve">
+    <value>'Từ ngày' bắt buộc nhập</value>
+  </data>
+  <data name="ATSD01_002" xml:space="preserve">
+    <value>'Đến ngày' bắt buộc nhập</value>
+  </data>
+  <data name="ATSD01_003" xml:space="preserve">
+    <value>'Ca' bắt buộc nhập</value>
+  </data>
+  <data name="ATSD01_004" xml:space="preserve">
+    <value>Chọn nhân viên để lập kế hoạch</value>
+  </data>
+  <data name="ATSD01_005" xml:space="preserve">
+    <value>'Từ ngày' phải lớn hơn hoặc bằng 'Ngày hiện tại'.</value>
+  </data>
+  <data name="ATSD01_006" xml:space="preserve">
+    <value>'Đến ngày' phải lớn hơn hoặc bằng 'Từ ngày'</value>
+  </data>
+  <data name="ATSD01_007" xml:space="preserve">
+    <value>'$' đã có kế hoạch nghỉ</value>
+  </data>
+  <data name="ATSD01_008" xml:space="preserve">
+    <value>Chỉ lập kế hoạch cho 1 tháng</value>
+  </data>
+  <data name="ATSD02_001" xml:space="preserve">
+    <value>Không thể xóa dữ liệu trong quá khứ</value>
+  </data>
+  <data name="ATSP01_001" xml:space="preserve">
+    <value>Chọn nhân viên để lập kế hoạch.</value>
+  </data>
+  <data name="ATSP01_002" xml:space="preserve">
+    <value>'Đến ngày' phải lớn hơn hoặc bằng 'Từ ngày'.</value>
+  </data>
+  <data name="ATSP01_003" xml:space="preserve">
+    <value>Chỉ lập kế hoạch cho 1 tháng</value>
+  </data>
+  <data name="ATSP01_004" xml:space="preserve">
+    <value>Giờ vào của lần điểm danh thứ 1 bắt buộc nhập</value>
+  </data>
+  <data name="ATSP01_005" xml:space="preserve">
+    <value>Giờ ra của lần điểm danh thứ 1 bắt buộc nhập</value>
+  </data>
+  <data name="ATSP01_006" xml:space="preserve">
+    <value>Giờ ra của lần chấm công 1 phải lớn hơn giờ vào của lần chấm công 1</value>
+  </data>
+  <data name="ATSP01_007" xml:space="preserve">
+    <value>Giờ vào của lần chấm công 2 phải lớn hơn giờ ra của lần chấm công 1</value>
+  </data>
+  <data name="ATSP01_008" xml:space="preserve">
+    <value>Giờ ra của lần chấm công 2 phải lớn hơn giờ vào của lần chấm công 2</value>
+  </data>
+  <data name="ATSP01_009" xml:space="preserve">
+    <value>Giờ vào của lần chấm công 3 phải lớn hơn giờ ra của lần chấm công 2</value>
+  </data>
+  <data name="ATSP01_010" xml:space="preserve">
+    <value>Giờ ra của lần chấm công 3 phải lớn hơn giờ vào của lần chấm công 3</value>
+  </data>
+  <data name="ATSP01_011" xml:space="preserve">
+    <value>Giờ vào của lần chấm công 4 phải lớn hơn giờ ra của lần chấm công 3</value>
+  </data>
+  <data name="ATSP01_012" xml:space="preserve">
+    <value>Giờ ra của lần chấm công 4 phải lớn hơn giờ vào của lần chấm công 4</value>
+  </data>
+  <data name="ATSP01_013" xml:space="preserve">
+    <value>Giờ vào của lần chấm công 5 phải lớn hơn giờ ra của lần chấm công 4</value>
+  </data>
+  <data name="ATSP01_014" xml:space="preserve">
+    <value>Giờ ra của lần chấm công 5 phải lớn hơn giờ vào của lần chấm công 5</value>
+  </data>
+  <data name="ATTS00_001" xml:space="preserve">
+    <value>'Kỳ' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_001" xml:space="preserve">
+    <value>'Ca' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_002" xml:space="preserve">
+    <value>'Loại nghỉ' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_003" xml:space="preserve">
+    <value>'Giờ vào' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_004" xml:space="preserve">
+    <value>'Giờ ra' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_005" xml:space="preserve">
+    <value>'Giờ làm việc' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_006" xml:space="preserve">
+    <value>'Đi trễ' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_007" xml:space="preserve">
+    <value>'Về sớm' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_008" xml:space="preserve">
+    <value>'Giờ giải lao' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_009" xml:space="preserve">
+    <value>'Ca đêm' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_010" xml:space="preserve">
+    <value>'Tăng ca đêm ngày nghỉ công ty' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_011" xml:space="preserve">
+    <value>'Tăng ca đêm ngày lễ' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_012" xml:space="preserve">
+    <value>'Tăng ca đêm cuối tuần' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_013" xml:space="preserve">
+    <value>'Làm thêm trước ca' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_014" xml:space="preserve">
+    <value>'Làm thêm sau ca' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_015" xml:space="preserve">
+    <value>'Tăng ca ngày nghỉ công ty' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_016" xml:space="preserve">
+    <value>'Tăng ca đêm' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_017" xml:space="preserve">
+    <value>'Tăng ca ngày lễ' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_018" xml:space="preserve">
+    <value>'Tăng ca cuối tuần' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_019" xml:space="preserve">
+    <value>'Ra ngoài' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS01_LeaveMess_000" xml:space="preserve">
+    <value>Ngày phép không đủ</value>
+  </data>
+  <data name="ATTS03_001" xml:space="preserve">
+    <value>Dòng $: 'Phân loại nghỉ' bắt buộc nhập.</value>
+  </data>
+  <data name="ATTS03_002" xml:space="preserve">
+    <value>Dòng $: 'Ca' bắt buộc nhập.</value>
+  </data>
+  <data name="ATTS03_003" xml:space="preserve">
+    <value>'Phân loại nghỉ' bắt buộc nhập.</value>
+  </data>
+  <data name="ATTS03_004" xml:space="preserve">
+    <value>'Ca' bắt buộc nhập.</value>
+  </data>
+  <data name="ATTS04Row_001" xml:space="preserve">
+    <value>Dòng $: 'Giờ vào của lần điểm danh thứ 1 bắt buộc nhập nếu có chấm công.'</value>
+  </data>
+  <data name="ATTS04Row_002" xml:space="preserve">
+    <value>Dòng $: 'Giờ ra của lần điểm danh thứ 1 bắt buộc nhập nếu có chấm công.'</value>
+  </data>
+  <data name="ATTS04Row_003" xml:space="preserve">
+    <value>Dòng $: 'Giờ ra phải lớn hơn giờ vào trong lần điểm danh thứ 1 .'</value>
+  </data>
+  <data name="ATTS04Row_004" xml:space="preserve">
+    <value>Dòng $: 'Bạn đã nhập sai thứ tự chấm công. Lần điểm danh trước đó vẫn chưa có thông tin ra vào.'</value>
+  </data>
+  <data name="ATTS04Row_005" xml:space="preserve">
+    <value>Dòng $: 'Giờ vào của lần điểm danh thứ 2 phải lớn hơn giờ ra trong lần điểm danh thứ 1 .'</value>
+  </data>
+  <data name="ATTS04Row_006" xml:space="preserve">
+    <value>Dòng $: 'Giờ vào của lần điểm danh thứ 2 bắt buộc nhập nếu có chấm công.'</value>
+  </data>
+  <data name="ATTS04Row_007" xml:space="preserve">
+    <value>Dòng $: 'Giờ ra của lần điểm danh thứ 2 bắt buộc nhập nếu có chấm công.'</value>
+  </data>
+  <data name="ATTS04Row_008" xml:space="preserve">
+    <value>Dòng $: 'Giờ ra phải lớn hơn giờ vào trong lần điểm danh thứ 2.'</value>
+  </data>
+  <data name="ATTS04Row_009" xml:space="preserve">
+    <value>Dòng $: 'Bạn đã nhập sai thứ tự chấm công. Lần điểm danh trước đó vẫn chưa có thông tin ra vào.'</value>
+  </data>
+  <data name="ATTS04Row_010" xml:space="preserve">
+    <value>Dòng $: 'Giờ vào của lần điểm danh thứ 3 phải lớn hơn giờ ra trong lần điểm danh thứ 2 .'</value>
+  </data>
+  <data name="ATTS04Row_011" xml:space="preserve">
+    <value>Dòng $: 'Giờ vào của lần điểm danh thứ 3 bắt buộc nhập nếu có chấm công.'</value>
+  </data>
+  <data name="ATTS04Row_012" xml:space="preserve">
+    <value>Dòng $: 'Giờ ra của lần điểm danh thứ 3 bắt buộc nhập nếu có chấm công.'</value>
+  </data>
+  <data name="ATTS04Row_013" xml:space="preserve">
+    <value>Dòng $: 'Giờ ra phải lớn hơn giờ vào trong lần điểm danh thứ 3.'</value>
+  </data>
+  <data name="ATTS04Row_014" xml:space="preserve">
+    <value>Dòng $: 'Bạn đã nhập sai thứ tự chấm công. Lần điểm danh trước đó vẫn chưa có thông tin ra vào.'</value>
+  </data>
+  <data name="ATTS04Row_015" xml:space="preserve">
+    <value>Dòng $: 'Giờ vào của lần điểm danh thứ 4 phải lớn hơn giờ ra trong lần điểm danh thứ 3 .'</value>
+  </data>
+  <data name="ATTS04Row_016" xml:space="preserve">
+    <value>Dòng $: 'Giờ vào của lần điểm danh thứ 4 bắt buộc nhập nếu có chấm công.'</value>
+  </data>
+  <data name="ATTS04Row_017" xml:space="preserve">
+    <value>Dòng $: 'Giờ ra của lần điểm danh thứ 4 bắt buộc nhập nếu có chấm công.'</value>
+  </data>
+  <data name="ATTS04Row_018" xml:space="preserve">
+    <value>Dòng $: 'Giờ ra phải lớn hơn giờ vào trong lần điểm danh thứ 4.'</value>
+  </data>
+  <data name="ATTS04Row_019" xml:space="preserve">
+    <value>Dòng $: 'Bạn đã nhập sai thứ tự chấm công. Lần điểm danh trước đó vẫn chưa có thông tin ra vào.'</value>
+  </data>
+  <data name="ATTS04Row_020" xml:space="preserve">
+    <value>Dòng $: 'Giờ vào của lần điểm danh thứ 5 phải lớn hơn giờ ra trong lần điểm danh thứ 4 .'</value>
+  </data>
+  <data name="ATTS04Row_021" xml:space="preserve">
+    <value>Dòng $: 'Giờ vào của lần điểm danh thứ 5 bắt buộc nhập nếu có chấm công.'</value>
+  </data>
+  <data name="ATTS04Row_022" xml:space="preserve">
+    <value>Dòng $: 'Giờ ra của lần điểm danh thứ 5 bắt buộc nhập nếu có chấm công.'</value>
+  </data>
+  <data name="ATTS04Row_023" xml:space="preserve">
+    <value>Dòng $: 'Giờ ra phải lớn hơn giờ vào trong lần điểm danh thứ 5.'</value>
+  </data>
+  <data name="ATTS04_001" xml:space="preserve">
+    <value>Giờ vào của lần điểm danh thứ 1 bắt buộc nhập nếu có chấm công.</value>
+  </data>
+  <data name="ATTS04_002" xml:space="preserve">
+    <value>Giờ ra của lần điểm danh thứ 1 bắt buộc nhập nếu có chấm công.</value>
+  </data>
+  <data name="ATTS04_003" xml:space="preserve">
+    <value>Giờ ra phải lớn hơn giờ vào trong lần điểm danh thứ 1 .</value>
+  </data>
+  <data name="ATTS04_004" xml:space="preserve">
+    <value>Bạn đã nhập sai thứ tự chấm công. Lần điểm danh trước đó vẫn chưa có thông tin ra vào.</value>
+  </data>
+  <data name="ATTS04_005" xml:space="preserve">
+    <value>Giờ vào của lần điểm danh thứ 2 phải lớn hơn giờ ra trong lần điểm danh thứ 1 .</value>
+  </data>
+  <data name="ATTS04_006" xml:space="preserve">
+    <value>Giờ vào của lần điểm danh thứ 2 bắt buộc nhập nếu có chấm công.</value>
+  </data>
+  <data name="ATTS04_007" xml:space="preserve">
+    <value>Giờ ra của lần điểm danh thứ 2 bắt buộc nhập nếu có chấm công.</value>
+  </data>
+  <data name="ATTS04_008" xml:space="preserve">
+    <value>Giờ ra phải lớn hơn giờ vào trong lần điểm danh thứ 2.</value>
+  </data>
+  <data name="ATTS04_009" xml:space="preserve">
+    <value>Bạn đã nhập sai thứ tự chấm công. Lần điểm danh trước đó vẫn chưa có thông tin ra vào.</value>
+  </data>
+  <data name="ATTS04_010" xml:space="preserve">
+    <value>Giờ vào của lần điểm danh thứ 3 phải lớn hơn giờ ra trong lần điểm danh thứ 2 .</value>
+  </data>
+  <data name="ATTS04_011" xml:space="preserve">
+    <value>Giờ vào của lần điểm danh thứ 3 bắt buộc nhập nếu có chấm công.</value>
+  </data>
+  <data name="ATTS04_012" xml:space="preserve">
+    <value>Giờ ra của lần điểm danh thứ 3 bắt buộc nhập nếu có chấm công.</value>
+  </data>
+  <data name="ATTS04_013" xml:space="preserve">
+    <value>Giờ ra phải lớn hơn giờ vào trong lần điểm danh thứ 3.</value>
+  </data>
+  <data name="ATTS04_014" xml:space="preserve">
+    <value>Bạn đã nhập sai thứ tự chấm công. Lần điểm danh trước đó vẫn chưa có thông tin ra vào.</value>
+  </data>
+  <data name="ATTS04_015" xml:space="preserve">
+    <value>Giờ vào của lần điểm danh thứ 4 phải lớn hơn giờ ra trong lần điểm danh thứ 3 .</value>
+  </data>
+  <data name="ATTS04_016" xml:space="preserve">
+    <value>Giờ vào của lần điểm danh thứ 4 bắt buộc nhập nếu có chấm công.</value>
+  </data>
+  <data name="ATTS04_017" xml:space="preserve">
+    <value>Giờ ra của lần điểm danh thứ 4 bắt buộc nhập nếu có chấm công.</value>
+  </data>
+  <data name="ATTS04_018" xml:space="preserve">
+    <value>Giờ ra phải lớn hơn giờ vào trong lần điểm danh thứ 4.</value>
+  </data>
+  <data name="ATTS04_019" xml:space="preserve">
+    <value>Bạn đã nhập sai thứ tự chấm công. Lần điểm danh trước đó vẫn chưa có thông tin ra vào.</value>
+  </data>
+  <data name="ATTS04_020" xml:space="preserve">
+    <value>Giờ vào của lần điểm danh thứ 5 phải lớn hơn giờ ra trong lần điểm danh thứ 4 .</value>
+  </data>
+  <data name="ATTS04_021" xml:space="preserve">
+    <value>Giờ vào của lần điểm danh thứ 5 bắt buộc nhập nếu có chấm công.</value>
+  </data>
+  <data name="ATTS04_022" xml:space="preserve">
+    <value>Giờ ra của lần điểm danh thứ 5 bắt buộc nhập nếu có chấm công.</value>
+  </data>
+  <data name="ATTS04_023" xml:space="preserve">
+    <value>Giờ ra phải lớn hơn giờ vào trong lần điểm danh thứ 5.</value>
+  </data>
+  <data name="CMN002" xml:space="preserve">
+    <value>$ dòng tìm thấy!</value>
+    <comment>Kết quả tìm kiếm trả về có dữ liệu</comment>
+  </data>
+  <data name="CMN003" xml:space="preserve">
+    <value>Thêm mới thành công!</value>
+    <comment>Insert dòng mới thành công</comment>
+  </data>
+  <data name="CMN004" xml:space="preserve">
+    <value>Cập nhật thành công!</value>
+    <comment>Cập nhật thành công</comment>
+  </data>
+  <data name="CMN005" xml:space="preserve">
+    <value>Xóa thành công!</value>
+    <comment>Xóa dữ liệu thành công</comment>
+  </data>
+  <data name="CMN006" xml:space="preserve">
+    <value>Xuất dữ liệu thành công, tại đường dẫn $</value>
+    <comment>Export dữ liệu ra excel thành công</comment>
+  </data>
+  <data name="CMN007" xml:space="preserve">
+    <value>Import dữ liệu thành công!</value>
+    <comment>Import dữ liệu vào database thành công</comment>
+  </data>
+  <data name="CMN008" xml:space="preserve">
+    <value>Chưa chọn dòng dữ liệu.</value>
+    <comment>Chưa chọn dòng dữ liệu trên lưới trong trường hợp update hoặc copy dòng</comment>
+  </data>
+  <data name="CMN009" xml:space="preserve">
+    <value>Chọn nhiều hơn 1 dòng dữ liệu.</value>
+    <comment>Chọn nhiều hơn 1 dòng dữ liệu trên lưới trong trường hợp update hoặc copy dòng</comment>
+  </data>
+  <data name="CMN010" xml:space="preserve">
+    <value>Thông tin đã thay đổi. Bạn có muốn lưu trước khi thoát?</value>
+    <comment>Thông báo trước khi thoát nếu dữ liệu trên form detail có thay đổi</comment>
+  </data>
+  <data name="CMN011" xml:space="preserve">
+    <value>Bạn có muốn xóa?</value>
+    <comment>Thông báo confirm trước khi xóa dữ liệu (chức năng delete)</comment>
+  </data>
+  <data name="CMN012" xml:space="preserve">
+    <value>Bạn có muốn xuất dữ liệu?</value>
+    <comment>Thông báo confirm trước khi export dữ liệu</comment>
+  </data>
+  <data name="CMN013" xml:space="preserve">
+    <value>' $ '   bắt buộc nhập.</value>
+    <comment>Validate các field bắt buộc nhập trong trường hợp field bỏ rỗng</comment>
+  </data>
+  <data name="CMN014" xml:space="preserve">
+    <value>Dữ liệu đã tồn tại. Xin vui lòng nhập lại.</value>
+    <comment>Validate trường hợp trùng khóa</comment>
+  </data>
+  <data name="CMN015" xml:space="preserve">
+    <value>Cập nhật thất bại.</value>
+    <comment>Thông báo trong trường hợp cập nhật dữ liệu không thành công</comment>
+  </data>
+  <data name="CMN016" xml:space="preserve">
+    <value>Kích thước tập tin vượt quá giới hạn cho phép (720kb) nên không thể lưu</value>
+  </data>
+  <data name="CMN017" xml:space="preserve">
+    <value>Không đủ quyền truy cập</value>
+  </data>
+  <data name="CMN018" xml:space="preserve">
+    <value>Thông tin máy chủ không đúng</value>
+  </data>
+  <data name="CMN019" xml:space="preserve">
+    <value>Thông tin cơ sở dữ liệu không đúng</value>
+  </data>
+  <data name="CMN020" xml:space="preserve">
+    <value>Mất kết nối</value>
+  </data>
+  <data name="CMN021" xml:space="preserve">
+    <value>Bạn có chắc chắn bạn muốn lưu dữ liệu ?</value>
+  </data>
+  <data name="CMN022" xml:space="preserve">
+    <value>Khóa ngoại không tồn tại</value>
+  </data>
+  <data name="CMN023" xml:space="preserve">
+    <value>Không thể xóa hoặc chỉnh sửa. Dữ liệu đang được sử dụng.</value>
+  </data>
+  <data name="CMN024" xml:space="preserve">
+    <value>Dữ liệu không tìm thấy</value>
+  </data>
+  <data name="CMN025" xml:space="preserve">
+    <value>Lỗi khác</value>
+  </data>
+  <data name="CMN026" xml:space="preserve">
+    <value>Dòng này có lỗi. Hãy kiểm tra lại dữ liệu.</value>
+  </data>
+  <data name="CMN027" xml:space="preserve">
+    <value>Import dữ liệu thành công: $ dòng.</value>
+  </data>
+  <data name="CMN028" xml:space="preserve">
+    <value>Dữ liệu tồn tại trong thông tin 'Phòng ban'</value>
+  </data>
+  <data name="CMN029" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại thông tin 'Máy chấm công'</value>
+  </data>
+  <data name="CMN030" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Nhóm nguời dùng'</value>
+  </data>
+  <data name="CMN031" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Công đoạn'</value>
+  </data>
+  <data name="CMN032" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Quyền nguời dùng'</value>
+  </data>
+  <data name="CMN033" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Vị trí'</value>
+  </data>
+  <data name="CMN034" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Dự án'</value>
+  </data>
+  <data name="CMN035" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Thiết lập ca luân chuyển'</value>
+  </data>
+  <data name="CMN036" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Chuyền'</value>
+  </data>
+  <data name="CMN037" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Bộ phận'</value>
+  </data>
+  <data name="CMN038" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Ca'</value>
+  </data>
+  <data name="CMN039" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Tổ'</value>
+  </data>
+  <data name="CMN040" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Lỗi dữ liệu ra vào'</value>
+  </data>
+  <data name="CMN041" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Vào ra (máy chấm công)'</value>
+  </data>
+  <data name="CMN042" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Kế hoạch nghỉ'</value>
+  </data>
+  <data name="CMN043" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Lịch sử chấm công'</value>
+  </data>
+  <data name="CMN044" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Lịch làm việc'</value>
+  </data>
+  <data name="CMN045" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Trợ cấp'</value>
+  </data>
+  <data name="CMN046" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Nhân viên'</value>
+  </data>
+  <data name="CMN047" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'HrManagerAssignment'</value>
+  </data>
+  <data name="CMN048" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Phân bổ và luân chuyển'</value>
+  </data>
+  <data name="CMN049" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'Thông tin đào tạo'</value>
+  </data>
+  <data name="CMN050" xml:space="preserve">
+    <value>Bạn không có quyền thao tác dữ liệu hệ thống</value>
+  </data>
+  <data name="CMN051" xml:space="preserve">
+    <value>Đã có hồ sơ chấm công/ hồ sơ lương nên không xóa được</value>
+  </data>
+  <data name="CMN052" xml:space="preserve">
+    <value>Kiểu tập tin không hợp lệ</value>
+  </data>
+  <data name="CMN053" xml:space="preserve">
+    <value>Định dạng tập tin không hợp lệ</value>
+  </data>
+  <data name="CMN054" xml:space="preserve">
+    <value>'Đường dẫn không được trống.'</value>
+  </data>
+  <data name="CMN055" xml:space="preserve">
+    <value>'Đường dẫn không tồn tại.'</value>
+  </data>
+  <data name="CMN056" xml:space="preserve">
+    <value>'File import không hợp lệ.'</value>
+  </data>
+  <data name="CMN057" xml:space="preserve">
+    <value>'Lỗi khác.'</value>
+  </data>
+  <data name="CMN058" xml:space="preserve">
+    <value>File import không có dữ liệu.</value>
+  </data>
+  <data name="CMN059" xml:space="preserve">
+    <value>Thông tin đã thay đổi. Bạn có muốn lưu trước khi tìm mới?</value>
+  </data>
+  <data name="CMN060" xml:space="preserve">
+    <value>Thông tin đã thay đổi. Bạn có muốn lưu trước khi thay đổi chế độ?</value>
+  </data>
+  <data name="CMN061" xml:space="preserve">
+    <value>Thông tin đã thay đổi. Bạn có muốn lưu trước khi phục hồi?</value>
+  </data>
+  <data name="HRAA00_001" xml:space="preserve">
+    <value>Dòng $: 'Giới tính' bắt buộc nhập.</value>
+  </data>
+  <data name="HRAA00_002" xml:space="preserve">
+    <value>Dòng $: 'Trạng thái nhân viên' bắt buộc nhập.</value>
+  </data>
+  <data name="HRAA00_003" xml:space="preserve">
+    <value>Dòng $: 'Loại công việc' bắt buộc nhập.</value>
+  </data>
+  <data name="HRAA00_004" xml:space="preserve">
+    <value>Dòng $: 'Trợ cấp' bắt buộc nhập.</value>
+  </data>
+  <data name="HRAA00_005" xml:space="preserve">
+    <value>Dòng $: 'Số tiền' bắt buộc nhập.</value>
+  </data>
+  <data name="HRAA00_006" xml:space="preserve">
+    <value>Dòng $: 'Ngày có hiệu lực' bắt buộc nhập.</value>
+  </data>
+  <data name="HRAA00_007" xml:space="preserve">
+    <value>Dòng $: 'Đối tượng' bắt buộc nhập.</value>
+  </data>
+  <data name="HRCT01_001" xml:space="preserve">
+    <value>'Nhân viên' bắt buộc nhập.</value>
+    <comment>Khi Employee bị null thì xuất message này</comment>
+  </data>
+  <data name="HRCT01_002" xml:space="preserve">
+    <value>'Loại hợp đồng' bắt buộc nhập.</value>
+    <comment>Khi Contract Type bị null thì xuất message này</comment>
+  </data>
+  <data name="HRCT01_003" xml:space="preserve">
+    <value>'Số hợp đồng' bắt buộc nhập.</value>
+    <comment>Khi Contract No bị null thì xuất message này</comment>
+  </data>
+  <data name="HRCT01_004" xml:space="preserve">
+    <value>'Ngày hợp đồng' bắt buộc nhập.</value>
+    <comment>Khi Contract Date bị null thì xuất message này</comment>
+  </data>
+  <data name="HRCT01_005" xml:space="preserve">
+    <value>'Có giá trị từ' bắt buộc nhập.</value>
+    <comment>Khi Valid From Date bị null thì xuất message này</comment>
+  </data>
+  <data name="HRCT01_006" xml:space="preserve">
+    <value>'Đến ngày' bắt buộc nhập.</value>
+    <comment>Khi Until Date bị null thì xuất message này</comment>
+  </data>
+  <data name="HRCT01_007" xml:space="preserve">
+    <value>'Lương hợp đồng' bắt buộc nhập.</value>
+    <comment>Khi Contract salary bị null thì xuất message này</comment>
+  </data>
+  <data name="HRCT01_008" xml:space="preserve">
+    <value>'Công việc' bắt buộc nhập.</value>
+    <comment>Khi Working bị null thì xuất message này</comment>
+  </data>
+  <data name="HRCT01_012" xml:space="preserve">
+    <value>'Ngày bắt đầu hợp đồng' phải lớn hơn hoặc bằng 'Ngày hợp đồng'</value>
+  </data>
+  <data name="HRCT01_013" xml:space="preserve">
+    <value>'Ngày kết thúc hợp đồng' phải lớn hơn hoặc bằng 'Ngày bắt đầu hợp đồng'</value>
+  </data>
+  <data name="HRCT01_014" xml:space="preserve">
+    <value>'Ngày kết thúc thử việc' phải lớn hơn hoặc bằng 'Ngày bắt đầu thử việc'</value>
+  </data>
+  <data name="HRCT01_015" xml:space="preserve">
+    <value>Đã tồn tại hợp đồng vô thời hạn</value>
+  </data>
+  <data name="HRCT01_016" xml:space="preserve">
+    <value>Hợp đồng trước vẫn còn hiệu lực</value>
+  </data>
+  <data name="HRCT01_017" xml:space="preserve">
+    <value>Khoảng thời gian thử việc phải nhỏ hơn thời hạn hợp đồng</value>
+  </data>
+  <data name="HRCT01_018" xml:space="preserve">
+    <value>Loại hợp đồng không phù hợp với trạng thái của nhân viên</value>
+  </data>
+  <data name="HRCT01_019" xml:space="preserve">
+    <value>Loại hợp đồng 'Thử việc' chỉ áp dụng đối với nhân viên 'Thử Việc'</value>
+  </data>
+  <data name="HRDA01_001" xml:space="preserve">
+    <value>'Nhân viên' bắt buộc nhập.</value>
+    <comment>Khi Employee bị null thì xuất message này</comment>
+  </data>
+  <data name="HRDA01_002" xml:space="preserve">
+    <value>'Ngày' bắt buộc nhập.</value>
+    <comment>Khi Date bị null thì xuất message này</comment>
+  </data>
+  <data name="HRDA01_003" xml:space="preserve">
+    <value>'Nội dung' bắt buộc nhập.</value>
+    <comment>Khi Content bị null thì xuất message này</comment>
+  </data>
+  <data name="HREM01_001" xml:space="preserve">
+    <value>'Mã nhân viên' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_002" xml:space="preserve">
+    <value>'Tên nhân viên' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_003" xml:space="preserve">
+    <value>'Giới tính' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_004" xml:space="preserve">
+    <value>'Ngày tháng năm sinh' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_005" xml:space="preserve">
+    <value>'Quốc tịch' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_006" xml:space="preserve">
+    <value>'Trạng thái nhân viên' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_007" xml:space="preserve">
+    <value>'Văn phòng' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_008" xml:space="preserve">
+    <value>'Phòng ban' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_009" xml:space="preserve">
+    <value>'Bộ phận' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_010" xml:space="preserve">
+    <value>'Loại công việc' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_011" xml:space="preserve">
+    <value>'Ngày cấp' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_012" xml:space="preserve">
+    <value>'Nơi cấp' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_013" xml:space="preserve">
+    <value>'Ngày cấp' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_014" xml:space="preserve">
+    <value>'Nơi cấp' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_015" xml:space="preserve">
+    <value>'Ngày hết hạn' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_016" xml:space="preserve">
+    <value>'Quốc tịch' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_017" xml:space="preserve">
+    <value>'Ký hiệu' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_018" xml:space="preserve">
+    <value>'Ngày cấp' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_019" xml:space="preserve">
+    <value>'Cấp tại' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_020" xml:space="preserve">
+    <value>'Có giá trị từ ngày' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_021" xml:space="preserve">
+    <value>'Đến ngày' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_022" xml:space="preserve">
+    <value>'Ngày làm việc chính thức' phải lớn hơn 'ngày cấp CMND'</value>
+  </data>
+  <data name="HREM01_023" xml:space="preserve">
+    <value>'Ngày làm việc chính thức' phải lớn hơn 'ngày vào công ty'</value>
+  </data>
+  <data name="HREM01_024" xml:space="preserve">
+    <value>'Ngày thôi việc' phải lớn hơn 'ngày làm việc chính thức'</value>
+  </data>
+  <data name="HREM01_025" xml:space="preserve">
+    <value>'Ngày thôi việc' phải lớn hơn 'ngày vào công ty '</value>
+  </data>
+  <data name="HREM01_026" xml:space="preserve">
+    <value>'Ngày vào công ty' phải lớn hơn 'ngày tháng năm sinh'</value>
+  </data>
+  <data name="HREM01_027" xml:space="preserve">
+    <value>Bảo hiểm y tế có giá trị từ ngày(Có giá trị từ) phải lớn hơn hoặc bằng ngày đăng ký bảo hiểm y tế(Ngày đăng ký)</value>
+  </data>
+  <data name="HREM01_028" xml:space="preserve">
+    <value>Bảo hiểm y tế có giá trị đến ngày(Đến ngày) phải lớn hơn bảo hiểm y tế có giá trị từ ngày(Có giá trị từ)</value>
+  </data>
+  <data name="HREM01_029" xml:space="preserve">
+    <value>'Ngày hết hạn' phải lớn hơn 'ngày cấp'</value>
+  </data>
+  <data name="HREM01_030" xml:space="preserve">
+    <value>Thị thực có giá trị từ ngày (Có giá trị từ ngày) phải lớn hơn hoặc bằng ngày cấp thị thực (Ngày cấp)</value>
+  </data>
+  <data name="HREM01_031" xml:space="preserve">
+    <value>Thị thực có giá trị đến ngày (Đến ngày) phải lớn hơn thị thực có giá trị từ ngày(Có giá trị từ ngày)</value>
+  </data>
+  <data name="HREM01_032" xml:space="preserve">
+    <value>'Số CMND' này đã tồn tại</value>
+  </data>
+  <data name="HREM01_033" xml:space="preserve">
+    <value>'Số passport' này đã tồn tại</value>
+  </data>
+  <data name="HREM01_034" xml:space="preserve">
+    <value>'Ca' bắt buộc nhập</value>
+  </data>
+  <data name="HREM01_035" xml:space="preserve">
+    <value>'Ngày thôi việc' bắt buộc nhập</value>
+  </data>
+  <data name="HREMAllowance_001" xml:space="preserve">
+    <value>'Dòng $ từ tab [Thông tin lương-Tài khoản ngân hàng]: 'Trợ cấp' bắt buộc nhập</value>
+    <comment>Khi Allowance bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_0010" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin lương-Tài khoản ngân hàng]: 'Số tiền' phải lớn hơn 0</value>
+    <comment>Khi amount nhỏ hơn 0 thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_0011" xml:space="preserve">
+    <value>'Dòng $ từ tab [Thông tin lương-Tài khoản ngân hàng]:'Ngày bắt đầu chế độ hậu sản' phải lớn hơn 'Ngày bắt đầu của kỳ áp dụng'.</value>
+  </data>
+  <data name="HREMAllowance_0012" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin lương-Tài khoản ngân hàng]: 'Ngày bắt đầu chế độ hậu sản' phải lớn hơn 'Ngày bắt đầu của kỳ áp dụng'.</value>
+  </data>
+  <data name="HREMAllowance_002" xml:space="preserve">
+    <value>'Dòng $ từ tab [Thông tin lương-Tài khoản ngân hàng]: 'Áp dụng từ' bắt buộc nhập</value>
+    <comment>Khi apply from bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_003" xml:space="preserve">
+    <value>'Dòng $ từ tab [Thông tin lương-Tài khoản ngân hàng]: 'Đến ngày' phải lớn hơn 'Áp dụng từ'</value>
+    <comment>Khi to date nhỏ hơn from date thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_004" xml:space="preserve">
+    <value>'Dòng $ từ tab [Thông tin lương-Tài khoản ngân hàng]: 'Số tiền' bắt buộc nhập</value>
+    <comment>Khi amount bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_005" xml:space="preserve">
+    <value>'Dòng $ từ tab [Thông tin lương-Tài khoản ngân hàng]: 'Số tiền' phải lớn hơn 0</value>
+    <comment>Khi amount nhỏ hơn 0 thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_006" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin lương-Tài khoản ngân hàng]: 'Trợ cấp' bắt buộc nhập</value>
+    <comment>Khi Allowance bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_007" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin lương-Tài khoản ngân hàng]: 'Áp dụng từ' bắt buộc nhập</value>
+    <comment>Khi apply from bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_008" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin lương-Tài khoản ngân hàng]: 'Đến ngày' phải lớn hơn 'Áp dụng từ'</value>
+    <comment>Khi to date nhỏ hơn from date thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_009" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin lương-Tài khoản ngân hàng]: 'Số tiền' bắt buộc nhập</value>
+    <comment>Khi amount bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMEdu_Qua_001" xml:space="preserve">
+    <value>'Dòng $ từ tab [Thông tin bằng cấp]: Giá trị đến năm (Đến năm) phải lớn hơn hoặc bằng giá trị từ năm (Từ năm)'</value>
+  </data>
+  <data name="HREMEdu_Qua_002" xml:space="preserve">
+    <value>'Dòng $ từ tab [Thông tin bằng cấp]: Mã nhân viên và mã bằng cấp là duy nhất'</value>
+  </data>
+  <data name="HREMEdu_Qua_003" xml:space="preserve">
+    <value>'Dòng $ từ tab [Thông tin bằng cấp]: Giá trị đến năm (Đến năm) phải lớn hơn hoặc bằng giá trị từ năm (Từ năm)'</value>
+  </data>
+  <data name="HREMEdu_Qua_004" xml:space="preserve">
+    <value>'Dòng $ từ tab [Thông tin bằng cấp]: Nhân viên đã có bằng cấp này.'</value>
+  </data>
+  <data name="HREMExperience_001" xml:space="preserve">
+    <value>'Dòng $ từ tab [Thông tin kinh nghiệm]: Giá trị làm việc đến ngày (Đến ngày) phải lớn hơn hoặc bằng giá trị làm việc từ ngày (Làm việc từ ngày)'</value>
+  </data>
+  <data name="HREMExperience_002" xml:space="preserve">
+    <value>'Dòng $ từ tab [Thông tin kinh nghiệm]: Mã nhân viên và tên công ty, làm việc từ ngày, đến ngày là duy nhất </value>
+  </data>
+  <data name="HREMExperience_003" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin kinh nghiệm]: 'Giá trị làm việc đến ngày (Đến ngày) phải lớn hơn hoặc bằng giá trị làm việc từ ngày (Làm việc từ ngày)'</value>
+  </data>
+  <data name="HREMExperience_004" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin kinh nghiệm]: Nhân viên đã làm ở công ty này trong khoảng thời gian trên.</value>
+  </data>
+  <data name="HREMFamily_001" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin gia đình]: 'Ngày sinh phải nhỏ hơn hoặc bằng ngày hiện tại'</value>
+  </data>
+  <data name="HREMFamily_002" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin gia đình]: 'Ngày sinh phải nhỏ hơn hoặc bằng ngày hiện tại'</value>
+  </data>
+  <data name="HREMSalary_001" xml:space="preserve">
+    <value>'Áp dụng từ kỳ lương' bắt buộc nhập</value>
+    <comment>Khi Apply from salary period bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMSalary_002" xml:space="preserve">
+    <value>'Lương cơ bản' bắt buộc nhập</value>
+    <comment>Khi Base salary bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMSalary_003" xml:space="preserve">
+    <value>'Tính theo' bắt buộc nhập</value>
+    <comment>Khi caculate by bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMSalary_004" xml:space="preserve">
+    <value>'Loại ngoài giờ' bắt buộc nhập</value>
+    <comment>Khi OT Type bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMSkill_001" xml:space="preserve">
+    <value>'Dòng $ từ tab [Thông tin kỹ năng]: Mã nhân viên và tên kỹ năng là duy nhất'</value>
+  </data>
+  <data name="HREMSkill_002" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin kỹ năng]: Nhân viên đã có kỹ năng này.</value>
+  </data>
+  <data name="HREM_Import_001" xml:space="preserve">
+    <value>Dòng $ : 'Mã nhân viên bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_002" xml:space="preserve">
+    <value>Dòng $ : 'Tên nhân viên bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_003" xml:space="preserve">
+    <value>Dòng $ : 'Trạng thái nhân viên bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_004" xml:space="preserve">
+    <value>Dòng $ : 'Giới tính bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_005" xml:space="preserve">
+    <value>Dòng $ : 'Nếu ngày tháng năm sinh không có dữ liệu thì năm sinh bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_006" xml:space="preserve">
+    <value>Dòng $ : 'Quốc tịch bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_007" xml:space="preserve">
+    <value>Dòng $ : 'Văn phòng bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_008" xml:space="preserve">
+    <value>Dòng $ : 'Phòng ban bắt buộc nhâp.'</value>
+  </data>
+  <data name="HREM_Import_009" xml:space="preserve">
+    <value>Dòng $ : 'Bộ phận bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_010" xml:space="preserve">
+    <value>Dòng $ : 'Nếu sử dụng bảng chia ca có dữ liệu thì  ca bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_011" xml:space="preserve">
+    <value>Dòng $ : 'Loại công việc bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_012" xml:space="preserve">
+    <value>Dòng $ : 'Nếu CMND có dữ liệu thì ngày cấp CMND bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_013" xml:space="preserve">
+    <value>Dòng $ : 'Nếu CMND có dữ liệu thì nơi cấp CMND bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_014" xml:space="preserve">
+    <value>Dòng $ : 'Nếu số hộ chiếu có dữ liệu thì ngày cấp hộ chiếu bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_015" xml:space="preserve">
+    <value>Dòng $ : 'Nếu số hộ chiếu có dữ liệu thì nơi cấp hộ chiếu bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_016" xml:space="preserve">
+    <value>Dòng $ : 'Nếu số hộ chiếu có dữ liệu thì ngày hết hạn sử dụng hộ chiếu bắt buộc nhâp.'</value>
+  </data>
+  <data name="HREM_Import_017" xml:space="preserve">
+    <value>Dòng $ : 'Nếu số hộ chiếu có dữ liệu thì quốc tịch sử dụng hộ chiếu bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_018" xml:space="preserve">
+    <value>Dòng $ : 'Nếu thị thực số có dữ liệu thì ký hiệu của thị thực bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_019" xml:space="preserve">
+    <value>Dòng $ : 'Nếu thị thực số có dữ liệu thì ngày cấp thị thực bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_020" xml:space="preserve">
+    <value>Dòng $ : 'Nếu thị thực số có dữ liệu thì nơi cấp thị thực bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_021" xml:space="preserve">
+    <value>Dòng $ : 'Nếu thị thực số có dữ liệu thì ngày bắt đầu sử dụng thị thực bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_022" xml:space="preserve">
+    <value>Dòng $ : 'Nếu thị thực số có dữ liệu thì ngày kết thúc sử dụng thị thực bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_023" xml:space="preserve">
+    <value>Dòng $ : 'Trạng thái nhân viên nhập không đúng định dạng.'</value>
+  </data>
+  <data name="HREM_Import_024" xml:space="preserve">
+    <value>Dòng $ : 'Ngày làm việc chính thức phải lớn hơn ngày vào công ty.'</value>
+  </data>
+  <data name="HREM_Import_025" xml:space="preserve">
+    <value>Dòng $ : 'Ngày thôi việc phải lớn hơn ngày vào công ty.'</value>
+  </data>
+  <data name="HREM_Import_026" xml:space="preserve">
+    <value>Dòng $ : 'Ngày thôi việc phải lớn hơn ngày làm việc chính thức.'</value>
+  </data>
+  <data name="HREM_Import_027" xml:space="preserve">
+    <value>Dòng $ : 'Ngày vào công ty lớn hơn ngày tháng năm sinh hoặc năm sinh.'</value>
+  </data>
+  <data name="HREM_Import_028" xml:space="preserve">
+    <value>Dòng $ : 'Nếu tham gia bảo hiểm có giá trị thì ngày bắt đầu áp dụng bảo hiểm y tế phải lớn hơn hoặc bằng ngày đăng ký bảo hiểm y tế.'</value>
+  </data>
+  <data name="HREM_Import_029" xml:space="preserve">
+    <value>Dòng $ : 'Nếu tham gia bảo hiểm có giá trị thì ngày kết thúc áp dụng bảo hiểm y tế phải lớn hơn ngày bắt đầu áp dụng bảo hiểm y tế</value>
+  </data>
+  <data name="HREM_Import_030" xml:space="preserve">
+    <value>Dòng $ : 'Nếu số hộ chiếu có dữ liệu thì ngày hết hạn hộ chiếu phải lớn hơn ngày cấp hộ chiếu.'</value>
+  </data>
+  <data name="HREM_Import_031" xml:space="preserve">
+    <value>Dòng $ : 'Nếu thị thực số có dữ liệu thì ngày bắt đầu sử dụng thị thực phải lớn hơn hoặc bằng ngày cấp thị thực.'</value>
+  </data>
+  <data name="HREM_Import_032" xml:space="preserve">
+    <value>Dòng $ : 'Nếu thị thực số có dữ liệu thì ngày hết hạn thị thực phải lớn hơn ngày bắt đầu sử dụng thị thực.'</value>
+  </data>
+  <data name="HREM_Import_033" xml:space="preserve">
+    <value>Dòng $ : 'Giới tính nhập không đúng định dạng.'</value>
+  </data>
+  <data name="HREM_Import_034" xml:space="preserve">
+    <value>Dòng $ : 'Năm sinh nhập không đúng định dạng.'</value>
+  </data>
+  <data name="HREM_Import_035" xml:space="preserve">
+    <value>Dòng $ : 'Dân tộc nhập không đúng định dạng.'</value>
+  </data>
+  <data name="HREM_Import_036" xml:space="preserve">
+    <value>Dòng $ : 'Tôn giáo nhập không đúng định dạng.'</value>
+  </data>
+  <data name="HREM_Import_037" xml:space="preserve">
+    <value>Dòng $ : 'Quốc tịch nhập không đúng định dạng.'</value>
+  </data>
+  <data name="HREM_Import_038" xml:space="preserve">
+    <value>Dòng $ : 'Tình trạng hôn nhân nhập không đúng định dạng.'</value>
+  </data>
+  <data name="HREM_Import_039" xml:space="preserve">
+    <value>Dòng $ : 'Tình trạng học vấn nhập không đúng định dạng.'</value>
+  </data>
+  <data name="HREM_Import_040" xml:space="preserve">
+    <value>Dòng $ : 'Loại công việc nhập không đúng định dạng.'</value>
+  </data>
+  <data name="HREM_Import_041" xml:space="preserve">
+    <value>Dòng $ : 'Chỉ áp dụng từ chối tuyển dụng cho nhân viên thôi việc.'</value>
+  </data>
+  <data name="HREM_Import_042" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng từ chối tuyển dụng cho nhân viên đang làm việc.'</value>
+  </data>
+  <data name="HREM_Import_043" xml:space="preserve">
+    <value>Dòng $ : 'Trả lương nhập không đúng định dạng.'</value>
+  </data>
+  <data name="HREM_Import_044" xml:space="preserve">
+    <value>Dòng $ : 'Tiền mặt/chuyển khoản  nhập không đúng định dạng.'</value>
+  </data>
+  <data name="HREM_Import_045" xml:space="preserve">
+    <value>Dòng $ : 'Có thẻ ATM nhập không đúng định dạng.'</value>
+  </data>
+  <data name="HREM_Import_046" xml:space="preserve">
+    <value>Dòng $ : 'Tham gia bảo hiểm nhập không đúng định dạng.'</value>
+  </data>
+  <data name="HREM_Import_047" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng số sổ bảo hiểm xã hội cho nhân viên không tham gia bảo hiểm.' </value>
+  </data>
+  <data name="HREM_Import_048" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng ngày cấp bảo hiểm xã hội cho nhân viên không tham gia bảo hiểm.' </value>
+  </data>
+  <data name="HREM_Import_049" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng số phiếu bảo hiểm y tế cho nhân viên không tham gia bảo hiểm.' </value>
+  </data>
+  <data name="HREM_Import_050" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng ngày đăng ký bảo hiểm y tế cho nhân viên không tham gia bảo hiểm.' </value>
+  </data>
+  <data name="HREM_Import_051" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng ngày bắt đầu sử dụng bảo hiểm y tế cho nhân viên không tham gia bảo hiểm.' </value>
+  </data>
+  <data name="HREM_Import_052" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng ngày kết thúc sử dụng bảo hiểm y tế cho nhân viên không tham gia bảo hiểm.' </value>
+  </data>
+  <data name="HREM_Import_053" xml:space="preserve">
+    <value>Dòng $ : 'Tham gia công đoàn nhập không đúng định dạng.'</value>
+  </data>
+  <data name="HREM_Import_054" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng số sổ lao động cho nhân viên không tham gia công đoàn.' </value>
+  </data>
+  <data name="HREM_Import_055" xml:space="preserve">
+    <value>Dòng $ : 'Hộ chiếu/thị thực nhập không đúng định dạng.'</value>
+  </data>
+  <data name="HREM_Import_056" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng số hộ chiếu cho nhân viên không có hộ chiếu.'</value>
+  </data>
+  <data name="HREM_Import_057" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng ngày cấp hộ chiếu cho nhân viên không có hộ chiếu.'</value>
+  </data>
+  <data name="HREM_Import_058" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng nơi cấp hộ chiếu cho nhân viên không có hộ chiếu.'</value>
+  </data>
+  <data name="HREM_Import_059" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng ghi chú cho nhân viên không có thị thực.'</value>
+  </data>
+  <data name="HREM_Import_060" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng ký hiệu cho nhân viên không có thị thực.'</value>
+  </data>
+  <data name="HREM_Import_061" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng ngày bắt đầu sử dụng thị thực cho nhân viên không có thị thực.'</value>
+  </data>
+  <data name="HREM_Import_062" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng ngày cấp thị thực cho nhân viên không có thị thực.'</value>
+  </data>
+  <data name="HREM_Import_063" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng nơi cấp thị thực cho nhân viên không có thị thực.'</value>
+  </data>
+  <data name="HREM_Import_064" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng số thị thực cho nhân viên không có thị thực.'</value>
+  </data>
+  <data name="HREM_Import_065" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng ngày kết thúc sử dụng thị thực cho nhân viên không có thị thực.'</value>
+  </data>
+  <data name="HREM_Import_066" xml:space="preserve">
+    <value>Dòng $ : 'Nơi sinh chỉ được nhập tối đa 50 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_067" xml:space="preserve">
+    <value>Dòng $ : 'Nguyên quán chỉ được nhập tối đa 50 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_068" xml:space="preserve">
+    <value>Dòng $ : 'Địa chỉ thường trú chỉ được nhập tối đa 100 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_069" xml:space="preserve">
+    <value>Dòng $ : 'Địa chỉ tạm trú chỉ được nhập tối đa 100 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_070" xml:space="preserve">
+    <value>Dòng $ : 'Di động chỉ được nhập tối đa 20 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_071" xml:space="preserve">
+    <value>Dòng $ : 'Số CMND chỉ được nhập tối đa 20 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_072" xml:space="preserve">
+    <value>Dòng $ : 'Văn phòng chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_073" xml:space="preserve">
+    <value>Dòng $ : 'Phòng ban chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_074" xml:space="preserve">
+    <value>Dòng $ : 'Bộ phận chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_075" xml:space="preserve">
+    <value>Dòng $ : 'Tổ chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_076" xml:space="preserve">
+    <value>Dòng $ : 'Dự án chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_077" xml:space="preserve">
+    <value>Dòng $ : 'Khu vực chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_078" xml:space="preserve">
+    <value>Dòng $ : 'Chuyền chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_079" xml:space="preserve">
+    <value>Dòng $ : 'Công đoạn chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_080" xml:space="preserve">
+    <value>Dòng $ : 'Ca chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_081" xml:space="preserve">
+    <value>Dòng $ : 'Chức vụ chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_082" xml:space="preserve">
+    <value>Dòng $ : 'Tên ngân hàng chỉ được nhập tối đa 50 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_083" xml:space="preserve">
+    <value>Dòng $ : 'Chi nhánh ngân hàng chỉ được nhập tối đa 50 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_084" xml:space="preserve">
+    <value>Dòng $ : 'Số tài khoản chỉ được nhập tối đa 30 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_085" xml:space="preserve">
+    <value>Dòng $ : 'Tên tài khoản chỉ được nhập tối đa 50 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_086" xml:space="preserve">
+    <value>Dòng $ : 'Số thẻ ATM chỉ được nhập tối đa 30 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_087" xml:space="preserve">
+    <value>Dòng $ : 'Số sổ bảo hiểm xã hội chỉ được nhập tối đa 20 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_088" xml:space="preserve">
+    <value>Dòng $ : 'Số sổ lao động chỉ được nhập tối đa 20 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_089" xml:space="preserve">
+    <value>Dòng $ : 'Mã số thuế cá nhân chỉ được nhập tối đa 20 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_090" xml:space="preserve">
+    <value>Dòng $ : 'Số người phụ thuộc chỉ được nhập tối đa 2 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_091" xml:space="preserve">
+    <value>Dòng $ : 'Số hộ chiếu chỉ được nhập tối đa 20 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_092" xml:space="preserve">
+    <value>Dòng $ : 'Nơi cấp hộ chiếu chỉ được nhập tối đa 40 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_093" xml:space="preserve">
+    <value>Dòng $ : 'Số thị thực chỉ được nhập tối đa 20 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_094" xml:space="preserve">
+    <value>Dòng $ : 'Ký hiệu chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_095" xml:space="preserve">
+    <value>Dòng $ : 'Nơi cấp thị thực chỉ được nhập tối đa 40 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_096" xml:space="preserve">
+    <value>Dòng $ : 'Mã chuyền phải tồn tại trong danh sách chuyền và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="HREM_Import_097" xml:space="preserve">
+    <value>Dòng $ : 'Mã văn phòng phải tồn tại trong danh sách văn phòng và có trạng thái “Kích hoạt”.'</value>
+  </data>
+  <data name="HREM_Import_098" xml:space="preserve">
+    <value>Dòng $ : 'Mã phòng ban phải tồn tại trong danh sách phòng ban và có trạng thái “Kích hoạt”.'</value>
+  </data>
+  <data name="HREM_Import_099" xml:space="preserve">
+    <value>Dòng $ : 'Mã bộ phận phải tồn tại trong danh sách bộ phận và có trạng thái “Kích hoạt”.'</value>
+  </data>
+  <data name="HREM_Import_100" xml:space="preserve">
+    <value>Dòng $ : 'Mã khu vực phải tồn tại trong danh sách khu vực và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="HREM_Import_101" xml:space="preserve">
+    <value>Dòng $ : 'Mã dự án phải tồn tại trong danh sách dự án và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="HREM_Import_102" xml:space="preserve">
+    <value>Dòng $ : 'Mã tổ phải tồn tại trong danh sách tổ và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="HREM_Import_103" xml:space="preserve">
+    <value>Dòng $ : 'Mã công đoạn phải tồn tại trong danh sách công đoạn và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="HREM_Import_104" xml:space="preserve">
+    <value>Dòng $ : 'Mã ca phải tồn tại trong danh sách ca làm việc và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="HREM_Import_105" xml:space="preserve">
+    <value>Dòng $ : 'Mã chức vụ phải tồn tại trong danh sách chức vụ và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="HREM_Import_106" xml:space="preserve">
+    <value>Dòng $ : 'Không áp dụng ngày kết thúc sử dụng hộ chiếu cho nhân viên không có hộ chiếu.'</value>
+  </data>
+  <data name="HREM_Import_107" xml:space="preserve">
+    <value>Dòng $ : 'Mã nhân viên chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_108" xml:space="preserve">
+    <value>Dòng $ : 'Tên nhân viên chỉ được nhập tối đa 50 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_109" xml:space="preserve">
+    <value>Dòng $ : 'Mã lý do phải tồn tại trong danh sách lý do và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="HREM_Import_110" xml:space="preserve">
+    <value>Dòng $ : 'Số phiếu bảo hiểm y tế chỉ được nhập tối đa 20 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_111" xml:space="preserve">
+    <value>Dòng $ : 'Số CMND này đã tồn tại trong danh sách nhân viên. Xin hãy kiểm tra lại !'</value>
+  </data>
+  <data name="HREM_Import_112" xml:space="preserve">
+    <value>Dòng $ : 'Số hộ chiếu này đã tồn tại trong danh sách nhân viên. Xin hãy kiểm tra lại !'</value>
+  </data>
+  <data name="HREM_Import_113" xml:space="preserve">
+    <value>Dòng $ : 'Lý do chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_114" xml:space="preserve">
+    <value>Dòng $ : 'Nếu ngày tháng năm sinh có giá trị thì không áp dụng năm sinh. '</value>
+  </data>
+  <data name="HREM_Import_115" xml:space="preserve">
+    <value>Dòng $ : 'Năm sinh chỉ được nhập tối đa 4 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_116" xml:space="preserve">
+    <value>Dòng $ : 'Ngày tháng năm sinh đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_117" xml:space="preserve">
+    <value>Dòng $ : 'Ngày cấp hộ chiếu đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_118" xml:space="preserve">
+    <value>Dòng $ : 'Ngày cấp CMND đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_119" xml:space="preserve">
+    <value>Dòng $ : 'Ngày hết hạn sử dụng hộ chiếu đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_120" xml:space="preserve">
+    <value>Dòng $ : 'Ngày cấp thị thực đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_121" xml:space="preserve">
+    <value>Dòng $ : 'Ngày bắt đầu sử dụng thị thực đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_122" xml:space="preserve">
+    <value>Dòng $ : 'Ngày kết thúc sử dụng thị thực đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_123" xml:space="preserve">
+    <value>Dòng $ : 'Ngày làm việc chính thức đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_124" xml:space="preserve">
+    <value>Dòng $ : 'Ngày thôi việc đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_125" xml:space="preserve">
+    <value>Dòng $ : 'Ngày vào công ty đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_126" xml:space="preserve">
+    <value>Dòng $ : 'Ngày bắt đầu sử dụng bảo hiểm y tế đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_127" xml:space="preserve">
+    <value>Dòng $ : 'Ngày kết thúc sử dụng bảo hiểm y tế đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_128" xml:space="preserve">
+    <value>Dòng $ : 'Ngày cấp bảo hiểm xã hội đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_129" xml:space="preserve">
+    <value>Dòng $ : 'Ngày đăng ký bảo hiểm y tế đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_130" xml:space="preserve">
+    <value>Dòng $ : 'Năm sinh phải nhỏ hơn năm hiện tại.'</value>
+  </data>
+  <data name="HREM_Import_131" xml:space="preserve">
+    <value>Dòng $ : 'Nhân viên này đã tồn tại trong danh sách nhân viên. Xin hãy kiểm tra lại.'</value>
+  </data>
+  <data name="HREM_Import_132" xml:space="preserve">
+    <value>Dòng $ : 'Trùng dữ liệu trong file import. Xin hãy kiểm tra lại mã nhân viên.'</value>
+  </data>
+  <data name="HREM_Import_133" xml:space="preserve">
+    <value>Dòng $ : 'Trùng dữ liệu trong file import. Xin hãy kiểm tra lại số chứng minh nhân dân.'</value>
+  </data>
+  <data name="HREM_Import_134" xml:space="preserve">
+    <value>Dòng $ : 'Sử dụng bảng chia ca bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_135" xml:space="preserve">
+    <value>Dòng $ : 'Sử dụng bảng chia ca đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_136" xml:space="preserve">
+    <value>Dòng $ : 'Ca không có dữ liệu. Xin hãy kiểm tra lại thông tin của sử dụng bảng chia ca (phải có giá trị là 1) .'</value>
+  </data>
+  <data name="HREM_Import_137" xml:space="preserve">
+    <value>Dòng $ : 'Ca có dữ liệu. Xin hãy kiểm tra lại thông tin của sử dụng bảng chia ca (phải có giá trị là 0) .'</value>
+  </data>
+  <data name="HREM_Import_138" xml:space="preserve">
+    <value>Dòng $ : 'Nhân viên không có thẻ ATM. Xin hãy kiểm tra lại số thẻ ATM .'</value>
+  </data>
+  <data name="HREM_Import_139" xml:space="preserve">
+    <value>Dòng $ : 'Số thị thực này đã tồn tại trong danh sách nhân viên. Xin hãy kiểm tra lại !'</value>
+  </data>
+  <data name="HREM_Import_140" xml:space="preserve">
+    <value>Dòng $ : 'Trùng dữ liệu trong file import. Xin hãy kiểm tra lại số hộ chiếu.'</value>
+  </data>
+  <data name="HREM_Import_141" xml:space="preserve">
+    <value>Dòng $ : 'Trùng dữ liệu trong file import. Xin hãy kiểm tra lại số thị thực.'</value>
+  </data>
+  <data name="HREM_Import_142" xml:space="preserve">
+    <value>Dòng $ : 'Số CMND này đã tồn tại trong danh sách nhân viên. Xin hãy kiểm tra lại.'</value>
+  </data>
+  <data name="HREM_Import_143" xml:space="preserve">
+    <value>Dòng $ : 'Số hộ chiếu này đã tồn tại trong danh sách nhân viên. Xin hãy kiểm tra lại.'</value>
+  </data>
+  <data name="HREM_Import_144" xml:space="preserve">
+    <value>Dòng $ : 'Số thị thực này đã tồn tại trong danh sách nhân viên. Xin hãy kiểm tra lại.'</value>
+  </data>
+  <data name="HREM_Import_Salary_001" xml:space="preserve">
+    <value>Dòng $ : 'Mã nhân viên không được để trống.'</value>
+  </data>
+  <data name="HREM_Import_Salary_002" xml:space="preserve">
+    <value>Dòng $ : 'Mã nhân viên này đã có lương trong danh sách lương. Xin hãy kiểm tra lại'</value>
+  </data>
+  <data name="HREM_Import_Salary_003" xml:space="preserve">
+    <value>Dòng $ : 'Mã nhân viên chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_Salary_004" xml:space="preserve">
+    <value>Dòng $ : 'Kỳ áp dụng không được để trống.'</value>
+  </data>
+  <data name="HREM_Import_Salary_005" xml:space="preserve">
+    <value>Dòng $ : 'Kỳ áp dụng đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_Salary_006" xml:space="preserve">
+    <value>Dòng $ : 'Kỳ áp dụng phải tồn tại trong danh sách các kỳ lương.'</value>
+  </data>
+  <data name="HREM_Import_Salary_007" xml:space="preserve">
+    <value>Dòng $ : 'Lương cơ bản không được để trống.'</value>
+  </data>
+  <data name="HREM_Import_Salary_008" xml:space="preserve">
+    <value>Dòng $ : 'Lương cơ bản đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_Salary_009" xml:space="preserve">
+    <value>Dòng $ : 'Lương cơ bản chỉ được nhập tối đa 16 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_Salary_010" xml:space="preserve">
+    <value>Dòng $ : 'Tính theo không được để trống.'</value>
+  </data>
+  <data name="HREM_Import_Salary_011" xml:space="preserve">
+    <value>Dòng $ : 'Tính theo đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_Salary_012" xml:space="preserve">
+    <value>Dòng $ : 'Loại ngoài giờ không được để trống.'</value>
+  </data>
+  <data name="HREM_Import_Salary_013" xml:space="preserve">
+    <value>Dòng $ : 'Loại ngoài giờ đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_Salary_014" xml:space="preserve">
+    <value>Dòng $ : 'Trùng dữ liệu trong file import. Xin hãy kiểm tra lại mã nhân viên và kỳ áp dụng.'</value>
+  </data>
+  <data name="HRIS01_001" xml:space="preserve">
+    <value>Bảo hiểm y tế 'Đến ngày' phải lớn hơn 'Giá trị từ ngày' </value>
+    <comment>Khi từ ngày nhỏ hơn hay bằng giá trị đến ngày thì xuất message này</comment>
+  </data>
+  <data name="HRIS01_002" xml:space="preserve">
+    <value>'Giá trị đến ngày' phải lớn hơn hoặc bằng 'Giá trị từ ngày'</value>
+  </data>
+  <data name="HRIS01_003" xml:space="preserve">
+    <value>'Giá trị từ ngày' phải lớn hơn hoặc bằng 'Ngày đăng ký'</value>
+  </data>
+  <data name="HRLP00_001" xml:space="preserve">
+    <value>Bạn có muốn cấp phép?</value>
+  </data>
+  <data name="HRLP00_002" xml:space="preserve">
+    <value>Cấp phép thành công!</value>
+  </data>
+  <data name="HRLP00_003" xml:space="preserve">
+    <value>Không tìm thấy nhân viên phù hợp để cấp phép</value>
+  </data>
+  <data name="HROT01_001" xml:space="preserve">
+    <value>' Nhân viên ' bắt buộc nhập.</value>
+  </data>
+  <data name="HROT01_002" xml:space="preserve">
+    <value>' Ngày bắt đầu ' bắt buộc nhập</value>
+  </data>
+  <data name="HROT01_003" xml:space="preserve">
+    <value>' Ngày kết thúc ' bắt buộc nhập</value>
+  </data>
+  <data name="HROT01_004" xml:space="preserve">
+    <value>' Ngày bắt đầu ' phải nhỏ hơn hoặc bằng ' Ngày kết thúc '.</value>
+  </data>
+  <data name="HROT01_005" xml:space="preserve">
+    <value>Khoảng thời gian đã được đăng ký.</value>
+  </data>
+  <data name="HRSA01_001" xml:space="preserve">
+    <value>'Nhân viên' bắt buộc nhập.</value>
+  </data>
+  <data name="HRSA01_002" xml:space="preserve">
+    <value>'Đợt' bắt buộc nhập.</value>
+  </data>
+  <data name="HRSA01_003" xml:space="preserve">
+    <value>'Đợt' không hợp lệ.</value>
+  </data>
+  <data name="HRSA01_004" xml:space="preserve">
+    <value>'Lương căn bản' bắt buộc nhập.</value>
+  </data>
+  <data name="HRSA01_005" xml:space="preserve">
+    <value>'Ngày áp dụng' bắt buộc nhập.</value>
+  </data>
+  <data name="HRSA01_006" xml:space="preserve">
+    <value>'Ngày áp dụng' không hợp lệ.</value>
+  </data>
+  <data name="HRSA01_007" xml:space="preserve">
+    <value>Dòng $: 'Trợ cấp' bắt buộc nhập.</value>
+  </data>
+  <data name="HRSA01_008" xml:space="preserve">
+    <value>Dòng $: 'Áp dụng từ' bắt buộc nhập.</value>
+  </data>
+  <data name="HRSA01_009" xml:space="preserve">
+    <value>Dòng $: 'Đến ngày' phải lớn hơn 'Áp dụng từ'.</value>
+  </data>
+  <data name="HRSA01_010" xml:space="preserve">
+    <value>Dòng $: 'Số tiền' bắt buộc nhập.</value>
+  </data>
+  <data name="HRSA01_011" xml:space="preserve">
+    <value>Dòng $: 'Số tiền' phải lớn hơn 0.</value>
+  </data>
+  <data name="HRSA01_012" xml:space="preserve">
+    <value>Dòng $ : 'Đến ngày' phải lớn hơn 'Áp dụng từ' </value>
+  </data>
+  <data name="HRSA01_013" xml:space="preserve">
+    <value>'Đến ngày' phải lớn hơn 'Áp dụng từ'</value>
+  </data>
+  <data name="HRTM01_001" xml:space="preserve">
+    <value>'Nhân viên' bắt buộc nhập.</value>
+  </data>
+  <data name="HRTM01_002" xml:space="preserve">
+    <value>'Ngày bắt đầu' bắt buộc nhập</value>
+  </data>
+  <data name="HRTM01_003" xml:space="preserve">
+    <value>'Ngày kết thúc' bắt buộc nhập</value>
+  </data>
+  <data name="HRTM01_004" xml:space="preserve">
+    <value>'Ngày bắt đầu' phải nhỏ hơn hoặc bằng 'Ngày kết thúc'.</value>
+  </data>
+  <data name="HRTM01_005" xml:space="preserve">
+    <value>'Kỹ năng' bắt buộc nhập.</value>
+  </data>
+  <data name="HRTM01_006" xml:space="preserve">
+    <value>'Đợt' bắt buộc nhập</value>
+  </data>
+  <data name="Login_001" xml:space="preserve">
+    <value>' Mã người dùng ' bắt buộc nhập.</value>
+    <comment>Khi User Name bị null thì xuất message này</comment>
+  </data>
+  <data name="Login_002" xml:space="preserve">
+    <value>' Mật khẩu ' bắt buộc nhập.</value>
+    <comment>Khi Password bị null thì xuất message này</comment>
+  </data>
+  <data name="Login_003" xml:space="preserve">
+    <value>' Mã người dùng ' hoặc ' Mật khẩu '  không hợp lệ.</value>
+    <comment>Thông báo trường hợp bị sai thông tin đăng nhập</comment>
+  </data>
+  <data name="Login_004" xml:space="preserve">
+    <value>Kết nối thất bại</value>
+  </data>
+  <data name="MSAE01_001" xml:space="preserve">
+    <value>' Mã nhóm ' bắt buộc nhập.</value>
+    <comment>Khi Area Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSAE01_002" xml:space="preserve">
+    <value>' Tên nhóm  (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Area NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSAL01_001" xml:space="preserve">
+    <value>' Mã trợ cấp ' bắt buộc nhập.</value>
+    <comment>Khi Allowance Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSAL01_002" xml:space="preserve">
+    <value>' Tên trợ cấp (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Allowance Name Vn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSAL01_003" xml:space="preserve">
+    <value>' Loại ' bắt buộc nhập.</value>
+    <comment>Khi Allowance Type bị null thì xuất message này</comment>
+  </data>
+  <data name="MSCA01_001" xml:space="preserve">
+    <value>' Ngày ' bắt buộc nhập.</value>
+    <comment>Khi Calendar Date bị null thì xuất message này</comment>
+  </data>
+  <data name="MSCA01_002" xml:space="preserve">
+    <value>' Loại ' bắt buộc nhập.</value>
+    <comment>Khi Calendar Type bị null thì xuất message này</comment>
+  </data>
+  <data name="MSCA_Import_001" xml:space="preserve">
+    <value>Dòng $ : 'Ngày bắt buộc nhập.'</value>
+  </data>
+  <data name="MSCA_Import_002" xml:space="preserve">
+    <value>Dòng $ : 'Ngày đã nhập sai định dạng.'</value>
+  </data>
+  <data name="MSCA_Import_003" xml:space="preserve">
+    <value>Dòng $ : 'Loại bắt buộc nhập.'</value>
+  </data>
+  <data name="MSCA_Import_004" xml:space="preserve">
+    <value>Dòng $ : 'Loại đã nhập sai định dạng.'</value>
+  </data>
+  <data name="MSCA_Import_005" xml:space="preserve">
+    <value>Dòng $ : 'Trùng dữ liệu trong flie import. Xin hãy kiểm tra lại!.'</value>
+  </data>
+  <data name="MSCP00_001" xml:space="preserve">
+    <value>' Mã công ty ' bắt buộc nhập.</value>
+    <comment>Khi Company Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSCP00_002" xml:space="preserve">
+    <value>' Tên công ty (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Comp NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSCR01_001" xml:space="preserve">
+    <value>' Mã chức nghiệp ' bắt buộc nhập.</value>
+    <comment>Khi Careers Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSCR01_002" xml:space="preserve">
+    <value>' Tên chức nghiệp (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Careers Name Vn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSDD01_001" xml:space="preserve">
+    <value>' Mã giảm trừ ' bắt buộc nhập.</value>
+    <comment>Khi Deduction Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSDD01_002" xml:space="preserve">
+    <value>' Tên giảm trừ (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Deduction NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSDD01_003" xml:space="preserve">
+    <value>' Loại ' bắt buộc nhập.</value>
+    <comment>Khi Deduction Type bị null thì xuất message này</comment>
+  </data>
+  <data name="MSDE01_001" xml:space="preserve">
+    <value>' Mã phòng ban ' bắt buộc nhập.</value>
+    <comment>Khi Department Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSDE01_002" xml:space="preserve">
+    <value>' Tên phòng ban (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Department NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSDE01_003" xml:space="preserve">
+    <value>' Văn phòng ' bắt buộc nhập</value>
+    <comment>Khi văn phòng bị null thì xuất message này</comment>
+  </data>
+  <data name="MSFM01_001" xml:space="preserve">
+    <value>' Mã máy chấm công ' bắt buộc nhập.</value>
+    <comment>Khi FingerMachine Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSFM01_002" xml:space="preserve">
+    <value>' Tên máy chấm công (VN) ' bắt buộc nhập.</value>
+    <comment>Khi FingerMachine NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSHP01_001" xml:space="preserve">
+    <value>' Mã đơn vị khám chữa bệnh ' bắt buộc nhập.</value>
+    <comment>Khi Hospitals Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSHP01_002" xml:space="preserve">
+    <value>' Tên đơn vị khám chữa bệnh (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Hospitals Name Vn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSIR01_001" xml:space="preserve">
+    <value>' Mã đơn vị ' bắt buộc nhập.</value>
+    <comment>Khi InsRegisterOrgs Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSIR01_002" xml:space="preserve">
+    <value>' Tên đơn vị (VN) ' bắt buộc nhập.</value>
+    <comment>Khi InsRegisterOrgs Name Vn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSIT01_001" xml:space="preserve">
+    <value>' Mã định mức ' bắt buộc nhập.</value>
+    <comment>Khi PITCode Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSIT01_002" xml:space="preserve">
+    <value>' Diễn giải (VN) ' bắt buộc nhập.</value>
+    <comment>Khi PITCode Name bị null thì xuất message này</comment>
+  </data>
+  <data name="MSIT01_003" xml:space="preserve">
+    <value>' Mức dưới ' bắt buộc nhập.</value>
+    <comment>Khi PITCode Low bị null thì xuất message này</comment>
+  </data>
+  <data name="MSIT01_004" xml:space="preserve">
+    <value>' Mức trên ' bắt buộc nhập.</value>
+    <comment>Khi PITCode High bị null thì xuất message này</comment>
+  </data>
+  <data name="MSIT01_005" xml:space="preserve">
+    <value>' Phần trăm (%) ' bắt buộc nhập.</value>
+    <comment>Khi PITCode Percent bị null thì xuất message này</comment>
+  </data>
+  <data name="MSIT01_006" xml:space="preserve">
+    <value>'Mức trên' phải lớn hơn hoặc bằng 'Mức dưới'</value>
+    <comment>Khi low lớn hơn hight thì xuất message này</comment>
+  </data>
+  <data name="MSLC01_001" xml:space="preserve">
+    <value>' Mã phân loại nghỉ ' bắt buộc nhập.</value>
+    <comment>Khi Leave Category Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSLC01_002" xml:space="preserve">
+    <value>' Tên phân loại nghỉ (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Leave Category NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSLC01_003" xml:space="preserve">
+    <value>' Tỷ lệ chi trả ' bắt buộc nhập.</value>
+    <comment>Khi Leave Category PaidRate bị null thì xuất message này</comment>
+  </data>
+  <data name="MSLC01_004" xml:space="preserve">
+    <value>' Loại nghỉ ' đã tồn tại.</value>
+    <comment>Khi Type bị trùng thì xuất message này</comment>
+  </data>
+  <data name="MSLC01_005" xml:space="preserve">
+    <value>'Ký hiệu chấm công' bắt buộc nhập.</value>
+  </data>
+  <data name="MSLC01_006" xml:space="preserve">
+    <value>'Ký hiệu chấm công' đã tồn tại.</value>
+  </data>
+  <data name="MSOF01_001" xml:space="preserve">
+    <value>' Mã văn phòng ' bắt buộc nhập.</value>
+    <comment>Khi Văn phòng Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSOF01_002" xml:space="preserve">
+    <value>' Tên văn phòng (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Văn phòng NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSOP01_001" xml:space="preserve">
+    <value>' Mã công đoạn ' bắt buộc nhập.</value>
+    <comment>Khi Operation Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSOP01_002" xml:space="preserve">
+    <value>' Tên công đoạn (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Operation NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSOP01_003" xml:space="preserve">
+    <value>' Chuyền ' bắt buộc nhập</value>
+    <comment>Khi chuyền bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_001" xml:space="preserve">
+    <value>'% BHXH' của người sử dụng lao động bắt buộc nhập.</value>
+    <comment>Khi %BHXH bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_002" xml:space="preserve">
+    <value>' % BHYT' của người sử dụng lao động bắt buộc nhập</value>
+    <comment>Khi %BHYT bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_003" xml:space="preserve">
+    <value>' % BHTN' của người sử dụng lao động bắt buộc nhập</value>
+    <comment>Khi %BHTN bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_004" xml:space="preserve">
+    <value>' % BHXH' của người lao động bắt buộc nhập</value>
+    <comment>Khi %BHXH bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_005" xml:space="preserve">
+    <value>' % BHYT' của người lao động bắt buộc nhập</value>
+    <comment>Khi %BHYT bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_006" xml:space="preserve">
+    <value>' % BHTN' của người lao động bắt buộc nhập</value>
+    <comment>Khi %BHTN bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_008" xml:space="preserve">
+    <value>'Mức thu nhập chịu thuế' bắt buộc nhập</value>
+    <comment>Khi Income Taxable bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_009" xml:space="preserve">
+    <value>' Mức giảm trừ / người phụ thuộc ' bắt buộc nhập</value>
+    <comment>Khi Income Tax Deduct / dependant bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_010" xml:space="preserve">
+    <value>' Làm tròn thời gian chấm công ' bắt buộc nhập.</value>
+    <comment>Khi Parameter Round off Timesheet bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_011" xml:space="preserve">
+    <value>' Làm tròn thời gian làm thêm ' bắt buộc nhập.</value>
+    <comment>Khi Parameter Round off OT bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_013" xml:space="preserve">
+    <value>' Loại chuyển ' bắt buộc nhập</value>
+    <comment>Khi Parameter Transfer Type bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_014" xml:space="preserve">
+    <value>' Tỷ lệ chi trả ' bắt buộc nhập.</value>
+    <comment>Khi Parameter Rate bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_015" xml:space="preserve">
+    <value>' Năm lũy tuyến 1 ' bắt buộc nhập</value>
+    <comment>Khi year 1 bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_016" xml:space="preserve">
+    <value>' Ngày lũy tuyến 1 ' bắt buộc nhập</value>
+    <comment>Khi leave day 1 bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_017" xml:space="preserve">
+    <value>' Năm lũy tuyến 2 bắt buộc nhập '</value>
+    <comment>Khi year 2 bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_018" xml:space="preserve">
+    <value> Năm lũy tuyến 2 phải lớn hơn năm lũy tuyến 1 </value>
+    <comment>Khi year 2 nhỏ hơn hay bằng year 1 thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_019" xml:space="preserve">
+    <value>' Ngày lũy tuyến 2 bắt buộc phải nhập '</value>
+    <comment>Khi leave day 2 bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_020" xml:space="preserve">
+    <value> Ngày lũy tuyến 2 phải lớn hơn hay bằng ngày lũy tuyến 1 </value>
+    <comment>Khi leave day 2 nhỏ hơn leave day 1 bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_021" xml:space="preserve">
+    <value>' Năm lũy tuyến 3 ' bắt buộc nhập</value>
+    <comment>Khi year 3 bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_022" xml:space="preserve">
+    <value> Năm lũy tuyến 3 phải lớn hơn năm lũy tuyến 2 </value>
+    <comment>Khi year 3 nhỏ hơn hay bằng year 2 thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_023" xml:space="preserve">
+    <value>' Ngày lũy tuyến 3 bắt buộc nhập '</value>
+    <comment>Khi leave day 3 bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_024" xml:space="preserve">
+    <value>' Ngày lũy tuyến 3 phải lớn hơn hay bằng ngày lũy tuyến 2 '</value>
+    <comment>Khi leave day 3 nhỏ hơn leave day 2 bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_025" xml:space="preserve">
+    <value>' Năm lũy tuyến 4 ' bắt buộc nhập</value>
+    <comment>Khi year 4 bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_026" xml:space="preserve">
+    <value>' Năm lũy tuyến 4 phải lớn hơn năm lũy tuyến 3 '</value>
+    <comment>Khi year 4 nhỏ hơn hay bằng year 3 thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_027" xml:space="preserve">
+    <value>' Ngày lũy tuyến 4 bắt buộc nhập '</value>
+    <comment>Khi leave day 4 bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_028" xml:space="preserve">
+    <value>' Ngày lũy tuyến 4 phải lớn hơn hay bằng ngày lũy tuyến 3 '</value>
+    <comment>Khi leave day 4 nhỏ hơn leave day 3 bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_029" xml:space="preserve">
+    <value>' Năm lũy tuyến 5 ' bắt buộc nhập</value>
+    <comment>Khi year 5 bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_030" xml:space="preserve">
+    <value>' Năm lũy tuyến 5 phải lớn hơn năm lũy tuyến 4 '</value>
+    <comment>Khi year 5 nhỏ hơn hay bằng year 4 thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_031" xml:space="preserve">
+    <value>' Ngày lũy tuyến 5 bắt buộc nhập '</value>
+    <comment>Khi leave day 5 bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_032" xml:space="preserve">
+    <value>' Ngày lũy tuyến 5 phải lớn hơn hay bằng ngày lũy tuyến 4 '</value>
+    <comment>Khi leave day 5 nhỏ hơn leave day 4 bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_033" xml:space="preserve">
+    <value>'Làm tròn giờ vào' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA00_034" xml:space="preserve">
+    <value>'Làm tròn giờ ra' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA00_035" xml:space="preserve">
+    <value>'Làm tròn thời gian làm việc/ngày' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA00_036" xml:space="preserve">
+    <value>'Làm tròn thời gian tăng ca/ngày' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA00_037" xml:space="preserve">
+    <value>'Tháng áp dụng' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA00_038" xml:space="preserve">
+    <value>'Số ngày tính lương giờ' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA00_039" xml:space="preserve">
+    <value>Số ngày tính lương giờ' đã nhập không đúng giới hạn cho phép.</value>
+  </data>
+  <data name="MSPA00_0391" xml:space="preserve">
+    <value>Số ngày tính lương giờ' phải nhập trong khoảng từ 1 đến 31.</value>
+  </data>
+  <data name="MSPA00_040" xml:space="preserve">
+    <value>Số ngày chuyển tối đa' không được nhập 0.</value>
+  </data>
+  <data name="MSPA00_041" xml:space="preserve">
+    <value>Sử dụng đến tháng (Năm sau) phải nhập trong khoảng từ 1 đến 12.</value>
+  </data>
+  <data name="MSPA00_042" xml:space="preserve">
+    <value>'Tỷ lệ chi trả (Năm sau)' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA00_043" xml:space="preserve">
+    <value>'Tháng áp dụng (Năm sau)' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPO01_001" xml:space="preserve">
+    <value>' Mã chức vụ ' bắt buộc nhập.</value>
+    <comment>Khi Position Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPO01_002" xml:space="preserve">
+    <value>' Tên chức vụ (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Position NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPO01_003" xml:space="preserve">
+    <value>' Chức nghiệp ' bắt buộc nhập</value>
+    <comment>Khi chức nghiệp bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPR01_001" xml:space="preserve">
+    <value>' Mã dự án ' bắt buộc nhập.</value>
+    <comment>Khi Project Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPR01_002" xml:space="preserve">
+    <value>' Tên dự án (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Project NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPW00_001" xml:space="preserve">
+    <value>' Mật khẩu cũ ' phải bằng ' Mật khẩu của ID ' đăng nhập</value>
+    <comment>Khi Old password không bằng mật khẩu của ID đăng nhập thì xuất message này</comment>
+  </data>
+  <data name="MSPW00_002" xml:space="preserve">
+    <value>' Mật khẩu mới ' bắt buộc nhập</value>
+    <comment>Khi New password bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPW00_003" xml:space="preserve">
+    <value>' Mật khẩu mới ' bắt buộc nhập</value>
+    <comment>Khi New Password Confirm bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPW00_004" xml:space="preserve">
+    <value>'Xác nhận mật khẩu mới' chưa trùng khớp 'Mật khẩu mới'</value>
+    <comment>Khi New Password Confirm không bằng với New Password thì xuất message này</comment>
+  </data>
+  <data name="MSRE01_001" xml:space="preserve">
+    <value>' Loại lý do ' bắt buộc nhập.</value>
+    <comment>Khi Deduction Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSRE01_002" xml:space="preserve">
+    <value>' Mã lý do ' bắt buộc nhập.</value>
+    <comment>Khi Deduction Type bị null thì xuất message này</comment>
+  </data>
+  <data name="MSRE01_003" xml:space="preserve">
+    <value>' Diễn giải (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Deduction Name bị null thì xuất message này</comment>
+  </data>
+  <data name="MSRK01_001" xml:space="preserve">
+    <value>' Mã cấp bậc ' bắt buộc nhập.</value>
+  </data>
+  <data name="MSRK01_002" xml:space="preserve">
+    <value>' Tên cấp bậc (VN) ' bắt buộc nhập.</value>
+  </data>
+  <data name="MSRO01_001" xml:space="preserve">
+    <value>' Mã ' bắt buộc nhập.</value>
+    <comment>Khi RotateShiftSetting Code bị null thì xuất hiện message này</comment>
+  </data>
+  <data name="MSRO01_002" xml:space="preserve">
+    <value>' Giờ bắt đầu giải lao 1 ' phải nằm trong khoảng giờ vào và giờ ra.</value>
+  </data>
+  <data name="MSRO01_003" xml:space="preserve">
+    <value>' Giờ kết thúc giải lao 1 ' phải nằm trong khoảng giờ vào và giờ ra và phải lớn hơn giờ bắt đầu giải lao 1</value>
+  </data>
+  <data name="MSRO01_004" xml:space="preserve">
+    <value> Giờ bắt đầu giải lao 2' phải nằm trong khoảng giờ vào và giờ ra và phải lớn hơn giờ bắt đầu và giờ kết thúc giải lao 1.</value>
+  </data>
+  <data name="MSRO01_005" xml:space="preserve">
+    <value>' Giờ kết thúc giải lao 2 ' phải nằm trong khoảng giờ vào và giờ ra và phải lớn hơn giờ bắt đầu giải lao 2</value>
+  </data>
+  <data name="MSRO01_006" xml:space="preserve">
+    <value>' Giờ bắt đầu giải lao 3 ' phải nằm trong khoảng giờ vào và giờ ra và phải lớn hơn giờ bắt đầu và giờ kết thúc giải lao 2.</value>
+  </data>
+  <data name="MSRO01_007" xml:space="preserve">
+    <value>' Giờ kết thúc giải lao 3 ' phải nằm trong khoảng giờ vào và giờ ra và phải lớn hơn giờ bắt đầu giải lao 3</value>
+  </data>
+  <data name="MSRO01_008" xml:space="preserve">
+    <value>Giờ ra phải khác giờ vào</value>
+  </data>
+  <data name="MSRO01_009" xml:space="preserve">
+    <value>Giờ ra giải lao 1 phải khác giờ vào giải lao 1</value>
+  </data>
+  <data name="MSRO01_010" xml:space="preserve">
+    <value>Giờ ra giải lao 2 phải khác giờ vào giải lao 2</value>
+  </data>
+  <data name="MSRO01_011" xml:space="preserve">
+    <value>Giờ ra giải lao 3 phải khác giờ vào giải lao 3</value>
+  </data>
+  <data name="MSRS_Import_001" xml:space="preserve">
+    <value>Dòng $ : 'Mã ca bắt buộc nhập.'</value>
+  </data>
+  <data name="MSRS_Import_002" xml:space="preserve">
+    <value>Dòng $ : 'Mã ca phải tồn tại trong danh sách ca làm việc, được xác định là ca luân chuyển và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="MSRS_Import_003" xml:space="preserve">
+    <value>Dòng $ : 'Ca làm việc này đã được lập lịch luân chuyển trong ngày này.'</value>
+  </data>
+  <data name="MSRS_Import_004" xml:space="preserve">
+    <value>Dòng $ : 'Mã ca luân chuyển bắt buộc nhập.'</value>
+  </data>
+  <data name="MSRS_Import_005" xml:space="preserve">
+    <value>Dòng $ : 'Mã ca luân chuyển phải tồn tại trong danh sách ca luân chuyển và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="MSRS_Import_006" xml:space="preserve">
+    <value>Dòng $ : 'Ngày đã nhập sai định dạng.'</value>
+  </data>
+  <data name="MSRS_Import_007" xml:space="preserve">
+    <value>Dòng $ : 'Trùng dữ liệu trong file import. Xin hãy kiểm tra lại mã ca làm việc và ngày lập lịch.'</value>
+  </data>
+  <data name="MSRS_Import_008" xml:space="preserve">
+    <value>Dòng $ : 'Ngày không được để trống.'</value>
+  </data>
+  <data name="MSRT01_001" xml:space="preserve">
+    <value>' Mã chuyền ' bắt buộc nhập.</value>
+    <comment>Khi Route Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSRT01_002" xml:space="preserve">
+    <value>' Tên chuyền (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Route NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSRT01_003" xml:space="preserve">
+    <value>' Tổ ' bắt buộc nhập</value>
+    <comment>Khi tổ bị null thì xuất message này</comment>
+  </data>
+  <data name="MSSE01_001" xml:space="preserve">
+    <value>' Mã bộ phận ' bắt buộc nhập.</value>
+    <comment>Khi Section Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSSE01_002" xml:space="preserve">
+    <value>' Tên bộ phận (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Section NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSSE01_003" xml:space="preserve">
+    <value>' Phòng ban ' bắt buộc nhập</value>
+    <comment>Khi phòng ban bị null thì xuất message này</comment>
+  </data>
+  <data name="MSSH01_001" xml:space="preserve">
+    <value>' Mã ca ' bắt buộc nhập.</value>
+    <comment>Khi Shift Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSSH01_002" xml:space="preserve">
+    <value>' Tên ca (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Shift NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSSH01_003" xml:space="preserve">
+    <value>' Giờ bắt đầu giải lao 1 ' phải nằm trong khoảng giờ vào và giờ ra.</value>
+  </data>
+  <data name="MSSH01_004" xml:space="preserve">
+    <value>' Giờ kết thúc giải lao 1 ' phải nằm trong khoảng giờ vào và giờ ra và phải lớn hơn giờ bắt đầu giải lao 1</value>
+  </data>
+  <data name="MSSH01_005" xml:space="preserve">
+    <value>' Giờ bắt đầu giải lao 2' phải nằm trong khoảng giờ vào và giờ ra và phải lớn hơn giờ bắt đầu và giờ kết thúc giải lao 1.</value>
+  </data>
+  <data name="MSSH01_006" xml:space="preserve">
+    <value>' Giờ kết thúc giải lao 2 ' phải nằm trong khoảng giờ vào và giờ ra và phải lớn hơn giờ bắt đầu giải lao 2</value>
+  </data>
+  <data name="MSSH01_007" xml:space="preserve">
+    <value>' Giờ bắt đầu giải lao 3 ' phải nằm trong khoảng giờ vào và giờ ra và phải lớn hơn giờ bắt đầu và giờ kết thúc giải lao 2.</value>
+  </data>
+  <data name="MSSH01_008" xml:space="preserve">
+    <value>' Giờ kết thúc giải lao 3 ' phải nằm trong khoảng giờ vào và giờ ra và phải lớn hơn giờ bắt đầu giải lao 3</value>
+  </data>
+  <data name="MSSH01_009" xml:space="preserve">
+    <value>'Ký hiệu chấm công' bắt buộc nhập.</value>
+  </data>
+  <data name="MSSH01_010" xml:space="preserve">
+    <value>'Ký hiệu chấm công' đã tồn tại.</value>
+  </data>
+  <data name="MSSH01_011" xml:space="preserve">
+    <value>Giờ ra phải khác giờ vào</value>
+  </data>
+  <data name="MSSH01_012" xml:space="preserve">
+    <value>Giờ ra giải lao 1 phải khác giờ vào giải lao 1</value>
+  </data>
+  <data name="MSSH01_013" xml:space="preserve">
+    <value>Giờ ra giải lao 2 phải khác giờ vào giải lao 2</value>
+  </data>
+  <data name="MSSH01_014" xml:space="preserve">
+    <value>Giờ ra giải lao 3 phải khác giờ vào giải lao 3</value>
+  </data>
+  <data name="MSSK01_001" xml:space="preserve">
+    <value>' Mã kỹ năng ' bắt buộc nhập.</value>
+    <comment>Khi Skill Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSSK01_002" xml:space="preserve">
+    <value>' Tên kỹ năng (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Skill NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSSP_Import_001" xml:space="preserve">
+    <value>Dòng $: 'Số ngày đã nhập sai định dạng.'</value>
+  </data>
+  <data name="MSSP_Import_002" xml:space="preserve">
+    <value>Dòng $: 'Đến ngày bắt buộc nhập.'</value>
+  </data>
+  <data name="MSSP_Import_003" xml:space="preserve">
+    <value>Dòng $: 'Đến ngày đã nhập sai định dạng.'</value>
+  </data>
+  <data name="MSSP_Import_004" xml:space="preserve">
+    <value>Dòng $: 'Từ ngày bắt buộc nhập.'</value>
+  </data>
+  <data name="MSSP_Import_005" xml:space="preserve">
+    <value>Dòng $: 'Từ ngày đã nhập sai định dạng.'</value>
+  </data>
+  <data name="MSSP_Import_006" xml:space="preserve">
+    <value>Dòng $: 'Khoảng thời gian nãy đã được đăng ký. Xin hãy kiểm tra lại.'</value>
+  </data>
+  <data name="MSSP_Import_007" xml:space="preserve">
+    <value>Dòng $: 'Kỳ lương bắt buộc nhập.'</value>
+  </data>
+  <data name="MSSP_Import_008" xml:space="preserve">
+    <value>Dòng $: 'Kỳ lương đã nhập sai định dạng.'</value>
+  </data>
+  <data name="MSSP_Import_009" xml:space="preserve">
+    <value>Dòng $: 'Kỳ lương này đã đóng, không thể cập nhật được.'</value>
+  </data>
+  <data name="MSSP_Import_010" xml:space="preserve">
+    <value>Dòng $: 'Từ ngày bắt đầu kỳ lương không phù hợp với kỳ lương. Xin hãy kiểm tra lại năm của kỳ lương và năm của ngày bắt đầu.'</value>
+  </data>
+  <data name="MSSP_Import_011" xml:space="preserve">
+    <value>Dòng $ : 'Trùng dữ liệu trong file import. Xin hãy kiểm tra lại kỳ lương.'</value>
+  </data>
+  <data name="MSSP_Import_012" xml:space="preserve">
+    <value>'Kỳ lương này đã đóng, không thể thêm mới được.'</value>
+  </data>
+  <data name="MSSP_Import_013" xml:space="preserve">
+    <value>'Kỳ lương $ này đã đóng, không thể chỉnh sửa (xóa).'</value>
+  </data>
+  <data name="MSTE01_001" xml:space="preserve">
+    <value>' Mã tổ ' bắt buộc nhập.</value>
+    <comment>Khi Team Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSTE01_002" xml:space="preserve">
+    <value>' Tên tổ (VN) ' bắt buộc nhập.</value>
+    <comment>Khi Team NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSTE01_003" xml:space="preserve">
+    <value>' Bộ phận ' bắt buộc nhập</value>
+    <comment>Khi bộ phận bị null thì xuất message này</comment>
+  </data>
+  <data name="MSUG01_001" xml:space="preserve">
+    <value>' Mã nhóm ' bắt buộc nhập.</value>
+    <comment>Khi UserGroups Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSUG01_002" xml:space="preserve">
+    <value>' Tên nhóm (VN) ' bắt buộc nhập.</value>
+    <comment>Khi UserGroups Name Vn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSUR01_001" xml:space="preserve">
+    <value>' Mã người dùng ' bắt buộc nhập.</value>
+    <comment>Khi Users Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSUR01_002" xml:space="preserve">
+    <value>' Tiểu sử ' bắt buộc nhập.</value>
+    <comment>Khi Users Profile bị null thì xuất message này</comment>
+  </data>
+  <data name="MSUR01_003" xml:space="preserve">
+    <value>' Mật mã ' bắt buộc nhập.</value>
+    <comment>Khi Users Password bị null thì xuất message này</comment>
+  </data>
+  <data name="MSUR01_004" xml:space="preserve">
+    <value>' Tên hiển thị ' bắt buộc nhập.</value>
+    <comment>Khi Users DisplayName bị null thì xuất message này</comment>
+  </data>
+  <data name="MSUR01_005" xml:space="preserve">
+    <value>'Nhóm người dùng' bắt buộc nhập.</value>
+  </data>
+  <data name="MSUR01_006" xml:space="preserve">
+    <value>'Quyền nhân sự' bắt buộc nhập.</value>
+  </data>
+  <data name="MSUR01_007" xml:space="preserve">
+    <value>'Xác nhận CC' bắt buộc nhập.</value>
+  </data>
+  <data name="MSWA01Dto_001" xml:space="preserve">
+    <value>'Mã hình thức trả lương' bắt buộc nhập.</value>
+  </data>
+  <data name="MSWA01Dto_002" xml:space="preserve">
+    <value>'Diễn giải' bắt buộc nhập</value>
+  </data>
+  <data name="MSWA01Dto_003" xml:space="preserve">
+    <value>Số ngày làm việc tiêu chuẩn' không thể là số 0.</value>
+  </data>
+  <data name="MSWA01Dto_004" xml:space="preserve">
+    <value>Số giờ làm việc tiêu chuẩn' bắt buộc nhập.</value>
+  </data>
+  <data name="MSWA01Dto_005" xml:space="preserve">
+    <value>Tính cố định' bắt buộc nhập.</value>
+  </data>
+  <data name="MSWA01Dto_006" xml:space="preserve">
+    <value>Số ngày làm việc tiêu chuẩn' đã nhập sai khoảng thời gian của tháng</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_001" xml:space="preserve">
+    <value>Từ giờ' bắt buộc nhập.</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_002" xml:space="preserve">
+    <value>Đến giờ' bắt buộc nhập.</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_003" xml:space="preserve">
+    <value>Số tiền' bắt buộc nhập.</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_004" xml:space="preserve">
+    <value>Đến giờ' phải lớn hơn 'Từ giờ'. </value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_005" xml:space="preserve">
+    <value>Khoảng thời gian này đã được đăng ký.'</value>
+  </data>
+  <data name="MSWA01Dto_Detail_001" xml:space="preserve">
+    <value>Dòng $ : 'Từ giờ' bắt buộc nhập.</value>
+  </data>
+  <data name="MSWA01Dto_Detail_002" xml:space="preserve">
+    <value>Dòng $ : 'Đến giờ' bắt buộc nhập.</value>
+  </data>
+  <data name="MSWA01Dto_Detail_003" xml:space="preserve">
+    <value>Dòng $ : 'Số tiền' bắt buộc nhập.</value>
+  </data>
+  <data name="MSWA01Dto_Detail_004" xml:space="preserve">
+    <value>Dòng $ : 'Đến giờ' phải lớn hơn 'Từ giờ'. </value>
+  </data>
+  <data name="MSWA01Dto_Detail_005" xml:space="preserve">
+    <value>Dòng $ : 'Khoảng thời gian này đã được đăng ký.'</value>
+  </data>
+  <data name="MSWA01Dto_Detail_006" xml:space="preserve">
+    <value>Dòng $ : 'Số tiền' nên được tăng theo thời gian.</value>
+  </data>
+  <data name="PRMP00_001" xml:space="preserve">
+    <value>Mã nhân viên ' $ ' tại dòng $ rỗng</value>
+  </data>
+  <data name="PRMP00_002" xml:space="preserve">
+    <value>Mã nhân viên ' $ 'tại dòng $ không tồn tại trong 
+danh sách nhân viên</value>
+  </data>
+  <data name="PRMP00_003" xml:space="preserve">
+    <value>Mã nhân viên ' $ ' tại dòng $ đã nghỉ việc</value>
+  </data>
+  <data name="PRMP00_004" xml:space="preserve">
+    <value>Mã trợ cấp ' $ ' tại dòng $ rỗng</value>
+  </data>
+  <data name="PRMP00_005" xml:space="preserve">
+    <value>Mã trợ cấp ' $ ' tại dòng $ không tồn tại trong danh sách Mã trợ cấp</value>
+  </data>
+  <data name="PRMP00_006" xml:space="preserve">
+    <value>Mã trợ cấp ' $ ' tại dòng $ không thuộc loại trợ cấp cần Import</value>
+  </data>
+  <data name="PRMP00_007" xml:space="preserve">
+    <value>Số tiền ' $ ' tại dòng $ rỗng</value>
+  </data>
+  <data name="PRMP00_008" xml:space="preserve">
+    <value>Số tiền ' $ ' tại dòng $ phải là kiểu số</value>
+  </data>
+  <data name="PRMP00_009" xml:space="preserve">
+    <value>Số tiền ' $ ' tại dòng $ phải lớn hơn 0</value>
+  </data>
+  <data name="PRMP00_010" xml:space="preserve">
+    <value>Mã nhân viên ' $ ' tại dòng $ rỗng</value>
+  </data>
+  <data name="PRMP00_011" xml:space="preserve">
+    <value>Mã nhân viên ' $ 'tại dòng $ không tồn tại trong 
+danh sách nhân viên</value>
+  </data>
+  <data name="PRMP00_012" xml:space="preserve">
+    <value>Mã nhân viên ' $ ' tại dòng $ đã nghỉ việc</value>
+  </data>
+  <data name="PRMP00_013" xml:space="preserve">
+    <value>Mã khoản giảm trừ ' $ ' tại dòng $ rỗng</value>
+  </data>
+  <data name="PRMP00_014" xml:space="preserve">
+    <value>Mã khoản giảm trừ ' $ ' tại dòng $ không tồn tại trong danh sách 
+Mã khoản giảm trừ</value>
+  </data>
+  <data name="PRMP00_015" xml:space="preserve">
+    <value>Mã khoản giảm trừ ' $ ' tại dòng $ không thuộc loại giảm trừ cần 
+Import</value>
+  </data>
+  <data name="PRMP00_016" xml:space="preserve">
+    <value>Số tiền ' $ ' tại dòng $ rỗng</value>
+  </data>
+  <data name="PRMP00_017" xml:space="preserve">
+    <value>Số tiền ' $ ' tại dòng $ phải là kiểu số</value>
+  </data>
+  <data name="PRMP00_018" xml:space="preserve">
+    <value>Số tiền ' $ ' tại dòng $ phải lớn hơn 0</value>
+  </data>
+  <data name="PRMP00_019" xml:space="preserve">
+    <value>Bạn có muốn đóng sổ?</value>
+  </data>
+  <data name="PRMP00_020" xml:space="preserve">
+    <value>Đóng sổ thành công!</value>
+  </data>
+  <data name="PRMP00_021" xml:space="preserve">
+    <value>Bạn có muốn mở lại bảng lương?</value>
+  </data>
+  <data name="PRMP00_022" xml:space="preserve">
+    <value>Mở lại bảng lương thành công!</value>
+  </data>
+  <data name="PRMP00_Allowance_001" xml:space="preserve">
+    <value>Dòng $ : 'Mã nhân viên bắt buộc nhập.'</value>
+  </data>
+  <data name="PRMP00_Allowance_002" xml:space="preserve">
+    <value>Dòng $ : 'Mã nhân viên phải tồn tại trong danh sách nhân viên và là nhân viên được trả lương.'</value>
+  </data>
+  <data name="PRMP00_Allowance_003" xml:space="preserve">
+    <value>Dòng $ : 'Mã trợ cấp bắt buộc nhập.'</value>
+  </data>
+  <data name="PRMP00_Allowance_004" xml:space="preserve">
+    <value>Dòng $ : 'Mã trợ cấp phải tồn tại trong danh sách trợ cấp và thuộc loại là trợ cấp phát sinh.'</value>
+  </data>
+  <data name="PRMP00_Allowance_005" xml:space="preserve">
+    <value>Dòng $ : 'Số tiền bắt buộc nhập.'</value>
+  </data>
+  <data name="PRMP00_Allowance_006" xml:space="preserve">
+    <value>Dòng $ : 'Ban đã nhập sai định dạng format.'</value>
+  </data>
+  <data name="PRMP00_Allowance_007" xml:space="preserve">
+    <value>Dòng $ : 'Số tiền chỉ được nhập tối đa 16 ký tự.'</value>
+  </data>
+  <data name="PRMP00_Allowance_008" xml:space="preserve">
+    <value>Dòng $ : 'Trùng dữ liệu trong file import. Xin hãy kiểm tra lại mã nhân viên và mã trợ cấp.'</value>
+  </data>
+  <data name="PRMP00_Deduction_001" xml:space="preserve">
+    <value>Dòng $ : 'Mã nhân viên bắt buộc nhập.'</value>
+  </data>
+  <data name="PRMP00_Deduction_002" xml:space="preserve">
+    <value>Dòng $ : 'Mã nhân viên phải tồn tại trong danh sách nhân viên và là nhân viên được trả lương.'</value>
+  </data>
+  <data name="PRMP00_Deduction_003" xml:space="preserve">
+    <value>Dòng $ : 'Mã giảm trừ bắt buộc nhập.'</value>
+  </data>
+  <data name="PRMP00_Deduction_004" xml:space="preserve">
+    <value>Dòng $ : 'Mã giảm trừ phải tồn tại trong danh sách khoản giảm trừ và có trạng thái là "Kích hoạt".'</value>
+  </data>
+  <data name="PRMP00_Deduction_005" xml:space="preserve">
+    <value>Dòng $ : 'Số tiền bắt buộc nhập.'</value>
+  </data>
+  <data name="PRMP00_Deduction_006" xml:space="preserve">
+    <value>Dòng $ : 'Ban đã nhập sai định dạng format.'</value>
+  </data>
+  <data name="PRMP00_Deduction_007" xml:space="preserve">
+    <value>Dòng $ : 'Số tiền chỉ được nhập tối đa 16 ký tự.'</value>
+  </data>
+  <data name="PRMP00_Deduction_008" xml:space="preserve">
+    <value>Dòng $ : 'Trùng dữ liệu trong file import. Xin hãy kiểm tra lại mã nhân viên và mã khoản giảm trừ.'</value>
+  </data>
+  <data name="PRMP01_001" xml:space="preserve">
+    <value>Hệ thống sẽ tự động tính trợ cấp '$'</value>
+    <comment>khi người dùng chọn khoản giảm trừ không thuộc loại "Khác"</comment>
+  </data>
+  <data name="PRTS00_001" xml:space="preserve">
+    <value>'Kỳ' bắt buộc nhập</value>
+  </data>
+  <data name="PRTS00_002" xml:space="preserve">
+    <value>Bạn có chắc chắn bạn muốn mở kỳ ?</value>
+  </data>
+  <data name="PRTS00_003" xml:space="preserve">
+    <value>Bạn có chắc chắn bạn muốn khóa kỳ ?</value>
+  </data>
+  <data name="PRTS00_004" xml:space="preserve">
+    <value>Bạn có chắc chắn bạn muốn đóng chấm công tổng ?</value>
+  </data>
+  <data name="PRTS00_005" xml:space="preserve">
+    <value>Bạn có chắc chắn bạn muốn tạo chấm công tổng ?</value>
+  </data>
+  <data name="PRTS00_006" xml:space="preserve">
+    <value>Kỳ lương đang tồn tại dữ liệu lỗi</value>
+  </data>
+  <data name="PRTS00_007" xml:space="preserve">
+    <value>Kì lương trước phải được đóng</value>
+  </data>
+  <data name="SYBK00_001" xml:space="preserve">
+    <value>Quá trình xử lí hoàn tất</value>
+  </data>
+  <data name="SYBK00_002" xml:space="preserve">
+    <value>Chọn ngày để lập lịch sao lưu</value>
+  </data>
+  <data name="SYBK00_003" xml:space="preserve">
+    <value>Chọn thời gian để lập lịch sao lưu</value>
+  </data>
+  <data name="SYBK00_004" xml:space="preserve">
+    <value>Đường dẫn không hợp lệ</value>
+  </data>
+  <data name="SYBK00_005" xml:space="preserve">
+    <value>Lập lịch sao lưu thành công</value>
+  </data>
+  <data name="SYBK00_006" xml:space="preserve">
+    <value>Service 'Backup Scheduling' không tồn tại</value>
+  </data>
+  <data name="SYBK00_007" xml:space="preserve">
+    <value>Đã dừng lập lịch sao lưu</value>
+  </data>
+  <data name="SYBK00_008" xml:space="preserve">
+    <value>Bạn có chắc bạn muốn sao lưu dữ liệu?</value>
+  </data>
+  <data name="SYBK00_009" xml:space="preserve">
+    <value>Bạn có chắc bạn muốn khởi động lập lịch sao lưu?</value>
+  </data>
+  <data name="SYBK00_010" xml:space="preserve">
+    <value>Bạn có chắc bạn muốn dừng lập lịch sao lưu?</value>
+  </data>
+  <data name="SYRT00_001" xml:space="preserve">
+    <value>Phục hồi thành công</value>
+  </data>
+  <data name="SYRT00_002" xml:space="preserve">
+    <value>Bạn có chắc bạn muốn phục hồi dữ liệu?</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_006" xml:space="preserve">
+    <value>Loại ngày' bắt buộc nhập.</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_007" xml:space="preserve">
+    <value>Giờ vào' bắt buộc nhập.</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_008" xml:space="preserve">
+    <value>Giờ ra' bắt buộc nhập</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_009" xml:space="preserve">
+    <value>Thông tin hình thức trả lương chi tiết' bắt buôc nhập.</value>
+  </data>
+  <data name="MSWA01Dto_Detail_007" xml:space="preserve">
+    <value>Dòng $ : 'Loại ngày' bắt buộc nhập.</value>
+  </data>
+  <data name="MSWA01Dto_Detail_008" xml:space="preserve">
+    <value>Dòng $ : 'Giờ vào' bắt buộc nhập.</value>
+  </data>
+  <data name="MSWA01Dto_Detail_009" xml:space="preserve">
+    <value>Dòng $ : 'Giờ ra' bắt buộc nhập.</value>
+  </data>
+  <data name="HRWA00_001" xml:space="preserve">
+    <value>Dòng $: 'Hình thức trả lương' bắt buộc nhập.</value>
+  </data>
+  <data name="Planning001" xml:space="preserve">
+    <value>Dòng $: Mã nhân viên không hợp lệ</value>
+  </data>
+  <data name="Planning002" xml:space="preserve">
+    <value>Dòng $: Mã văn phòng không hợp lệ</value>
+  </data>
+  <data name="Planning003" xml:space="preserve">
+    <value>Dòng $: Mã phòng ban không hợp lệ</value>
+  </data>
+  <data name="Planning004" xml:space="preserve">
+    <value>Dòng $: Mã bộ phận không hợp lệ</value>
+  </data>
+  <data name="Planning005" xml:space="preserve">
+    <value>Dòng $: Tổ không hợp lệ</value>
+  </data>
+  <data name="Planning006" xml:space="preserve">
+    <value>Dòng $: Chuyền không hợp lệ</value>
+  </data>
+  <data name="Planning007" xml:space="preserve">
+    <value>Dòng $: Mã công đoạn không hợp lệ</value>
+  </data>
+  <data name="Planning008" xml:space="preserve">
+    <value>Dòng $: Ngày bắt đầu không hợp lệ</value>
+  </data>
+  <data name="Planning009" xml:space="preserve">
+    <value>Dòng $: Ngày kết thúc không hợp lệ</value>
+  </data>
+  <data name="Planning010" xml:space="preserve">
+    <value>Dòng $: 'Đến ngày' phải lớn hơn hoặc bằng 'Từ ngày'</value>
+  </data>
+  <data name="Planning011" xml:space="preserve">
+    <value>Dòng $: Mã ca không hợp lệ</value>
+  </data>
+  <data name="Planning012" xml:space="preserve">
+    <value>Dòng $: Thời gian tăng ca trước ca không hợp lệ</value>
+  </data>
+  <data name="Planning013" xml:space="preserve">
+    <value>Dòng $: Thời gian tăng ca sau ca không hợp lệ</value>
+  </data>
+  <data name="Planning014" xml:space="preserve">
+    <value>Dòng $: Nhập '0' hoặc '1' cho cột bao gồm ngày nghỉ</value>
+  </data>
+  <data name="MSFM01_003" xml:space="preserve">
+    <value>Loại máy chấm công' bắt buộc nhập.</value>
+  </data>
+  <data name="Planning015" xml:space="preserve">
+    <value>Dòng $: Trùng dữ liệu trong flie import. Xin hãy kiểm tra lại</value>
+  </data>
+  <data name="HREM_Import_145" xml:space="preserve">
+    <value>Dòng $ : 'Ngày tháng năm sinh phải nhỏ hơn ngày hiện tại.'</value>
+  </data>
+  <data name="HREM_Import_146" xml:space="preserve">
+    <value>Dòng $ : 'Năm cấp CMND phải lớn hơn năm sinh.'</value>
+  </data>
+  <data name="HREM_Import_147" xml:space="preserve">
+    <value>Dòng $ : 'Ngày cấp CMND phải lớn hơn ngày sinh.'</value>
+  </data>
+  <data name="Planning016" xml:space="preserve">
+    <value>Dòng $: Số ngày đăng ký nghỉ và khoảng thời gian đăng ký nghỉ không trùng khớp</value>
+  </data>
+  <data name="Planning017" xml:space="preserve">
+    <value>Dòng $: Phân loại nghỉ không hợp lệ</value>
+  </data>
+  <data name="Planning018" xml:space="preserve">
+    <value>Dòng $: Lý do nghỉ không hợp lệ</value>
+  </data>
+  <data name="MSDO01_001" xml:space="preserve">
+    <value>Mã ký túc xá' bắt buộc nhập.</value>
+  </data>
+  <data name="MSDO01_002" xml:space="preserve">
+    <value>Tên ký túc xá (VN)' bắt buộc nhập.</value>
+  </data>
+  <data name="MSBR01_001" xml:space="preserve">
+    <value>'Mã tuyến xe buýt' bắt buộc nhập.</value>
+  </data>
+  <data name="MSBR01_002" xml:space="preserve">
+    <value>'Tên tuyến xe buýt (VN)' bắt buộc nhập.</value>
+  </data>
+  <data name="Planning019" xml:space="preserve">
+    <value>Dòng $: 'Đến ngày' phải lớn hơn 'Từ ngày'</value>
+  </data>
+  <data name="Planning020" xml:space="preserve">
+    <value>Dòng $: 'Ngày dự sinh' không hợp lệ</value>
+  </data>
+  <data name="Planning021" xml:space="preserve">
+    <value>Dòng $: 'Ngày sinh' không hợp lệ</value>
+  </data>
+  <data name="Planning022" xml:space="preserve">
+    <value>Dòng $: 'Ngày bắt đầu chế độ hậu sản' không hợp lệ</value>
+  </data>
+  <data name="Planning023" xml:space="preserve">
+    <value>Dòng $: 'Ngày kết thúc chế độ hậu sản' không hợp lệ</value>
+  </data>
+  <data name="MSLE01_001" xml:space="preserve">
+    <value>Mã cấp độ' bắt buộc nhập.</value>
+  </data>
+  <data name="MSLE01_002" xml:space="preserve">
+    <value>Tên cấp độ(VN)' bắt buộc nhập.</value>
+  </data>
+  <data name="BSTR01_001" xml:space="preserve">
+    <value>'Nhân viên' bắt buộc nhập.</value>
+  </data>
+  <data name="BSTR01_002" xml:space="preserve">
+    <value>'Tuyến xe buýt' bắt buộc nhập.</value>
+  </data>
+  <data name="BSTR01_003" xml:space="preserve">
+    <value>'Ngày bắt đầu' bắt buộc nhập</value>
+  </data>
+  <data name="BSTR01_004" xml:space="preserve">
+    <value>'Ngày kết thúc' bắt buộc nhập</value>
+  </data>
+  <data name="BSTR01_005" xml:space="preserve">
+    <value>'Ngày bắt đầu' phải nhỏ hơn hoặc bằng 'Ngày kết thúc'.</value>
+  </data>
+  <data name="BSTR01_006" xml:space="preserve">
+    <value>Khoảng thời gian đã được đăng ký.</value>
+  </data>
+  <data name="Planning027" xml:space="preserve">
+    <value>Dòng $: Giờ vào của lần điểm danh thứ 1 không hợp lệ</value>
+  </data>
+  <data name="Planning028" xml:space="preserve">
+    <value>Dòng $: Giờ ra của lần điểm danh thứ 1 không hợp lệ</value>
+  </data>
+  <data name="Planning029" xml:space="preserve">
+    <value>Dòng $: Giờ vào của lần điểm danh thứ 2 không hợp lệ</value>
+  </data>
+  <data name="Planning030" xml:space="preserve">
+    <value>Dòng $: Giờ ra của lần điểm danh thứ 2 không hợp lệ</value>
+  </data>
+  <data name="Planning031" xml:space="preserve">
+    <value>Dòng $: Giờ vào của lần điểm danh thứ 3 không hợp lệ</value>
+  </data>
+  <data name="Planning032" xml:space="preserve">
+    <value>Dòng $: Giờ ra của lần điểm danh thứ 3 không hợp lệ</value>
+  </data>
+  <data name="Planning033" xml:space="preserve">
+    <value>Dòng $: Giờ vào của lần điểm danh thứ 4 không hợp lệ</value>
+  </data>
+  <data name="Planning034" xml:space="preserve">
+    <value>Dòng $: Giờ ra của lần điểm danh thứ 4 không hợp lệ</value>
+  </data>
+  <data name="Planning035" xml:space="preserve">
+    <value>Dòng $: Giờ vào của lần điểm danh thứ 5 không hợp lệ</value>
+  </data>
+  <data name="Planning036" xml:space="preserve">
+    <value>Dòng $: Giờ ra của lần điểm danh thứ 5 không hợp lệ</value>
+  </data>
+  <data name="Planning037" xml:space="preserve">
+    <value>Dòng $: Nhập '0' hoặc '1' cho cột ca đêm</value>
+  </data>
+  <data name="BSDO01_001" xml:space="preserve">
+    <value>'Nhân viên' bắt buộc nhập.</value>
+  </data>
+  <data name="BSDO01_002" xml:space="preserve">
+    <value>'Ký túc xá' bắt buộc nhập.</value>
+  </data>
+  <data name="BSDO01_003" xml:space="preserve">
+    <value>'Ngày bắt đầu' bắt buộc nhập</value>
+  </data>
+  <data name="BSDO01_004" xml:space="preserve">
+    <value>'Ngày kết thúc' bắt buộc nhập</value>
+  </data>
+  <data name="BSDO01_005" xml:space="preserve">
+    <value>'Ngày bắt đầu' phải nhỏ hơn hoặc bằng 'Ngày kết thúc'.</value>
+  </data>
+  <data name="BSDO01_006" xml:space="preserve">
+    <value>Khoảng thời gian đã được đăng ký.</value>
+  </data>
+  <data name="Planning038" xml:space="preserve">
+    <value>Nhân viên mã $ không đủ phép năm để nghỉ phép</value>
+  </data>
+  <data name="HREM01_036" xml:space="preserve">
+    <value>'Loại nhân viên' bắt buộc nhập.</value>
+  </data>
+  <data name="HREM_Import_148" xml:space="preserve">
+    <value>Dòng $ : 'Loại nhân viên bắt buộc nhập.'</value>
+  </data>
+  <data name="HREM_Import_149" xml:space="preserve">
+    <value>Dòng $ : 'Loại nhân viên nhập không đúng định dạng.'</value>
+  </data>
+  <data name="HREM_Import_150" xml:space="preserve">
+    <value>Dòng $ : 'Mã cấp độ chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_151" xml:space="preserve">
+    <value>Dòng $ : 'Mã cấp độ phải tồn tại trong danh sách dự án và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="Planning039" xml:space="preserve">
+    <value>Dòng $: Đã tồn tại thời gian ca đêm</value>
+  </data>
+  <data name="HREM01_037" xml:space="preserve">
+    <value>'Ngày thôi việc' phải nhỏ hơn hoặc bằng ngày hiện tại</value>
+  </data>
+  <data name="MSPA00_044" xml:space="preserve">
+    <value>'Định mức lương bảo hiểm tối đa công ty đóng' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA00_045" xml:space="preserve">
+    <value>'Định mức lương bảo hiểm tối đa nhân viên đóng' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA_ALRow_001" xml:space="preserve">
+    <value>Dòng $ từ tab [Thiết lập phép năm]: 'Từ năm' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA_ALRow_002" xml:space="preserve">
+    <value>Dòng $ từ tab [Thiết lập phép năm]: 'Đến năm' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA_ALRow_003" xml:space="preserve">
+    <value>Dòng $ từ tab [Thiết lập phép năm]: 'Đến năm phải lớn hơn từ năm.'</value>
+  </data>
+  <data name="MSPA_ALRow_004" xml:space="preserve">
+    <value>Dòng $ từ tab [Thiết lập phép năm]: 'Số ngày' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA_ALRow_005" xml:space="preserve">
+    <value>Dòng $ từ tab [Thiết lập phép năm]: 'Khoảng thời gian này đã được thiết lập số ngày nghỉ.'</value>
+  </data>
+  <data name="MSPA_ALRow_006" xml:space="preserve">
+    <value>Dòng $ từ tab [Thiết lập phép năm]: 'Số ngày nghỉ này đã được thiết lập.'</value>
+  </data>
+  <data name="MSPA_SeniorityRow_001" xml:space="preserve">
+    <value>Dòng $ từ tab [Thiết lập thâm niên]:'Số năm thâm niên' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA_SeniorityRow_002" xml:space="preserve">
+    <value>Dòng $ từ tab [Thiết lập thâm niên]: 'Số tiền' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA_SeniorityRow_003" xml:space="preserve">
+    <value>Dòng $ từ tab [Thiết lập thâm niên]: 'Khoảng thời gian này đã được thiết lập số tiền cho thâm niên.'</value>
+  </data>
+  <data name="MSPA_SeniorityRow_004" xml:space="preserve">
+    <value>Dòng $ từ tab [Thiết lập thâm niên]: 'Khoảng tiền này đã được thiết lập cho thâm niên.'</value>
+  </data>
+  <data name="MSPA_Seniority_001" xml:space="preserve">
+    <value>'Số năm thâm niên' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA_Seniority_002" xml:space="preserve">
+    <value>'Số tiền' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA_Seniority_003" xml:space="preserve">
+    <value>Khoảng thời gian này đã được thiết lập số tiền cho thâm niên.</value>
+  </data>
+  <data name="MSPA_Seniority_004" xml:space="preserve">
+    <value>Số tiền phải được tăng dần.</value>
+  </data>
+  <data name="MSPA_AL_001" xml:space="preserve">
+    <value>'Từ năm' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA_AL_002" xml:space="preserve">
+    <value>'Đến năm' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA_AL_003" xml:space="preserve">
+    <value>'Số ngày' bắt buộc nhập.</value>
+  </data>
+  <data name="MSPA_AL_004" xml:space="preserve">
+    <value>Đến năm phải lớn hơn từ năm.</value>
+  </data>
+  <data name="MSPA_AL_005" xml:space="preserve">
+    <value>Khoảng thời gian này đã được thiết lập số ngày nghỉ.</value>
+  </data>
+  <data name="MSPA_AL_006" xml:space="preserve">
+    <value>Số ngày nghỉ phải được tăng dần.</value>
+  </data>
+  <data name="Planning040" xml:space="preserve">
+    <value>Dòng $: Chỉ lập kế hoạch cho 1 tháng</value>
+  </data>
+  <data name="MSPA00_046" xml:space="preserve">
+    <value>'Sử dụng đến tháng (Năm sau)'  không hợp lệ.</value>
+  </data>
+  <data name="MSPA00_047" xml:space="preserve">
+    <value>'Tỷ lệ chi trả' không hợp lệ .</value>
+  </data>
+  <data name="MSPA00_048" xml:space="preserve">
+    <value>'Tháng áp dụng' không hợp lệ. </value>
+  </data>
+  <data name="MSPA00_049" xml:space="preserve">
+    <value>'Tỷ lệ chi trả (Năm sau)' không hợp lệ. </value>
+  </data>
+  <data name="MSPA00_050" xml:space="preserve">
+    <value>'Tháng áp dụng (Năm sau)' </value>
+  </data>
+  <data name="HREM_Import_Salary_015" xml:space="preserve">
+    <value>Dòng $ : 'Nhân viên không tồn tại.'</value>
+  </data>
+  <data name="ATAE01_001" xml:space="preserve">
+    <value>'Ca' bắt buộc nhập</value>
+  </data>
+  <data name="ATAE01_002" xml:space="preserve">
+    <value>'Giờ vào' bắt buộc nhập</value>
+  </data>
+  <data name="ATAE01_003" xml:space="preserve">
+    <value>'Giờ ra' bắt buộc nhập</value>
+  </data>
+  <data name="ATAE01_004" xml:space="preserve">
+    <value>'Loại nghỉ' bắt buộc nhập</value>
+  </data>
+  <data name="ATAE01_005" xml:space="preserve">
+    <value>Lần chấm công $ : 'Giờ vào' bắt buộc nhập</value>
+  </data>
+  <data name="ATAE01_006" xml:space="preserve">
+    <value>Lần chấm công $ : 'Giờ ra' bắt buộc nhập</value>
+  </data>
+  <data name="ATAE01_007" xml:space="preserve">
+    <value>'Giờ vào' của lần chấm công $ phải lớn hơn giờ ra của chấm công lần trước đó</value>
+  </data>
+  <data name="ATAE01_008" xml:space="preserve">
+    <value>'Giờ ra' của lần chấm công $ phải nhỏ hơn giờ vào của chấm công lần sau đó</value>
+  </data>
+  <data name="ATAE01_009" xml:space="preserve">
+    <value>Chấm công lần $ không phù hợp vì kế hoạch này không đăng ký làm ca đêm</value>
+  </data>
+  <data name="ATAE01_010" xml:space="preserve">
+    <value>'Giờ ra' phải khác 'Giờ vào'</value>
+  </data>
+  <data name="ATAE01_011" xml:space="preserve">
+    <value>Chấm công lần $ không phải là chấm công của ca đêm</value>
+  </data>
+  <data name="ATTS03_005" xml:space="preserve">
+    <value>'Giờ Vào' bắt buộc nhập.</value>
+  </data>
+  <data name="ATTS03_006" xml:space="preserve">
+    <value>'Giờ Ra' bắt buộc nhập.</value>
+  </data>
+  <data name="ATTS03_007" xml:space="preserve">
+    <value>'Giờ Ra' phải lớn hơn 'Giờ Vào'</value>
+  </data>
+  <data name="ATTS03_008" xml:space="preserve">
+    <value>Dòng $: 'Giờ Vào' bắt buộc nhập.</value>
+  </data>
+  <data name="ATTS03_009" xml:space="preserve">
+    <value>Dòng $: 'Giờ Ra' bắt buộc nhập.</value>
+  </data>
+  <data name="ATTS03_010" xml:space="preserve">
+    <value>Dòng $: 'Giờ Ra' phải lớn hơn 'Giờ Vào'</value>
+  </data>
+  <data name="HRCT01_009" xml:space="preserve">
+    <value>'Người ký hợp đồng' bắt buộc nhập.</value>
+  </data>
+  <data name="HRCT01_010" xml:space="preserve">
+    <value>'Tên công ty' bắt buộc nhập.</value>
+  </data>
+  <data name="HRCT01_011" xml:space="preserve">
+    <value>'Tên người lao động' bắt buộc nhập.</value>
+  </data>
+  <data name="ATIO_Import_015" xml:space="preserve">
+    <value>Dòng $: 'Loại máy chấm công bắt buộc nhập.'</value>
+  </data>
+  <data name="ATIO_Import_016" xml:space="preserve">
+    <value>Dòng $: 'Loại máy chấm công đã nhập sai định dạng.'</value>
+  </data>
+  <data name="MSLC01_007" xml:space="preserve">
+    <value>'Loại nghỉ ' bắt buộc nhập</value>
+  </data>
+  <data name="ATTS03_011" xml:space="preserve">
+    <value>Dòng $: 'Số ngày' bắt buộc nhập.</value>
+  </data>
+  <data name="ATTS03_012" xml:space="preserve">
+    <value>'Số ngày' bắt buộc nhập.</value>
+  </data>
+  <data name="ATTS03_013" xml:space="preserve">
+    <value>Dòng $: 'Số ngày' đã nhập sai giá trị.</value>
+  </data>
+  <data name="ATTS03_014" xml:space="preserve">
+    <value>'Số ngày' đã nhập sai giá trị.</value>
+  </data>
+  <data name="Planning000" xml:space="preserve">
+    <value>Dòng $: Mã lập lịch không hợp lệ</value>
+  </data>
+  <data name="CMN062" xml:space="preserve">
+    <value>Để đảm bảo tốc độ thực thi, hệ thống cho phép tìm kiếm dữ liệu cách nhau 30 ngày</value>
+  </data>
+  <data name="CMN063" xml:space="preserve">
+    <value>Bạn không thể cập nhật thông tin kế hoạch được vì một người khác đang xử lý. Vui lòng thử lại sau (Tên người dùng: $).</value>
+  </data>
+  <data name="HREMSkill_003" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin kỹ năng]:  ' Tên kỹ năng ' bắt buộc nhập.</value>
+  </data>
+  <data name="HREMSkill_004" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin kỹ năng]: ' Tên kỹ năng ' bắt buộc nhập.</value>
+  </data>
+  <data name="HRCT01_020" xml:space="preserve">
+    <value>Số hợp đồng đã tồn tại.</value>
+  </data>
+  <data name="HREMEdu_Qua_005" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin bằng cấp]: 'Mã bằng cấp' bắt buộc nhập.</value>
+  </data>
+  <data name="HREMEdu_Qua_006" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin bằng cấp]: 'Mã bằng cấp' bắt buộc nhập.</value>
+  </data>
+  <data name="HREMExperience_005" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin kinh nghiệm]: 'Tên công ty' bắt buộc nhập</value>
+  </data>
+  <data name="HREMExperience_006" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin kinh nghiệm]: 'Làm việc từ ngày' bắt buộc nhập</value>
+  </data>
+  <data name="HREMExperience_007" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin kinh nghiệm]: 'Đến ngày' bắt buộc nhập</value>
+  </data>
+  <data name="HREMExperience_008" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin kinh nghiệm]: 'Tên công ty' bắt buộc nhập</value>
+  </data>
+  <data name="HREMExperience_009" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin kinh nghiệm]: 'Làm việc từ ngày' bắt buộc nhập</value>
+  </data>
+  <data name="HREMExperience_010" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin kinh nghiệm]: 'Đến ngày' bắt buộc nhập</value>
+  </data>
+  <data name="HREMFamily_003" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin gia đình]: 'Họ tên' bắt buộc nhập</value>
+  </data>
+  <data name="HREMFamily_004" xml:space="preserve">
+    <value>Dòng $ từ tab [Thông tin gia đình]: 'Họ tên' bắt buộc nhập</value>
+  </data>
+  <data name="ATAE_Import_001" xml:space="preserve">
+    <value>Dòng $: Mã nhân viên bắt buộc nhập</value>
+  </data>
+  <data name="ATAE_Import_002" xml:space="preserve">
+    <value>Dòng $: Mã nhân viên không chính xác</value>
+  </data>
+  <data name="ATAE_Import_003" xml:space="preserve">
+    <value>Dòng $: Loại bắt buộc nhập</value>
+  </data>
+  <data name="ATAE_Import_004" xml:space="preserve">
+    <value>Dòng $: Loại không chính xác</value>
+  </data>
+  <data name="ATAE_Import_005" xml:space="preserve">
+    <value>Dòng $: Ca bắt buộc nhập</value>
+  </data>
+  <data name="ATAE_Import_006" xml:space="preserve">
+    <value>Dòng $: Mã ca không chính xác</value>
+  </data>
+  <data name="ATAE_Import_007" xml:space="preserve">
+    <value>Dòng $: Giờ vào bắt buộc nhập</value>
+  </data>
+  <data name="ATAE_Import_008" xml:space="preserve">
+    <value>Dòng $: Giờ vào không chính xác</value>
+  </data>
+  <data name="ATAE_Import_009" xml:space="preserve">
+    <value>Dòng $: Giờ ra bắt buộc nhập</value>
+  </data>
+  <data name="ATAE_Import_010" xml:space="preserve">
+    <value>Dòng $: Giờ ra không chính xác</value>
+  </data>
+  <data name="ATAE_Import_011" xml:space="preserve">
+    <value>Dòng $: Phân loại nghỉ bắt buộc nhập</value>
+  </data>
+  <data name="ATAE_Import_012" xml:space="preserve">
+    <value>Dòng $: Phân loại nghỉ không chính xác</value>
+  </data>
+  <data name="CMN064" xml:space="preserve">
+    <value>Bạn không thể cập nhật thông tin kế hoạch được vì một người khác đang xử lý. Vui lòng thử lại sau (Tên người dùng: $).</value>
+  </data>
+  <data name="CMN065" xml:space="preserve">
+    <value>Trong trường hợp đã chọn nghỉ nửa ngày, cần đăng ký giờ làm việc của nửa ngày còn lại.
+Nếu không đăng ký giờ làm việc của nửa ngày còn lại, hệ thống xem như nghỉ nguyên ngày.</value>
+  </data>
+  <data name="ATOT_Import_001" xml:space="preserve">
+    <value>Dòng $: Mã nhân viên bắt buộc nhập</value>
+  </data>
+  <data name="ATOT_Import_002" xml:space="preserve">
+    <value>Dòng $: Mã nhân viên phải có trong danh sách nhân viên và có trạng thái khác nghỉ việc.</value>
+  </data>
+  <data name="ATOT_Import_003" xml:space="preserve">
+    <value>Dòng $: Mã nhân viên chỉ được nhập tối đa 10 ký tự.</value>
+  </data>
+  <data name="ATOT_Import_004" xml:space="preserve">
+    <value>Dòng $: Ngày làm thêm bắt buộc nhập.</value>
+  </data>
+  <data name="ATOT_Import_005" xml:space="preserve">
+    <value>Dòng $: Ngày làm thêm đã nhập sai định dạng.</value>
+  </data>
+  <data name="ATOT_Import_006" xml:space="preserve">
+    <value>Dòng $: Kỳ lương của nhân viên này đã đóng.</value>
+  </data>
+  <data name="ATOT_Import_007" xml:space="preserve">
+    <value>Dòng $: Không tồn tại dữ liệu của nhân viên này.</value>
+  </data>
+  <data name="ATOT_Import_008" xml:space="preserve">
+    <value>Dòng $: Trạng thái lỗi không thể cập nhật cho nhân viên này.</value>
+  </data>
+  <data name="ATOT_Import_009" xml:space="preserve">
+    <value>Dòng $: 'Thời gian làm thêm trước ca' đã nhập sai định dạng.</value>
+  </data>
+  <data name="ATOT_Import_010" xml:space="preserve">
+    <value>Dòng $: 'Thời gian làm thêm sau ca' đã nhập sai định dạng.</value>
+  </data>
+  <data name="ATOT_Import_011" xml:space="preserve">
+    <value>Dòng $: 'Thời gian làm thêm đêm' đã nhập sai định dạng.</value>
+  </data>
+  <data name="ATOT_Import_012" xml:space="preserve">
+    <value>Dòng $: Phải nhập thời gian làm thêm cho nhân viên này.</value>
+  </data>
+  <data name="ATOT_Import_013" xml:space="preserve">
+    <value>Dòng $: 'Trùng dữ liệu trong file import. Xin hãy kiểm tra lại!.'</value>
+  </data>
+  <data name="HRAA00_008" xml:space="preserve">
+    <value>Dòng $: 'Vị trí' bắt buộc nhập.</value>
+  </data>
+  <data name="HRAA00_009" xml:space="preserve">
+    <value>Dòng $: 'Cấp độ' bắt buộc nhập.</value>
+  </data>
+  <data name="HRAA00_010" xml:space="preserve">
+    <value>Dòng $: 'Ca' bắt buộc nhập.</value>
+  </data>
+  <data name="ATAE_Import_014" xml:space="preserve">
+    <value>Dòng $: Ngày kế tiếp đã nhập sai định dạng</value>
+  </data>
+  <data name="ATAE_Import_015" xml:space="preserve">
+    <value>Dòng $: Dữ liệu đưa vào có vấn đề. Có thể tham khảo các trường hợp sau: nhân viên chưa có chấm công hoặc chấm công không bị lỗi, hoặc nhân viên này đã được chấm công tổng</value>
+  </data>
+  <data name="CMN066" xml:space="preserve">
+    <value>Kỳ lương này đã bị đóng, không thể xử lý lại dữ liệu chấm công</value>
+  </data>
+  <data name="MSPA00_007" xml:space="preserve">
+    <value>% Phí công đoàn' bắt buộc nhập</value>
+  </data>
+  <data name="MSPA00_012" xml:space="preserve">
+    <value>Phương thức tính lương giờ' bắt buộc nhập</value>
+  </data>
+  <data name="MSWA01Dto_007" xml:space="preserve">
+    <value>Trạng thái' bắt buộc nhập.</value>
+  </data>
+  <data name="PRMP00_023" xml:space="preserve">
+    <value>Bạn có chắc bạn muốn tạo bảng lương?</value>
+  </data>
+  <data name="HREMSalary_005" xml:space="preserve">
+    <value>Xóa thành công.</value>
+  </data>
+  <data name="PRMP00_024" xml:space="preserve">
+    <value>Tạo bảng lương thành công!</value>
+  </data>
+  <data name="CMN067" xml:space="preserve">
+    <value>Access is denied by Employee '$'</value>
+  </data>
+  <data name="HRRA_Import_001" xml:space="preserve">
+    <value>Dòng $ : 'Mã nhân viên bắt buộc nhập.'</value>
+  </data>
+  <data name="HRRA_Import_002" xml:space="preserve">
+    <value>Dòng $ : 'Mã nhân viên phải tồn tại trong danh sách nhân viên và có trạng thái khác "Nghỉ việc"</value>
+  </data>
+  <data name="HRRA_Import_003" xml:space="preserve">
+    <value>Dòng $ : 'Mã nhân viên chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HRRA_Import_004" xml:space="preserve">
+    <value>Dòng $ : 'Ngày di chuyển không được để trống.'</value>
+  </data>
+  <data name="HRRA_Import_005" xml:space="preserve">
+    <value>Dòng $ : 'Ngày di chuyển đã nhập sai định dạng.'</value>
+  </data>
+  <data name="HRRA_Import_006" xml:space="preserve">
+    <value>Dòng $ : 'Trùng dữ liệu trong file import. Xin hãy kiểm tra lại mã nhân viên làm việc và ngày di chuyển.'</value>
+  </data>
+  <data name="HRRA_Import_007" xml:space="preserve">
+    <value>Dòng $ : 'Mã nhóm phải tồn tại trong danh sách nhóm và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="HRRA_Import_008" xml:space="preserve">
+    <value>Dòng $ : 'Mã nhóm chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HRRA_Import_009" xml:space="preserve">
+    <value>Dòng $ : 'Mã công đoạn phải tồn tại trong danh sách công đoạn và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="HRRA_Import_010" xml:space="preserve">
+    <value>Dòng $ : 'Mã công đoạn chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HRRA_Import_011" xml:space="preserve">
+    <value>Dòng $ : 'Mã chuyền phải tồn tại trong danh sách chuyền và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="HRRA_Import_012" xml:space="preserve">
+    <value>Dòng $ : 'Mã chuyền chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HRRA_Import_013" xml:space="preserve">
+    <value>Dòng $ : 'Mã tổ phải tồn tại trong danh sách tổ và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="HRRA_Import_014" xml:space="preserve">
+    <value>Dòng $ : 'Mã tổ chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HRRA_Import_015" xml:space="preserve">
+    <value>Dòng $ : 'Mã bộ phận phải tồn tại trong danh sách bộ phận và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="HRRA_Import_016" xml:space="preserve">
+    <value>Dòng $ : 'Mã bộ phận chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HRRA_Import_017" xml:space="preserve">
+    <value>Dòng $ : 'Mã phòng ban phải tồn tại trong danh sách phòng ban và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="HRRA_Import_018" xml:space="preserve">
+    <value>Dòng $ : 'Mã phòng ban chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HRRA_Import_019" xml:space="preserve">
+    <value>Dòng $ : 'Mã văn phòng phải tồn tại trong danh sách văn phòng và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="HRRA_Import_020" xml:space="preserve">
+    <value>Dòng $ : 'Mã văn phòng chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HRRA_Import_021" xml:space="preserve">
+    <value>Dòng $ : 'Mã thông tin luân chuyển sai'</value>
+  </data>
+  <data name="HRRA_Import_022" xml:space="preserve">
+    <value>Dòng $ : '(Sai từ mã văn phòng) Mã phòng ban, mã bộ phận, mã tổ, mã chuyền, mã công đoạn không thuộc mã văn phòng'</value>
+  </data>
+  <data name="HRRA_Import_023" xml:space="preserve">
+    <value>Dòng $ : '(Sai từ mã phòng ban) Mã bộ phận, mã tổ, mã chuyền, mã công đoạn không thuộc mã phòng ban'</value>
+  </data>
+  <data name="HRRA_Import_024" xml:space="preserve">
+    <value>Dòng $ : '(Sai từ mã bộ phận) Mã tổ, mã chuyền, mã công đoạn không thuộc mã bộ phận'</value>
+  </data>
+  <data name="HRRA_Import_025" xml:space="preserve">
+    <value>Dòng $ : '(Sai từ mã tổ) Mã chuyền, mã công đoạn không thuộc mã tổ'</value>
+  </data>
+  <data name="HRRA_Import_026" xml:space="preserve">
+    <value>Dòng $ : '(Sai từ mã chuyền) Mã công đoạn không thuộc mã chuyền'</value>
+  </data>
+  <data name="HRRA_Import_027" xml:space="preserve">
+    <value>Dòng $ : '(Sai từ mã công đoạn) Mã công đoạn không thuộc mã chuyền'</value>
+  </data>
+  <data name="CMN068" xml:space="preserve">
+    <value>Cảnh báo: Trong khoảng $ không có kế hoạch làm việc hoặc tồn tại kế hoạch nghỉ</value>
+  </data>
+  <data name="ATOT_Import_014" xml:space="preserve">
+    <value>Dòng $: 'Ngày import không hợp lệ, chỉ được import OT cho ngày làm việc!'</value>
+  </data>
+  <data name="ATOT_Import_015" xml:space="preserve">
+    <value>Dòng $: 'Không thể import OT vào ngày nhân viên xin nghỉ!'</value>
+  </data>
+  <data name="HRRA_Import_028" xml:space="preserve">
+    <value>Dòng $ : 'Mã cấp độ phải tồn tại trong danh sách cấp độ và có trạng thái "Kích hoạt".'</value>
+  </data>
+  <data name="HRRA_Import_029" xml:space="preserve">
+    <value>Dòng $ : 'Mã cấp độ chỉ được nhập tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_Salary_016" xml:space="preserve">
+    <value>Dòng $ : 'Lương nhập vào phải khác 0'</value>
+  </data>
+  <data name="ATTS01_LeaveMess_001" xml:space="preserve">
+    <value>Ngày phép không đủ 1 ngày.</value>
+  </data>
+  <data name="HRRA01_001" xml:space="preserve">
+    <value>'Ca' bắt buộc nhập</value>
+  </data>
+  <data name="HREM_Import_152" xml:space="preserve">
+    <value>Dòng $ : 'Ngày chuyển vào nhập sai định dạng.'</value>
+  </data>
+  <data name="BSPP01_001" xml:space="preserve">
+    <value>' Kỳ ' bắt buộc nhập.</value>
+  </data>
+  <data name="BSPP01_002" xml:space="preserve">
+    <value>' Giá tiền ' bắt buộc nhập.</value>
+  </data>
+  <data name="BSPP01_003" xml:space="preserve">
+    <value>Giá tiền không thể là số 0</value>
+  </data>
+  <data name="HREM01_38" xml:space="preserve">
+    <value>' Ngày bắt đầu ' bắt buộc nhập</value>
+    <comment>Khi Start date bị null thì xuất message này</comment>
+  </data>
+  <data name="HRMR01_001" xml:space="preserve">
+    <value>Nhân viên' bắt buộc nhập.</value>
+  </data>
+  <data name="HRMR01_002" xml:space="preserve">
+    <value>Ngày dự sinh' bắt buộc nhập</value>
+  </data>
+  <data name="HRMR01_003" xml:space="preserve">
+    <value>Ngày sinh' bắt buộc nhập</value>
+  </data>
+  <data name="HRMR01_004" xml:space="preserve">
+    <value>Ngày bắt đầu chế độ tiền sản' bắt buộc nhập</value>
+  </data>
+  <data name="HRMR01_005" xml:space="preserve">
+    <value>Ngày kết thúc chế độ tiền sản' bắt buộc nhập</value>
+  </data>
+  <data name="HRMR01_006" xml:space="preserve">
+    <value>Ngày bắt đầu chế độ nghỉ thai sản' bắt buộc nhập</value>
+  </data>
+  <data name="HRMR01_007" xml:space="preserve">
+    <value>Ngày kết thúc chế độ nghỉ thai sản' bắt buộc nhập</value>
+  </data>
+  <data name="HRMR01_008" xml:space="preserve">
+    <value>Ngày bắt đầu chế độ hậu sản' bắt buộc nhập</value>
+  </data>
+  <data name="HRMR01_009" xml:space="preserve">
+    <value>Ngày kết thúc chế độ hậu sản' bắt buộc nhập</value>
+  </data>
+  <data name="HRMR01_010" xml:space="preserve">
+    <value>Số con khi sinh' bắt buộc nhập</value>
+  </data>
+  <data name="HRMR01_011" xml:space="preserve">
+    <value>Ngày kết thúc chế độ tiền sản phải lớn hơn ngày bắt đầu chế độ tiền sản.</value>
+  </data>
+  <data name="HRMR01_012" xml:space="preserve">
+    <value>Ngày kết thúc chế độ tiền sản phải nhỏ hơn ngày bắt đầu đăng ký nghỉ thai sản.</value>
+  </data>
+  <data name="HRMR01_013" xml:space="preserve">
+    <value>Ngày kết thúc chế độ tiền sản phải nhỏ hơn ngày dự sinh.</value>
+  </data>
+  <data name="HRMR01_014" xml:space="preserve">
+    <value>Ngày kết thúc chế độ nghỉ sản phải lớn hơn ngày bắt đầu chế độ nghỉ thai sản.</value>
+  </data>
+  <data name="HRMR01_015" xml:space="preserve">
+    <value>Ngày bắt đầu chế độ hậu sản phải lớn hơn ngày kết thúc chế độ nghỉ thai sản.</value>
+  </data>
+  <data name="HRMR01_016" xml:space="preserve">
+    <value>Ngày kết thúc chế độ hậu sản phải lớn hơn ngày bắt đầu chế độ hậu sản.</value>
+  </data>
+  <data name="BSTD01_001" xml:space="preserve">
+    <value>' Mã nhân viên ' bắt buộc nhập.</value>
+  </data>
+  <data name="BSTD01_002" xml:space="preserve">
+    <value>' Kỳ ' bắt buộc nhập.</value>
+  </data>
+  <data name="HRSA01Dto_DetailNotRow_001" xml:space="preserve">
+    <value>'Trợ cấp' bắt buộc nhập.</value>
+  </data>
+  <data name="HRSA01Dto_DetailNotRow_002" xml:space="preserve">
+    <value>'Áp dụng từ' bắt buộc nhập.</value>
+  </data>
+  <data name="HRSA01Dto_DetailNotRow_003" xml:space="preserve">
+    <value>'Đến ngày' bắt buộc nhập.</value>
+  </data>
+  <data name="HRSA01Dto_DetailNotRow_004" xml:space="preserve">
+    <value>'Số tiền' bắt buộc nhập.</value>
+  </data>
+  <data name="HRSA01Dto_DetailNotRow_005" xml:space="preserve">
+    <value>'Đến ngày' phải lớn hơn 'Áp dụng từ'.</value>
+  </data>
+  <data name="HRSA01Dto_DetailNotRow_006" xml:space="preserve">
+    <value>'Số tiền' phải lớn hơn 0.</value>
+  </data>
+  <data name="HRSA01Dto_DetailNotRow_007" xml:space="preserve">
+    <value>'Ngày bắt đầu chế độ hậu sản' phải lớn hơn 'Ngày bắt đầu' của kỳ</value>
+  </data>
+  <data name="Planning041" xml:space="preserve">
+    <value>Dòng $: 'Ngày bắt đầu hưởng chế độ tiền sản ' không hợp lệ</value>
+  </data>
+  <data name="Planning042" xml:space="preserve">
+    <value>Dòng $: 'Ngày kết thúc hưởng chế độ tiền sản' không hợp lệ</value>
+  </data>
+  <data name="Planning043" xml:space="preserve">
+    <value>Dòng $: 'Ngày bắt đầu chế độ thai sản' không hợp lệ</value>
+  </data>
+  <data name="Planning044" xml:space="preserve">
+    <value>Dòng $: 'Ngày kết thúc chế độ thai sản' không hợp lệ</value>
+  </data>
+  <data name="Planning045" xml:space="preserve">
+    <value>Dòng $: 'Số con khi sinh' không hợp lệ</value>
+  </data>
+  <data name="Planning046" xml:space="preserve">
+    <value>Dòng $: 'Ngày kết thúc hưởng chế độ tiền sản' phải lớn hơn 'Ngày bắt đầu hưởng chế độ tiền sản'</value>
+  </data>
+  <data name="Planning047" xml:space="preserve">
+    <value>Dòng $: 'Ngày kết thúc chế độ tiền sản' phải nhỏ hơn 'ngày bắt đầu đăng ký nghỉ thai sản'</value>
+  </data>
+  <data name="Planning048" xml:space="preserve">
+    <value>Dòng $: 'Ngày kết thúc chế độ tiền sản' phải nhỏ hơn 'ngày dự sinh'</value>
+  </data>
+  <data name="Planning049" xml:space="preserve">
+    <value>Dòng $: 'Ngày kết thúc chế độ nghỉ sản' phải lớn hơn 'ngày bắt đầu chế độ nghỉ thai sản'</value>
+  </data>
+  <data name="Planning050" xml:space="preserve">
+    <value>Dòng $: 'Ngày bắt đầu chế độ hậu sản' phải lớn hơn 'ngày kết thúc chế độ nghỉ thai sản'</value>
+  </data>
+  <data name="Planning051" xml:space="preserve">
+    <value>Dòng $: 'Ngày kết thúc chế độ hậu sản' phải lớn hơn 'ngày bắt đầu chế độ hậu sản'</value>
+  </data>
+  <data name="Planning024" xml:space="preserve">
+    <value>Dòng $: 'Ngày bắt đầu chế độ hậu sản' phải lớn hơn hoặc bằng 'ngày kết thúc đăng ký thai sản'</value>
+  </data>
+  <data name="Planning025" xml:space="preserve">
+    <value>Dòng $: 'Ngày kết thúc chế độ hậu sản' phải lớn hơn 'ngày kết thúc đăng ký thai sản'</value>
+  </data>
+  <data name="Planning026" xml:space="preserve">
+    <value>Dòng $: 'Ngày kết thúc chế độ hậu sản' phải lớn hơn 'Ngày bắt đầu chế độ hậu sản'</value>
+  </data>
+  <data name="BSTD_Import_01" xml:space="preserve">
+    <value>'Nhân viên mã '$' đã được tính lương kỳ '$', không thể xóa (sửa) thông tin.'</value>
+  </data>
+  <data name="BSTD_Import_02" xml:space="preserve">
+    <value>'Kỳ lương '$' của nhân viên đã khóa, không thể thêm (sửa) thông tin.'</value>
+  </data>
+  <data name="HRMR01_017" xml:space="preserve">
+    <value>Ngày bắt đầu chế độ tiền sản của lần nhập hiện tại phải lớn hơn Ngày kết thúc chế độ thai sản của lần đăng ký gần nhất.</value>
+  </data>
+  <data name="HRWE_001" xml:space="preserve">
+    <value>Nhân viên đã đăng ký môi trường làm việc trong năm '$'.</value>
+  </data>
+  <data name="HRWE_002" xml:space="preserve">
+    <value>Thời gian đăng ký làm việc trong môi trường bị trùng .</value>
+  </data>
+  <data name="HRSA01_014" xml:space="preserve">
+    <value>'Lương căn bản' phải lớn hơn 0.</value>
+  </data>
+  <data name="HREM_Import_Salary_017" xml:space="preserve">
+    <value>Dòng $ : Nhân viên đã nghỉ việc.</value>
+  </data>
+  <data name="HREM_Import_Salary_018" xml:space="preserve">
+    <value>Dòng $ : Nhân viên không được trả lương.</value>
+  </data>
+  <data name="CMN069" xml:space="preserve">
+    <value>Dữ liệu đang tồn tại trong thông tin 'PrAllowances'</value>
+  </data>
+  <data name="HREM01_039" xml:space="preserve">
+    <value>'Ngày vào công ty' bắt buộc nhập</value>
+  </data>
+  <data name="Planning052" xml:space="preserve">
+    <value>Dòng $: Ngày bắt đầu chế độ tiền sản của lần nhập hiện tại phải lớn hơn Ngày kết thúc chế độ thai sản của lần đăng ký gần nhất.</value>
+  </data>
+  <data name="HREM01_040" xml:space="preserve">
+    <value>Ngày làm việc chính thức' bắt buộc nhập nếu là nhân viên có trạng thái làm việc bình thường</value>
+  </data>
+  <data name="HREM_Import_153" xml:space="preserve">
+    <value>Dòng $ : 'Ngày bắt đầu làm việc' bắt buộc nhập nếu trạng thái nhân viên là Làm việc bình thường.</value>
+  </data>
+  <data name="BSTD01_003" xml:space="preserve">
+    <value>'Cự ly di chuyển' bắt buộc nhập.</value>
+  </data>
+  <data name="BSTD01_004" xml:space="preserve">
+    <value>'Cự ly di chuyển' phải lớn hơn 0.</value>
+  </data>
+  <data name="BSPP_Import_001" xml:space="preserve">
+    <value>Kỳ lương '$' đã khóa, không thể chỉnh sửa (xóa) thông tin giá xăng!</value>
+  </data>
+  <data name="BSPP_Import_002" xml:space="preserve">
+    <value>Xóa thành công thông tin giá xăng kỳ lương '$'.</value>
+  </data>
+  <data name="HRLA00ViewHistoryAnualLeave_001" xml:space="preserve">
+    <value>Nhân viên '$' không có thông tin lịch sử cấp phép.</value>
+  </data>
+  <data name="HRLA00ViewHistoryAnualLeave_002" xml:space="preserve">
+    <value>Không có dữ liệu được chọn.</value>
+  </data>
+  <data name="BSTD_Import_03" xml:space="preserve">
+    <value>'Nhân viên mã '$' với kỳ lương '$' đã được xóa.'</value>
+  </data>
+  <data name="MSPA00_051" xml:space="preserve">
+    <value>Số ngày chuyển tối đa (Trực tiếp)' không được nhập 0.</value>
+  </data>
+  <data name="Planning053" xml:space="preserve">
+    <value>Dòng $: Nhân viên không được là nam giới.</value>
+  </data>
+  <data name="Planning054" xml:space="preserve">
+    <value>Mã nhân viên $:  Nhân viên không phải là nhân viên đi ca nên không thể lập kế hoạch được</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_010" xml:space="preserve">
+    <value>'Giờ vào' phải lớn hơn 'Giờ ra'.</value>
+  </data>
+  <data name="MSWA01Dto_Detail_010" xml:space="preserve">
+    <value>Dòng $: 'Giờ ra' phải lớn hơn 'Giờ vào'.</value>
+  </data>
+  <data name="CMN070" xml:space="preserve">
+    <value>Chưa có dòng nào được thay đổi.</value>
+  </data>
+  <data name="ATTS01_020" xml:space="preserve">
+    <value>Giờ vào và giờ ra phải khác nhau</value>
+  </data>
+  <data name="HREM_Import_Salary_019" xml:space="preserve">
+    <value>Dòng $: Không thể import lương cho nhân viên này vì không được thiết lập trả lương hoặc ngày nghĩ việc nhỏ hơn ngày này.</value>
+  </data>
+  <data name="Planning056" xml:space="preserve">
+    <value>Dòng $:  Không lập kế hoạch nghỉ vào ngày nghỉ.</value>
+  </data>
+  <data name="MSSP_Import_014" xml:space="preserve">
+    <value>Dòng $: Số ngày phải lớn hơn 0 và nhỏ hơn hoặc bằng 31.</value>
+  </data>
+  <data name="MSSP_Import_015" xml:space="preserve">
+    <value>Dòng $: Ngày bắt đầu của kỳ lương phải lớn hơn ngày kết thúc của kỳ lương trước.</value>
+  </data>
+  <data name="MSSP_Import_016" xml:space="preserve">
+    <value>Dòng $: Ngày bắt đầu phải nhỏ hơn ngày kết thúc.</value>
+  </data>
+  <data name="ATAE_Import_016" xml:space="preserve">
+    <value>Dòng $: Giờ vào và Giờ ra của Ca không chính xác.</value>
+  </data>
+  <data name="ATAE_Import_017" xml:space="preserve">
+    <value>Dòng $: Mã Lý do nghỉ không chính xác.</value>
+  </data>
+  <data name="ATAE_Import_018" xml:space="preserve">
+    <value>Dòng $: Ngày nghỉ phép phải bằng 0.5 hoặc 1.</value>
+  </data>
+  <data name="ATAE_Import_019" xml:space="preserve">
+    <value>Dòng $: Giờ vào và Giờ ra bắt buộc nhập.</value>
+  </data>
+  <data name="ATAE_Import_020" xml:space="preserve">
+    <value>Dòng $: Số tiền chỉ được nhập tối đa 16 ký tự.</value>
+  </data>
+  <data name="MSWA01Dto_008" xml:space="preserve">
+    <value>Mã hình thức trả lương $ đang được sử dụng, không thể sửa đổi trạng thái thànhh vô hiệu.</value>
+  </data>
+  <data name="MSWA01Dto_009" xml:space="preserve">
+    <value>Không tìm thấy dòng dữ liệu.</value>
+  </data>
+  <data name="MSDO01_003" xml:space="preserve">
+    <value>Không tìm thấy dòng dữ liệu.</value>
+  </data>
+  <data name="MSDO01_004" xml:space="preserve">
+    <value>Mã ký túc xá '$' đang được sử dụng, không thể sửa đổi/xóa.</value>
+  </data>
+  <data name="MSBR01_003" xml:space="preserve">
+    <value>Không tìm thấy dòng dữ liệu.</value>
+  </data>
+  <data name="MSBR01_004" xml:space="preserve">
+    <value>Mã tuyến xe búyt  '$' đang được sử dụng, không thể sửa đổi.</value>
+  </data>
+  <data name="HRWE_003" xml:space="preserve">
+    <value>'Từ ngày ' bắt buộc nhập.</value>
+  </data>
+  <data name="HREM_Import_Salary_020" xml:space="preserve">
+    <value>Dòng $ : Nhân viên đã nghỉ việc.</value>
+  </data>
+  <data name="HREM_UploadImage_01" xml:space="preserve">
+    <value>File ảnh upload lỗi : '$'</value>
+  </data>
+  <data name="HREM_UploadImage_02" xml:space="preserve">
+    <value>Mã nhân viên không tồn tại trong hệ thống : '$'</value>
+  </data>
+  <data name="HREM_Import_154" xml:space="preserve">
+    <value>Dòng $ : 'Loại lao động nhập không đúng định dạng.'</value>
+  </data>
+  <data name="MSWA01Dto_010" xml:space="preserve">
+    <value>Mã hình thức trả lương $ đang được sử dụng, không thể xóa</value>
+  </data>
+  <data name="HRWE_004" xml:space="preserve">
+    <value>‘Từ ngày’ phải lớn hơn ‘Ngày vào công ty’ làm việc.</value>
+  </data>
+  <data name="TSP_001" xml:space="preserve">
+    <value> Kỳ' bắt buộc nhập</value>
+  </data>
+  <data name="TSP_002" xml:space="preserve">
+    <value> Nhân viên' bắt buộc nhập.</value>
+  </data>
+  <data name="TSP_003" xml:space="preserve">
+    <value>Loại đối tượng ' bắt buộc nhập</value>
+  </data>
+  <data name="TSP_004" xml:space="preserve">
+    <value> Mã đối tượng ' bắt buộc nhập</value>
+  </data>
+  <data name="ATAE_Import_021" xml:space="preserve">
+    <value>Dòng $: Ngày làm việc bình thường , không thể chọn trạng thái làm việc là làm việc vào ngày nghỉ</value>
+  </data>
+  <data name="HREM_Import_155" xml:space="preserve">
+    <value>Dòng $ : 'Ngày vào công ty bắt buộc nhập.'</value>
+  </data>
+  <data name="ATTS03_017" xml:space="preserve">
+    <value>Giờ ra ngoài phải bé hơn giờ ca</value>
+  </data>
+  <data name="HRSA01_015" xml:space="preserve">
+    <value>Kì lương hiện tại đang khóa.</value>
+  </data>
+  <data name="Planning057" xml:space="preserve">
+    <value>Dòng $: Kế hoạch chưa được tạo.</value>
+  </data>
+  <data name="HREM01_038" xml:space="preserve">
+    <value>Nhân viên đã bị từ chối tuyển dụng!</value>
+  </data>
+  <data name="HREM_Import_156" xml:space="preserve">
+    <value>Nhân viên đã bị từ chối tuyển dụng!</value>
+  </data>
+  <data name="ATIO_Import_017" xml:space="preserve">
+    <value>Dòng $: 'Ngày giờ quét thẻ phải lớn hơn 'Ngày vào công ty' và nhỏ hơn 'Ngày thôi việc'.'</value>
+  </data>
+  <data name="MSSP_Import_017" xml:space="preserve">
+    <value>Dòng $: Số ngày phải nhỏ hơn hoặc bằng số ngày trong kỳ.</value>
+  </data>
+  <data name="MSSP_Import_018" xml:space="preserve">
+    <value>Dòng $: Ngày kết thúc của kỳ lương phải nhỏ hơn ngày bắt đầu của kỳ tiếp theo.</value>
+  </data>
+  <data name="MSPA_AL_007" xml:space="preserve">
+    <value>'Days' phải nhỏ hơn 366.</value>
+  </data>
+  <data name="BSTD01_005" xml:space="preserve">
+    <value>Kỳ lương này đã bị khóa.</value>
+  </data>
+  <data name="BSTD01_006" xml:space="preserve">
+    <value>'Period' phải lớn hơn ngày bắt đầu làm việc của nhân viên.</value>
+  </data>
+  <data name="BSTD01_007" xml:space="preserve">
+    <value>Kỳ lương của nhân viên đã bị khóa.</value>
+  </data>
+  <data name="CMN071" xml:space="preserve">
+    <value>Không Tìm Thấy File.</value>
+  </data>
+  <data name="Planning055" xml:space="preserve">
+    <value>Mã nhân viên ' $ '  : Nhân viên đã thôi việc hoặc chưa đi làm '.</value>
+  </data>
+  <data name="CMN072" xml:space="preserve">
+    <value>Không được nhập ký tự đặc biệt.</value>
+  </data>
+  <data name="HRMR01_018" xml:space="preserve">
+    <value>Ngày sinh phải nhỏ hơn ngày bắt đầu chế độ hậu sản và lớn hơn ngày bắt đầu chế độ nghỉ sản </value>
+  </data>
+  <data name="HREM01_041" xml:space="preserve">
+    <value>Email' không đúng định dạng</value>
+  </data>
+  <data name="CMN073" xml:space="preserve">
+    <value>Dữ liệu đã bị quá hạn.</value>
+  </data>
+  <data name="ATAE01_012" xml:space="preserve">
+    <value>Không lập kế hoạch nghỉ vào ngày nghỉ</value>
+  </data>
+  <data name="HRRA01_002" xml:space="preserve">
+    <value>Ngày di chuyển không được để trống</value>
+  </data>
+  <data name="MSPA_TimeRoundRow_001" xml:space="preserve">
+    <value>Dòng $ từ tab [Thiết lập làm tròn] :  'Loại' không được để trống.</value>
+  </data>
+  <data name="MSPA_TimeRoundRow_002" xml:space="preserve">
+    <value>Dòng $ từ tab [Thiết lập làm tròn] :  'Từ Giờ' phải lớn hơn 0.</value>
+  </data>
+  <data name="MSPA_TimeRoundRow_003" xml:space="preserve">
+    <value>Dòng $ từ tab [Thiết lập làm tròn] :  'Đến Giờ' phải lớn hơn 0.</value>
+  </data>
+  <data name="MSPA_TimeRoundRow_004" xml:space="preserve">
+    <value>Dòng $ từ tab [Thiết lập làm tròn] :  'Đến Giờ' phải lớn hơn 'Từ Giờ'.</value>
+  </data>
+  <data name="MSPA_TimeRound_001" xml:space="preserve">
+    <value>'Loại' không được để trống.</value>
+  </data>
+  <data name="MSPA_TimeRound_002" xml:space="preserve">
+    <value>'Từ Giờ' phải lớn hơn 0.</value>
+  </data>
+  <data name="MSPA_TimeRound_003" xml:space="preserve">
+    <value>'Đến Giờ' phải lớn hơn 0.</value>
+  </data>
+  <data name="MSPA_TimeRound_004" xml:space="preserve">
+    <value>'Đến Giờ' phải lớn hơn 'Từ Giờ'.</value>
+  </data>
+  <data name="MSPA_TimeRoundRow_005" xml:space="preserve">
+    <value>Dòng $ từ tab [Thiết lập làm tròn] :  Khoảng thời gian này đã được sử dụng.</value>
+  </data>
+  <data name="MSPA_TimeRoundRow_006" xml:space="preserve">
+    <value>Dòng $ từ tab [Thiết lập làm tròn] : Giá trị làm tròn phải lớn hơn 0.</value>
+  </data>
+  <data name="MSPA_TimeRound_005" xml:space="preserve">
+    <value>Khoảng thời gian này đã được thiết lập.</value>
+  </data>
+  <data name="MSPA_TimeRound_006" xml:space="preserve">
+    <value>Giá trị làm tròn phải lớn hơn 0.</value>
+  </data>
+  <data name="HREM_Import_157" xml:space="preserve">
+    <value>Dòng $ : 'Chuyên môn chỉ được nhập tối đa 20 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_158" xml:space="preserve">
+    <value>Dòng $ : 'Số người phụ thuộc chỉ được nhập ký tự số.'</value>
+  </data>
+  <data name="HREM_Import_159" xml:space="preserve">
+    <value>Dòng $ : 'Nơi cấp CMND chỉ được nhâp tối đa 30 ký tự.'</value>
+  </data>
+  <data name="HREM_Import_160" xml:space="preserve">
+    <value>Dòng $ : 'Năm sinh không hợp lệ.'</value>
+  </data>
+  <data name="HREM_Import_161" xml:space="preserve">
+    <value>Dòng $ : 'Số CMND nhập sai định dạng.'</value>
+  </data>
+  <data name="HREM_Import_162" xml:space="preserve">
+    <value>Dòng $ : 'Nhân viên làm việc bình thường không được nhập ngày thôi việc.'</value>
+  </data>
+  <data name="HREM_Import_163" xml:space="preserve">
+    <value>Dòng $ : 'Nhân viên thử việc không được nhập ngày làm việc chính thức.'</value>
+  </data>
+  <data name="Planning058" xml:space="preserve">
+    <value>Dòng $: Từ ngày phải lớn hơn ngày vào làm của nhân viên</value>
+  </data>
+  <data name="ATIO_Import_018" xml:space="preserve">
+    <value>Dòng $ : ' Vị trí chỉ được nhập tối đa 30 ký tự.'</value>
+  </data>
+  <data name="ATIE_Import_001" xml:space="preserve">
+    <value>Dòng $: 'Dữ liệu lỗi' phải tồn tại.</value>
+  </data>
+  <data name="HRSA_Import_Allowance_001" xml:space="preserve">
+    <value>Dòng $: 'Mã nhân viên bắt buộc nhập.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_004" xml:space="preserve">
+    <value>Dòng $: 'Kỳ lương áp dụng bắt buộc nhập.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_005" xml:space="preserve">
+    <value>Dòng $: 'Kỳ lương áp dụng không đúng định dạng  .'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_015" xml:space="preserve">
+    <value>Dòng $ : 'Mã nhân viên không tồn tại '</value>
+  </data>
+  <data name="HRSA_Import_Allowance_020" xml:space="preserve">
+    <value>Dòng$: ''Không Thể Import Kỳ Lương Đã Khóa"</value>
+  </data>
+  <data name="HRSA_Import_Allowance_021" xml:space="preserve">
+    <value>Dòng $: 'Mẵ trợ cấp bắt buộc nhập.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_022" xml:space="preserve">
+    <value>Dòng $: 'Mã trợ cấp phải tồn tại.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_023" xml:space="preserve">
+    <value>Dòng $: 'Số tiền bắt buột nhập.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_024" xml:space="preserve">
+    <value>Dòng $: 'Số tiền không đúng định dạng.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_025" xml:space="preserve">
+    <value>Dòng $: 'Số tiền tối đa 10 ký tự.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_030" xml:space="preserve">
+    <value>Dòng $ : 'Nhân viên chưa thiết lập lương.'</value>
+  </data>
+  <data name="PRTS00_Import_001" xml:space="preserve">
+    <value>Dòng $ : 'Số ngày chấm công không hợp lệ.'</value>
+  </data>
+  <data name="PRTS00_Import_002" xml:space="preserve">
+    <value>Dòng $ : 'Số ngày làm việc không hợp lệ.'</value>
+  </data>
+  <data name="PRTS00_Import_003" xml:space="preserve">
+    <value>Dòng $ : 'Số ngày cuối tuần không hợp lệ.'</value>
+  </data>
+  <data name="PRTS00_Import_004" xml:space="preserve">
+    <value>Dòng $ : 'Số ngày hưởng lễ /nghỉ công ty không hợp lệ.'</value>
+  </data>
+  <data name="PRTS00_Import_005" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ làm việc' đã nhập sai định dạng.</value>
+  </data>
+  <data name="PRTS00_Import_006" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ làm việc'  lớn hơn tổng số giờ làm việc quy định trong tháng.</value>
+  </data>
+  <data name="PRTS00_Import_007" xml:space="preserve">
+    <value>Dòng $: 'Số ngày tăng ca trước ca' không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_008" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ  tăng ca trước ca' đã nhập sai định dạng.</value>
+  </data>
+  <data name="PRTS00_Import_009" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ  tăng ca trước ca'  lớn hơn tổng số giờ làm việc quy định trong tháng.</value>
+  </data>
+  <data name="PRTS00_Import_010" xml:space="preserve">
+    <value>Dòng $: ' Số ngày  tăng ca sau ca'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_011" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ  tăng ca sau ca' đã nhập sai định dạng.</value>
+  </data>
+  <data name="PRTS00_Import_012" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ  tăng ca sau ca'  lớn hơn tổng số giờ làm việc quy định trong tháng.</value>
+  </data>
+  <data name="PRTS00_Import_013" xml:space="preserve">
+    <value>Dòng $: 'Số ngày  làm đêm'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_014" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ  làm đêm' đã nhập sai định dạng</value>
+  </data>
+  <data name="PRTS00_Import_015" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ  làm đêm'  lớn hơn tổng số giờ làm việc quy định trong tháng.</value>
+  </data>
+  <data name="PRTS00_Import_016" xml:space="preserve">
+    <value>Dòng $: 'Số ngày  tăng ca đêm'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_017" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ  tăng ca đêm' đã nhập sai định dạng</value>
+  </data>
+  <data name="PRTS00_Import_018" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ tăng ca đêm'  lớn hơn tổng số giờ làm việc quy định trong tháng.</value>
+  </data>
+  <data name="PRTS00_Import_019" xml:space="preserve">
+    <value>Dòng $: 'Số ngày  tăng ca cuối tuần'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_020" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ  tăng ca cuối tuần' đã nhập sai định dạng</value>
+  </data>
+  <data name="PRTS00_Import_021" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ tăng ca cuối tuần'  lớn hơn tổng số giờ làm việc quy định trong tháng.</value>
+  </data>
+  <data name="PRTS00_Import_022" xml:space="preserve">
+    <value>Dòng $: 'Số ngày  tăng ca đêm cuối tuần'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_023" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ  tăng ca đêm cuối tuần' đã nhập sai định dạng</value>
+  </data>
+  <data name="PRTS00_Import_024" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ tăng ca đêm cuối tuần'  lớn hơn tổng số giờ làm việc quy định trong tháng.</value>
+  </data>
+  <data name="PRTS00_Import_025" xml:space="preserve">
+    <value>Dòng $: 'Số ngày tăng ca ngày nghỉ công ty'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_026" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ  tăng ca ngày nghỉ công ty' đã nhập sai định dạng</value>
+  </data>
+  <data name="PRTS00_Import_027" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ tăng ca ngày nghỉ công ty'  lớn hơn tổng số giờ làm việc quy định trong tháng.</value>
+  </data>
+  <data name="PRTS00_Import_028" xml:space="preserve">
+    <value>Dòng $: 'Số ngày tăng ca đêm ngày nghỉ công ty'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_029" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ  tăng ca  đêm ngày nghỉ công ty' đã nhập sai định dạng</value>
+  </data>
+  <data name="PRTS00_Import_030" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ tăng ca  đêm ngày nghỉ công ty'  lớn hơn tổng số giờ làm việc quy định trong tháng.</value>
+  </data>
+  <data name="PRTS00_Import_031" xml:space="preserve">
+    <value>Dòng $: 'Số ngày tăng ca  ngày nghỉ lễ'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_032" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ  tăng ca  ngày nghỉ lễ' đã nhập sai định dạng</value>
+  </data>
+  <data name="PRTS00_Import_033" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ tăng ca  ngày nghỉ lễ'  lớn hơn tổng số giờ làm việc quy định trong tháng.</value>
+  </data>
+  <data name="PRTS00_Import_034" xml:space="preserve">
+    <value>Dòng $: 'Số ngày tăng ca đêm ngày nghỉ lễ'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_035" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ  tăng ca  đêm ngày nghỉ lễ' đã nhập sai định dạng</value>
+  </data>
+  <data name="PRTS00_Import_036" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ tăng ca  đêm ngày nghỉ lễ'  lớn hơn tổng số giờ làm việc quy định trong tháng.</value>
+  </data>
+  <data name="PRTS00_Import_037" xml:space="preserve">
+    <value>Dòng $: 'Số lần đi trễ'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_038" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ  đi trễ' đã nhập sai định dạng</value>
+  </data>
+  <data name="PRTS00_Import_039" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ đi trễ'  lớn hơn tổng số giờ làm việc quy định trong tháng.</value>
+  </data>
+  <data name="PRTS00_Import_040" xml:space="preserve">
+    <value>Dòng $: 'Số lần về sớm'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_041" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ  về sớm' đã nhập sai định dạng</value>
+  </data>
+  <data name="PRTS00_Import_042" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ về sớm'  lớn hơn tổng số giờ làm việc quy định trong tháng.</value>
+  </data>
+  <data name="PRTS00_Import_043" xml:space="preserve">
+    <value>Dòng $: 'Số lần ra ngoài'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_044" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ ra ngoài' đã nhập sai định dạng</value>
+  </data>
+  <data name="PRTS00_Import_045" xml:space="preserve">
+    <value>Dòng $: 'Tổng số giờ ra ngoài'  lớn hơn tổng số giờ làm việc quy định trong tháng.</value>
+  </data>
+  <data name="PRTS00_Import_046" xml:space="preserve">
+    <value>Dòng $:  'Số  ngày vắng mặt'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_047" xml:space="preserve">
+    <value>Dòng $:  'Số ngày nghỉ không hưởng lương'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_048" xml:space="preserve">
+    <value>Dòng $:  'Số ngày nghỉ có hưởng lương'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_049" xml:space="preserve">
+    <value>Dòng $:  'Số ngày nghỉ khám thai'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_050" xml:space="preserve">
+    <value>Dòng $:  'Số ngày nghỉ thai sản'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_051" xml:space="preserve">
+    <value>Dòng $:  'Số ngày nghỉ không lương được duyệt'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_052" xml:space="preserve">
+    <value>Dòng $:  'Số ngày nghỉ không lương không  được duyệt'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_053" xml:space="preserve">
+    <value>Dòng $:  'Số ngày nghỉ bù'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_054" xml:space="preserve">
+    <value>Dòng $:  'Số ngày nghỉ phép'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_055" xml:space="preserve">
+    <value>Dòng $:  'Số ngày nghỉ đặc biệt'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_056" xml:space="preserve">
+    <value>Dòng $:  'Số ngày đăng ký ký túc xá'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_057" xml:space="preserve">
+    <value>Dòng $:  'Số ngày đăng ký xe buýt'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_058" xml:space="preserve">
+    <value>Dòng $:  'Số lần hưởng trợ cấp bữa ăn tăng ca'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_059" xml:space="preserve">
+    <value>Dòng $:  'Số lần hưởng trợ cấp bữa ăn khi đi công tác'không hợp lệ.</value>
+  </data>
+  <data name="PRTS00_Import_060" xml:space="preserve">
+    <value>Dòng $:  'Số lần nghỉ trước bữa  ăn'không hợp lệ.</value>
+  </data>
+  <data name="HRSA_Import_Allowance_026" xml:space="preserve">
+    <value>Dòng $ :Trùng dữ liệu trong file import. Xin hãy kiểm tra lại mã nhân viên , kỳ áp dụng và mã trợ cấp.</value>
+  </data>
+  <data name="HREM_Import_Salary_021" xml:space="preserve">
+    <value>Dòng $ :Hình thức trả lương chỉ được nhập tối đa 10 ký tự.</value>
+  </data>
+  <data name="Planning060" xml:space="preserve">
+    <value>Dòng $ :Ghi chú chỉ được nhập tối đa 1000 ký tự.</value>
+  </data>
+  <data name="PRTS00_Import_061" xml:space="preserve">
+    <value>Dòng $:  'Nhân viên đã thôi việc hoặc chưa đi làm '.</value>
+  </data>
+  <data name="HREM01_042" xml:space="preserve">
+    <value>'Mã nhân viên' có ký tự đặc biệt</value>
+  </data>
+  <data name="HREM_Import_164" xml:space="preserve">
+    <value>Dòng $ : 'Mã nhân viên phải không chứa ký tự đặc biệt.'</value>
+  </data>
+  <data name="HROT01_006" xml:space="preserve">
+    <value>'Nhân viên' phải là nữ.</value>
+  </data>
+  <data name="MSAE01_003" xml:space="preserve">
+    <value>'Mã  nhóm' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSAL01_004" xml:space="preserve">
+    <value>'Mã trợ cấp' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSBR01_005" xml:space="preserve">
+    <value>'Mã tuyến xe buýt' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSCR01_003" xml:space="preserve">
+    <value>'Mã chức nghiệp' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSDD01_004" xml:space="preserve">
+    <value>'Mã giảm trừ' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSDE01_004" xml:space="preserve">
+    <value>'Mã  phòng ban' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSDO01_005" xml:space="preserve">
+    <value>'Mã ký túc xá' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSFM01_004" xml:space="preserve">
+    <value>'Mã máy chấm công' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSHP01_003" xml:space="preserve">
+    <value>'Mã đơn vị khám chữa bệnh' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSIR01_003" xml:space="preserve">
+    <value>'Mã đơn vị' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSIT01_007" xml:space="preserve">
+    <value>'Mã định mức' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSLC01_008" xml:space="preserve">
+    <value>'Mã phân loại nghỉ' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSLE01_003" xml:space="preserve">
+    <value>'Mã cấp độ' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSOF01_004" xml:space="preserve">
+    <value>'Mã  văn phòng' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSOP01_004" xml:space="preserve">
+    <value>'Mã  công đoạn' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSPO01_004" xml:space="preserve">
+    <value>'Mã chức vụ' chứa ký tự đặc biệt</value>
+  </data>
+  <data name="MSPR01_003" xml:space="preserve">
+    <value>'Mã dự án' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSRE01_004" xml:space="preserve">
+    <value>'Mã  lý do' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSRT01_004" xml:space="preserve">
+    <value>'Mã  chuyền' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSSE01_004" xml:space="preserve">
+    <value>'Mã  bộ phận' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSSK01_003" xml:space="preserve">
+    <value>'Mã kỹ năng' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSTE01_004" xml:space="preserve">
+    <value>'Mã  tổ' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSUG01_003" xml:space="preserve">
+    <value>'Mã nhóm' chứa ký tự đặc biệt</value>
+  </data>
+  <data name="MSUR01_008" xml:space="preserve">
+    <value>'Mã người dùng' chứa ký tự đặc biệt</value>
+  </data>
+  <data name="HREM_Import_165" xml:space="preserve">
+    <value>Dòng $ : Nhân viên vẫn đang làm việc, không thể nhập ngày thôi việc.</value>
+  </data>
+  <data name="Planning062" xml:space="preserve">
+    <value>Dòng $ : Ngày bắt đầu nghỉ thai sản phải lớn hơn ngày sinh của bạn.</value>
+  </data>
+  <data name="MSWA01_003" xml:space="preserve">
+    <value>'Mã hình thức trả lương' chứa ký tự đặc biệt.</value>
+  </data>
+  <data name="MSSP_Import_019" xml:space="preserve">
+    <value>Dòng $: Trong file import, Ngày bắt đầu của kỳ lương phải lớn hơn ngày kết thúc của kỳ lương trước.</value>
+  </data>
+  <data name="MSSP_Import_020" xml:space="preserve">
+    <value>Dòng $: Trong file import, Ngày kết thúc của kỳ lương phải nhỏ hơn ngày bắt đầu của kỳ tiếp theo.</value>
+  </data>
+  <data name="ATSD01_009" xml:space="preserve">
+    <value>Nhân viên $ :  'Đã có kế hoạch nghỉ thai sản trong khoảng thời gian lập kế hoạch '.</value>
+  </data>
+  <data name="Planning061" xml:space="preserve">
+    <value>Mã nhân viên ' $ ' :  'Nhân viên đã có kế hoạch nghỉ thai sản trong khoảng thời gian lập kế hoạch '.</value>
+  </data>
+  <data name="ATLS01_011" xml:space="preserve">
+    <value>'Ngày bắt đầu' phải lớn hơn 'Ngày vào công ty'.</value>
+  </data>
+  <data name="ATLS01_012" xml:space="preserve">
+    <value>'Ngày kết thúc' phải lớn hơn 'Ngày vào công ty'.</value>
+  </data>
+  <data name="ATLS01_013" xml:space="preserve">
+    <value>'Ngày bắt đầu' phải nhỏ hơn 'Ngày nghỉ việc'.</value>
+  </data>
+  <data name="ATLS01_014" xml:space="preserve">
+    <value>'Ngày kết thúc' phải nhỏ hơn 'Ngày nghỉ việc'.</value>
+  </data>
+  <data name="HRCT00_Import_001" xml:space="preserve">
+    <value>Dòng $ : 'Employee ID must be fill in.'</value>
+  </data>
+  <data name="HRCT00_Import_002" xml:space="preserve">
+    <value>Dòng $ : 'Employee ID not exist in data base'</value>
+  </data>
+  <data name="HRCT00_Import_003" xml:space="preserve">
+    <value>Dòng $ : 'Contract Type must be fill in'</value>
+  </data>
+  <data name="HRCT00_Import_004" xml:space="preserve">
+    <value>Dòng $ : 'Contract Type incorrect format'</value>
+  </data>
+  <data name="HRCT00_Import_005" xml:space="preserve">
+    <value>Dòng $ : 'Contract No must be fill in'</value>
+  </data>
+  <data name="HRCT00_Import_006" xml:space="preserve">
+    <value>Dòng $ : 'Contract Date must be fill in '</value>
+  </data>
+  <data name="HRCT00_Import_007" xml:space="preserve">
+    <value>Dòng $ : 'Contract Date in correct fomat.'</value>
+  </data>
+  <data name="HRCT00_Import_008" xml:space="preserve">
+    <value>Dòng $ : Contract Salary must be fill in.'</value>
+  </data>
+  <data name="HRCT00_Import_009" xml:space="preserve">
+    <value>Dòng $ : 'Contract Salary incorrect format'</value>
+  </data>
+  <data name="HRCT00_Import_010" xml:space="preserve">
+    <value>Dòng $ : 'Working maxlength is 200 symbol.'</value>
+  </data>
+  <data name="HRCT00_Import_011" xml:space="preserve">
+    <value>Dòng $ : 'Working must be fill in.'</value>
+  </data>
+  <data name="HRCT00_Import_012" xml:space="preserve">
+    <value>Dòng $ : 'Contract Signer max length is 50 symbol.'</value>
+  </data>
+  <data name="HRCT00_Import_013" xml:space="preserve">
+    <value>Dòng $ : 'Contract Signer must be fill in.'</value>
+  </data>
+  <data name="HRCT00_Import_014" xml:space="preserve">
+    <value>Dòng $ : 'Company Name max length 50 symbol.'</value>
+  </data>
+  <data name="HRCT00_Import_015" xml:space="preserve">
+    <value>Dòng $ : 'Company Name must be fill in.'</value>
+  </data>
+  <data name="HRCT00_Import_016" xml:space="preserve">
+    <value>Dòng $ : 'Employee Name max length is 50  symbol.'</value>
+  </data>
+  <data name="HRCT00_Import_017" xml:space="preserve">
+    <value>Dòng $ : 'Employee Name must be fill in.'</value>
+  </data>
+  <data name="HRCT00_Import_018" xml:space="preserve">
+    <value>Dòng $ : ' If Contract Type is Pramanent ,Valid From Date not fill in'</value>
+  </data>
+  <data name="HRCT00_Import_019" xml:space="preserve">
+    <value>Dòng $ : ' If Contract Type is Pramanent ,Valid To Date not fill in'</value>
+  </data>
+  <data name="HRCT00_Import_020" xml:space="preserve">
+    <value>Dòng $ : ' if Contract Type is Limitted/Probation/Seasonal contract,  Valid From Date must be fill in '</value>
+  </data>
+  <data name="HRCT00_Import_021" xml:space="preserve">
+    <value>Dòng $ : ' if Contract Type is Limitted/Probation/Seasonal contract,  Valid To Date must be fill in '</value>
+  </data>
+  <data name="HRCT00_Import_022" xml:space="preserve">
+    <value>Dòng $ : ' Valid From Date incorrect format '</value>
+  </data>
+  <data name="HRCT00_Import_023" xml:space="preserve">
+    <value>Dòng $ : ' Valid To Date incorrect format '</value>
+  </data>
+  <data name="HRCT00_Import_024" xml:space="preserve">
+    <value>Dòng $ : 'Valid From Date must be greater Valid To Date</value>
+  </data>
+  <data name="HRCT00_Import_025" xml:space="preserve">
+    <value>Dòng $ : 'If Probation is inclued, Probation From Date must be fill in'</value>
+  </data>
+  <data name="HRCT00_Import_026" xml:space="preserve">
+    <value>Dòng $ :  Probation From Date incorrect format</value>
+  </data>
+  <data name="HRCT00_Import_027" xml:space="preserve">
+    <value>Dòng $ : 'If Probation is inclued, Probation To Date must be fill in'</value>
+  </data>
+  <data name="HRCT00_Import_028" xml:space="preserve">
+    <value>Dòng $ :  Probation To Date incorrect format</value>
+  </data>
+  <data name="HRCT00_Import_029" xml:space="preserve">
+    <value>Dòng $ :  Probation From Date must be greater Probation To Date</value>
+  </data>
+  <data name="HRCT00_Import_030" xml:space="preserve">
+    <value>Dòng $ :  Pramanent Contract is exist.</value>
+  </data>
+  <data name="HRCT00_Import_031" xml:space="preserve">
+    <value>Dòng $ :  Last Contract in valid time.</value>
+  </data>
+  <data name="HRCT00_Import_032" xml:space="preserve">
+    <value>Dòng $ : Contract Type is not right with employee status</value>
+  </data>
+  <data name="HRCT00_Import_033" xml:space="preserve">
+    <value>Dòng $ :  Probation Contact just for Probation Employee.</value>
+  </data>
+  <data name="HRCT00_Import_034" xml:space="preserve">
+    <value>Dòng $ :  Contract No is exist</value>
+  </data>
+  <data name="HRCT00_Import_035" xml:space="preserve">
+    <value>Dòng $ :  Contact is exist</value>
+  </data>
+  <data name="HRCT00_Import_036" xml:space="preserve">
+    <value>Dòng $ : Postion of Signer max length is 50 symbol.</value>
+  </data>
+  <data name="HRCT00_Import_037" xml:space="preserve">
+    <value>Dòng $ :  ID/Passport of SignerNumber max length is 20 symbol</value>
+  </data>
+  <data name="HRCT00_Import_038" xml:space="preserve">
+    <value>Dòng $ :  ID/Passport of Signer Number must be number</value>
+  </data>
+  <data name="HRCT00_Import_039" xml:space="preserve">
+    <value>Dòng $ :  ID/Passport of Signer Issued Date incorrect format.</value>
+  </data>
+  <data name="HRCT00_Import_040" xml:space="preserve">
+    <value>Dòng $ :  ID/Passport of Signer Issued Place max length is 20 symbol.</value>
+  </data>
+  <data name="HRCT00_Import_041" xml:space="preserve">
+    <value>Dòng $ : Gender of Signer max length is 6 symbol</value>
+  </data>
+  <data name="HRCT00_Import_042" xml:space="preserve">
+    <value>Dòng $ :  Nationality of Signer max length is 20 symbol</value>
+  </data>
+  <data name="HRCT00_Import_043" xml:space="preserve">
+    <value>Dòng $ :  Company Address max length is 100 symbol</value>
+  </data>
+  <data name="HRCT00_Import_044" xml:space="preserve">
+    <value>Dòng $ :  Company Phone max length is 20 symbol</value>
+  </data>
+  <data name="HRCT00_Import_045" xml:space="preserve">
+    <value>Dòng $ :  Company Phone must be numberic</value>
+  </data>
+  <data name="HRCT00_Import_046" xml:space="preserve">
+    <value>Dòng $ :  Company Fax max length is 20 symbol</value>
+  </data>
+  <data name="HRCT00_Import_047" xml:space="preserve">
+    <value>Dòng $ : SI Percer Company incorrect format</value>
+  </data>
+  <data name="HRCT00_Import_048" xml:space="preserve">
+    <value>Dòng $ : HI Percer Company incorrect format</value>
+  </data>
+  <data name="HRCT00_Import_049" xml:space="preserve">
+    <value>Dòng $ : UI Percer Company incorrect format</value>
+  </data>
+  <data name="HRCT00_Import_050" xml:space="preserve">
+    <value>Dòng $ : Postion of Employee max length is 50 symbol.</value>
+  </data>
+  <data name="HRCT00_Import_051" xml:space="preserve">
+    <value>Dòng $ :  ID/Passport of Employee Number max length is 20 symbol</value>
+  </data>
+  <data name="HRCT00_Import_052" xml:space="preserve">
+    <value>Dòng $ :  ID/Passport of Employee Number must be number</value>
+  </data>
+  <data name="HRCT00_Import_053" xml:space="preserve">
+    <value>Dòng $ :  ID/Passport of Employee Issued Date incorrect format.</value>
+  </data>
+  <data name="HRCT00_Import_054" xml:space="preserve">
+    <value>Dòng $ :  ID/Passport of Employee Issued Place max length is 20 symbol.</value>
+  </data>
+  <data name="HRCT00_Import_055" xml:space="preserve">
+    <value>Dòng $ : Gender of Employee max length is 6 symbol</value>
+  </data>
+  <data name="HRCT00_Import_056" xml:space="preserve">
+    <value>Dòng $ :  Nationality of Employee max length is 20 symbol</value>
+  </data>
+  <data name="HRCT00_Import_057" xml:space="preserve">
+    <value>Dòng $ :  Employee Address max length is 100 symbol</value>
+  </data>
+  <data name="HRCT00_Import_058" xml:space="preserve">
+    <value>Dòng $ :  Employee Phone max length is 20 symbol</value>
+  </data>
+  <data name="HRCT00_Import_059" xml:space="preserve">
+    <value>Dòng $ :  Employee Phone must be numberic</value>
+  </data>
+  <data name="HRCT00_Import_060" xml:space="preserve">
+    <value>Dòng $ : SI Percer Employee incorrect format</value>
+  </data>
+  <data name="HRCT00_Import_061" xml:space="preserve">
+    <value>Dòng $ : HI Percer Employee incorrect format</value>
+  </data>
+  <data name="HRCT00_Import_062" xml:space="preserve">
+    <value>Dòng $ : UI Percer Employee incorrect format</value>
+  </data>
+  <data name="HRCT00_Import_063" xml:space="preserve">
+    <value>Dòng $ : UI Percer Employee incorrect format</value>
+  </data>
+  <data name="HRCT00_Import_064" xml:space="preserve">
+    <value>Dòng $ :  Date of Birth Employee incorrect format</value>
+  </data>
+  <data name="HRCT00_Import_065" xml:space="preserve">
+    <value>Dòng $ :  Do not edit Contract is exprised</value>
+  </data>
+  <data name="HRCT00_Import_066" xml:space="preserve">
+    <value>Dòng $ :  Data is douplidate in import file</value>
+  </data>
+  <data name="PRMP00_Deduction_009" xml:space="preserve">
+    <value>Dòng $ : 'Nhân viên chưa có dữ liệu chấm công tổng.'</value>
+  </data>
+  <data name="Login_006" xml:space="preserve">
+    <value>Tài khoản đã được đăng nhập ở máy: $</value>
+  </data>
+</root>

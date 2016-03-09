@@ -1,0 +1,82 @@
+﻿@model Nihongo.Models.MS_VocaCategoriesModels
+
+@{
+    ViewBag.Title = "Sàng lọc từ vựng tiếng Nhật - " + Model.VocaSetName1 + " - " + Model.Name1;
+}
+
+<input type="hidden" id="ale" value='@Url.Action("hoc-tu-vung", "Library", new { id = @ViewBag.CategoryID, urlDisplay = @ViewBag.CategoryUrlDisplay})' />
+<input type="hidden" id="av" value='@Url.Action("danh-muc", "Library", new { id = @ViewBag.CategoryID, urlDisplay = @ViewBag.CategoryUrlDisplay})' />
+<input type="hidden" id="uft" value='@CommonMethod.EncodeUrl("UpdateFastTestVoca")' />
+<input type="hidden" id="gft" value='@CommonMethod.EncodeUrl("GetFastTestVocas")' />
+<input type="hidden" id="vcd" value="@ViewBag.CategoryID"/>
+<input type="hidden" id="accessDenied" value="@Ivs.Core.Common.CommonData.DbReturnCode.AccessDenied"/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="sitemap">
+                @Html.ActionLink("Thư viện", "danh-sach", "Library")<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                @Html.ActionLink(Model.VocaSetName1, "bo-tu-vung", "Library", new { @id = Model.VocaSetID, @urlDisplay = Model.VocaSetUrlDisplay }, new { })<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                @Html.ActionLink(Model.Name1, "danh-muc", "Library", new { @id = Model.ID, @urlDisplay = Model.UrlDisplay }, new { })
+            </div>
+        </div>
+        <!-- /row of panels -->
+    </div>
+</div>
+
+<br />
+
+<div id="test-content">
+    <section class="container-fluid">
+        <div class="container container-pad" id="property-listings">
+            <section id="portfolio" class="page-section section appear clearfix">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="portfolio-items isotopeWrapper clearfix" id="3">
+                            </div>
+                        </div>
+                        <div class="container" id="content">
+                            <div class="row">
+                                <div id="flashCard">
+                                    @*<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                        <!-- Indicators -->
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                        </ol>
+                                        <!-- Wrapper for slides -->
+                                        <div class="carousel-inner" role="listbox" style="min-height: 500px;">
+                                            <div class="item active">
+                                                
+                                            </div>
+                                        </div>
+                                        <!-- Controls -->
+                                        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">
+                                                Previous</span> </a><a class="right carousel-control" href="#carousel-example-generic"
+                                                    role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
+                                                    </span><span class="sr-only">Next</span> </a>
+                                    </div>*@
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-primary navigator" id="btnNext">
+                                                Tiếp
+                                            </button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+</div>
+
+@*@Scripts.Render("~/bundles/isotope")*@
+<script src='@Scripts.Url("~/bundles/fts")' async> </script>
+@Html.Partial("_TestModalPartial")

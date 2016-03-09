@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Nihongo.Models.MS_UsersModels>
+
+<div class="table-responsive"  style=" height:200px; overflow:auto">
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <th class="text-center">
+                    Tên đăng nhập
+                </th>
+                <th class="text-center">
+                    Tên hiển thị
+                </th>
+                <th class="text-center">
+                    Trạng thái
+                </th>
+                <th class="text-center">
+                    Log time gần nhất
+                </th>
+            </tr>
+        </thead>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisplayName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoginStateDisplay)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.LastVisitedDate)
+                </td>
+            </tr>
+            }
+        }
+    </table>
+</div>

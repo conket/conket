@@ -1,0 +1,380 @@
+﻿@using CaptchaMvc.HtmlHelpers
+@model Nihongo.Models.MS_PaymentHistoriesModels
+@{
+    ViewBag.Title = "Thư viện từ vựng tiếng Nhật - Đăng ký bộ: " + ViewBag.VocaSetName1;
+}
+
+<header id="head" class="secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1>
+                    ĐĂNG KÝ</h1>
+            </div>
+        </div>
+    </div>
+</header>
+<br />
+<form id="paymentForm" method="post" action='@Href("~/Payment/Index/")@ViewBag.VocaSetID/@ViewBag.UrlDisplay'  accept-charset="UTF-8" >
+@Html.ValidationSummary(true)
+@Html.AntiForgeryToken()
+<section class="container-fluid">
+    <div class="container container-pad" id="property-listings">
+        <div class="row" id="panelIntro">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8 text-center">
+                <p class="text-info">
+                    <input type="hidden" id="VocaSetID" name="VocaSetID" value='@ViewBag.VocaSetID'/>
+                    <input type="hidden" id="VocaSetCode" name="VocaSetCode" value='@ViewBag.VocaSetCode'/>
+                    <strong>BẠN ĐANG CHỌN ĐĂNG KÝ CHO BỘ TỪ VỰNG: @ViewBag.VocaSetName1</strong></p>
+                <p class="text-info">
+                    <strong>SỐ TIỀN BẠN CẦN THANH TOÁN: @ViewBag.Fee.ToString(Ivs.Core.Common.CommonData.NumberFormat.N0)
+                        VNĐ</strong></p>
+                <hr />
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8 text-center">
+                <p class="text-info">
+                    <strong>ĐIỂM THƯỞNG: 10,000 VND = 1 <a href="#">ĐIỂM TÍCH LŨY</a></strong></p>
+                <hr />
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+        <div class="row" id='panelVoucher'>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <div id="error-message-process" class="mandatory">@ViewBag.ErrorMessage</div>
+                <div class="checkbox">
+                    <label>
+                        @*<input type="checkbox" id="chkVoucher">*@
+                        @Html.CheckBoxFor(ss => ss.HasVoucher)
+                        Mã giảm giá (nếu có)
+                    </label>
+                </div>
+                <div id="voucher" style="display: none">
+                    <div class="form-group">
+                        <label for="VoucherCode" class="control-label">
+                            Nhập mã giảm giá (nhập tối đa 5 lần):</label>
+                        @*<input type="hidden" id="VoucherID" name="VoucherID">*@
+                        @Html.HiddenFor(ss => ss.VoucherID)
+                        @*<input type="text" class="form-control" id="VoucherCode" name="VoucherCode" maxlength="30">*@
+                        @Html.TextBoxFor(ss => ss.VoucherCode, new { @class = "form-control", @maxlength="30" })
+                        <div id='voucherOk' class="glyphicon glyphicon-ok ok" aria-hidden="true" style="display: none">
+                        </div><div id='voucherError' class="glyphicon glyphicon-remove error" aria-hidden="true"
+                            style="display: none"></div><div id="voucherMessage" class="mandatory"></div>
+                    </div>
+                </div>
+                <div id="voucherValue" style="display: none">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <p class="text-info">
+                                    <strong>Giảm (%)</strong></p>
+                                @Html.TextBox("DecreasePercent", Ivs.Core.Common.CommonMethod.ParseDecimal(Model.DecreasePercent).ToString("N0"), new { @class = "form-control text-center", @readonly = "true" })
+                                @*<input type="text" class="form-control text-center" id="DecreasePercent" name="DecreasePercent"
+                                    readonly="true" />*@
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <p class="text-info">
+                                    <strong>Số tiền giảm (VNĐ)</strong>
+                                </p>
+                                @Html.TextBox("DecreaseFee", Ivs.Core.Common.CommonMethod.ParseDecimal(Model.DecreaseFee).ToString("N0"), new { @class = "form-control text-center", @readonly = "true" })
+                                @*<input type="text" class="form-control text-center" id="DecreaseFee" name="DecreaseFee"
+                                    readonly="true" />*@
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <p class="text-info">
+                                    <strong>Số tiền thanh toán còn lại (VNĐ)</strong></p>
+                                @Html.TextBox("RemainFee", Ivs.Core.Common.CommonMethod.ParseDecimal(Model.RemainFee).ToString("N0"), new { @class = "form-control text-center", @readonly = "true" })
+                                @*<input type="text" class="form-control text-center" id="RemainFee" name="RemainFee"
+                                    readonly="true" />*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+        <div class="row" id='panelInfo'>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <div id="info">
+                    <p class="text-info text-center">
+                        <strong>NHẬP THÔNG TIN CÁ NHÂN ĐỂ CHÚNG TÔI HỖ TRỢ BẠN TỐT NHẤT</strong></p>
+                    <div class="form-group">
+                        <label for="FullName" class="control-label">
+                            Họ tên:</label>
+                        <span class="mandatory">(*)</span>
+                        @*<input type="text" class="form-control" id="FullName" name="FullName" maxlength="50">*@
+                        @Html.TextBoxFor(ss => ss.FullName, new { @class = "form-control", @maxlength = "50" })
+                        @Html.ValidationMessageFor(model => model.FullName)
+                    </div>
+                    <div class="form-group">
+                        <label for="Phone" class="control-label">
+                            SĐT:</label>
+                        <span class="mandatory">(*)</span>
+                        @*<input type="text" class="form-control" id="Phone" name="Phone" maxlength="30">*@
+                        @Html.TextBoxFor(ss => ss.Phone, new { @class = "form-control", @maxlength = "20" })
+                        @Html.ValidationMessageFor(model => model.Phone)
+                    </div>
+                    <div class="form-group">
+                        <label for="Email" class="control-label">
+                            Email:</label>
+                        @*<input type="text" class="form-control" id="Email" name="Email" maxlength="30">*@
+                        @Html.TextBoxFor(ss => ss.Email, new { @class = "form-control", @maxlength = "100" })
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                    <hr />
+                </div>
+                <hr />
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+        <div class="row" id='panelPayment'>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <p class="text-info text-center">
+                        <strong>LỰA CHỌN HÌNH THỨC THANH TOÁN</strong></p>
+                <div class="form-group">
+                    <label for="PaymentMethod" class="control-label">
+                        Phương thức thanh toán:</label><br />
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(ss => ss.PaymentMethod, "1")
+                        @*<input type="radio" name="PaymentMethod" id="mobiphone" value="1" checked="checked">*@
+                        Mobiphone
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(ss => ss.PaymentMethod, "2")
+                        @*<input type="radio" name="PaymentMethod" id="viettel" value="2">*@
+                        Viettel
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(ss => ss.PaymentMethod, "3")
+                        @*<input type="radio" name="PaymentMethod" id="vinaphone" value="3">*@
+                        Vinaphone
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(ss => ss.PaymentMethod, "4")
+                        @*<input type="radio" name="PaymentMethod" id="transfer" value="4">*@
+                        Chuyển khoản
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(ss => ss.PaymentMethod, "5")
+                        @*<input type="radio" name="PaymentMethod" id="internetbanking" value="5">*@
+                        Internet Banking
+                    </label>
+                </div>
+                <div id="phonecard">
+                    <div class="form-group">
+                        <label for="CardCode" class="control-label">
+                            Mã số thẻ cào:</label>
+                        <span class="mandatory">(*)</span>
+                        @*<input type="text" class="form-control" id="CardCode" name="CardCode" maxlength="30">*@
+                        @Html.TextBoxFor(ss => ss.CardCode, new { @class = "form-control", @maxlength = "20" })
+                        @Html.ValidationMessageFor(model => model.CardCode)
+                    </div>
+                    <div class="form-group">
+                        <label for="CardSeri" class="control-label">
+                            Số Seri thẻ cào:</label>
+                        <span class="mandatory">(*)</span>
+                        @*<input type="text" class="form-control" id="CardSeri" name="CardSeri" maxlength="30">*@
+                        @Html.TextBoxFor(ss => ss.CardSeri, new { @class = "form-control", @maxlength = "20" })
+                        @Html.ValidationMessageFor(model => model.CardSeri)
+                    </div>
+                    <hr />
+                </div>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+        <div class="row" id='panelConfirm'>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    @Html.Captcha("Lấy mã khác", "Nhập mã hình ảnh mà bạn nhìn thấy ở trên:", 5)
+                    @Html.ValidationMessageFor(model => model.CaptchaInputText)
+                </div>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <div class="form-group text-right">
+                    <button type="button" id="btnAccept" class="btn btn-primary require-login">
+                        Đồng ý</button>
+                    <a href='@Href("~/Payment/Index/")@ViewBag.VocaSetID/@ViewBag.UrlDisplay' class="btn btn-default require-login" role="button">
+                                Nhập lại</a>
+                </div>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+    </div>
+</section>
+</form>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var voucherInputTime = 0;
+        if ('@Model.HasVoucher' == 'True') {
+            $('#voucher').show();
+            $('#voucherValue').show();
+
+            if (parseFloat('@Model.DecreasePercent') == 100 || parseFloat('@Model.RemainFee') == 0) {
+                $('#panelPayment').hide();
+            }
+            else {
+                $('#panelPayment').show();
+            }
+        }
+        else {
+            $('#voucher').hide();
+            $('#voucherValue').hide();
+        }
+
+
+
+        $('#btnAccept').on('click', function () {
+            if (valid()) {
+                $('#paymentForm').submit();
+            }
+        });
+
+        $('[name=PaymentMethod]').on('change', function () {
+            switch ($(this).val()) {
+                case "1":
+                    $('#phonecard').show();
+                    break;
+                case "2":
+                    $('#phonecard').show();
+                    break;
+                case "3":
+                    $('#phonecard').show();
+                    break;
+                case "4":
+                    $('#phonecard').hide();
+                    break;
+                case "5":
+                    $('#phonecard').hide();
+                    break;
+                default:
+            }
+        });
+
+        $('#HasVoucher').on('change', function () {
+            $('#voucherValue').hide();
+            $('#voucherOk').hide();
+            $('#voucherError').hide();
+            $('#VoucherID').val('');
+            $('#VoucherCode').val('');
+            $('#voucherMessage').html('');
+            if ($(this).is(':checked')) {
+                $('#voucher').show();
+                $('#VoucherCode').focus();
+            }
+            else {
+                $('#panelPayment').show();
+                $('#voucher').hide();
+            }
+        });
+
+        $('#VoucherCode').on('change', function () {
+
+            if ('@Session["UserName"]' == '') {
+                $('#modalLogin2').modal();
+                return false;
+            }
+            $('#voucherValue').hide();
+            $('#DecreasePercent').val('');
+            $('#DecreaseFee').val('');
+            $('#RemainFee').val('');
+            $('#VoucherID').val('');
+            $('#panelPayment').show();
+
+            if (voucherInputTime == 5) {
+                alert('Bạn đã nhập nhiều hơn số lần cho phép');
+                return;
+            }
+            voucherInputTime++;
+            if ($(this).val() != '') {
+                $.ajax({
+                    cache: true,
+                    type: "get",
+                    async: true,
+                    url: '@Href("~/Payment/CheckValidVoucher")',
+                    data: { "id": $(this).val(), "vocaSetCode": $('#VocaSetCode').val() },
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.returnCode == '@Ivs.Core.Common.CommonData.DbReturnCode.AccessDenied') {
+                            window.location.href = '@Href("~/Home/Index")';
+                        } else {
+                            if (result.isOK) {
+                                $('#voucherValue').show();
+                                $('#VoucherID').val(result.voucher.ID);
+                                $('#DecreasePercent').val(result.voucher.DecreasePercent);
+                                $('#DecreaseFee').val(result.voucher.DecreaseFee);
+                                $('#RemainFee').val(result.voucher.RemainFee);
+
+                                $('#voucherOk').show();
+                                $('#voucherError').hide();
+                                $('#voucherMessage').html("Mã giảm giá hợp lệ!");
+
+                                //check if remain = 0
+                                if (result.voucher.DecreasePercent == 100 || result.voucher.RemainFee == 0) {
+                                    $('#panelPayment').hide();
+                                }
+                                else {
+                                    $('#panelPayment').show();
+                                }
+                            }
+                            else {
+                                $('#voucherOk').hide();
+                                $('#voucherError').show();
+
+                                if (result.isUsed) {
+                                    $('#voucherMessage').html("Mã giảm giá đã được sử dụng!");
+                                }
+                                else {
+                                    $('#voucherMessage').html("Mã giảm giá không hợp lệ!");
+                                }
+                            }
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        console.log(xhr.responseText);
+                        return false;
+                    }
+                });
+            }
+        });
+    });
+
+    function valid() {
+        if ($('#CaptchaInputText') == '') {
+
+        }
+
+        return true;
+    }
+
+</script>

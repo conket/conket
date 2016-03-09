@@ -1,0 +1,2035 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ChangePass_001" xml:space="preserve">
+    <value>99-[Old Password] must be matched with login user's current password!</value>
+  </data>
+  <data name="ChangePass_002" xml:space="preserve">
+    <value>99-[New Password] must be fill in!</value>
+  </data>
+  <data name="ChangePass_003" xml:space="preserve">
+    <value>99-[New Password Confirm]  must be fill in!</value>
+  </data>
+  <data name="ChangePass_004" xml:space="preserve">
+    <value>99-[New Password] isn't matched with [Confirm Password].</value>
+  </data>
+  <data name="COM_MSG_ACCESS_DENIED" xml:space="preserve">
+    <value>99-Access deniable.</value>
+  </data>
+  <data name="COM_MSG_ACT_FAILED" xml:space="preserve">
+    <value>97-{0} failed.</value>
+  </data>
+  <data name="COM_MSG_ACT_SUCCESSFULLY" xml:space="preserve">
+    <value>97-{0} successfully.</value>
+  </data>
+  <data name="COM_MSG_ACT_SUCCESSFULLY_AND_ROWS" xml:space="preserve">
+    <value>97-{0} successfully: {1} Rows.</value>
+  </data>
+  <data name="COM_MSG_CANCEL_SUCCESSFULLY" xml:space="preserve">
+    <value>95-Cancel successfully.</value>
+  </data>
+  <data name="COM_MSG_CAN_NOT_PRINT" xml:space="preserve">
+    <value>98-Can't print over {0} times.</value>
+  </data>
+  <data name="COM_MSG_CONCURRENCY_VIOLATION" xml:space="preserve">
+    <value>99-It is out of date.</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_ACT" xml:space="preserve">
+    <value>96-Do you want to [{0}]?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_CANCEL" xml:space="preserve">
+    <value>96-Do you want to cancel?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_CLOSE" xml:space="preserve">
+    <value>96-Do you want to close this period?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_DELETE" xml:space="preserve">
+    <value>96-Do you want to delete?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_EXIT" xml:space="preserve">
+    <value>96-Information has been changed. Do you want to save before exit?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_LOCK" xml:space="preserve">
+    <value>96-Are you sure you want to lock this period?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_OPEN" xml:space="preserve">
+    <value>96-Do you want to open this period?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_PROCESS" xml:space="preserve">
+    <value>96-Are you sure you want to process?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_SAVE" xml:space="preserve">
+    <value>96-Do you want to save?</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_UNLOCK" xml:space="preserve">
+    <value>96-Are you sure you want to unlock this period?</value>
+  </data>
+  <data name="COM_MSG_CONNECTION_LOST" xml:space="preserve">
+    <value>99-Connection has been lost.</value>
+  </data>
+  <data name="COM_MSG_CURRENT_PERIOD_NOT_ENTRY_PRICE" xml:space="preserve">
+    <value>99-Period {0} wasn't inputed Unit Price yet.</value>
+  </data>
+  <data name="COM_MSG_DATA_BEING_USED" xml:space="preserve">
+    <value>99-Can't edit {0}, data being in used.</value>
+  </data>
+  <data name="COM_MSG_DATA_IN_OUT_NOT_FOUND" xml:space="preserve">
+    <value>99-No data input/output, you cannot close this period.</value>
+  </data>
+  <data name="COM_MSG_DATA_NOT_FOUND" xml:space="preserve">
+    <value>99-The data hasn't found.</value>
+  </data>
+  <data name="COM_MSG_DATA_OR_FILE_NOT_FOUND" xml:space="preserve">
+    <value>99-The [{0}] hasn't found.</value>
+  </data>
+  <data name="COM_MSG_DEADLOCK_FOUND" xml:space="preserve">
+    <value>99-The deadlock has Found.</value>
+  </data>
+  <data name="COM_MSG_DELETE_SUCCESSFULLY" xml:space="preserve">
+    <value>95-Delete successfully.</value>
+  </data>
+  <data name="COM_MSG_DUPPLICATE_KEY" xml:space="preserve">
+    <value>99-The data is already exist. Please input other!</value>
+  </data>
+  <data name="COM_MSG_EXISTED" xml:space="preserve">
+    <value>99-[{0}] is already exist.</value>
+  </data>
+  <data name="COM_MSG_EXPORT_SUCCESSFULLY1" xml:space="preserve">
+    <value>95-Export successfully!</value>
+  </data>
+  <data name="COM_MSG_FILE_BEING_USED" xml:space="preserve">
+    <value>99-Can't access the file [{0}], this file being in used by other process.</value>
+  </data>
+  <data name="COM_MSG_FOREIGN_KEY_NOT_EXIST" xml:space="preserve">
+    <value>99-Foreign key not exist.</value>
+  </data>
+  <data name="COM_MSG_FOREIGN_KEY_VIOLATION" xml:space="preserve">
+    <value>99-Can't be deleted, data being in use.</value>
+  </data>
+  <data name="COM_MSG_GENERAL_EXCEPTION" xml:space="preserve">
+    <value>99-System exception occurred.</value>
+  </data>
+  <data name="COM_MSG_GREATER_THAN" xml:space="preserve">
+    <value>99-[{0}] must be greater than [{1}]!</value>
+  </data>
+  <data name="COM_MSG_GREATER_THAN_OR_EQUAL" xml:space="preserve">
+    <value>99-[{0}] must be greater than or equal to [{1}]!</value>
+  </data>
+  <data name="COM_MSG_GRID_DETAIL_DUPPLICATED" xml:space="preserve">
+    <value>99-Shipping/Arriving items on grid {0} and grid {1} was dupplicated.</value>
+  </data>
+  <data name="COM_MSG_GRID_DETAIL_LINE_EXISTED" xml:space="preserve">
+    <value>99-Grid [{0}]: Line [{1}]: [{2}] has already been existed.</value>
+  </data>
+  <data name="COM_MSG_GRID_DETAIL_LINE_GREATER_THAN" xml:space="preserve">
+    <value>99-Grid {0}: Line {1} - [{2}] must be greater than [{3}]!</value>
+  </data>
+  <data name="COM_MSG_GRID_DETAIL_LINE_INVALID" xml:space="preserve">
+    <value>99-Grid {0}: Line {1} - {2} is invalid.</value>
+  </data>
+  <data name="COM_MSG_GRID_DETAIL_LINE_REQUIRED" xml:space="preserve">
+    <value>99-Grid {0}: Line {1} - {2} must be fill in!</value>
+  </data>
+  <data name="COM_MSG_GRID_DETAIL_REQUIRED" xml:space="preserve">
+    <value>99-Transaction list on grid {0} must be fill in!</value>
+  </data>
+  <data name="COM_MSG_GRID_INVENTORY_COUNTED_QTY_REQUIRED" xml:space="preserve">
+    <value>99-Line {0}: [{1}] must be fill in.</value>
+  </data>
+  <data name="COM_MSG_GRID_INVENTORY_DUPLICATED" xml:space="preserve">
+    <value>99-Duplicated item list.</value>
+  </data>
+  <data name="COM_MSG_GRID_INVENTORY_REQUIRED" xml:space="preserve">
+    <value>99-Item list must be fill in!</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_EXISTED" xml:space="preserve">
+    <value>99-Line [{0}]: [{1}] has already been existed.</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_GREATER_THAN" xml:space="preserve">
+    <value>99-Line {0}: [{1}] must be greater than [{2}]!</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_INVALID" xml:space="preserve">
+    <value>99-Line {0}: {1} is invalid.</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_REQUIRED" xml:space="preserve">
+    <value>99-Line {0}: {1} must be fill in!</value>
+  </data>
+  <data name="COM_MSG_GRID_RECORD_OF_TOTAL" xml:space="preserve">
+    <value>Record {0} of {1}</value>
+  </data>
+  <data name="COM_MSG_GRID_REQUIRED" xml:space="preserve">
+    <value>99-Transaction list must be fill in!</value>
+  </data>
+  <data name="COM_MSG_HAS_INVENTORY" xml:space="preserve">
+    <value>99-Item has inventory.</value>
+  </data>
+  <data name="COM_MSG_HAVING_CHANGE" xml:space="preserve">
+    <value>96-The information has been changed. Do you want to save before exiting?</value>
+  </data>
+  <data name="COM_MSG_HEADERGRID_DRAG" xml:space="preserve">
+    <value>Drag a column header here to group by that column</value>
+  </data>
+  <data name="COM_MSG_IMPORT_LINE_INVALID" xml:space="preserve">
+    <value>99-Line {0}: {1} column is invalid.</value>
+  </data>
+  <data name="COM_MSG_IMPORT_LINE_NOT_EXIST" xml:space="preserve">
+    <value>99-Line {0}: {1} column doesn't exist.</value>
+  </data>
+  <data name="COM_MSG_INSERT_SUCCESSFULLY" xml:space="preserve">
+    <value>95-Insert successfully!</value>
+  </data>
+  <data name="COM_MSG_INVALID_DATABASE" xml:space="preserve">
+    <value>99-Invalid Database.</value>
+  </data>
+  <data name="COM_MSG_INVALID_DATA_OR_ACTION" xml:space="preserve">
+    <value>99-Invalid {0}.</value>
+  </data>
+  <data name="COM_MSG_INVALID_EMAIL" xml:space="preserve">
+    <value>99-Invalid Email Address.</value>
+  </data>
+  <data name="COM_MSG_INVALID_HOST" xml:space="preserve">
+    <value>99-Invalid Host.</value>
+  </data>
+  <data name="COM_MSG_LESS_THAN" xml:space="preserve">
+    <value>99-[{0}] must be less than [{1}]!</value>
+  </data>
+  <data name="COM_MSG_LESS_THAN_OR_EQUAL" xml:space="preserve">
+    <value>99-[{0}] must be less than or equal to [{1}]!</value>
+  </data>
+  <data name="COM_MSG_LOCK_WAIT_TIMEOUT_EXCEEDED" xml:space="preserve">
+    <value>99-Over timeout.</value>
+  </data>
+  <data name="COM_MSG_MATCHED_PASSWORD" xml:space="preserve">
+    <value>99-[{0}] must be matched with [{1}]!</value>
+  </data>
+  <data name="COM_MSG_MORE_ONE_ROW_SELECTED" xml:space="preserve">
+    <value>98-There are more than 1 selected row.</value>
+  </data>
+  <data name="COM_MSG_NEXT_PERIOD_NOT_LOCK" xml:space="preserve">
+    <value>99-{0} period is not lock.</value>
+  </data>
+  <data name="COM_MSG_NEXT_PERIOD_NOT_UNLOCK" xml:space="preserve">
+    <value>99-{0} period is not unlock.</value>
+  </data>
+  <data name="COM_MSG_NOT_EQUAL" xml:space="preserve">
+    <value>99-[{0}] not equal to [{1}].</value>
+  </data>
+  <data name="COM_MSG_NOT_EXIST" xml:space="preserve">
+    <value>99-{0}] doesn't exist.</value>
+  </data>
+  <data name="COM_MSG_NOT_MATCH" xml:space="preserve">
+    <value>99-The [{0}] isn't matched with the [{1}].</value>
+  </data>
+  <data name="COM_MSG_NOT_MATCH_WARNING" xml:space="preserve">
+    <value>98-[{0}] does not match the [{1}].</value>
+  </data>
+  <data name="COM_MSG_NOT_OPEN_PERIOD" xml:space="preserve">
+    <value>99-The previous period isn't closed, you can't open the current period.</value>
+  </data>
+  <data name="COM_MSG_NOT_PERMISSION_EDIT" xml:space="preserve">
+    <value>99-You don’t have permission to edit system data.</value>
+  </data>
+  <data name="COM_MSG_NOT_REOPEN_PERIOD" xml:space="preserve">
+    <value>99-You can't open this period.</value>
+  </data>
+  <data name="COM_MSG_NO_ROW_SELECTED" xml:space="preserve">
+    <value>98-No row selected.</value>
+  </data>
+  <data name="COM_MSG_PERIOD_NOT_UNLOCK" xml:space="preserve">
+    <value>99-You cannot unlock this period.</value>
+  </data>
+  <data name="COM_MSG_PREVIOUS_PERIOD_NOT_CLOSE" xml:space="preserve">
+    <value>99-The previous period isn't closed.</value>
+  </data>
+  <data name="COM_MSG_PROCESS_NOT_VALID" xml:space="preserve">
+    <value>99-Can not process this action. Action is not valid.</value>
+  </data>
+  <data name="COM_MSG_PROCESS_SUCCESSFULLY" xml:space="preserve">
+    <value>95-Process successfully!</value>
+  </data>
+  <data name="COM_MSG_REQUIRED" xml:space="preserve">
+    <value>99-[{0}] must be fill in!</value>
+  </data>
+  <data name="COM_MSG_ROW_FOUND" xml:space="preserve">
+    <value>97-{0} row(s) has found.</value>
+  </data>
+  <data name="COM_MSG_SAME_PERIOD" xml:space="preserve">
+    <value>99-[{0}], [{1}] to the same period.</value>
+  </data>
+  <data name="COM_MSG_SIZE_LIMITED" xml:space="preserve">
+    <value>99-The file size exceeds system's allowed limit ({0} KB). You can't save.</value>
+  </data>
+  <data name="COM_MSG_STOCK_ARRIVING_DATE_NO_NULL" xml:space="preserve">
+    <value>99-[Arriving Date] must be fill in!</value>
+  </data>
+  <data name="COM_MSG_STOCK_CANCEL_FAIL" xml:space="preserve">
+    <value>99-Cancel failed.</value>
+  </data>
+  <data name="COM_MSG_STOCK_CANCEL_RELATED_FAIL" xml:space="preserve">
+    <value>99-Document had related transactions. Can not cancel.</value>
+  </data>
+  <data name="COM_MSG_STOCK_CUSTOMER_NO_NULL" xml:space="preserve">
+    <value>99-[Customer] must be fill in!</value>
+  </data>
+  <data name="COM_MSG_STOCK_DOCUMENT_NO_NULL" xml:space="preserve">
+    <value>99-[Document No] must be fill in!</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_DATA_NOT_FOUND" xml:space="preserve">
+    <value>99-Line {0}: [Production Line] isn't found.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_MINUS_NG" xml:space="preserve">
+    <value>99-Line {0}: Don't allow negative stock.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_MINUS_OK" xml:space="preserve">
+    <value>99-Line {0}: Allow to negative stock.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_OUT_ENOUGH" xml:space="preserve">
+    <value>99-Line {0}: Stock out amount is enough.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_OUT_LACK" xml:space="preserve">
+    <value>99-Line {0}: Stock out amount is lack.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_PRODUCTION_LINE_NOT_EXIST" xml:space="preserve">
+    <value>99-Line {0}: [Production line] isn't exist in stock.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_QUALITY_STATUS_NOT_EXIST" xml:space="preserve">
+    <value>99-Line {0}: [Quality Status] isn't exist in stock.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_RELATED_DOCUMENT_QTY_NOT_VALID" xml:space="preserve">
+    <value>99-Line {0}: Item's quantity of related document is not valid.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_SAFETY_DANGEROUS" xml:space="preserve">
+    <value>98-Line {0}: Safety stock is dangerous.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_STOCK_TYPE_NOT_VALID" xml:space="preserve">
+    <value>99-Line {0}: [Stock Type] isn't valid.</value>
+  </data>
+  <data name="COM_MSG_STOCK_ITEM_CODE_NULL" xml:space="preserve">
+    <value>99-[Item Code] must be fill in!</value>
+  </data>
+  <data name="COM_MSG_STOCK_MINUS_NG" xml:space="preserve">
+    <value>99-Don't allow negative stock.</value>
+  </data>
+  <data name="COM_MSG_STOCK_MINUS_OK" xml:space="preserve">
+    <value>97-Allow negative stock.</value>
+  </data>
+  <data name="COM_MSG_STOCK_OUT_ENOUGH" xml:space="preserve">
+    <value>97-Stock out amount is enough.</value>
+  </data>
+  <data name="COM_MSG_STOCK_OUT_LACK" xml:space="preserve">
+    <value>99-Stock out amount is lack.</value>
+  </data>
+  <data name="COM_MSG_STOCK_PERIOD_CLOSE" xml:space="preserve">
+    <value>99-[Period] is closed.</value>
+  </data>
+  <data name="COM_MSG_STOCK_PERIOD_LOCK" xml:space="preserve">
+    <value>99-Inventory period was locked.</value>
+  </data>
+  <data name="COM_MSG_STOCK_PERIOD_NOT_EXIST" xml:space="preserve">
+    <value>99-[Period] doesn't exist.</value>
+  </data>
+  <data name="COM_MSG_STOCK_PERIOD_NOT_EXIST1" xml:space="preserve">
+    <value>99-[Period] doesn't exist.</value>
+  </data>
+  <data name="COM_MSG_STOCK_PRINT_CONFIRM" xml:space="preserve">
+    <value>96-Do you want to print?</value>
+  </data>
+  <data name="COM_MSG_STOCK_SAFETY_DANGEROUS" xml:space="preserve">
+    <value>98-Safety stock is dangerous. Do you want to continue?</value>
+  </data>
+  <data name="COM_MSG_STOCK_SHIPPING_DATE_NO_NULL" xml:space="preserve">
+    <value>99-[Shipping Date] must be fill in!</value>
+  </data>
+  <data name="COM_MSG_STOCK_SUPPLIER_NO_NULL" xml:space="preserve">
+    <value>99-[Supplier] must be fill in!</value>
+  </data>
+  <data name="COM_MSG_STOCK_WAREHOUSE2_NOT_EXIST" xml:space="preserve">
+    <value>99-[Arriving Warehouse] doesn't exist.</value>
+  </data>
+  <data name="COM_MSG_STOCK_WAREHOUSE2_NO_NULL" xml:space="preserve">
+    <value>99-[Arriving Warehouse] must be fill in!</value>
+  </data>
+  <data name="COM_MSG_UPDATE_SUCCESSFULLY" xml:space="preserve">
+    <value>95-Update successfully.</value>
+  </data>
+  <data name="COM_MSG_WAREHOUSE_MAIN_NOT_TRANSFER_WIP" xml:space="preserve">
+    <value>99-Main warehouse is not allow transfer wip</value>
+  </data>
+  <data name="FG" xml:space="preserve">
+    <value>Finished Goods</value>
+  </data>
+  <data name="FilePathExisting" xml:space="preserve">
+    <value>The file hasn't found.</value>
+  </data>
+  <data name="ItemCodeField" xml:space="preserve">
+    <value>Item Code</value>
+  </data>
+  <data name="ItemNameField" xml:space="preserve">
+    <value>Item Name</value>
+  </data>
+  <data name="ItemType" xml:space="preserve">
+    <value>Item Type</value>
+  </data>
+  <data name="IV_ArrivingIssueInquiry_Search_Form" xml:space="preserve">
+    <value>Inventory Transaction List</value>
+  </data>
+  <data name="IV_ArrivingIssueInquiry_Search_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Inventory Transaction List</value>
+  </data>
+  <data name="IV_ArrivingIssueInquiry_View_Form" xml:space="preserve">
+    <value>View Detail</value>
+  </data>
+  <data name="IV_ArrivingIssueInquiry_View_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Inventory Transaction List &gt; View Detail</value>
+  </data>
+  <data name="IV_InventoryInquiry_Edit_Form" xml:space="preserve">
+    <value>View Detail</value>
+  </data>
+  <data name="IV_InventoryInquiry_Edit_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Inventory Inquiry &gt; View Detail</value>
+  </data>
+  <data name="IV_InventoryInquiry_New_Form" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="IV_InventoryInquiry_New_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Inventory Inquiry &gt; Add</value>
+  </data>
+  <data name="IV_InventoryInquiry_Search_Form" xml:space="preserve">
+    <value>Inventory Inquiry</value>
+  </data>
+  <data name="IV_InventoryInquiry_Search_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Inventory Inquiry</value>
+  </data>
+  <data name="IV_InventoryInquiry_View_Form" xml:space="preserve">
+    <value>View Detail</value>
+  </data>
+  <data name="IV_InventoryInquiry_View_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Inventory Inquiry &gt; View Detail</value>
+  </data>
+  <data name="IV_MSG_CurrentPeriodNotEntryPrice" xml:space="preserve">
+    <value>99-Unpriced transaction(s) have existed for this period. Please solve it first.</value>
+  </data>
+  <data name="IV_MSG_CurrentPeriodNotEntryPrice_Detail" xml:space="preserve">
+    <value>99-Unpriced transaction(s) have existed. Period: {0}, DocumentNo: {1}, Warehouse: {2}, ItemCode: {3}</value>
+  </data>
+  <data name="IV_MSG_HavingTransferTransactionNotCompletedInOnePeriod" xml:space="preserve">
+    <value>99-Having transfer transaction(s) that not completed in one period. Please solve it first.</value>
+  </data>
+  <data name="IV_MSG_HavingTransferTransactionNotCompletedInOnePeriod_Detail" xml:space="preserve">
+    <value>99-Having transfer transaction(s) that not completed. Period: {0}, DocumentNo: {1}, Warehouse (Shipping): {2}, Warehouse (Arriving): {3}</value>
+  </data>
+  <data name="IV_MSG_MonthlyProcessOK" xml:space="preserve">
+    <value>97-No error.</value>
+  </data>
+  <data name="IV_MSG_NegativeStockExist" xml:space="preserve">
+    <value>99-Minus stock have existed for this period. Please solve it first.</value>
+  </data>
+  <data name="IV_MSG_NegativeStockExist_Detail" xml:space="preserve">
+    <value>99-Negative stock have existed. Period: {0}, Warehouse: {1}, ItemCode: {2}, QualityStatus: {3}, ProductionLine: {4}</value>
+  </data>
+  <data name="IV_MSG_NextPeriodNotOpened_Detail" xml:space="preserve">
+    <value>99-Next period has not been opened yet.</value>
+  </data>
+  <data name="IV_MSG_PendingTransferTransactionExist" xml:space="preserve">
+    <value>99-Pending transfer transaction(s) have existed for this period. Please solve it first.</value>
+  </data>
+  <data name="IV_MSG_PendingTransferTransactionExist_Detail" xml:space="preserve">
+    <value>99-Pending transfer transaction(s) have existed. Period: {0}, DocumentNo: {1}, Warehouse: {2}</value>
+  </data>
+  <data name="IV_MSG_PreviousPeriodNotClose" xml:space="preserve">
+    <value>99-Previous period has not closed yet. Please solve it first.</value>
+  </data>
+  <data name="IV_MSG_PreviousPeriodNotClose_Detail" xml:space="preserve">
+    <value>99-Previous period has not been closed yet.</value>
+  </data>
+  <data name="IV_MSG_TwoPeriodAreOpening_Detail" xml:space="preserve">
+    <value>99-Period {0} and {1} are opening. Can not open period {2}.</value>
+  </data>
+  <data name="IV_OpenClose_Close" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="IV_OpenClose_Edit_Form" xml:space="preserve">
+    <value>Monthly Process</value>
+  </data>
+  <data name="IV_OpenClose_Edit_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Monthly Process</value>
+  </data>
+  <data name="IV_OpenClose_Future" xml:space="preserve">
+    <value>Future</value>
+  </data>
+  <data name="IV_OpenClose_Open" xml:space="preserve">
+    <value>Opening</value>
+  </data>
+  <data name="IV_OpenClose_View_Form" xml:space="preserve">
+    <value>Monthly Process</value>
+  </data>
+  <data name="IV_OpenClose_View_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Monthly Process</value>
+  </data>
+  <data name="IV_PhysicalInventory_Edit_Form" xml:space="preserve">
+    <value>Edit Count Sheet</value>
+  </data>
+  <data name="IV_PhysicalInventory_Edit_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Physical Inventory &gt; Edit Count Sheet</value>
+  </data>
+  <data name="IV_PhysicalInventory_New_Form" xml:space="preserve">
+    <value>Add Count Sheet</value>
+  </data>
+  <data name="IV_PhysicalInventory_New_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Physical Inventory &gt; Add Count Sheet</value>
+  </data>
+  <data name="IV_PhysicalInventory_Search_Form" xml:space="preserve">
+    <value>Physical Inventory</value>
+  </data>
+  <data name="IV_PhysicalInventory_Search_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Physical Inventory</value>
+  </data>
+  <data name="IV_PhysicalInventory_View_Form" xml:space="preserve">
+    <value>View Count Sheet</value>
+  </data>
+  <data name="IV_PhysicalInventory_View_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Physical Inventory &gt; View Count Sheet</value>
+  </data>
+  <data name="IV_StockModify_Edit_Form" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="IV_StockModify_Edit_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Stock Modify &gt; Edit</value>
+  </data>
+  <data name="IV_StockModify_MSG_DONT_HAVE_ANY_CHANGE" xml:space="preserve">
+    <value>99-Please modify some data in the grid then check again!</value>
+  </data>
+  <data name="IV_StockModify_MSG_ModifyQuantity_Difference_CurrentQuantity" xml:space="preserve">
+    <value>99-Line [{0}]: {1} must be different from {2}</value>
+  </data>
+  <data name="IV_StockModify_MSG_YOU_CAN_MODIFY_STOCK" xml:space="preserve">
+    <value>97-You can modify these stock transactions.</value>
+  </data>
+  <data name="IV_StockModify_New_Form" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="IV_StockModify_New_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Stock Modify &gt; Add</value>
+  </data>
+  <data name="IV_StockModify_Search_Form" xml:space="preserve">
+    <value>Stock Modify</value>
+  </data>
+  <data name="IV_StockModify_Search_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Stock Modify</value>
+  </data>
+  <data name="IV_StockModify_View_Form" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="IV_StockModify_View_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Stock Modify &gt; View</value>
+  </data>
+  <data name="Login_001" xml:space="preserve">
+    <value>[User ID]  must be fill in!</value>
+  </data>
+  <data name="Login_002" xml:space="preserve">
+    <value>[Password] must be fill in!</value>
+  </data>
+  <data name="Login_003" xml:space="preserve">
+    <value>[User ID] or [Password] is incorrect.</value>
+  </data>
+  <data name="Login_004" xml:space="preserve">
+    <value>Connection Failed.</value>
+  </data>
+  <data name="Login_005" xml:space="preserve">
+    <value>The account is inactive.</value>
+  </data>
+  <data name="Login_006" xml:space="preserve">
+    <value>96-User is currently logged in. Computer name: {0} 
+IP: {1}</value>
+  </data>
+  <data name="MasterEditForm_Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="MasterEditForm_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="MasterEditForm_Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="MasterEditForm_Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="MasterEditForm_SaveAndNext" xml:space="preserve">
+    <value>Save And Next</value>
+  </data>
+  <data name="MessageBoxs" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="MonthlyInventoryTitle" xml:space="preserve">
+    <value>Monthly Inventory</value>
+  </data>
+  <data name="MS_Customers_Edit_Form" xml:space="preserve">
+    <value>Edit Customer Detail</value>
+  </data>
+  <data name="MS_Customers_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Partner Management &gt; Customers &gt; Customer Detail</value>
+  </data>
+  <data name="MS_Customers_New_Form" xml:space="preserve">
+    <value>Add Customer Detail</value>
+  </data>
+  <data name="MS_Customers_New_Path" xml:space="preserve">
+    <value>Master &gt; Partner Management &gt; Customers &gt; Customer Detail</value>
+  </data>
+  <data name="MS_Customers_Search_Form" xml:space="preserve">
+    <value>Customers</value>
+  </data>
+  <data name="MS_Customers_Search_Path" xml:space="preserve">
+    <value>Master &gt; Partner Management &gt; Customers</value>
+  </data>
+  <data name="MS_Customers_View_Form" xml:space="preserve">
+    <value>Customer Detail</value>
+  </data>
+  <data name="MS_Customers_View_Path" xml:space="preserve">
+    <value>Master &gt; Partner Management &gt; Customers &gt; Customer Detail</value>
+  </data>
+  <data name="MS_Departments_Edit_Form" xml:space="preserve">
+    <value>Edit Department Detail</value>
+  </data>
+  <data name="MS_Departments_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Departments &gt; Department Detail</value>
+  </data>
+  <data name="MS_Departments_New_Form" xml:space="preserve">
+    <value>Add Department Detail</value>
+  </data>
+  <data name="MS_Departments_New_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Departments &gt; Department Detail</value>
+  </data>
+  <data name="MS_Departments_Search_Form" xml:space="preserve">
+    <value>Departments</value>
+  </data>
+  <data name="MS_Departments_Search_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Departments</value>
+  </data>
+  <data name="MS_Departments_View_Form" xml:space="preserve">
+    <value>Department Detail</value>
+  </data>
+  <data name="MS_Departments_View_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Departments &gt; Department Detail</value>
+  </data>
+  <data name="MS_Employees_Edit_Form" xml:space="preserve">
+    <value>Edit Employee Detail</value>
+  </data>
+  <data name="MS_Employees_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Human Resource Management &gt; Employees &gt; Employee Detail</value>
+  </data>
+  <data name="MS_Employees_New_Form" xml:space="preserve">
+    <value>Add Employee Detail</value>
+  </data>
+  <data name="MS_Employees_New_Path" xml:space="preserve">
+    <value>Master &gt; Human Resource Management &gt; Employees &gt; Employee Detail</value>
+  </data>
+  <data name="MS_Employees_Search_Form" xml:space="preserve">
+    <value>Employees</value>
+  </data>
+  <data name="MS_Employees_Search_Path" xml:space="preserve">
+    <value>Master &gt; Human Resource Management &gt; Employees</value>
+  </data>
+  <data name="MS_Employees_View_Form" xml:space="preserve">
+    <value>Employee Detail</value>
+  </data>
+  <data name="MS_Employees_View_Path" xml:space="preserve">
+    <value>Master &gt; Human Resource Management &gt; Employees &gt; Employee Detail</value>
+  </data>
+  <data name="MS_ErrorReasons_Edit_Form" xml:space="preserve">
+    <value>Edit Error Reason Detail</value>
+  </data>
+  <data name="MS_ErrorReasons_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Error Reasons &gt; Error Reason Detail</value>
+  </data>
+  <data name="MS_ErrorReasons_New_Form" xml:space="preserve">
+    <value>Add Error Reason Detail</value>
+  </data>
+  <data name="MS_ErrorReasons_New_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Error Reasons &gt; Error Reason Detail</value>
+  </data>
+  <data name="MS_ErrorReasons_Search_Form" xml:space="preserve">
+    <value>Error Reasons</value>
+  </data>
+  <data name="MS_ErrorReasons_Search_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Error Reasons</value>
+  </data>
+  <data name="MS_ErrorReasons_View_Form" xml:space="preserve">
+    <value>Error Reason Detail</value>
+  </data>
+  <data name="MS_ErrorReasons_View_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Error Reasons &gt; Error Reason Detail</value>
+  </data>
+  <data name="MS_Factories_Edit_Form" xml:space="preserve">
+    <value>Edit Factory Detail</value>
+  </data>
+  <data name="MS_Factories_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Factories &gt; Factory Detail</value>
+  </data>
+  <data name="MS_Factories_New_Form" xml:space="preserve">
+    <value>Add Factory Detail</value>
+  </data>
+  <data name="MS_Factories_New_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Factories &gt; Factory Detail</value>
+  </data>
+  <data name="MS_Factories_Search_Form" xml:space="preserve">
+    <value>Factories</value>
+  </data>
+  <data name="MS_Factories_Search_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Factories</value>
+  </data>
+  <data name="MS_Factories_View_Form" xml:space="preserve">
+    <value>Factory Detail</value>
+  </data>
+  <data name="MS_Factories_View_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Factories &gt; Factory Detail</value>
+  </data>
+  <data name="MS_InventoryPeriods_Edit_Form" xml:space="preserve">
+    <value>Edit Inventory Period Detail</value>
+  </data>
+  <data name="MS_InventoryPeriods_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Inventory Periods&gt; Inventory Period Detail</value>
+  </data>
+  <data name="MS_InventoryPeriods_New_Form" xml:space="preserve">
+    <value>Add Inventory Period Detail</value>
+  </data>
+  <data name="MS_InventoryPeriods_New_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Inventory Periods &gt; Inventory Period Detail</value>
+  </data>
+  <data name="MS_InventoryPeriods_Search_Form" xml:space="preserve">
+    <value>Inventory Periods</value>
+  </data>
+  <data name="MS_InventoryPeriods_Search_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Inventory Periods</value>
+  </data>
+  <data name="MS_InventoryPeriods_View_Form" xml:space="preserve">
+    <value>Inventory Period Detail</value>
+  </data>
+  <data name="MS_InventoryPeriods_View_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Inventory Periods &gt; Inventory Period Detail</value>
+  </data>
+  <data name="MS_ItemGroups_Edit_Form" xml:space="preserve">
+    <value>Edit Item Group Detail</value>
+  </data>
+  <data name="MS_ItemGroups_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Item Management &gt; Item Groups &gt; Item Group Detail</value>
+  </data>
+  <data name="MS_ItemGroups_New_Form" xml:space="preserve">
+    <value>Add Item Group Detail</value>
+  </data>
+  <data name="MS_ItemGroups_New_Path" xml:space="preserve">
+    <value>Master &gt; Item Management &gt; Item Groups &gt; Item Group Detail</value>
+  </data>
+  <data name="MS_ItemGroups_Search_Form" xml:space="preserve">
+    <value>Item Groups</value>
+  </data>
+  <data name="MS_ItemGroups_Search_Path" xml:space="preserve">
+    <value>Master &gt; Item Management &gt; Item Groups</value>
+  </data>
+  <data name="MS_ItemGroups_View_Form" xml:space="preserve">
+    <value>Item Group Detail</value>
+  </data>
+  <data name="MS_ItemGroups_View_Path" xml:space="preserve">
+    <value>Master &gt; Item Management &gt; Item Groups &gt; Item Group Detail</value>
+  </data>
+  <data name="MS_Items_Edit_Form" xml:space="preserve">
+    <value>Edit Item Detail</value>
+  </data>
+  <data name="MS_Items_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Item Management &gt; Items &gt; Item Detail</value>
+  </data>
+  <data name="MS_Items_New_Form" xml:space="preserve">
+    <value>Add Item Detail</value>
+  </data>
+  <data name="MS_Items_New_Path" xml:space="preserve">
+    <value>Master &gt; Item Management &gt; Items &gt; Item Detail</value>
+  </data>
+  <data name="MS_Items_Search_Form" xml:space="preserve">
+    <value>Items </value>
+  </data>
+  <data name="MS_Items_Search_Path" xml:space="preserve">
+    <value>Master &gt; Item Management &gt; Items</value>
+  </data>
+  <data name="MS_Items_View_Form" xml:space="preserve">
+    <value>Item Detail</value>
+  </data>
+  <data name="MS_Items_View_Path" xml:space="preserve">
+    <value>Master &gt; Item Management &gt; Items &gt; Item Detail</value>
+  </data>
+  <data name="MS_ProductionLines_Edit_Form" xml:space="preserve">
+    <value>Edit Production Line Detail</value>
+  </data>
+  <data name="MS_ProductionLines_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Production Lines &gt; Production Line Detail</value>
+  </data>
+  <data name="MS_ProductionLines_New_Form" xml:space="preserve">
+    <value>Add Production Line Detail</value>
+  </data>
+  <data name="MS_ProductionLines_New_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Production Lines &gt; Production Line Detail</value>
+  </data>
+  <data name="MS_ProductionLines_Search_Form" xml:space="preserve">
+    <value>Production Lines</value>
+  </data>
+  <data name="MS_ProductionLines_Search_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Production Lines</value>
+  </data>
+  <data name="MS_ProductionLines_View_Form" xml:space="preserve">
+    <value>Production Line Detail</value>
+  </data>
+  <data name="MS_ProductionLines_View_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Production Lines &gt; Production Line Detail</value>
+  </data>
+  <data name="MS_Suppliers_Edit_Form" xml:space="preserve">
+    <value>Edit Supplier Detail</value>
+  </data>
+  <data name="MS_Suppliers_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Partner Management &gt; Suppliers &gt; Supplier Detail</value>
+  </data>
+  <data name="MS_Suppliers_New_Form" xml:space="preserve">
+    <value>Add Suppliers Detail</value>
+  </data>
+  <data name="MS_Suppliers_New_Path" xml:space="preserve">
+    <value>Master &gt; Partner Management &gt; Suppliers &gt; Supplier Detail</value>
+  </data>
+  <data name="MS_Suppliers_Search_Form" xml:space="preserve">
+    <value>Suppliers</value>
+  </data>
+  <data name="MS_Suppliers_Search_Path" xml:space="preserve">
+    <value>Master &gt; Partner Management &gt; Suppliers</value>
+  </data>
+  <data name="MS_Suppliers_View_Form" xml:space="preserve">
+    <value>Supplier Detail</value>
+  </data>
+  <data name="MS_Suppliers_View_Path" xml:space="preserve">
+    <value>Master &gt;Partner Management &gt; Suppliers &gt; Supplier Detail</value>
+  </data>
+  <data name="MS_Units_Edit_Form" xml:space="preserve">
+    <value>Edit Unit Detail</value>
+  </data>
+  <data name="MS_Units_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Item Management &gt; Units&gt; Unit Detail</value>
+  </data>
+  <data name="MS_Units_New_Form" xml:space="preserve">
+    <value>Add Unit Detail</value>
+  </data>
+  <data name="MS_Units_New_Path" xml:space="preserve">
+    <value>Master &gt; Item Management &gt; Units &gt; Unit Detail</value>
+  </data>
+  <data name="MS_Units_Search_Form" xml:space="preserve">
+    <value>Units</value>
+  </data>
+  <data name="MS_Units_Search_Path" xml:space="preserve">
+    <value>Master &gt; Item Management &gt; Units</value>
+  </data>
+  <data name="MS_Units_View_Form" xml:space="preserve">
+    <value>Unit Detail</value>
+  </data>
+  <data name="MS_Units_View_Path" xml:space="preserve">
+    <value>Master &gt; Item Management &gt; Units &gt; Unit Detail</value>
+  </data>
+  <data name="MS_Vendors_Edit_Form" xml:space="preserve">
+    <value>Edit Vendor Detail</value>
+  </data>
+  <data name="MS_Vendors_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Partner Management &gt; Vendors &gt; Vendor Detail</value>
+  </data>
+  <data name="MS_Vendors_New_Form" xml:space="preserve">
+    <value>Add Vendor Detail</value>
+  </data>
+  <data name="MS_Vendors_New_Path" xml:space="preserve">
+    <value>Master &gt; Partner Management &gt; Vendors &gt; Vendor Detail</value>
+  </data>
+  <data name="MS_Vendors_Search_Form" xml:space="preserve">
+    <value>Vendors</value>
+  </data>
+  <data name="MS_Vendors_Search_Path" xml:space="preserve">
+    <value>Master &gt; Partner Management &gt; Vendors</value>
+  </data>
+  <data name="MS_Vendors_View_Form" xml:space="preserve">
+    <value>Vendors Detail</value>
+  </data>
+  <data name="MS_Vendors_View_Path" xml:space="preserve">
+    <value>Master &gt; Partner Management &gt; Vendors &gt; Vendor Detail</value>
+  </data>
+  <data name="MS_Warehouses_Edit_Form" xml:space="preserve">
+    <value>Edit Warehouse Detail</value>
+  </data>
+  <data name="MS_Warehouses_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Warehouses &gt; Warehouse Detail</value>
+  </data>
+  <data name="MS_Warehouses_New_Form" xml:space="preserve">
+    <value>Add Warehouse Detail</value>
+  </data>
+  <data name="MS_Warehouses_New_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Warehouses &gt; Warehouse Detail</value>
+  </data>
+  <data name="MS_Warehouses_Search_Form" xml:space="preserve">
+    <value>Warehouses</value>
+  </data>
+  <data name="MS_Warehouses_Search_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Warehouses</value>
+  </data>
+  <data name="MS_Warehouses_View_Form" xml:space="preserve">
+    <value>Warehouse Detail</value>
+  </data>
+  <data name="MS_Warehouses_View_Path" xml:space="preserve">
+    <value>Master &gt; Warehouse Management &gt; Warehouses &gt; Warehouse Detail</value>
+  </data>
+  <data name="PR_PriceUpdating_Edit_Form" xml:space="preserve">
+    <value>PR_PriceUpdating_Edit_Form</value>
+  </data>
+  <data name="PR_PriceUpdating_Search_Form" xml:space="preserve">
+    <value>Price Updating</value>
+  </data>
+  <data name="PR_PriceUpdating_Search_Path" xml:space="preserve">
+    <value>Price &gt; Price Management &gt; Price Updating </value>
+  </data>
+  <data name="RP_DailyInventory_Search_Form" xml:space="preserve">
+    <value>Daily Inventory  Inquiry</value>
+  </data>
+  <data name="RP_DailyInventory_Search_Path" xml:space="preserve">
+    <value>Inventory &gt; Inventory Management &gt; Daily Inventory  Inquiry</value>
+  </data>
+  <data name="RP_MonthlyInventory_Report_Form" xml:space="preserve">
+    <value>Monthly Inventory</value>
+  </data>
+  <data name="RP_MonthlyInventory_Report_Path" xml:space="preserve">
+    <value>Report &gt; Report Overview &gt; Monthly Inventory</value>
+  </data>
+  <data name="RP_MonthlyInventory_Search_Form" xml:space="preserve">
+    <value>Monthly Inventory</value>
+  </data>
+  <data name="RP_MonthlyInventory_Search_Path" xml:space="preserve">
+    <value>Report &gt; Report Overview &gt; Monthly Inventory</value>
+  </data>
+  <data name="RP_WarehouseInventoryMinutes_Search_Form" xml:space="preserve">
+    <value>Warehouse Inventory Minutes</value>
+  </data>
+  <data name="RP_WarehouseInventoryMinutes_Search_Path" xml:space="preserve">
+    <value>Report &gt; Report Overview &gt; Warehouse Inventory Minutes</value>
+  </data>
+  <data name="SH_DeliveryPrintConfirmForm_View_Form" xml:space="preserve">
+    <value>Print reason</value>
+  </data>
+  <data name="StafetyStock" xml:space="preserve">
+    <value>Safety Stock</value>
+  </data>
+  <data name="ST_PA_PhysicalAdjustmentInventory_CountSheet_View_Form" xml:space="preserve">
+    <value>Adjustment - Physical Inventory ({0})</value>
+  </data>
+  <data name="ST_PA_PhysicalAdjustmentInventory_CountSheet_View_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Physical Adjustment Inventory ({0}) &gt; View</value>
+  </data>
+  <data name="ST_SA_ReturnFromCustomerShipping_New_Form" xml:space="preserve">
+    <value>Return From Customer Shipping ({0})</value>
+  </data>
+  <data name="ST_SA_ReturnFromCustomerShipping_New_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Return From Customer Shipping ({0}) &gt; Add</value>
+  </data>
+  <data name="ST_SA_ReturnFromCustomerShipping_View_Form" xml:space="preserve">
+    <value>Return From Customer Shipping ({0})</value>
+  </data>
+  <data name="ST_SA_ReturnFromCustomerShipping_View_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Return From Customer Shipping ({0}) &gt; View</value>
+  </data>
+  <data name="ST_SA_StockArrivingAdjustment_Edit_Form" xml:space="preserve">
+    <value>Incoming Adjustment ({0})</value>
+  </data>
+  <data name="ST_SA_StockArrivingAdjustment_Edit_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Incoming Adjustment ({0}) &gt; Add</value>
+  </data>
+  <data name="ST_SA_StockArrivingAdjustment_View_Form" xml:space="preserve">
+    <value>Incoming Adjustment ({0})</value>
+  </data>
+  <data name="ST_SA_StockArrivingAdjustment_View_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Incoming Adjustment ({0}) &gt; View</value>
+  </data>
+  <data name="ST_SA_StockArrivingForPurchaseOrder_New_Form" xml:space="preserve">
+    <value>Stock Arriving For Purchase Order ({0})</value>
+  </data>
+  <data name="ST_SA_StockArrivingForPurchaseOrder_New_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Stock Arriving For Purchase Order ({0}) &gt; Add</value>
+  </data>
+  <data name="ST_SA_StockArrivingForPurchaseOrder_View_Form" xml:space="preserve">
+    <value>Stock Arriving For Purchase Order ({0})</value>
+  </data>
+  <data name="ST_SA_StockArrivingForPurchaseOrder_View_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Stock Arriving For Purchase Order ({0}) &gt; View</value>
+  </data>
+  <data name="ST_SH_ReturnDeliveryToSupplier_New_Form" xml:space="preserve">
+    <value>Return Delivery To Supplier ({0})</value>
+  </data>
+  <data name="ST_SH_ReturnDeliveryToSupplier_New_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Return Delivery To Supplier ({0}) &gt; Add</value>
+  </data>
+  <data name="ST_SH_ReturnDeliveryToSupplier_View_Form" xml:space="preserve">
+    <value>Return Delivery To Supplier ({0})</value>
+  </data>
+  <data name="ST_SH_ReturnDeliveryToSupplier_View_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Return Delivery To Supplier ({0}) &gt; View</value>
+  </data>
+  <data name="ST_SH_ScrappingFromNG_New_Form" xml:space="preserve">
+    <value>Scrapping From NG ({0})</value>
+  </data>
+  <data name="ST_SH_ScrappingFromNG_New_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Scrapping From NG ({0}) &gt; Add</value>
+  </data>
+  <data name="ST_SH_ScrappingFromNG_View_Form" xml:space="preserve">
+    <value>Scrapping From NG ({0})</value>
+  </data>
+  <data name="ST_SH_ScrappingFromNG_View_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Scrapping From NG ({0}) &gt; View</value>
+  </data>
+  <data name="ST_SH_StockShippingAdjustment_New_Form" xml:space="preserve">
+    <value>Outgoing Adjustment ({0})</value>
+  </data>
+  <data name="ST_SH_StockShippingAdjustment_New_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Outgoing Adjustment ({0}) &gt; Add</value>
+  </data>
+  <data name="ST_SH_StockShippingAdjustment_View_Form" xml:space="preserve">
+    <value>Outgoing Adjustment ({0})</value>
+  </data>
+  <data name="ST_SH_StockShippingAdjustment_View_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Outgoing Adjustment ({0}) &gt; View</value>
+  </data>
+  <data name="ST_SH_StockShippingForDelivery_New_Form" xml:space="preserve">
+    <value>Stock Shipping For Delivery ({0})</value>
+  </data>
+  <data name="ST_SH_StockShippingForDelivery_New_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Stock Shipping For Delivery ({0}) &gt; Add</value>
+  </data>
+  <data name="ST_SH_StockShippingForDelivery_View_Form" xml:space="preserve">
+    <value>Stock Shipping For Delivery ({0})</value>
+  </data>
+  <data name="ST_SH_StockShippingForDelivery_View_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Stock Shipping For Delivery ({0}) &gt; View</value>
+  </data>
+  <data name="ST_StockOverview_colAmount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="ST_StockOverview_colBalanceFlag" xml:space="preserve">
+    <value>In/Out</value>
+  </data>
+  <data name="ST_StockOverview_colInputQuantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="ST_StockOverview_colInputUnit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="ST_StockOverview_colItemCode" xml:space="preserve">
+    <value>Item Code</value>
+  </data>
+  <data name="ST_StockOverview_colItemName" xml:space="preserve">
+    <value>Item Name</value>
+  </data>
+  <data name="ST_StockOverview_colRemark" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="ST_StockOverview_colUnitPrice" xml:space="preserve">
+    <value>Unit Price</value>
+  </data>
+  <data name="ST_StockOverview_Search_Form" xml:space="preserve">
+    <value>Stock Overview ({0})</value>
+  </data>
+  <data name="ST_StockOverview_Search_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Stock Overview ({0})</value>
+  </data>
+  <data name="ST_ST_NGRecycleMaterial_New_Form" xml:space="preserve">
+    <value>NG Recycle Materials ({0})</value>
+  </data>
+  <data name="ST_ST_NGRecycleMaterial_New_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; NG Recycle Materials ({0}) &gt; Add</value>
+  </data>
+  <data name="ST_ST_NGRecycleMaterial_View_Form" xml:space="preserve">
+    <value>NG Recycle Materials ({0})</value>
+  </data>
+  <data name="ST_ST_NGRecycleMaterial_View_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; NG Recycle Materials ({0}) &gt; View</value>
+  </data>
+  <data name="ST_ST_StockTransferArrivingInStorage_Edit_Form" xml:space="preserve">
+    <value>Stock Transfer - Arriving In Storage ({0})</value>
+  </data>
+  <data name="ST_ST_StockTransferArrivingInStorage_Edit_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Stock Transfer - Arriving In Storage ({0}) &gt; Add</value>
+  </data>
+  <data name="ST_ST_StockTransferArrivingInStorage_View_Form" xml:space="preserve">
+    <value>Stock Transfer - Arriving In Storage ({0})</value>
+  </data>
+  <data name="ST_ST_StockTransferArrivingInStorage_View_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Stock Transfer - Arriving In Storage ({0}) &gt; View</value>
+  </data>
+  <data name="ST_ST_StockTransferShippingFromStorage_New_Form" xml:space="preserve">
+    <value>Stock Transfer - Shipping From Storage ({0})</value>
+  </data>
+  <data name="ST_ST_StockTransferShippingFromStorage_New_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Stock Transfer - Shipping From Storage ({0}) &gt; Add</value>
+  </data>
+  <data name="ST_ST_StockTransferShippingFromStorage_View_Form" xml:space="preserve">
+    <value>Stock Transfer - Shipping From Storage ({0})</value>
+  </data>
+  <data name="ST_ST_StockTransferShippingFromStorage_View_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Stock Transfer - Shipping FromStorage ({0}) &gt; View</value>
+  </data>
+  <data name="ST_ST_TransferForProductionLine_New_Form" xml:space="preserve">
+    <value>Transfer For Production Line ({0})</value>
+  </data>
+  <data name="ST_ST_TransferForProductionLine_New_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Transfer For Production Line ({0}) &gt; Add</value>
+  </data>
+  <data name="ST_ST_TransferForProductionLine_View_Form" xml:space="preserve">
+    <value>Transfer For Production Line ({0})</value>
+  </data>
+  <data name="ST_ST_TransferForProductionLine_View_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Transfer For Production Line ({0}) &gt; View</value>
+  </data>
+  <data name="ST_ST_TransferPosting_New_Form" xml:space="preserve">
+    <value>Transfer Posting ({0})</value>
+  </data>
+  <data name="ST_ST_TransferPosting_New_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Transfer Posting ({0}) &gt; Add</value>
+  </data>
+  <data name="ST_ST_TransferPosting_View_Form" xml:space="preserve">
+    <value>Transfer Posting ({0})</value>
+  </data>
+  <data name="ST_ST_TransferPosting_View_Path" xml:space="preserve">
+    <value>Stock &gt; Stock Management &gt; Transfer Posting ({0}) &gt; View</value>
+  </data>
+  <data name="Sum" xml:space="preserve">
+    <value>Sum</value>
+  </data>
+  <data name="SY_ChangePassword_001" xml:space="preserve">
+    <value>99-{0} must be matched with Login user's current password!</value>
+  </data>
+  <data name="SY_ChangePassword_Edit_Form" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="SY_ChangePassword_Edit_Path" xml:space="preserve">
+    <value>System &gt; User Management &gt; Change Password</value>
+  </data>
+  <data name="SY_CompanyInfomation_Edit_Form" xml:space="preserve">
+    <value>Company Information</value>
+  </data>
+  <data name="SY_CompanyInfomation_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Common &gt; Company Information</value>
+  </data>
+  <data name="SY_CompanyInfomation_New_Form" xml:space="preserve">
+    <value>Company Information</value>
+  </data>
+  <data name="SY_CompanyInfomation_New_Path" xml:space="preserve">
+    <value>Master &gt; Common &gt; Company Information</value>
+  </data>
+  <data name="SY_Parameters_Edit_Form" xml:space="preserve">
+    <value>Parameters</value>
+  </data>
+  <data name="SY_Parameters_Edit_Path" xml:space="preserve">
+    <value>System &gt; Common &gt; Parameters</value>
+  </data>
+  <data name="SY_SystemJournals_Search_Form" xml:space="preserve">
+    <value>System Journals</value>
+  </data>
+  <data name="SY_SystemJournals_Search_Path" xml:space="preserve">
+    <value>System &gt; History &gt; System Journals</value>
+  </data>
+  <data name="SY_UserGroupsPermission_Edit_Form" xml:space="preserve">
+    <value>Edit User Groups Permission Detail</value>
+  </data>
+  <data name="SY_UserGroupsPermission_Edit_Path" xml:space="preserve">
+    <value>System &gt; User Management  &gt; User Groups &gt; User Groups Detail &gt; User Groups Permission</value>
+  </data>
+  <data name="SY_UserGroupsPermission_New_Form" xml:space="preserve">
+    <value>Add User Groups Permission Detail</value>
+  </data>
+  <data name="SY_UserGroupsPermission_New_Path" xml:space="preserve">
+    <value>System &gt; User Management  &gt; User Groups &gt; User Groups Detail User Groups Detail Permission</value>
+  </data>
+  <data name="SY_UserGroupsPermission_View_Form" xml:space="preserve">
+    <value>User Groups Permission Detail</value>
+  </data>
+  <data name="SY_UserGroupsPermission_View_Path" xml:space="preserve">
+    <value>System &gt; User Management  &gt; User Groups &gt; User Groups Detail &gt; User Groups Detail Permission</value>
+  </data>
+  <data name="SY_UserGroups_colDisplayName" xml:space="preserve">
+    <value>Display Name</value>
+  </data>
+  <data name="SY_UserGroups_colStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="SY_UserGroups_colUserCode" xml:space="preserve">
+    <value>User Code</value>
+  </data>
+  <data name="SY_UserGroups_Edit_Form" xml:space="preserve">
+    <value>Edit User Group Detail</value>
+  </data>
+  <data name="SY_UserGroups_Edit_Path" xml:space="preserve">
+    <value>System &gt; User Management  &gt; User Groups &gt; User Group Detail</value>
+  </data>
+  <data name="SY_UserGroups_New_Form" xml:space="preserve">
+    <value>Add User Group Detail</value>
+  </data>
+  <data name="SY_UserGroups_New_Path" xml:space="preserve">
+    <value>System &gt; User Management  &gt; User Groups &gt; User Group Detail</value>
+  </data>
+  <data name="SY_UserGroups_Search_Form" xml:space="preserve">
+    <value>User Groups</value>
+  </data>
+  <data name="SY_UserGroups_Search_Path" xml:space="preserve">
+    <value>System &gt; User Management  &gt; User Groups</value>
+  </data>
+  <data name="SY_UserGroups_View_Form" xml:space="preserve">
+    <value>User Group Detail</value>
+  </data>
+  <data name="SY_UserGroups_View_Path" xml:space="preserve">
+    <value>System &gt; User Management  &gt; User Groups &gt; User Group Detail</value>
+  </data>
+  <data name="SY_Users_Edit_Form" xml:space="preserve">
+    <value>Edit User Detail</value>
+  </data>
+  <data name="SY_Users_Edit_Path" xml:space="preserve">
+    <value>System &gt; User Management &gt; Users &gt; User Detail</value>
+  </data>
+  <data name="SY_Users_New_Form" xml:space="preserve">
+    <value>Add User Detail</value>
+  </data>
+  <data name="SY_Users_New_Path" xml:space="preserve">
+    <value>System &gt; User Management &gt; Users &gt; User Detail</value>
+  </data>
+  <data name="SY_Users_Search_Form" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="SY_Users_Search_Path" xml:space="preserve">
+    <value>System &gt; User Management &gt; Users</value>
+  </data>
+  <data name="SY_Users_View_Form" xml:space="preserve">
+    <value>User Detail</value>
+  </data>
+  <data name="SY_Users_View_Path" xml:space="preserve">
+    <value>System &gt; User Management &gt; Users &gt; User Detail</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="WarehouseInventoryFooter" xml:space="preserve">
+    <value>We undertake that above items was counted 100%. This document has been created in 2 copies with equivalent values. Each party keeps one copy( BRT keeps the main copy, Outsourcing Company keeps the remaining copy).</value>
+  </data>
+  <data name="WarehouseInventorySign1" xml:space="preserve">
+    <value>BRT's Representative</value>
+  </data>
+  <data name="WarehouseInventorySign2" xml:space="preserve">
+    <value>Representative of Warehouse/Outsourcing Company</value>
+  </data>
+  <data name="WarehouseInventorySign3" xml:space="preserve">
+    <value>BOD's Signature</value>
+  </data>
+  <data name="IV_AdjustmentDateForm_View_Form" xml:space="preserve">
+    <value>Adjustment Date Form</value>
+  </data>
+  <data name="SY_UserState_Search_Form" xml:space="preserve">
+    <value>User State</value>
+  </data>
+  <data name="SY_UserState_Search_Path" xml:space="preserve">
+    <value>System &gt; User Management &gt; User State</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_DISCONNECT" xml:space="preserve">
+    <value>96-Do you want to disconnect?</value>
+  </data>
+  <data name="COM_MSG_DISCONNECT_SUCCESSFULLY" xml:space="preserve">
+    <value>95-Disconnect successfully.</value>
+  </data>
+  <data name="COM_MSG_DATA_OF_BEING_USED" xml:space="preserve">
+    <value>Can't edit [{1}] of [{0}], data is being in used. </value>
+  </data>
+  <data name="Login_007" xml:space="preserve">
+    <value>96-User was disconnected by Admin.</value>
+  </data>
+  <data name="Login_008" xml:space="preserve">
+    <value>96-User was disconnected by Open/Close processing.</value>
+  </data>
+  <data name="Login_009" xml:space="preserve">
+    <value>96-User was lost connection.</value>
+  </data>
+  <data name="Reason_View_Form" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_FG_NOT_OK" xml:space="preserve">
+    <value>98-Line {0}: This is NG, QI, NC product.</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_WIP" xml:space="preserve">
+    <value>98-Line {0}: This is  WIP  product.</value>
+  </data>
+  <data name="RP_ShippingList_Search_Form" xml:space="preserve">
+    <value>Shipping List</value>
+  </data>
+  <data name="RP_ShippingList_Search_Path" xml:space="preserve">
+    <value>Report &gt; Report Overview &gt; Shipping List</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_PRODUCT_AND_FREE_PRODUCT" xml:space="preserve">
+    <value>98-Line {0}: This is Free-product/ Product.</value>
+  </data>
+  <data name="COM_MSG_TAKE_SNAPSHOT_SUCCESS" xml:space="preserve">
+    <value>Take Snapshot successfully!</value>
+  </data>
+  <data name="OpenClose_UserState_View_Form" xml:space="preserve">
+    <value>Online Users</value>
+  </data>
+  <data name="USER_MUST_BE_LOGOUT_BY_OPEN_CLOSE" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="COM_MSG_PHYSICAL_COMPLETE" xml:space="preserve">
+    <value>This Count Sheet was completed.</value>
+  </data>
+  <data name="COM_MSG_PHYSICAL_CANCEL" xml:space="preserve">
+    <value>This Count Sheet was canceled.</value>
+  </data>
+  <data name="COM_MSG_STOCK_GRID_STOCK_RELATED_DOCUMENT_DATE_NOT_VALID" xml:space="preserve">
+    <value>99-Line {0}: Related document's date must be less than or equal to [DocumentDate]</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_CLEAR" xml:space="preserve">
+    <value>Do you want to clear all data?</value>
+  </data>
+  <data name="MS_Companies_Edit_Form" xml:space="preserve">
+    <value>Edit Companies Detail</value>
+  </data>
+  <data name="MS_Companies_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Partner Management &gt; Companies &gt; Companies Detail</value>
+  </data>
+  <data name="MS_Companies_New_Form" xml:space="preserve">
+    <value>Add Companies Detail</value>
+  </data>
+  <data name="MS_Companies_New_Path" xml:space="preserve">
+    <value>Master &gt; Partner Management &gt; Companies &gt; Companies Detail</value>
+  </data>
+  <data name="MS_Companies_Search_Form" xml:space="preserve">
+    <value>Companies</value>
+  </data>
+  <data name="MS_Companies_Search_Path" xml:space="preserve">
+    <value>Master &gt; Partner Management &gt; Companies</value>
+  </data>
+  <data name="MS_Companies_View_Form" xml:space="preserve">
+    <value>Companies Detail</value>
+  </data>
+  <data name="MS_Companies_View_Path" xml:space="preserve">
+    <value>Master &gt; Partner Management &gt; Companies &gt; Companies Detail</value>
+  </data>
+  <data name="COM_MSG_REQUIRED_SELECT" xml:space="preserve">
+    <value>99-[{0}] must be select!</value>
+  </data>
+  <data name="COM_MSG_STOCK_DOCUMENT_CANCELED" xml:space="preserve">
+    <value>99-This document was canceled!</value>
+  </data>
+  <data name="COM_MSG_WAREHOUSE_HAVING_COUNTSHEET" xml:space="preserve">
+    <value>99-This warehouse is inventorying.</value>
+  </data>
+  <data name="COM_MSG_WAREHOUSE_HAVING_STOCK" xml:space="preserve">
+    <value>99-This warehouse is having stock.</value>
+  </data>
+  <data name="COM_MSG_INVALID_ADJUSTMENTDATE" xml:space="preserve">
+    <value>99-Adjustment Date must be belong date in period.</value>
+  </data>
+  <data name="COM_MSG_FACTOR_REQUIRED" xml:space="preserve">
+    <value>99-Line {0}: {1} must be fill in and greater than {2}.</value>
+  </data>
+  <data name="INV_Invoice_Search_Form" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
+  <data name="INV_Invoice_Search_Path" xml:space="preserve">
+    <value>Invoice &gt; Invoice Management &gt; Invoice</value>
+  </data>
+  <data name="INV_InvoiceSelect_Search_Form" xml:space="preserve">
+    <value>Select Items</value>
+  </data>
+  <data name="INV_InvoiceSelect_Search_Path" xml:space="preserve">
+    <value>Invoice &gt; Invoice Management &gt; Invoice &gt; Invoice Details &gt; Select Items</value>
+  </data>
+  <data name="INV_Invoice_Edit_Form" xml:space="preserve">
+    <value>Edit Invoice Details</value>
+  </data>
+  <data name="INV_Invoice_Edit_Path" xml:space="preserve">
+    <value>Invoice &gt; Invoice Management &gt; Invoice &gt; Invoice Details</value>
+  </data>
+  <data name="INV_Invoice_New_Form" xml:space="preserve">
+    <value>Add Invoice Details</value>
+  </data>
+  <data name="INV_Invoice_New_Path" xml:space="preserve">
+    <value>Invoice &gt; Invoice Management &gt; Invoice &gt; Invoice Details</value>
+  </data>
+  <data name="INV_Invoice_View_Form" xml:space="preserve">
+    <value>Invoice Details</value>
+  </data>
+  <data name="INV_Invoice_View_Path" xml:space="preserve">
+    <value>Invoice &gt; Invoice Management &gt; Invoice &gt; Invoice Details</value>
+  </data>
+  <data name="COM_MSG_NUM_OF_ROW_INVOICE_INVALID" xml:space="preserve">
+    <value>99-Number of invoice detail on grid is invalid.</value>
+  </data>
+  <data name="COM_MSG_FILE_FORMAT_INVALID" xml:space="preserve">
+    <value>99-File's format is invalid.</value>
+  </data>
+  <data name="COM_MSG_FILE_NUM_OF_COLUMN_INVALID" xml:space="preserve">
+    <value>99-Number of column is invalid.</value>
+  </data>
+  <data name="COM_MSG_FILE_NUM_OF_ROW_INVALID" xml:space="preserve">
+    <value>99-Number of row is invalid.</value>
+  </data>
+  <data name="MS_Items_Import_Form" xml:space="preserve">
+    <value>Import Sales Price</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_LESS_THAN_OR_EQUAL" xml:space="preserve">
+    <value>99-Line {0}: [{1}] must be less than or equal [{2}]!</value>
+  </data>
+  <data name="COM_MSG_INVOICE_CANCEL_FAIL_1" xml:space="preserve">
+    <value>99-This invoice was canceled!</value>
+  </data>
+  <data name="COM_MSG_INVOICE_CANCEL_FAIL_2" xml:space="preserve">
+    <value>99-The invoice number has not set yet.</value>
+  </data>
+  <data name="COM_MSG_INVOICE_QUANTITY_NOT_ENOUGH" xml:space="preserve">
+    <value>99-Line {0}: Shipping quantity is not enough. DocumentNumber: {1}</value>
+  </data>
+  <data name="COM_MSG_STOCK_CANCEL_EXIST_INVOICE" xml:space="preserve">
+    <value>99-This document was existed invoice(s).</value>
+  </data>
+  <data name="RP_SalesList_Search_Form" xml:space="preserve">
+    <value>Sales List</value>
+  </data>
+  <data name="RP_SalesList_Search_Path" xml:space="preserve">
+    <value>Report &gt; Report Overview &gt; Sales List</value>
+  </data>
+  <data name="COM_MSG_CONFIRM_PRINT" xml:space="preserve">
+    <value>96-Do you want to print?</value>
+  </data>
+  <data name="COM_MSG_PRINT_SUCCESSFULLY" xml:space="preserve">
+    <value>95-Print successfully.</value>
+  </data>
+  <data name="COM_MSG_INVOICE_CANCEL_FAIL_3" xml:space="preserve">
+    <value>99-This invoice was not printed yet.</value>
+  </data>
+  <data name="COM_MSG_PRINTER_INVALID" xml:space="preserve">
+    <value>The printer name is invalid. Please check the printer settings.</value>
+  </data>
+  <data name="COM_MSG_LENGTH_INVALID" xml:space="preserve">
+    <value>99-{0}'s length is invalid.</value>
+  </data>
+  <data name="CO_Cost_Export_Form" xml:space="preserve">
+    <value>Export Cost</value>
+  </data>
+  <data name="CO_Cost_Export_Path" xml:space="preserve">
+    <value>Cost &gt; Cost Management &gt; Export</value>
+  </data>
+  <data name="COM_MSG_NOT_PERMISSION_VIEW" xml:space="preserve">
+    <value>99-You don’t have permission to view.</value>
+  </data>
+  <data name="RP_IncludedWarehouseInventoryMinutes_Search_Form" xml:space="preserve">
+    <value>Warehouse Inventory Minutes - BOD</value>
+  </data>
+  <data name="RP_IncludedWarehouseInventoryMinutes_Search_Path" xml:space="preserve">
+    <value>Report &gt; Report Overview &gt; Warehouse Inventory Minutes - BOD</value>
+  </data>
+  <data name="COM_MSG_RPC_SERVER_UNAVAILABLE" xml:space="preserve">
+    <value>99-RPC server is unavailable.</value>
+  </data>
+  <data name="COM_MSG_EXPORT_NOT_FLOW" xml:space="preserve">
+    <value>Can not export for this category!</value>
+  </data>
+  <data name="RP_StockAging_Export_Form" xml:space="preserve">
+    <value>Export Stock Aging </value>
+  </data>
+  <data name="RP_StockAging_Export_Path" xml:space="preserve">
+    <value>Stock Aging &gt; Stock Aging Management &gt; Export Stock Aging</value>
+  </data>
+  <data name="COM_MSG_STOCK_CANCEL_AGING" xml:space="preserve">
+    <value>99-Line {0}: xxx</value>
+  </data>
+  <data name="COM_MSG_GRID_WR_PRODUCTION_LINE_EXISTED" xml:space="preserve">
+    <value>99-Line [{0}]:Production line [{1}] is duplicated with other Steps.</value>
+  </data>
+  <data name="MS_WorkRouting_Edit_Form" xml:space="preserve">
+    <value>Edit Work Routing Detail</value>
+  </data>
+  <data name="MS_WorkRouting_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Item Management &gt;Work Routing &gt; WorkRouting Detail</value>
+  </data>
+  <data name="MS_WorkRouting_Search_Form" xml:space="preserve">
+    <value>Work Routing</value>
+  </data>
+  <data name="MS_WorkRouting_Search_Path" xml:space="preserve">
+    <value>Master &gt; Item Management &gt; Work Routing</value>
+  </data>
+  <data name="MS_WorkRouting_New_Form" xml:space="preserve">
+    <value>Add Work Routing Detail</value>
+  </data>
+  <data name="MS_WorkRouting_New_Path" xml:space="preserve">
+    <value>Master &gt; Item Management &gt;Work Routing &gt; WorkRouting Detail</value>
+  </data>
+  <data name="MS_WorkRouting_View_Form" xml:space="preserve">
+    <value>Work Routing Detail</value>
+  </data>
+  <data name="MS_WorkRouting_View_Path" xml:space="preserve">
+    <value>Master &gt; Item Management &gt;Work Routing &gt; WorkRouting Detail</value>
+  </data>
+  <data name="COM_MSG_WORKROUTING_CHECKEXIST" xml:space="preserve">
+    <value>99-Item Code is not duplicated with [{0}]</value>
+  </data>
+  <data name="COM_MSG_WORKROUTING_GRID" xml:space="preserve">
+    <value>99-Number of step must be greater than 0 and less than or equal to 20</value>
+  </data>
+  <data name="A_CurrentAging_Search_Path" xml:space="preserve">
+    <value>Stock Aging &gt; Stock Aging Management &gt; Aging Updating</value>
+  </data>
+  <data name="A_CurrentAging_Search_Form" xml:space="preserve">
+    <value>Aging Updating</value>
+  </data>
+  <data name="COM_MSG_AGING_CHECKLIKE" xml:space="preserve">
+    <value>99- {0} not duplicated with other Original Item Code</value>
+  </data>
+  <data name="RP_ArrivingList_Search_Form" xml:space="preserve">
+    <value>Arriving List</value>
+  </data>
+  <data name="RP_ArrivingList_Search_Path" xml:space="preserve">
+    <value>Report &gt; Report Overview &gt; Arriving List</value>
+  </data>
+  <data name="COM_MSG_DATA_DUPPLICATED" xml:space="preserve">
+    <value>99-[{0}] was dupplicated.</value>
+  </data>
+  <data name="COM_MSG_GRID_LINE_LENGTH_INVALID" xml:space="preserve">
+    <value>99-Line {0}: [{1}]'s length is invalid.</value>
+  </data>
+  <data name="A_CurrentAging_Import_Form" xml:space="preserve">
+    <value>Costing Import</value>
+  </data>
+  <data name="A_CurrentAging_Import_Path" xml:space="preserve">
+    <value>Stock Aging &gt; Stock Aging Management &gt; Costing Import</value>
+  </data>
+  <data name="COM_MSG_WORKROUTING_CHECK_ORGITEM" xml:space="preserve">
+    <value>99-[{0}] must insert first</value>
+  </data>
+  <data name="SYS_Notifications_View_Form" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="SYS_Notifications_View_Path" xml:space="preserve">
+    <value>System &gt; Notifications &gt; Notifications</value>
+  </data>
+  <data name="COM_MSG_NOTIFICATION_NOTE" xml:space="preserve">
+    <value>97-No warning at this time.</value>
+  </data>
+  <data name="RP_NG_NCRate_Search_Form" xml:space="preserve">
+    <value>NG/NC Rate</value>
+  </data>
+  <data name="RP_NG_NCRate_Search_Path" xml:space="preserve">
+    <value>Report &gt; Report Overview &gt; NG/NC Rate</value>
+  </data>
+  <data name="RP_InvTranList_Search_Form" xml:space="preserve">
+    <value>Inventory Transaction List (All)</value>
+  </data>
+  <data name="RP_InvTranList_Search_Path" xml:space="preserve">
+    <value>Report &gt; Report Overview &gt; Inventory Transaction List (All)</value>
+  </data>
+  <data name="DE_MonthlyPlan_Search_Form" xml:space="preserve">
+    <value>Monthly Plan (External)</value>
+  </data>
+  <data name="DE_MonthlyPlan_Search_Path" xml:space="preserve">
+    <value>Delivery &gt; Delivery Overview &gt; Monthly Plan (External)</value>
+  </data>
+  <data name="DE_ResultDaily_Search_Form" xml:space="preserve">
+    <value>Daily Result (External)</value>
+  </data>
+  <data name="DE_ResultDaily_Search_Path" xml:space="preserve">
+    <value>Delivery &gt; Delivery Overview &gt; Daily Result (External)</value>
+  </data>
+  <data name="Forecast" xml:space="preserve">
+    <value>Forecast</value>
+  </data>
+  <data name="DE_DailyPlan_Search_Form" xml:space="preserve">
+    <value>Daily Plan (External)</value>
+  </data>
+  <data name="DE_DailyPlan_Search_Path" xml:space="preserve">
+    <value>Delivery &gt; Delivery Overview &gt; Daily Plan (External)</value>
+  </data>
+  <data name="DE_MonthlyPlan_Edit_Form" xml:space="preserve">
+    <value>Edit Monthly Plan Details (External)</value>
+  </data>
+  <data name="DE_MonthlyPlan_Edit_Path" xml:space="preserve">
+    <value>Delivery &gt; Delivery Overview &gt; Monthly Plan &gt; Monthly Plan Details (External)</value>
+  </data>
+  <data name="DE_MonthlyPlan_New_Form" xml:space="preserve">
+    <value>Add Monthly Plan Details (External)</value>
+  </data>
+  <data name="DE_MonthlyPlan_New_Path" xml:space="preserve">
+    <value>Delivery &gt; Delivery Overview &gt; Monthly Plan &gt; Monthly Plan Details (External)</value>
+  </data>
+  <data name="DE_MonthlyPlan_View_Form" xml:space="preserve">
+    <value>View Monthly Plan Details (External)</value>
+  </data>
+  <data name="DE_MonthlyPlan_View_Path" xml:space="preserve">
+    <value>Delivery &gt; Delivery Overview &gt; Monthly Plan &gt; Monthly Plan Details (External)</value>
+  </data>
+  <data name="IT_ChooseItem_View_Form" xml:space="preserve">
+    <value>Choose Item</value>
+  </data>
+  <data name="IT_ChooseItem_View_Path" xml:space="preserve">
+    <value>Delivery &gt; Delivery Overview &gt; Monthly Plan &gt; Monthly Plan Details &gt; Choose Item</value>
+  </data>
+  <data name="COM_MSG_NOT_UPDATE_OLD_VERSION" xml:space="preserve">
+    <value>99-You cannot update or delete an old version.</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RP_SaleForecast_Search_Form" xml:space="preserve">
+    <value>Sale Forecast</value>
+  </data>
+  <data name="RP_SaleForecast_Search_Path" xml:space="preserve">
+    <value>Report &gt; Report Overview &gt; Sale Forecast</value>
+  </data>
+  <data name="MS_Exchrates_Edit_Form" xml:space="preserve">
+    <value>Edit Exchange Rate Detail</value>
+  </data>
+  <data name="MS_Exchrates_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Exchange Rate Management &gt; Exchange Rates &gt; Exchange Rate Detail</value>
+  </data>
+  <data name="MS_Exchrates_New_Form" xml:space="preserve">
+    <value>Add Exchange Rate Detail</value>
+  </data>
+  <data name="MS_Exchrates_New_Path" xml:space="preserve">
+    <value>Master &gt; Exchange Rate Management &gt; Exchange Rates &gt; Exchange Rate Detail</value>
+  </data>
+  <data name="MS_Exchrates_Search_Form" xml:space="preserve">
+    <value>Exchange Rate</value>
+  </data>
+  <data name="MS_Exchrates_Search_Path" xml:space="preserve">
+    <value>Master &gt; Exchange Rate Management &gt; Exchange Rate </value>
+  </data>
+  <data name="MS_Exchrates_View_Form" xml:space="preserve">
+    <value>Exchange Rate Detail</value>
+  </data>
+  <data name="MS_Exchrates_View_Path" xml:space="preserve">
+    <value>Master &gt; Exchange Rate Management &gt; Exchange Rates &gt; Exchange Rate Detail</value>
+  </data>
+  <data name="A_ExportAging_Search_Form" xml:space="preserve">
+    <value>Export Stock Aging </value>
+  </data>
+  <data name="A_ExportAging_Search_Path" xml:space="preserve">
+    <value>Stock Aging &gt; Stock Aging Management &gt; Export Stock Aging</value>
+  </data>
+  <data name="RP_StockAging_Search_Form" xml:space="preserve">
+    <value>Export Stock Aging </value>
+  </data>
+  <data name="RP_StockAging_Search_Path" xml:space="preserve">
+    <value>Stock Aging &gt; Stock Aging Management &gt; Export Stock Aging</value>
+  </data>
+  <data name="DE_MonthlyPlanInternal_Edit_Form" xml:space="preserve">
+    <value>Edit Monthly Plan Details (Internal)</value>
+  </data>
+  <data name="DE_MonthlyPlanInternal_Edit_Path" xml:space="preserve">
+    <value>Delivery &gt; Delivery Overview &gt; Monthly Plan &gt; Monthly Plan Details (Internal)</value>
+  </data>
+  <data name="DE_MonthlyPlanInternal_New_Form" xml:space="preserve">
+    <value>Add Monthly Plan Details (Internal)</value>
+  </data>
+  <data name="DE_MonthlyPlanInternal_New_Path" xml:space="preserve">
+    <value>Delivery &gt; Delivery Overview &gt; Monthly Plan &gt; Monthly Plan Details (Internal)</value>
+  </data>
+  <data name="DE_MonthlyPlanInternal_Search_Form" xml:space="preserve">
+    <value>Monthly Plan (Internal)</value>
+  </data>
+  <data name="DE_MonthlyPlanInternal_Search_Path" xml:space="preserve">
+    <value>Delivery &gt; Delivery Overview &gt; Monthly Plan (Internal)</value>
+  </data>
+  <data name="DE_MonthlyPlanInternal_View_Form" xml:space="preserve">
+    <value>View Monthly Plan Details (Internal)</value>
+  </data>
+  <data name="DE_MonthlyPlanInternal_View_Path" xml:space="preserve">
+    <value>Delivery &gt; Delivery Overview &gt; Monthly Plan &gt; Monthly Plan Details (Internal)</value>
+  </data>
+  <data name="DE_DailyPlanInternal_Search_Form" xml:space="preserve">
+    <value>Daily Plan (Internal)</value>
+  </data>
+  <data name="DE_DailyPlanInternal_Search_Path" xml:space="preserve">
+    <value>Delivery &gt; Delivery Overview (Internal) &gt; Daily Plan (Internal)</value>
+  </data>
+  <data name="DE_ResultDailyInternal_Search_Form" xml:space="preserve">
+    <value>Daily Result (Internal)</value>
+  </data>
+  <data name="DE_ResultDailyInternal_Search_Path" xml:space="preserve">
+    <value>Delivery &gt; Delivery Overview &gt; Daily Result (Internal)</value>
+  </data>
+  <data name="PR_PriceUpdating_InputPrice_Form" xml:space="preserve">
+    <value>Input Price</value>
+  </data>
+  <data name="PR_PriceUpdating_InputPrice_Path" xml:space="preserve">
+    <value>Price &gt; Price Management &gt; Price Updating &gt; Input Price</value>
+  </data>
+  <data name="COM_MSG_GRID_WR_PRODUCTION_LINE_FG_LAST" xml:space="preserve">
+    <value>99-Line [{0}]:Production line [{1}] must be the last production line.</value>
+  </data>
+  <data name="COM_MSG_GRID_WR_PRODUCTION_LINE_FG_FIRST" xml:space="preserve">
+    <value>99-Line [{0}]:Production line [{1}] can not be the first production line</value>
+  </data>
+  <data name="RP_NG_NCRateSummary_Search_Form" xml:space="preserve">
+    <value>NG/NC Rate Summary</value>
+  </data>
+  <data name="RP_NG_NCRateSummary_Search_Path" xml:space="preserve">
+    <value>Report &gt; Report Overview &gt; NG/NC Rate Summary</value>
+  </data>
+  <data name="RP_NG_NCRateChart_Search_Form" xml:space="preserve">
+    <value>NG/NC Rate Chart</value>
+  </data>
+  <data name="RP_NG_NCRateChart_Search_Path" xml:space="preserve">
+    <value>Report &gt; Report Overview &gt; NG/NC Rate Chart</value>
+  </data>
+  <data name="COM_MSG_REPORT_NO_12_PERIOD" xml:space="preserve">
+    <value>99-This report limits to 12 periods.</value>
+  </data>
+  <data name="MS_Acquisitionreason_Edit_Form" xml:space="preserve">
+    <value>Edit Fixed Assets Acquisition Reason Detail</value>
+  </data>
+  <data name="MS_Acquisitionreason_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Fixed Assets Management &gt; Fixed Assets Acquisition Reason &gt; Fixed Asset Acquisition Reason Detail</value>
+  </data>
+  <data name="MS_Acquisitionreason_New_Form" xml:space="preserve">
+    <value>Add Fixed Assets Acquisition Reason Detail</value>
+  </data>
+  <data name="MS_Acquisitionreason_New_Path" xml:space="preserve">
+    <value>Master &gt; Fixed Assets Management &gt; Fixed Assets Acquisition Reason &gt; Fixed Assets Acquisition Reason Detail</value>
+  </data>
+  <data name="MS_Acquisitionreason_Search_Form" xml:space="preserve">
+    <value>Fixed Assets Acquisition Reason</value>
+  </data>
+  <data name="MS_Acquisitionreason_Search_Path" xml:space="preserve">
+    <value>Master &gt; Fixed Assets Management &gt; Fixed Assets Acquisition Reason</value>
+  </data>
+  <data name="MS_Acquisitionreason_View_Form" xml:space="preserve">
+    <value>Fixed Assets Acquisition Reason Detail</value>
+  </data>
+  <data name="MS_Acquisitionreason_View_Path" xml:space="preserve">
+    <value>Master &gt; Fixed Assets Management &gt; Fixed Assets Acquisition Reason &gt; Fixed Assets Acquisition Reason Detail</value>
+  </data>
+  <data name="MS_Capital_Edit_Form" xml:space="preserve">
+    <value>Edit Capital Detail</value>
+  </data>
+  <data name="MS_Capital_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Fixed Assets Management &gt; Capital &gt; Capital Detail</value>
+  </data>
+  <data name="MS_Capital_New_Form" xml:space="preserve">
+    <value>Add Capital Detail</value>
+  </data>
+  <data name="MS_Capital_New_Path" xml:space="preserve">
+    <value>Master &gt; Fixed Assets Management &gt; Capital &gt; Capital Detail</value>
+  </data>
+  <data name="MS_Capital_Search_Form" xml:space="preserve">
+    <value>Capital</value>
+  </data>
+  <data name="MS_Capital_Search_Path" xml:space="preserve">
+    <value>Master &gt; Fixed Assets Management &gt; Capital</value>
+  </data>
+  <data name="MS_Capital_View_Form" xml:space="preserve">
+    <value>Capital Detail</value>
+  </data>
+  <data name="MS_Capital_View_Path" xml:space="preserve">
+    <value>Master &gt; Fixed Assets Management &gt; Capital &gt; Capital Detail</value>
+  </data>
+  <data name="MS_FixedAssetsType_Edit_Form" xml:space="preserve">
+    <value>Edit Fixed Assets Type Detail</value>
+  </data>
+  <data name="MS_FixedAssetsType_Edit_Path" xml:space="preserve">
+    <value>Master &gt; Fixed Assets Management &gt; Fixed Assets Type &gt;  Fixed Assets Type Detail</value>
+  </data>
+  <data name="MS_FixedAssetsType_New_Form" xml:space="preserve">
+    <value>Add Fixed Assets Type Detail</value>
+  </data>
+  <data name="MS_FixedAssetsType_New_Path" xml:space="preserve">
+    <value>Master &gt; Fixed Assets Management &gt; Fixed Assets Type &gt;  Fixed Assets Type Detail</value>
+  </data>
+  <data name="MS_FixedAssetsType_Search_Form" xml:space="preserve">
+    <value>Fixed Assets Type</value>
+  </data>
+  <data name="MS_FixedAssetsType_Search_Path" xml:space="preserve">
+    <value>Master &gt; Fixed Assets Management &gt; Fixed Assets Type </value>
+  </data>
+  <data name="MS_FixedAssetsType_View_Form" xml:space="preserve">
+    <value>Fixed Assets Type Detail</value>
+  </data>
+  <data name="MS_FixedAssetsType_View_Path" xml:space="preserve">
+    <value>Master &gt; Fixed Assets Management &gt; Fixed Assets Type &gt;  Fixed Assets Type Detail</value>
+  </data>
+  <data name="FA_Information_Edit_Form" xml:space="preserve">
+    <value>Edit Fixed Assets Information Detail</value>
+  </data>
+  <data name="FA_Information_Edit_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt; Fixed Assets Information &gt;  Fixed Assets Information Detail</value>
+  </data>
+  <data name="FA_Information_New_Form" xml:space="preserve">
+    <value>Add Fixed Assets Information Detail</value>
+  </data>
+  <data name="FA_Information_New_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt; Fixed Assets Information &gt;  Fixed Assets Information Detail</value>
+  </data>
+  <data name="FA_Information_Search_Form" xml:space="preserve">
+    <value>Fixed Assets Information</value>
+  </data>
+  <data name="FA_Information_Search_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt; Fixed Assets Information</value>
+  </data>
+  <data name="FA_Information_View_Form" xml:space="preserve">
+    <value>Fixed Assets Information Detail</value>
+  </data>
+  <data name="FA_Information_View_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt; Fixed Assets Information &gt;  Fixed Assets Information Detail</value>
+  </data>
+  <data name="FA_Decrease_Edit_Form" xml:space="preserve">
+    <value>Edit Fixed Assets Decrease Detail</value>
+  </data>
+  <data name="FA_Decrease_Edit_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt;  Fixed Assets Decrease Detail</value>
+  </data>
+  <data name="FA_Decrease_New_Form" xml:space="preserve">
+    <value>Add Fixed Assets Decrease Detail</value>
+  </data>
+  <data name="FA_Decrease_New_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt;  Fixed Assets Decrease Detail</value>
+  </data>
+  <data name="FA_Decrease_Search_Form" xml:space="preserve">
+    <value>Fixed Assets Decrease</value>
+  </data>
+  <data name="FA_Decrease_Search_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt; Fixed Assets Decrease</value>
+  </data>
+  <data name="FA_Decrease_View_Form" xml:space="preserve">
+    <value>Fixed Assets Decrease Detail</value>
+  </data>
+  <data name="FA_Decrease_View_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt; Fixed Assets Decrease &gt;  Fixed Assets Decrease Detail</value>
+  </data>
+  <data name="FA_Increase_Edit_Form" xml:space="preserve">
+    <value>Edit Fixed Assets Increase Detail</value>
+  </data>
+  <data name="FA_Increase_Edit_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management  &gt;  Fixed Assets Increase Detail</value>
+  </data>
+  <data name="FA_Increase_New_Form" xml:space="preserve">
+    <value>Add Fixed Assets Increase Detail</value>
+  </data>
+  <data name="FA_Increase_New_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt;  Fixed Assets Increase Detail</value>
+  </data>
+  <data name="FA_Increase_Search_Form" xml:space="preserve">
+    <value>Fixed Assets Increase</value>
+  </data>
+  <data name="FA_Increase_Search_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt; Fixed Assets Increase</value>
+  </data>
+  <data name="FA_Increase_View_Form" xml:space="preserve">
+    <value>Fixed Assets Increase Detail</value>
+  </data>
+  <data name="FA_Increase_View_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt; Fixed Assets Increase &gt;  Fixed Assets Increase Detail</value>
+  </data>
+  <data name="FA_Transfer_New_Form" xml:space="preserve">
+    <value>FA Transfer</value>
+  </data>
+  <data name="FA_Transfer_New_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt;  FA Transfer</value>
+  </data>
+  <data name="FA_Abandonment_Edit_Form" xml:space="preserve">
+    <value>FA Abandonment</value>
+  </data>
+  <data name="FA_Abandonment_Edit_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt;  FA Abandonment</value>
+  </data>
+  <data name="FA_Revaluation_Edit_Form" xml:space="preserve">
+    <value>Edit FA Revaluation Detail</value>
+  </data>
+  <data name="FA_Revaluation_Edit_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt; FA Revaluation &gt; FA Revaluation Detail</value>
+  </data>
+  <data name="FA_Revaluation_New_Form" xml:space="preserve">
+    <value>Add FA Revaluation Detail</value>
+  </data>
+  <data name="FA_Revaluation_New_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt; FA Revaluation &gt; FA Revaluation Detail</value>
+  </data>
+  <data name="FA_Revaluation_Search_Form" xml:space="preserve">
+    <value>FA Revaluation</value>
+  </data>
+  <data name="FA_Revaluation_Search_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt; FA Revaluation</value>
+  </data>
+  <data name="FA_Revaluation_View_Form" xml:space="preserve">
+    <value>FA Revaluation Detail</value>
+  </data>
+  <data name="FA_Revaluation_View_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt; FA Revaluation &gt; FA Revaluation Detail</value>
+  </data>
+  <data name="FA_DepreciationCalculation_Search_Form" xml:space="preserve">
+    <value>Depreciation Information</value>
+  </data>
+  <data name="FA_DepreciationCalculation_Search_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Depreciation Management &gt; Depreciation Information</value>
+  </data>
+  <data name="FA_MonthlyAdjustment_Edit_Form" xml:space="preserve">
+    <value>Edit Monthly Adjustment Detail</value>
+  </data>
+  <data name="FA_MonthlyAdjustment_Edit_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Depreciation Caculating &gt; Depreciation Information &gt; Monthly Adjustment Detail</value>
+  </data>
+  <data name="FA_MonthlyAdjustment_View_Form" xml:space="preserve">
+    <value>Monthly Adjustment Detail</value>
+  </data>
+  <data name="FA_MonthlyAdjustment_View_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Depreciation Caculating &gt; Depreciation Information&gt; Monthly Adjustment Detail</value>
+  </data>
+  <data name="FA_Abandonment_New_Form" xml:space="preserve">
+    <value>FA Abandonment</value>
+  </data>
+  <data name="FA_Abandonment_New_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Fixed Assets Management &gt;  FA Abandonment</value>
+  </data>
+  <data name="FA_DepreciationCalculation_Delete_Form" xml:space="preserve">
+    <value>Delete FA Depreciation </value>
+  </data>
+  <data name="FA_DepreciationCalculation_Delete_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Depreciation Management &gt; Depreciation Information &gt; Delete FA Depreciation </value>
+  </data>
+  <data name="FA_DepreciationCalculation_Edit_Form" xml:space="preserve">
+    <value>Adjust Monthly Depreciation </value>
+  </data>
+  <data name="FA_DepreciationCalculation_Edit_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Depreciation Management &gt; Depreciation Information &gt; Adjust Monthly Depreciation </value>
+  </data>
+  <data name="FA_DepreciationCalculation_New_Form" xml:space="preserve">
+    <value>Calculate FA Depreciation</value>
+  </data>
+  <data name="FA_DepreciationCalculation_New_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Depreciation Management &gt; Depreciation Information &gt; Calculate FA Depreciation</value>
+  </data>
+  <data name="FA_DepreciationCalculation_View_Form" xml:space="preserve">
+    <value>Adjust Monthly Depreciation</value>
+  </data>
+  <data name="FA_DepreciationCalculation_View_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Depreciation Management &gt; Depreciation Information &gt; Adjust Monthly Depreciation</value>
+  </data>
+  <data name="FA_DepreciationForecast_Search_Form" xml:space="preserve">
+    <value>Depreciation Forecast</value>
+  </data>
+  <data name="FA_DepreciationForecast_Search_Path" xml:space="preserve">
+    <value>Fixed Assets &gt; Depreciation Management &gt; Depreciation Forecast</value>
+  </data>
+</root>

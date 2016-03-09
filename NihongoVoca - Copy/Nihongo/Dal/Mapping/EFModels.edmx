@@ -1,0 +1,861 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ModelsStoreContainer">
+          <EntitySet Name="ms_paymenthistories" EntityType="Models.Store.ms_paymenthistories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ms_registedvocasets" EntityType="Models.Store.ms_registedvocasets" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ms_testresults" EntityType="Models.Store.ms_testresults" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ms_users" EntityType="Models.Store.ms_users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ms_uservocabularies" EntityType="Models.Store.ms_uservocabularies" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ms_vocabularies" EntityType="Models.Store.ms_vocabularies" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ms_vocabularydetails" EntityType="Models.Store.ms_vocabularydetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ms_vocacategories" EntityType="Models.Store.ms_vocacategories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ms_vocasets" EntityType="Models.Store.ms_vocasets" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ms_vouchers" EntityType="Models.Store.ms_vouchers" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_mspaymenthistories_VocaSetID_msvocasets_ID" Association="Models.Store.FK_mspaymenthistories_VocaSetID_msvocasets_ID">
+            <End Role="ms_vocasets" EntitySet="ms_vocasets" />
+            <End Role="ms_paymenthistories" EntitySet="ms_paymenthistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msregistedvocasets_VocaSetID_msvocasets_ID" Association="Models.Store.FK_msregistedvocasets_VocaSetID_msvocasets_ID">
+            <End Role="ms_vocasets" EntitySet="ms_vocasets" />
+            <End Role="ms_registedvocasets" EntitySet="ms_registedvocasets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID" Association="Models.Store.FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID">
+            <End Role="ms_vocabularydetails" EntitySet="ms_vocabularydetails" />
+            <End Role="ms_uservocabularies" EntitySet="ms_uservocabularies" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ms_paymenthistories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VocaSetID" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="ReceivedDate" Type="datetime" Nullable="false" />
+          <Property Name="Fee" Type="decimal" Nullable="false" Precision="20" Scale="4" />
+          <Property Name="PaymentMethod" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="CardCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="CardSeri" Type="nvarchar" MaxLength="100" />
+          <Property Name="CardName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Address" Type="nvarchar" MaxLength="150" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="150" />
+          <Property Name="VoucherCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="ms_registedvocasets">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VocaSetID" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="NumOfMonths" Type="int" />
+          <Property Name="NumOfDays" Type="int" />
+          <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="ms_testresults">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="nvarchar" MaxLength="100" />
+          <Property Name="CategoryCode" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="NumOfVocas" Type="int" />
+          <Property Name="NumOfCorrectVocas" Type="int" />
+          <Property Name="IsPass" Type="nvarchar" MaxLength="1" />
+          <Property Name="RequiredTimePerVoca" Type="int" />
+          <Property Name="TotalRequiredTime" Type="int" />
+          <Property Name="CompletedTime" Type="int" />
+          <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="ms_users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="DisplayName" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="UrlImage" Type="nvarchar" MaxLength="150" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="ntext" />
+          <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="SystemData" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="IsAdmin" Type="nvarchar" MaxLength="1" />
+          <Property Name="LoginState" Type="nvarchar" MaxLength="1" />
+          <Property Name="LastVisitedDate" Type="datetime" />
+          <Property Name="AccumulatedPoint" Type="int" />
+          <Property Name="Point" Type="int" />
+        </EntityType>
+        <EntityType Name="ms_uservocabularies">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VocaDetailID" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Level" Type="int" />
+          <Property Name="HasLearnt" Type="nvarchar" MaxLength="1" />
+          <Property Name="Update_Date" Type="datetime" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Description" Type="ntext" />
+          <Property Name="HasMarked" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="ms_vocabularies">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="WordClass" Type="nvarchar" MaxLength="1" />
+          <Property Name="DisplayType" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="Romaji" Type="nvarchar" MaxLength="100" />
+          <Property Name="Hiragana" Type="nvarchar" MaxLength="100" />
+          <Property Name="Romaji_Katakana" Type="nvarchar" MaxLength="100" />
+          <Property Name="Katakana" Type="nvarchar" MaxLength="100" />
+          <Property Name="Kanji" Type="nvarchar" MaxLength="100" />
+          <Property Name="Pinyin" Type="nvarchar" MaxLength="100" />
+          <Property Name="Writing" Type="nvarchar" MaxLength="100" />
+          <Property Name="OnReading" Type="nvarchar" MaxLength="100" />
+          <Property Name="OnRomaji" Type="nvarchar" MaxLength="100" />
+          <Property Name="OnUrlAudio" Type="nvarchar" MaxLength="150" />
+          <Property Name="OnReading2" Type="nvarchar" MaxLength="100" />
+          <Property Name="OnRomaji2" Type="nvarchar" MaxLength="100" />
+          <Property Name="OnUrlAudio2" Type="nvarchar" MaxLength="150" />
+          <Property Name="KunReading" Type="nvarchar" MaxLength="100" />
+          <Property Name="KunRomaji" Type="nvarchar" MaxLength="100" />
+          <Property Name="KunUrlAudio" Type="nvarchar" MaxLength="150" />
+          <Property Name="KunReading2" Type="nvarchar" MaxLength="100" />
+          <Property Name="KunRomaji2" Type="nvarchar" MaxLength="100" />
+          <Property Name="KunUrlAudio2" Type="nvarchar" MaxLength="150" />
+          <Property Name="VMeaning" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="ntext" />
+          <Property Name="Type" Type="nvarchar" MaxLength="1" />
+          <Property Name="UrlImage" Type="nvarchar" MaxLength="150" />
+          <Property Name="UrlAudio" Type="nvarchar" MaxLength="150" />
+          <Property Name="UrlAudio_Katakana" Type="nvarchar" MaxLength="150" />
+          <Property Name="HasDiacritic" Type="nvarchar" MaxLength="1" />
+          <Property Name="HasCombination" Type="nvarchar" MaxLength="1" />
+          <Property Name="HasTsu" Type="nvarchar" MaxLength="1" />
+          <Property Name="HasLongSound" Type="nvarchar" MaxLength="1" />
+          <Property Name="Remembering" Type="nvarchar" MaxLength="250" />
+          <Property Name="ExKanji1" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExPinyin1" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExRomaji1" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExReading1" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExVMeaning1" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExKanji2" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExPinyin2" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExRomaji2" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExReading2" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExVMeaning2" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExKanji3" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExPinyin3" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExRomaji3" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExReading3" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExVMeaning3" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExKanji4" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExPinyin4" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExRomaji4" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExReading4" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExVMeaning4" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ms_vocabularydetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryCode" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="VocabularyCode" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="LineNumber" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="ms_vocacategories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="PreviousCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name1" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Name2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Name3" Type="nvarchar" MaxLength="100" />
+          <Property Name="LineNumber" Type="int" Nullable="false" />
+          <Property Name="VocaSet" Type="nvarchar" MaxLength="10" />
+          <Property Name="UrlImage" Type="nvarchar" MaxLength="150" />
+          <Property Name="UrlDisplay" Type="nvarchar" MaxLength="150" />
+          <Property Name="NumOfVocas" Type="int" />
+          <Property Name="IsTrial" Type="nvarchar" MaxLength="1" />
+          <Property Name="RequiredTimePerVoca" Type="int" />
+          <Property Name="TotalRequiredTime" Type="int" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="ms_vocasets">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Name1" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="Name2" Type="nvarchar" MaxLength="150" />
+          <Property Name="Name3" Type="nvarchar" MaxLength="150" />
+          <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="IsKanji" Type="nvarchar" MaxLength="1" />
+          <Property Name="PriorityLevel" Type="int" />
+          <Property Name="Fee" Type="decimal" Precision="20" Scale="4" />
+          <Property Name="UsefulLife" Type="decimal" Precision="2" />
+          <Property Name="UrlImage" Type="nvarchar" MaxLength="150" />
+          <Property Name="UrlDisplay" Type="nvarchar" MaxLength="150" />
+          <Property Name="NumOfCategories" Type="int" />
+          <Property Name="NumOfVocas" Type="int" />
+          <Property Name="NumOfRegistedPerson" Type="int" />
+          <Property Name="NumOfFinishedPerson" Type="int" />
+          <Property Name="IsSequence" Type="nvarchar" MaxLength="1" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="ms_vouchers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="nvarchar" MaxLength="20" />
+          <Property Name="VocaSetCode" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="VocaSetFee" Type="decimal" Precision="20" Scale="4" />
+          <Property Name="DecreasePercent" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="DecreaseFee" Type="decimal" Precision="20" Scale="4" />
+          <Property Name="RemainFee" Type="decimal" Precision="20" Scale="4" />
+          <Property Name="EffectiveStartDate" Type="datetime" />
+          <Property Name="EffectiveEndDate" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <Association Name="FK_mspaymenthistories_VocaSetID_msvocasets_ID">
+          <End Role="ms_vocasets" Type="Models.Store.ms_vocasets" Multiplicity="1" />
+          <End Role="ms_paymenthistories" Type="Models.Store.ms_paymenthistories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_vocasets">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_paymenthistories">
+              <PropertyRef Name="VocaSetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msregistedvocasets_VocaSetID_msvocasets_ID">
+          <End Role="ms_vocasets" Type="Models.Store.ms_vocasets" Multiplicity="1" />
+          <End Role="ms_registedvocasets" Type="Models.Store.ms_registedvocasets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_vocasets">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_registedvocasets">
+              <PropertyRef Name="VocaSetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID">
+          <End Role="ms_vocabularydetails" Type="Models.Store.ms_vocabularydetails" Multiplicity="1" />
+          <End Role="ms_uservocabularies" Type="Models.Store.ms_uservocabularies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_vocabularydetails">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_uservocabularies">
+              <PropertyRef Name="VocaDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Models" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ms_testresults" EntityType="Models.ms_testresults" />
+          <EntitySet Name="ms_registedvocasets" EntityType="Models.ms_registedvocasets" />
+          <EntitySet Name="ms_vocasets" EntityType="Models.ms_vocasets" />
+          <EntitySet Name="ms_vouchers" EntityType="Models.ms_vouchers" />
+          <AssociationSet Name="FK_msregistedvocasets_VocaSetID_msvocasets_ID" Association="Models.FK_msregistedvocasets_VocaSetID_msvocasets_ID">
+            <End Role="ms_vocasets" EntitySet="ms_vocasets" />
+            <End Role="ms_registedvocasets" EntitySet="ms_registedvocasets" />
+          </AssociationSet>
+          <EntitySet Name="ms_paymenthistories" EntityType="Models.ms_paymenthistories" />
+          <AssociationSet Name="FK_mspaymenthistories_VocaSetID_msvocasets_ID" Association="Models.FK_mspaymenthistories_VocaSetID_msvocasets_ID">
+            <End Role="ms_vocasets" EntitySet="ms_vocasets" />
+            <End Role="ms_paymenthistories" EntitySet="ms_paymenthistories" />
+          </AssociationSet>
+          <EntitySet Name="ms_users" EntityType="Models.ms_users" />
+          <EntitySet Name="ms_uservocabularies" EntityType="Models.ms_uservocabularies" />
+          <EntitySet Name="ms_vocabularies" EntityType="Models.ms_vocabularies" />
+          <EntitySet Name="ms_vocabularydetails" EntityType="Models.ms_vocabularydetails" />
+          <EntitySet Name="ms_vocacategories" EntityType="Models.ms_vocacategories" />
+          <AssociationSet Name="FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID" Association="Models.FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID">
+            <End Role="ms_vocabularydetails" EntitySet="ms_vocabularydetails" />
+            <End Role="ms_uservocabularies" EntitySet="ms_uservocabularies" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ms_testresults">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CategoryCode" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDate" Precision="3" />
+          <Property Type="Int32" Name="NumOfVocas" />
+          <Property Type="Int32" Name="NumOfCorrectVocas" />
+          <Property Type="String" Name="IsPass" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="RequiredTimePerVoca" />
+          <Property Type="Int32" Name="TotalRequiredTime" />
+          <Property Type="Int32" Name="CompletedTime" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ms_registedvocasets">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="VocaSetID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="StartDate" Precision="3" />
+          <Property Type="DateTime" Name="EndDate" Precision="3" />
+          <Property Type="Int32" Name="NumOfMonths" />
+          <Property Type="Int32" Name="NumOfDays" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ms_vocasets" Relationship="Models.FK_msregistedvocasets_VocaSetID_msvocasets_ID" FromRole="ms_registedvocasets" ToRole="ms_vocasets" />
+        </EntityType>
+        <EntityType Name="ms_vocasets">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name1" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name2" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name3" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IsKanji" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PriorityLevel" />
+          <Property Type="Decimal" Name="Fee" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="UsefulLife" Precision="2" Scale="0" />
+          <Property Type="String" Name="UrlImage" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UrlDisplay" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="NumOfCategories" />
+          <Property Type="Int32" Name="NumOfVocas" />
+          <Property Type="Int32" Name="NumOfRegistedPerson" />
+          <Property Type="Int32" Name="NumOfFinishedPerson" />
+          <Property Type="String" Name="IsSequence" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ms_registedvocasets" Relationship="Models.FK_msregistedvocasets_VocaSetID_msvocasets_ID" FromRole="ms_vocasets" ToRole="ms_registedvocasets" />
+          <NavigationProperty Name="ms_paymenthistories" Relationship="Models.FK_mspaymenthistories_VocaSetID_msvocasets_ID" FromRole="ms_vocasets" ToRole="ms_paymenthistories" />
+        </EntityType>
+        <EntityType Name="ms_vouchers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VocaSetCode" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="VocaSetFee" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="DecreasePercent" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="DecreaseFee" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="RemainFee" Precision="20" Scale="4" />
+          <Property Type="DateTime" Name="EffectiveStartDate" Precision="3" />
+          <Property Type="DateTime" Name="EffectiveEndDate" Precision="3" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_msregistedvocasets_VocaSetID_msvocasets_ID">
+          <End Type="Models.ms_vocasets" Role="ms_vocasets" Multiplicity="1" />
+          <End Type="Models.ms_registedvocasets" Role="ms_registedvocasets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_vocasets">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_registedvocasets">
+              <PropertyRef Name="VocaSetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ms_paymenthistories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="VocaSetID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="PaymentDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ReceivedDate" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="Fee" Nullable="false" Precision="20" Scale="4" />
+          <Property Type="String" Name="PaymentMethod" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CardCode" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CardSeri" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CardName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FullName" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BankName" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VoucherCode" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ms_vocasets" Relationship="Models.FK_mspaymenthistories_VocaSetID_msvocasets_ID" FromRole="ms_paymenthistories" ToRole="ms_vocasets" />
+        </EntityType>
+        <Association Name="FK_mspaymenthistories_VocaSetID_msvocasets_ID">
+          <End Type="Models.ms_vocasets" Role="ms_vocasets" Multiplicity="1" />
+          <End Type="Models.ms_paymenthistories" Role="ms_paymenthistories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_vocasets">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_paymenthistories">
+              <PropertyRef Name="VocaSetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ms_users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UrlImage" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SystemData" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IsAdmin" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LoginState" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastVisitedDate" Precision="3" />
+          <Property Type="Int32" Name="AccumulatedPoint" />
+          <Property Type="Int32" Name="Point" />
+        </EntityType>
+        <EntityType Name="ms_uservocabularies">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="VocaDetailID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Level" />
+          <Property Type="String" Name="HasLearnt" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Update_Date" Precision="3" />
+          <Property Type="DateTime" Name="StartDate" Precision="3" />
+          <Property Type="DateTime" Name="EndDate" Precision="3" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ms_vocabularydetails" Relationship="Models.FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID" FromRole="ms_uservocabularies" ToRole="ms_vocabularydetails" />
+          <Property Type="String" Name="HasMarked" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ms_vocabularies">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WordClass" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DisplayType" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Romaji" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Hiragana" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Romaji_Katakana" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Katakana" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Kanji" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Pinyin" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Writing" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OnReading" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OnRomaji" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OnUrlAudio" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KunReading" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KunRomaji" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KunUrlAudio" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VMeaning" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Type" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UrlImage" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UrlAudio" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UrlAudio_Katakana" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HasDiacritic" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HasCombination" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HasTsu" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HasLongSound" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OnReading2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OnRomaji2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OnUrlAudio2" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KunReading2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KunRomaji2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KunUrlAudio2" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Remembering" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExKanji1" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExPinyin1" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExRomaji1" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExReading1" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExVMeaning1" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExKanji2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExPinyin2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExRomaji2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExReading2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExVMeaning2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExKanji3" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExPinyin3" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExRomaji3" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExReading3" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExVMeaning3" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExKanji4" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExPinyin4" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExRomaji4" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExReading4" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExVMeaning4" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ms_vocabularydetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CategoryCode" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VocabularyCode" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="LineNumber" Nullable="false" />
+          <Property Type="String" Name="Status" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ms_uservocabularies" Relationship="Models.FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID" FromRole="ms_vocabularydetails" ToRole="ms_uservocabularies" />
+        </EntityType>
+        <EntityType Name="ms_vocacategories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreviousCode" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name3" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="LineNumber" Nullable="false" />
+          <Property Type="String" Name="VocaSet" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UrlImage" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UrlDisplay" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="NumOfVocas" />
+          <Property Type="String" Name="IsTrial" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="RequiredTimePerVoca" />
+          <Property Type="Int32" Name="TotalRequiredTime" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID">
+          <End Type="Models.ms_vocabularydetails" Role="ms_vocabularydetails" Multiplicity="1" />
+          <End Type="Models.ms_uservocabularies" Role="ms_uservocabularies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_vocabularydetails">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_uservocabularies">
+              <PropertyRef Name="VocaDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="ms_testresults">
+            <EntityTypeMapping TypeName="Models.ms_testresults">
+              <MappingFragment StoreEntitySet="ms_testresults">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CompletedTime" ColumnName="CompletedTime" />
+                <ScalarProperty Name="TotalRequiredTime" ColumnName="TotalRequiredTime" />
+                <ScalarProperty Name="RequiredTimePerVoca" ColumnName="RequiredTimePerVoca" />
+                <ScalarProperty Name="IsPass" ColumnName="IsPass" />
+                <ScalarProperty Name="NumOfCorrectVocas" ColumnName="NumOfCorrectVocas" />
+                <ScalarProperty Name="NumOfVocas" ColumnName="NumOfVocas" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ms_registedvocasets">
+            <EntityTypeMapping TypeName="Models.ms_registedvocasets">
+              <MappingFragment StoreEntitySet="ms_registedvocasets">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="NumOfDays" ColumnName="NumOfDays" />
+                <ScalarProperty Name="NumOfMonths" ColumnName="NumOfMonths" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="VocaSetID" ColumnName="VocaSetID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ms_vocasets">
+            <EntityTypeMapping TypeName="Models.ms_vocasets">
+              <MappingFragment StoreEntitySet="ms_vocasets">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsSequence" ColumnName="IsSequence" />
+                <ScalarProperty Name="NumOfFinishedPerson" ColumnName="NumOfFinishedPerson" />
+                <ScalarProperty Name="NumOfRegistedPerson" ColumnName="NumOfRegistedPerson" />
+                <ScalarProperty Name="NumOfVocas" ColumnName="NumOfVocas" />
+                <ScalarProperty Name="NumOfCategories" ColumnName="NumOfCategories" />
+                <ScalarProperty Name="UrlDisplay" ColumnName="UrlDisplay" />
+                <ScalarProperty Name="UrlImage" ColumnName="UrlImage" />
+                <ScalarProperty Name="UsefulLife" ColumnName="UsefulLife" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="PriorityLevel" ColumnName="PriorityLevel" />
+                <ScalarProperty Name="IsKanji" ColumnName="IsKanji" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Name3" ColumnName="Name3" />
+                <ScalarProperty Name="Name2" ColumnName="Name2" />
+                <ScalarProperty Name="Name1" ColumnName="Name1" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ms_vouchers">
+            <EntityTypeMapping TypeName="Models.ms_vouchers">
+              <MappingFragment StoreEntitySet="ms_vouchers">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EffectiveEndDate" ColumnName="EffectiveEndDate" />
+                <ScalarProperty Name="EffectiveStartDate" ColumnName="EffectiveStartDate" />
+                <ScalarProperty Name="RemainFee" ColumnName="RemainFee" />
+                <ScalarProperty Name="DecreaseFee" ColumnName="DecreaseFee" />
+                <ScalarProperty Name="DecreasePercent" ColumnName="DecreasePercent" />
+                <ScalarProperty Name="VocaSetFee" ColumnName="VocaSetFee" />
+                <ScalarProperty Name="VocaSetCode" ColumnName="VocaSetCode" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ms_paymenthistories">
+            <EntityTypeMapping TypeName="Models.ms_paymenthistories">
+              <MappingFragment StoreEntitySet="ms_paymenthistories">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="VoucherCode" ColumnName="VoucherCode" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="CardName" ColumnName="CardName" />
+                <ScalarProperty Name="CardSeri" ColumnName="CardSeri" />
+                <ScalarProperty Name="CardCode" ColumnName="CardCode" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="VocaSetID" ColumnName="VocaSetID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ms_users">
+            <EntityTypeMapping TypeName="Models.ms_users">
+              <MappingFragment StoreEntitySet="ms_users">
+                <ScalarProperty Name="Point" ColumnName="Point" />
+                <ScalarProperty Name="AccumulatedPoint" ColumnName="AccumulatedPoint" />
+                <ScalarProperty Name="LastVisitedDate" ColumnName="LastVisitedDate" />
+                <ScalarProperty Name="LoginState" ColumnName="LoginState" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="SystemData" ColumnName="SystemData" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="UrlImage" ColumnName="UrlImage" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ms_uservocabularies">
+            <EntityTypeMapping TypeName="Models.ms_uservocabularies">
+              <MappingFragment StoreEntitySet="ms_uservocabularies">
+                <ScalarProperty Name="HasMarked" ColumnName="HasMarked" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+                <ScalarProperty Name="HasLearnt" ColumnName="HasLearnt" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="VocaDetailID" ColumnName="VocaDetailID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ms_vocabularies">
+            <EntityTypeMapping TypeName="Models.ms_vocabularies">
+              <MappingFragment StoreEntitySet="ms_vocabularies">
+                <ScalarProperty Name="ExVMeaning4" ColumnName="ExVMeaning4" />
+                <ScalarProperty Name="ExReading4" ColumnName="ExReading4" />
+                <ScalarProperty Name="ExRomaji4" ColumnName="ExRomaji4" />
+                <ScalarProperty Name="ExPinyin4" ColumnName="ExPinyin4" />
+                <ScalarProperty Name="ExKanji4" ColumnName="ExKanji4" />
+                <ScalarProperty Name="ExVMeaning3" ColumnName="ExVMeaning3" />
+                <ScalarProperty Name="ExReading3" ColumnName="ExReading3" />
+                <ScalarProperty Name="ExRomaji3" ColumnName="ExRomaji3" />
+                <ScalarProperty Name="ExPinyin3" ColumnName="ExPinyin3" />
+                <ScalarProperty Name="ExKanji3" ColumnName="ExKanji3" />
+                <ScalarProperty Name="ExVMeaning2" ColumnName="ExVMeaning2" />
+                <ScalarProperty Name="ExReading2" ColumnName="ExReading2" />
+                <ScalarProperty Name="ExRomaji2" ColumnName="ExRomaji2" />
+                <ScalarProperty Name="ExPinyin2" ColumnName="ExPinyin2" />
+                <ScalarProperty Name="ExKanji2" ColumnName="ExKanji2" />
+                <ScalarProperty Name="ExVMeaning1" ColumnName="ExVMeaning1" />
+                <ScalarProperty Name="ExReading1" ColumnName="ExReading1" />
+                <ScalarProperty Name="ExRomaji1" ColumnName="ExRomaji1" />
+                <ScalarProperty Name="ExPinyin1" ColumnName="ExPinyin1" />
+                <ScalarProperty Name="ExKanji1" ColumnName="ExKanji1" />
+                <ScalarProperty Name="Remembering" ColumnName="Remembering" />
+                <ScalarProperty Name="KunUrlAudio2" ColumnName="KunUrlAudio2" />
+                <ScalarProperty Name="KunRomaji2" ColumnName="KunRomaji2" />
+                <ScalarProperty Name="KunReading2" ColumnName="KunReading2" />
+                <ScalarProperty Name="OnUrlAudio2" ColumnName="OnUrlAudio2" />
+                <ScalarProperty Name="OnRomaji2" ColumnName="OnRomaji2" />
+                <ScalarProperty Name="OnReading2" ColumnName="OnReading2" />
+                <ScalarProperty Name="HasLongSound" ColumnName="HasLongSound" />
+                <ScalarProperty Name="HasTsu" ColumnName="HasTsu" />
+                <ScalarProperty Name="HasCombination" ColumnName="HasCombination" />
+                <ScalarProperty Name="HasDiacritic" ColumnName="HasDiacritic" />
+                <ScalarProperty Name="UrlAudio_Katakana" ColumnName="UrlAudio_Katakana" />
+                <ScalarProperty Name="UrlAudio" ColumnName="UrlAudio" />
+                <ScalarProperty Name="UrlImage" ColumnName="UrlImage" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="VMeaning" ColumnName="VMeaning" />
+                <ScalarProperty Name="KunUrlAudio" ColumnName="KunUrlAudio" />
+                <ScalarProperty Name="KunRomaji" ColumnName="KunRomaji" />
+                <ScalarProperty Name="KunReading" ColumnName="KunReading" />
+                <ScalarProperty Name="OnUrlAudio" ColumnName="OnUrlAudio" />
+                <ScalarProperty Name="OnRomaji" ColumnName="OnRomaji" />
+                <ScalarProperty Name="OnReading" ColumnName="OnReading" />
+                <ScalarProperty Name="Writing" ColumnName="Writing" />
+                <ScalarProperty Name="Pinyin" ColumnName="Pinyin" />
+                <ScalarProperty Name="Kanji" ColumnName="Kanji" />
+                <ScalarProperty Name="Katakana" ColumnName="Katakana" />
+                <ScalarProperty Name="Romaji_Katakana" ColumnName="Romaji_Katakana" />
+                <ScalarProperty Name="Hiragana" ColumnName="Hiragana" />
+                <ScalarProperty Name="Romaji" ColumnName="Romaji" />
+                <ScalarProperty Name="DisplayType" ColumnName="DisplayType" />
+                <ScalarProperty Name="WordClass" ColumnName="WordClass" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ms_vocabularydetails">
+            <EntityTypeMapping TypeName="Models.ms_vocabularydetails">
+              <MappingFragment StoreEntitySet="ms_vocabularydetails">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LineNumber" ColumnName="LineNumber" />
+                <ScalarProperty Name="VocabularyCode" ColumnName="VocabularyCode" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ms_vocacategories">
+            <EntityTypeMapping TypeName="Models.ms_vocacategories">
+              <MappingFragment StoreEntitySet="ms_vocacategories">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TotalRequiredTime" ColumnName="TotalRequiredTime" />
+                <ScalarProperty Name="RequiredTimePerVoca" ColumnName="RequiredTimePerVoca" />
+                <ScalarProperty Name="IsTrial" ColumnName="IsTrial" />
+                <ScalarProperty Name="NumOfVocas" ColumnName="NumOfVocas" />
+                <ScalarProperty Name="UrlDisplay" ColumnName="UrlDisplay" />
+                <ScalarProperty Name="UrlImage" ColumnName="UrlImage" />
+                <ScalarProperty Name="VocaSet" ColumnName="VocaSet" />
+                <ScalarProperty Name="LineNumber" ColumnName="LineNumber" />
+                <ScalarProperty Name="Name3" ColumnName="Name3" />
+                <ScalarProperty Name="Name2" ColumnName="Name2" />
+                <ScalarProperty Name="Name1" ColumnName="Name1" />
+                <ScalarProperty Name="PreviousCode" ColumnName="PreviousCode" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="EFModels">
+        <EntityTypeShape EntityType="Models.ms_testresults" Width="1.5" PointX="0.75" PointY="8.75" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="Models.ms_registedvocasets" Width="1.5" PointX="10" PointY="6.875" Height="3.1340950520833317" />
+        <EntityTypeShape EntityType="Models.ms_vocasets" Width="1.5" PointX="7.75" PointY="6.125" Height="4.8648079427083317" />
+        <EntityTypeShape EntityType="Models.ms_vouchers" Width="1.5" PointX="0.75" PointY="4.75" Height="3.1340950520833317" />
+        <AssociationConnector Association="Models.FK_msregistedvocasets_VocaSetID_msvocasets_ID" >
+          <ConnectorPoint PointX="9.25" PointY="8.3458968098958337" />
+          <ConnectorPoint PointX="10" PointY="8.3458968098958337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Models.ms_paymenthistories" Width="1.5" PointX="10" PointY="11.375" Height="4.6725065104166745" />
+        <AssociationConnector Association="Models.FK_mspaymenthistories_VocaSetID_msvocasets_ID" >
+          <ConnectorPoint PointX="8.5" PointY="11.182109374999998" />
+          <ConnectorPoint PointX="8.5" PointY="13.711253255208337" />
+          <ConnectorPoint PointX="10" PointY="13.711253255208337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Models.ms_users" Width="1.5" PointX="3.375" PointY="4.75" Height="4.0956022135416674" />
+        <EntityTypeShape EntityType="Models.ms_uservocabularies" Width="1.5" PointX="5.625" PointY="1" Height="2.9417936197916745" />
+        <EntityTypeShape EntityType="Models.ms_vocabularies" Width="1.5" PointX="3.375" PointY="9.75" Height="6.2109179687500031" />
+        <EntityTypeShape EntityType="Models.ms_vocabularydetails" Width="1.5" PointX="3.375" PointY="1.375" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="Models.ms_vocacategories" Width="1.5" PointX="8.375" PointY="0.75" Height="3.9033007812500031" />
+        <AssociationConnector Association="Models.FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID" >
+          <ConnectorPoint PointX="4.875" PointY="2.4612939453125016" />
+          <ConnectorPoint PointX="5.625" PointY="2.4612939453125016" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

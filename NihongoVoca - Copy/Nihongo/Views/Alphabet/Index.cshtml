@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Bảng chữ cái tiếng Nhật - Cùng nhau học chữ cái tiếng Nhật Hiragana và Katakana";
+}
+<header id="head" class="secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1>
+                    BẢNG CHỮ CÁI TIẾNG NHẬT</h1>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="courses">
+    <section class="container">
+        <h3>
+            HỌC CHỮ CÁI TIẾNG NHẬT</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="featured-box">
+                    <i class="fa fa-leaf fa-2x"></i>
+                    @*<a href='@Href("~/Alphabet/Hiragana/bang-chu-cai-tieng-nhat")'><i class="fa fa-leaf fa-2x"></i></a>*@
+                    <div class="text">
+                        <h3>
+                            @Html.ActionLink("HIRAGANA", "Hiragana", "Alphabet")</h3>
+                        Hiragana (Kanji: 平仮名; Hiragana: ひらがな; Katakana: ヒラガナ) 
+                        là một dạng văn tự biểu âm truyền thống của tiếng Nhật, một thành phần của hệ thống chữ viết Nhật Bản...
+                    </div>
+                    <div class="pull-right">@Html.ActionLink("Bắt đầu học", "Hiragana", "Alphabet")</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="featured-box">
+                    <i class="fa fa-leaf fa-2x"></i>
+                    <div class="text">
+                        <h3>
+                            @Html.ActionLink("KATAKANA", "Katakana", "Alphabet")</h3>
+                        Katakana(Kanji: 片仮名; Hiragana: かたかな; Katakana: カタカナ) 
+                        hay còn gọi là kiểu chữ cứng của tiếng Nhật, là một thành phần trong hệ thống chữ viết truyền thống của Nhật Bản...
+                    </div>
+                    <div class="pull-right">@Html.ActionLink("Bắt đầu học", "Katakana", "Alphabet")</div>
+                </div>
+            </div>
+        </div>
+        <h3>
+            LUYỆN TẬP CHỮ CÁI</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="featured-box">
+                    <i class="fa fa-eye fa-2x"></i>
+                    <div class="text">
+                        <h3>
+                            @Html.ActionLink("HIRAGANA", "luyen-tap-hiragana", "Alphabet")</h3>
+                        Ôn luyện và sử dụng những chữ cái Hiragana đã học hằng ngày 
+                        là cách đảm bảo nhất giúp bạn tăng khả năng ghi nhớ chữ cái Hiragana và hạn chế quên chữ cái cũ
+                    </div>
+                    <div class="pull-right">@Html.ActionLink("Luyện tập", "luyen-tap-hiragana", "Alphabet")</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="featured-box">
+                    <i class="fa fa-eye fa-2x"></i>
+                    <div class="text">
+                        <h3>
+                            @Html.ActionLink("KATAKANA", "luyen-tap-katakana", "Alphabet")</h3>
+                        Ôn luyện và sử dụng những chữ cái Katakana đã học hằng ngày 
+                        là cách đảm bảo nhất giúp bạn tăng khả năng ghi nhớ chữ cái Katakana và hạn chế quên chữ cái cũ
+                    </div>
+                    <div class="pull-right">@Html.ActionLink("Luyện tập", "luyen-tap-katakana", "Alphabet")</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

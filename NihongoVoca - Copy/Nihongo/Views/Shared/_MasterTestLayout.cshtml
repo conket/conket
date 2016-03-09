@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Học từ vựng Tiếng Nhật dễ dàng, nhanh chóng và thuận tiện">
+    <meta name="author" content="Chu Hồng Kiên">
+    <link href="~/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <title>@ViewBag.Title</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    @*@Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/slider")
+    @Styles.Render("~/Content/font")
+    @Styles.Render("~/Content/style")
+
+    <!-- jQuery -->
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <script src='@Scripts.Url("~/bundles/bootstrap")' async> </script>*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    @Styles.Render("~/Content/css")
+    <!-- jQuery -->
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" async></script>
+    <script src='@Scripts.Url("~/bundles/slider")' async> </script>
+
+</head>
+<body>
+
+
+    <div id="body">
+        @RenderSection("featured", required: false)
+        @RenderBody()
+    </div>
+    @RenderSection("scripts", required: false)
+    @Html.Partial("_ModalPartial")
+
+    @*<script type="text/javascript">
+        $(function () {
+    
+            $(document).ajaxStart(function () {
+                $('#loadingModal').modal();
+                //clearconsole();
+            });
+
+            $(document).ajaxStop(function () {
+                $('#loadingModal').modal('hide');
+                //clearconsole();
+            });
+
+            $(document).ajaxComplete(function () {
+                $('#loadingModal').modal('hide');
+                //clearconsole();
+            });
+        })
+    </script>*@
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-65169646-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</body>
+</html>

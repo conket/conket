@@ -1,0 +1,79 @@
+﻿@model Nihongo.Models.MS_VocaCategoriesModels
+@{
+    ViewBag.Title = "Luyện tập từ vựng tiếng Nhật hàng ngày, học sâu nhớ lâu với " + Model.VocaSetName1 + " - " + Model.Name1;
+}
+<input type="hidden" id="uuv" value='@CommonMethod.EncodeUrl("UpdateUserVocas")' />
+<input type="hidden" id="gcl" value='@CommonMethod.EncodeUrl("GetChoosingVocas")' />
+<input type="hidden" id="gtl" value='@CommonMethod.EncodeUrl("GetTranslatingVocas")' />
+<input type="hidden" id="grl" value='@CommonMethod.EncodeUrl("GetReadingVocas")' />
+<input type="hidden" id="gcv" value='@CommonMethod.EncodeUrl("GetChoosingVocabularies")' />
+<input type="hidden" id="vcd" value="@ViewBag.CategoryID"/>
+<input type="hidden" id="accessDenied" value="@Ivs.Core.Common.CommonData.DbReturnCode.AccessDenied"/>
+<header id="head" class="secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1>TỪ VỰNG</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="courses">
+    <section class="container">
+        <h3>LUYỆN TẬP TỪ VỰNG </h3>
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    <a href='#' data-toggle="modal" data-target="#modalChoosingWordType" class="btn btn-navigator btn-lg require-login" role="button">Chọn lọc từ</a>
+                    @Html.ActionLink("Ôn lại", "hoc-tu-vung", "Library", new { @id = ViewBag.CategoryID, @urlDisplay = ViewBag.CategoryUrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })
+                    @*@Html.ActionLink("Kiểm tra", "kiem-tra", "Library", new { @id = ViewBag.CategoryID, @urlDisplay = ViewBag.CategoryUrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })*@
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="featured-box">
+                    <a href="#" @*data-toggle="modal" data-target="#modelTestReading"*@ class="aReading require-login"><i class="fa fa-eye fa-2x"></i></a>
+                    <div class="text">
+                        <h3>ĐỌC TỪ VỰNG</h3>
+                        Bài luyện tập này sẽ giúp cải thiện khả năng <strong>ĐỌC</strong> và <strong>VIẾT</strong> từ vựng tiếng Nhật
+                    </div>
+                    <div class="pull-right">
+                        <a href="#" @*data-toggle="modal" data-target="#modelTestReading"*@ class="aReading require-login">Bắt đầu</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="featured-box">
+                    <a href="#" @*data-toggle="modal" data-target="#modelTestChoosing"*@ class="aChoosing require-login"><i class="fa fa-eye fa-2x"></i></a>
+                    <div class="text">
+                        <h3>CHỌN TỪ ĐÚNG</h3>
+                        Bài luyện tập này sẽ giúp cải thiện khả năng <strong>DỊCH</strong> và <strong>NGHE</strong> từ vựng từ tiếng Việt sang tiếng Nhật
+                    </div>
+                    <div class="pull-right">
+                        <a href="#" @*data-toggle="modal" data-target="#modelTestChoosing"*@ class="aChoosing require-login">Bắt đầu</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="featured-box">
+                    <a href="#" @*data-toggle="modal" data-target="#modelTestTranslating"*@ class="aTranslating require-login"><i class="fa fa-eye fa-2x"></i></a>
+                    <div class="text">
+                        <h3>NHẬN DIỆN TỪ</h3>
+                        Bài luyện tập này sẽ giúp cải thiện khả năng <strong>NGHE</strong> và <strong>ĐỌC</strong> từ vựng tiếng Nhật
+                    </div>
+                    <div class="pull-right">
+                        <a href="#" @*data-toggle="modal" data-target="#modelTestTranslating"*@ class="aTranslating require-login">Bắt đầu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@Html.Partial("_PracticeNotePartial")
+@Html.Partial("_PracticeModalPartial")
+@Html.Partial("_VocaWordPartial", Model.Vocabularies)
+<script src='@Scripts.Url("~/bundles/pr")' async> </script>

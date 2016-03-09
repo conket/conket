@@ -1,0 +1,215 @@
+﻿@model IEnumerable<Nihongo.Models.MS_UserVocabulariesModels>
+<div class="row" id="vocalist">
+@if (Model != null && Model.Count() > 0)
+{
+
+    int count = 0;
+    int numOfColumn = 2;
+    var models = Model.ToList();
+    var max = models.Count;
+    int numOfRows = models.Count % numOfColumn == 0 ? models.Count / numOfColumn : models.Count / numOfColumn + 1;
+    
+    for (int k = 0; k < numOfRows; k++)
+    {
+    <div class="row vocalist">
+        @for (int i = 0; i < (max > numOfColumn ? numOfColumn : max); i++)
+        {
+            Nihongo.Models.MS_UserVocabulariesModels voca = models[count];
+            <div class="col-md-6">
+                <div class="row brdr-top bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 text-center">
+                        <span style="font-size:100px;">@voca.Kanji</span>
+                    </div>
+                    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
+                        <div class="media">
+                            <div class="media-body fnt-smaller">
+                                <h4 class="media-heading">
+                                    <span class="label label-primary">@(count + 1)</span> @voca.Pinyin<small class="pull-right">
+                                            @if (voca.HasLearnt == Ivs.Core.Common.CommonData.Status.Enable)
+                                            {
+                                                <span class="label label-info">Đã thuộc</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="label label-danger">Chưa thuộc</span>
+                                            }
+                                        </small>
+                                </h4>
+                               @* <ul class="mrg-0 btm-mrg-10 clr-535353">
+                                    <li>
+                                        <div class="zoom-content"></div>
+                                    </li>
+
+                                    <li>
+                                        <div class="zoom-content"><a href="#" class="drawKanji" data-toggle="tooltip" title="Nhấp để xem cách viết">@voca.Kanji</a></div>
+                                    </li>
+                                </ul>*@
+                                <p>
+                                    @voca.VMeaning
+                                </p>
+                                <div class="text-right">
+                                    <a href="#" class="drawKanji btn btn-default btn-sm " data-toggle="tooltip" title="Nhấp để xem cách viết">@voca.Kanji</a>
+                                    <a href='#' class="btn btn-default btn-sm require-login" onclick="updateHasMarked(@voca.ID); return false;"
+                            role="button">Thêm vào sổ tay</a>
+                                </div>
+                                @*<span class="fnt-smaller fnt-lighter fnt-arial">
+                       
+                                        </span>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                                            count++;
+        }
+    </div>   
+        max -= numOfColumn;
+    }
+        
+}
+    </div>
+<script src='@Scripts.Url("~/bundles/dr")' async> </script>
+<script src='@Scripts.Url("~/bundles/jqueryui")'> </script>
+<script src='@Scripts.Url("~/bundles/jquerycookie")' async> </script>
+@*<script type="text/javascript" src='@Scripts.Url("~/bundles/audio")'> </script>*@
+<script type="text/javascript" src="~/Scripts/jquery.mb.audio.js"></script>
+<script type="text/javascript">
+    var vocas;
+    var jAudio = [];
+
+    $(document).ready(function () {
+        vocas = set(@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)));
+        if (vocas != null && vocas.length > 0) {
+            jAudio += '{';
+            for (var i = 0; i < vocas.length; i++) {
+                //var audio = new Audio(vocas[i].UrlAudio);
+                //audio.load();
+                if (i == vocas.length - 1) {
+                    jAudio += vocas[i].VocabularyCode + ':{ id:' + vocas[i].VocabularyCode + '}';
+                }
+                else {
+                    jAudio += vocas[i].VocabularyCode + ':{ id:' + vocas[i].VocabularyCode + '},';
+                }
+            }
+            jAudio += '}';
+            
+        }
+        /*
+         * DEFINE SOUNDS
+         */
+        $.mbAudio.sounds = vocas;
+        $.mbAudio.sounds = {
+
+            backgroundSprite: {
+                id: "backgroundSprite",
+                ogg: "sounds/bgndsSprite.ogg",
+                mp3: "sounds/bgndsSprite.mp3",
+                //example of sprite
+                sprite: {
+                    intro: { id: "intro", start: 80, end: 116.975, loop: true },
+                    levelIntro: { id: "levelIntro", start: 60, end: 77.470, loop: true },
+                    tellStory: { id: "tellStory", start: 80, end: 116.975, loop: true },
+                    level1: { id: "level1", start: 5, end: 13, loop: true },
+                    level2: { id: "level2", start: 40, end: 56, loop: true },
+                    level3: { id: "level3", start: 120, end: 136.030, loop: true }
+                }
+            },
+
+            effectSprite: {
+                id: "effectSprite",
+                ogg: "sounds/effectsSprite.ogg",
+                mp3: "sounds/effectsSprite1.mp3",
+                //example of sprite
+                sprite: {
+                    streak: { id: "streak", start: 0, end: 1.3, loop: 3 },
+                    great: { id: "great", start: 5, end: 8, loop: false },
+                    divine: { id: "divine", start: 10, end: 11.6, loop: false },
+                    wow: { id: "wow", start: 15, end: 20, loop: false },
+                    levelIntro: { id: "levelIntro", start: 20, end: 25, loop: false },
+                    levelCompleted: { id: "levelCompleted", start: 25, end: 30, loop: false },
+                    subLevelLost: { id: "subLevelLost", start: 35, end: 38.1, loop: false },
+                    subLevelWon: { id: "subLevelWon", start: 30, end: 31.9, loop: false },
+                    gameWon: { id: "gameWon", start: 30, end: 31.9, loop: false }
+                }
+            }
+        };
+
+        
+        //$('#vocalist .vocalist').sortable({
+        //    connectWith: '#vocalist .vocalist'
+        //});
+
+        //$(document).trigger('initAudio');
+    })
+
+    function playAudio(id) {
+        
+        $.mbAudio.play('vocaAudio', id)
+    }
+
+    function audioIsReady() {
+
+        //setTimeout(function () {
+        //    if (isStandAlone || !isDevice)
+        //        $.mbAudio.play('vocaAudio', vocas[0].VocabularyCode);
+
+        //}, 1000);
+
+    }
+
+    $(document).on("initAudio", function () {
+
+        //otherwise sound is initialized on the first tap loosing time and UX
+        $.mbAudio.pause('vocaAudio', audioIsReady);
+    });
+        
+    function getVoca(id) {
+        for (var i = 0; i < vocas.length; i++) {
+            if (vocas[i].ID == id) {
+                return vocas[i];
+            }
+        }
+        return null;
+    }
+
+    function updateHasMarked(id) {
+        var voca = getVoca(id);
+        if (voca != null) {
+            if (voca.HasMarked == "1") {
+                alert('Từ vựng này đã có trong Sổ tay');
+                return;
+            }
+            voca.HasMarked = "1";
+            $.ajax({
+                cache: true,
+                type: "post",
+                async: true,
+                url: '/Library/' + '@CommonMethod.EncodeUrl("UpdateHasMarked")',
+                data: JSON.stringify(voca),
+                dataType: "json",
+                contentType: 'application/json',
+                success: function (result) {
+                    if (result.ReturnCode == '@CommonData.DbReturnCode.AccessDenied') {
+                        voca.HasMarked = "0";
+                        window.location.href = '/Account/RequireLogin';
+                    }
+                    else if (result.ReturnCode != 0) {
+                        voca.HasMarked = "0";
+                        alert('Có lỗi xảy ra');
+                    }
+                    else {
+                        alert('Đã thêm vào Sổ tay của bạn');
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.responseText);
+                    return false;
+                }
+            });
+            }
+        }
+        function set(value) {
+            return value;
+        }
+</script>
+

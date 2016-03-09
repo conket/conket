@@ -1,0 +1,1245 @@
+﻿@{
+    ViewBag.Title = "Katakana";
+}
+<script type="text/javascript">
+
+    var messageAudio;
+
+    $(document).ready(function () {
+
+        $('#romaji-tenten-maru').on('click', function () {
+            reShowAlphabet();
+        });
+
+        $('#romaji').on('click', function () {
+            reShowAlphabet();
+        });
+
+        $('#romaji-aoam').on('click', function () {
+            reShowAlphabet();
+        });
+
+        $("span[name=tenten-maru]").click(function () {
+            showAlphabet(this.id);
+            $('#romaji-tenten-maru').html('Romaji: <strong>' + this.id + '</strong>');
+            $('#tenten-maru-image').html($(this).text());
+        });
+
+        $("span[name=alphabet-aoam]").click(function () {
+            showAlphabet(this.id);
+            $('#romaji-aoam').html('Romaji: <strong>' + this.id + '</strong>');
+            $('#aoam-image').html($(this).text());
+        });
+
+        $("span[name=alphabet]").click(function () {
+            showAlphabet(this.id);
+            $('#alphabet-image').attr('src', '@Href("~/Images/alphabet/katakana/")' + this.id + '.gif');
+            $('#romaji').html('Romaji: <strong>' + this.id + '</strong>');
+        });
+
+        $('#btnNextTentenMaru').on('click', function () {
+            showNextAlphabet();
+            $('#romaji-tenten-maru').html('Romaji: <strong>' + $('#selected-alphabet').val() + '</strong>');
+            $('#tenten-maru-image').html($('#' + $('#selected-alphabet').val()).text());
+        });
+
+        $('#btnNextAoAm').on('click', function () {
+            showNextAlphabet();
+            $('#romaji-aoam').html('Romaji: <strong>' + $('#selected-alphabet').val() + '</strong>');
+            $('#aoam-image').html($('#' + $('#selected-alphabet').val()).text());
+        });
+
+        $('#btnNextAlphabet').on('click', function () {
+            showNextAlphabet();
+            $('#alphabet-image').attr('src', '@Href("~/Images/alphabet/katakana/")' + $('#selected-alphabet').val() + '.gif');
+            $('#romaji').html('Romaji: <strong>' + $('#selected-alphabet').val() + '</strong>');
+        });
+    });
+
+    function readAlphabet(id) {
+        if (messageAudio != null) {
+            messageAudio.pause();
+        }
+        messageAudio = new Audio('@Href("~/Content/media/alphabet/")' + id + ".mp3");
+        messageAudio.play();
+    }
+
+    function showAlphabet(id) {
+        //remove focus
+        $("#" + $('#selected-alphabet').val()).parent('td').removeClass("info");
+        //change focus
+        $("#" + id).parent('td').addClass("info");
+
+        $('#selected-alphabet').val(id);
+
+        readAlphabet(id);
+    };
+
+    function reShowAlphabet() {
+        var id = $('#selected-alphabet').val();
+        showAlphabet(id);
+    };
+
+    function showAlphabetDraw() {
+        $('#alphabet-image').attr('src', '@Href("~/Images/alphabet/katakana/")' + $('#selected-alphabet').val() + '-draw.gif');
+    };
+
+    function showNextAlphabet() {
+        //next
+        var nextAl = nextAlphabet($('#selected-alphabet').val());
+        showAlphabet(nextAl);
+    };
+
+    function nextAlphabetLine(al) {
+        var result = al;
+        switch (al) {
+            case 'a':
+                result = 'i';
+                break;
+            case 'i':
+                result = 'u';
+                break;
+            case 'u':
+                result = 'e';
+                break;
+            case 'e':
+                result = 'o';
+                break;
+            case 'o':
+                result = 'a';
+                break;
+            default:
+                result = 'a';
+                break;
+        }
+
+        return result;
+    };
+
+    function nextAlphabet(selectedAlphabet) {
+        var nextAlphabet = selectedAlphabet;
+        switch (selectedAlphabet) {
+            case 'o':
+                nextAlphabet = 'ka';
+                break;
+            case 'ko':
+                nextAlphabet = 'sa';
+                break;
+            case 'so':
+                nextAlphabet = 'ta';
+                break;
+            case 'to':
+                nextAlphabet = 'na';
+                break;
+            case 'no':
+                nextAlphabet = 'ha';
+                break;
+            case 'ho':
+                nextAlphabet = 'ma';
+                break;
+            case 'mo':
+                nextAlphabet = 'ya';
+                break;
+            case 'yo':
+                nextAlphabet = 'ra';
+                break;
+            case 'ro':
+                nextAlphabet = 'wa';
+                break;
+            case 'wo':
+                nextAlphabet = 'n';
+                break;
+            case 'n':
+                nextAlphabet = 'a';
+                break;
+            case 'go':
+                nextAlphabet = 'za';
+                break;
+            case 'zo':
+                nextAlphabet = 'da';
+                break;
+            case 'do':
+                nextAlphabet = 'ba';
+                break;
+            case 'bo':
+                nextAlphabet = 'pa';
+                break;
+            case 'po':
+                nextAlphabet = 'ga';
+                break;
+            case 'kya':
+                nextAlphabet = 'kyu';
+                break;
+            case 'kyu':
+                nextAlphabet = 'kyo';
+                break;
+            case 'kyo':
+                nextAlphabet = 'sha';
+                break;
+            case 'sha':
+                nextAlphabet = 'shu';
+                break;
+            case 'shu':
+                nextAlphabet = 'sho';
+                break;
+            case 'sho':
+                nextAlphabet = 'cha';
+                break;
+            case 'cha':
+                nextAlphabet = 'chu';
+                break;
+            case 'chu':
+                nextAlphabet = 'cho';
+                break;
+            case 'cho':
+                nextAlphabet = 'nya';
+                break;
+            case 'nya':
+                nextAlphabet = 'nyu';
+                break;
+            case 'nyu':
+                nextAlphabet = 'nyo';
+                break;
+            case 'nyo':
+                nextAlphabet = 'hya';
+                break;
+            case 'hya':
+                nextAlphabet = 'hyu';
+                break;
+            case 'hyu':
+                nextAlphabet = 'hyo';
+                break;
+            case 'hyo':
+                nextAlphabet = 'mya';
+                break;
+            case 'mya':
+                nextAlphabet = 'myu';
+                break;
+            case 'myu':
+                nextAlphabet = 'myo';
+                break;
+            case 'myo':
+                nextAlphabet = 'rya';
+                break;
+            case 'rya':
+                nextAlphabet = 'ryu';
+                break;
+            case 'ryu':
+                nextAlphabet = 'ryo';
+                break;
+            case 'ryo':
+                nextAlphabet = 'gya';
+                break;
+            case 'gya':
+                nextAlphabet = 'gyu';
+                break;
+            case 'gyu':
+                nextAlphabet = 'gyo';
+                break;
+            case 'gyo':
+                nextAlphabet = 'ja';
+                break;
+            case 'ja':
+                nextAlphabet = 'ju';
+                break;
+            case 'ju':
+                nextAlphabet = 'jo';
+                break;
+            case 'jo':
+                nextAlphabet = 'bya';
+                break;
+            case 'bya':
+                nextAlphabet = 'byu';
+                break;
+            case 'byu':
+                nextAlphabet = 'byo';
+                break;
+            case 'byo':
+                nextAlphabet = 'pya';
+                break;
+            case 'pya':
+                nextAlphabet = 'pyu';
+                break;
+            case 'pyu':
+                nextAlphabet = 'pyo';
+                break;
+            case 'pyo':
+                nextAlphabet = 'kya';
+                break;
+            default:
+                var length = selectedAlphabet.length;
+                if (length == 1) {
+                    nextAlphabet = nextAlphabetLine(selectedAlphabet);
+                }
+                else if (length == 2) {
+                    if (selectedAlphabet == 'sa') {
+                        nextAlphabet = 'shi';
+                    }
+                    else if (selectedAlphabet == 'ta') {
+                        nextAlphabet = 'chi';
+                    }
+                    else if (selectedAlphabet == 'hi') {
+                        nextAlphabet = 'fu';
+                    }
+                    else if (selectedAlphabet == 'fu') {
+                        nextAlphabet = 'he';
+                    }
+                    else if (selectedAlphabet == 'ya') {
+                        nextAlphabet = 'yu';
+                    }
+                    else if (selectedAlphabet == 'yu') {
+                        nextAlphabet = 'yo';
+                    }
+                    else if (selectedAlphabet == 'wa') {
+                        nextAlphabet = 'wo';
+                    }
+                    else if (selectedAlphabet == 'za') {
+                        nextAlphabet = 'ji';
+                    }
+                    else if (selectedAlphabet == 'ji') {
+                        nextAlphabet = 'zu';
+                    }
+                    else {
+                        nextAlphabet = selectedAlphabet[0] + '' + nextAlphabetLine(selectedAlphabet[1]);
+                    }
+                }
+                else if (length == 3) {
+                    if (selectedAlphabet == 'shi') {
+                        nextAlphabet = 'su';
+                    }
+                    else if (selectedAlphabet == 'chi') {
+                        nextAlphabet = 'tsu';
+                    }
+                    else if (selectedAlphabet == 'tsu') {
+                        nextAlphabet = 'te';
+                    }
+                    else {
+                        nextAlphabet = selectedAlphabet.substr(0, 2) + '' + nextAlphabetLine(selectedAlphabet[2]);
+                    }
+                }
+                break;
+        }
+        return nextAlphabet;
+    };
+
+</script>
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">
+                KATAKANA
+            </h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <nav>
+                <ul class="pager">
+                    <li style="font-size: 20px"><a href="~/Test/Katakana"><span class="glyphicon glyphicon-check"
+                        aria-hidden="true"></span>Kiểm tra</a></li>
+                    <li style="font-size: 20px"><a href="~/IntroductorySection/Hiragana"><span class="glyphicon glyphicon-new-window"
+                        aria-hidden="true"></span>Học Hiragana</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    CÁCH SỬ DỤNG
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div id="morris-area-chart">
+                        Bước 1: Nhấn chuột vào chữ cái muốn ôn tập trên bảng chữ cái bên trái màn hình
+                        <br />
+                        Bước 2: Nghe cách phát âm và lặp lại<br />
+                        Bước 3: Nhấn chuột vào Luyện viết<span><i class="glyphicon glyphicon-pencil"> </i>
+                        </span>để viết
+                        <br />
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    BẢNG CHỮ CÁI
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center info">
+                                                <span class="selected" id='a' name='alphabet'>ア</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='i' name='alphabet'>イ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='u' name='alphabet'>ウ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='e' name='alphabet'>エ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='o' name='alphabet'>オ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='ka' name='alphabet'>カ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='ki' name='alphabet'>キ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='ku' name='alphabet'>ク</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='ke' name='alphabet'>ケ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='ko' name='alphabet'>コ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='sa' name='alphabet'>サ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='shi' name='alphabet'>シ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='su' name='alphabet'>ス</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='se' name='alphabet'>セ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='so' name='alphabet'>ソ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='ta' name='alphabet'>タ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='chi' name='alphabet'>チ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='tsu' name='alphabet'>ツ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='te' name='alphabet'>テ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='to' name='alphabet'>ト</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='na' name='alphabet'>ナ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='ni' name='alphabet'>ニ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='nu' name='alphabet'>ヌ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='ne' name='alphabet'>ネ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='no' name='alphabet'>ノ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='ha' name='alphabet'>ハ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='hi' name='alphabet'>ヒ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='fu' name='alphabet'>フ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='he' name='alphabet'>へ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='ho' name='alphabet'>ホ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='ma' name='alphabet'>マ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='mi' name='alphabet'>ミ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='mu' name='alphabet'>ム</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='me' name='alphabet'>メ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='mo' name='alphabet'>モ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='ya' name='alphabet'>ヤ</span>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='yu' name='alphabet'>ユ</span>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='yo' name='alphabet'>ヨ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='ra' name='alphabet'>ラ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='ri' name='alphabet'>リ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='ru' name='alphabet'>ル</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='re' name='alphabet'>レ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='ro' name='alphabet'>ロ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='wa' name='alphabet'>ワ</span>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='wo' name='alphabet'>ヲ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='n' name='alphabet'>ン</span>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.col-lg-4 (nested) -->
+                        <div class="col-lg-8">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <img class="img-responsive" id='alphabet-image' src="~/Images/alphabet/katakana/a.gif"
+                                        height="320" />
+                                </div>
+                                <div class="panel-footer">
+                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default" id='romaji'>
+                                                ROMAJI: <strong>a</strong>
+                                            </button>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <input type="hidden" value='a' id='selected-alphabet' />
+                                            <button type="button" class="btn btn-default" onclick='showAlphabetDraw();'>
+                                                Luyện viết<span class="pull-right"><i class="glyphicon glyphicon-pencil"> </i></span>
+                                            </button>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default" id="btnNextAlphabet">
+                                                Tiếp theo<span class="pull-right"><i class="glyphicon glyphicon-share-alt"> </i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col-lg-8 (nested) -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    ĐỤC ÂM
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="row">
+                        <!-- /.col-lg-12 (nested) -->
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    QUY TẮC</div>
+                                <div class="panel-body">
+                                    <ul>
+                                        <li>Khi thêm ( " )(TENTEN) trên đầu của các chữ trong hàng (Ka (カ), SA (サ), TA (タ),
+                                            HA (ハ) ) thì được biến âm như sau: </li>
+                                    </ul>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center">
+                                                        Ka(カ) => Ga(ガ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Ki(キ) => Gi(ギ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Ku(ク) => Gu(グ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Ke(ケ) => Ge(ゲ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Ko(コ) => Go(ゴ)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">
+                                                        Sa(サ) => Za(ザ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Shi(シ) => Ji(ジ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Su(ス) => Zu(ズ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Se(セ) => Ze(ゼ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        So(ソ) => Zo(ゾ)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">
+                                                        Ta(タ) => Da(ダ）
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Chi(チ) => Di(ヂ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Tsu(ツ) => Du(ヅ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Te(テ) => De(デ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        To(ト) => Do(ド)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">
+                                                        Ha(ハ) => Ba(バ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Hi(ヒ) => Bi(ビ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Fu(フ) => Bu(ブ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        He(へ) => Be(ベ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Ho(ホ) => Bo(ボ)
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <ul>
+                                        <li>Ngoài ra hàng Ha còn thêm ( 。 ) (MARU) </li>
+                                    </ul>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center">
+                                                        Ha(ハ) => Pa(パ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Hi(ヒ) => Pi(ピ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Fu(フ) => Pu(プ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        He(へ) => Pe(ペ)
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Ho(ホ) => Po(ポ)
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='ga' name='tenten-maru'>ガ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='gi' name='tenten-maru'>ギ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='gu' name='tenten-maru'>グ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='ge' name='tenten-maru'>ゲ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='go' name='tenten-maru'>ゴ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='za' name='tenten-maru'>ザ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='ji' name='tenten-maru'>ジ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='zu' name='tenten-maru'>ズ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='ze' name='tenten-maru'>ゼ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='zo' name='tenten-maru'>ゾ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='da' name='tenten-maru'>ダ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='di' name='tenten-maru'>ヂ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='du' name='tenten-maru'>ヅ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='de' name='tenten-maru'>デ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='do' name='tenten-maru'>ド</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='ba' name='tenten-maru'>バ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='bi' name='tenten-maru'>ビ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='bu' name='tenten-maru'>ブ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='be' name='tenten-maru'>ベ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='bo' name='tenten-maru'>ボ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='pa' name='tenten-maru'>パ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='pi' name='tenten-maru'>ピ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='pu' name='tenten-maru'>プ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='pe' name='tenten-maru'>ペ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='po' name='tenten-maru'>ポ</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.col-lg-4 (nested) -->
+                        <div class="col-lg-8">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <span style="display: block; text-align: center; font-size: 150px;" id='tenten-maru-image'>
+                                        ガ</span>
+                                </div>
+                                <div class="panel-footer">
+                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default" id='romaji-tenten-maru'>
+                                                .Romaji: <strong>ga</strong>
+                                            </button>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default" id="btnNextTentenMaru">
+                                                Tiếp theo<span class="pull-right"><i class="glyphicon glyphicon-share-alt"> </i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    ẢO ÂM
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="row">
+                        <!-- /.col-lg-4 (nested) -->
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    QUY TẮC</div>
+                                <div class="panel-body">
+                                    <ul>
+                                        <li>Thêm (ya ャ), (yu ュ), (yo ョ) vào bên phải các chữ trong hàng ( Ki (キ), Shi (シ) ,
+                                            Chi (チ), Ni (ニ), Hi (ヒ), Mi (ミ), Ri (リ), Gi (ギ), Ji (ジ), Bi (ビ), Pi (ピ) )</li>
+                                        <li>Viết nhỏ hơn các chữ bình thường</li>
+                                        <li>Ngoài ra còn có các từ: fa (ファ), fi (フィ), fe (フェ), fo (フォ), wi (ウィ), we (ウェ), who
+                                            (ウォ), thi (テイ), dhi (デイ)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <!-- /.table-responsive -->
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='kya' name='alphabet-aoam'>キャ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='kyu' name='alphabet-aoam'>キュ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='kyo' name='alphabet-aoam'>キョ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='sha' name='alphabet-aoam'>シャ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='shu' name='alphabet-aoam'>シュ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='sho' name='alphabet-aoam'>ショ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='cha' name='alphabet-aoam'>チャ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='chu' name='alphabet-aoam'>チュ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='cho' name='alphabet-aoam'>チョ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='nya' name='alphabet-aoam'>ニャ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='nyu' name='alphabet-aoam'>ニュ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='nyo' name='alphabet-aoam'>ニョ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='hya' name='alphabet-aoam'>ヒャ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='hyu' name='alphabet-aoam'>ヒュ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='hyo' name='alphabet-aoam'>ヒョ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='mya' name='alphabet-aoam'>ミャ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='myu' name='alphabet-aoam'>ミュ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='myo' name='alphabet-aoam'>ミョ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='rya' name='alphabet-aoam'>リャ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='ryu' name='alphabet-aoam'>リュ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='ryo' name='alphabet-aoam'>リョ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='gya' name='alphabet-aoam'>ギャ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='gyu' name='alphabet-aoam'>ギュ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='gyo' name='alphabet-aoam'>ギョ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='ja' name='alphabet-aoam'>ジャ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='ju' name='alphabet-aoam'>ジュ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='jo' name='alphabet-aoam'>ジョ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='bya' name='alphabet-aoam'>ビャ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='byu' name='alphabet-aoam'>ビュ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='byo' name='alphabet-aoam'>ビョ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='pya' name='alphabet-aoam'>ピャ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='pyu' name='alphabet-aoam'>ピュ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='pyo' name='alphabet-aoam'>ピョ</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="selected" id='fa' name='alphabet-aoam'>ファ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='fi' name='alphabet-aoam'>フィ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='fe' name='alphabet-aoam'>フェ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='fo' name='alphabet-aoam'>フォ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='wi' name='alphabet-aoam'>ウィ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='we' name='alphabet-aoam'>ウェ</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='who' name='alphabet-aoam'>ウォ</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='thi' name='alphabet-aoam'>ティ</span>
+                                            </td>
+                                            <td class="text-center">
+                                            </td>
+                                            <td class="text-center">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="selected" id='dhi' name='alphabet-aoam'>ディ</span>
+                                            </td>
+                                            <td class="text-center">
+                                            </td>
+                                            <td class="text-center">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.col-lg-4 (nested) -->
+                        <div class="col-lg-8">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <span style="display: block; text-align: center; font-size: 150px;" id='aoam-image'>
+                                        キャ</span>
+                                </div>
+                                <div class="panel-footer">
+                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default" id='romaji-aoam'>
+                                                .Romaji: <strong>kya</strong>
+                                            </button>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default" id="btnNextAoAm">
+                                                Tiếp theo<span class="pull-right"><i class="glyphicon glyphicon-share-alt"> </i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    XÚC ÂM
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="row">
+                        <!-- /.col-lg-4 (nested) -->
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    QUY TẮC</div>
+                                <div class="panel-body">
+                                    <ul>
+                                        <li>Sử dụng (tsu (ツ)) giữa các chữ cái</li>
+                                        <li>Viết nhỏ hơn các chữ bình thường</li>
+                                        <li>Chỉ đứng trước các chữ cái:<br />
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="text-center">
+                                                                Sa（サ）
+                                                            </td>
+                                                            <td class="text-center">
+                                                                Shi（シ）
+                                                            </td>
+                                                            <td class="text-center">
+                                                                Su（ス）
+                                                            </td>
+                                                            <td class="text-center">
+                                                                Se（セ）
+                                                            </td>
+                                                            <td class="text-center">
+                                                                So（ソ）
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-center">
+                                                                Ta（タ）
+                                                            </td>
+                                                            <td class="text-center">
+                                                                Chi（チ）
+                                                            </td>
+                                                            <td class="text-center">
+                                                                Tsu（ツ）
+                                                            </td>
+                                                            <td class="text-center">
+                                                                Te（テ）
+                                                            </td>
+                                                            <td class="text-center">
+                                                                To（ト）
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-center">
+                                                                Na（ナ）
+                                                            </td>
+                                                            <td class="text-center">
+                                                                Ni（ニ）
+                                                            </td>
+                                                            <td class="text-center">
+                                                                Nu（ヌ）
+                                                            </td>
+                                                            <td class="text-center">
+                                                                Ne（ネ）
+                                                            </td>
+                                                            <td class="text-center">
+                                                                No（ノ）
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-center">
+                                                                Pa（パ）
+                                                            </td>
+                                                            <td class="text-center">
+                                                                Pi（ピ）
+                                                            </td>
+                                                            <td class="text-center">
+                                                                Pu（プ）
+                                                            </td>
+                                                            <td class="text-center">
+                                                                Pe（ペ）
+                                                            </td>
+                                                            <td class="text-center">
+                                                                Po（ポ）
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </li>
+                                        <li>Cách đọc: tsu (ツ) đọc bằng cách lấy kí tự đầu của chữ cái phía sau và ghép vào chữ cái phía trước</li>
+                                        <li>Ví dụ:
+                                            <ul>
+                                                <li>ハッパ => happa</li>
+                                                <li>キッテ => kitte</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    TRƯỜNG ÂM
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="row">
+                        <!-- /.col-lg-4 (nested) -->
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    QUY TẮC</div>
+                                <div class="panel-body">
+                                    <ul>
+                                        <li>a (ア) làm trường âm cho đoạn a（ア）</li>
+                                        <li>i (イ) làm trường âm cho đoạn i（イ）</li>
+                                        <li>u (ウ) làm trường âm cho đoạn u（ウ）</li>
+                                        <li>e (エ) và <strong>i (イ)(*)</strong> làm trường âm cho đoạn e（エ）</li>
+                                        <li>o (オ) và <strong>u (ウ)(*)</strong> làm trường âm cho đoạn o（オ）</li>
+                                        <li>Khi đọc kéo dài hơn</li>
+                                        <li>Nằm sau có chữ cái trong đoạn tương ứng</li>
+                                        <li>Ví dụ:
+                                            <ul>
+                                                <li>オカアサン => okaasan</li>
+                                                <li>オトウサン => otousan</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    (*): sử dụng nhiều hơn
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <nav>
+                <ul class="pager">
+                    <li style="font-size: 20px"><a href="~/Test/Katakana"><span class="glyphicon glyphicon-check"
+                        aria-hidden="true"></span>Kiểm tra</a></li>
+                    <li style="font-size: 20px"><a href="~/IntroductorySection/Hiragana"><span class="glyphicon glyphicon-new-window"
+                        aria-hidden="true"></span>Học Hiragana</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

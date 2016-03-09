@@ -1,0 +1,654 @@
+﻿@{
+    ViewBag.Title = "Bảng chữ cái tiếng Nhật - Luyện tập chữ cái Hiragana";
+}
+<input type="hidden" id="gw" value='@CommonMethod.EncodeUrl("GetWords")' />
+<header id="head" class="secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1>
+                    BẢNG CHỮ CÁI</h1>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="courses">
+    <section class="container">
+        <h3>
+            LUYỆN TẬP HIRAGANA</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="featured-box">
+                    <a href="#" data-toggle="modal" data-target="#modelReading"><i class="fa fa-eye fa-2x">
+                    </i></a>
+                    <div class="text">
+                        <h3>
+                            ĐỌC CHỮ CÁI</h3>
+                        Ghi nhớ và nhận dạng chữ cái Hiragana
+                    </div>
+                    <div class="pull-right">
+                        <a href="#" data-toggle="modal" data-target="#modelReading">Bắt đầu</a></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="featured-box">
+                    <a href="#" data-toggle="modal" data-target="#modelWordReading"><i class="fa fa-eye fa-2x">
+                    </i></a>
+                    <div class="text">
+                        <h3>
+                            ĐỌC TỪ VỰNG</h3>
+                        ...
+                    </div>
+                    <div class="pull-right">
+                        <a href="#" data-toggle="modal" data-target="#modelWordReading">Bắt đầu</a></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="featured-box">
+                    <i class="fa fa-quote-right fa-2x"></i>
+                    <div class="text">
+                        <h3>
+                            VIẾT CHÍNH TẢ</h3>
+                        ...
+                    </div>
+                    <div class="pull-right">
+                        <a href="#" data-toggle="modal" data-target="#modelWriting" id="aWriting">Bắt đầu</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@Html.Partial("_PracticeNotePartial")
+
+<!-- Modal Reading -->
+<div class="modal fade" id="modelReading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Chọn kí tự</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="a" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="a i u e o">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="ga" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="ga gi gu ge go">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="kya" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="kya kyu kyo">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="ka" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="ka ki ku ke ko">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="za" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="za ji zu ze zo">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="sha" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="sha shu sho">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="sa" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="sa shi su se so">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="da" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="da di du de do">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="cha" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="cha chu cho">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="ta" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="ta chi tsu te to">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="ba" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="ba bi bu be bo">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="nya" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="nya nyu nyo">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="na" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="na ni nu ne no">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="pa" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="pa pi pu pe po">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="hya" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="hya hyu hyo">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="ha" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="ha hi fu he ho">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-lg-4">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="mya" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="mya myu myo">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="ma" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="ma mi mu me mo">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="rya" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="rya ryu ryo">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="ya" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="ya yu yo">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="gya" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="gya gyu gyo">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="ra" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="ra ri ru re ro">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="ja" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="ja ju ju">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="wa" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="wa wo n">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="bya" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="bya byu byo">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="pya" name="chkAlphabet">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="pya pyu pyo">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="chkVoiceReading" checked="checked">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="Đọc thành tiếng">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="chkSelectAllReading">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="Chọn tất cả">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnOkModal" class="btn btn-primary">
+                    Ok</button>
+                <button type="button" id="btnCloseModal" class="btn btn-default" data-dismiss="modal">
+                    Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade bs-example-modal-lg" id="modelTestReading" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Gõ kí tự Romaji</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <span style="display: block; text-align: center; font-size: 50px;" id='alphabet'>a
+                        </span>
+                    </div>
+                    @*<div class="col-lg-6">
+                        <div class="input-group">
+                            <input type="text" id="inputAlphabet" style="height: 150px
+!important; font-size: 100px;" class="form-control text-center" aria-label="..." maxlength='3' autofocus="autofocus">
+                        </div>
+                        <!-- /input-group -->
+                    </div>*@
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon"><span class="badge" id='divResultReading'></span>
+                            </span>
+                            <input type="text" class="form-control text-center" id="inputAlphabet" maxlength='30'>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="row">
+                    <div class="col-lg-6">
+                        <button class="btn btn-primary" type="button" id='btnResultReading'>
+                            Kết quả: <span class="badge" id='divResultReading'></span>
+                        </button>
+                    </div>
+                </div>*@
+                <div class="row">
+                    <div class="col-lg-6">
+                        <span id='divResultMessageReading'></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnOkReadingModal" class="btn
+btn-primary">
+                            Ok</button>
+                        <button type="button" id="btnResetReadingModal" class="btn
+btn-warning">
+                            Thử lại</button>
+                        <button type="button" id="btnCloseReadingModal" class="btn
+btn-default" data-dismiss="modal">
+                            Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Word Reading -->
+<div class="modal fade" id="modelWordReading" tabindex="-1" role="dialog" aria-labelledby="myModalWordLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalWordLabel">
+                    Chọn kí tự</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="normal" name="chkWordType" checked="checked">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="Các từ trong bảng chữ cái">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="ducam" name="chkWordType">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="Có đục âm (Ga, Gi...)">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="truongam" name="chkWordType">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="Có trường âm">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="xucam" name="chkWordType">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="Có xúc âm (_tsu_)">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="aoam" name="chkWordType">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="Có ảo âm (Kya, Kyu..)">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="chkVoiceWordReading" checked="checked">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="Đọc thành tiếng">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="chkSelectAllWordReading">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="Chọn tất cả">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnOkWordModal" class="btn btn-primary">
+                    Ok</button>
+                <button type="button" id="btnCloseWordModal" class="btn btn-default" data-dismiss="modal">
+                    Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade bs-example-modal" id="modelTestWordReading" tabindex="-1"
+    role="dialog" aria-labelledby="wordModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="wordModalLabel">
+                    Gõ kí tự Romaji</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <span style="display: block; text-align: center; font-size: 50px;" id='word'></span>
+                    </div>
+                    @*<div class="col-md-6 col-xs-6">
+                        <div class="input-group">
+                            <input type="text" id="inputWord" style="height: 150px
+!important; font-size: 100px;" class="form-control text-center" aria-label="..." autofocus="autofocus">
+                        </div>
+                        <!-- /input-group -->
+                    </div>*@
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon" id="sizing-addon1"><span class="badge" id='divResultWordReading'>
+                            </span></span>
+                            <input type="text" class="form-control text-center" id="inputWord" maxlength='30'>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="row">
+                    <div class="col-lg-6">
+                        <button class="btn btn-primary" type="button" id='btnResultWordReading'>
+                            Kết quả: <span class="badge" id='divResultWordReading'></span>
+                        </button>
+                    </div>
+                </div>*@
+                <div class="row">
+                    <div class="col-lg-6">
+                        <span id='divResultMessageWordReading'></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnOkWordReadingModal" class="btn
+btn-primary">
+                            Ok</button>
+                        <button type="button" id="btnResetWordReadingModal" class="btn
+btn-warning">
+                            Thử lại</button>
+                        <button type="button" id="btnCloseWordReadingModal" class="btn
+btn-default" data-dismiss="modal">
+                            Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Writing -->
+<div class="modal fade bs-example-modal-lg" id="modelWriting" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel1">
+                    Viết Chính Tả</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <input type="hidden" id="romajiWriting" />
+                        <span style="display: block; text-align: center; font-size: 100px;" id='alphabetWriting'>
+                            a </span><span class="pull-right" id="repeat"><i class="glyphicon glyphicon-volume-up">
+                            </i></span>
+                    </div>
+                    <div class="col-lg-12">
+                        <span style="display: block; text-align: center; font-size: 20px;" id='meaningWriting'>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="chkDisplay">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="Hiển thị chữ cái">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="modal-footer">
+                        <button type="button" id="btnPreviousWritingModal" class="btn
+btn-primary">
+                            Trước</button>
+                        <button type="button" id="btnOkWritingModal" class="btn
+btn-primary">
+                            Tiếp</button>
+                        <button type="button" id="btnCloseWritingModal" class="btn
+btn-default" data-dismiss="modal">
+                            Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src='@Scripts.Url("~/bundles/phi")' async> </script>

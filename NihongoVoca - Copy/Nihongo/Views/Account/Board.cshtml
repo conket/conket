@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Nihongo.Models.MS_UserVocabulariesModels>
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            @*<h1 class="page-header"> Board </h1>*@
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Thông báo
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    @*<div id="morris-area-chart">
+                        <ul class="list-group">
+                            @if (Model != null && Model.Count() > 0)
+                            {
+                                foreach (var voca in Model)
+                                {
+                                    <li class="list-group-item"><span class="badge">@voca.NumOfWeakVoca</span><strong>@voca.LessonName1</strong>: Có từ vựng yếu. <a
+                                        class="btn btn-primary" href="@Href("~/Lesson/WeakVocabulary/")@voca.LessonCode" role="button">Ôn lại thôi</a> </li>   
+                                }
+                            }
+                            else
+                            {
+                                <p>Rất tốt. Không có gì để nhắc nhở</p>
+                            }
+                        </ul>
+                    </div>*@ @*<div class="row">*@
+                    @if (Model != null && Model.Count() > 0)
+                    {
+                        int numOfColumn = 4;
+                        var models = Model.ToList();
+                        var max = models.Count;
+                        int numOfRows = models.Count % numOfColumn == 0 ? models.Count / numOfColumn : models.Count / numOfColumn + 1;
+                        for (int k = 0; k < numOfRows; k++)
+                        {
+                            <div class="row">
+                            @for (int i = 0; i < (max > numOfColumn ? numOfColumn : max); i++)
+                            {
+                                Nihongo.Models.MS_UserVocabulariesModels voca = models[i];
+                                <div class="col-lg-3 col-md-6">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <i class="fa fa-comments fa-5x"></i>
+                                            </div>
+                                            <div class="col-xs-8 text-right">
+                                                <div class="huge">
+                                                    @voca.LessonName1</div>
+                                                <div>
+                                                    Từ vựng yếu <span class="badge">@voca.NumOfWeakVoca</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="@Href("~/Lesson/WeakVocabulary/")@voca.LessonCode">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">Ôn lại</span> <span class="pull-right"><i class="fa fa-arrow-circle-right">
+                                            </i></span>
+                                            <div class="clearfix">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            }
+                            </div>   
+                            max -= numOfRows;
+                        }
+                    }
+                    else
+                    {
+                        <p>
+                            Rất tốt. Không có gì để nhắc nhở</p>
+                    }
+                    @*</div>*@
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-8 -->
+        @*<div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bell fa-fw"></i>Notifications Panel
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item"><i class="fa fa-envelope fa-fw"></i>Message Sent
+                            <span class="pull-right text-muted small"><em>27 minutes ago</em> </span></a>
+                        <a href="#" class="list-group-item"><i class="fa fa-tasks fa-fw"></i>New Task <span
+                            class="pull-right text-muted small"><em>43 minutes ago</em> </span></a>
+                    </div>
+                    <!-- /.list-group -->
+                    <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>*@
+        <!-- /.col-lg-4 -->
+    </div>
+    <!-- /.row -->
+</div>

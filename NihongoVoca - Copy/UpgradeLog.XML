@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="ActionParameterManipulationDemo">
+</Property><Property Name="Solution File" Value="E:\Tut\NihongoVoca\ActionParameterManipulationDemo.sln">
+</Property><Property Name="User Options File" Value="E:\Tut\NihongoVoca\ActionParameterManipulationDemo.suo">
+</Property><Property Name="Date" Value="Saturday, July 11, 2015">
+</Property><Property Name="Time" Value="23:25 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="ActionParameterManipulationDemo.sln" Description="File successfully backed up as E:\Tut\NihongoVoca\Backup\ActionParameterManipulationDemo.sln">
+</Event><Event ErrorLevel="0" Project="" Source="ActionParameterManipulationDemo.suo" Description="File successfully backed up as E:\Tut\NihongoVoca\Backup\ActionParameterManipulationDemo.suo">
+</Event><Event ErrorLevel="0" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\ActionParameterManipulationWeb.csproj" Description="Project file successfully backed up as E:\Tut\NihongoVoca\Backup\ActionParameterManipulationWeb\ActionParameterManipulationWeb.csproj">
+</Event><Event ErrorLevel="0" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\Controllers\HomeController.cs" Description="File successfully backed up as E:\Tut\NihongoVoca\Backup\ActionParameterManipulationWeb\Controllers\HomeController.cs">
+</Event><Event ErrorLevel="0" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\CouponAttribute.cs" Description="File successfully backed up as E:\Tut\NihongoVoca\Backup\ActionParameterManipulationWeb\CouponAttribute.cs">
+</Event><Event ErrorLevel="0" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\Global.asax.cs" Description="File successfully backed up as E:\Tut\NihongoVoca\Backup\ActionParameterManipulationWeb\Global.asax.cs">
+</Event><Event ErrorLevel="0" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\Models\ProductViewModel.cs" Description="File successfully backed up as E:\Tut\NihongoVoca\Backup\ActionParameterManipulationWeb\Models\ProductViewModel.cs">
+</Event><Event ErrorLevel="0" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\Properties\AssemblyInfo.cs" Description="File successfully backed up as E:\Tut\NihongoVoca\Backup\ActionParameterManipulationWeb\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\SlugToIdAttribute.cs" Description="File successfully backed up as E:\Tut\NihongoVoca\Backup\ActionParameterManipulationWeb\SlugToIdAttribute.cs">
+</Event><Event ErrorLevel="0" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\Global.asax" Description="File successfully backed up as E:\Tut\NihongoVoca\Backup\ActionParameterManipulationWeb\Global.asax">
+</Event><Event ErrorLevel="0" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\Content\Site.css" Description="File successfully backed up as E:\Tut\NihongoVoca\Backup\ActionParameterManipulationWeb\Content\Site.css">
+</Event><Event ErrorLevel="0" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\Views\Home\Content.aspx" Description="File successfully backed up as E:\Tut\NihongoVoca\Backup\ActionParameterManipulationWeb\Views\Home\Content.aspx">
+</Event><Event ErrorLevel="0" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\Views\Home\Index.aspx" Description="File successfully backed up as E:\Tut\NihongoVoca\Backup\ActionParameterManipulationWeb\Views\Home\Index.aspx">
+</Event><Event ErrorLevel="0" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\Views\Home\ProductView.aspx" Description="File successfully backed up as E:\Tut\NihongoVoca\Backup\ActionParameterManipulationWeb\Views\Home\ProductView.aspx">
+</Event><Event ErrorLevel="0" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\Web.config" Description="File successfully backed up as E:\Tut\NihongoVoca\Backup\ActionParameterManipulationWeb\Web.config">
+</Event><Event ErrorLevel="0" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\Views\Web.config" Description="File successfully backed up as E:\Tut\NihongoVoca\Backup\ActionParameterManipulationWeb\Views\Web.config">
+</Event><Event ErrorLevel="0" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\ActionParameterManipulationWeb.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\ActionParameterManipulationWeb.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="ActionParameterManipulationDemo.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="ActionParameterManipulationDemo.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ActionParameterManipulationWeb" Source="ActionParameterManipulationWeb\ActionParameterManipulationWeb.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

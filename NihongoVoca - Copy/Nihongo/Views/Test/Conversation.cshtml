@@ -1,0 +1,402 @@
+﻿@{
+    ViewBag.Title = "Luyện phản xạ giao tiếp tiếng Nhật";
+}
+<script type="text/javascript">
+
+    var messageAudio;
+    var conversationDetailArray = [];
+    var index = 0;
+    var interval = 10000;
+    var timer;
+    var playing = false;
+    var stop = false;
+    var auto = true;
+
+    $(document).ready(function () {
+        $(document).keydown(function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == 32) {
+                clearInterval(timer);
+                $("#audio").trigger('play');
+                return false;
+            }
+                //enter
+            else if (keycode == 13) {
+                $("#btnNextTestModal").trigger("click");
+                return false;
+            }
+                //->
+            else if (keycode == 39) {
+                $("#btnNextTestModal").trigger("click");
+                return false;
+            }
+                //<-
+            else if (keycode == 37) {
+                $("#btnPreviousTestModal").trigger("click");
+                return false;
+            }
+        });
+
+        $('#txtThinkingTime').keypress(function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode > 31 && (keycode < 48 || keycode > 57)) {
+                return false;
+            }
+            return true;
+        });
+
+        $('#chkAuto').on('change', function () {
+            if (this.checked) {
+                $('#txtThinkingTime').removeAttr('disabled');
+            }
+            else {
+                $('#txtThinkingTime').prop('disabled', 'true');
+            }
+        });
+
+        $('#btnStartModal').on('click', function () {
+            //$('#loadingModal').modal();
+            getTest();
+            //$('#loadingModal').modal('hide');
+            if (conversationDetailArray.length <= 0) {
+                alert('Không tìm thấy dữ liệu');
+                return false;
+            }
+
+            //$('#modalListening').modal('hide');
+            $('#modalListeningTest').modal();
+
+            if ($('#txtThinkingTime').val() != '' && $('#txtThinkingTime').val() > 0) {
+                interval = $('#txtThinkingTime').val() * 1000;
+            }
+
+            $('#japanese').val('');
+            $('#vietnamese').val('');
+            $('#romaji').val('');
+            var showRomaji = $('#chkRomaji').is(':checked');
+            var showJapanese = $('#chkJapanese').is(':checked');
+            var showVietnamese = $('#chkVietnamese').is(':checked');
+            auto = $('#chkAuto').is(':checked');
+            $('#japanese').css('display', showJapanese ? 'block' : 'none');
+            $('#vietnamese').css('display', showVietnamese ? 'block' : 'none');
+            $('#romaji').css('display', showRomaji ? 'block' : 'none');
+
+            $('.hiddenNote').css('display', auto ? 'none' : 'block');
+            $('#btnPreviousTestModal').css('display', auto ? 'none' : 'inline-block');
+            $('#btnNextTestModal').css('display', auto ? 'none' : 'inline-block');
+
+            $('#japanese').html('<strong>' + conversationDetailArray[index].Japanese + '</strong>');
+            $('#romaji').html('<strong>' + conversationDetailArray[index].Romaji + '</strong>');
+            $('#vietnamese').html('<strong>' + conversationDetailArray[index].Vietnamese + '</strong>');
+            speakAudio(conversationDetailArray[index].UrlAudio);
+
+        });
+
+        $('#modalListeningTest').on('hidden.bs.modal', function () {
+            $("#audio").trigger('pause');
+            clearInterval(timer);
+        })
+
+        $('#btnPreviousTestModal').on('click', function () {
+            if (index > 0)// conversationDetailArray.length - 1) {
+            {
+                index--;
+            }
+            else {
+                index = conversationDetailArray.length - 1;
+            }
+            $('#japanese').html('<strong>' + conversationDetailArray[index].Japanese + '</strong>');
+            $('#romaji').html('<strong>' + conversationDetailArray[index].Romaji + '</strong>');
+            $('#vietnamese').html('<strong>' + conversationDetailArray[index].Vietnamese + '</strong>');
+
+            speakAudio(conversationDetailArray[index].UrlAudio);
+        });
+
+        $('#btnNextTestModal').on('click', function () {
+            if (index < conversationDetailArray.length - 1) {
+                index++;
+            }
+            else {
+                index = 0;
+            }
+            $('#japanese').html('<strong>' + conversationDetailArray[index].Japanese + '</strong>');
+            $('#romaji').html('<strong>' + conversationDetailArray[index].Romaji + '</strong>');
+            $('#vietnamese').html('<strong>' + conversationDetailArray[index].Vietnamese + '</strong>');
+
+            speakAudio(conversationDetailArray[index].UrlAudio);
+        });
+
+        $('#btnStopTestModal').on('click', function () {
+            clearInterval(timer);
+            $("#audio").trigger('play');
+
+        });
+
+        $('#audio').on('playing', function () {
+            playing = true;
+            $('#btnStopTestModal').prop('disabled', true);
+            // disable button/link
+        });
+        $('#audio').on('ended', function () {
+            playing = false;
+            $('#btnStopTestModal').prop('disabled', false);
+
+            if (auto) {
+                clearInterval(timer);
+
+                var au = document.getElementById("audio");
+                //            alert(au.duration);
+
+                if ($('#txtThinkingTime').val() != '' && $('#txtThinkingTime').val() > 0) {
+                    interval = $('#txtThinkingTime').val() * 1000 + (isNaN(au.duration) ? 0 : au.duration);
+                }
+                else {
+                    interval = 10000;
+                }
+                //            alert(interval);
+
+                timer = setInterval(function () {
+                    if (index < conversationDetailArray.length - 1) {
+                        index++;
+
+                        $('#japanese').html('<strong>' + conversationDetailArray[index].Japanese + '</strong>');
+                        $('#romaji').html('<strong>' + conversationDetailArray[index].Romaji + '</strong>');
+                        $('#vietnamese').html('<strong>' + conversationDetailArray[index].Vietnamese + '</strong>');
+
+                        //                    speak(conversationDetailArray[index].UrlAudio);
+                        speakAudio(conversationDetailArray[index].UrlAudio);
+                    }
+                    else {
+                        index = 0;
+                    }
+                }, interval);
+            }
+            //            ask();
+            //            var vid = document.getElementById("audio");
+            //            alert(vid.duration);
+            // enable button/link
+        });
+    });
+
+    function getTest() {
+        var cmb = document.getElementById('lessonCode');
+        var selectedVals = "";
+        for (i = 0; i < cmb.options.length; i += 1) {
+            if (cmb.options[i].selected) {
+                selectedVals = selectedVals + cmb.options[i].value + ",";
+            }
+        }
+        $.ajax({
+            cache: false,
+            type: "get",
+            async: false,
+            url: '@Href("~/Test/GetTest")',
+            data: { "lessonCode": selectedVals },
+            dataType: "json",
+            success: function (result) {
+                conversationDetailArray = result.conversationDetails;
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.responseText);
+            }
+        });
+    };
+
+    var done = false;
+    var lineNumber = 0;
+
+    function speakAudio(url) {
+        $("#audio").prop('src', url);
+        $("#audio").trigger('load');
+        $("#audio").trigger('play');
+    }
+
+    function speak(url) {
+        var baseSiteURL = '@Url.Content("~/")';
+        if (messageAudio != null) {
+            messageAudio.pause();
+        }
+        messageAudio = new Audio(url);
+        //        alert(messageAudio.duration);
+        messageAudio.play();
+        //        $("#audio").prop('src', url);
+        //        $("#audio").trigger('load');
+        //        $("#audio").trigger('play');
+        //        var vid = document.getElementById("audio");
+        //        alert(vid.duration);
+    };
+
+</script>
+
+
+<header id="head" class="secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1>PHẢN XẠ</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="container" id="dr">
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="featured-box">
+                <i class="fa fa-leaf fa-2x"></i>
+                <div class="text" style="height: auto">
+                    <h3>NỘI DUNG</h3>
+                    <p>
+                        Đây là phần luyện tập phản xạ khi giao tiếng bằng Tiếng Nhật
+                    </p>
+                    <p>
+                        Thông qua việc lắng nghe câu hỏi hoặc một câu giao tiếp thông thường bất kì, bạn
+                                phải nói trả lời hoặc suy nghĩ câu trả lời trong đầu trong thời gian sớm nhất có
+                                thể
+                    </p>
+                    <div class="hidden-xs">
+                        <p>
+                            Ví dụ 1:
+                        </p>
+                        <p>
+                            - Khi hệ thống hỏi: <strong>おなまえは？ (Bạn tên gì?)</strong>
+                        </p>
+                        <p>
+                            - Bạn phải nói ra hoặc suy nghĩ trong đầu: <strong>わたしはたなかです (Tôi tên Tanaka)</strong>
+                        </p>
+                        <p>
+                            Ví dụ 2:
+                        </p>
+                        <p>
+                            - Khi hệ thống nói: <strong>がんばってください (Hãy cố gắng lên)</strong>
+                        </p>
+                        <p>
+                            - Bạn phải nói ra hoặc suy nghĩ trong đầu: <strong>はい、がんばります (Vâng, tôi sẽ cố gắng)</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label">Chọn bài (có thể chọn nhiều bài)</label><br />
+                <select multiple class="form-control" id="lessonCode">
+                    <option value="">---</option>
+                    <option value="1">Bài 1</option>
+                    <option value="2">Bài 2</option>
+                    <option value="3">Bài 3</option>
+                    <option value="4">Bài 4</option>
+                    <option value="5">Bài 5</option>
+                    <option value="6">Bài 6</option>
+                    <option value="7">Bài 7</option>
+                    <option value="8">Bài 8</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="control-label">Tự chuyển câu hỏi</label><br />
+                <input type="checkbox" id="chkAuto">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="thinkingTime" class="control-label">
+                    TG suy nghĩ (giây):</label>
+                <input type="text" class="form-control" id="txtThinkingTime" maxlength="2" value="10" disabled="disabled">
+            </div>
+        </div>
+        <div class="col-md-5">
+            <label class="control-label">Hiển thị</label><br />
+            <div class="form-group">
+                <label class="control-label">
+                    Romaji:</label>
+                <input type="checkbox" id="chkRomaji">
+                <label class="control-label">
+                    Tiếng Nhật:</label>
+                <input type="checkbox" id="chkJapanese">
+                <label class="control-label">
+                    Tiếng Việt:</label>
+                <input type="checkbox" id="chkVietnamese">
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" id="btnStartModal" class="btn btn-primary">
+                Bắt đầu</button>
+        </div>
+    </div>
+</section>
+
+
+<div class="modal fade bs-example-modal-lg" id="modalListeningTest" tabindex="-1"
+    role="dialog" aria-labelledby="modalListeningTestLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalListeningTestLabel">Trả lời câu hỏi</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    @* <div class="col-md-4 col-xs-4">
+                        <img src="~/Images/l002/1.jpg" class="img-thumbnail" alt="" />
+                    </div>*@
+                    <div class="col-md-12 col-xs-12">
+                        <span style="display: block; text-align: left; font-size: 20px;" id='japanese'></span>
+                        @*</span><span class="pull-right" id="btnRepeat"><i class="glyphicon glyphicon-volume-up">
+                        </i></span>*@ <span style="display: block; text-align: left; font-size: 20px;" id='romaji'></span><span style="display: block; text-align: left; font-size: 20px;" id='vietnamese'></span>
+                        @*<embed src="" autostart="false" width="1" height="1" id="audio" enablejavascript="true">*@
+                        <audio class="audio" controls preload="none" id="audio">
+                            <source src="" type="audio/mpeg">
+                        </audio>
+                        @*<div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="chkDisplay">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="Hiển thị chữ cái">
+                        </div>*@
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 hidden-xs">
+                        <p>Nhấp phím <strong>[Space]</strong> để nghe lại.</p>
+                        <p class="hidden-xs hiddenNote">Nhấp phím <strong>[Enter]</strong> hoặc <strong>[->]</strong> để đi đến câu tiếp theo</p>
+                        <p class="hidden-xs hiddenNote">Nhấp phím <strong>[<-]</strong> để đi đến câu trước đó</p>
+                    </div>
+                </div>
+                @*<div class="row">
+                        <div class="col-lg-12">
+                            <audio class="audio" controls preload="none" id="audio">
+                                <source src="" type="audio/mpeg">
+                            </audio>
+                        </div>
+                    </div>
+                    <br />*@ @*<div class="row">
+                    <div class="col-lg-4">
+                        
+                        <!-- /input-group -->
+                    </div>
+                </div>*@
+                <div class="row">
+                    <div class="modal-footer">
+                        <button type="button" id="btnPreviousTestModal" class="btn btn-primary">
+                            Trước</button>
+                        <button type="button" id="btnNextTestModal" class="btn btn-primary">
+                            Tiếp</button>
+                        <button type="button" id="btnStopTestModal" class="btn btn-primary">
+                            Nghe lại</button>
+                        <button type="button" id="btnCloseTestModal" class="btn btn-default" data-dismiss="modal">
+                            Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

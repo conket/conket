@@ -1,0 +1,65 @@
+﻿@model Nihongo.Models.MS_VocaSetsModels
+@{
+    ViewBag.Title = "Từ vựng tiếng Nhật - Trải ngiệm E-Flashcard với bộ từ vựng " + Model.Name1;
+}
+
+<input type="hidden" id="vs" value='@CommonMethod.EncodeUrl("SelectVocaCategoryBySet")' />
+<input type="hidden" id="vsd" value='@Model.ID' />
+<header id="head" class="secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1>THƯ VIỆN</h1>
+            </div>
+        </div>
+    </div>
+</header>
+@if (Model != null)
+{
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="sitemap">
+                    @Html.ActionLink("Thư viện", "danh-sach", "Library")<span
+                        class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                    @Html.ActionLink(Model.Name1, "bo-tu-vung", "Library", new { @id = Model.ID, @urlDisplay = Model.UrlDisplay }, new { })
+                </div>
+            </div>
+            <!-- /row of panels -->
+        </div>
+    </div>
+    <div id="courses">
+        <section class="container-fluid">
+            <div class="container container-pad" id="property-listings">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h1>@Model.Name1</h1>
+                        <p>@Model.Description</p>
+                    </div>
+                    @if (Model.Fee > 0)
+                    {
+                        <div class="col-md-2">
+                            <p>
+                                @Html.ActionLink("Đăng ký bộ này", "bo", "Payment", new { @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })
+
+                            </p>
+                        </div>    
+                    }
+                </div>
+                @Html.Partial("_LoadingPartial")
+                <div class="row">
+                    <div class="col-md-9">
+                        <div id="divVocaCate">
+                            @Html.Partial("_VocaCategoryPartial", Model.VocaCategories)
+                        </div>
+                    </div>
+                    <div class="col-md-3 hidden-xs">
+                        @{Html.RenderAction("SelectPopularVocaSet", "Library");}
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+}

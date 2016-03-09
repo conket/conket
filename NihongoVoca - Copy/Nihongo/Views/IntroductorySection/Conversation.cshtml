@@ -1,0 +1,217 @@
+﻿@{
+    ViewBag.Title = "Hội thoại";
+}
+<script type="text/javascript">
+    var messageAudio;
+
+    $(document).ready(function () {
+        $("#ConversationCode").select2(
+        { placeholder: "Chọn bài"
+        });
+        //        $("#PersonName").select2(
+        //        { placeholder: "Chọn nhân vật"
+        //        });
+
+        $("#ConversationCode").on('change', function () {
+            $('#loadingModal').modal();
+            getConversationDetails(this.value);
+            $('#loadingModal').modal('hide');
+        });
+    });
+
+    var conversationDetailArray = [];
+    function getConversationDetails(conversationCode) {
+        $.ajax({
+            cache: false,
+            type: "get",
+            async: false,
+            url: '@Url.Action("GetConversationDetails", "IntroductorySection")', //"/IntroductorySection/GetConversationDetails",
+            data: { "conversationCode": conversationCode },
+            dataType: "json",
+            success: function (result) {
+                //                $.each(result.words, function (i, word) {
+                //                    writingWordArray.push(word);
+                //                });
+                conversationDetailArray = result.conversationDetails;
+                genConversationDetailHtml(result.conversation, result.conversationDetails);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.responseText);
+            }
+        });
+    }
+
+    function genConversationDetailHtml(conversation, conversationDetails) {
+        var html = '';
+        html += '<div class="container">';
+        html += '<div class="row">';
+        html += '<div class="col-md-9">';
+        html += '<p>';
+        html += conversation.Description;
+        html += '</p>';
+        html += '</div>';
+        html += '</div>';
+
+        //        html += '<hr class="divider">';
+
+        if (conversation.NumOfPerson > 1) {
+            html += '<div class="row">';
+            html += '<div class="col-md-4">';
+            html += '<p>';
+            html += '<button type="button" class="btn btn-link" onclick="speak(\'' + (conversation.UrlAudio) + '\');" >Nghe toàn bộ</button>';
+            html += '</p>';
+            html += '</div>';
+            html += '<div class="col-md-5">';
+            html += '<p>';
+            html += 'Luyện tập: ';
+            html += '<button type="button" class="btn btn-link" onclick="speakByName(\'A\');" id="btnA">Đóng vai A</button>';
+            html += '<button type="button" class="btn btn-link" onclick="speakByName(\'B\');" id="btnB">Đóng vai B</button>';
+            html += '<p>';
+            html += '</div>';
+            html += '</div>';
+
+            //            html += '<hr class="divider">';
+        }
+        $.each(conversationDetails, function (i, detail) {
+            html += '<div class="row">';
+
+            if (conversation.NumOfPerson > 1) {
+                html += '<div class="col-md-1">';
+                html += '<div id="' + detail.PersonName + '">' + detail.PersonName + ':';
+                html += '</div>';
+                html += '</div>';
+
+                html += '<div class="col-md-3">';
+            } else {
+                html += '<div class="col-md-3">';
+            }
+
+            html += '<p>';
+            //            html += '<button type="button" class="btn btn-link" onclick="speak(\'' + detail.UrlAudio + '\');" >' + detail.Japanese + '</button>';
+            html += detail.Japanese;
+            html += '<span class="pull-right"  onclick="speak(\'' + detail.UrlAudio + '\')"><i class="glyphicon glyphicon-volume-up"> </i></span>';
+            html += '</p>';
+            //html += detail.Japanese;
+            html += '</div>';
+
+            html += '<div class="col-md-3">';
+            //            html += '<span class="pull-left" onclick="speak(\'' + detail.UrlAudio + '\')"><i class="glyphicon glyphicon-volume-up"></i></span>';
+            html += '<p>';
+            html += detail.Romaji;
+//            html += '<span class="pull-right"  onclick="speak(\'' + detail.UrlAudio + '\')"><i class="glyphicon glyphicon-volume-up"> </i></span>';
+            html += '</p>';
+            html += '</div>';
+
+            html += '<div class="col-md-3">';
+            html += '<p>';
+            html += detail.Vietnamese;
+            html += '</p>';
+            html += '</div>';
+
+            html += '</div>';
+            //            html += '<hr class="divider">';
+            html += '</br>';
+        });
+        html += '</div>';
+
+        $('#divResult').html(html);
+    };
+
+    var done = false;
+    var lineNumber = 0;
+    function speakByName(personName) {
+    }
+
+
+    function speakConversationDetail(personName) {
+        for (var i = lineNumber; i < conversationDetailArray.length; i++) {
+            if (conversationDetailArray[i].PersonName == personName) {
+                //speak
+                speak(conversationDetailArray[i].UrlAudio);
+                //update next line
+                lineNumber = conversationDetailArray[i].LineNumber;
+                break;
+            }
+        }
+
+        //reset linenumber
+        if (lineNumber > conversationDetailArray[conversationDetailArray.length - 1].LineNumber) {
+            lineNumber = 0;
+        }
+    }
+
+    function speak(url) {
+        if (messageAudio != null) {
+            messageAudio.pause();
+        }
+//        var baseSiteURL = '@Href("./")';
+//        alert(baseSiteURL);
+        messageAudio = new Audio(url);
+        messageAudio.play();
+    };
+
+    function playAll(url) {
+        if (url != '' || !!url) {
+            speak(url);
+        }
+        else {
+            alert('Không tìm thấy dữ liệu');
+        }
+
+    };
+
+    var repeat = false;
+    function repeatAll(obj, url) {
+        if ($(obj).is(':checked')) {
+            repeat = true;
+        }
+        else {
+            repeat = false;
+        }
+        if (repeat) {
+            speak(url);
+        }
+    };
+
+</script>
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">
+                HỘI THOẠI
+            </h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>Nội Dung
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="pull-left">
+                                <div class="btn-group">
+                                    @Html.DropDownList("ConversationCode", ViewBag.Conversations as SelectList, string.Empty, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div id="divResult">
+                        </div>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-8 -->
+    </div>
+</div>

@@ -1,0 +1,14 @@
+﻿@model IPagedList<Nihongo.Models.MS_UsersModels>
+
+@(Html.IvsDataGrid<Nihongo.Models.MS_UsersModels>(this.Model)
+            .Columns(col =>
+            {
+                col.Add(x => x.ID).SetPrimary().SetHidden();
+                col.Add(x => x.No).SetTitle("STT").SetAlignmentValue(Ivs.Core.Common.CommonData.Alignment.Center);
+                col.Add(x => x.DisplayName).SetTitle("Tên hiển thị").SetAlignmentValue(Ivs.Core.Common.CommonData.Alignment.Default);
+                col.Add(x => x.LoginStateDisplay).SetTitle("Hoạt động").SetAlignmentValue(Ivs.Core.Common.CommonData.Alignment.Default);
+                col.Add(x => x.AccumulatedPointDisplay).SetTitle("Điểm tích lũy").SetAlignmentValue(Ivs.Core.Common.CommonData.Alignment.Far);
+            })
+            .SetSortable(false)
+            .SetPagination()
+)

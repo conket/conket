@@ -1,0 +1,405 @@
+﻿@{
+    ViewBag.Title = "Tổng quát";
+}
+<script type="text/javascript">
+
+    function speak(id) {
+        var messageAudio = new Audio("/Content/media/beginner/" + id + ".mp3");
+        messageAudio.play();
+    }
+</script>
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                TỔNG QUÁT
+            </h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <!-- /.panel-heading -->
+                <div class="panel-heading">
+                    Chung
+                    <h5 class="panel-title pull-right">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#panelCommon"><span class="glyphicon glyphicon-sort">
+                        </span></a>
+                    </h5>
+                </div>
+                <div id="panelCommon" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Hajime masite<span class="pull-right" onclick="speak('hajimemashite')"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            はじめまして <span class="pull-right" onclick="speak('hajimemashite')"><i class="glyphicon glyphicon-volume-up">
+                                            </i></span>
+                                        </td>
+                                        <td>
+                                            Xin chào (lần đầu tiên gặp)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Watashi wa ~ desu<span class="pull-right" onclick="speak('watashiwadesu')"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            わたしは～です<span class="pull-right" onclick="speak('watashiwadesu')"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            Tôi là ~{xưng tên}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Dozo yoroshiku. Onegaisimasu<span class="pull-right" onclick="speak('dozoyoroshikuonegaishimasu')"><i
+                                                class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            どぞよろしく. おねがいします<span class="pull-right" onclick="speak('dozoyoroshikuonegaishimasu')"><i
+                                                class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            Hân hạnh được biết bạn. Xin nhờ bạn.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Ohayo gozaimasu<span class="pull-right" onclick="speak('ohayogozaimasu')"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            おはいよございます<span class="pull-right" onclick="speak('ohayogozaimasu')"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            Chào buổi sáng
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Konichiwa<span class="pull-right" onclick="speak('konichiwa')"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            こにちわ<span class="pull-right" onclick="speak('konichiwa')"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            Chào buổi trưa (ban ngày)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Konbanwa<span class="pull-right" onclick="speak('konbanwa')"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            こんばんわ<span class="pull-right" onclick="speak('konbanwa')"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            Chào buổi tối
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Sayo nara mata<span class="pull-right" onclick="speak('sayonaramata')"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            さよならまた<span class="pull-right" onclick="speak('sayonaramata')"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            Chào tạm biệt, hẹn gặp lại
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Oyasumi nasai<span class="pull-right" onclick="speak('oyasuminasai')"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            おやすみなさい<span class="pull-right" onclick="speak('oyasuminasai')"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            Chúc ngủ ngon
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Chotto mate kudasai<span class="pull-right" onclick="speak('chottomatekudasai')"><i
+                                                class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            ちょとまてください<span class="pull-right" onclick="speak('chottomatekudasai')"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                        </td>
+                                        <td>
+                                            Xin đợi một chút
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <!-- /.panel-heading -->
+                <div class="panel-heading">
+                    Quốc gia
+                    <h5 class="panel-title pull-right">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#panelCountry"><span class="glyphicon glyphicon-sort">
+                        </span></a>
+                    </h5>
+                </div>
+                <div id="panelCountry" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Nihon | Nihon-jin | Nihon-go<span class="pull-right" onclick="speak('nihon');"><i
+                                            class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        にほん ｜ にほんじん ｜ にほんご<span class="pull-right" onclick="speak('nihon');"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        Nhật Bản | Người Nhật | Tiếng Nhật
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Kankoku | Kankoku-jin | Kankoku-go<span class="pull-right" onclick="speak('kankoku');"><i
+                                            class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        かんこく ｜ かんこくじｎ ｜ かんこくご<span class="pull-right" onclick="speak('kankoku');"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        Hàn Quốc | Người Hàn | Tiếng Hàn
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Chugoku | Chugoku-jin | Chugoku-go<span class="pull-right" onclick="speak('chugoku');"><i
+                                            class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        ちゅごく ｜ ちゅごくじｎ ｜ ちゅごくご<span class="pull-right" onclick="speak('chugoku');"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        Trung Quốc | Người TQ | Tiếng TQ
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Betonamu | Betonamu-jin | Betonamu-go<span class="pull-right" onclick="speak('betonamu');"><i
+                                            class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        べとなむ ｜ べとなむじｎ ｜ べとなむご<span class="pull-right" onclick="speak('betonamu');"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        Việt Nam | Người Việt | Tiếng Việt
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Amerika | Amerika-jin | Ei-go<span class="pull-right" onclick="speak('amerika');"><i
+                                            class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        あめりか ｜ あめりかじｎ ｜ あめりかご<span class="pull-right" onclick="speak('amerika');"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        Mỹ | Người Mỹ | Tiếng Anh
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Igirisu | Igirisu-jin | Ei-go<span class="pull-right" onclick="speak('igirisu');"><i
+                                            class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        いぎりす ｜ いぎりすじｎ ｜ いぎりすご<span class="pull-right" onclick="speak('igirisu');"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        Anh | Người Anh | Tiếng Anh
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Burajiru | Burajiru-jin | Burajiru-go<span class="pull-right" onclick="speak('burajiru');"><i
+                                            class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        ぶらじる ｜ ぶらじるじｎ ｜ ぶらじるご<span class="pull-right" onclick="speak('burajiru');"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        Brazil | Người Brazil | Tiếng Brazil
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Doitsu | Doitsu-jin | Doitsu-go<span class="pull-right" onclick="speak('doitsu');"><i
+                                            class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        どいつ ｜ どいつじｎ ｜ どいつご<span class="pull-right" onclick="speak('doitsu');"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        Đức | Người Đức | Tiếng Đức
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Indo | Indo-jin | Hindi-go<span class="pull-right" onclick="speak('indo');"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        いんど ｜ いどじｎ ｜ ひんぢご<span class="pull-right" onclick="speak('indo');"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        Ấn Độ | Người Ấn | Tiếng Ấn
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Indonesia | Indonesia-jin | Indonesia-go<span class="pull-right" onclick="speak('indonesia');"><i
+                                            class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        いんどねしあ ｜ いんどねしあじｎ ｜ いんどねしあご<span class="pull-right" onclick="speak('indonesia');"><i
+                                            class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        Indonesia | Người Indonesia | Tiếng Indonesia
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Maresia | Maresia-jin | Maresia-go<span class="pull-right" onclick="speak('maresia');"><i
+                                            class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        まれしあ ｜ まれしあじｎ ｜ まれしあご<span class="pull-right" onclick="speak('maresia');"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        Malaysia | Người Malaysia | Tiếng Malaysia
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Tai | Tai-jin | Tai-go<span class="pull-right" onclick="speak('tai');"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        たい ｜ たいじｎ ｜ たいご<span class="pull-right" onclick="speak('tai');"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        Thái Lan | Người Thái Lan | Tiếng Thái
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Phiripin | Phiripin-jin | Tagarogu-go<span class="pull-right" onclick="speak('phiripin');"><i
+                                            class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        フィりピン ｜ フィりピンジン ｜ フィりピンゴ<span class="pull-right" onclick="speak('phiripin');"><i
+                                            class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        Philippin | Người Philippin | Tiếng Philippin
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Huransu | Huransu-jin | Huransu-go<span class="pull-right" onclick="speak('huransu');"><i
+                                            class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        ふらんす ｜ ふらんすじｎ ｜ ふらんすご<span class="pull-right" onclick="speak('huransu');"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        Pháp | Người Pháp | Tiếng Pháp
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Supein | Supein-jin | Supein-go<span class="pull-right" onclick="speak('supein');"><i
+                                            class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        すぺいん ｜ すぺいんじん ｜ すぺいんご<span class="pull-right" onclick="speak('supein');"><i class="glyphicon glyphicon-volume-up"></i></span>
+                                    </td>
+                                    <td>
+                                        TBN | Người TBN | Tiếng TBN
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <!-- /.panel-heading -->
+                <div class="panel-heading">
+                    Số
+                    <h5 class="panel-title pull-right">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#panelNumber"><span class="glyphicon glyphicon-sort">
+                        </span></a>
+                    </h5>
+                </div>
+                <div id="panelNumber" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <!-- /.panel-heading -->
+                <div class="panel-heading">
+                    Ngày trong tuần
+                    <h5 class="panel-title pull-right">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#panelDayOfWeek"><span class="glyphicon glyphicon-sort">
+                        </span></a>
+                    </h5>
+                </div>
+                <div id="panelDayOfWeek" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Nihongo.Models.MS_VocaCategoriesModels>
+@if (Model != null && Model.Count() > 0)
+{
+
+    int count = 0;
+    int numOfColumn = 2;
+    var models = Model.ToList();
+    var max = models.Count;
+    int numOfRows = models.Count % numOfColumn == 0 ? models.Count / numOfColumn : models.Count / numOfColumn + 1;
+    for (int k = 0; k < numOfRows; k++)
+    {
+    <div class="row">
+        @for (int i = 0; i < (max > numOfColumn ? numOfColumn : max); i++)
+        {
+            Nihongo.Models.MS_VocaCategoriesModels voca = models[count];
+            <div class="col-sm-6">
+                <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+                    <div class="media">
+                        <div class="pull-left hidden-xs">
+                            <img class="img-rounded" src='@Href("~/" + @voca.UrlImage)' alt="Bộ từ vựng" height="100px" width="100%">
+                        </div>
+                        <div class="clearfix visible-sm">
+                        </div>
+                        <div class="media-body fnt-smaller">
+                            <a href="#" target="_parent"></a>
+                            <h4 class="media-heading">
+                                @*<a href='@Href("~/Library/Voca/")@voca.ID/@voca.UrlDisplay' target="_parent" class="require-login">
+                                    @voca.Name1
+                                </a>*@
+                                @Html.ActionLink(voca.Name1, "danh-muc", "Library", new { @id = voca.ID, @urlDisplay = voca.UrlDisplay }, new { @target = "_parent", @class = "require-login" })
+                                @if (voca.IsTrial == "1")
+                                {
+                                    <a href="@Url.Action("hoc-thu", "Library", new { @id=voca.ID, @urlDisplay=voca.UrlDisplay })" target="_parent" class="require-login">
+                                        <small class="pull-right">Học thử</small>
+                                    </a>
+                                    @*<a href='@Href("~/Library/hoc-thu/")@voca.ID/@voca.UrlDisplay' target="_parent" class="require-login">
+                                        <small class="pull-right">Học thử</small> </a>   *@
+                                }
+                            </h4>
+                            @*list-inline*@
+                            <ul class=" mrg-0 btm-mrg-10 clr-535353">
+                                <li>@voca.NumOfVocas từ vựng</li>
+                            </ul>
+                            @*<p class="hidden-xs">*@
+                            <p>
+                                @voca.Description</p>
+                            @*<span class="fnt-smaller fnt-lighter fnt-arial">
+                        Học</span>*@
+                        </div>
+                        <nav class="col-md-12 text-right action">
+                            <ul>
+                                <li>@Html.ActionLink("Vào học", "danh-muc", "Library", new { @id = voca.ID, @urlDisplay = voca.UrlDisplay }
+                             , new { @class = "btn btn-navigator btn-theme btn-small require-login"})</li>
+                                @*<li>@Html.ActionLink("Sàng lọc", "kiem-tra-nhanh", "Library", new { @id = voca.ID, @urlDisplay = voca.UrlDisplay }
+             , new { @class = "btn-theme btn-small require-login" })</li>*@
+                            </ul>
+                        </nav>
+                        <div class="pull-right">
+                            <span class="label label-danger">
+                                @{Html.RenderAction("CheckCompletedCate", "Library", new { @id = @voca.ID });}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                                  count++;
+        }
+    </div>   
+        max -= numOfColumn;
+    }
+}
+@*else
+{
+    <p>
+        Hệ thống sẽ cập nhật bộ từ vựng tiếng Nhật này trong thời gian tới</p>
+}*@
+    @Scripts.Render("~/bundles/mi")
+

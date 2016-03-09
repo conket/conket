@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C9F6A2DB-A134-459C-8C55-7098E6E86D43}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ivs.Core</RootNamespace>
+    <AssemblyName>Ivs.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>3rd\log4net\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>3rd\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>3rd\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>3rd\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\HiddenCateIDAttribute.cs" />
+    <Compile Include="Attributes\HiddenSetIDAttribute.cs" />
+    <Compile Include="Common\ExtensionMethods.cs" />
+    <Compile Include="Common\GridSetting.cs" />
+    <Compile Include="Common\IvsNetworkAuthorize.cs" />
+    <Compile Include="Common\CommonData.cs" />
+    <Compile Include="Common\CommonConstantMessage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\LanguageUltility.cs" />
+    <Compile Include="Common\CommonKey.cs" />
+    <Compile Include="Common\CommonMethod.cs" />
+    <Compile Include="Common\Log4Net.cs" />
+    <Compile Include="Common\QueryExtention.cs" />
+    <Compile Include="Data\CExcelBase.cs" />
+    <Compile Include="Data\DataSession.cs" />
+    <Compile Include="Data\InvoiceResult.cs" />
+    <Compile Include="Data\IvMonthlyProcessResult.cs" />
+    <Compile Include="Data\ServiceResult.cs" />
+    <Compile Include="Data\StockResult.cs" />
+    <Compile Include="Interface\IPagedList.cs" />
+    <Compile Include="Interface\IPrint.cs" />
+    <Compile Include="Interface\IWebControl.cs" />
+    <Compile Include="Paging\AjaxPager.cs" />
+    <Compile Include="Paging\PageList.cs" />
+    <Compile Include="Paging\Pager.cs" />
+    <Compile Include="Paging\PagingInfo.cs" />
+    <Compile Include="Validation\GridValidationResult.cs" />
+    <Compile Include="Interface\IStockBl.cs" />
+    <Compile Include="Interface\IStocking.cs" />
+    <Compile Include="Interface\IUserControl.cs" />
+    <Compile Include="Properties\COM_MSG_EN.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>COM_MSG_EN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\COM_MSG_JA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>COM_MSG_JA.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\COM_MSG_VI.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>COM_MSG_VI.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ApplicationState.cs" />
+    <Compile Include="Data\CultureInfo.cs" />
+    <Compile Include="Data\I18n.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\IvsMessage.cs" />
+    <Compile Include="Data\Message_EN.Designer.cs" />
+    <Compile Include="Data\Message_JP.Designer.cs" />
+    <Compile Include="Data\Message_VN.Designer.cs" />
+    <Compile Include="Data\MsSqlErrorNumber.cs" />
+    <Compile Include="Data\MySqlErrorNumber.cs" />
+    <Compile Include="Data\OracleErrorNumber.cs" />
+    <Compile Include="Data\ScreenDisplay_EN.Designer.cs" />
+    <Compile Include="Data\ScreenDisplay_JP.Designer.cs" />
+    <Compile Include="Data\ScreenDisplay_VN.Designer.cs" />
+    <Compile Include="Data\UserSession.cs" />
+    <Compile Include="Validation\ValidationResult.cs" />
+    <Compile Include="Interface\IBl.cs" />
+    <Compile Include="Interface\IDto.cs" />
+    <Compile Include="Logger\Logger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Encryption\" />
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\COM_MSG_JA.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>COM_MSG_JA.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\COM_MSG_EN.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>COM_MSG_EN.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\COM_MSG_VI.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>COM_MSG_VI.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Message_EN.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Message_JP.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Message_VN.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\ScreenDisplay_EN.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\ScreenDisplay_JP.resx" />
+    <EmbeddedResource Include="Data\ScreenDisplay_VN.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

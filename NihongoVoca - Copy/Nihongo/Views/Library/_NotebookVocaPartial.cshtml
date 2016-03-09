@@ -1,0 +1,127 @@
+﻿@model IEnumerable<Nihongo.Models.MS_UserVocabulariesModels>
+@if (Model != null && Model.Count() > 0)
+{
+
+    int count = 0;
+    int numOfColumn = 2;
+    var models = Model.ToList();
+    var max = models.Count;
+    int numOfRows = models.Count % numOfColumn == 0 ? models.Count / numOfColumn : models.Count / numOfColumn + 1;
+    for (int k = 0; k < numOfRows; k++)
+    {
+    <div class="row">
+        @for (int i = 0; i < (max > numOfColumn ? numOfColumn : max); i++)
+        {
+            Nihongo.Models.MS_UserVocabulariesModels voca = models[count];
+            <div class="col-md-6">
+                <div class="row brdr-top bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 ">
+                        <img class="img-rounded" src='@Href("~/" + @voca.UrlImage)' alt="tu-vung-tieng-nhat" height="100px" width="100%">@*</a>*@
+                    </div>
+                    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
+                        <div class="media">
+                            <div class="media-body fnt-smaller">
+                                <h4 class="media-heading">
+                                    <span class="label label-primary">@(count + 1)</span> <a href="#" target="_parent" onclick="speak('@Href("~/" + @voca.DisplayUrlAudio)'); return false;">@voca.DisplayVoca
+                                        <span class="glyphicon glyphicon-volume-up"></span></a><small class="pull-right">
+                                            @if (voca.HasLearnt == Ivs.Core.Common.CommonData.Status.Enable)
+                                            {
+                                                <span class="label label-info">Đã thuộc</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="label label-danger">Chưa thuộc</span>
+                                            }
+                                        </small>
+                                </h4>
+                                <ul class="mrg-0 btm-mrg-10 clr-535353">
+                                    <li><div class="zoom-content">@voca.Romaji</div></li>
+                                    <li><div class="zoom-content">@(voca.DisplayType == "1" ? voca.Katakana : voca.Hiragana)</div></li>
+                                    <li><div class="zoom-content"><a href="#" class="drawKanji" data-toggle="tooltip" title="Nhấp để xem cách viết">@voca.Kanji</a></div></li>
+                                </ul>
+                                <p>
+                                    @voca.Description
+                                </p>
+                                <div class="text-right">
+                                <a href='#' class="btn btn-default btn-sm require-login" onclick="updateHasMarked(@voca.ID); return false;"
+                            role="button">Xóa khỏi sổ tay</a>
+                                </div>
+                                @*<span class="fnt-smaller fnt-lighter fnt-arial">
+                       
+                                        </span>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                                            count++;
+        }
+    </div>   
+        max -= numOfColumn;
+    }
+}
+<script src='@Scripts.Url("~/bundles/dr")' async> </script>
+<script type="text/javascript">
+    var vocas;
+    $(document).ready(function () {
+        vocas = set(@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)));
+        if (vocas != null && vocas.length > 0) {
+            for (var i = 0; i < vocas.length; i++) {
+                var audio = new Audio(vocas[i].UrlAudio);
+                audio.load();
+            }
+        }
+    })
+
+    function getVoca(id) {
+        for (var i = 0; i < vocas.length; i++) {
+            if (vocas[i].ID == id) {
+                return vocas[i];
+            }
+        }
+        return null;
+    }
+
+    function updateHasMarked(id) {
+        var voca = getVoca(id);
+        if (voca != null) {
+            //var currentIndex = $('#lineNumber').val();
+            if (voca.HasMarked == "0") {
+                alert('Từ vựng này đã xóa khỏi Sổ tay');
+                return;
+            }
+            voca.HasMarked = "0";
+            $.ajax({
+                cache: true,
+                type: "post",
+                async: true,
+                url: '/Library/' + '@CommonMethod.EncodeUrl("UpdateHasMarked")',
+                data: JSON.stringify(voca),
+                dataType: "json",
+                contentType: 'application/json',
+                success: function (result) {
+                    if (result.ReturnCode == '@CommonData.DbReturnCode.AccessDenied') {
+                        voca.HasMarked = "1";
+                        window.location.href = '/Account/RequireLogin';
+                    }
+                    else if (result.ReturnCode != 0) {
+                        voca.HasMarked = "1";
+                        alert('Có lỗi xảy ra');
+                    }
+                    else {
+                        alert('Đã xóa khỏi Sổ tay của bạn');
+                        //window.location.reload();
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.responseText);
+                    return false;
+                }
+            });
+        }
+    }
+    function set(value) {
+        return value;
+    }
+</script>
+

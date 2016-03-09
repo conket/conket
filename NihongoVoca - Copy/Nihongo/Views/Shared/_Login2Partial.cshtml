@@ -1,0 +1,54 @@
+﻿<div class="modal fade bs-example-modal-lg" id="modalLogin2" tabindex="-1" role="dialog"
+    aria-labelledby="modalLogin2Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Đăng Nhập
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="middlePage">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <a href="#" id="btnFLog">
+                                <img src="~/Images/fb.png" onclick="checkLoginState()" /></a><br />
+                            @*<a href="#">
+                                <img src="~/Images/tw.png" /></a><br />*@
+                            <a href="#" id="btnGLog">
+                                <img src="~/Images/gplus.png" /></a>
+                        </div>
+
+                        <div class="col-md-7" style="border-left: 1px solid #ccc; height: 190px">
+                            <form class="form-horizontal" method="post" action='@Href("~/Account/")' accept-charset="UTF-8" id="loginForm">
+                                @Html.AntiForgeryToken()
+                                <p class="text-danger" id='login-error-message'>
+                                </p>
+                                <fieldset>
+                                    <input type="hidden" id='ReturnUrl' name='ReturnUrl' value='@ViewBag.ReturnUrl' />
+                                    <label>Tên đăng nhập:</label>
+                                    <input id="usr" name="UserName" type="text" placeholder=""
+                                        class="form-control input-md">
+                                    <label>Mật khẩu:</label>
+                                    <input id="pss" name="Password" type="password" placeholder="" class="form-control input-md">
+                                    <br />
+                                    <button type="button" id="btnCloseReadingModal" class="btn
+btn-default btn-sm pull-right"
+                                        data-dismiss="modal">
+                                        Đóng</button>
+                                    <button id="btnLogin" name="btnLogin" class="btn btn-info btn-sm pull-right">
+                                        Đăng nhập</button>
+
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="log" value="@CommonMethod.EncodeUrl("Login")" />
+<input type="hidden" id="flog" value="@CommonMethod.EncodeUrl("FLogin")" />
+<input type="hidden" id="glog" value="@CommonMethod.EncodeUrl("GLogin")" />
+@*@Scripts.Render("~/bundles/lo")*@

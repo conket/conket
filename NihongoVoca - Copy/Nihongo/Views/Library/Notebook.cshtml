@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Nihongo.Models.MS_UserVocabulariesModels>
+@{
+    ViewBag.Title = "Sổ tay từ vựng tiếng Nhật của bạn";
+}
+
+<input type="hidden" id="nvc" value='@CommonMethod.EncodeUrl("SelectNotebookVocas")' />
+<header id="head" class="secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1>SỔ TAY</h1>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="courses">
+    <section class="container-fluid">
+        <div class="container container-pad" id="property-listings">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Sổ tay của bạn</h1>
+                    <p>Trong quá trình học từ vựng, bạn có thể tùy thích cập nhật từ vựng vào sổ tay từ vựng của mình mà không phải học theo các bộ từ vựng tiếng Nhật hiện có của hệ thống. 
+                        Điều này sẽ giúp người học dễ dàng theo dõi được những từ vựng mà mình quan tâm hay những từ vựng mục tiêu.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ActionLink("Bắt đầu học", "hoc-so-tay", "Library", null, new { @class = "btn btn-navigator btn-lg require-login" })
+                    @Html.ActionLink("Luyện tập", "luyen-tap-so-tay", "Library", null, new { @class = "btn btn-navigator btn-lg require-login" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">
+                    <div id="divNotebookVoca">
+                        @Html.Partial("_NotebookVocaPartial", Model)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

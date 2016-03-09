@@ -1,0 +1,84 @@
+﻿@model Nihongo.Models.MS_VocaCategoriesModels
+@{
+    ViewBag.Title = "Từ vựng tiếng Nhật - Trải nghiệm E-Flashcard với " + Model.VocaSetName1 + " - " + Model.Name1;
+}
+
+<input type="hidden" id="vc" value='@CommonMethod.EncodeUrl("SelectVocasByCate")' />
+<input type="hidden" id="vcd" value='@Model.ID' />
+<header id="head" class="secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1>THƯ VIỆN</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="sitemap">
+                @Html.ActionLink("Thư viện", "danh-sach", "Library")<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                @Html.ActionLink(Model.VocaSetName1, "bo-tu-vung", "Library", new { @id = Model.VocaSetID, @urlDisplay = Model.VocaSetUrlDisplay }, new { })<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                @Html.ActionLink(Model.Name1, "danh-muc", "Library", new { @id = Model.ID, @urlDisplay = Model.UrlDisplay }, new { })
+
+            </div>
+        </div>
+        <!-- /row of panels -->
+    </div>
+</div>
+@if (Model != null)
+{
+    <div id="courses">
+        <section class="container-fluid">
+            <div class="container container-pad" id="property-listings">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>@Model.Name1</h1>
+                        <p>@Model.Description</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        @Html.ActionLink("Bắt đầu học", "hoc-tu-vung", "Library", new { @id = Model.ID, @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })
+                        @*@Html.ActionLink("Sàng lọc", "kiem-tra-nhanh", "Library", new { @id = Model.ID, @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })*@
+                        @Html.ActionLink("Luyện tập", "luyen-tap", "Library", new { @id = Model.ID, @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })
+                        @*@Html.ActionLink("Kiểm tra", "kiem-tra", "Library", new { @id = Model.ID, @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })*@
+                    </div>
+                    <div class="col-md-2">
+                        @*<div class="text-center">
+                            <strong>TOP HỌC GIỎI</strong> </div>*@
+                    </div>
+                </div>
+                @Html.Partial("_LoadingPartial")
+                <div class="row">
+                    <div class="col-md-10">
+                        <div id="divVoca">
+                            @if (Model.IsKanji == CommonData.Status.Enable)
+                            {
+                                @Html.Partial("_VocaKanjiPartial", Model.Vocabularies)
+                            }   
+                            else
+                            {   
+                                @Html.Partial("_VocaPartial", Model.Vocabularies)
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-2 hidden-xs">
+                        <div class="row">
+                            @{Html.RenderAction("SelectOtherVocaCategoryData", "Library", new { id = @Model.VocaSetID });}
+                        </div>
+                        <div class="row">
+                            @*<div class="text-center">TOP</div> *@
+                            <div id="divTop" class="person-list">
+                                @Html.Partial("_VocaPersonPartial")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+}
+

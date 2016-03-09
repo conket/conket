@@ -1,0 +1,639 @@
+﻿@{
+    ViewBag.Title = "Test Vocabulary";
+}
+<script type="text/javascript">
+
+    var failArray = [];
+    var vocas = [];
+    var resultArray = [];
+    var index = 1;
+    $(document).ready(function () {
+
+        //reading
+        $('#aReading').on('click', function () {
+            vocas = [];
+            resultArray = [];
+
+            $('#loadingModal').modal();
+            getVocabularies();
+            $('#loadingModal').modal('hide');
+
+            if (vocas.length > 0) {
+                $('#inputAlphabet').val('');
+                $('#inputAlphabet').focus();
+
+                //show the first
+                index = 0;
+                $('#alphabet').html(vocas[index].Description);
+                $('#image').prop('src', getLink(vocas[index].UrlImage));
+                //                speak(vocas[index].UrlAudio);
+
+                $('#divResultReading').html('<strong>0/' + vocas.length + '</strong>');
+                $('#divResultMessageReading').html('');
+            }
+            else {
+                alert('Không tìm thấy từ vựng!');
+                return false;
+            }
+        });
+
+        $('#btnResetReadingModal').on('click', function () {
+            //            $('#loadingModal').modal();
+            updateDb(false);
+            //            $('#loadingModal').modal('hide');
+
+            vocas = [];
+            resultArray = [];
+
+            $('#loadingModal').modal();
+            getVocabularies();
+            $('#loadingModal').modal('hide');
+
+            if (vocas.length > 0) {
+                $('#inputAlphabet').val('');
+                $('#inputAlphabet').focus();
+
+                //show the first
+                index = 0;
+                $('#alphabet').html(vocas[index].Description);
+                $('#image').prop('src', getLink(vocas[index].UrlImage));
+                //                speak(vocas[index].UrlAudio);
+
+                $('#divResultReading').html('<strong>0/' + vocas.length + '</strong>');
+                $('#divResultMessageReading').html('');
+            }
+            else {
+                alert('Không tìm thấy từ vựng!');
+                return false;
+            }
+        });
+
+        $('#btnOkReadingModal').on('click', function () {
+            var inputValue = $('#inputAlphabet').val().toLowerCase();
+            var checkValue = vocas[index].Romaji.toLowerCase();
+            if (inputValue != '') {
+                //show error if wrong
+                if (inputValue != checkValue) {
+                    $('#divResultMessageReading').html('<strong>SAI. Lại lần nữa!</strong>');
+                    //update to fail list
+                    updateLevel(vocas[index], false);
+
+                    speak(vocas[index].UrlAudio);
+                    $('#inputAlphabet').val('');
+                    $('#inputAlphabet').focus();
+                    return false;
+                }
+                else {
+                    $('#divResultMessageReading').html('<strong>ĐÚNG</strong>');
+                    //add to result
+                    resultArray.push(inputValue);
+
+                    //update to fail list
+                    updateLevel(vocas[index], true);
+                }
+                $('#divResultReading').html('<strong>' + resultArray.length + '/' + vocas.length + '</strong>');
+
+                $('#inputAlphabet').val('');
+                $('#inputAlphabet').focus();
+
+                if (index == vocas.length - 1) {
+                    alert('Xong!');
+                    $('#alphabet').html("XONG!");
+                    $('#image').removeAttr('src');
+                    $('#btnCloseReadingModal').focus();
+                    $('#modelTestReading').modal('hide');
+                    //alert('Xong!');
+                }
+                else {
+                    index++;
+                    $('#alphabet').html(vocas[index].Description);
+                    $('#image').prop('src', getLink(vocas[index].UrlImage));
+                    //                speak(vocas[index].UrlAudio);
+                }
+
+            } else {
+                alert('Gõ kí tự Romaji đi gái!');
+            }
+        });
+
+        $('#modelTestReading').keypress(function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                $("#btnOkReadingModal").trigger("click");
+                return false;
+            }
+        });
+
+        $('#modelTestReading').on('hidden.bs.modal', function () {
+            updateDb(true);
+        })
+
+        $('#modelTestReading').on('shown.bs.modal', function () {
+            $('#inputAlphabet').focus();
+        })
+
+        //choosing
+        $('a[name=resultChoosing]').on('click', function () {
+            clearChoosing();
+            $(this).prop('class', 'list-group-item active');
+
+            switch (this.id) {
+                case 'result1':
+                    speak($('#urlAudio1').val());
+                    $('#selectedValue').val(1);
+                    break;
+                case 'result2':
+                    speak($('#urlAudio2').val());
+                    $('#selectedValue').val(2);
+                    break;
+                case 'result3':
+                    speak($('#urlAudio3').val());
+                    $('#selectedValue').val(3);
+                    break;
+                case 'result4':
+                    speak($('#urlAudio4').val());
+                    $('#selectedValue').val(4);
+                    break;
+                default:
+
+            }
+        });
+
+        $('#aChoosing').on('click', function () {
+            vocas = [];
+            resultArray = [];
+            $('#selectedValue').val('');
+
+            clearChoosing();
+
+            $('#loadingModal').modal();
+            getTests();
+            $('#loadingModal').modal('hide');
+
+            if (vocas.length > 3) {
+                //show the first
+                index = 0;
+                $('#imageChoosing').prop('src', getLink(vocas[index].UrlImage));
+                $('#correctValue').val(vocas[index].CorrectResult);
+                $('#result1').html(vocas[index].Result1);
+                $('#urlAudio1').val(vocas[index].ResultUrlAudio1);
+
+                $('#result2').html(vocas[index].Result2);
+                $('#urlAudio2').val(vocas[index].ResultUrlAudio2);
+
+                $('#result3').html(vocas[index].Result3);
+                $('#urlAudio3').val(vocas[index].ResultUrlAudio3);
+
+                $('#result4').html(vocas[index].Result4);
+                $('#urlAudio4').val(vocas[index].ResultUrlAudio4);
+
+                $('#divResultChoosing').html('<strong>0/' + vocas.length + '</strong>');
+                $('#divResultMessageChoosing').html('');
+            }
+            else {
+                alert('Không tìm thấy từ vựng hoặc không đủ từ để tạo trắc nghiệm!');
+                return false;
+            }
+        });
+
+        $('#btnResetChoosingModal').on('click', function () {
+            updateDb(false);
+
+            vocas = [];
+            resultArray = [];
+            clearChoosing();
+            $('#selectedValue').val('');
+
+            $('#loadingModal').modal();
+            getTests();
+            $('#loadingModal').modal('hide');
+
+            if (vocas.length > 3) {
+                //show the first
+                index = 0;
+                $('#imageChoosing').prop('src', getLink(vocas[index].UrlImage));
+                $('#correctValue').val(vocas[index].CorrectResult);
+                $('#result1').html(vocas[index].Result1);
+                $('#urlAudio1').val(vocas[index].ResultUrlAudio1);
+
+                $('#result2').html(vocas[index].Result2);
+                $('#urlAudio2').val(vocas[index].ResultUrlAudio2);
+
+                $('#result3').html(vocas[index].Result3);
+                $('#urlAudio3').val(vocas[index].ResultUrlAudio3);
+
+                $('#result4').html(vocas[index].Result4);
+                $('#urlAudio4').val(vocas[index].ResultUrlAudio4);
+
+                $('#divResultChoosing').html('<strong>0/' + vocas.length + '</strong>');
+                $('#divResultMessageChoosing').html('');
+            }
+            else {
+                alert('Không tìm thấy từ vựng hoặc không đủ từ để tạo trắc nghiệm!');
+                return false;
+            }
+        });
+
+        $('#btnOkChoosingModal').on('click', function () {
+            var selectedValue = $('#selectedValue').val().toLowerCase();
+            var resultValue = $('#correctValue').val().toLowerCase(); //vocas[index].Hiragana.toLowerCase();
+            if (selectedValue != '') {
+                //show error if wrong
+                if (selectedValue != resultValue) {
+                    //update to fail list
+                    updateLevel(vocas[index], false);
+
+                    $('#divResultMessageChoosing').html('<strong>SAI. Lại lần nữa!</strong>');
+                    alert('SAI!');
+                    return false;
+                }
+                else {
+                    $('#divResultMessageChoosing').html('<strong>ĐÚNG</strong>');
+                    //add to result
+                    resultArray.push(selectedValue);
+
+                    //update to fail list
+                    updateLevel(vocas[index], true);
+                }
+                $('#divResultChoosing').html('<strong>' + resultArray.length + '/' + vocas.length + '</strong>');
+
+                if (index == vocas.length - 1) {
+                    alert('Xong!');
+                    $('#btnCloseChoosingModal').focus();
+                    $('#modelTestChoosing').modal('hide');
+                }
+                else {
+                    index++;
+                    $('#imageChoosing').prop('src', getLink(vocas[index].UrlImage));
+                    $('#correctValue').val(vocas[index].CorrectResult);
+                    $('#result1').html(vocas[index].Result1);
+                    $('#urlAudio1').val(vocas[index].ResultUrlAudio1);
+
+                    $('#result2').html(vocas[index].Result2);
+                    $('#urlAudio2').val(vocas[index].ResultUrlAudio2);
+
+                    $('#result3').html(vocas[index].Result3);
+                    $('#urlAudio3').val(vocas[index].ResultUrlAudio3);
+
+                    $('#result4').html(vocas[index].Result4);
+                    $('#urlAudio4').val(vocas[index].ResultUrlAudio4);
+                }
+
+                clearChoosing();
+                $('#selectedValue').val('');
+
+            } else {
+                alert('Chọn 1 giá trị đi gái!');
+            }
+        });
+
+        $('#modelTestChoosing').keypress(function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+
+            if (keycode == '13') {
+                $("#btnOkChoosingModal").trigger("click");
+                return false;
+            } else if (keycode == 65 || keycode == 97) {
+                clearChoosing();
+                $('#result1').prop('class', 'list-group-item active');
+                speak($('#urlAudio1').val());
+                $('#selectedValue').val(1);
+                return false;
+            } else if (keycode == 66 || keycode == 98) {
+                clearChoosing();
+                $('#result2').prop('class', 'list-group-item active');
+                speak($('#urlAudio2').val());
+                $('#selectedValue').val(2);
+                return false;
+            } else if (keycode == 67 || keycode == 99) {
+                clearChoosing();
+                $('#result3').prop('class', 'list-group-item active');
+                speak($('#urlAudio3').val());
+                $('#selectedValue').val(3);
+                return false;
+            } else if (keycode == 68 || keycode == 100) {
+                clearChoosing();
+                $('#result4').prop('class', 'list-group-item active');
+                speak($('#urlAudio4').val());
+                $('#selectedValue').val(4);
+                return false;
+            }
+        });
+
+        $('#modelTestChoosing').on('hidden.bs.modal', function () {
+            updateDb(true);
+        })
+    });
+
+    function updateLevel(voca, isOk) {
+        for (var i = 0; i < failArray.length; i++) {
+            if (failArray[i].VocabularyCode == voca.VocabularyCode) {
+                if (isOk) {
+                    failArray[i].Level += 1;
+                    if (failArray[i].Level > 10) {
+                        failArray[i].Level = 10;
+                    }
+                } else {
+                    failArray[i].Level -= 2;
+                    if (failArray[i].Level < 0) {
+                        failArray[i].Level = 0;
+                    }
+                }
+                break;
+            }
+        }
+    };
+
+    function updateDb(isAsyns) {
+        if (failArray.length > 0) {
+            $.ajax({
+                cache: false,
+                type: "post",
+                async: isAsyns,
+                url: '@Href("~/Test/UpdateVocas")',
+                data: JSON.stringify(failArray),
+                dataType: "json",
+                contentType: 'application/json',
+                success: function (result) {
+                    if (result.ReturnCode != 0) {
+                        alert('Có lỗi khi update db');
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+    }
+
+    function clearChoosing() {
+        $('a[name=resultChoosing]').each(function () {
+            $(this).prop('class', 'list-group-item');
+        });
+    };
+
+    function getVocabularies() {
+        vocas = [];
+        failArray = [];
+
+        $.ajax({
+            cache: true,
+            type: "get",
+            async: false,
+            url: '@Href("~/Test/GetWeakVocabularies")',
+            data: { "lessonCode": '@ViewBag.LessonCode' },
+            dataType: "json",
+            success: function (result) {
+                $.each(result.vocabularies, function (i, voca) {
+                    vocas.push(voca);
+                    failArray.push(voca);
+                });
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.responseText);
+            }
+        });
+    }
+
+    function getTests() {
+        vocas = [];
+        failArray = [];
+
+        $.ajax({
+            cache: true,
+            type: "get",
+            async: false,
+            url: '@Href("~/Test/GetWeakTests")',
+            data: { "lessonCode": '@ViewBag.LessonCode' },
+            dataType: "json",
+            success: function (result) {
+                $.each(result.vocabularies, function (i, voca) {
+                    vocas.push(voca);
+                    failArray.push(voca);
+                });
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.responseText);
+            }
+        });
+    }
+
+    var messageAudio;
+    function speak(url) {
+        if (messageAudio != null) {
+            messageAudio.pause();
+        }
+        var baseSiteURL = '@Url.Content("~/")';
+        messageAudio = new Audio(url);
+        messageAudio.play();
+    };
+
+    function getLink(url) {
+        var baseSiteURL = '@Url.Content("~/")';
+        return url;
+    };
+
+</script>
+<div id="page-wrapper">
+    <div class="row">
+        <hr class="divider">
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-comments fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">
+                                ĐỌC</div>
+                            <div>
+                                Từ vựng</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" data-toggle="modal" data-target="#modelTestReading" id="aReading">
+                    <div class="panel-footer">
+                        <span class="pull-left">Kiểm tra</span> <span class="pull-right"><i class="fa fa-arrow-circle-right">
+                        </i></span>
+                        <div class="clearfix">
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-tasks fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">
+                                CHỌN</div>
+                            <div>
+                                Từ vựng</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" data-toggle="modal" data-target="#modelTestChoosing" id="aChoosing">
+                    <div class="panel-footer">
+                        <span class="pull-left">Kiểm tra</span> <span class="pull-right"><i class="fa fa-arrow-circle-right">
+                        </i></span>
+                        <div class="clearfix">
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-red">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-support fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">
+                                ĐI</div>
+                            <div>
+                                Ôn lại</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="~/Lesson/WeakVocabulary/@ViewBag.LessonCode">
+                    <div class="panel-footer">
+                        <span class="pull-left">Chuyển</span> <span class="pull-right"><i class="fa fa-arrow-circle-right">
+                        </i></span>
+                        <div class="clearfix">
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Reading -->
+<div class="modal fade bs-example-modal-lg" id="modelTestReading" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Gõ kí tự Romaji</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 col-xs-6">
+                        <img id='image' class="img-responsive" src="" style="height:100px!important"/>
+                    </div>
+                    <div class="col-md-8 col-xs-6">
+                        <span style="display: block; text-align: left;" id='alphabet'>a
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon" id="sizing-addon1"><span class="badge" id='divResultReading'></span></span>
+                            <input type="text" class="form-control text-center" id="inputAlphabet" maxlength='30'>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="row">
+                    <div class="col-lg-6">
+                        <button class="btn btn-primary" type="button" id='btnResultReading'>
+                            Kết quả: <span class="badge" id='divResultReading'></span>
+                        </button>
+                    </div>
+                </div>*@
+                <div class="row">
+                    <div class="col-lg-6">
+                        <span id='divResultMessageReading'></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnOkReadingModal" class="btn
+btn-primary">
+                            Ok</button>
+@*                        <button type="button" id="btnResetReadingModal" class="btn
+btn-warning">
+                            Thử lại</button>*@
+                        <button type="button" id="btnCloseReadingModal" class="btn
+btn-default" data-dismiss="modal">
+                            Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Choosing -->
+<div class="modal fade bs-example-modal" id="modelTestChoosing" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    Chọn từ đúng</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 col-xs-6">
+                        <img id='imageChoosing' class="img-responsive" src=""  style="height:100px!important"/>
+                        <input type="hidden" id='selectedValue' />
+                        <input type="hidden" id='correctValue' />
+                    </div>
+                    <div class="col-md-8 col-xs-6">
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <div class="list-group">
+                                    <span class="label label-danger">A</span><a href="#" id='result1' class="list-group-item"
+                                        name='resultChoosing'>A</a><input type="hidden" id="urlAudio1" />
+                                    <span class="label label-danger">B</span><a href="#" id='result2' class="list-group-item"
+                                        name='resultChoosing'>B</a><input type="hidden" id="urlAudio2" />
+                                    <span class="label label-danger">C</span><a href="#" id='result3' class="list-group-item"
+                                        name='resultChoosing'>C</a><input type="hidden" id="urlAudio3" />
+                                    <span class="label label-danger">D</span><a href="#" id='result4' class="list-group-item"
+                                        name='resultChoosing'>D</a><input type="hidden" id="urlAudio4" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <button class="btn btn-primary" type="button" id='btnResultChoosing'>
+                            Kết quả: <span class="badge" id='divResultChoosing'></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <span id='divResultMessageChoosing'></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnOkChoosingModal" class="btn
+btn-primary">
+                            Ok</button>
+@*                        <button type="button" id="btnResetChoosingModal" class="btn
+btn-warning">
+                            Thử lại</button>*@
+                        <button type="button" id="btnCloseChoosingModal" class="btn
+btn-default" data-dismiss="modal">
+                            Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,3827 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ATBT00_002" xml:space="preserve">
+    <value>過去の日付は削除できません</value>
+  </data>
+  <data name="ATBT01_001" xml:space="preserve">
+    <value>社員'は必須入力です</value>
+    <comment>Khi Employee Name bị null thì xuất message này</comment>
+  </data>
+  <data name="ATBT01_002" xml:space="preserve">
+    <value> 開始日'は必須入力です</value>
+    <comment>Khi Start date bị null thì xuất message này</comment>
+  </data>
+  <data name="ATBT01_003" xml:space="preserve">
+    <value>終了日'は必須入力です</value>
+    <comment>Khi Until date bị null thì xuất message này</comment>
+  </data>
+  <data name="ATBT01_004" xml:space="preserve">
+    <value>開始日が終了日以下は必須です。</value>
+    <comment>Khi Start date lớn hơn End date thì xuất message này</comment>
+  </data>
+  <data name="ATBT01_005" xml:space="preserve">
+    <value>開始日が本日以上は必須です。</value>
+  </data>
+  <data name="ATBT01_006" xml:space="preserve">
+    <value>終了日が開始日以上は必須です。</value>
+  </data>
+  <data name="ATBT01_007" xml:space="preserve">
+    <value>終了日が本日より大きいです。</value>
+  </data>
+  <data name="ATBT01_008" xml:space="preserve">
+    <value>社員は勤務計画があった。</value>
+  </data>
+  <data name="ATBT01_009" xml:space="preserve">
+    <value>日数は0より大きいです。</value>
+  </data>
+  <data name="ATIO_Import_001" xml:space="preserve">
+    <value>行目$: 社員番号は必須入力です。</value>
+  </data>
+  <data name="ATIO_Import_002" xml:space="preserve">
+    <value>行目$: 社員コードは社員リストに必ず存在して、休暇と違う状態を持っている。</value>
+  </data>
+  <data name="ATIO_Import_003" xml:space="preserve">
+    <value>行目$: この社員は入出リスト（指紋認証器）に存在して、そしてインポートファイルで更新されません。</value>
+  </data>
+  <data name="ATIO_Import_004" xml:space="preserve">
+    <value>行目$: １０文字以下の社員コードを入力します。</value>
+  </data>
+  <data name="ATIO_Import_005" xml:space="preserve">
+    <value>行目$: チェックイン日時は必須入力です。</value>
+  </data>
+  <data name="ATIO_Import_006" xml:space="preserve">
+    <value>行目$: チェックイン日時は必須入力です。</value>
+  </data>
+  <data name="ATIO_Import_007" xml:space="preserve">
+    <value>行目$: 8文字以下のチェックイン時を入力します。チェックイン日時を再検査してください。</value>
+  </data>
+  <data name="ATIO_Import_008" xml:space="preserve">
+    <value>行目$: 8文字以下のチェックイン日を入力します。チェックイン日時を再検査してください。</value>
+  </data>
+  <data name="ATIO_Import_009" xml:space="preserve">
+    <value>行目$: 出勤/退勤は必須入力です。</value>
+  </data>
+  <data name="ATIO_Import_010" xml:space="preserve">
+    <value>行目$: 出勤/退勤のフォーマットは不正です。</value>
+  </data>
+  <data name="ATIO_Import_011" xml:space="preserve">
+    <value>行目$: 指紋認証器コードは必須入力です。</value>
+  </data>
+  <data name="ATIO_Import_012" xml:space="preserve">
+    <value>行目$: 指紋認証器コードは指紋認証器リストに必ず存在して、有効状態を持っている。</value>
+  </data>
+  <data name="ATIO_Import_013" xml:space="preserve">
+    <value>行目$: 10文字以下の指紋認証器コードを入力します。</value>
+  </data>
+  <data name="ATIO_Import_014" xml:space="preserve">
+    <value>行目$: インポートファイルにデータを重複する。再検査してください。</value>
+  </data>
+  <data name="ATLE01_001" xml:space="preserve">
+    <value>時刻'は必須入力です</value>
+  </data>
+  <data name="ATLE01_002" xml:space="preserve">
+    <value>時刻'は必須入力です</value>
+  </data>
+  <data name="ATLS00_002" xml:space="preserve">
+    <value>過去の日付は削除できません</value>
+  </data>
+  <data name="ATLS01_001" xml:space="preserve">
+    <value>社員'は必須入力です</value>
+    <comment>Khi Employee Name bị null thì xuất message này</comment>
+  </data>
+  <data name="ATLS01_002" xml:space="preserve">
+    <value>分類'は必須入力です</value>
+    <comment>Khi Category bị null thì xuất message này</comment>
+  </data>
+  <data name="ATLS01_003" xml:space="preserve">
+    <value>開始日'は必須入力です</value>
+    <comment>Khi Start date bị null thì xuất message này</comment>
+  </data>
+  <data name="ATLS01_004" xml:space="preserve">
+    <value>終了日'は必須入力です</value>
+    <comment>Khi Until date bị null thì xuất message này</comment>
+  </data>
+  <data name="ATLS01_005" xml:space="preserve">
+    <value>開始日が本日以上は必須です。</value>
+  </data>
+  <data name="ATLS01_006" xml:space="preserve">
+    <value>終了日が開始日以上は必須です。</value>
+  </data>
+  <data name="ATLS01_007" xml:space="preserve">
+    <value>終了日は本日より大きいです。</value>
+  </data>
+  <data name="ATLS01_008" xml:space="preserve">
+    <value>社員は作業計画があった。</value>
+  </data>
+  <data name="ATLS01_009" xml:space="preserve">
+    <value>日数は0より大きいです。</value>
+  </data>
+  <data name="ATSD00_001" xml:space="preserve">
+    <value>期間'は必須入力です</value>
+  </data>
+  <data name="ATSD00_002" xml:space="preserve">
+    <value>過去の日付は削除できません</value>
+  </data>
+  <data name="ATSD01_001" xml:space="preserve">
+    <value>開始日'は必須入力です</value>
+  </data>
+  <data name="ATSD01_002" xml:space="preserve">
+    <value>終了日'は必須入力です</value>
+  </data>
+  <data name="ATSD01_003" xml:space="preserve">
+    <value>勤務シフト'は必須入力です</value>
+  </data>
+  <data name="ATSD01_004" xml:space="preserve">
+    <value>計画を作成するため社員を選択する。</value>
+  </data>
+  <data name="ATSD01_005" xml:space="preserve">
+    <value>開始日が本日以上は必須です。</value>
+  </data>
+  <data name="ATSD01_006" xml:space="preserve">
+    <value>終了日が開始日以上は必須です。</value>
+  </data>
+  <data name="ATSD01_007" xml:space="preserve">
+    <value>'$'は休暇計画があった。</value>
+  </data>
+  <data name="ATSD01_008" xml:space="preserve">
+    <value>一ヶ月だけ計画を作成する。</value>
+  </data>
+  <data name="ATSD02_001" xml:space="preserve">
+    <value>過去のデータを削除できない。</value>
+  </data>
+  <data name="ATTS00_001" xml:space="preserve">
+    <value>期間'は必須入力です</value>
+  </data>
+  <data name="ATTS01_001" xml:space="preserve">
+    <value>勤務シフトは必須入力です。</value>
+  </data>
+  <data name="ATTS01_002" xml:space="preserve">
+    <value>休暇分類は必須入力です。</value>
+  </data>
+  <data name="ATTS01_003" xml:space="preserve">
+    <value>出勤時刻は必須入力です</value>
+  </data>
+  <data name="ATTS01_004" xml:space="preserve">
+    <value>退勤時刻は必須入力です</value>
+  </data>
+  <data name="ATTS01_005" xml:space="preserve">
+    <value>勤務時間は必須入力です。</value>
+  </data>
+  <data name="ATTS01_006" xml:space="preserve">
+    <value>「遅刻」は必須入力です。</value>
+  </data>
+  <data name="ATTS01_007" xml:space="preserve">
+    <value>「早退」は必須入力です。</value>
+  </data>
+  <data name="ATTS01_008" xml:space="preserve">
+    <value>休暇時間は必須入力です。</value>
+  </data>
+  <data name="ATTS01_009" xml:space="preserve">
+    <value>夜勤は必須入力です。</value>
+  </data>
+  <data name="ATTS01_010" xml:space="preserve">
+    <value>休日残業は必須入力です。</value>
+  </data>
+  <data name="ATTS01_011" xml:space="preserve">
+    <value>祝祭日夜勤残業は必須入力です。</value>
+  </data>
+  <data name="ATTS01_012" xml:space="preserve">
+    <value>週末夜勤残業は必須入力です。</value>
+  </data>
+  <data name="ATTS01_013" xml:space="preserve">
+    <value>勤務シフトの前の残業は必須入力です。</value>
+  </data>
+  <data name="ATTS01_014" xml:space="preserve">
+    <value>勤務シフトの後の残業は必須入力です。</value>
+  </data>
+  <data name="ATTS01_015" xml:space="preserve">
+    <value>休日残業は必須入力です。</value>
+  </data>
+  <data name="ATTS01_016" xml:space="preserve">
+    <value>夜勤残業は必須入力です。</value>
+  </data>
+  <data name="ATTS01_017" xml:space="preserve">
+    <value>祝祭日残業は必須入力です。</value>
+  </data>
+  <data name="ATTS01_018" xml:space="preserve">
+    <value>週末残業は必須入力です。</value>
+  </data>
+  <data name="ATTS01_019" xml:space="preserve">
+    <value>私事外出は必須入力です。</value>
+  </data>
+  <data name="ATTS01_LeaveMess_000" xml:space="preserve">
+    <value>有休残高が足りません</value>
+  </data>
+  <data name="ATTS03_001" xml:space="preserve">
+    <value>の$行目：休暇分類は必須入力です</value>
+  </data>
+  <data name="ATTS03_002" xml:space="preserve">
+    <value>の$行目：勤務シフトは必須入力です</value>
+  </data>
+  <data name="ATTS03_003" xml:space="preserve">
+    <value>休暇分類は必須入力です</value>
+  </data>
+  <data name="ATTS03_004" xml:space="preserve">
+    <value>勤務シフトは必須入力です</value>
+  </data>
+  <data name="ATTS04Row_001" xml:space="preserve">
+    <value>行目$: 一回目の出欠状況記録の出勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04Row_002" xml:space="preserve">
+    <value>行目$: 一回目の出欠状況記録の退勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04Row_003" xml:space="preserve">
+    <value>行目$: 一回目の出欠状況記録に退勤時刻は出勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04Row_004" xml:space="preserve">
+    <value>行目$: 勤怠順序を不正に入力した。前回の出欠状況記録は入出情報がまだ無い。</value>
+  </data>
+  <data name="ATTS04Row_005" xml:space="preserve">
+    <value>行目$: 二回目の出欠状況記録の出勤時刻は一回目の出欠状況記録の退勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04Row_006" xml:space="preserve">
+    <value>行目$: 二回目の出欠状況記録の出勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04Row_007" xml:space="preserve">
+    <value>行目$: 二回目の出欠状況記録の退勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04Row_008" xml:space="preserve">
+    <value>行目$: 二回目の出欠状況記録に退勤時刻は出勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04Row_009" xml:space="preserve">
+    <value>行目$: 勤怠順序を不正に入力した。前回の出欠状況記録は入出情報がまだ無い。</value>
+  </data>
+  <data name="ATTS04Row_010" xml:space="preserve">
+    <value>行目$: 三回目の出欠状況記録の出勤時刻は二回目の出欠状況記録の退勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04Row_011" xml:space="preserve">
+    <value>行目$: 三回目の出欠状況記録の出勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04Row_012" xml:space="preserve">
+    <value>行目$: 三回目の出欠状況記録の退勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04Row_013" xml:space="preserve">
+    <value>行目$: 三回目の出欠状況記録に退勤時刻は出勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04Row_014" xml:space="preserve">
+    <value>行目$: 勤怠順序を不正に入力した。前回の出欠状況記録は入出情報がまだ無い。</value>
+  </data>
+  <data name="ATTS04Row_015" xml:space="preserve">
+    <value>行目$: 四回目の出欠状況記録の出勤時刻は三回目の出欠状況記録の退勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04Row_016" xml:space="preserve">
+    <value>行目$: 四回目の出欠状況記録の出勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04Row_017" xml:space="preserve">
+    <value>行目$: 四回目の出欠状況記録の退勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04Row_018" xml:space="preserve">
+    <value>行目$: 四回目の出欠状況記録に退勤時刻は出勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04Row_019" xml:space="preserve">
+    <value>行目$: 勤怠順序を不正に入力した。前回の出欠状況記録は入出情報がまだ無い。</value>
+  </data>
+  <data name="ATTS04Row_020" xml:space="preserve">
+    <value>行目$: 五回目の出欠状況記録の出勤時刻は四回目の出欠状況記録の退勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04Row_021" xml:space="preserve">
+    <value>行目$: 五回目の出欠状況記録の出勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04Row_022" xml:space="preserve">
+    <value>行目$: 五回目の出欠状況記録の退勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04Row_023" xml:space="preserve">
+    <value>行目$: 五回目の出欠状況記録に退勤時刻は出勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04_001" xml:space="preserve">
+    <value>一回目の出欠状況記録の出勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04_002" xml:space="preserve">
+    <value>一回目の出欠状況記録の退勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04_003" xml:space="preserve">
+    <value>一回目の出欠状況記録に退勤時刻は出勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04_004" xml:space="preserve">
+    <value>勤怠順序を不正に入力した。前回の出欠状況記録は入出情報がまだ無い。</value>
+  </data>
+  <data name="ATTS04_005" xml:space="preserve">
+    <value>二回目の出欠状況記録の出勤時刻は一回目の出欠状況記録の退勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04_006" xml:space="preserve">
+    <value>二回目の出欠状況記録の出勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04_007" xml:space="preserve">
+    <value>二回目の出欠状況記録の退勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04_008" xml:space="preserve">
+    <value>二回目の出欠状況記録に退勤時刻は出勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04_009" xml:space="preserve">
+    <value>勤怠順序を不正に入力した。前回の出欠状況記録は入出情報がまだ無い。</value>
+  </data>
+  <data name="ATTS04_010" xml:space="preserve">
+    <value>三回目の出欠状況記録の出勤時刻は二回目の出欠状況記録の退勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04_011" xml:space="preserve">
+    <value>三回目の出欠状況記録の出勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04_012" xml:space="preserve">
+    <value>三回目の出欠状況記録の退勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04_013" xml:space="preserve">
+    <value>三回目の出欠状況記録に退勤時刻は出勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04_014" xml:space="preserve">
+    <value>勤怠順序を不正に入力した。前回の出欠状況記録は入出情報がまだ無い。</value>
+  </data>
+  <data name="ATTS04_015" xml:space="preserve">
+    <value>四回目の出欠状況記録の出勤時刻は三回目の出欠状況記録の退勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04_016" xml:space="preserve">
+    <value>四回目の出欠状況記録の出勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04_017" xml:space="preserve">
+    <value>四回目の出欠状況記録の退勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04_018" xml:space="preserve">
+    <value>四回目の出欠状況記録に退勤時刻は出勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04_019" xml:space="preserve">
+    <value>勤怠順序を不正に入力した。前回の出欠状況記録は入出情報がまだ無い。</value>
+  </data>
+  <data name="ATTS04_020" xml:space="preserve">
+    <value>五回目の出欠状況記録の出勤時刻は四回目の出欠状況記録の退勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS04_021" xml:space="preserve">
+    <value>五回目の出欠状況記録の出勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04_022" xml:space="preserve">
+    <value>五回目の出欠状況記録の退勤時刻は勤怠があると、必須入力です。</value>
+  </data>
+  <data name="ATTS04_023" xml:space="preserve">
+    <value>五回目の出欠状況記録に退勤時刻は出勤時刻より大きいです。</value>
+  </data>
+  <data name="CMN002" xml:space="preserve">
+    <value>検索対象データは$ 件あります。</value>
+    <comment>Kết quả tìm kiếm trả về có dữ liệu</comment>
+  </data>
+  <data name="CMN003" xml:space="preserve">
+    <value>データの登録に成功しました。</value>
+    <comment>Insert dòng mới thành công</comment>
+  </data>
+  <data name="CMN004" xml:space="preserve">
+    <value>データの更新に成功しました</value>
+    <comment>Cập nhật thành công</comment>
+  </data>
+  <data name="CMN005" xml:space="preserve">
+    <value>データの削除に成功しました。</value>
+    <comment>Xóa dữ liệu thành công</comment>
+  </data>
+  <data name="CMN006" xml:space="preserve">
+    <value>Excelファイルへのデータのエクスポートが完了しました。エクスポート先 ： $</value>
+    <comment>Export dữ liệu ra excel thành công</comment>
+  </data>
+  <data name="CMN007" xml:space="preserve">
+    <value>データのインポートに成功しました</value>
+    <comment>Import dữ liệu vào database thành công</comment>
+  </data>
+  <data name="CMN008" xml:space="preserve">
+    <value>行が選択されていません。</value>
+    <comment>Chưa chọn dòng dữ liệu trên lưới trong trường hợp update hoặc copy dòng</comment>
+  </data>
+  <data name="CMN009" xml:space="preserve">
+    <value>複数の行が選択されています。</value>
+    <comment>Chọn nhiều hơn 1 dòng dữ liệu trên lưới trong trường hợp update hoặc copy dòng</comment>
+  </data>
+  <data name="CMN010" xml:space="preserve">
+    <value>内容が変更されています。終了する前に保存しますか。</value>
+    <comment>Thông báo trước khi thoát nếu dữ liệu trên form detail có thay đổi</comment>
+  </data>
+  <data name="CMN011" xml:space="preserve">
+    <value>データを削除しますか。</value>
+    <comment>Thông báo confirm trước khi xóa dữ liệu (chức năng delete)</comment>
+  </data>
+  <data name="CMN012" xml:space="preserve">
+    <value>データをエクスポートしますか。</value>
+    <comment>Thông báo confirm trước khi export dữ liệu</comment>
+  </data>
+  <data name="CMN013" xml:space="preserve">
+    <value>$ 'は必須入力です</value>
+    <comment>Validate các field bắt buộc nhập trong trường hợp field bỏ rỗng</comment>
+  </data>
+  <data name="CMN014" xml:space="preserve">
+    <value>$ は既に存在しています。別の値を入力してください。</value>
+    <comment>Validate trường hợp trùng khóa</comment>
+  </data>
+  <data name="CMN015" xml:space="preserve">
+    <value>データの更新に失敗しました。</value>
+    <comment>Thông báo trong trường hợp cập nhật dữ liệu không thành công</comment>
+  </data>
+  <data name="CMN016" xml:space="preserve">
+    <value>ファイル サイズは許可された制限 (720kb) を超えているため、保存できません。</value>
+  </data>
+  <data name="CMN017" xml:space="preserve">
+    <value>権限がありません</value>
+  </data>
+  <data name="CMN018" xml:space="preserve">
+    <value>不正なホストです</value>
+  </data>
+  <data name="CMN019" xml:space="preserve">
+    <value>不正なデータベースです</value>
+  </data>
+  <data name="CMN020" xml:space="preserve">
+    <value>コネクションが切断されました</value>
+  </data>
+  <data name="CMN021" xml:space="preserve">
+    <value>保存してよろしいですか。</value>
+  </data>
+  <data name="CMN022" xml:space="preserve">
+    <value>外部キーが存在しません</value>
+  </data>
+  <data name="CMN023" xml:space="preserve">
+    <value>削除したり、編集することはできません。このデータは使用されています。</value>
+  </data>
+  <data name="CMN024" xml:space="preserve">
+    <value>データが見つかりません</value>
+  </data>
+  <data name="CMN025" xml:space="preserve">
+    <value>例外が発生しました</value>
+  </data>
+  <data name="CMN026" xml:space="preserve">
+    <value>この行は、エラーがあります。ご確認ください。</value>
+  </data>
+  <data name="CMN027" xml:space="preserve">
+    <value>$行のデータのインポートが成功しました</value>
+  </data>
+  <data name="CMN028" xml:space="preserve">
+    <value>部署にデータが存在します</value>
+  </data>
+  <data name="CMN029" xml:space="preserve">
+    <value>認証器にデータが存在します</value>
+  </data>
+  <data name="CMN030" xml:space="preserve">
+    <value>ユーザーグルにデータが存在します</value>
+  </data>
+  <data name="CMN031" xml:space="preserve">
+    <value>運用コードにデータが存在します</value>
+  </data>
+  <data name="CMN032" xml:space="preserve">
+    <value>ユーザー権限にデータが存在します</value>
+  </data>
+  <data name="CMN033" xml:space="preserve">
+    <value>職位にデータが存在します</value>
+  </data>
+  <data name="CMN034" xml:space="preserve">
+    <value>案件にデータが存在します</value>
+  </data>
+  <data name="CMN035" xml:space="preserve">
+    <value>回転シフト設定にデータが存在します</value>
+  </data>
+  <data name="CMN036" xml:space="preserve">
+    <value>組にデータが存在します</value>
+  </data>
+  <data name="CMN037" xml:space="preserve">
+    <value>所属にデータが存在します</value>
+  </data>
+  <data name="CMN038" xml:space="preserve">
+    <value>シフトにデータが存在します</value>
+  </data>
+  <data name="CMN039" xml:space="preserve">
+    <value>チームにデータが存在します</value>
+  </data>
+  <data name="CMN040" xml:space="preserve">
+    <value>出退勤のエラーにデータが存在します</value>
+  </data>
+  <data name="CMN041" xml:space="preserve">
+    <value>認証器（出勤/退勤）にデータが存在します</value>
+  </data>
+  <data name="CMN042" xml:space="preserve">
+    <value>休暇計画にデータが存在します</value>
+  </data>
+  <data name="CMN043" xml:space="preserve">
+    <value>認証履歴にデータが存在します</value>
+  </data>
+  <data name="CMN044" xml:space="preserve">
+    <value>勤務計画にデータが存在します</value>
+  </data>
+  <data name="CMN045" xml:space="preserve">
+    <value>手当にデータが存在します</value>
+  </data>
+  <data name="CMN046" xml:space="preserve">
+    <value>社員にデータが存在します</value>
+  </data>
+  <data name="CMN047" xml:space="preserve">
+    <value>HrManagerAssignmentテーブルにトランザクションが存在します</value>
+  </data>
+  <data name="CMN048" xml:space="preserve">
+    <value>回転・移譲にデータが存在します</value>
+  </data>
+  <data name="CMN049" xml:space="preserve">
+    <value>トレーニング情報にデータが存在します</value>
+  </data>
+  <data name="CMN050" xml:space="preserve">
+    <value>システムデータの編集許可を持っていません</value>
+  </data>
+  <data name="CMN051" xml:space="preserve">
+    <value>認証データ・給与データがすでに存在しているので削除できません。</value>
+  </data>
+  <data name="CMN052" xml:space="preserve">
+    <value>ファイル形式が無効です。</value>
+  </data>
+  <data name="CMN053" xml:space="preserve">
+    <value>ファイルの種類が無効だ。</value>
+  </data>
+  <data name="CMN054" xml:space="preserve">
+    <value>バスはまだ存在していません。</value>
+  </data>
+  <data name="CMN055" xml:space="preserve">
+    <value>ファイルインポートは誤った。</value>
+  </data>
+  <data name="CMN056" xml:space="preserve">
+    <value>インポートファイルは、正しくありません</value>
+  </data>
+  <data name="CMN057" xml:space="preserve">
+    <value>システムエラー</value>
+  </data>
+  <data name="CMN058" xml:space="preserve">
+    <value>インポットファイルはデータがありません。</value>
+  </data>
+  <data name="CMN059" xml:space="preserve">
+    <value>情報は変更します。検索の前に保存してもよろしいでしょうか。</value>
+  </data>
+  <data name="CMN060" xml:space="preserve">
+    <value>情報は変更します。モードの変更の前に保存してもよろしいでしょうか。</value>
+  </data>
+  <data name="CMN061" xml:space="preserve">
+    <value>情報は変更します。リセットの前に保存してもよろしいでしょうか。</value>
+  </data>
+  <data name="HRCT01_001" xml:space="preserve">
+    <value>社員'は必須入力です</value>
+    <comment>Khi Employee bị null thì xuất message này</comment>
+  </data>
+  <data name="HRCT01_002" xml:space="preserve">
+    <value>契約タイプ'は必須入力です</value>
+    <comment>Khi Contract Type bị null thì xuất message này</comment>
+  </data>
+  <data name="HRCT01_003" xml:space="preserve">
+    <value>契約番号'は必須入力です</value>
+    <comment>Khi Contract No bị null thì xuất message này</comment>
+  </data>
+  <data name="HRCT01_004" xml:space="preserve">
+    <value>契約日'は必須入力です</value>
+    <comment>Khi Contract Date bị null thì xuất message này</comment>
+  </data>
+  <data name="HRCT01_005" xml:space="preserve">
+    <value>から有効(日)'は必須入力です</value>
+    <comment>Khi Valid From Date bị null thì xuất message này</comment>
+  </data>
+  <data name="HRCT01_006" xml:space="preserve">
+    <value>まで有効(日)'は必須入力です</value>
+    <comment>Khi Until Date bị null thì xuất message này</comment>
+  </data>
+  <data name="HRCT01_007" xml:space="preserve">
+    <value>給与'は必須入力です</value>
+    <comment>Khi Contract salary bị null thì xuất message này</comment>
+  </data>
+  <data name="HRCT01_008" xml:space="preserve">
+    <value>仕事'は必須入力です</value>
+    <comment>Khi Working bị null thì xuất message này</comment>
+  </data>
+  <data name="HRCT01_012" xml:space="preserve">
+    <value>契約開始日は契約日以降である必要があります</value>
+  </data>
+  <data name="HRCT01_013" xml:space="preserve">
+    <value>契約終了日は契約開始日以降である必要があります</value>
+  </data>
+  <data name="HRCT01_014" xml:space="preserve">
+    <value>保護観察 終了日は 保護観察 開始日以降である必要があります</value>
+  </data>
+  <data name="HRCT01_015" xml:space="preserve">
+    <value>無制限の契約 が既に存在します</value>
+  </data>
+  <data name="HRCT01_016" xml:space="preserve">
+    <value>旧契約は有効期間中。</value>
+  </data>
+  <data name="HRCT01_017" xml:space="preserve">
+    <value>契約期間は使用期間より遠い。</value>
+  </data>
+  <data name="HRCT01_018" xml:space="preserve">
+    <value>契約類は社員ステータスと不一致。</value>
+  </data>
+  <data name="HRCT01_019" xml:space="preserve">
+    <value>使用期間の契約類は使用期間中の社員のみ利用する。</value>
+  </data>
+  <data name="HRDA01_001" xml:space="preserve">
+    <value>'社員'は必須入力です</value>
+    <comment>Khi Employee bị null thì xuất message này</comment>
+  </data>
+  <data name="HRDA01_002" xml:space="preserve">
+    <value>'日付'は必須入力です</value>
+    <comment>Khi Date bị null thì xuất message này</comment>
+  </data>
+  <data name="HRDA01_003" xml:space="preserve">
+    <value>'賞罰内容'は必須入力です</value>
+    <comment>Khi Content bị null thì xuất message này</comment>
+  </data>
+  <data name="HREM01_001" xml:space="preserve">
+    <value>社員コード 'は必須入力です</value>
+  </data>
+  <data name="HREM01_002" xml:space="preserve">
+    <value>氏名 'は必須入力です</value>
+  </data>
+  <data name="HREM01_003" xml:space="preserve">
+    <value>性別'は必須入力です</value>
+  </data>
+  <data name="HREM01_004" xml:space="preserve">
+    <value>生年月日'は必須入力です</value>
+  </data>
+  <data name="HREM01_005" xml:space="preserve">
+    <value>国籍 'は必須入力です</value>
+  </data>
+  <data name="HREM01_006" xml:space="preserve">
+    <value>社員ステータス'は必須入力です</value>
+  </data>
+  <data name="HREM01_007" xml:space="preserve">
+    <value>事業所'は必須入力です</value>
+  </data>
+  <data name="HREM01_008" xml:space="preserve">
+    <value>部門'は必須入力です</value>
+  </data>
+  <data name="HREM01_009" xml:space="preserve">
+    <value>部署'は必須入力です</value>
+  </data>
+  <data name="HREM01_010" xml:space="preserve">
+    <value>雇用形態　勤務種別'は必須入力です</value>
+  </data>
+  <data name="HREM01_011" xml:space="preserve">
+    <value>人民IDの’発行日’は入力必要。</value>
+  </data>
+  <data name="HREM01_012" xml:space="preserve">
+    <value>人民IDの’発行場所’は入力必要。</value>
+  </data>
+  <data name="HREM01_013" xml:space="preserve">
+    <value>パスポートの’発行日’は入力必要。</value>
+  </data>
+  <data name="HREM01_014" xml:space="preserve">
+    <value>パスポートの’発行場所’は入力必要。</value>
+  </data>
+  <data name="HREM01_015" xml:space="preserve">
+    <value>パスポートの’期限日’は入力必要。</value>
+  </data>
+  <data name="HREM01_016" xml:space="preserve">
+    <value>国籍'は必須入力です</value>
+  </data>
+  <data name="HREM01_017" xml:space="preserve">
+    <value>ビザのカテゴリは入力必要。</value>
+  </data>
+  <data name="HREM01_018" xml:space="preserve">
+    <value>ビザの発行日は入力必要。</value>
+  </data>
+  <data name="HREM01_019" xml:space="preserve">
+    <value>ビザの’発行場所’は入力必要。</value>
+  </data>
+  <data name="HREM01_020" xml:space="preserve">
+    <value>ビザのから有効（日）は入力必要。</value>
+  </data>
+  <data name="HREM01_021" xml:space="preserve">
+    <value>ビザのまで有効（日）は入力必要。</value>
+  </data>
+  <data name="HREM01_022" xml:space="preserve">
+    <value>’勤務開始日’は人民IDの’発行日’より大きい。</value>
+  </data>
+  <data name="HREM01_023" xml:space="preserve">
+    <value>’勤務開始日’は’入社日’より大きい。</value>
+  </data>
+  <data name="HREM01_024" xml:space="preserve">
+    <value>退職日は’勤務開始日’より大きい。</value>
+  </data>
+  <data name="HREM01_025" xml:space="preserve">
+    <value>退職日は’入社日’より大きい。</value>
+  </data>
+  <data name="HREM01_026" xml:space="preserve">
+    <value>’入社日’は生年月日より大きい。</value>
+  </data>
+  <data name="HREM01_027" xml:space="preserve">
+    <value>健康保険の’から有効'は’申請日’以上です。</value>
+  </data>
+  <data name="HREM01_028" xml:space="preserve">
+    <value>健康保険の’まで有効'は’から有効’以上です。</value>
+  </data>
+  <data name="HREM01_029" xml:space="preserve">
+    <value>パスポートの期限日は発行日より大きい。</value>
+  </data>
+  <data name="HREM01_030" xml:space="preserve">
+    <value>ビザのから有効（日）は発行日以上です。</value>
+  </data>
+  <data name="HREM01_031" xml:space="preserve">
+    <value>ビザのまで有効日はから有効日以上です。</value>
+  </data>
+  <data name="HREM01_032" xml:space="preserve">
+    <value>人民IDは既存しました。</value>
+  </data>
+  <data name="HREM01_033" xml:space="preserve">
+    <value>パスポートIDは既存しました。</value>
+  </data>
+  <data name="HREM01_034" xml:space="preserve">
+    <value>勤務シフト'は必須入力です</value>
+  </data>
+  <data name="HREM01_035" xml:space="preserve">
+    <value> 退職日'は必須入力です</value>
+  </data>
+  <data name="HREMAllowance_001" xml:space="preserve">
+    <value>「給料・口座情報タブ」の$行目：手当'は必須入力です</value>
+    <comment>Khi Allowance bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_0010" xml:space="preserve">
+    <value>金額' は0以上です</value>
+    <comment>Khi amount nhỏ hơn 0 thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_0011" xml:space="preserve">
+    <value>[給料ー銀行口座情報タブ」の$行目: 手当適用開始日’は適用期間の’開始日’より大きいです</value>
+  </data>
+  <data name="HREMAllowance_0012" xml:space="preserve">
+    <value>手当適用開始日’は適用期間の’開始日’より大きいです</value>
+  </data>
+  <data name="HREMAllowance_002" xml:space="preserve">
+    <value>「給料・口座情報タブ」の$行目：から適用(日)'は必須入力です</value>
+    <comment>Khi apply from bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_003" xml:space="preserve">
+    <value>「給料・口座情報タブ」の$行目：終了日 は'開始日'より大きいです</value>
+    <comment>Khi to date nhỏ hơn from date thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_004" xml:space="preserve">
+    <value>「給料・口座情報タブ」の$行目：手当金額'は必須入力です</value>
+    <comment>Khi amount bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_005" xml:space="preserve">
+    <value>「給料・口座情報タブ」の$行目：金額'は0以上です。</value>
+    <comment>Khi amount nhỏ hơn 0 thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_006" xml:space="preserve">
+    <value>手当'は必須入力です</value>
+    <comment>Khi Allowance bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_007" xml:space="preserve">
+    <value>から適用(日)'は必須入力です</value>
+    <comment>Khi apply from bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_008" xml:space="preserve">
+    <value>終了日' は '開始日'より大きいです</value>
+    <comment>Khi to date nhỏ hơn from date thì xuất message này</comment>
+  </data>
+  <data name="HREMAllowance_009" xml:space="preserve">
+    <value>手当金額'は必須入力です</value>
+    <comment>Khi amount bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMEdu_Qua_001" xml:space="preserve">
+    <value>[資格タブ]の行目$ :まで（年）はから（年）より大きい。</value>
+  </data>
+  <data name="HREMEdu_Qua_002" xml:space="preserve">
+    <value>[資格タブ]の行目$ :　社員コードと資格コードは唯一。</value>
+  </data>
+  <data name="HREMEdu_Qua_003" xml:space="preserve">
+    <value>まで（年）の値はから（年）の値以上です。</value>
+  </data>
+  <data name="HREMEdu_Qua_004" xml:space="preserve">
+    <value>この資格が達成した社員'</value>
+  </data>
+  <data name="HREMExperience_001" xml:space="preserve">
+    <value>[職歴タブ」の行目$ : '終了日は開始日より大きい。</value>
+  </data>
+  <data name="HREMExperience_002" xml:space="preserve">
+    <value>[職歴タブ」の行目$ : 会社で上記の期間で勤務した社員。</value>
+  </data>
+  <data name="HREMExperience_003" xml:space="preserve">
+    <value>終了日の値は開始日の値以上大きい。</value>
+  </data>
+  <data name="HREMExperience_004" xml:space="preserve">
+    <value>会社で上記の期間で勤務した社員'</value>
+  </data>
+  <data name="HREMFamily_001" xml:space="preserve">
+    <value>当日は生年月日より大きい'</value>
+  </data>
+  <data name="HREMFamily_002" xml:space="preserve">
+    <value>'家族情報タブ ]の行目$ : 本日は生年月日より大きい'</value>
+  </data>
+  <data name="HREMSalary_001" xml:space="preserve">
+    <value>から適用給料期間'は必須入力です</value>
+    <comment>Khi Apply from salary period bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMSalary_002" xml:space="preserve">
+    <value>基本給'は必須入力です</value>
+    <comment>Khi Base salary bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMSalary_003" xml:space="preserve">
+    <value>に従って計算'は必須入力です</value>
+    <comment>Khi caculate by bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMSalary_004" xml:space="preserve">
+    <value> 残業タイプ'は必須入力です</value>
+    <comment>Khi OT Type bị null thì xuất message này</comment>
+  </data>
+  <data name="HREMSkill_001" xml:space="preserve">
+    <value>[社員スキル情報タブ]の行目$ : ' 社員コードとスキル名は唯一'</value>
+  </data>
+  <data name="HREMSkill_002" xml:space="preserve">
+    <value>この資格が達成した社員'</value>
+  </data>
+  <data name="HREM_Import_001" xml:space="preserve">
+    <value>行目$ :'社員コード'は入力必要'</value>
+  </data>
+  <data name="HREM_Import_002" xml:space="preserve">
+    <value>行目$ :'社員名'は入力必要'</value>
+  </data>
+  <data name="HREM_Import_003" xml:space="preserve">
+    <value>行目$ :'社員ステータス'は入力必要'</value>
+  </data>
+  <data name="HREM_Import_004" xml:space="preserve">
+    <value>行目$ :'性別'は入力必要'</value>
+  </data>
+  <data name="HREM_Import_008" xml:space="preserve">
+    <value>行目$ :'部署'は入力必要'</value>
+  </data>
+  <data name="HREM_Import_009" xml:space="preserve">
+    <value>行目$ :'所属'は入力必要'</value>
+  </data>
+  <data name="HREM_Import_010" xml:space="preserve">
+    <value>行目$ :シフトスケジュール表はデータがない場合、勤務シフトは入力必要。</value>
+  </data>
+  <data name="HREM_Import_011" xml:space="preserve">
+    <value>行目$ : 雇用形態は入力必要'</value>
+  </data>
+  <data name="HREM_Import_012" xml:space="preserve">
+    <value>行目$ ：人民IDはデータがある場合、発行日は入力必要。</value>
+  </data>
+  <data name="HREM_Import_013" xml:space="preserve">
+    <value>行目$ ：人民IDはデータがある場合、発行場所は入力必要。</value>
+  </data>
+  <data name="HREM_Import_014" xml:space="preserve">
+    <value>行目$ ：パスポートIDはデータがある場合、発行日は入力必要。</value>
+  </data>
+  <data name="HREM_Import_015" xml:space="preserve">
+    <value>行目$ ：パスポートIDはデータがある場合、発行場所は入力必要。</value>
+  </data>
+  <data name="HREM_Import_016" xml:space="preserve">
+    <value>行目$ ：パスポートIDはデータがある場合、期限日は入力必要。</value>
+  </data>
+  <data name="HREM_Import_017" xml:space="preserve">
+    <value>行目$ ：パスポートIDはデータがある場合、国籍は入力必要。</value>
+  </data>
+  <data name="HREM_Import_018" xml:space="preserve">
+    <value>行目$ ：ビザ番号はデータがある場合、カテゴリは入力必要。</value>
+  </data>
+  <data name="HREM_Import_019" xml:space="preserve">
+    <value>行目$ ：ビザ番号はデータがある場合、発行日は入力必要。</value>
+  </data>
+  <data name="HREM_Import_020" xml:space="preserve">
+    <value>行目$ ：ビザ番号はデータがある場合、発行場所は入力必要。</value>
+  </data>
+  <data name="HREM_Import_021" xml:space="preserve">
+    <value>行目$ ：ビザ番号はデータがある場合、から有効（日）は入力必要。</value>
+  </data>
+  <data name="HREM_Import_022" xml:space="preserve">
+    <value>行目$ ：ビザ番号はデータがある場合、まで有効（日）は入力必要。</value>
+  </data>
+  <data name="HREM_Import_023" xml:space="preserve">
+    <value>行目$ ：'社員ステータスの形式は不正'</value>
+  </data>
+  <data name="HREM_Import_024" xml:space="preserve">
+    <value>行目$ ：勤務開始日は入社日より大きい。</value>
+  </data>
+  <data name="HREM_Import_025" xml:space="preserve">
+    <value>行目$ ：退職日は’勤務開始日’より大きい。</value>
+  </data>
+  <data name="HREM_Import_026" xml:space="preserve">
+    <value>行目$ ：退職日は’入社日’より大きい。</value>
+  </data>
+  <data name="HREM_Import_027" xml:space="preserve">
+    <value>行目$ ：入社日は’生年月日’より大きい。</value>
+  </data>
+  <data name="HREM_Import_028" xml:space="preserve">
+    <value>行目$ ：'健康保険はデータがある場合、から有効（日）は申請日より大きい'</value>
+  </data>
+  <data name="HREM_Import_029" xml:space="preserve">
+    <value>行目$ ：'健康保険はデータがある場合、まで有効（日）はから有効（日）より大きい'</value>
+  </data>
+  <data name="HREM_Import_030" xml:space="preserve">
+    <value>行目$ ： 'パスポートIDはデータがある場合、期限日は発行日より大きい'</value>
+  </data>
+  <data name="HREM_Import_031" xml:space="preserve">
+    <value>行目$ ：ビザ番号はデータがある場合、から有効（日）は発行日以上です。</value>
+  </data>
+  <data name="HREM_Import_032" xml:space="preserve">
+    <value>行目$ ：ビザ番号はデータがある場合、期限日は発行日より大きい'</value>
+  </data>
+  <data name="HREM_Import_033" xml:space="preserve">
+    <value>行目$ ：'性別の形式は不正'</value>
+  </data>
+  <data name="HREM_Import_034" xml:space="preserve">
+    <value>行目$ ： '誕生年の形式は不正'</value>
+  </data>
+  <data name="HREM_Import_035" xml:space="preserve">
+    <value>行目$ ： '民族の形式は不正'</value>
+  </data>
+  <data name="HREM_Import_036" xml:space="preserve">
+    <value>行目$ ： '宗教の形式は不正'</value>
+  </data>
+  <data name="HREM_Import_037" xml:space="preserve">
+    <value>行目$ ： '国籍の形式は不正'</value>
+  </data>
+  <data name="HREM_Import_038" xml:space="preserve">
+    <value>行目$ ： '配偶者の有無は不正'</value>
+  </data>
+  <data name="HREM_Import_039" xml:space="preserve">
+    <value>行目$ ： '学歴の有無は不正'</value>
+  </data>
+  <data name="HREM_Import_040" xml:space="preserve">
+    <value>行目$ ： '雇用形態の有無は不正'</value>
+  </data>
+  <data name="HREM_Import_041" xml:space="preserve">
+    <value>行目$ ： '採用の拒否Jは退職社員のみ利用します'</value>
+  </data>
+  <data name="HREM_Import_042" xml:space="preserve">
+    <value>行目$ ： '採用の拒否Jは勤務中の社員を利用しません'</value>
+  </data>
+  <data name="HREM_Import_043" xml:space="preserve">
+    <value>行目$ ： '給与の形式は不正'</value>
+  </data>
+  <data name="HREM_Import_044" xml:space="preserve">
+    <value>行目$ ： '支払方法の形式は不正'</value>
+  </data>
+  <data name="HREM_Import_045" xml:space="preserve">
+    <value>行目$ ： 'ATMカードの形式は不正'</value>
+  </data>
+  <data name="HREM_Import_046" xml:space="preserve">
+    <value>行目$ ： '保険加入の形式は不正'</value>
+  </data>
+  <data name="HREM_Import_047" xml:space="preserve">
+    <value>行目$ ：保険加入しない社員は社会保険番号を利用しません'</value>
+  </data>
+  <data name="HREM_Import_048" xml:space="preserve">
+    <value>行目$ ：保険加入しない社員は社会保険発行日を利用しません'</value>
+  </data>
+  <data name="HREM_Import_049" xml:space="preserve">
+    <value>行目$ ：保険加入しない社員は伝票番号を利用しません'</value>
+  </data>
+  <data name="HREM_Import_050" xml:space="preserve">
+    <value>行目$ ：保険加入しない社員は申請日を利用しません'</value>
+  </data>
+  <data name="HREM_Import_051" xml:space="preserve">
+    <value>行目$ ：保険加入しない社員はから有効（日）を利用しません'</value>
+  </data>
+  <data name="HREM_Import_052" xml:space="preserve">
+    <value>行目$ ：保険加入しない社員はまで有効（日）を利用しません'</value>
+  </data>
+  <data name="HREM_Import_053" xml:space="preserve">
+    <value>行目$ ： '労働組合加入の形式の入力は正しくない'</value>
+  </data>
+  <data name="HREM_Import_054" xml:space="preserve">
+    <value>行目$ ： '保険加入しない社員は労働帳番号を利用しません'</value>
+  </data>
+  <data name="HREM_Import_055" xml:space="preserve">
+    <value>行目$ ： 'パスポート・ビザの形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_056" xml:space="preserve">
+    <value>行目$ ：'パスポートがない社員はパスポートIDを利用しません'</value>
+  </data>
+  <data name="HREM_Import_057" xml:space="preserve">
+    <value>行目$ ：'パスポートがない社員は発行日を利用しません'</value>
+  </data>
+  <data name="HREM_Import_058" xml:space="preserve">
+    <value>行目$ ：'パスポートがない社員は発行場所を利用しません'</value>
+  </data>
+  <data name="HREM_Import_059" xml:space="preserve">
+    <value>行目$ ：'ビザがない社員はコメントを利用しません'</value>
+  </data>
+  <data name="HREM_Import_060" xml:space="preserve">
+    <value>行目$ ：'ビザがない社員はカテゴリを利用しません'</value>
+  </data>
+  <data name="HREM_Import_061" xml:space="preserve">
+    <value>行目$ ：'ビザがない社員はから有効（日）を利用しません'</value>
+  </data>
+  <data name="HREM_Import_062" xml:space="preserve">
+    <value>行目$ ：'ビザがない社員は発行日を利用しません'</value>
+  </data>
+  <data name="HREM_Import_063" xml:space="preserve">
+    <value>行目$ ：'ビザがない社員は発行場所を利用しません'</value>
+  </data>
+  <data name="HREM_Import_064" xml:space="preserve">
+    <value>行目$ ：'ビザがない社員はビザ番号を利用しません'</value>
+  </data>
+  <data name="HREM_Import_065" xml:space="preserve">
+    <value>行目$ ：'ビザがない社員はまで有効（日）を利用しません'</value>
+  </data>
+  <data name="HREM_Import_066" xml:space="preserve">
+    <value>行目$ ：出生地は50桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_067" xml:space="preserve">
+    <value>行目$ ：出身地は50桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_068" xml:space="preserve">
+    <value>行目$ ：現住所は100桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_069" xml:space="preserve">
+    <value>行目$ ：住所は100桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_070" xml:space="preserve">
+    <value>行目$ ：携帯番号は20桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_071" xml:space="preserve">
+    <value>行目$ ：人民IDは20桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_072" xml:space="preserve">
+    <value>行目$ ：事業所は10桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_073" xml:space="preserve">
+    <value>行目$ ：部門は10桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_074" xml:space="preserve">
+    <value>行目$ ：部署は10桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_075" xml:space="preserve">
+    <value>行目$ ：組は10桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_076" xml:space="preserve">
+    <value>行目$ ：プロジェクトは10桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_077" xml:space="preserve">
+    <value>行目$ ：エリアは10桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_078" xml:space="preserve">
+    <value>行目$ ：経路は10桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_079" xml:space="preserve">
+    <value>行目$ ：工程は10桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_080" xml:space="preserve">
+    <value>行目$ ：シフトは10桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_081" xml:space="preserve">
+    <value>行目$ ：職位は10桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_082" xml:space="preserve">
+    <value>行目$ ：銀行名は50桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_083" xml:space="preserve">
+    <value>行目$ ：支店名は50桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_084" xml:space="preserve">
+    <value>行目$ ：口座番号は30桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_085" xml:space="preserve">
+    <value>行目$ ：口座名は50桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_086" xml:space="preserve">
+    <value>行目$ ：ATMカード番号は30桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_087" xml:space="preserve">
+    <value>行目$ ：社会保険番号は20桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_088" xml:space="preserve">
+    <value>行目$ ：労働帳番号は20桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_089" xml:space="preserve">
+    <value>行目$ ：個人所得税IDは20桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_090" xml:space="preserve">
+    <value>行目$ ：扶養者数は2桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_091" xml:space="preserve">
+    <value>行目$ ：パスポートIDは20桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_092" xml:space="preserve">
+    <value>行目$ ：パスポートの発行場所は40桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_093" xml:space="preserve">
+    <value>行目$ ：ビザ番号は20桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_094" xml:space="preserve">
+    <value>行目$ ：カテゴリは10桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_095" xml:space="preserve">
+    <value>行目$ ：ビザの発行場所は40桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_096" xml:space="preserve">
+    <value>行目$ ：経路コードは経路リストに有効の状態で既存します’</value>
+  </data>
+  <data name="HREM_Import_097" xml:space="preserve">
+    <value>行目$ ：事業所コードは事業所リストに有効の状態で既存します’</value>
+  </data>
+  <data name="HREM_Import_098" xml:space="preserve">
+    <value>行目$ ：部門コードは部門リストに有効の状態で既存します’</value>
+  </data>
+  <data name="HREM_Import_099" xml:space="preserve">
+    <value>行目$ ：部署コードは部署リストに有効の状態で既存します’</value>
+  </data>
+  <data name="HREM_Import_100" xml:space="preserve">
+    <value>行目$ ：エリアコードはエリアリストに有効の状態で既存します’</value>
+  </data>
+  <data name="HREM_Import_101" xml:space="preserve">
+    <value>行目$ ：プロジェクトコードはプロジェクトリストに有効の状態で既存します’</value>
+  </data>
+  <data name="HREM_Import_102" xml:space="preserve">
+    <value>行目$ ：チームコードはチームリストに有効の状態で既存します’</value>
+  </data>
+  <data name="HREM_Import_103" xml:space="preserve">
+    <value>行目$ ：運用コードは運用リストに有効の状態で既存します’</value>
+  </data>
+  <data name="HREM_Import_104" xml:space="preserve">
+    <value>行目$ ：シフトコードはシフトリストに有効の状態で既存します’</value>
+  </data>
+  <data name="HREM_Import_105" xml:space="preserve">
+    <value>行目$ ：職位コードは職位リストに有効の状態で既存します’</value>
+  </data>
+  <data name="HREM_Import_106" xml:space="preserve">
+    <value>行目$ ：'パスポートがない社員は期限日を利用します'</value>
+  </data>
+  <data name="HREM_Import_107" xml:space="preserve">
+    <value>行目$ ：社員コードは10桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_108" xml:space="preserve">
+    <value>行目$ ：氏名は50桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_109" xml:space="preserve">
+    <value>行目$ ：理由コードは理由リストに有効の状態で既存します’</value>
+  </data>
+  <data name="HREM_Import_110" xml:space="preserve">
+    <value>行目$ ：健康保険の伝票番号は20桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_111" xml:space="preserve">
+    <value>行目$ ：'この人民IDは社員リストで既存しました。もう一度チェックしてください。</value>
+  </data>
+  <data name="HREM_Import_112" xml:space="preserve">
+    <value>行目$ ：'このパスポートIDは社員リストで既存しました。もう一度チェックしてください。</value>
+  </data>
+  <data name="HREM_Import_113" xml:space="preserve">
+    <value>行目$ ：理由は10桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_114" xml:space="preserve">
+    <value>行目$ ：'生年月日はデータがある場合、誕生年を利用します'</value>
+  </data>
+  <data name="HREM_Import_115" xml:space="preserve">
+    <value>行目$ ：誕生年は4桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_116" xml:space="preserve">
+    <value>行目$ ：生年月日の形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_117" xml:space="preserve">
+    <value>行目$ ：パスポートの発行日の形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_118" xml:space="preserve">
+    <value>行目$ ：人民IDの形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_119" xml:space="preserve">
+    <value>行目$ ：パスポートのまで有効（日）の形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_120" xml:space="preserve">
+    <value>行目$ ：ビザの発行日の形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_121" xml:space="preserve">
+    <value>行目$ ：ビザのから有効（日）の形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_122" xml:space="preserve">
+    <value>行目$ ：ビザのまで有効（日）の形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_123" xml:space="preserve">
+    <value>行目$ ：勤務開始日の形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_124" xml:space="preserve">
+    <value>行目$ ：退職日の形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_125" xml:space="preserve">
+    <value>行目$ ：入社日の形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_126" xml:space="preserve">
+    <value>行目$ ：健康保険のから有効の形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_127" xml:space="preserve">
+    <value>行目$ ：健康保険のまで有効の形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_128" xml:space="preserve">
+    <value>行目$ ：社会保険の発行日の形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_129" xml:space="preserve">
+    <value>行目$ ：健康保険の申請日の形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_130" xml:space="preserve">
+    <value>行目$ ：現在の年は誕生年より大きい'</value>
+  </data>
+  <data name="HREM_Import_131" xml:space="preserve">
+    <value>行目$ ：'この社員コードは社員リストで既存しました。もう一度チェックしてください。</value>
+  </data>
+  <data name="HREM_Import_132" xml:space="preserve">
+    <value>行目$ ：'インポートファイルは重複なデータがあります。社員コードを再チェックしてください'</value>
+  </data>
+  <data name="HREM_Import_133" xml:space="preserve">
+    <value>行目$ ：'インポートファイルは重複なデータがあります。人民IDを再チェックしてください'</value>
+  </data>
+  <data name="HREM_Import_134" xml:space="preserve">
+    <value>行目$ ：「シフトスケジュール表を使う」は入力必要'</value>
+  </data>
+  <data name="HREM_Import_135" xml:space="preserve">
+    <value>行目$ ：「シフトスケジュール表を使う」の形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_136" xml:space="preserve">
+    <value>行目$ ：シフトはデータがありません。「シフトスケジュール表を使う」の情報は再チェックしてください（値が1である必要）'</value>
+  </data>
+  <data name="HREM_Import_137" xml:space="preserve">
+    <value>行目$ : 'シフトはデータがあります。「シフトスケジュール表を使う」の情報は再チェックしてください（値が0である必要）'</value>
+  </data>
+  <data name="HREM_Import_138" xml:space="preserve">
+    <value>行目$ : '社員はATMカードがありません。ATMカード番号を再チェックしてください'</value>
+  </data>
+  <data name="HREM_Import_Salary_001" xml:space="preserve">
+    <value>行目$ : '社員コードは入力必要'</value>
+  </data>
+  <data name="HREM_Import_Salary_002" xml:space="preserve">
+    <value>行目$ :'社員コードは給与リストで給与があります。もう一度チェックしてください!'</value>
+  </data>
+  <data name="HREM_Import_Salary_003" xml:space="preserve">
+    <value>行目$ ：社員コードは10桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_Salary_004" xml:space="preserve">
+    <value>行目$ ： '適用期間は入力必要'</value>
+  </data>
+  <data name="HREM_Import_Salary_005" xml:space="preserve">
+    <value>行目$ ： '適用期間の形式は正しくない.'</value>
+  </data>
+  <data name="HREM_Import_Salary_006" xml:space="preserve">
+    <value>行目$ ：'適用期間は給与期間リストである必要'</value>
+  </data>
+  <data name="HREM_Import_Salary_007" xml:space="preserve">
+    <value>行目$ ：'基本給料は入力必要'</value>
+  </data>
+  <data name="HREM_Import_Salary_008" xml:space="preserve">
+    <value>行目$ ：'基本給料の形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_Salary_009" xml:space="preserve">
+    <value>行目$ ：基本給料は16桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_Salary_010" xml:space="preserve">
+    <value>行目$ ：によって計算は入力必要'</value>
+  </data>
+  <data name="HREM_Import_Salary_011" xml:space="preserve">
+    <value>行目$ ：によって計算の形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_Salary_012" xml:space="preserve">
+    <value>行目$ ：残業タイプは入力必要'</value>
+  </data>
+  <data name="HREM_Import_Salary_013" xml:space="preserve">
+    <value>行目$ ：残業タイプの形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_Salary_014" xml:space="preserve">
+    <value>行目$ ：'インポートファイルは重複なデータがあります。社員コードと適用期間は再チェックしてください'</value>
+  </data>
+  <data name="HRIS01_001" xml:space="preserve">
+    <value>健康保険のまで有効はから有効より大きい。</value>
+    <comment>Khi từ ngày nhỏ hơn hay bằng giá trị đến ngày thì xuất message này</comment>
+  </data>
+  <data name="HRIS01_002" xml:space="preserve">
+    <value>まで有効の値はから有効の値以上です。</value>
+  </data>
+  <data name="HRIS01_003" xml:space="preserve">
+    <value>から有効の値は申請日以上です。</value>
+  </data>
+  <data name="HRLP00_001" xml:space="preserve">
+    <value>休暇を付与したいですか。</value>
+  </data>
+  <data name="HRLP00_002" xml:space="preserve">
+    <value>休暇付与は成功。</value>
+  </data>
+  <data name="HRLP00_003" xml:space="preserve">
+    <value>休暇付与のため、当該な社員が検索できない。</value>
+  </data>
+  <data name="HROT01_001" xml:space="preserve">
+    <value>社員'は必須入力です</value>
+  </data>
+  <data name="HROT01_002" xml:space="preserve">
+    <value>開始日'は必須入力です</value>
+  </data>
+  <data name="HROT01_003" xml:space="preserve">
+    <value>終了日'は必須入力です</value>
+  </data>
+  <data name="HROT01_004" xml:space="preserve">
+    <value>開始日'は終了日以下です。</value>
+  </data>
+  <data name="HROT01_005" xml:space="preserve">
+    <value>この期間は登録済です</value>
+  </data>
+  <data name="HRSA01_001" xml:space="preserve">
+    <value>'社員'は必須入力です</value>
+  </data>
+  <data name="HRSA01_002" xml:space="preserve">
+    <value>期間'は必須入力です</value>
+  </data>
+  <data name="HRSA01_003" xml:space="preserve">
+    <value>期間は不正です。</value>
+  </data>
+  <data name="HRSA01_004" xml:space="preserve">
+    <value>基本給'は必須入力です</value>
+  </data>
+  <data name="HRSA01_005" xml:space="preserve">
+    <value>適用日'は必須入力です</value>
+  </data>
+  <data name="HRSA01_006" xml:space="preserve">
+    <value>適用日は不正です。</value>
+  </data>
+  <data name="HRSA01_007" xml:space="preserve">
+    <value>行目$：手当は必須入力です</value>
+  </data>
+  <data name="HRSA01_008" xml:space="preserve">
+    <value>行目$：'～から適用(日)'は必須入力です</value>
+  </data>
+  <data name="HRSA01_009" xml:space="preserve">
+    <value>行目$:　終了日は'～から適用(日)' より大きいです。</value>
+  </data>
+  <data name="HRSA01_010" xml:space="preserve">
+    <value>行目$：手当金額'は必須入力です</value>
+  </data>
+  <data name="HRSA01_011" xml:space="preserve">
+    <value>行目$：控除額は0より大きいです。</value>
+  </data>
+  <data name="HRSA01_012" xml:space="preserve">
+    <value>行目$：手当適用開始日は期間の開始日より大きいです。</value>
+  </data>
+  <data name="HRSA01_013" xml:space="preserve">
+    <value>手当適用開始日は期間の開始日より大きいです。</value>
+  </data>
+  <data name="HRTM01_001" xml:space="preserve">
+    <value>社員'は必須入力です</value>
+  </data>
+  <data name="HRTM01_002" xml:space="preserve">
+    <value>開始日'は必須入力です</value>
+  </data>
+  <data name="HRTM01_003" xml:space="preserve">
+    <value>終了日'は必須入力です</value>
+  </data>
+  <data name="HRTM01_004" xml:space="preserve">
+    <value>開始日が終了日以下は必須です。</value>
+  </data>
+  <data name="HRTM01_005" xml:space="preserve">
+    <value>スキル'は必須入力です</value>
+  </data>
+  <data name="HRTM01_006" xml:space="preserve">
+    <value>コース'は必須入力です</value>
+  </data>
+  <data name="Login_001" xml:space="preserve">
+    <value>ユーザーIDは必須入力です。</value>
+    <comment>Khi User Name bị null thì xuất message này</comment>
+  </data>
+  <data name="Login_002" xml:space="preserve">
+    <value>パスワードは必須入力です。</value>
+    <comment>Khi Password bị null thì xuất message này</comment>
+  </data>
+  <data name="Login_003" xml:space="preserve">
+    <value>ユーザーIDあるいはパスワードに誤りがあります。</value>
+    <comment>Thông báo trường hợp bị sai thông tin đăng nhập</comment>
+  </data>
+  <data name="Login_004" xml:space="preserve">
+    <value>コネクションが落ちています。</value>
+    <comment>Connection Failed</comment>
+  </data>
+  <data name="MSAE01_001" xml:space="preserve">
+    <value>エリアコード は必須入力です</value>
+    <comment>Khi Area Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSAE01_002" xml:space="preserve">
+    <value>エリア名称 (VN)は必須入力です</value>
+    <comment>Khi Area NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSAL01_001" xml:space="preserve">
+    <value>手当コード'は必須入力です</value>
+    <comment>Khi Allowance Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSAL01_002" xml:space="preserve">
+    <value>手当名 (VN)'は必須入力です</value>
+    <comment>Khi Allowance Name Vn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSAL01_003" xml:space="preserve">
+    <value>種類'は必須入力です</value>
+    <comment>Khi Allowance Type bị null thì xuất message này</comment>
+  </data>
+  <data name="MSCA01_001" xml:space="preserve">
+    <value>日付'は必須入力です</value>
+    <comment>Khi Calendar Date bị null thì xuất message này</comment>
+  </data>
+  <data name="MSCA01_002" xml:space="preserve">
+    <value>種類'は必須入力です</value>
+    <comment>Khi Calendar Type bị null thì xuất message này</comment>
+  </data>
+  <data name="MSCA_Import_001" xml:space="preserve">
+    <value>$行目 : 日付は必須入力です</value>
+  </data>
+  <data name="MSCA_Import_002" xml:space="preserve">
+    <value>$行目: 日付の形式が不正です</value>
+  </data>
+  <data name="MSCA_Import_003" xml:space="preserve">
+    <value>$行目 : 種類は必須入力です</value>
+  </data>
+  <data name="MSCA_Import_004" xml:space="preserve">
+    <value>$行目 :  種類の形式が不正です</value>
+  </data>
+  <data name="MSCA_Import_005" xml:space="preserve">
+    <value>$行目 : インポートファイルのデータは重複です。もう一度検査してください。</value>
+  </data>
+  <data name="MSCP00_001" xml:space="preserve">
+    <value>会社コードは必須入力です</value>
+    <comment>Khi Company Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSCP00_002" xml:space="preserve">
+    <value>会社名（VN)は必須入力です</value>
+    <comment>Khi Comp NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSCR01_001" xml:space="preserve">
+    <value>キャリアコード 'は必須入力です</value>
+    <comment>Khi Careers Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSCR01_002" xml:space="preserve">
+    <value>キャリア名（VN)'は必須入力です</value>
+    <comment>Khi Careers Name Vn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSDD01_001" xml:space="preserve">
+    <value>控除コード'は必須入力です</value>
+    <comment>Khi Deduction Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSDD01_002" xml:space="preserve">
+    <value>控除名 (VN)'は必須入力です</value>
+    <comment>Khi Deduction NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSDD01_003" xml:space="preserve">
+    <value>種類'は必須入力です</value>
+    <comment>Khi Deduction Type bị null thì xuất message này</comment>
+  </data>
+  <data name="MSDE01_001" xml:space="preserve">
+    <value>部門コード'は必須入力です</value>
+    <comment>Khi Department Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSDE01_002" xml:space="preserve">
+    <value>部門名 (VN)'は必須入力です</value>
+    <comment>Khi Department NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSDE01_003" xml:space="preserve">
+    <value>事業所は必須入力です</value>
+    <comment>Khi văn phòng bị null thì xuất message này</comment>
+  </data>
+  <data name="MSFM01_001" xml:space="preserve">
+    <value>認証器コード'は必須入力です</value>
+    <comment>Khi FingerMachine Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSFM01_002" xml:space="preserve">
+    <value>認証器名(VN)'は必須入力です</value>
+    <comment>Khi FingerMachine NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSHP01_001" xml:space="preserve">
+    <value>病院コード'は必須入力です</value>
+    <comment>Khi Hospitals Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSHP01_002" xml:space="preserve">
+    <value>病院名 (VN)'は必須入力です</value>
+    <comment>Khi Hospitals Name Vn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSIR01_001" xml:space="preserve">
+    <value>組織コード'は必須入力です</value>
+    <comment>Khi InsRegisterOrgs Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSIR01_002" xml:space="preserve">
+    <value>組織名 (VN)'は必須入力です</value>
+    <comment>Khi InsRegisterOrgs Name Vn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSIT01_001" xml:space="preserve">
+    <value>所得税コード$'は必須入力です</value>
+    <comment>Khi PITCode Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSIT01_002" xml:space="preserve">
+    <value>説明 (VN)'は必須入力です</value>
+    <comment>Khi PITCode Name bị null thì xuất message này</comment>
+  </data>
+  <data name="MSIT01_003" xml:space="preserve">
+    <value>下限'は必須入力です</value>
+    <comment>Khi PITCode Low bị null thì xuất message này</comment>
+  </data>
+  <data name="MSIT01_004" xml:space="preserve">
+    <value>上限'は必須入力です</value>
+    <comment>Khi PITCode High bị null thì xuất message này</comment>
+  </data>
+  <data name="MSIT01_005" xml:space="preserve">
+    <value>パーセント (%)'は必須入力です</value>
+    <comment>Khi PITCode Percent bị null thì xuất message này</comment>
+  </data>
+  <data name="MSIT01_006" xml:space="preserve">
+    <value>最上限は必ず最低限以上です。</value>
+    <comment>Khi low lớn hơn hight thì xuất message này</comment>
+  </data>
+  <data name="MSLC01_001" xml:space="preserve">
+    <value>休暇カテゴリーコードは必須入力です</value>
+    <comment>Khi Leave Category Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSLC01_002" xml:space="preserve">
+    <value>休暇カテゴリー名（VN)は必須入力です</value>
+    <comment>Khi Leave Category NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSLC01_003" xml:space="preserve">
+    <value>支給率は必須入力です</value>
+    <comment>Khi Leave Category PaidRate bị null thì xuất message này</comment>
+  </data>
+  <data name="MSLC01_004" xml:space="preserve">
+    <value>種類は既に存在しています</value>
+    <comment>Khi Type bị trùng thì xuất message này</comment>
+  </data>
+  <data name="MSLC01_005" xml:space="preserve">
+    <value>出席マスク は必須入力です.</value>
+  </data>
+  <data name="MSLC01_006" xml:space="preserve">
+    <value>出席マスク が既に存在します.</value>
+  </data>
+  <data name="MSOF01_001" xml:space="preserve">
+    <value>事業所コード'は必須入力です</value>
+    <comment>Khi Văn phòng Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSOF01_002" xml:space="preserve">
+    <value>事業所名 (VN) 'は必須入力です</value>
+    <comment>Khi Văn phòng NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSOP01_001" xml:space="preserve">
+    <value>工程コードは必須入力です</value>
+    <comment>Khi Operation Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSOP01_002" xml:space="preserve">
+    <value>工程名（VN)は必須入力です</value>
+    <comment>Khi Operation NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSOP01_003" xml:space="preserve">
+    <value>班は必須入力です</value>
+    <comment>Khi chuyền bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPA00_001" xml:space="preserve">
+    <value>% 社会保険は必須入力です</value>
+  </data>
+  <data name="MSPA00_002" xml:space="preserve">
+    <value>% 健康保険は必須入力です</value>
+  </data>
+  <data name="MSPA00_003" xml:space="preserve">
+    <value>% 失業保険は必須入力です</value>
+  </data>
+  <data name="MSPA00_004" xml:space="preserve">
+    <value>% 社会保険は必須入力です</value>
+  </data>
+  <data name="MSPA00_005" xml:space="preserve">
+    <value>% 健康保険は必須入力です</value>
+  </data>
+  <data name="MSPA00_006" xml:space="preserve">
+    <value>% 失業保険は必須入力です</value>
+  </data>
+  <data name="MSPA00_008" xml:space="preserve">
+    <value>所得税は必須入力です</value>
+  </data>
+  <data name="MSPA00_009" xml:space="preserve">
+    <value>扶養家族あたりの税金控除は必須入力です</value>
+  </data>
+  <data name="MSPA00_010" xml:space="preserve">
+    <value>支給率は必須入力です</value>
+  </data>
+  <data name="MSPA00_011" xml:space="preserve">
+    <value>丸め残業時間は必須入力です</value>
+  </data>
+  <data name="MSPA00_013" xml:space="preserve">
+    <value>振替設定は必須入力です</value>
+  </data>
+  <data name="MSPA00_014" xml:space="preserve">
+    <value>支給率は必須入力です</value>
+  </data>
+  <data name="MSPA00_015" xml:space="preserve">
+    <value>年1は必須入力です</value>
+  </data>
+  <data name="MSPA00_016" xml:space="preserve">
+    <value>日付1は必須入力です</value>
+  </data>
+  <data name="MSPA00_017" xml:space="preserve">
+    <value>年2は必須入力です</value>
+  </data>
+  <data name="MSPA00_018" xml:space="preserve">
+    <value>年2は年1より大きいです</value>
+  </data>
+  <data name="MSPA00_019" xml:space="preserve">
+    <value>日付2より必須入力です</value>
+  </data>
+  <data name="MSPA00_020" xml:space="preserve">
+    <value>日付2が日付1以上は必須です。</value>
+  </data>
+  <data name="MSPA00_021" xml:space="preserve">
+    <value>年3は必須入力です</value>
+  </data>
+  <data name="MSPA00_022" xml:space="preserve">
+    <value>年3は年2より大きいです</value>
+  </data>
+  <data name="MSPA00_023" xml:space="preserve">
+    <value>日付3は必須入力です</value>
+  </data>
+  <data name="MSPA00_024" xml:space="preserve">
+    <value>日付3は必ず日付2以上です。</value>
+  </data>
+  <data name="MSPA00_025" xml:space="preserve">
+    <value>年4は必須入力です</value>
+  </data>
+  <data name="MSPA00_026" xml:space="preserve">
+    <value>年4は年3より大きいです</value>
+  </data>
+  <data name="MSPA00_027" xml:space="preserve">
+    <value>日付4は必須入力です</value>
+  </data>
+  <data name="MSPA00_028" xml:space="preserve">
+    <value>日付4は必ず日付3以上です。</value>
+  </data>
+  <data name="MSPA00_029" xml:space="preserve">
+    <value>年5は必須入力です</value>
+  </data>
+  <data name="MSPA00_030" xml:space="preserve">
+    <value>年5は年4より大きいです</value>
+  </data>
+  <data name="MSPA00_031" xml:space="preserve">
+    <value>日付5は必須入力です</value>
+  </data>
+  <data name="MSPA00_032" xml:space="preserve">
+    <value>日付5は必ず日付4以上です。</value>
+  </data>
+  <data name="MSPA00_033" xml:space="preserve">
+    <value>丸め出勤時刻は必須入力です</value>
+  </data>
+  <data name="MSPA00_034" xml:space="preserve">
+    <value>丸め退勤時刻は必須入力です</value>
+  </data>
+  <data name="MSPA00_035" xml:space="preserve">
+    <value>一日丸め勤務時間は必須入力です</value>
+  </data>
+  <data name="MSPA00_036" xml:space="preserve">
+    <value>一日丸め残業時間は必須入力です</value>
+  </data>
+  <data name="MSPA00_037" xml:space="preserve">
+    <value>適用月は必須入力です</value>
+  </data>
+  <data name="MSPA00_038" xml:space="preserve">
+    <value>時給で働く日数は必須入力です</value>
+  </data>
+  <data name="MSPA00_039" xml:space="preserve">
+    <value>時給で働く日数には不正な許可限度を入力しました。</value>
+  </data>
+  <data name="MSPO01_001" xml:space="preserve">
+    <value>職位コード は必須入力です</value>
+    <comment>Khi Position Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPO01_002" xml:space="preserve">
+    <value>職位名 (VN)は必須入力です</value>
+    <comment>Khi Position NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPO01_003" xml:space="preserve">
+    <value>キャリアは必須入力です</value>
+    <comment>Khi chức nghiệp bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPR01_001" xml:space="preserve">
+    <value>プロジェクトコード'は必須入力です</value>
+    <comment>Khi Project Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPR01_002" xml:space="preserve">
+    <value>プロジェクト名称 (VN)'は必須入力です</value>
+    <comment>Khi Project NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPW00_001" xml:space="preserve">
+    <value>旧パスワードは、現在ログイン中のユーザのパスワードと一致している必要があります</value>
+    <comment>Khi Old password không bằng mật khẩu của ID đăng nhập thì xuất message này</comment>
+  </data>
+  <data name="MSPW00_002" xml:space="preserve">
+    <value>新パスワードは必須入力です</value>
+    <comment>Khi New password bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPW00_003" xml:space="preserve">
+    <value>新パスワード確認は必須入力です</value>
+    <comment>Khi New Password Confirm bị null thì xuất message này</comment>
+  </data>
+  <data name="MSPW00_004" xml:space="preserve">
+    <value>新しいパスワードと新しいパスワード(確認用)が一致しません</value>
+    <comment>Khi New Password Confirm không bằng với New Password thì xuất message này</comment>
+  </data>
+  <data name="MSRE01_001" xml:space="preserve">
+    <value>休暇理由種類'は必須入力です</value>
+    <comment>Khi Deduction Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSRE01_002" xml:space="preserve">
+    <value>理由コード'は必須入力です</value>
+    <comment>Khi Deduction Type bị null thì xuất message này</comment>
+  </data>
+  <data name="MSRE01_003" xml:space="preserve">
+    <value>説明 (VN)'は必須入力です</value>
+    <comment>Khi Deduction Name bị null thì xuất message này</comment>
+  </data>
+  <data name="MSRK01_001" xml:space="preserve">
+    <value>ランクコードは必須入力です</value>
+  </data>
+  <data name="MSRK01_002" xml:space="preserve">
+    <value>ランク名（VN)は必須入力です</value>
+  </data>
+  <data name="MSRO01_001" xml:space="preserve">
+    <value>コード$'は必須入力です</value>
+    <comment>Khi RotateShiftSetting Code bị null thì xuất hiện message này</comment>
+  </data>
+  <data name="MSRO01_002" xml:space="preserve">
+    <value>休暇開始時間1が出勤時刻と退勤時刻の間にあるのは必須です。</value>
+  </data>
+  <data name="MSRO01_003" xml:space="preserve">
+    <value>休暇終了時間1が出勤時刻と退勤時刻の間で、休暇開始時間1より大きいです。</value>
+  </data>
+  <data name="MSRO01_004" xml:space="preserve">
+    <value>休暇開始時間２が出勤時刻と退勤時刻の間で、休暇開始時間1と休暇終了時間1より大きいです。</value>
+  </data>
+  <data name="MSRO01_005" xml:space="preserve">
+    <value>休暇終了時間2が出勤時刻と退勤時刻の間で、休暇開始時間2より大きいです。</value>
+  </data>
+  <data name="MSRO01_006" xml:space="preserve">
+    <value>休暇開始時間3が出勤時刻と退勤時刻の間で、休暇開始時間2と休暇終了時間2より大きいです。</value>
+  </data>
+  <data name="MSRO01_007" xml:space="preserve">
+    <value>休暇終了時間3が出勤時刻と退勤時刻の間で、休暇開始時間3より大きいです。</value>
+  </data>
+  <data name="MSRS_Import_001" xml:space="preserve">
+    <value>$行目 : シフトコードは必須入力です。</value>
+  </data>
+  <data name="MSRS_Import_002" xml:space="preserve">
+    <value>$行目 : シフトコードはシフトリストに存在していて、そして回転シフトとして確定されて、有効のステータスがある必要です。</value>
+  </data>
+  <data name="MSRS_Import_003" xml:space="preserve">
+    <value>$行目 : このシフトは当日の回転シフトとして設定されています。</value>
+  </data>
+  <data name="MSRS_Import_004" xml:space="preserve">
+    <value>$行目 : 回転シフトコードは必須入力です。</value>
+  </data>
+  <data name="MSRS_Import_005" xml:space="preserve">
+    <value>$行目 : 回転シフトコードは回転シフトリストに存在していて、有効のステータスがある必要です。</value>
+  </data>
+  <data name="MSRS_Import_006" xml:space="preserve">
+    <value>$行目 : 日付の形式は間違いました。</value>
+  </data>
+  <data name="MSRS_Import_007" xml:space="preserve">
+    <value>$行目 : インポートファイルのデータは重複です。もう一度シフトコードと日付を点検してください。</value>
+  </data>
+  <data name="MSRS_Import_008" xml:space="preserve">
+    <value>$行目 : 日付は必須入力です。</value>
+  </data>
+  <data name="MSRT01_001" xml:space="preserve">
+    <value>班コードは必須入力です</value>
+    <comment>Khi Route Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSRT01_002" xml:space="preserve">
+    <value>班名（VN)は必須入力です</value>
+    <comment>Khi Route NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSRT01_003" xml:space="preserve">
+    <value>組は必須入力です</value>
+    <comment>Khi tổ bị null thì xuất message này</comment>
+  </data>
+  <data name="MSSE01_001" xml:space="preserve">
+    <value>部署コードは必須入力です</value>
+    <comment>Khi Section Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSSE01_002" xml:space="preserve">
+    <value>部署名 (VN)は必須入力です</value>
+    <comment>Khi Section NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSSE01_003" xml:space="preserve">
+    <value>部門は必須入力です</value>
+    <comment>Khi phòng ban bị null thì xuất message này</comment>
+  </data>
+  <data name="MSSH01_001" xml:space="preserve">
+    <value>勤務シフトコードは必須入力です</value>
+    <comment>Khi Shift Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSSH01_002" xml:space="preserve">
+    <value>勤務シフト名 (VN) は必須入力です</value>
+    <comment>Khi Shift NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSSH01_003" xml:space="preserve">
+    <value>休暇開始時間 1は出勤時間と退勤時間の間です。</value>
+  </data>
+  <data name="MSSH01_004" xml:space="preserve">
+    <value>休暇終了時間 1は出勤時間と退勤時間の間で休暇開始時間 1より大きいです。</value>
+  </data>
+  <data name="MSSH01_005" xml:space="preserve">
+    <value>休暇開始時間 2は出勤時間と退勤時間の間で、休暇開始時間 1と休暇終了時間 1より大きいです。</value>
+  </data>
+  <data name="MSSH01_006" xml:space="preserve">
+    <value>休暇終了時間 ２は出勤時間と退勤時間の間で休暇開始時間 ２より大きいです。</value>
+  </data>
+  <data name="MSSH01_007" xml:space="preserve">
+    <value>休暇開始時間 3は出勤時間と退勤時間の間で、休暇開始時間 2と休暇終了時間 2より大きいです。</value>
+  </data>
+  <data name="MSSH01_008" xml:space="preserve">
+    <value>休暇終了時間 3は出勤時間と退勤時間の間で休暇開始時間 3より大きいです。</value>
+  </data>
+  <data name="MSSH01_009" xml:space="preserve">
+    <value>出席マスク は必須入力です</value>
+  </data>
+  <data name="MSSH01_010" xml:space="preserve">
+    <value>出席マスク が既に存在します</value>
+  </data>
+  <data name="MSSK01_001" xml:space="preserve">
+    <value>技能コードは必須入力です</value>
+    <comment>Khi Skill Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSSK01_002" xml:space="preserve">
+    <value>技能名（VN)は必須入力です</value>
+    <comment>Khi Skill NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSSP_Import_001" xml:space="preserve">
+    <value>行目 $: '勤務日数のフォーマットは不正です。'</value>
+  </data>
+  <data name="MSSP_Import_002" xml:space="preserve">
+    <value>行目 $: '終了日は必須入力です。'</value>
+  </data>
+  <data name="MSSP_Import_003" xml:space="preserve">
+    <value>行目 $: '終了日のフォーマットは不正です。'</value>
+  </data>
+  <data name="MSSP_Import_004" xml:space="preserve">
+    <value>行目 $: '開始日は必須入力です。'</value>
+  </data>
+  <data name="MSSP_Import_005" xml:space="preserve">
+    <value>行目 $: '開始日のフォーマットは不正です。'</value>
+  </data>
+  <data name="MSSP_Import_006" xml:space="preserve">
+    <value>行目 $: '今回は既に登録です。再確認してください。'</value>
+  </data>
+  <data name="MSSP_Import_007" xml:space="preserve">
+    <value>行目 $: '給料期間は必須入力です。'</value>
+  </data>
+  <data name="MSSP_Import_008" xml:space="preserve">
+    <value>行目 $: '給料期間のフォーマットは不正です。'</value>
+  </data>
+  <data name="MSSP_Import_009" xml:space="preserve">
+    <value>行目 $: '当給料期間は既に閉じて、更新できない。'</value>
+  </data>
+  <data name="MSSP_Import_010" xml:space="preserve">
+    <value>行目 $: 給料期間開始日は給料期間と一致しない。給料期間の年と開始日の年を再検査してください。</value>
+  </data>
+  <data name="MSSP_Import_011" xml:space="preserve">
+    <value>行目 $ : インポートファイルにデータを重複する。給料期間を再検査してください。'</value>
+  </data>
+  <data name="MSSP_Import_012" xml:space="preserve">
+    <value>当給料期間の締め処理を行いましたため、新規追加はできません。</value>
+  </data>
+  <data name="MSSP_Import_013" xml:space="preserve">
+    <value>$ 給料期間の締め処理を行いましたため、編集はできません。</value>
+  </data>
+  <data name="MSTE01_001" xml:space="preserve">
+    <value>組コードは必須入力です</value>
+    <comment>Khi Team Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSTE01_002" xml:space="preserve">
+    <value>組名 (VN)は必須入力です</value>
+    <comment>Khi Team NameVn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSTE01_003" xml:space="preserve">
+    <value>部署は必須入力です</value>
+    <comment>Khi bộ phận bị null thì xuất message này</comment>
+  </data>
+  <data name="MSUG01_001" xml:space="preserve">
+    <value>グループコード'は必須入力です</value>
+    <comment>Khi UserGroups Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSUG01_002" xml:space="preserve">
+    <value>グループ名(VN)'は必須入力です</value>
+    <comment>Khi UserGroups Name Vn bị null thì xuất message này</comment>
+  </data>
+  <data name="MSUR01_001" xml:space="preserve">
+    <value>ユーザコード'は必須入力です</value>
+    <comment>Khi Users Code bị null thì xuất message này</comment>
+  </data>
+  <data name="MSUR01_002" xml:space="preserve">
+    <value>プロフィール'は必須入力です</value>
+    <comment>Khi Users Profile bị null thì xuất message này</comment>
+  </data>
+  <data name="MSUR01_003" xml:space="preserve">
+    <value>パスワード'は必須入力です</value>
+    <comment>Khi Users Password bị null thì xuất message này</comment>
+  </data>
+  <data name="MSUR01_004" xml:space="preserve">
+    <value>表示名は必須入力です</value>
+    <comment>Khi Users DisplayName bị null thì xuất message này</comment>
+  </data>
+  <data name="PRMP00_001" xml:space="preserve">
+    <value>$ 行に社員コード'$' は空白です。</value>
+  </data>
+  <data name="PRMP00_002" xml:space="preserve">
+    <value>$行に社員コード'$' は社員リストに存在していません。</value>
+  </data>
+  <data name="PRMP00_003" xml:space="preserve">
+    <value>$行に社員コード'$' は退職しました。</value>
+  </data>
+  <data name="PRMP00_004" xml:space="preserve">
+    <value>$ 行に手当てコード'$' は空白です。</value>
+  </data>
+  <data name="PRMP00_005" xml:space="preserve">
+    <value>$行に手当てコード'$' は手当てリストに存在していません。</value>
+  </data>
+  <data name="PRMP00_006" xml:space="preserve">
+    <value>$行に手当てコード'$' はインポートする必要がある手当てのタイプではありません。</value>
+  </data>
+  <data name="PRMP00_007" xml:space="preserve">
+    <value>$ 行に控除額'$' は空白です。</value>
+  </data>
+  <data name="PRMP00_008" xml:space="preserve">
+    <value>$ 行に控除額'$' は数字ではありません。</value>
+  </data>
+  <data name="PRMP00_009" xml:space="preserve">
+    <value>$ 行に控除額'$' は0より大きいです。</value>
+  </data>
+  <data name="PRMP00_010" xml:space="preserve">
+    <value>$ 行に社員コード'$' は空白です。</value>
+  </data>
+  <data name="PRMP00_011" xml:space="preserve">
+    <value>$行に社員コード'$' は社員リストに存在していません。</value>
+  </data>
+  <data name="PRMP00_012" xml:space="preserve">
+    <value>$行に社員コード'$' は退職しました。</value>
+  </data>
+  <data name="PRMP00_013" xml:space="preserve">
+    <value>行目$ の控除コード '$'は値がありません。</value>
+  </data>
+  <data name="PRMP00_014" xml:space="preserve">
+    <value>行目$ の控除コード '$' は控除コードリストで既存しません。</value>
+  </data>
+  <data name="PRMP00_015" xml:space="preserve">
+    <value>行目$ の控除コード '$' はインポートするべきな控除タイプではありません。</value>
+  </data>
+  <data name="PRMP00_016" xml:space="preserve">
+    <value>行目$ の金額'$'は値がありません。</value>
+  </data>
+  <data name="PRMP00_017" xml:space="preserve">
+    <value>行目$ の金額'$'は数字。</value>
+  </data>
+  <data name="PRMP00_018" xml:space="preserve">
+    <value>行目$ の金額'$'の値は0より大きい。</value>
+  </data>
+  <data name="PRMP00_019" xml:space="preserve">
+    <value>ボックを閉じますか?</value>
+  </data>
+  <data name="PRMP00_020" xml:space="preserve">
+    <value>ボックの閉じることは成功。</value>
+  </data>
+  <data name="PRMP00_021" xml:space="preserve">
+    <value>月タイムシートを開きたいですか。</value>
+  </data>
+  <data name="PRMP00_022" xml:space="preserve">
+    <value>月タイムシートの開くことは成功!</value>
+  </data>
+  <data name="PRMP00_Allowance_001" xml:space="preserve">
+    <value>の$行目：社員コード 'は必須入力です</value>
+  </data>
+  <data name="PRMP00_Allowance_002" xml:space="preserve">
+    <value>の$行目：社員コード'$'はHrEmployeesテーブルに存在しません</value>
+  </data>
+  <data name="PRMP00_Allowance_003" xml:space="preserve">
+    <value>の$行目：手当'は必須入力です</value>
+  </data>
+  <data name="PRMP00_Allowance_004" xml:space="preserve">
+    <value>の$行目：手当コード'$'はインポートに適合しないタイプです</value>
+  </data>
+  <data name="PRMP00_Allowance_005" xml:space="preserve">
+    <value>の$行目：金額'$'は中身がありません</value>
+  </data>
+  <data name="PRMP00_Allowance_006" xml:space="preserve">
+    <value>の$行目：金額'$'は数値である必要があります</value>
+  </data>
+  <data name="PRMP00_Allowance_007" xml:space="preserve">
+    <value>の$行目：'金額は16桁数を超えしません'</value>
+  </data>
+  <data name="PRMP00_Allowance_008" xml:space="preserve">
+    <value>行目$ ：'インポートファイルは重複なデータがあります。社員IDと控除コードを再チェックしてください'</value>
+  </data>
+  <data name="PRMP00_Deduction_001" xml:space="preserve">
+    <value>の$行目：社員コード 'は必須入力です</value>
+  </data>
+  <data name="PRMP00_Deduction_002" xml:space="preserve">
+    <value>の$行目：社員コード'$'はHrEmployeesテーブルに存在しません</value>
+  </data>
+  <data name="PRMP00_Deduction_003" xml:space="preserve">
+    <value>の$行目：控除コード'は必須入力です</value>
+  </data>
+  <data name="PRMP00_Deduction_004" xml:space="preserve">
+    <value>の$行目：控除コード'はインポートに適合しないタイプです</value>
+  </data>
+  <data name="PRMP00_Deduction_005" xml:space="preserve">
+    <value>の$行目：金額'$'は中身がありません</value>
+  </data>
+  <data name="PRMP00_Deduction_006" xml:space="preserve">
+    <value>の$行目：金額'$'は数値である必要があります</value>
+  </data>
+  <data name="PRMP00_Deduction_007" xml:space="preserve">
+    <value>の$行目：'金額は16桁数を超えしません'</value>
+  </data>
+  <data name="PRMP00_Deduction_008" xml:space="preserve">
+    <value>行目$ ：'インポートファイルは重複なデータがあります。社員IDと手当コードを再チェックしてください'</value>
+  </data>
+  <data name="PRMP01_001" xml:space="preserve">
+    <value>控除 '$'が計算される。</value>
+    <comment>khi người dùng chọn khoản giảm trừ không thuộc loại "Khác"</comment>
+  </data>
+  <data name="PRTS00_001" xml:space="preserve">
+    <value>期間は必須入力です</value>
+  </data>
+  <data name="PRTS00_002" xml:space="preserve">
+    <value>給与期間を開けたいですか。</value>
+  </data>
+  <data name="PRTS00_003" xml:space="preserve">
+    <value>給与期間を閉じたいですか。</value>
+  </data>
+  <data name="PRTS00_004" xml:space="preserve">
+    <value>総タイムシートを閉じます。よろしいでしょうか。</value>
+  </data>
+  <data name="PRTS00_005" xml:space="preserve">
+    <value>総タイムシートを作成します。よろしいでしょうか。</value>
+  </data>
+  <data name="PRTS00_006" xml:space="preserve">
+    <value>給与期間はエラーデータがある。</value>
+  </data>
+  <data name="PRTS00_007" xml:space="preserve">
+    <value>旧給与期を閉じなくてはいけない。</value>
+  </data>
+  <data name="SYBK00_001" xml:space="preserve">
+    <value>バックアップは成功。</value>
+  </data>
+  <data name="SYBK00_0011" xml:space="preserve">
+    <value>処理を終了しました。</value>
+  </data>
+  <data name="SYBK00_002" xml:space="preserve">
+    <value>バックアップスケジュールの作成のため、日付を選択します。</value>
+  </data>
+  <data name="SYBK00_003" xml:space="preserve">
+    <value>バックアップスケジュールの作成のため、時間を選択します。</value>
+  </data>
+  <data name="SYBK00_004" xml:space="preserve">
+    <value>パスは不正。</value>
+  </data>
+  <data name="SYBK00_005" xml:space="preserve">
+    <value>バックアップスケジュールの作成は成功。</value>
+  </data>
+  <data name="SYBK00_006" xml:space="preserve">
+    <value>バックアップスケジュールサービスは既存しません。</value>
+  </data>
+  <data name="SYBK00_007" xml:space="preserve">
+    <value>バックアップスケジュールは止めます。</value>
+  </data>
+  <data name="SYBK00_008" xml:space="preserve">
+    <value>データをバックウップしたいですか。</value>
+  </data>
+  <data name="SYBK00_009" xml:space="preserve">
+    <value>バックウップのスケジューリングを作成したいですか。</value>
+  </data>
+  <data name="SYBK00_010" xml:space="preserve">
+    <value>バックウップのスケジューリングを中止したいですか。</value>
+  </data>
+  <data name="SYRT00_001" xml:space="preserve">
+    <value>レストアは成功!</value>
+  </data>
+  <data name="SYRT00_002" xml:space="preserve">
+    <value>データを復元してもよろしいですか？</value>
+  </data>
+  <data name="ATLS01_010" xml:space="preserve">
+    <value>残る有給休暇は足らない。</value>
+  </data>
+  <data name="ATSP01_001" xml:space="preserve">
+    <value>計画を作成するため社員を選択する。</value>
+  </data>
+  <data name="ATSP01_002" xml:space="preserve">
+    <value>終了日が開始日以上は必須です。</value>
+  </data>
+  <data name="ATSP01_003" xml:space="preserve">
+    <value>一ヶ月だけ計画を作成する。</value>
+  </data>
+  <data name="ATSP01_004" xml:space="preserve">
+    <value>一回目の出欠状況記録の出勤時刻は必須入力です。</value>
+  </data>
+  <data name="ATSP01_005" xml:space="preserve">
+    <value>一回目の出欠状況記録の退勤時刻は必須入力です。</value>
+  </data>
+  <data name="ATSP01_006" xml:space="preserve">
+    <value>一回目の出欠状況記録の退勤時刻は一回目の出欠状況記録の入社時刻より大きいです。</value>
+  </data>
+  <data name="ATSP01_007" xml:space="preserve">
+    <value>二回目の出欠状況記録の出勤時刻は一回目の出欠状況記録の退勤時刻より大きいです。</value>
+  </data>
+  <data name="ATSP01_008" xml:space="preserve">
+    <value>二回目の出欠状況記録の退勤時刻は二回目の出欠状況記録の出勤時刻より大きいです。</value>
+  </data>
+  <data name="ATSP01_009" xml:space="preserve">
+    <value>三回目の出欠状況記録の出勤時刻は二回目の出欠状況記録の退勤時刻より大きいです。</value>
+  </data>
+  <data name="ATSP01_010" xml:space="preserve">
+    <value>三回目の出欠状況記録の退勤時刻は三回目の出欠状況記録の出勤時刻より大きいです。</value>
+  </data>
+  <data name="ATSP01_011" xml:space="preserve">
+    <value>四回目の出欠状況記録の出勤時刻は三回目の出欠状況記録の退勤時刻より大きいです。</value>
+  </data>
+  <data name="ATSP01_012" xml:space="preserve">
+    <value>四回目の出欠状況記録の退勤時刻は四回目の出欠状況記録の出勤時刻より大きいです。</value>
+  </data>
+  <data name="ATSP01_013" xml:space="preserve">
+    <value>五回目の出欠状況記録の出勤時刻は四回目の出欠状況記録の退勤時刻より大きいです。</value>
+  </data>
+  <data name="ATSP01_014" xml:space="preserve">
+    <value>五回目の出欠状況記録の退勤時刻は五回目の出欠状況記録の出勤時刻より大きいです。</value>
+  </data>
+  <data name="MSPA00_0381" xml:space="preserve">
+    <value>時給で働く日数は必須入力です</value>
+  </data>
+  <data name="MSPA00_0391" xml:space="preserve">
+    <value>時給で働く日数は1と31の間に必須入力です。</value>
+  </data>
+  <data name="MSPA00_040" xml:space="preserve">
+    <value>最大の振替可能休暇日は0を入力してはいけません。</value>
+  </data>
+  <data name="MSPA00_041" xml:space="preserve">
+    <value>有効期限月(翌年) は1と12の間に必須入力です。</value>
+  </data>
+  <data name="MSPA00_042" xml:space="preserve">
+    <value>支給率(翌年)は必須入力です</value>
+  </data>
+  <data name="MSPA00_043" xml:space="preserve">
+    <value>適用月(翌年) は必須入力です</value>
+  </data>
+  <data name="HREM_Import_139" xml:space="preserve">
+    <value>行目$ : 'このビザ番号は社員リストで既存しました。もう一度チェックしてください'</value>
+  </data>
+  <data name="HREM_Import_140" xml:space="preserve">
+    <value>行目$ ：'インポートファイルは重複なデータがあります。パスポートIDを再チェックしてください'</value>
+  </data>
+  <data name="HREM_Import_141" xml:space="preserve">
+    <value>行目$ ：'インポートファイルは重複なデータがあります。ビザ番号を再チェックしてください'</value>
+  </data>
+  <data name="HREM_Import_142" xml:space="preserve">
+    <value>行目$ : 'この人民IDは社員リストで既存しました。もう一度チェックしてください'</value>
+  </data>
+  <data name="HREM_Import_143" xml:space="preserve">
+    <value>行目$ : 'このパスポートDは社員リストで既存しました。もう一度チェックしてください'</value>
+  </data>
+  <data name="HREM_Import_144" xml:space="preserve">
+    <value>行目$ : 'このビザ番号は社員リストで既存しました。もう一度チェックしてください'</value>
+  </data>
+  <data name="MSWA01Dto_006" xml:space="preserve">
+    <value>水準勤務日数に入力した月の時間間隔が不正です。</value>
+  </data>
+  <data name="HRAA00_001" xml:space="preserve">
+    <value>行目$: 性別'は必須入力です</value>
+  </data>
+  <data name="HRAA00_002" xml:space="preserve">
+    <value>行目$: テータス'は必須入力です</value>
+  </data>
+  <data name="HRAA00_003" xml:space="preserve">
+    <value>行目$: 雇用形態　勤務種別'は必須入力です</value>
+  </data>
+  <data name="HRAA00_004" xml:space="preserve">
+    <value>行目$: '手当'は必須入力です</value>
+  </data>
+  <data name="HRAA00_005" xml:space="preserve">
+    <value>行目$: 金額'$'は中身がありません</value>
+  </data>
+  <data name="HRAA00_006" xml:space="preserve">
+    <value>行目$: 発行日は必須入力です</value>
+  </data>
+  <data name="HRAA00_007" xml:space="preserve">
+    <value>行目$: オブジェクトは必須入力です</value>
+  </data>
+  <data name="MSRO01_008" xml:space="preserve">
+    <value>退勤時刻は出勤時刻と違わなければなりません。</value>
+  </data>
+  <data name="MSRO01_009" xml:space="preserve">
+    <value>休暇終了時間1は休暇開始時間1と違わなければなりません。</value>
+  </data>
+  <data name="MSRO01_010" xml:space="preserve">
+    <value>休暇終了時間２は休暇開始時間２と違わなければなりません。</value>
+  </data>
+  <data name="MSRO01_011" xml:space="preserve">
+    <value>休暇終了時間3は休暇開始時間3と違わなければなりません。</value>
+  </data>
+  <data name="MSSH01_011" xml:space="preserve">
+    <value>退勤時刻 は出勤時刻等しくないでなければなりません</value>
+  </data>
+  <data name="MSSH01_012" xml:space="preserve">
+    <value>1へ  休憩時間 は、1から 休憩時間等しくないでなければなりません</value>
+  </data>
+  <data name="MSSH01_013" xml:space="preserve">
+    <value>2へ  休憩時間 は、2から 休憩時間等しくないでなければなりません</value>
+  </data>
+  <data name="MSSH01_014" xml:space="preserve">
+    <value>3へ  休憩時間 は、3から 休憩時間等しくないでなければなりません</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_006" xml:space="preserve">
+    <value>種類'は必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_007" xml:space="preserve">
+    <value>出勤時刻は必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_008" xml:space="preserve">
+    <value>退勤時刻は必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_009" xml:space="preserve">
+    <value>賃金の形明細は必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_Detail_007" xml:space="preserve">
+    <value>の$行目：種類'は必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_Detail_008" xml:space="preserve">
+    <value>の$行目：出勤時刻は必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_Detail_009" xml:space="preserve">
+    <value>の$行目：退勤時刻は必須入力です</value>
+  </data>
+  <data name="HRWA00_001" xml:space="preserve">
+    <value>の$行目: '給与計算の形式'は必須入力です</value>
+  </data>
+  <data name="Planning001" xml:space="preserve">
+    <value>行目$ : 社員が不正です。</value>
+  </data>
+  <data name="Planning002" xml:space="preserve">
+    <value>行目$ : 事業所が不正です。</value>
+  </data>
+  <data name="Planning003" xml:space="preserve">
+    <value>行目$ : 部署が不正です。</value>
+  </data>
+  <data name="Planning004" xml:space="preserve">
+    <value>行目$ : 所属が不正です。</value>
+  </data>
+  <data name="Planning005" xml:space="preserve">
+    <value>行目$ : チームが不正です。</value>
+  </data>
+  <data name="Planning006" xml:space="preserve">
+    <value>行目$ : 経路が不正です。</value>
+  </data>
+  <data name="Planning007" xml:space="preserve">
+    <value>行目$ : 運用が不正です。</value>
+  </data>
+  <data name="Planning008" xml:space="preserve">
+    <value>行目$ : 開始日が不正です。</value>
+  </data>
+  <data name="Planning009" xml:space="preserve">
+    <value>行目$ : 終了日が不正です。</value>
+  </data>
+  <data name="Planning010" xml:space="preserve">
+    <value>行目$ : 終了日は必ず開始日以上です。</value>
+  </data>
+  <data name="Planning011" xml:space="preserve">
+    <value>行目$ : 勤務シフトが不正です。</value>
+  </data>
+  <data name="Planning012" xml:space="preserve">
+    <value>行目$ : 勤務シフトの前の残業時間が不正です。</value>
+  </data>
+  <data name="Planning013" xml:space="preserve">
+    <value>行目$ : 勤務シフトの後の残業時間が不正です。</value>
+  </data>
+  <data name="Planning014" xml:space="preserve">
+    <value>行目$ : 含まれる休日のコラムに0か1を入力します。</value>
+  </data>
+  <data name="MSFM01_003" xml:space="preserve">
+    <value>休暇理由種類'は必須入力です</value>
+  </data>
+  <data name="Planning015" xml:space="preserve">
+    <value>行目$ : インポートファイルのデータは重複です。もう一度点検してください。</value>
+  </data>
+  <data name="HREM_Import_145" xml:space="preserve">
+    <value>行目$ : '生年月日は本日より大きい’</value>
+  </data>
+  <data name="HREM_Import_146" xml:space="preserve">
+    <value>行目$ : '人民IDの発行年は誕生年より大きい’</value>
+  </data>
+  <data name="HREM_Import_147" xml:space="preserve">
+    <value>行目$ : '人民IDの発行日は生年月日より大きい’</value>
+  </data>
+  <data name="Planning016" xml:space="preserve">
+    <value>行目$ : 休暇登録日数と休暇登録時間は一致しません。</value>
+  </data>
+  <data name="Planning017" xml:space="preserve">
+    <value>行目$ : 休暇タイプが不正です。</value>
+  </data>
+  <data name="Planning018" xml:space="preserve">
+    <value>行目$ : 休暇理由が不正です。</value>
+  </data>
+  <data name="MSBR01_001" xml:space="preserve">
+    <value>バス路線コードは必須入力です</value>
+  </data>
+  <data name="MSBR01_002" xml:space="preserve">
+    <value>バス路線名は必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_001" xml:space="preserve">
+    <value>賃金コードの形を記入する必要があります</value>
+  </data>
+  <data name="MSWA01Dto_002" xml:space="preserve">
+    <value>説明は必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_003" xml:space="preserve">
+    <value>'標準の営業日は'ゼロにすることはできません。</value>
+  </data>
+  <data name="MSWA01Dto_004" xml:space="preserve">
+    <value>水準勤務時間数は必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_005" xml:space="preserve">
+    <value>固定は必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_007" xml:space="preserve">
+    <value>スタータスは必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_001" xml:space="preserve">
+    <value>開始時間は必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_002" xml:space="preserve">
+    <value>終了時間は必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_003" xml:space="preserve">
+    <value>控除額 必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_004" xml:space="preserve">
+    <value>開始時間が終了時間より大きいです</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_005" xml:space="preserve">
+    <value>登録時間は既存です</value>
+  </data>
+  <data name="MSWA01Dto_Detail_001" xml:space="preserve">
+    <value>$行目: 開始時間は必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_Detail_002" xml:space="preserve">
+    <value>$行目: 終了時間は必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_Detail_003" xml:space="preserve">
+    <value>$行目: 控除額 必須入力です</value>
+  </data>
+  <data name="MSWA01Dto_Detail_004" xml:space="preserve">
+    <value>$行目: 開始時間が終了時間より大きいです</value>
+  </data>
+  <data name="MSWA01Dto_Detail_005" xml:space="preserve">
+    <value>$行目: 登録時間は既存です</value>
+  </data>
+  <data name="MSWA01Dto_Detail_006" xml:space="preserve">
+    <value>$行目: 控除額は時間 に応じて増加する必要があります</value>
+  </data>
+  <data name="Planning019" xml:space="preserve">
+    <value>行目$ : 終了日は開始日より大きいです。</value>
+  </data>
+  <data name="Planning020" xml:space="preserve">
+    <value>行目$ : 出産予定日が不正です。</value>
+  </data>
+  <data name="Planning021" xml:space="preserve">
+    <value>行目$ : 出産日が不正です。</value>
+  </data>
+  <data name="Planning022" xml:space="preserve">
+    <value>行目$ : 子育ち制度受取開始日が不正です。</value>
+  </data>
+  <data name="Planning023" xml:space="preserve">
+    <value>行目$ : 子育ち制度受取最終日が不正です。</value>
+  </data>
+  <data name="MSLE01_001" xml:space="preserve">
+    <value>レベル コード 'は必須入力です.</value>
+  </data>
+  <data name="MSLE01_002" xml:space="preserve">
+    <value>レベル 名 (VN) 'は必須入力です.</value>
+  </data>
+  <data name="BSTR01_001" xml:space="preserve">
+    <value>社員'は必須入力です</value>
+  </data>
+  <data name="BSTR01_002" xml:space="preserve">
+    <value>バスのルートは必須入力です。</value>
+  </data>
+  <data name="BSTR01_003" xml:space="preserve">
+    <value> 開始日'は必須入力です</value>
+  </data>
+  <data name="BSTR01_004" xml:space="preserve">
+    <value>終了日'は必須入力です</value>
+  </data>
+  <data name="BSTR01_005" xml:space="preserve">
+    <value>開始日が終了日以下は必須です。</value>
+  </data>
+  <data name="BSTR01_006" xml:space="preserve">
+    <value>今回は既に登録です。</value>
+  </data>
+  <data name="Planning027" xml:space="preserve">
+    <value>行目$ : 出欠状況記録の出勤時刻1が不正です。</value>
+  </data>
+  <data name="Planning028" xml:space="preserve">
+    <value>行目$ : 出欠状況記録の退勤時刻1が不正です。</value>
+  </data>
+  <data name="Planning029" xml:space="preserve">
+    <value>行目$ : 出欠状況記録の出勤時刻２が不正です。</value>
+  </data>
+  <data name="Planning030" xml:space="preserve">
+    <value>行目$ : 出欠状況記録の退勤時刻２が不正です。</value>
+  </data>
+  <data name="Planning031" xml:space="preserve">
+    <value>行目$ : 出欠状況記録の出勤時刻3が不正です。</value>
+  </data>
+  <data name="Planning032" xml:space="preserve">
+    <value>行目$ : 出欠状況記録の退勤時刻3が不正です。</value>
+  </data>
+  <data name="Planning033" xml:space="preserve">
+    <value>行目$ : 出欠状況記録の出勤時刻4が不正です。</value>
+  </data>
+  <data name="Planning034" xml:space="preserve">
+    <value>行目$ : 出欠状況記録の退勤時刻4が不正です。</value>
+  </data>
+  <data name="Planning035" xml:space="preserve">
+    <value>行目$ : 出欠状況記録の出勤時刻5が不正です。</value>
+  </data>
+  <data name="Planning036" xml:space="preserve">
+    <value>行目$ : 出欠状況記録の退勤時刻5が不正です。</value>
+  </data>
+  <data name="Planning037" xml:space="preserve">
+    <value>行目$ : 深夜時間夜勤のコラムに0か1を入力します。</value>
+  </data>
+  <data name="BSDO01_001" xml:space="preserve">
+    <value>社員'は必須入力です</value>
+  </data>
+  <data name="BSDO01_002" xml:space="preserve">
+    <value>寮は必須入力です。</value>
+  </data>
+  <data name="BSDO01_003" xml:space="preserve">
+    <value> 開始日'は必須入力です</value>
+  </data>
+  <data name="BSDO01_004" xml:space="preserve">
+    <value>終了日'は必須入力です</value>
+  </data>
+  <data name="BSDO01_005" xml:space="preserve">
+    <value>開始日が終了日以下は必須です。</value>
+  </data>
+  <data name="BSDO01_006" xml:space="preserve">
+    <value>今回は既に登録です。</value>
+  </data>
+  <data name="Planning038" xml:space="preserve">
+    <value>ID 社員$の残る有給休暇は足りません。</value>
+  </data>
+  <data name="HREM01_036" xml:space="preserve">
+    <value>社員タイプは必須入力です</value>
+  </data>
+  <data name="HREM_Import_148" xml:space="preserve">
+    <value>行目$ : '社員タイプは入力必要.'</value>
+  </data>
+  <data name="HREM_Import_149" xml:space="preserve">
+    <value>行目$ : '社員タイプの形式は正しくない'</value>
+  </data>
+  <data name="HREM_Import_150" xml:space="preserve">
+    <value>行目$ ：レベルコードは10桁数を超えしません'</value>
+  </data>
+  <data name="HREM_Import_151" xml:space="preserve">
+    <value>行目$ ：レベルコードはプロジェクトリストに有効の状態で既存する必要がある’</value>
+  </data>
+  <data name="Planning039" xml:space="preserve">
+    <value>行目$ : 深夜時間夜勤のコラムに時間が入力されました。</value>
+  </data>
+  <data name="HREM01_037" xml:space="preserve">
+    <value>本日は'退職日'より大きい</value>
+  </data>
+  <data name="MSPA00_044" xml:space="preserve">
+    <value>会社の提出最大保険給与指定は必須入力です</value>
+  </data>
+  <data name="MSPA00_045" xml:space="preserve">
+    <value>社員の提出最大保険給与指定は必須入力です</value>
+  </data>
+  <data name="MSPA_ALRow_001" xml:space="preserve">
+    <value>「時間設定」の$行目：開始年は必須入力です</value>
+  </data>
+  <data name="MSPA_ALRow_002" xml:space="preserve">
+    <value>「時間設定」の$行目：終了年は必須入力です</value>
+  </data>
+  <data name="MSPA_ALRow_003" xml:space="preserve">
+    <value>「時間設定」の$行目：終了年は開始年より大きいです。</value>
+  </data>
+  <data name="MSPA_ALRow_004" xml:space="preserve">
+    <value>「時間設定」の$行目：日数は必須入力です</value>
+  </data>
+  <data name="MSPA_ALRow_005" xml:space="preserve">
+    <value>「時間設定」の$行目：この時間隔は休日数に登録しました。</value>
+  </data>
+  <data name="MSPA_ALRow_006" xml:space="preserve">
+    <value>「時間設定」の$行目： 休日数は設定されました。</value>
+  </data>
+  <data name="MSPA_SeniorityRow_001" xml:space="preserve">
+    <value>[累積年設定タブ] の$行目: 終了年は必須入力です</value>
+  </data>
+  <data name="MSPA_SeniorityRow_002" xml:space="preserve">
+    <value>[累積年設定タブ] の$行目 :  控除額は必須入力です</value>
+  </data>
+  <data name="MSPA_SeniorityRow_003" xml:space="preserve">
+    <value>[累積年設定タブ] の$行目: この時間隔は累積年の控除額のために設定されます。</value>
+  </data>
+  <data name="MSPA_SeniorityRow_004" xml:space="preserve">
+    <value>[累積年設定タブ] の$行目 :  この控除額は累積年のために設定されます。</value>
+  </data>
+  <data name="MSPA_Seniority_001" xml:space="preserve">
+    <value>累積年は必須入力です</value>
+  </data>
+  <data name="MSPA_Seniority_002" xml:space="preserve">
+    <value>控除額は必須入力です</value>
+  </data>
+  <data name="MSPA_Seniority_003" xml:space="preserve">
+    <value>この時間隔は累積年の控除額のために設定されます。</value>
+  </data>
+  <data name="MSPA_Seniority_004" xml:space="preserve">
+    <value>This amount must increasing.</value>
+  </data>
+  <data name="MSPA_AL_001" xml:space="preserve">
+    <value>開始年は必須入力です</value>
+  </data>
+  <data name="MSPA_AL_002" xml:space="preserve">
+    <value>終了年は必須入力です</value>
+  </data>
+  <data name="MSPA_AL_003" xml:space="preserve">
+    <value>日数は必須入力です</value>
+  </data>
+  <data name="MSPA_AL_004" xml:space="preserve">
+    <value>終了年は開始年より大きいです。</value>
+  </data>
+  <data name="MSPA_AL_005" xml:space="preserve">
+    <value>この時間隔は休日数に登録しました。</value>
+  </data>
+  <data name="MSPA_AL_006" xml:space="preserve">
+    <value>Number of days must increasing.</value>
+  </data>
+  <data name="Planning040" xml:space="preserve">
+    <value>行目$ : 1ヶ月のみの計画を作成します。</value>
+  </data>
+  <data name="MSPA00_046" xml:space="preserve">
+    <value>月まで有効(来年)は不有効です。</value>
+  </data>
+  <data name="MSPA00_047" xml:space="preserve">
+    <value>レートは不有効です。</value>
+  </data>
+  <data name="MSPA00_048" xml:space="preserve">
+    <value>適用月 は不有効です。</value>
+  </data>
+  <data name="MSPA00_049" xml:space="preserve">
+    <value>レート(来年）は不有効です。</value>
+  </data>
+  <data name="MSPA00_050" xml:space="preserve">
+    <value>適用月(来年）は不有効です。</value>
+  </data>
+  <data name="HREM_Import_Salary_015" xml:space="preserve">
+    <value>行目$ ：'社員は既存しません’</value>
+  </data>
+  <data name="ATAE01_001" xml:space="preserve">
+    <value>勤務シフト'は必須入力です</value>
+  </data>
+  <data name="ATAE01_002" xml:space="preserve">
+    <value>出勤時刻' は必須入力です</value>
+  </data>
+  <data name="ATAE01_003" xml:space="preserve">
+    <value>退勤時刻' は必須入力です</value>
+  </data>
+  <data name="ATAE01_004" xml:space="preserve">
+    <value>休暇分類' は必須入力です</value>
+  </data>
+  <data name="ATAE01_005" xml:space="preserve">
+    <value>$回目の勤怠 : 出勤時刻は必須入力です。</value>
+  </data>
+  <data name="ATAE01_006" xml:space="preserve">
+    <value>$回目の勤怠 : 退勤時刻は必須入力です。</value>
+  </data>
+  <data name="ATAE01_007" xml:space="preserve">
+    <value>$回目の勤怠 の出勤時刻は前回出勤の退勤時刻より大きいです。</value>
+  </data>
+  <data name="ATAE01_008" xml:space="preserve">
+    <value>$回目の勤怠 の退勤時刻は次回出勤の出勤時刻より小さいです。</value>
+  </data>
+  <data name="ATAE01_009" xml:space="preserve">
+    <value>この計画が夜勤シフトを登録しなくて、$回目の勤怠が適当じゃない。</value>
+  </data>
+  <data name="ATAE01_010" xml:space="preserve">
+    <value>退勤時刻は出勤時刻と違う。</value>
+  </data>
+  <data name="ATAE01_011" xml:space="preserve">
+    <value>$回目の勤怠は夜勤シフトの勤怠じゃない。</value>
+  </data>
+  <data name="ATTS03_005" xml:space="preserve">
+    <value>出勤時刻は必須入力です</value>
+  </data>
+  <data name="ATTS03_006" xml:space="preserve">
+    <value>退勤時刻は必須入力です</value>
+  </data>
+  <data name="ATTS03_007" xml:space="preserve">
+    <value>退勤時刻は出勤時刻より大きいです。</value>
+  </data>
+  <data name="ATTS03_008" xml:space="preserve">
+    <value>行目 $ : 退勤時刻は必須入力です。</value>
+  </data>
+  <data name="ATTS03_010" xml:space="preserve">
+    <value>行目 $ : 退勤時刻は出勤時刻より大きいです。</value>
+  </data>
+  <data name="HRCT01_009" xml:space="preserve">
+    <value>雇用者'は必須入力です</value>
+  </data>
+  <data name="HRCT01_010" xml:space="preserve">
+    <value>会社名'は必須入力です</value>
+  </data>
+  <data name="HRCT01_011" xml:space="preserve">
+    <value>氏名'は必須入力です</value>
+  </data>
+  <data name="ATIO_Import_015" xml:space="preserve">
+    <value>行目$：休暇理由種類は必須入力です</value>
+  </data>
+  <data name="ATIO_Import_016" xml:space="preserve">
+    <value>行目$：休暇理由種類は間違ったフォーマットです</value>
+  </data>
+  <data name="MSLC01_007" xml:space="preserve">
+    <value>種類 は必須入力です</value>
+  </data>
+  <data name="ATTS03_011" xml:space="preserve">
+    <value>行目 $ : 日は必須入力です</value>
+  </data>
+  <data name="ATTS03_012" xml:space="preserve">
+    <value>日数'は必須入力です</value>
+  </data>
+  <data name="ATTS03_013" xml:space="preserve">
+    <value>行目 $ : 入力した日数は間違えた値を持っている。</value>
+  </data>
+  <data name="ATTS03_014" xml:space="preserve">
+    <value>入力した日数は間違えた値を持っている。</value>
+  </data>
+  <data name="Planning000" xml:space="preserve">
+    <value>行目 $: スケジューが正しくありません</value>
+  </data>
+  <data name="CMN062" xml:space="preserve">
+    <value>システム処理のパフォーマンスのために30日の内でデータ検索してください。</value>
+  </data>
+  <data name="CMN063" xml:space="preserve">
+    <value>他のユーザが使用中のため、スケジュール情報を更新できません。しばらく待ってから再度お試し下さい。</value>
+  </data>
+  <data name="HREMSkill_003" xml:space="preserve">
+    <value>技能名は必須入力です。</value>
+  </data>
+  <data name="HREMSkill_004" xml:space="preserve">
+    <value>「技能情報」タブからの行目$ : 技能名は必須入力です。</value>
+  </data>
+  <data name="HRCT01_020" xml:space="preserve">
+    <value>契約番号フィールドは既存です。もう一度入力してください。</value>
+  </data>
+  <data name="HREMEdu_Qua_005" xml:space="preserve">
+    <value>「資格情報」タブからの行目$ : 資格コードは必須入力です。</value>
+  </data>
+  <data name="HREMEdu_Qua_006" xml:space="preserve">
+    <value>資格コードは必須入力です。</value>
+  </data>
+  <data name="HREMExperience_005" xml:space="preserve">
+    <value>会社名は必須入力です。</value>
+  </data>
+  <data name="HREMExperience_006" xml:space="preserve">
+    <value>開始日は必須入力です。</value>
+  </data>
+  <data name="HREMExperience_007" xml:space="preserve">
+    <value>終了日は必須入力です。</value>
+  </data>
+  <data name="HREMExperience_008" xml:space="preserve">
+    <value>「経験情報」タブからの行目$ : 会社名は必須入力です。</value>
+  </data>
+  <data name="HREMExperience_009" xml:space="preserve">
+    <value>「経験情報」タブからの行目$ : 開始日は必須入力です。</value>
+  </data>
+  <data name="HREMExperience_010" xml:space="preserve">
+    <value>「経験情報」タブからの行目$ : 終了日は必須入力です。</value>
+  </data>
+  <data name="HREMFamily_003" xml:space="preserve">
+    <value>氏名は必須入力です。</value>
+  </data>
+  <data name="HREMFamily_004" xml:space="preserve">
+    <value>「家族情報」タブからの行目$ : 氏名は必須入力です。</value>
+  </data>
+  <data name="ATAE_Import_001" xml:space="preserve">
+    <value>の$行目：社員No'は必須入力です</value>
+  </data>
+  <data name="ATAE_Import_002" xml:space="preserve">
+    <value>の$行目：社員Noが正しくありません</value>
+  </data>
+  <data name="ATAE_Import_003" xml:space="preserve">
+    <value>の$行目：種類'は必須入力です</value>
+  </data>
+  <data name="ATAE_Import_004" xml:space="preserve">
+    <value>の$行目：種類が正しくありません</value>
+  </data>
+  <data name="ATAE_Import_005" xml:space="preserve">
+    <value>の$行目：勤務シフトコード'は必須入力です</value>
+  </data>
+  <data name="ATAE_Import_006" xml:space="preserve">
+    <value>の$行目：勤務シフトコードが正しくありません</value>
+  </data>
+  <data name="ATAE_Import_007" xml:space="preserve">
+    <value>の$行目：出勤時刻'は必須入力です</value>
+  </data>
+  <data name="ATAE_Import_008" xml:space="preserve">
+    <value>の$行目：出勤時刻が正しくありません</value>
+  </data>
+  <data name="ATAE_Import_009" xml:space="preserve">
+    <value>の$行目：退勤時刻'は必須入力です</value>
+  </data>
+  <data name="ATAE_Import_010" xml:space="preserve">
+    <value>の$行目：退勤時刻が正しくありません</value>
+  </data>
+  <data name="ATAE_Import_011" xml:space="preserve">
+    <value>の$行目：休暇分類'は必須入力です</value>
+  </data>
+  <data name="ATAE_Import_012" xml:space="preserve">
+    <value>の$行目：休暇分類が正しくありません</value>
+  </data>
+  <data name="CMN064" xml:space="preserve">
+    <value>他のユーザが使用中のため、スケジュール情報を更新できません。しばらく待ってから再度お試し下さい。</value>
+  </data>
+  <data name="CMN065" xml:space="preserve">
+    <value>半休を選定された場合、残り半日の勤務時間を登録する必要なります。
+残り半日の勤務時間を登録しない場合、一日休みに設定することとなります。</value>
+  </data>
+  <data name="ATOT_Import_001" xml:space="preserve">
+    <value>行目$: 社員コードは必須入力です。</value>
+  </data>
+  <data name="ATOT_Import_002" xml:space="preserve">
+    <value>行目$: 社員コードは社員一覧に必ずあって、退職と違うステータスがあります。</value>
+  </data>
+  <data name="ATOT_Import_003" xml:space="preserve">
+    <value>行目$: 社員コードは10文字以下入力します。</value>
+  </data>
+  <data name="ATOT_Import_004" xml:space="preserve">
+    <value>行目$: 残業日は必須入力です。</value>
+  </data>
+  <data name="ATOT_Import_005" xml:space="preserve">
+    <value>行目$: 残業日のフォーマットは不正です。</value>
+  </data>
+  <data name="ATOT_Import_006" xml:space="preserve">
+    <value>行目$: この社員の給料期間を閉じました。</value>
+  </data>
+  <data name="ATOT_Import_007" xml:space="preserve">
+    <value>行目$: この社員のデータは存在しません。</value>
+  </data>
+  <data name="ATOT_Import_008" xml:space="preserve">
+    <value>行目$: これはこの社員に更新できないエラーステータスです。</value>
+  </data>
+  <data name="ATOT_Import_009" xml:space="preserve">
+    <value>勤務シフトの前の残業のフォーマットは不正です。</value>
+  </data>
+  <data name="ATOT_Import_010" xml:space="preserve">
+    <value>勤務シフトの後の残業のフォーマットは不正です。</value>
+  </data>
+  <data name="ATOT_Import_011" xml:space="preserve">
+    <value>夜勤残業のフォーマットは不正です。</value>
+  </data>
+  <data name="ATOT_Import_012" xml:space="preserve">
+    <value>行目$: 残業時間はこの社員に必須入力します。</value>
+  </data>
+  <data name="ATOT_Import_013" xml:space="preserve">
+    <value>行目 $ : インポートファイルにデータを重複する。給料期間を再検査してください。'</value>
+  </data>
+  <data name="HRAA00_008" xml:space="preserve">
+    <value>行目 $: 位置は必須入力です。</value>
+  </data>
+  <data name="HRAA00_009" xml:space="preserve">
+    <value>行目 $: レベルは必須入力です。</value>
+  </data>
+  <data name="HRAA00_010" xml:space="preserve">
+    <value>行目 $: 勤務シフトは必須入力です。</value>
+  </data>
+  <data name="ATAE_Import_015" xml:space="preserve">
+    <value>の$行目：入力したデータは問題があります。次の場合を参考してください。社員はまだ勤怠を認証されていない場合、また、勤怠認証はエラーが起こらない場合、また、社員は勤怠を総認証された場合です。</value>
+  </data>
+  <data name="CMN066" xml:space="preserve">
+    <value>選定されている期間は締め処理が行いましたので勤怠について再処理できません。</value>
+  </data>
+  <data name="MSDO01_001" xml:space="preserve">
+    <value>寮舎コードは必須入力です</value>
+  </data>
+  <data name="MSDO01_002" xml:space="preserve">
+    <value>寮舎名 (VN)は必須入力です</value>
+  </data>
+  <data name="MSPA00_007" xml:space="preserve">
+    <value>% 労働組合は必須入力です</value>
+  </data>
+  <data name="MSPA00_012" xml:space="preserve">
+    <value>時給換算方法は必須入力です</value>
+  </data>
+  <data name="MSUR01_005" xml:space="preserve">
+    <value>ユーザーグループ'は必須入力です</value>
+    <comment>Khi Users Profile bị null thì xuất message này</comment>
+  </data>
+  <data name="MSUR01_006" xml:space="preserve">
+    <value>人事権は必須入力です</value>
+    <comment>Khi Users Password bị null thì xuất message này</comment>
+  </data>
+  <data name="MSUR01_007" xml:space="preserve">
+    <value>ＣＣ確認は必須入力です</value>
+    <comment>Khi Users DisplayName bị null thì xuất message này</comment>
+  </data>
+  <data name="PRMP00_023" xml:space="preserve">
+    <value>給与明細書を作成します。よろしいでしょうか。</value>
+  </data>
+  <data name="ATTS03_009" xml:space="preserve">
+    <value>行目 $ : 出勤時刻は必須入力です。</value>
+  </data>
+  <data name="HREMSalary_005" xml:space="preserve">
+    <value>削除は成功です</value>
+  </data>
+  <data name="HREM_Import_005" xml:space="preserve">
+    <value>行目$ :生年月日はデータがない場合、誕生年は入力必要'</value>
+  </data>
+  <data name="HREM_Import_006" xml:space="preserve">
+    <value>行目$ :'国籍'は入力必要'</value>
+  </data>
+  <data name="HREM_Import_007" xml:space="preserve">
+    <value>行目$ :'事業所所在地'は入力必要'</value>
+  </data>
+  <data name="PRMP00_024" xml:space="preserve">
+    <value>給与明細書を成功に作成しました。</value>
+  </data>
+  <data name="CMN067" xml:space="preserve">
+    <value>アクセスは社員に拒否されました。</value>
+  </data>
+  <data name="HRRA_Import_001" xml:space="preserve">
+    <value>$行：社員IDは必須入力項目です。</value>
+  </data>
+  <data name="HRRA_Import_002" xml:space="preserve">
+    <value>$行：社員IDは社員一覧に存在し、アクティブ状態となっています。</value>
+  </data>
+  <data name="HRRA_Import_003" xml:space="preserve">
+    <value>$行：社員IDは最大10文字で入力してください。</value>
+  </data>
+  <data name="HRRA_Import_004" xml:space="preserve">
+    <value>$行：移動日は必須入力項目です。</value>
+  </data>
+  <data name="HRRA_Import_005" xml:space="preserve">
+    <value>$行：移動日の形式は不正です。</value>
+  </data>
+  <data name="HRRA_Import_006" xml:space="preserve">
+    <value>$行：インポートファイルにデータが重複しています。社員IDおよび移動日を再度確認してください。</value>
+  </data>
+  <data name="HRRA_Import_007" xml:space="preserve">
+    <value>$行：工程IDは工程一覧に存在し、アクティブ状態となっています。</value>
+  </data>
+  <data name="HRRA_Import_008" xml:space="preserve">
+    <value>$行：工程IDは最大10文字で入力してください。</value>
+  </data>
+  <data name="HRRA_Import_009" xml:space="preserve">
+    <value>$行：ルートIDはルート一覧に存在し、アクティブ状態となっています。</value>
+  </data>
+  <data name="HRRA_Import_010" xml:space="preserve">
+    <value>$行：ルートIDは最大10文字で入力してください。</value>
+  </data>
+  <data name="HRRA_Import_011" xml:space="preserve">
+    <value>$行：組IDは組一覧に存在し、アクティブ状態となっています。</value>
+  </data>
+  <data name="HRRA_Import_012" xml:space="preserve">
+    <value>$行：ルートIDは最大10文字で入力してください。</value>
+  </data>
+  <data name="HRRA_Import_013" xml:space="preserve">
+    <value>$行：組IDは組一覧に存在し、アクティブ状態となっています。</value>
+  </data>
+  <data name="HRRA_Import_014" xml:space="preserve">
+    <value>$行：組IDは最大10文字で入力してください。</value>
+  </data>
+  <data name="HRRA_Import_015" xml:space="preserve">
+    <value>$行：部署IDは部署一覧に存在し、アクティブ状態となっています。</value>
+  </data>
+  <data name="HRRA_Import_016" xml:space="preserve">
+    <value>$行：部署IDは最大10文字で入力してください。</value>
+  </data>
+  <data name="HRRA_Import_017" xml:space="preserve">
+    <value>$行：部門IDは部門一覧に存在し、アクティブ状態となっています。</value>
+  </data>
+  <data name="HRRA_Import_018" xml:space="preserve">
+    <value>$行：部門IDは最大10文字で入力してください。</value>
+  </data>
+  <data name="HRRA_Import_019" xml:space="preserve">
+    <value>$行：事務所IDは事務所一覧に存在し、アクティブ状態となっています。</value>
+  </data>
+  <data name="HRRA_Import_020" xml:space="preserve">
+    <value>$行：事務所IDは最大10文字で入力してください。</value>
+  </data>
+  <data name="HRRA_Import_021" xml:space="preserve">
+    <value>$行：回転IDは不正です。</value>
+  </data>
+  <data name="HRRA_Import_022" xml:space="preserve">
+    <value>$行：（事務所IDからの誤り）部署ID、部門ID、組ID、ルートID、工程IDは事務所IDに所属していません。</value>
+  </data>
+  <data name="HRRA_Import_023" xml:space="preserve">
+    <value>$行：（部門IDからの誤り）部署ID、組ID、ルートID、工程IDは部門IDに所属していません。</value>
+  </data>
+  <data name="HRRA_Import_024" xml:space="preserve">
+    <value>$行：（部署IDからの誤り）組ID、ルートID、工程IDは部署IDに所属していません。</value>
+  </data>
+  <data name="HRRA_Import_025" xml:space="preserve">
+    <value>$行：（組IDからの誤り）ルートID、工程IDは組IDに所属していません。</value>
+  </data>
+  <data name="HRRA_Import_026" xml:space="preserve">
+    <value>$行：（ルートIDからの誤り）工程IDはルートIDに所属していません。</value>
+  </data>
+  <data name="HRRA_Import_027" xml:space="preserve">
+    <value>$行：（工程IDからの誤り）工程IDはルートIDに所属していません。</value>
+  </data>
+  <data name="CMN068" xml:space="preserve">
+    <value>警告：$ の期間内に勤務計画が存在しませんか、休暇計画が存在しています。</value>
+  </data>
+  <data name="ATOT_Import_014" xml:space="preserve">
+    <value>$行：インポート日は無効です。残業は勤務日にインポートしてください。</value>
+  </data>
+  <data name="ATOT_Import_015" xml:space="preserve">
+    <value>$行：産業は社員の休暇日にインポートできません。</value>
+  </data>
+  <data name="HRRA_Import_028" xml:space="preserve">
+    <value>$行：グレードIDはグレード一覧に存在し、アクティブ状態となっています。</value>
+  </data>
+  <data name="HRRA_Import_029" xml:space="preserve">
+    <value>$行：グレードIDは最大10文字で入力してください。</value>
+  </data>
+  <data name="HREM_Import_Salary_016" xml:space="preserve">
+    <value>$行：給与は0より大きい数字で入力してください。</value>
+  </data>
+  <data name="ATTS01_LeaveMess_001" xml:space="preserve">
+    <value>休暇日は1日未満です。</value>
+  </data>
+  <data name="HRRA01_001" xml:space="preserve">
+    <value>勤務シフト'は必須入力です</value>
+  </data>
+  <data name="HREM_Import_152" xml:space="preserve">
+    <value>行目$ ： '転勤日の形式は正しくない'</value>
+  </data>
+  <data name="BSPP01_001" xml:space="preserve">
+    <value>期間'は必須入力です</value>
+  </data>
+  <data name="BSPP01_002" xml:space="preserve">
+    <value>期は必須入力項目です。</value>
+  </data>
+  <data name="BSPP01_003" xml:space="preserve">
+    <value>価格はゼロにすることはできません</value>
+  </data>
+  <data name="HREM01_38" xml:space="preserve">
+    <value>開始日'は必須入力です</value>
+    <comment>Khi Start date bị null thì xuất message này</comment>
+  </data>
+  <data name="HRMR01_001" xml:space="preserve">
+    <value>'社員'は必須入力です</value>
+  </data>
+  <data name="HRMR01_002" xml:space="preserve">
+    <value>開始日'は必須入力です</value>
+  </data>
+  <data name="HRMR01_003" xml:space="preserve">
+    <value>終了日'は必須入力です</value>
+  </data>
+  <data name="HRMR01_004" xml:space="preserve">
+    <value>'開始日が終了日以下は必須です。</value>
+  </data>
+  <data name="HRMR01_005" xml:space="preserve">
+    <value>'手当適用開始日は産休登録終了日より大きいです。</value>
+  </data>
+  <data name="HRMR01_006" xml:space="preserve">
+    <value>手当適用終了日は手当適用開始日より大きいです。</value>
+  </data>
+  <data name="HRMR01_007" xml:space="preserve">
+    <value>'手当適用終了日は産休登録終了日より大きいです。</value>
+  </data>
+  <data name="HRMR01_008" xml:space="preserve">
+    <value>産前休業制度終了日は産前休業制度開適用始日より大きくなければなりません。</value>
+  </data>
+  <data name="HRMR01_009" xml:space="preserve">
+    <value>産前休業制度終了日は産休登録開始日より小さくなければなりません。</value>
+  </data>
+  <data name="HRMR01_010" xml:space="preserve">
+    <value>赤ちゃんの数は必須入力項目です。</value>
+  </data>
+  <data name="HRMR01_011" xml:space="preserve">
+    <value>出産前休暇の終了日は出産前休暇の開始日より大きい日付になります。</value>
+  </data>
+  <data name="HRMR01_012" xml:space="preserve">
+    <value>出産前休暇の終了日は産休の開始日より小さい日付になります。</value>
+  </data>
+  <data name="HRMR01_013" xml:space="preserve">
+    <value>出産前休暇の終了日は出産予定日より小さい日付になります。</value>
+  </data>
+  <data name="HRMR01_014" xml:space="preserve">
+    <value>産休の終了日は産休の開始日より大きい日付になります。</value>
+  </data>
+  <data name="HRMR01_015" xml:space="preserve">
+    <value>出産後休暇の開始日は産休の終了日より大きい日付になります。</value>
+  </data>
+  <data name="HRMR01_016" xml:space="preserve">
+    <value>出産後休暇の終了日は出産後休暇の開始日より大きい日付になります。</value>
+  </data>
+  <data name="BSTD01_001" xml:space="preserve">
+    <value>社員IDは必須入力項目です。</value>
+  </data>
+  <data name="BSTD01_002" xml:space="preserve">
+    <value>期間'は必須入力です</value>
+  </data>
+  <data name="HRSA01Dto_DetailNotRow_001" xml:space="preserve">
+    <value>手当は必須入力です</value>
+  </data>
+  <data name="HRSA01Dto_DetailNotRow_002" xml:space="preserve">
+    <value>'～から適用(日)'は必須入力です</value>
+  </data>
+  <data name="HRSA01Dto_DetailNotRow_003" xml:space="preserve">
+    <value>終了日'は必須入力です</value>
+  </data>
+  <data name="HRSA01Dto_DetailNotRow_004" xml:space="preserve">
+    <value>手当金額'は必須入力です</value>
+  </data>
+  <data name="HRSA01Dto_DetailNotRow_005" xml:space="preserve">
+    <value>終了日は'～から適用(日)' より大きいです。</value>
+  </data>
+  <data name="HRSA01Dto_DetailNotRow_006" xml:space="preserve">
+    <value>控除額は0より大きいです。</value>
+  </data>
+  <data name="HRSA01Dto_DetailNotRow_007" xml:space="preserve">
+    <value>手当適用開始日は期間の開始日より大きいです。</value>
+  </data>
+  <data name="Planning041" xml:space="preserve">
+    <value>行目 $:「産前休業制度適用開始日」は不正です。</value>
+  </data>
+  <data name="Planning042" xml:space="preserve">
+    <value>行目 $:「産前休業制度適用開始日」は終了日以上です。</value>
+  </data>
+  <data name="Planning043" xml:space="preserve">
+    <value>行目 $:「産前休業制度適用終了日」は不正です。</value>
+  </data>
+  <data name="Planning044" xml:space="preserve">
+    <value>行目 $:「産前休業制度適用終了日」は終了日以上です。</value>
+  </data>
+  <data name="Planning045" xml:space="preserve">
+    <value>行目 $:「産前休業制度適用終了日」は「産前休業制度適用開始日」より大きいです。</value>
+  </data>
+  <data name="Planning046" xml:space="preserve">
+    <value>出産前休暇の終了日は出産前休暇の開始日より大きい日付になります。</value>
+  </data>
+  <data name="Planning047" xml:space="preserve">
+    <value>出産前休暇の終了日は産休の開始日より小さい日付になります。</value>
+  </data>
+  <data name="Planning048" xml:space="preserve">
+    <value>出産前休暇の終了日は出産予定日より小さい日付になります。</value>
+  </data>
+  <data name="Planning049" xml:space="preserve">
+    <value>産休の終了日は産休の開始日より大きい日付になります。</value>
+  </data>
+  <data name="Planning050" xml:space="preserve">
+    <value>出産後休暇の開始日は産休の終了日より大きい日付になります。</value>
+  </data>
+  <data name="Planning051" xml:space="preserve">
+    <value>出産後休暇の終了日は出産後休暇の開始日より大きい日付になります。</value>
+  </data>
+  <data name="Planning024" xml:space="preserve">
+    <value>行目$ : 子育ち制度受取開始日は終了日以上です。</value>
+  </data>
+  <data name="Planning025" xml:space="preserve">
+    <value>行目$ : 子育ち制度受取最終日は終了日より大きいです。</value>
+  </data>
+  <data name="Planning026" xml:space="preserve">
+    <value>行目$ : 子育ち制度受取最終日は子育ち制度受取開始日より大きいです。</value>
+  </data>
+  <data name="BSTD_Import_01" xml:space="preserve">
+    <value>社員ID: '$'の給料期間の締め処理を行いましたため、情報の編集はできません。</value>
+  </data>
+  <data name="BSTD_Import_02" xml:space="preserve">
+    <value>本社員は指定された期で給料を計算しましたため、新規追加はできません。</value>
+  </data>
+  <data name="HRMR01_017" xml:space="preserve">
+    <value>現在、入力している出産前休暇の開始日は、直近に登録した産休の終了日より大きい日付になります。</value>
+  </data>
+  <data name="HRWE_001" xml:space="preserve">
+    <value>'$'年に登録されたスタッフの作業環境</value>
+  </data>
+  <data name="HRWE_002" xml:space="preserve">
+    <value>登録時には、同じ環境で作業。</value>
+  </data>
+  <data name="HRSA01_014" xml:space="preserve">
+    <value>基本給料は0より大きい数字です。</value>
+  </data>
+  <data name="HREM_Import_Salary_017" xml:space="preserve">
+    <value>$行：退職社員です。</value>
+  </data>
+  <data name="HREM_Import_Salary_018" xml:space="preserve">
+    <value>$行：給与を支払っていない社員です。</value>
+  </data>
+  <data name="CMN069" xml:space="preserve">
+    <value>「PrAllowances」情報にデータが存在しています。</value>
+  </data>
+  <data name="HREM01_039" xml:space="preserve">
+    <value>入社日は必須入力項目です。</value>
+  </data>
+  <data name="Planning052" xml:space="preserve">
+    <value>現在、入力している出産前休暇の開始日は、直近に登録した産休の終了日より大きい日付になります。</value>
+  </data>
+  <data name="HREM01_040" xml:space="preserve">
+    <value>正社員になった場合、勤務開始日は必須入力項目です。</value>
+  </data>
+  <data name="HREM_Import_153" xml:space="preserve">
+    <value>正社員になった場合、勤務開始日は必須入力項目です。</value>
+  </data>
+  <data name="BSTD01_003" xml:space="preserve">
+    <value>通勤路は必須入力項目です。</value>
+  </data>
+  <data name="BSTD01_004" xml:space="preserve">
+    <value>通勤路は0より大きくなければなりません。</value>
+  </data>
+  <data name="BSPP_Import_001" xml:space="preserve">
+    <value>''$'給料期間の締め処理を行いましたため、ガソリン価格の編集はできません。</value>
+  </data>
+  <data name="BSPP_Import_0011" xml:space="preserve">
+    <value>''$'給料期間の締め処理を行いましたため、ガソリン価格の編集はできません。</value>
+  </data>
+  <data name="BSPP_Import_002" xml:space="preserve">
+    <value>''$'給料期間のガソリン価格情報を正常に削除しました。</value>
+  </data>
+  <data name="HRLA00ViewHistoryAnualLeave_001" xml:space="preserve">
+    <value>社員'$'は休暇付与履歴情報がありません。</value>
+  </data>
+  <data name="HRLA00ViewHistoryAnualLeave_002" xml:space="preserve">
+    <value>データが選択されていません。</value>
+  </data>
+  <data name="BSTD_Import_03" xml:space="preserve">
+    <value>'$'給料期間の社員ID: '$'は削除されました。</value>
+  </data>
+  <data name="MSPA00_051" xml:space="preserve">
+    <value>最大振替可能休暇日(直接)は0以外の値で入力してください。</value>
+  </data>
+  <data name="Planning053" xml:space="preserve">
+    <value>社員は男性ですので、計画設定はできません。</value>
+  </data>
+  <data name="Planning054" xml:space="preserve">
+    <value>Staff $ : シフト以外の社員ですので、計画設定はできません。</value>
+  </data>
+  <data name="MSWA01Dto_DetailNotRow_010" xml:space="preserve">
+    <value>$行：退勤時間は出勤時間より大きい値となります。</value>
+  </data>
+  <data name="MSWA01Dto_Detail_010" xml:space="preserve">
+    <value>$行：退勤時間は出勤時間より大きい値となります。</value>
+  </data>
+  <data name="CMN070" xml:space="preserve">
+    <value>変更された行はありません。</value>
+  </data>
+  <data name="Planning055" xml:space="preserve">
+    <value>Staff $:  Staff was terminated or has not joined in company yet.</value>
+  </data>
+  <data name="ATTS01_020" xml:space="preserve">
+    <value>出勤時間、退勤時間は違う値となります。</value>
+  </data>
+  <data name="HREM_Import_Salary_019" xml:space="preserve">
+    <value>行：支給設定を実施していませんか、退職日は当日より小さい日付となっているため、当社員の給料をインポートできません。</value>
+  </data>
+  <data name="Planning056" xml:space="preserve">
+    <value>$行：休日に休暇計画設定ができません。</value>
+  </data>
+  <data name="MSSP_Import_014" xml:space="preserve">
+    <value>Row $: WorkingDate can not be null OR less than 0 OR greater than 31.</value>
+  </data>
+  <data name="MSSP_Import_015" xml:space="preserve">
+    <value>行目 $: 給料期間開始日は給料期間と一致しない。給料期間の年と開始日の年を再検査してください。</value>
+  </data>
+  <data name="MSSP_Import_016" xml:space="preserve">
+    <value>$行：退勤時間は出勤時間より大きい値となります。</value>
+  </data>
+  <data name="ATAE_Import_016" xml:space="preserve">
+    <value>行$：時間とタイムシフトのアウトは無効です。</value>
+  </data>
+  <data name="ATAE_Import_017" xml:space="preserve">
+    <value>行$：休業理由コードは無効です。</value>
+  </data>
+  <data name="ATAE_Import_018" xml:space="preserve">
+    <value>行$： 休暇日数は、0.5 または 1 でなければなりません。</value>
+  </data>
+  <data name="ATAE_Import_019" xml:space="preserve">
+    <value>行$：出入り時刻時間記入しなければならない</value>
+  </data>
+  <data name="ATAE_Import_020" xml:space="preserve">
+    <value>行$：OT食事量の最大長は16シンボルです。</value>
+  </data>
+  <data name="MSWA01Dto_008" xml:space="preserve">
+    <value>Wage Code $ are being used, can not edit status to disable.</value>
+  </data>
+  <data name="MSWA01Dto_009" xml:space="preserve">
+    <value>データが選択されていません。</value>
+  </data>
+  <data name="MSDO01_003" xml:space="preserve">
+    <value>データが選択されていません。</value>
+  </data>
+  <data name="MSDO01_004" xml:space="preserve">
+    <value>ドミトリーコード '$'が使用され、編集/削除することはできません。</value>
+  </data>
+  <data name="MSBR01_003" xml:space="preserve">
+    <value>データが選択されていません。</value>
+  </data>
+  <data name="MSBR01_004" xml:space="preserve">
+    <value>Bus Route Code '$' are being used, can not edit.</value>
+  </data>
+  <data name="HRWE_003" xml:space="preserve">
+    <value>開始日'は必須入力です</value>
+  </data>
+  <data name="HREM_Import_Salary_020" xml:space="preserve">
+    <value>$行：退職社員です。</value>
+  </data>
+  <data name="HREM_UploadImage_01" xml:space="preserve">
+    <value>イメージファイルは、エラーになります: '$'</value>
+  </data>
+  <data name="HREM_UploadImage_02" xml:space="preserve">
+    <value>従業員IDがシステムに存在しない : '$'</value>
+  </data>
+  <data name="HREM_Import_154" xml:space="preserve">
+    <value>Row $ : 'Classification uncorrect format.'</value>
+  </data>
+  <data name="MSWA01Dto_010" xml:space="preserve">
+    <value>Wage Code $ are being used, can not delete</value>
+  </data>
+  <data name="HRWE_004" xml:space="preserve">
+    <value>'From Date' must be greater than working 'Joined Date'.</value>
+  </data>
+  <data name="TSP_001" xml:space="preserve">
+    <value>期間は必須入力です</value>
+  </data>
+  <data name="TSP_002" xml:space="preserve">
+    <value>'社員'は必須入力です</value>
+  </data>
+  <data name="TSP_003" xml:space="preserve">
+    <value>オブジェクトタイプは必須入力です。</value>
+  </data>
+  <data name="TSP_004" xml:space="preserve">
+    <value>オブジェクトコードは必須入力です。</value>
+  </data>
+  <data name="ATAE_Import_021" xml:space="preserve">
+    <value>Row $: Invalid to choose "Work on day-off" in normal working day</value>
+  </data>
+  <data name="HREM_Import_155" xml:space="preserve">
+    <value>行目$ : 入社日は必須入力項目です。</value>
+  </data>
+  <data name="ATTS03_017" xml:space="preserve">
+    <value>Hours Private Out must be less than Shift hours</value>
+  </data>
+  <data name="HRSA01_015" xml:space="preserve">
+    <value>This period is locked.</value>
+  </data>
+  <data name="Planning057" xml:space="preserve">
+    <value>Row $: The plan have not been created.</value>
+  </data>
+  <data name="HREM01_038" xml:space="preserve">
+    <value>従業員は募集を拒否された！</value>
+  </data>
+  <data name="HREM_Import_156" xml:space="preserve">
+    <value>行目$ : 従業員は募集を拒否された!</value>
+  </data>
+  <data name="ATIO_Import_017" xml:space="preserve">
+    <value>Row $: 'Check in date time must be greater than 'Joined Date' and less than 'Stop Working Date'.'</value>
+  </data>
+  <data name="MSSP_Import_017" xml:space="preserve">
+    <value>Row $: WorkingDate must be less than or equal number of days in period.</value>
+  </data>
+  <data name="MSSP_Import_018" xml:space="preserve">
+    <value>Row $: ToDate of this period must be less than Fromdate of next period.</value>
+  </data>
+  <data name="MSPA_AL_007" xml:space="preserve">
+    <value>'Days' must be less than 366.</value>
+  </data>
+  <data name="BSTD01_005" xml:space="preserve">
+    <value>This period is locked.</value>
+  </data>
+  <data name="BSTD01_006" xml:space="preserve">
+    <value>'Period' must greater than 'Joined Date' of Employee.</value>
+  </data>
+  <data name="BSTD01_007" xml:space="preserve">
+    <value>Period of employee is locked.</value>
+  </data>
+  <data name="CMN071" xml:space="preserve">
+    <value>File Not Found.</value>
+  </data>
+  <data name="CMN072" xml:space="preserve">
+    <value>Not allow input special character.</value>
+  </data>
+  <data name="HRMR01_018" xml:space="preserve">
+    <value>Birth date' must be greater than 'Postnatal regime start date'   and must be larger than the  'Maternity leave start date '.</value>
+  </data>
+  <data name="HREM01_041" xml:space="preserve">
+    <value>メールが正しくフォーマットされていない</value>
+  </data>
+  <data name="CMN073" xml:space="preserve">
+    <value>Concurrency violation.</value>
+  </data>
+  <data name="ATAE01_012" xml:space="preserve">
+    <value>休日に休暇計画設定ができません。</value>
+  </data>
+  <data name="HRRA01_002" xml:space="preserve">
+    <value>移動日は必須入力項目です</value>
+  </data>
+  <data name="HREM_Import_157" xml:space="preserve">
+    <value>行目$ : 'Speciality max length is 20 symbol.'</value>
+  </data>
+  <data name="HREM_Import_158" xml:space="preserve">
+    <value>行目$ : ''Taxdepend is not digit</value>
+  </data>
+  <data name="MSPA_TimeRoundRow_001" xml:space="preserve">
+    <value>[Time Round Setting Tab] Row $ : 'Type' must be filled in.</value>
+  </data>
+  <data name="MSPA_TimeRoundRow_002" xml:space="preserve">
+    <value>[Time Round Setting Tab] Row $ : 'Time From' must greater than 0.</value>
+  </data>
+  <data name="MSPA_TimeRoundRow_003" xml:space="preserve">
+    <value>[Time Round Setting Tab] Row $ : 'Time To' must greater than 0.</value>
+  </data>
+  <data name="MSPA_TimeRoundRow_004" xml:space="preserve">
+    <value>[Time Round Setting Tab] Row $ : 'Time From' must be less than 'Time To'.</value>
+  </data>
+  <data name="MSPA_TimeRound_001" xml:space="preserve">
+    <value>'Type' must be filled in.</value>
+  </data>
+  <data name="MSPA_TimeRound_002" xml:space="preserve">
+    <value>'Time From' must greater than 0.</value>
+  </data>
+  <data name="MSPA_TimeRound_003" xml:space="preserve">
+    <value>'Time To' must greater than 0.</value>
+  </data>
+  <data name="MSPA_TimeRound_004" xml:space="preserve">
+    <value>'Time From' must be less than 'Time To'.</value>
+  </data>
+  <data name="MSPA_TimeRoundRow_005" xml:space="preserve">
+    <value>[Time Round Setting Tab] Row $ : This time is setting.</value>
+  </data>
+  <data name="MSPA_TimeRoundRow_006" xml:space="preserve">
+    <value>[Time Round Setting Tab] Row $ : 'Value' must greater than 0.</value>
+  </data>
+  <data name="MSPA_TimeRound_005" xml:space="preserve">
+    <value>This time is setting.</value>
+  </data>
+  <data name="MSPA_TimeRound_006" xml:space="preserve">
+    <value>'Value' must greater than 0.</value>
+  </data>
+  <data name="HREM_Import_159" xml:space="preserve">
+    <value>行目 $ : 'ID issued place max length is 30 symbol.'</value>
+  </data>
+  <data name="HREM_Import_160" xml:space="preserve">
+    <value>行目 $ : '生年は無効です.'</value>
+  </data>
+  <data name="HREM_Import_161" xml:space="preserve">
+    <value>行目 $ : 'IDカード番号が正しくありません.'</value>
+  </data>
+  <data name="HREM_Import_162" xml:space="preserve">
+    <value>行目 $ : Staff  status is working not enter stop working day</value>
+  </data>
+  <data name="HREM_Import_163" xml:space="preserve">
+    <value>行目 $ : 'Probationary employees is not enter date officially '</value>
+  </data>
+  <data name="Planning058" xml:space="preserve">
+    <value>行目 $: From date must be greater than Joined date</value>
+  </data>
+  <data name="ATIO_Import_018" xml:space="preserve">
+    <value>Row $ : 'Location max length is 30 symbol.'</value>
+  </data>
+  <data name="ATIE_Import_001" xml:space="preserve">
+    <value>Row $: 'Attendance Error' is not exists.</value>
+  </data>
+  <data name="PRTS00_Import_001" xml:space="preserve">
+    <value>Row $ : Attendance Days invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_002" xml:space="preserve">
+    <value>Row $ : 'Working days  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_003" xml:space="preserve">
+    <value>Row $ : 'Weekend Days  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_004" xml:space="preserve">
+    <value>Row $ : 'Holidays  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_005" xml:space="preserve">
+    <value>Row $ : 'Working hours invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_006" xml:space="preserve">
+    <value>Row $ : 'working hours greater than total working hours in month.'</value>
+  </data>
+  <data name="PRTS00_Import_007" xml:space="preserve">
+    <value>Row $ : 'Before OT Times  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_008" xml:space="preserve">
+    <value>Row $ : 'Before OT Hours invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_009" xml:space="preserve">
+    <value>Row $ : 'Before OT Hours greater than total working hours in month.'</value>
+  </data>
+  <data name="PRTS00_Import_010" xml:space="preserve">
+    <value>Row $ : 'After OT Times invalid.'.'</value>
+  </data>
+  <data name="PRTS00_Import_011" xml:space="preserve">
+    <value>Row $ : After OT Hours invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_012" xml:space="preserve">
+    <value>Row $ : After OT Hours greater than total working hours in month.'</value>
+  </data>
+  <data name="PRTS00_Import_013" xml:space="preserve">
+    <value>Row $ : 'Late Night Times invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_014" xml:space="preserve">
+    <value>Row $ : 'Late Night Hours  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_015" xml:space="preserve">
+    <value>Row $ : 'Late Night Hours greater than total working hours in month.'</value>
+  </data>
+  <data name="PRTS00_Import_016" xml:space="preserve">
+    <value>Row $ : 'OT Late Night Times invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_017" xml:space="preserve">
+    <value>Row $ : 'OT Late Night Hours  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_018" xml:space="preserve">
+    <value>Row $ : 'OT Late Night  Hours greater than total working hours in month.'</value>
+  </data>
+  <data name="PRTS00_Import_019" xml:space="preserve">
+    <value>Row $ : 'OT Weekend Times invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_020" xml:space="preserve">
+    <value>Row $ : 'OT Weekend Hours  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_021" xml:space="preserve">
+    <value>Row $ : 'OT Weekend  Hours greater than total working hours in month.'</value>
+  </data>
+  <data name="PRTS00_Import_022" xml:space="preserve">
+    <value>Row $ : 'Late Night Weekend Times invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_023" xml:space="preserve">
+    <value>Row $ : 'Late Night Weekend Hours  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_024" xml:space="preserve">
+    <value>Row $ : 'Late Night Weekend  Hours greater than total working hours in month.'</value>
+  </data>
+  <data name="PRTS00_Import_025" xml:space="preserve">
+    <value>Row $ : 'OT Company Holiday Times invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_026" xml:space="preserve">
+    <value>Row $ : 'OT Company Holiday Hours  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_027" xml:space="preserve">
+    <value>Row $ : 'OT Company Holiday  Hours greater than total working hours in month.'</value>
+  </data>
+  <data name="PRTS00_Import_028" xml:space="preserve">
+    <value>Row $ : 'Late Night Company Holiday Times invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_029" xml:space="preserve">
+    <value>Row $ : 'Late Night Company Holiday Hours  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_030" xml:space="preserve">
+    <value>Row $ : 'Late Night Company Holiday  Hours greater than total working hours in month.'</value>
+  </data>
+  <data name="PRTS00_Import_031" xml:space="preserve">
+    <value>Row $ : 'OT Pubic Holiday Times invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_032" xml:space="preserve">
+    <value>Row $ : 'OT Pubic Holiday Hours  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_033" xml:space="preserve">
+    <value>Row $ : 'OT Pubic Holiday  Hours greater than total working hours in month.'</value>
+  </data>
+  <data name="PRTS00_Import_034" xml:space="preserve">
+    <value>Row $ : 'Late Night Pubic Holiday Times invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_035" xml:space="preserve">
+    <value>Row $ : 'Late Night Pubic Holiday Hours  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_036" xml:space="preserve">
+    <value>Row $ : 'Late Night Pubic Holiday Hours greater than total working hours in month.'</value>
+  </data>
+  <data name="PRTS00_Import_037" xml:space="preserve">
+    <value>Row $ : 'Lately In Times invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_038" xml:space="preserve">
+    <value>Row $ : 'Lately In Hours  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_039" xml:space="preserve">
+    <value>Row $ : 'Lately In Hours greater than total working hours in month.'</value>
+  </data>
+  <data name="PRTS00_Import_040" xml:space="preserve">
+    <value>Row $ : 'Early Out Times invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_041" xml:space="preserve">
+    <value>Row $ : 'Early Out Hours  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_042" xml:space="preserve">
+    <value>Row $ : 'Early Out Hours greater than total working hours in month.'</value>
+  </data>
+  <data name="PRTS00_Import_043" xml:space="preserve">
+    <value>Row $ : 'Private Out Times invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_044" xml:space="preserve">
+    <value>Row $ : 'Private Out Hours  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_045" xml:space="preserve">
+    <value>Row $ : 'Private Out Hours greater than total working hours in month.'</value>
+  </data>
+  <data name="PRTS00_Import_046" xml:space="preserve">
+    <value>Row $ : 'Absent days  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_047" xml:space="preserve">
+    <value>Row $ : 'Unpaid days  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_048" xml:space="preserve">
+    <value>Row $ : 'paid days  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_049" xml:space="preserve">
+    <value>Row $ : Pregnacy days  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_050" xml:space="preserve">
+    <value>Row $ : Maternity days  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_051" xml:space="preserve">
+    <value>Row $ : Unpaid With Approval days  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_052" xml:space="preserve">
+    <value>Row $ : Unpaid Without Approval days  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_053" xml:space="preserve">
+    <value>Row $ : Take Over Leaves days  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_054" xml:space="preserve">
+    <value>Row $ : Leaves days  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_055" xml:space="preserve">
+    <value>Row $ : Special leaves days  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_056" xml:space="preserve">
+    <value>Row $ :Total Dormitory Regis  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_057" xml:space="preserve">
+    <value>Row $ :Total Transport Regis  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_058" xml:space="preserve">
+    <value>Row $ :Total OT Meal  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_059" xml:space="preserve">
+    <value>Row $ :Business Trip After Meal  invalid.'</value>
+  </data>
+  <data name="PRTS00_Import_060" xml:space="preserve">
+    <value>Row $ :Leave Before Meal  invalid.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_001" xml:space="preserve">
+    <value>Row $: 'Employee ID must be fill in.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_004" xml:space="preserve">
+    <value>Row $: 'Apply from salary period must be fill in.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_005" xml:space="preserve">
+    <value>Row $: 'Apply from salary period uncorrect format.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_015" xml:space="preserve">
+    <value>Row $ : 'Employee not exists.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_020" xml:space="preserve">
+    <value>Row $: ''Do not Import Apply Locked Period "</value>
+  </data>
+  <data name="HRSA_Import_Allowance_021" xml:space="preserve">
+    <value>Row $: 'Allowance must be fill in.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_022" xml:space="preserve">
+    <value>Row $: 'Allowance does not exist.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_023" xml:space="preserve">
+    <value>Row $: 'Amount must be fill in.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_024" xml:space="preserve">
+    <value>Row $: 'Amount uncorrect format.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_025" xml:space="preserve">
+    <value>Row $: 'Amount max length is 16 symbol.'</value>
+  </data>
+  <data name="HRSA_Import_Allowance_026" xml:space="preserve">
+    <value>Row $:Data of Import file is duplicated. Please check the employee ID apply period and Allowance again.</value>
+  </data>
+  <data name="HRSA_Import_Allowance_030" xml:space="preserve">
+    <value>Row $ : 'Employee is not settup salary.'</value>
+  </data>
+  <data name="HREM_Import_Salary_021" xml:space="preserve">
+    <value>Row $:The salary of wages max length is 10 symbols.</value>
+  </data>
+  <data name="Planning060" xml:space="preserve">
+    <value>Row $:Remark max length is 1000 symbols.</value>
+  </data>
+  <data name="PRTS00_Import_061" xml:space="preserve">
+    <value>Row $ : Staff was terminated or not yet joined in company</value>
+  </data>
+  <data name="HROT01_006" xml:space="preserve">
+    <value>'Employee' must be female.</value>
+  </data>
+  <data name="HREM01_042" xml:space="preserve">
+    <value>'Employee ID' has special character</value>
+  </data>
+  <data name="HREM_Import_164" xml:space="preserve">
+    <value>Row $ : 'Employee ID do not have special character.'</value>
+  </data>
+  <data name="MSAE01_003" xml:space="preserve">
+    <value>'Group Code' has special character.</value>
+  </data>
+  <data name="MSAL01_004" xml:space="preserve">
+    <value>'Allowance Code' has special character.</value>
+  </data>
+  <data name="MSBR01_005" xml:space="preserve">
+    <value>'Bus Route Code' has special character.</value>
+  </data>
+  <data name="MSCR01_003" xml:space="preserve">
+    <value>'Career Code' has special character.</value>
+  </data>
+  <data name="MSDD01_004" xml:space="preserve">
+    <value>'Deduction Code' has special character.</value>
+  </data>
+  <data name="MSDE01_004" xml:space="preserve">
+    <value>'Department Code' has special character.</value>
+  </data>
+  <data name="MSDO01_005" xml:space="preserve">
+    <value>'Dormitory Code' has special character.</value>
+  </data>
+  <data name="MSFM01_004" xml:space="preserve">
+    <value>'Machine Code' has special character.</value>
+  </data>
+  <data name="MSHP01_003" xml:space="preserve">
+    <value>'Hospital Code' has special character.</value>
+  </data>
+  <data name="MSIR01_003" xml:space="preserve">
+    <value>'Organization Code' has special character.</value>
+  </data>
+  <data name="MSIT01_007" xml:space="preserve">
+    <value>'PIT Code' has special character.</value>
+  </data>
+  <data name="MSLC01_008" xml:space="preserve">
+    <value>'Category Code' has special character.</value>
+  </data>
+  <data name="MSLE01_003" xml:space="preserve">
+    <value>'Level Code' has special character.</value>
+  </data>
+  <data name="MSOF01_004" xml:space="preserve">
+    <value>'Office Code' has special character.</value>
+  </data>
+  <data name="MSOP01_004" xml:space="preserve">
+    <value>'Operation Code' has special character.</value>
+  </data>
+  <data name="MSPO01_004" xml:space="preserve">
+    <value>' Position Code' has special character.</value>
+  </data>
+  <data name="MSPR01_003" xml:space="preserve">
+    <value>'Project Code' has special character.</value>
+  </data>
+  <data name="MSRE01_004" xml:space="preserve">
+    <value>'Reason Code' has special character.</value>
+  </data>
+  <data name="MSRT01_004" xml:space="preserve">
+    <value>'Route Code' has special character.</value>
+  </data>
+  <data name="MSSE01_004" xml:space="preserve">
+    <value>'Section Code' has special character.</value>
+  </data>
+  <data name="MSSK01_003" xml:space="preserve">
+    <value>'Skill Code' has special character.</value>
+  </data>
+  <data name="MSTE01_004" xml:space="preserve">
+    <value>'Team Code' has special character.</value>
+  </data>
+  <data name="MSUG01_003" xml:space="preserve">
+    <value>'Group Code' has special character</value>
+  </data>
+  <data name="MSUR01_008" xml:space="preserve">
+    <value>'User Code' has special character</value>
+  </data>
+  <data name="HREM_Import_165" xml:space="preserve">
+    <value>Row $ : Employee's still working, cannot set stop working day for this employee.</value>
+  </data>
+  <data name="Planning062" xml:space="preserve">
+    <value>Row $ : 'Maternity leave start date' must be greater than your birthday.</value>
+  </data>
+  <data name="MSWA01_003" xml:space="preserve">
+    <value>'Form of Wages Code' has special character.</value>
+  </data>
+  <data name="MSSP_Import_019" xml:space="preserve">
+    <value>Row $: In the import file, 'From Date' of this period must be greater than 'To Date' of previous period.</value>
+  </data>
+  <data name="MSSP_Import_020" xml:space="preserve">
+    <value>Row $: In the import file,  'To Date' of this period must be less than 'From Date' of next period.</value>
+  </data>
+  <data name="ATSD01_009" xml:space="preserve">
+    <value>Staff '$' : ' Planned maternity leave for a period of up plan'</value>
+  </data>
+  <data name="Planning061" xml:space="preserve">
+    <value>Staff $:  'Staff had planned maternity leave for a period of up plan '.</value>
+  </data>
+  <data name="ATLS01_011" xml:space="preserve">
+    <value>'StartDate' must be greater than or equal Employee's 'Joined Date'.</value>
+  </data>
+  <data name="ATLS01_012" xml:space="preserve">
+    <value>'End Date' must be greater than or equal Employee's 'Joined Date'.</value>
+  </data>
+  <data name="ATLS01_013" xml:space="preserve">
+    <value>'Start Date' must be less than or equal Employee's 'Stop Working Date'.</value>
+  </data>
+  <data name="ATLS01_014" xml:space="preserve">
+    <value>'End Date' must be less than or equal Employee's 'Stop Working Date'.</value>
+  </data>
+  <data name="PRMP00_Deduction_009" xml:space="preserve">
+    <value>Row $ : 'Staff not yet  had data timesheet Summary.'</value>
+  </data>
+</root>

@@ -1,0 +1,297 @@
+﻿@model IEnumerable<Nihongo.Models.MS_TestResultModels>
+@{
+    ViewBag.Title = "Thành tích học từ vựng tiếng Nhật";
+}
+
+<header id="head" class="secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1>
+                    BẢNG THÀNH TÍCH</h1>
+            </div>
+        </div>
+    </div>
+</header>
+<br />
+<br />
+<!-- container -->
+<section class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="featured-box">
+                <i class="fa fa-thumbs-up fa-2x"></i>
+                <div class="text" style="height: auto">
+                    Bảng thành tích dưới đây là nơi ghi nhận sự cố gắng, nổ lực của mọi người trong
+                    quá trình học từ vựng tiếng Nhật. Còn gì thú vị hơn khi thấy tên của mình nằm trong
+                    top những người <strong>NHANH NHẤT, XUẤT SẮC NHẤT</strong>. </p><p>
+                        Hãy cho chúng tôi thấy tên của bạn xuất hiện nơi đây. Hãy biến những điều không
+                        thể thành có thể!!!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <section id="portfolio" class="page-section section appear clearfix">
+                @*<div class="clr"></div>
+                <div class="row text-center">
+                    <div class="title-category">
+                        <span>Cấp độ</span>
+                    </div>
+                </div>*@
+                <div class="row">
+                    <nav class="col-md-12 text-center filter text-info">
+                        <ul>
+                            <li>@Ajax.EncodedActionLink("Siêng năng nhất", "SelectHightestPointData", "Achievement", null, new AjaxOptions
+                                {
+                                    HttpMethod = "get",
+                                    InsertionMode = InsertionMode.Replace,
+                                    UpdateTargetId = "searchResult",
+                                }, new { @class = " btn-theme btn-small", @id = "1", @name = "arc" })
+                            </li>
+                            <li>@Ajax.EncodedActionLink("Tích lũy cao nhất", "SelectHightestAccPointData", "Achievement", null, new AjaxOptions
+                                {
+                                    HttpMethod = "get",
+                                    InsertionMode = InsertionMode.Replace,
+                                    UpdateTargetId = "searchResult",
+                                }, new { @class = " btn-theme btn-small", @id = "2", @name = "arc" })
+                            </li>
+                            <li>@Ajax.EncodedActionLink("Thuộc nhiều từ nhất", "SelectSmartestData", "Achievement", null, new AjaxOptions
+                                {
+                                    HttpMethod = "get",
+                                    InsertionMode = InsertionMode.Replace,
+                                    UpdateTargetId = "searchResult",
+                                }, new { @class = " btn-theme btn-small", @id = "3", @name = "arc" })
+                            </li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+                @*<div class="row" id='divFastest'>
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <div class="btn-group">
+                                @Html.DropDownList("vocaSet", ViewBag.VocaSets as SelectList, string.Empty, new { @class = "form-control" })
+                            </div>
+                            <div class="btn-group">
+                                @Html.DropDownList("vocaCate", ViewBag.VocaCates as SelectList, string.Empty, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="portfolio-items isotopeWrapper clearfix" id="3">
+                                @*<article class="col-sm-4 isotopeItem webdesign">
+                                    <div class="portfolio-item">
+											<img src="~/Content/assets/images/portfolio/img1.jpg" alt="" />
+											<div class="portfolio-desc align-center">
+												<div class="folio-info">
+													<a href="~/Content/assets/images/portfolio/img1.jpg" class="fancybox">
+														<h5>Project Title</h5>
+														<i class="fa fa-link fa-2x"></i></a>
+												</div>
+											</div>
+										</div>
+                                </article>
+                                <article class="col-sm-4 isotopeItem photography">
+                                    <div class="portfolio-item">
+											<img src="~/Content/assets/images/portfolio/img2.jpg" alt="" />
+											<div class="portfolio-desc align-center">
+												<div class="folio-info">
+													<a href="~/Content/assets/images/portfolio/img2.jpg" class="fancybox">
+														<h5>Project Title</h5>
+														<i class="fa fa-link fa-2x"></i></a>
+												</div>
+											</div>
+										</div>
+                                </article>*@
+                            </div>
+                        </div>
+                        <div id='searchResult'>
+                            @Html.Partial("_HighestPointPartial", null)
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+@*<section class="container">
+    <div class="row">
+        <div class="col-lg-12 ">
+            <h2 class="section-heading text-action text-center">
+                CẤP ĐỘ</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="carousel slide" id="myCarousel" style="border-color: #eee;">
+                <div class="carousel-inner carousel-inner-slide">
+                    <div class="item active">
+                        <ul class="thumbnails">
+                            <li class="col-md-3 text-center">
+                                <img class="img-circle" height="100px" src="~/images/chkien.jpg" alt="">
+                                <div class="caption">
+                                    <h4>
+                                        Chu Hồng Kiên
+                                    </h4>
+                                    <div class="star">
+                                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span>
+                                    </div>
+                                    <ul class="weak">
+                                        <li>Advanced</li>
+                                        <li>5000 từ</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="col-md-3 text-center">
+                                <img class="img-circle" height="100px" src="~/images/chkien.jpg" alt="">
+                                <div class="caption">
+                                    <h4>
+                                        Chu Hồng Kiên
+                                    </h4>
+                                    <div class="star">
+                                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span>
+                                    </div>
+                                    <ul class="weak">
+                                        <li>Advanced</li>
+                                        <li>5000 từ</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="col-md-3 text-center">
+                                <img class="img-circle" height="100px" src="~/images/chkien.jpg" alt="">
+                                <div class="caption">
+                                    <h4>
+                                        Chu Hồng Kiên
+                                    </h4>
+                                    <div class="star">
+                                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span>
+                                    </div>
+                                    <ul class="weak">
+                                        <li>Advanced</li>
+                                        <li>5000 từ</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="col-md-3 text-center">
+                                <img class="img-circle" height="100px" src="~/images/chkien.jpg" alt="">
+                                <div class="caption">
+                                    <h4>
+                                        Chu Hồng Kiên
+                                    </h4>
+                                    <div class="star">
+                                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span>
+                                    </div>
+                                    <ul class="weak">
+                                        <li>Advanced</li>
+                                        <li>5000 từ</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /Slide1 -->
+                    <div class="item">
+                        <ul class="thumbnails">
+                            <li class="col-md-3 text-center">
+                                <img class="img-rounded" height="100px" src="~/images/chkien.jpg" alt="">
+                                <div class="caption">
+                                    <h4>
+                                        Chu Hồng Kiên
+                                    </h4>
+                                    <div class="star">
+                                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span>
+                                    </div>
+                                    <ul class="weak">
+                                        <li>Advanced</li>
+                                        <li>5000 từ</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="col-md-3 text-center">
+                                <img class="img-circle" height="100px" src="~/images/chkien.jpg" alt="">
+                                <div class="caption">
+                                    <h4>
+                                        Chu Hồng Kiên
+                                    </h4>
+                                    <div class="star">
+                                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span>
+                                    </div>
+                                    <ul class="weak">
+                                        <li>Advanced</li>
+                                        <li>5000 từ</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="col-md-3 text-center">
+                                <img class="img-circle" height="100px" src="~/images/chkien.jpg" alt="">
+                                <div class="caption">
+                                    <h4>
+                                        Chu Hồng Kiên
+                                    </h4>
+                                    <div class="star">
+                                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span>
+                                    </div>
+                                    <ul class="weak">
+                                        <li>Advanced</li>
+                                        <li>5000 từ</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="col-md-3 text-center">
+                                <img class="img-circle" height="100px" src="~/images/chkien.jpg" alt="">
+                                <div class="caption">
+                                    <h4>
+                                        Chu Hồng Kiên
+                                    </h4>
+                                    <div class="star">
+                                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                        </span><span class="glyphicon glyphicon-star"></span>
+                                    </div>
+                                    <ul class="weak">
+                                        <li>Advanced</li>
+                                        <li>5000 từ</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /Slide2 -->
+                </div>
+                <div class="control-box-slide">
+                    <a data-slide="prev" href="#myCarousel" class="carousel-control-slide left">‹</a>
+                    <a data-slide="next" href="#myCarousel" class="carousel-control-slide right">›</a>
+                </div>
+                <!-- /.control-box -->
+            </div>
+            <!-- /#myCarousel -->
+        </div>
+        <!-- /.span12 -->
+    </div>
+    <!-- /.row -->
+</section>*@
+<!-- /container -->
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+
+@*@Scripts.Render("~/bundles/isotope")*@
+

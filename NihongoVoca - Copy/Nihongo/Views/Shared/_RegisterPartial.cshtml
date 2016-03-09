@@ -1,0 +1,85 @@
+﻿@model Nihongo.Models.MS_UsersModels
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+<!-- Bootstrap Core JavaScript -->
+@Scripts.Render("~/bundles/bootstrap")
+<!-- Custom Theme JavaScript -->
+@Scripts.Render("~/bundles/sb-admin-2")
+@Scripts.Render("~/bundles/select2")
+<!-- Components JavaScript -->
+@Scripts.Render("~/bundles/components")
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="registerModalLabel">
+                    Đăng ký</h4>
+            </div>
+            @*<div class="modal-body">
+                <form action='@Href("~/Account/Register")' id="registerForm" method="post">
+                @Html.AntiForgeryToken()
+                
+                <div class="form-group">
+                    <label for="recipient-name" class="control-label">
+                        Tên đăng nhập:</label>
+                    <input type="text" class="form-control" id="UserName" name="UserName" autofocus="true"
+                        maxlength="20">
+                    @Html.ValidationMessageFor(ss => ss.UserName)
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="control-label">
+                        Tên hiển thị:</label>
+                    <input type="text" class="form-control" id="DisplayName" name="DisplayName" autofocus="true"
+                        maxlength="100">
+                    @Html.ValidationMessage("DisplayName")
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="control-label">
+                        Mật khẩu:</label>
+                    <input type="password" class="form-control" id="Password" name="Password" maxlength="30">
+                    @Html.ValidationMessage("Password")
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="control-label">
+                        Nhập lại mật khẩu:</label>
+                    <input type="password" class="form-control" id="RePassword" name="RePassword" maxlength="30">
+                    @Html.ValidationMessage("RePassword")
+                </div>
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-primary" id="btnRegister">
+                        Đăng ký</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="btnClose">
+                        Đóng</button>
+                </div>
+                </form>
+            </div>*@ @*<div class="modal-footer">
+            </div>*@
+            <div class="modal-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "")
+                    @Html.LabelFor(model => model.Password)
+                    @Html.EditorFor(model => model.Password)
+                    @Html.ValidationMessageFor(model => model.Password)
+
+                    @Html.LabelFor(model => model.UserName)
+                    @Html.EditorFor(model => model.UserName)
+                    @Html.ValidationMessageFor(model => model.UserName)
+                }
+            </div>
+            <div class="modal-footer">
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-primary" id="btnRegister">
+                        Đăng ký</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="btnClose">
+                        Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

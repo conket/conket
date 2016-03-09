@@ -1,0 +1,189 @@
+/* scroll to top */
+
+.scrollup {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    bottom: 0px;
+    right: 20px;
+    background: #000000;
+}
+a.scrollup {
+    outline: 0;
+    text-align: center;
+}
+a.scrollup:hover,
+a.scrollup:active,
+a.scrollup:focus {
+    opacity: 1;
+    text-decoration: none;
+}
+a.scrollup i {
+    margin-top: 10px;
+    color: #fff;
+}
+a.scrollup i:hover {
+    text-decoration: none;
+}
+.absolute {
+    position: absolute;
+}
+.relative {
+    position: relative;
+}
+.aligncenter {
+    /* text-align: center; */
+}
+.aligncenter span {
+    margin-left: 0;
+}
+.floatright {
+    float: right;
+}
+.floatleft {
+    float: left;
+}
+.floatnone {
+    float: none;
+}
+
+img.pull-left,
+.align-left {
+    float: left;
+    margin: 0 15px 15px 0;
+}
+.widget img.pull-left {
+    float: left;
+    margin: 0 15px 15px 0;
+}
+img.pull-right,
+.align-right {
+    float: right;
+    margin: 0 0 15px 15px;
+}
+article img.pull-left,
+article .align-left {
+    float: left;
+    margin: 5px 15px 15px 0;
+}
+article img.pull-right,
+article .align-right {
+    float: right;
+    margin: 5px 0 15px 15px;
+}
+/*============================ */ 
+.clear-marginbot {
+    margin-bottom: 0;
+}
+.marginbot10 {
+    margin-bottom: 10px;
+}
+.marginbot20 {
+    margin-bottom: 20px;
+}
+.marginbot30 {
+    margin-bottom: 30px;
+}
+.marginbot40 {
+    margin-bottom: 40px;
+}
+.clear-margintop {
+    margin-top: 0;
+}
+.margintop10 {
+    margin-top: 10px;
+}
+.margintop20 {
+    margin-top: 20px;
+}
+.margintop30 {
+    margin-top: 30px;
+}
+.margintop40 {
+    margin-top: 40px;
+}
+.flex-control-paging li a {
+    width: 30px;
+    height: 10px;
+    border-radius: 0;
+}
+/**** MODULE ****/
+.bgc-fff {
+    background-color: #fff!important;
+}
+.box-shad {
+}
+.brdr {
+    border: 1px solid #3BA0F4;
+    border-bottom: 4px solid #3BA0F4;
+}
+.brdr-top {
+    border-top: 1px solid #3BA0F4;
+}
+
+/* Font changes */
+.fnt-smaller {
+    font-size: .9em;
+}
+.fnt-lighter {
+    color: #bbb;
+}
+
+/* Padding - Margins */
+.pad-10 {
+    padding: 10px 15px !important;
+}
+.mrg-0 {
+    margin: 0!important;
+}
+.btm-mrg-10 {
+    margin-bottom: 10px!important;
+}
+.btm-mrg-20 {
+    margin-bottom: 25px!important;
+    /*min-height: 220px;*/
+}
+
+.media-body p {
+    height:80px;
+}
+
+
+/**** MEDIA QUERIES ****/
+@media only screen and (max-width: 991px) {
+    #property-listings .property-listing {
+        padding: 5px!important;
+    }
+    #property-listings .property-listing a {
+        margin: 0;
+    }
+    #property-listings .property-listing .media-body {
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #property-listings .property-listing img {
+        max-width: 180px;
+    }
+}
+
+/* Carousel Control */
+.control-box-slide {
+    text-align: right;
+    width: 100%;
+    }
+.carousel-control-slide{
+        text-decoration:none!important;
+        border: 0px;
+        border-radius: 0px;
+        display: inline-block;
+        font-size: 34px;
+        font-weight: 200;
+        line-height: 18px;
+        opacity: 0.5;
+        padding: 4px 10px 0px;
+        position: static;
+        height: 30px;
+        width: 40px;
+        }

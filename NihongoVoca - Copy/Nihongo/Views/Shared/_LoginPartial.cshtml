@@ -1,0 +1,83 @@
+﻿@*@if (Request.IsAuthenticated) {
+    <text>
+        Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        }
+    </text>
+} else {
+    <ul>
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
+*@
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#loginForm').submit(function () {
+            $('#errorMessage').html("");
+            if ($('#UserName').val() == '') {
+                $('#errorMessage').html("Nhập [Tên đăng nhập] đi gái");
+                $('#UserName').focus();
+                return false;
+            }
+            if ($('#Password').val() == '') {
+                $('#errorMessage').html("Nhập [Mật khẩu] đi gái");
+                $('#Password').focus();
+                return false;
+            }
+
+            if ($('#loginForm').valid()) {
+                $.ajax({
+                    url: '@Href("~/Account/Login")',
+                    type: "POST",
+                    async: false,
+                    data: $(this).serialize(),
+                    success: function (result) {
+                        if (result.ReturnCode == 0) {
+                            if (result.User == null) {
+                                $('#errorMessage').html("Sai [Tên Đăng Nhập] hoặc [Mật Khẩu]");
+                                return false;
+                            }
+                            else {
+                                                                location.reload();
+//                                alert('@Href("~Home/Index")');
+//                                window.location.href = '@Href("~Home/Index")';
+                            }
+                        }
+                        else {
+                            alert('Có lỗi rồi gái!');
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            }
+            return false;
+        });
+    });
+</script>
+
+<form method="post" action='@Href("~/Account/Login")' accept-charset="UTF-8" id="loginForm">
+@Html.AntiForgeryToken()
+<p class="text-danger" id='errorMessage'>
+</p>
+<input style="margin-bottom: 15px;" type="text" placeholder="Tên đăng nhập" id="UserName"
+    name="UserName">
+<input style="margin-bottom: 15px;" type="password" placeholder="Mật khẩu" id="Password"
+    name="Password">
+@*<input style="float: left; margin-right: 10px;" type="checkbox" id="RememberMe" name="RememberMe"
+    checked="checked" value="true">
+<label class="string optional" for="RememberMe">
+    Ghi nhớ</label>*@
+<input class="btn btn-primary btn-block" type="submit" id="btnSignIn" value="Đăng nhập"><br />
+@*<label style="text-align: center; margin-top: 5px">
+                                or</label>
+                            <input class="btn btn-primary btn-block" type="button" id="sign-in-google" value="Sign In with Google">
+                            <input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Sign In with Twitter">*@
+</form>

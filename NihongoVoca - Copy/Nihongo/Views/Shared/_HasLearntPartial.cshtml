@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Nihongo.Models.MS_UserVocabulariesModels>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        selectedArray = @Html.Raw(Json.Encode(Model));
+    });
+
+    function showSelectedFlashCard(lineNumber){
+        for (var i = 0; i < vocas.length; i++) {
+            if (vocas[i].LineNumber == lineNumber) {
+                
+                currentIndex = i;
+                showFlashCard(currentIndex, true);
+                break;
+            }
+        }
+        return false;
+    };
+
+</script>
+
+<div class="table-responsive" style="height: 320px; overflow: auto;">
+    <table class="table" id="tblVoca">
+        <thead>
+            <tr>
+                <th>
+                    Từ
+                </th>
+                <th style="width: 20%;">
+                    #
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var voca in Model)
+            {
+                <tr>
+                    <td><button type="button" class="btn btn-link" onclick="showSelectedFlashCard(@voca.LineNumber);">@voca.Hiragana; @voca.Katakana</button></td>
+                    <td><span id='@voca.LineNumber' class='glyphicon glyphicon-remove' aria-hidden='true' onclick='removeVoca(@voca.LineNumber);'></span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

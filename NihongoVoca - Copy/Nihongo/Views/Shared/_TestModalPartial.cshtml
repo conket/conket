@@ -1,0 +1,119 @@
+﻿<!-- Modal Reading -->
+<div class="modal fade bs-example-modal-lg" id="modelTestReading" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Gõ kí tự Romaji</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 col-xs-6">
+                        <img id='image' class="img-responsive" src="" style="height:100px!important"/>
+                    </div>
+                    <div class="col-md-8 col-xs-6">
+                        <span style="display: block; text-align: left; " id='alphabet'>a
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon" id="sizing-addon1"><span class="badge" id='divResultReading'>
+                            </span></span>
+                            <input type="text" class="form-control text-center" id="inputAlphabet" maxlength='30'>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="row">
+                    <div class="col-lg-6">
+                        <button class="btn btn-primary" type="button" id='btnResultReading'>
+                            Kết quả: <span class="badge" id='divResultReading'></span>
+                        </button>
+                    </div>
+                </div>*@
+                <div class="row">
+                    <div class="col-lg-6">
+                        <span id='divResultMessageReading'></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnOkReadingModal" class="btn
+btn-primary">
+                            Ok</button>
+@*                        <button type="button" id="btnResetReadingModal" class="btn
+btn-warning">
+                            Thử lại</button>*@
+                        <button type="button" id="btnCloseReadingModal" class="btn
+btn-default" data-dismiss="modal">
+                            Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Choosing -->
+<div class="modal fade bs-example-modal" id="modelTestChoosing" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    Chọn từ đúng</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 col-xs-6">
+                        <img id='imageChoosing' class="img-responsive" src=""  style="height:100px!important"/>
+                        <input type="hidden" id='selectedValue' />
+                        <input type="hidden" id='correctValue' />
+                    </div>
+                    <div class="col-md-8 col-xs-6">
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <div class="list-group">
+                                    <span class="label label-danger">A</span><a href="#" id='result1' class="list-group-item"
+                                        name='resultChoosing'>A</a><input type="hidden" id="urlAudio1" />
+                                    <span class="label label-danger">B</span><a href="#" id='result2' class="list-group-item"
+                                        name='resultChoosing'>B</a><input type="hidden" id="urlAudio2" />
+                                    <span class="label label-danger">C</span><a href="#" id='result3' class="list-group-item"
+                                        name='resultChoosing'>C</a><input type="hidden" id="urlAudio3" />
+                                    <span class="label label-danger">D</span><a href="#" id='result4' class="list-group-item"
+                                        name='resultChoosing'>D</a><input type="hidden" id="urlAudio4" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <button class="btn btn-primary" type="button" id='btnResultChoosing'>
+                            Kết quả: <span class="badge" id='divResultChoosing'></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <span id='divResultMessageChoosing'></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnOkChoosingModal" class="btn
+btn-primary">
+                            Ok</button>
+@*                        <button type="button" id="btnResetChoosingModal" class="btn
+btn-warning">
+                            Thử lại</button>*@
+                        <button type="button" id="btnCloseChoosingModal" class="btn
+btn-default" data-dismiss="modal">
+                            Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Nihongo.Models.MS_UserVocabulariesModels>
+@if (Model != null && Model.Count() > 0)
+{
+
+    int count = 0;
+    int numOfColumn = 4;
+    var models = Model.ToList();
+    var max = models.Count;
+    int numOfRows = models.Count % numOfColumn == 0 ? models.Count / numOfColumn : models.Count / numOfColumn + 1;
+    for (int k = 0; k < numOfRows; k++)
+    {
+    <div class="row">
+        @for (int i = 0; i < (max > numOfColumn ? numOfColumn : max); i++)
+        {
+            Nihongo.Models.MS_UserVocabulariesModels voca = models[count];
+                    <div class="col-lg-3 col-xs-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="@voca.ID" value="@voca.ID" class="chkWord" onclick="checkWord(this);">
+                            </span>
+                            
+                            @if (voca.DisplayType == "3")
+                            {
+                                //kanji    
+                                var display = voca.Kanji + " - " + voca.Pinyin;
+                                <input type="text" class="form-control" aria-label="..." value="@display">
+                            }
+                            else
+                            {
+                            <input type="text" class="form-control" aria-label="..." value="@voca.Romaji">
+                            }
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                                
+                            count++;
+        }
+    </div>   
+        max -= numOfColumn;
+    }
+}
+else
+{
+    <p>
+        Hệ thống sẽ cập nhật bộ từ vựng tiếng Nhật này trong thời gian tới</p>
+}

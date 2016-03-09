@@ -1,0 +1,118 @@
+﻿
+@model Nihongo.Models.MS_UsersModels
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#loginForm').submit(function () {
+            $('#errorMessage').html("");
+            if ($('#UserName').val() == '') {
+                $('#errorMessage').html("Nhập [Tên đăng nhập] đi gái");
+                $('#UserName').focus();
+                return false;
+            }
+            if ($('#Password').val() == '') {
+                $('#errorMessage').html("Nhập [Mật khẩu] đi gái");
+                $('#Password').focus();
+                return false;
+            }
+
+            if ($('#loginForm').valid()) {
+                $.ajax({
+                    url: '@Href("~/Account/Login")',
+                    type: "POST",
+                    async: false,
+                    data: $(this).serialize(),
+                    success: function (result) {
+                        if (result.ReturnCode == 0) {
+                            if (result.User == null) {
+                                $('#errorMessage').html("Sai [Tên Đăng Nhập] hoặc [Mật Khẩu]");
+                                return false;
+                            }
+                            else {
+                                location.reload();
+                            }
+                        }
+                        else {
+                            alert('Có lỗi rồi gái!');
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            }
+            return false;
+        });
+    });
+</script>
+
+<form method="post" action='@Href("~/Account/Login")' accept-charset="UTF-8" id="loginForm">
+@Html.AntiForgeryToken()
+<p class="text-danger" id='errorMessage'>
+</p>
+<input style="margin-bottom: 15px;" type="text" placeholder="Tên đăng nhập" id="UserName"
+    name="UserName">
+<input style="margin-bottom: 15px;" type="password" placeholder="Mật khẩu" id="Password"
+    name="Password">
+<input style="float: left; margin-right: 10px;" type="checkbox" id="RememberMe" name="RememberMe"
+    checked="checked" value="true">
+<label class="string optional" for="RememberMe">
+    Ghi nhớ</label>
+<input class="btn btn-primary btn-block" type="submit" id="btnSignIn" value="Đăng nhập"><br />
+@*<label style="text-align: center; margin-top: 5px">
+                                or</label>
+                            <input class="btn btn-primary btn-block" type="button" id="sign-in-google" value="Sign In with Google">
+                            <input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Sign In with Twitter">*@
+</form>
+@*@model Nihongo.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+
+<section id="loginForm">
+<h2>Use a local account to log in.</h2>
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Log in Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </li>
+            <li>
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            </li>
+        </ol>
+        <input type="submit" value="Log in" />
+    </fieldset>
+    <p>
+        @Html.ActionLink("Register", "Register") if you don't have an account.
+    </p>
+}
+</section>
+
+<section class="social" id="socialLoginForm">
+    <h2>Use another service to log in.</h2>
+    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+*@
