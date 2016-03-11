@@ -3,3 +3,12 @@
 *.Cache
 *.config
 *.csdl
+*.dll
+*.resources
+*.pdb
+*.txt
+*.suo
+*.dat
+*.gif
+*.css
+*.suo
