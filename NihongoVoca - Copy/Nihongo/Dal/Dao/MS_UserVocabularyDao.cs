@@ -9,7 +9,7 @@ namespace Nihongo.Dal.Dao
 {
     public class MS_UserVocabularyDao : BaseDao
     {
-        public int SelectUserVocaData(int vocaCateId, string userName, out List<MS_UserVocabulariesModels> results)
+        public int SelectUserVocaData(int vocaCateId, int userID, out List<MS_UserVocabulariesModels> results)
         {
             int returnCode = 0;
             results = new List<MS_UserVocabulariesModels>();
@@ -20,19 +20,19 @@ namespace Nihongo.Dal.Dao
                 var vocaCate = this.ms_vocacategories.Where(ss => ss.ID == vocaCateId);
                 var voca = this.ms_vocabularies.AsQueryable();
                 var vocaDetail = this.ms_vocabularydetails.AsQueryable();
-                var userVoca = this.ms_uservocabularies.Where(ss => ss.UserName == userName).AsQueryable();
+                var userVoca = this.ms_uservocabularies.Where(ss => ss.UserID == userID).AsQueryable();
 
                 results = (from us in userVoca
                            join de in vocaDetail on us.VocaDetailID equals de.ID
-                           join vc in vocaCate on de.CategoryCode equals vc.Code
-                           join vs in vocaSet on vc.VocaSet equals vs.Code
-                           join ss in voca on de.VocabularyCode equals ss.Code
+                           join vc in vocaCate on de.CategoryID equals vc.ID
+                           join vs in vocaSet on vc.VocaSetID equals vs.ID
+                           join ss in voca on de.VocabularyID equals ss.ID
                            orderby de.LineNumber
                            select new MS_UserVocabulariesModels
                            {
                                //user voca
                                ID = us.ID,
-                               UserName = us.UserName,
+                               UserID = us.UserID,
                                Level = us.Level,
                                HasLearnt = us.HasLearnt,
                                //Update_Date = us.Update_Date,
@@ -66,21 +66,21 @@ namespace Nihongo.Dal.Dao
                                Type = ss.Type,
 
                                //kanji
-                               Pinyin = ss.Pinyin,
-                               OnReading = ss.OnReading,
-                               OnRomaji = ss.OnRomaji,
-                               OnUrlAudio = ss.OnUrlAudio,
-                               OnReading2 = ss.OnReading2,
-                               OnRomaji2 = ss.OnRomaji2,
-                               OnUrlAudio2 = ss.OnUrlAudio2,
-                               Remembering = ss.Remembering,
+                               //Pinyin = ss.Pinyin,
+                               //OnReading = ss.OnReading,
+                               //OnRomaji = ss.OnRomaji,
+                               //OnUrlAudio = ss.OnUrlAudio,
+                               //OnReading2 = ss.OnReading2,
+                               //OnRomaji2 = ss.OnRomaji2,
+                               //OnUrlAudio2 = ss.OnUrlAudio2,
+                               //Remembering = ss.Remembering,
 
-                               KunReading = ss.KunReading,
-                               KunRomaji = ss.KunRomaji,
-                               KunUrlAudio = ss.KunUrlAudio,
-                               KunReading2 = ss.KunReading2,
-                               KunRomaji2 = ss.KunRomaji2,
-                               KunUrlAudio2 = ss.KunUrlAudio2,
+                               //KunReading = ss.KunReading,
+                               //KunRomaji = ss.KunRomaji,
+                               //KunUrlAudio = ss.KunUrlAudio,
+                               //KunReading2 = ss.KunReading2,
+                               //KunRomaji2 = ss.KunRomaji2,
+                               //KunUrlAudio2 = ss.KunUrlAudio2,
                            })
                                 .ToList();
             }
@@ -103,7 +103,7 @@ namespace Nihongo.Dal.Dao
                 var vocaCate = this.ms_vocacategories.Where(ss => ss.ID == model.CategoryID);
                 var voca = this.ms_vocabularies.AsQueryable();
                 var vocaDetail = this.ms_vocabularydetails.AsQueryable();
-                var userVoca = this.ms_uservocabularies.Where(ss => ss.UserName == model.UserName).AsQueryable();
+                var userVoca = this.ms_uservocabularies.Where(ss => ss.UserID == model.UserID).AsQueryable();
                 if (!CommonMethod.IsNullOrEmpty(model.HasLearnt))
                 {
                     userVoca = userVoca.Where(ss => ss.HasLearnt == model.HasLearnt);
@@ -123,15 +123,15 @@ namespace Nihongo.Dal.Dao
 
                 results = (from us in userVoca
                            join de in vocaDetail on us.VocaDetailID equals de.ID
-                           join vc in vocaCate on de.CategoryCode equals vc.Code
-                           join vs in vocaSet on vc.VocaSet equals vs.Code
-                           join ss in voca on de.VocabularyCode equals ss.Code
+                           join vc in vocaCate on de.CategoryID equals vc.ID
+                           join vs in vocaSet on vc.VocaSetID equals vs.ID
+                           join ss in voca on de.VocabularyID equals ss.ID
                            orderby de.LineNumber
                            select new MS_UserVocabulariesModels
                            {
                                //user voca
                                ID = us.ID,
-                               UserName = us.UserName,
+                               UserID = us.UserID,
                                Level = us.Level,
                                HasLearnt = us.HasLearnt,
                                //Update_Date = us.Update_Date,
@@ -165,34 +165,34 @@ namespace Nihongo.Dal.Dao
                                Type = ss.Type,
 
                                //kanji
-                               Pinyin = ss.Pinyin,
-                               OnReading = ss.OnReading,
-                               OnRomaji = ss.OnRomaji,
-                               OnUrlAudio = ss.OnUrlAudio,
-                               OnReading2 = ss.OnReading2,
-                               OnRomaji2 = ss.OnRomaji2,
-                               OnUrlAudio2 = ss.OnUrlAudio2,
-                               Remembering = ss.Remembering,
+                               //Pinyin = ss.Pinyin,
+                               //OnReading = ss.OnReading,
+                               //OnRomaji = ss.OnRomaji,
+                               //OnUrlAudio = ss.OnUrlAudio,
+                               //OnReading2 = ss.OnReading2,
+                               //OnRomaji2 = ss.OnRomaji2,
+                               //OnUrlAudio2 = ss.OnUrlAudio2,
+                               //Remembering = ss.Remembering,
 
-                               ExKanji1 = ss.ExKanji1,
-                               ExKanji2 = ss.ExKanji2,
-                               ExKanji3 = ss.ExKanji3,
-                               ExKanji4 = ss.ExKanji4,
-                               ExReading1 = ss.ExReading1,
-                               ExReading2 = ss.ExReading2,
-                               ExReading3 = ss.ExReading3,
-                               ExReading4 = ss.ExReading4,
-                               ExVMeaning1 = ss.ExVMeaning1,
-                               ExVMeaning2 = ss.ExVMeaning2,
-                               ExVMeaning3 = ss.ExVMeaning3,
-                               ExVMeaning4 = ss.ExVMeaning4,
+                               //ExKanji1 = ss.ExKanji1,
+                               //ExKanji2 = ss.ExKanji2,
+                               //ExKanji3 = ss.ExKanji3,
+                               //ExKanji4 = ss.ExKanji4,
+                               //ExReading1 = ss.ExReading1,
+                               //ExReading2 = ss.ExReading2,
+                               //ExReading3 = ss.ExReading3,
+                               //ExReading4 = ss.ExReading4,
+                               //ExVMeaning1 = ss.ExVMeaning1,
+                               //ExVMeaning2 = ss.ExVMeaning2,
+                               //ExVMeaning3 = ss.ExVMeaning3,
+                               //ExVMeaning4 = ss.ExVMeaning4,
 
-                               KunReading = ss.KunReading,
-                               KunRomaji = ss.KunRomaji,
-                               KunUrlAudio = ss.KunUrlAudio,
-                               KunReading2 = ss.KunReading2,
-                               KunRomaji2 = ss.KunRomaji2,
-                               KunUrlAudio2 = ss.KunUrlAudio2,
+                               //KunReading = ss.KunReading,
+                               //KunRomaji = ss.KunRomaji,
+                               //KunUrlAudio = ss.KunUrlAudio,
+                               //KunReading2 = ss.KunReading2,
+                               //KunRomaji2 = ss.KunRomaji2,
+                               //KunUrlAudio2 = ss.KunUrlAudio2,
                                
                            })
                                 .ToList();
@@ -205,7 +205,7 @@ namespace Nihongo.Dal.Dao
             return returnCode;
         }
 
-        internal int SelectNotebookVocas(string userName, out List<MS_UserVocabulariesModels> results)
+        internal int SelectNotebookVocas(int userID, out List<MS_UserVocabulariesModels> results)
         {
             int returnCode = 0;
             results = new List<MS_UserVocabulariesModels>();
@@ -216,19 +216,19 @@ namespace Nihongo.Dal.Dao
                 var vocaCate = this.ms_vocacategories.AsQueryable();
                 var voca = this.ms_vocabularies.AsQueryable();
                 var vocaDetail = this.ms_vocabularydetails.AsQueryable();
-                var userVoca = this.ms_uservocabularies.Where(ss => ss.UserName == userName && ss.HasMarked == CommonData.Status.Enable).AsQueryable();
+                var userVoca = this.ms_uservocabularies.Where(ss => ss.UserID == userID && ss.HasMarked == CommonData.Status.Enable).AsQueryable();
 
                 results = (from us in userVoca
                            join de in vocaDetail on us.VocaDetailID equals de.ID
-                           join vc in vocaCate on de.CategoryCode equals vc.Code
-                           join vs in vocaSet on vc.VocaSet equals vs.Code
-                           join ss in voca on de.VocabularyCode equals ss.Code
+                           join vc in vocaCate on de.CategoryID equals vc.ID
+                           join vs in vocaSet on vc.VocaSetID equals vs.ID
+                           join ss in voca on de.VocabularyID equals ss.ID
                            orderby de.LineNumber
                            select new MS_UserVocabulariesModels
                            {
                                //user voca
                                ID = us.ID,
-                               UserName = us.UserName,
+                               UserID = us.UserID,
                                Level = us.Level,
                                HasLearnt = us.HasLearnt,
                                //Update_Date = us.Update_Date,
@@ -261,20 +261,20 @@ namespace Nihongo.Dal.Dao
                                Type = ss.Type,
 
                                //kanji
-                               Pinyin = ss.Pinyin,
-                               OnReading = ss.OnReading,
-                               OnRomaji = ss.OnRomaji,
-                               OnUrlAudio = ss.OnUrlAudio,
-                               OnReading2 = ss.OnReading2,
-                               OnRomaji2 = ss.OnRomaji2,
-                               OnUrlAudio2 = ss.OnUrlAudio2,
+                               //Pinyin = ss.Pinyin,
+                               //OnReading = ss.OnReading,
+                               //OnRomaji = ss.OnRomaji,
+                               //OnUrlAudio = ss.OnUrlAudio,
+                               //OnReading2 = ss.OnReading2,
+                               //OnRomaji2 = ss.OnRomaji2,
+                               //OnUrlAudio2 = ss.OnUrlAudio2,
 
-                               KunReading = ss.KunReading,
-                               KunRomaji = ss.KunRomaji,
-                               KunUrlAudio = ss.KunUrlAudio,
-                               KunReading2 = ss.KunReading2,
-                               KunRomaji2 = ss.KunRomaji2,
-                               KunUrlAudio2 = ss.KunUrlAudio2,
+                               //KunReading = ss.KunReading,
+                               //KunRomaji = ss.KunRomaji,
+                               //KunUrlAudio = ss.KunUrlAudio,
+                               //KunReading2 = ss.KunReading2,
+                               //KunRomaji2 = ss.KunRomaji2,
+                               //KunUrlAudio2 = ss.KunUrlAudio2,
                                
                            })
                                 .ToList();
@@ -299,7 +299,7 @@ namespace Nihongo.Dal.Dao
                     if (voca != null)
                     {
                         voca.Level = voca.Level;
-                        voca.Update_Date = DateTime.Now;
+                        voca.UpdatedDate = DateTime.Now;
                     }
                 }
 
@@ -330,20 +330,20 @@ namespace Nihongo.Dal.Dao
                         if (voca != null)
                         {
                             voca.HasLearnt = vo.IsCorrect;
-                            voca.Update_Date = DateTime.Now;
+                            voca.UpdatedDate = DateTime.Now;
                         }
                     }
 
                     //create test result
                     var firstVoca = vocas.FirstOrDefault();
                     var vocaCate = this.ms_vocacategories.FirstOrDefault(ss => ss.ID == firstVoca.CategoryID);
-                    var vocaSet = this.ms_vocasets.FirstOrDefault(ss => ss.Code == vocaCate.VocaSet);
+                    var vocaSet = this.ms_vocasets.FirstOrDefault(ss => ss.ID == vocaCate.VocaSetID);
                     var numOfCorrectVocas = vocas.Count(ss => ss.IsCorrect == CommonData.Status.Enable);
 
                     #region Diem tich luy
                     if (CommonMethod.ParseDecimal(vocaSet.Fee) > 0)
                     {
-                        var isExsitResult = ms_testresults.Any(ss => ss.CategoryCode == vocaCate.Code && ss.UserName == firstVoca.UserName);
+                        var isExsitResult = ms_testresults.Any(ss => ss.CategoryID == vocaCate.ID && ss.UserID == firstVoca.UserID);
                         if (!isExsitResult)
                         {
                             //pass
@@ -375,8 +375,8 @@ namespace Nihongo.Dal.Dao
 
                     Nihongo.Dal.Mapping.ms_testresults test = new Mapping.ms_testresults();
                     test.Code = firstVoca.UserName + "_" + vocaCate.Code + "_" + (DateTime.Now.ToString(CommonData.DateFormat.YyyyMMddHHmmss));
-                    test.CategoryCode = vocaCate.Code;
-                    test.UserName = firstVoca.UserName;
+                    test.CategoryID = vocaCate.ID;
+                    test.UserID = firstVoca.UserID;
                     test.CreateDate = DateTime.Now;
                     test.NumOfVocas = vocas.Count;
                     test.NumOfCorrectVocas = numOfCorrectVocas;
@@ -427,7 +427,7 @@ namespace Nihongo.Dal.Dao
                 if (voca != null)
                 {
                     vo.HasLearnt = voca.IsCorrect;
-                    vo.Update_Date = DateTime.Now;
+                    vo.UpdatedDate = DateTime.Now;
 
                     if (voca.IsCorrect == CommonData.Status.Enable)
                     {
@@ -485,7 +485,7 @@ namespace Nihongo.Dal.Dao
                     if (voca != null)
                     {
                         voca.HasLearnt = vo.IsCorrect;
-                        voca.Update_Date = DateTime.Now;
+                        voca.UpdatedDate = DateTime.Now;
 
                         if (vo.IsCorrect == CommonData.Status.Enable)
                         {

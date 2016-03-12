@@ -10,6 +10,7 @@ namespace Nihongo.Models
     {
         public int ID { get; set; }
         public string Code { get; set; }
+        public int UserID { get; set; }
         public string UserName { get; set; }
         public DateTime? EffectiveStartDate { get; set; }
         public DateTime? EffectiveEndDate { get; set; }
@@ -66,6 +67,7 @@ namespace Nihongo.Models
 
         public string Status { get; set; }
         public string VocaSetCode { get; set; }
+        public int VocaSetID { get; set; }
         public decimal? VocaSetFee { get; set; }
     }
 }

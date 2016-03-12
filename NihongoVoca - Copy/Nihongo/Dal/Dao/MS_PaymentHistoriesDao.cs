@@ -20,9 +20,9 @@ namespace Nihongo.Dal.Dao
                 #region save payment
                 Nihongo.Dal.Mapping.ms_paymenthistories payment = new Mapping.ms_paymenthistories()
                 {
-                    UserName = model.UserName,
+                    UserID = model.UserID,
                     VocaSetID = model.VocaSetID,
-                    VoucherCode = model.VoucherCode,
+                    VoucherID = model.VoucherID,
                     Fee = CommonMethod.ParseDecimal(model.RemainFee),
                     PaymentDate = DateTime.Now,
                     PaymentMethod = model.PaymentMethod,
@@ -47,12 +47,12 @@ namespace Nihongo.Dal.Dao
                 #region update registed 
 
                 var vocaSet = this.ms_vocasets.FirstOrDefault(ss => ss.ID == model.VocaSetID);
-                var registed = this.ms_registedvocasets.FirstOrDefault(ss => ss.VocaSetID == model.VocaSetID && ss.UserName == model.UserName);
+                var registed = this.ms_registedvocasets.FirstOrDefault(ss => ss.VocaSetID == model.VocaSetID && ss.UserID == model.UserID);
                 if (registed == null)
                 {
                     registed = new Mapping.ms_registedvocasets()
                     {
-                        UserName = model.UserName,
+                        UserID = model.UserID,
                         VocaSetID = model.VocaSetID,
                         StartDate = DateTime.Now.Date,
                         EndDate = DateTime.Now.Date.AddMonths(CommonMethod.ParseInt(vocaSet.UsefulLife)),

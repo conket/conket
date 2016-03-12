@@ -24,9 +24,9 @@ namespace Nihongo.Dal.Dao
                 {
                     query = query.Where(ss => ss.Code == model.Code);
                 }
-                if (!CommonMethod.IsNullOrEmpty(model.VocaSetCode))
+                if (!CommonMethod.IsNullOrEmpty(model.VocaSetID))
                 {
-                    query = query.Where(ss => ss.VocaSetCode == model.VocaSetCode);
+                    query = query.Where(ss => ss.VocaSetID == model.VocaSetID);
                 }
                 result = query
                     .Select(ss => new MS_VoucherModels
@@ -39,7 +39,7 @@ namespace Nihongo.Dal.Dao
                         DecreasePercent = ss.DecreasePercent,
                         RemainFee = ss.RemainFee,
                         Status = ss.Status,
-                        VocaSetCode = ss.VocaSetCode,
+                        VocaSetID = ss.VocaSetID,
                         VocaSetFee = ss.VocaSetFee
                     })
                     .FirstOrDefault();
@@ -61,7 +61,7 @@ namespace Nihongo.Dal.Dao
             result = new MS_VoucherModels();
             try
             {
-                if (!this.ms_paymenthistories.Any(ss => ss.VoucherCode == model.Code && ss.UserName == model.UserName))
+                if (!this.ms_paymenthistories.Any(ss => ss.VoucherID == model.ID && ss.UserID == model.UserID))
                 {
                     var query = this.ms_vouchers.AsQueryable();
                     if (model.ID > 0)
@@ -72,9 +72,9 @@ namespace Nihongo.Dal.Dao
                     {
                         query = query.Where(ss => ss.Code == model.Code);
                     }
-                    if (!CommonMethod.IsNullOrEmpty(model.VocaSetCode))
+                    if (!CommonMethod.IsNullOrEmpty(model.VocaSetID))
                     {
-                        query = query.Where(ss => ss.VocaSetCode == model.VocaSetCode);
+                        query = query.Where(ss => ss.VocaSetID == model.VocaSetID);
                     }
                     result = query
                         .Select(ss => new MS_VoucherModels
@@ -87,7 +87,7 @@ namespace Nihongo.Dal.Dao
                             DecreasePercent = ss.DecreasePercent,
                             RemainFee = ss.RemainFee,
                             Status = ss.Status,
-                            VocaSetCode = ss.VocaSetCode,
+                            VocaSetID = ss.VocaSetID,
                             VocaSetFee = ss.VocaSetFee
                         })
                         .FirstOrDefault();

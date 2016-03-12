@@ -8,6 +8,7 @@ namespace Nihongo.Models
     public class MS_RegistedVocaModels
     {
         public int ID { get; set; }
+        public int UserID { get; set; }
         public string UserName { get; set; }
         public int VocaSetID { get; set; }
         public string VocaSetUrlDisplay { get; set; }

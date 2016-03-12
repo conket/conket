@@ -150,7 +150,7 @@ namespace Nihongo.Controllers
 
             if (ModelState.IsValid)
             {
-                model.UserName = CommonMethod.ParseString(Session["UserName"]);
+                model.UserID = CommonMethod.ParseInt(Session["UserID"]);
                 //process
                 MS_PaymentHistoriesDao paymentDao = new MS_PaymentHistoriesDao();
                 returnCode = paymentDao.Process(model);

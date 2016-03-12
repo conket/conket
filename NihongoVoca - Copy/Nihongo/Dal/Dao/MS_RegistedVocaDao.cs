@@ -20,9 +20,9 @@ namespace Nihongo.Dal.Dao
                 {
                     query = query.Where(ss => ss.VocaSetID == model.VocaSetID);
                 }
-                if (!CommonMethod.IsNullOrEmpty(model.UserName))
+                if (!CommonMethod.IsNullOrEmpty(model.UserID))
                 {
-                    query = query.Where(ss => ss.UserName == model.UserName);
+                    query = query.Where(ss => ss.UserID == model.UserID);
                 }
 
                 var vocaSet = this.ms_vocasets.Where(ss => ss.ID == model.VocaSetID);

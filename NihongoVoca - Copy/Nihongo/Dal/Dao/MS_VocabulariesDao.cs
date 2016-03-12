@@ -264,9 +264,9 @@ namespace Nihongo.Dal.Dao
                 //    voca = voca.Where(ss => ss.LessonCode == model.LessonCode);
                 //}
 
-                if (!CommonMethod.IsNullOrEmpty(model.UserName))
+                if (!CommonMethod.IsNullOrEmpty(model.UserID))
                 {
-                    query = query.Where(ss => ss.UserName == model.UserName);
+                    query = query.Where(ss => ss.UserID == model.UserID);
                 }
 
                 if (!CommonMethod.IsNullOrEmpty(model.HasLearnt) && model.HasLearnt == CommonData.Status.Enable)
@@ -279,7 +279,7 @@ namespace Nihongo.Dal.Dao
                 //           select new MS_UserVocabulariesModels
                 //           {
                 //               ID = us.ID,
-                //               //UserName = us.UserName,
+                //               //UserID = us.UserID,
                 //               Level = us.Level,
                 //               //Update_Date = us.Update_Date,
                 //               VocabularyCode = ss.Code,
@@ -335,14 +335,14 @@ namespace Nihongo.Dal.Dao
                 var query = this.ms_uservocabularies.Where(ss => ss.Level < 10
                                                             && (ss.StartDate <= currentDate && currentDate <= ss.EndDate)).AsQueryable();
 
-                if (!CommonMethod.IsNullOrEmpty(model.UserName))
+                if (!CommonMethod.IsNullOrEmpty(model.UserID))
                 {
-                    query = query.Where(ss => ss.UserName == model.UserName);
+                    query = query.Where(ss => ss.UserID == model.UserID);
                 }
 
                 var userVoca = from vs in this.ms_vocasets
-                                join vc in this.ms_vocacategories on vs.Code equals vc.VocaSet
-                               join vd in this.ms_vocabularydetails on vc.Code equals vd.CategoryCode
+                                join vc in this.ms_vocacategories on vs.ID equals vc.VocaSetID
+                               join vd in this.ms_vocabularydetails on vc.ID equals vd.CategoryID
                                join qu in query on vd.ID equals qu.VocaDetailID
                                select new { VocaSetName = vs.Name1, VocaCateID = vc.ID, VocaCateCode = vc.Code, VocaCateName1 = vc.Name1, VocaCateUrlDisplay = vc.UrlDisplay };
 
@@ -392,9 +392,9 @@ namespace Nihongo.Dal.Dao
                 //    voca = voca.Where(ss => ss.LessonCode == model.LessonCode);
                 //}
 
-                if (!CommonMethod.IsNullOrEmpty(model.UserName))
+                if (!CommonMethod.IsNullOrEmpty(model.UserID))
                 {
-                    query = query.Where(ss => ss.UserName == model.UserName);
+                    query = query.Where(ss => ss.UserID == model.UserID);
                 }
 
                 //results = (from us in query
@@ -402,7 +402,7 @@ namespace Nihongo.Dal.Dao
                 //           select new MS_UserVocabulariesModels
                 //           {
                 //               ID = us.ID,
-                //               //UserName = us.UserName,
+                //               //UserID = us.UserID,
                 //               Level = us.Level,
                 //               //Update_Date = us.Update_Date,
                 //               VocabularyCode = ss.Code,
@@ -452,7 +452,7 @@ namespace Nihongo.Dal.Dao
                     if (voca != null)
                     {
                         voca.Level = voca.Level;
-                        voca.Update_Date = DateTime.Now;
+                        voca.UpdatedDate = DateTime.Now;
                     }
                 }
 

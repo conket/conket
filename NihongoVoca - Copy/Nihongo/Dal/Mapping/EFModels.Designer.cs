@@ -19,9 +19,27 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("Models", "FK_msregistedvocasets_VocaSetID_msvocasets_ID", "ms_vocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocasets), "ms_registedvocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_registedvocasets), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msanswers_KanjiID_mskanjis_ID", "ms_kanjis", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_kanjis), "ms_answers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_answers), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msanswers_UpdatedBy_msusers_ID", "ms_users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_users), "ms_answers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_answers), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msanswers_VocabularyID_msvocabularies_ID", "ms_vocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_vocabularies), "ms_answers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_answers), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_mskanjiexamples_KanjiID_mskanjis_ID", "ms_kanjis", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_kanjis), "ms_kanjiexamples", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_kanjiexamples), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_vocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocabularies), "ms_kanjiexamples", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_kanjiexamples), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msvocabularydetails_KanjiID_mskanjis_ID", "ms_kanjis", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_kanjis), "ms_vocabularydetails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocabularydetails), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msvocakanjis_KanjiID_mskanjis_ID", "ms_kanjis", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_kanjis), "ms_vocakanjis", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocakanjis), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_mspaymenthistories_UserID_msusers_ID", "ms_users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_users), "ms_paymenthistories", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_paymenthistories), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_mspaymenthistories_VocaSetID_msvocasets_ID", "ms_vocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocasets), "ms_paymenthistories", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_paymenthistories), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_mspaymenthistories_VoucherID_msvouchers_ID", "ms_vouchers", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_vouchers), "ms_paymenthistories", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_paymenthistories), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msregistedvocasets_UserID_msusers_ID", "ms_users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_users), "ms_registedvocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_registedvocasets), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msregistedvocasets_VocaSetID_msvocasets_ID", "ms_vocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocasets), "ms_registedvocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_registedvocasets), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_mstestresults_CategoryID_msvocacategories_ID", "ms_vocacategories", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocacategories), "ms_testresults", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_testresults), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_mstestresults_UserID_msusers_ID", "ms_users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_users), "ms_testresults", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_testresults), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msuservocabularies_UserID_msusers_ID", "ms_users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_users), "ms_uservocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_uservocabularies), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID", "ms_vocabularydetails", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocabularydetails), "ms_uservocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_uservocabularies), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_vocabularies), "ms_vocabularydetails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocabularydetails), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msvocakanjis_VocabularyID_msvocabularies_ID", "ms_vocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocabularies), "ms_vocakanjis", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocakanjis), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msvocabularydetails_CategoryID_msvocacategories_ID", "ms_vocacategories", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocacategories), "ms_vocabularydetails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocabularydetails), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msvocacategories_VocaSetID_msvocasets_ID", "ms_vocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_vocasets), "ms_vocacategories", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocacategories), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msvouchers_VocaSetID_msvocasets_ID", "ms_vocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocasets), "ms_vouchers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vouchers), true)]
 
 #endregion
 
@@ -76,18 +94,66 @@ namespace Nihongo.Dal.Mapping
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<ms_testresults> ms_testresults
+        public ObjectSet<ms_answers> ms_answers
         {
             get
             {
-                if ((_ms_testresults == null))
+                if ((_ms_answers == null))
                 {
-                    _ms_testresults = base.CreateObjectSet<ms_testresults>("ms_testresults");
+                    _ms_answers = base.CreateObjectSet<ms_answers>("ms_answers");
                 }
-                return _ms_testresults;
+                return _ms_answers;
             }
         }
-        private ObjectSet<ms_testresults> _ms_testresults;
+        private ObjectSet<ms_answers> _ms_answers;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ms_kanjiexamples> ms_kanjiexamples
+        {
+            get
+            {
+                if ((_ms_kanjiexamples == null))
+                {
+                    _ms_kanjiexamples = base.CreateObjectSet<ms_kanjiexamples>("ms_kanjiexamples");
+                }
+                return _ms_kanjiexamples;
+            }
+        }
+        private ObjectSet<ms_kanjiexamples> _ms_kanjiexamples;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ms_kanjis> ms_kanjis
+        {
+            get
+            {
+                if ((_ms_kanjis == null))
+                {
+                    _ms_kanjis = base.CreateObjectSet<ms_kanjis>("ms_kanjis");
+                }
+                return _ms_kanjis;
+            }
+        }
+        private ObjectSet<ms_kanjis> _ms_kanjis;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ms_paymenthistories> ms_paymenthistories
+        {
+            get
+            {
+                if ((_ms_paymenthistories == null))
+                {
+                    _ms_paymenthistories = base.CreateObjectSet<ms_paymenthistories>("ms_paymenthistories");
+                }
+                return _ms_paymenthistories;
+            }
+        }
+        private ObjectSet<ms_paymenthistories> _ms_paymenthistories;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -108,50 +174,18 @@ namespace Nihongo.Dal.Mapping
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<ms_vocasets> ms_vocasets
+        public ObjectSet<ms_testresults> ms_testresults
         {
             get
             {
-                if ((_ms_vocasets == null))
+                if ((_ms_testresults == null))
                 {
-                    _ms_vocasets = base.CreateObjectSet<ms_vocasets>("ms_vocasets");
+                    _ms_testresults = base.CreateObjectSet<ms_testresults>("ms_testresults");
                 }
-                return _ms_vocasets;
+                return _ms_testresults;
             }
         }
-        private ObjectSet<ms_vocasets> _ms_vocasets;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<ms_vouchers> ms_vouchers
-        {
-            get
-            {
-                if ((_ms_vouchers == null))
-                {
-                    _ms_vouchers = base.CreateObjectSet<ms_vouchers>("ms_vouchers");
-                }
-                return _ms_vouchers;
-            }
-        }
-        private ObjectSet<ms_vouchers> _ms_vouchers;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<ms_paymenthistories> ms_paymenthistories
-        {
-            get
-            {
-                if ((_ms_paymenthistories == null))
-                {
-                    _ms_paymenthistories = base.CreateObjectSet<ms_paymenthistories>("ms_paymenthistories");
-                }
-                return _ms_paymenthistories;
-            }
-        }
-        private ObjectSet<ms_paymenthistories> _ms_paymenthistories;
+        private ObjectSet<ms_testresults> _ms_testresults;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -232,17 +266,89 @@ namespace Nihongo.Dal.Mapping
             }
         }
         private ObjectSet<ms_vocacategories> _ms_vocacategories;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ms_vocakanjis> ms_vocakanjis
+        {
+            get
+            {
+                if ((_ms_vocakanjis == null))
+                {
+                    _ms_vocakanjis = base.CreateObjectSet<ms_vocakanjis>("ms_vocakanjis");
+                }
+                return _ms_vocakanjis;
+            }
+        }
+        private ObjectSet<ms_vocakanjis> _ms_vocakanjis;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ms_vocasets> ms_vocasets
+        {
+            get
+            {
+                if ((_ms_vocasets == null))
+                {
+                    _ms_vocasets = base.CreateObjectSet<ms_vocasets>("ms_vocasets");
+                }
+                return _ms_vocasets;
+            }
+        }
+        private ObjectSet<ms_vocasets> _ms_vocasets;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ms_vouchers> ms_vouchers
+        {
+            get
+            {
+                if ((_ms_vouchers == null))
+                {
+                    _ms_vouchers = base.CreateObjectSet<ms_vouchers>("ms_vouchers");
+                }
+                return _ms_vouchers;
+            }
+        }
+        private ObjectSet<ms_vouchers> _ms_vouchers;
 
         #endregion
 
         #region AddTo Methods
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the ms_testresults EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the ms_answers EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToms_testresults(ms_testresults ms_testresults)
+        public void AddToms_answers(ms_answers ms_answers)
         {
-            base.AddObject("ms_testresults", ms_testresults);
+            base.AddObject("ms_answers", ms_answers);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ms_kanjiexamples EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToms_kanjiexamples(ms_kanjiexamples ms_kanjiexamples)
+        {
+            base.AddObject("ms_kanjiexamples", ms_kanjiexamples);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ms_kanjis EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToms_kanjis(ms_kanjis ms_kanjis)
+        {
+            base.AddObject("ms_kanjis", ms_kanjis);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ms_paymenthistories EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToms_paymenthistories(ms_paymenthistories ms_paymenthistories)
+        {
+            base.AddObject("ms_paymenthistories", ms_paymenthistories);
         }
     
         /// <summary>
@@ -254,27 +360,11 @@ namespace Nihongo.Dal.Mapping
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the ms_vocasets EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the ms_testresults EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToms_vocasets(ms_vocasets ms_vocasets)
+        public void AddToms_testresults(ms_testresults ms_testresults)
         {
-            base.AddObject("ms_vocasets", ms_vocasets);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the ms_vouchers EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToms_vouchers(ms_vouchers ms_vouchers)
-        {
-            base.AddObject("ms_vouchers", ms_vouchers);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the ms_paymenthistories EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToms_paymenthistories(ms_paymenthistories ms_paymenthistories)
-        {
-            base.AddObject("ms_paymenthistories", ms_paymenthistories);
+            base.AddObject("ms_testresults", ms_testresults);
         }
     
         /// <summary>
@@ -316,6 +406,30 @@ namespace Nihongo.Dal.Mapping
         {
             base.AddObject("ms_vocacategories", ms_vocacategories);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ms_vocakanjis EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToms_vocakanjis(ms_vocakanjis ms_vocakanjis)
+        {
+            base.AddObject("ms_vocakanjis", ms_vocakanjis);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ms_vocasets EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToms_vocasets(ms_vocasets ms_vocasets)
+        {
+            base.AddObject("ms_vocasets", ms_vocasets);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ms_vouchers EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToms_vouchers(ms_vouchers ms_vouchers)
+        {
+            base.AddObject("ms_vouchers", ms_vouchers);
+        }
 
         #endregion
 
@@ -324,6 +438,1001 @@ namespace Nihongo.Dal.Mapping
     #endregion
 
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Models", Name="ms_answers")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ms_answers : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ms_answers object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static ms_answers Createms_answers(global::System.Int32 id)
+        {
+            ms_answers ms_answers = new ms_answers();
+            ms_answers.ID = id;
+            return ms_answers;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> VocabularyID
+        {
+            get
+            {
+                return _VocabularyID;
+            }
+            set
+            {
+                OnVocabularyIDChanging(value);
+                ReportPropertyChanging("VocabularyID");
+                _VocabularyID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("VocabularyID");
+                OnVocabularyIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _VocabularyID;
+        partial void OnVocabularyIDChanging(Nullable<global::System.Int32> value);
+        partial void OnVocabularyIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> KanjiID
+        {
+            get
+            {
+                return _KanjiID;
+            }
+            set
+            {
+                OnKanjiIDChanging(value);
+                ReportPropertyChanging("KanjiID");
+                _KanjiID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("KanjiID");
+                OnKanjiIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _KanjiID;
+        partial void OnKanjiIDChanging(Nullable<global::System.Int32> value);
+        partial void OnKanjiIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Answer
+        {
+            get
+            {
+                return _Answer;
+            }
+            set
+            {
+                OnAnswerChanging(value);
+                ReportPropertyChanging("Answer");
+                _Answer = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Answer");
+                OnAnswerChanged();
+            }
+        }
+        private global::System.String _Answer;
+        partial void OnAnswerChanging(global::System.String value);
+        partial void OnAnswerChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> LastUserResponseDate
+        {
+            get
+            {
+                return _LastUserResponseDate;
+            }
+            set
+            {
+                OnLastUserResponseDateChanging(value);
+                ReportPropertyChanging("LastUserResponseDate");
+                _LastUserResponseDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LastUserResponseDate");
+                OnLastUserResponseDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _LastUserResponseDate;
+        partial void OnLastUserResponseDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnLastUserResponseDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LastUserResponse
+        {
+            get
+            {
+                return _LastUserResponse;
+            }
+            set
+            {
+                OnLastUserResponseChanging(value);
+                ReportPropertyChanging("LastUserResponse");
+                _LastUserResponse = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("LastUserResponse");
+                OnLastUserResponseChanged();
+            }
+        }
+        private global::System.String _LastUserResponse;
+        partial void OnLastUserResponseChanging(global::System.String value);
+        partial void OnLastUserResponseChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> UpdatedDate
+        {
+            get
+            {
+                return _UpdatedDate;
+            }
+            set
+            {
+                OnUpdatedDateChanging(value);
+                ReportPropertyChanging("UpdatedDate");
+                _UpdatedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UpdatedDate");
+                OnUpdatedDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _UpdatedDate;
+        partial void OnUpdatedDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnUpdatedDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> UpdatedBy
+        {
+            get
+            {
+                return _UpdatedBy;
+            }
+            set
+            {
+                OnUpdatedByChanging(value);
+                ReportPropertyChanging("UpdatedBy");
+                _UpdatedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UpdatedBy");
+                OnUpdatedByChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _UpdatedBy;
+        partial void OnUpdatedByChanging(Nullable<global::System.Int32> value);
+        partial void OnUpdatedByChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msanswers_KanjiID_mskanjis_ID", "ms_kanjis")]
+        public ms_kanjis ms_kanjis
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_kanjis>("Models.FK_msanswers_KanjiID_mskanjis_ID", "ms_kanjis").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_kanjis>("Models.FK_msanswers_KanjiID_mskanjis_ID", "ms_kanjis").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_kanjis> ms_kanjisReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_kanjis>("Models.FK_msanswers_KanjiID_mskanjis_ID", "ms_kanjis");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_kanjis>("Models.FK_msanswers_KanjiID_mskanjis_ID", "ms_kanjis", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msanswers_UpdatedBy_msusers_ID", "ms_users")]
+        public ms_users ms_users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msanswers_UpdatedBy_msusers_ID", "ms_users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msanswers_UpdatedBy_msusers_ID", "ms_users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_users> ms_usersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msanswers_UpdatedBy_msusers_ID", "ms_users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_users>("Models.FK_msanswers_UpdatedBy_msusers_ID", "ms_users", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msanswers_VocabularyID_msvocabularies_ID", "ms_vocabularies")]
+        public ms_vocabularies ms_vocabularies
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_msanswers_VocabularyID_msvocabularies_ID", "ms_vocabularies").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_msanswers_VocabularyID_msvocabularies_ID", "ms_vocabularies").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_vocabularies> ms_vocabulariesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_msanswers_VocabularyID_msvocabularies_ID", "ms_vocabularies");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_vocabularies>("Models.FK_msanswers_VocabularyID_msvocabularies_ID", "ms_vocabularies", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Models", Name="ms_kanjiexamples")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ms_kanjiexamples : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ms_kanjiexamples object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="kanjiID">Initial value of the KanjiID property.</param>
+        /// <param name="vocabularyID">Initial value of the VocabularyID property.</param>
+        public static ms_kanjiexamples Createms_kanjiexamples(global::System.Int32 id, global::System.Int32 kanjiID, global::System.Int32 vocabularyID)
+        {
+            ms_kanjiexamples ms_kanjiexamples = new ms_kanjiexamples();
+            ms_kanjiexamples.ID = id;
+            ms_kanjiexamples.KanjiID = kanjiID;
+            ms_kanjiexamples.VocabularyID = vocabularyID;
+            return ms_kanjiexamples;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 KanjiID
+        {
+            get
+            {
+                return _KanjiID;
+            }
+            set
+            {
+                OnKanjiIDChanging(value);
+                ReportPropertyChanging("KanjiID");
+                _KanjiID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("KanjiID");
+                OnKanjiIDChanged();
+            }
+        }
+        private global::System.Int32 _KanjiID;
+        partial void OnKanjiIDChanging(global::System.Int32 value);
+        partial void OnKanjiIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 VocabularyID
+        {
+            get
+            {
+                return _VocabularyID;
+            }
+            set
+            {
+                OnVocabularyIDChanging(value);
+                ReportPropertyChanging("VocabularyID");
+                _VocabularyID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("VocabularyID");
+                OnVocabularyIDChanged();
+            }
+        }
+        private global::System.Int32 _VocabularyID;
+        partial void OnVocabularyIDChanging(global::System.Int32 value);
+        partial void OnVocabularyIDChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mskanjiexamples_KanjiID_mskanjis_ID", "ms_kanjis")]
+        public ms_kanjis ms_kanjis
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_kanjis>("Models.FK_mskanjiexamples_KanjiID_mskanjis_ID", "ms_kanjis").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_kanjis>("Models.FK_mskanjiexamples_KanjiID_mskanjis_ID", "ms_kanjis").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_kanjis> ms_kanjisReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_kanjis>("Models.FK_mskanjiexamples_KanjiID_mskanjis_ID", "ms_kanjis");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_kanjis>("Models.FK_mskanjiexamples_KanjiID_mskanjis_ID", "ms_kanjis", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_vocabularies")]
+        public ms_vocabularies ms_vocabularies
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_vocabularies").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_vocabularies").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_vocabularies> ms_vocabulariesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_vocabularies");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_vocabularies>("Models.FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_vocabularies", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Models", Name="ms_kanjis")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ms_kanjis : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ms_kanjis object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="code">Initial value of the Code property.</param>
+        public static ms_kanjis Createms_kanjis(global::System.Int32 id, global::System.String code)
+        {
+            ms_kanjis ms_kanjis = new ms_kanjis();
+            ms_kanjis.ID = id;
+            ms_kanjis.Code = code;
+            return ms_kanjis;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Code
+        {
+            get
+            {
+                return _Code;
+            }
+            set
+            {
+                OnCodeChanging(value);
+                ReportPropertyChanging("Code");
+                _Code = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Code");
+                OnCodeChanged();
+            }
+        }
+        private global::System.String _Code;
+        partial void OnCodeChanging(global::System.String value);
+        partial void OnCodeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Kanji
+        {
+            get
+            {
+                return _Kanji;
+            }
+            set
+            {
+                OnKanjiChanging(value);
+                ReportPropertyChanging("Kanji");
+                _Kanji = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Kanji");
+                OnKanjiChanged();
+            }
+        }
+        private global::System.String _Kanji;
+        partial void OnKanjiChanging(global::System.String value);
+        partial void OnKanjiChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Pinyin
+        {
+            get
+            {
+                return _Pinyin;
+            }
+            set
+            {
+                OnPinyinChanging(value);
+                ReportPropertyChanging("Pinyin");
+                _Pinyin = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Pinyin");
+                OnPinyinChanged();
+            }
+        }
+        private global::System.String _Pinyin;
+        partial void OnPinyinChanging(global::System.String value);
+        partial void OnPinyinChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Writing
+        {
+            get
+            {
+                return _Writing;
+            }
+            set
+            {
+                OnWritingChanging(value);
+                ReportPropertyChanging("Writing");
+                _Writing = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Writing");
+                OnWritingChanged();
+            }
+        }
+        private global::System.String _Writing;
+        partial void OnWritingChanging(global::System.String value);
+        partial void OnWritingChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Remembering
+        {
+            get
+            {
+                return _Remembering;
+            }
+            set
+            {
+                OnRememberingChanging(value);
+                ReportPropertyChanging("Remembering");
+                _Remembering = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Remembering");
+                OnRememberingChanged();
+            }
+        }
+        private global::System.String _Remembering;
+        partial void OnRememberingChanging(global::System.String value);
+        partial void OnRememberingChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Strokes
+        {
+            get
+            {
+                return _Strokes;
+            }
+            set
+            {
+                OnStrokesChanging(value);
+                ReportPropertyChanging("Strokes");
+                _Strokes = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Strokes");
+                OnStrokesChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Strokes;
+        partial void OnStrokesChanging(Nullable<global::System.Int32> value);
+        partial void OnStrokesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String OnReading
+        {
+            get
+            {
+                return _OnReading;
+            }
+            set
+            {
+                OnOnReadingChanging(value);
+                ReportPropertyChanging("OnReading");
+                _OnReading = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("OnReading");
+                OnOnReadingChanged();
+            }
+        }
+        private global::System.String _OnReading;
+        partial void OnOnReadingChanging(global::System.String value);
+        partial void OnOnReadingChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String KunReading
+        {
+            get
+            {
+                return _KunReading;
+            }
+            set
+            {
+                OnKunReadingChanging(value);
+                ReportPropertyChanging("KunReading");
+                _KunReading = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("KunReading");
+                OnKunReadingChanged();
+            }
+        }
+        private global::System.String _KunReading;
+        partial void OnKunReadingChanging(global::System.String value);
+        partial void OnKunReadingChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String VMeaning
+        {
+            get
+            {
+                return _VMeaning;
+            }
+            set
+            {
+                OnVMeaningChanging(value);
+                ReportPropertyChanging("VMeaning");
+                _VMeaning = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("VMeaning");
+                OnVMeaningChanged();
+            }
+        }
+        private global::System.String _VMeaning;
+        partial void OnVMeaningChanging(global::System.String value);
+        partial void OnVMeaningChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UrlImage
+        {
+            get
+            {
+                return _UrlImage;
+            }
+            set
+            {
+                OnUrlImageChanging(value);
+                ReportPropertyChanging("UrlImage");
+                _UrlImage = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("UrlImage");
+                OnUrlImageChanged();
+            }
+        }
+        private global::System.String _UrlImage;
+        partial void OnUrlImageChanging(global::System.String value);
+        partial void OnUrlImageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UrlAudio
+        {
+            get
+            {
+                return _UrlAudio;
+            }
+            set
+            {
+                OnUrlAudioChanging(value);
+                ReportPropertyChanging("UrlAudio");
+                _UrlAudio = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("UrlAudio");
+                OnUrlAudioChanged();
+            }
+        }
+        private global::System.String _UrlAudio;
+        partial void OnUrlAudioChanging(global::System.String value);
+        partial void OnUrlAudioChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msanswers_KanjiID_mskanjis_ID", "ms_answers")]
+        public EntityCollection<ms_answers> ms_answers
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_answers>("Models.FK_msanswers_KanjiID_mskanjis_ID", "ms_answers");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_answers>("Models.FK_msanswers_KanjiID_mskanjis_ID", "ms_answers", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mskanjiexamples_KanjiID_mskanjis_ID", "ms_kanjiexamples")]
+        public EntityCollection<ms_kanjiexamples> ms_kanjiexamples
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_kanjiexamples>("Models.FK_mskanjiexamples_KanjiID_mskanjis_ID", "ms_kanjiexamples");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_kanjiexamples>("Models.FK_mskanjiexamples_KanjiID_mskanjis_ID", "ms_kanjiexamples", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocabularydetails_KanjiID_mskanjis_ID", "ms_vocabularydetails")]
+        public EntityCollection<ms_vocabularydetails> ms_vocabularydetails
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_vocabularydetails>("Models.FK_msvocabularydetails_KanjiID_mskanjis_ID", "ms_vocabularydetails");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_vocabularydetails>("Models.FK_msvocabularydetails_KanjiID_mskanjis_ID", "ms_vocabularydetails", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocakanjis_KanjiID_mskanjis_ID", "ms_vocakanjis")]
+        public EntityCollection<ms_vocakanjis> ms_vocakanjis
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_vocakanjis>("Models.FK_msvocakanjis_KanjiID_mskanjis_ID", "ms_vocakanjis");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_vocakanjis>("Models.FK_msvocakanjis_KanjiID_mskanjis_ID", "ms_vocakanjis", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -340,18 +1449,18 @@ namespace Nihongo.Dal.Mapping
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="vocaSetID">Initial value of the VocaSetID property.</param>
-        /// <param name="userName">Initial value of the UserName property.</param>
+        /// <param name="userID">Initial value of the UserID property.</param>
         /// <param name="paymentDate">Initial value of the PaymentDate property.</param>
         /// <param name="receivedDate">Initial value of the ReceivedDate property.</param>
         /// <param name="fee">Initial value of the Fee property.</param>
         /// <param name="paymentMethod">Initial value of the PaymentMethod property.</param>
         /// <param name="status">Initial value of the Status property.</param>
-        public static ms_paymenthistories Createms_paymenthistories(global::System.Int32 id, global::System.Int32 vocaSetID, global::System.String userName, global::System.DateTime paymentDate, global::System.DateTime receivedDate, global::System.Decimal fee, global::System.String paymentMethod, global::System.String status)
+        public static ms_paymenthistories Createms_paymenthistories(global::System.Int32 id, global::System.Int32 vocaSetID, global::System.Int32 userID, global::System.DateTime paymentDate, global::System.DateTime receivedDate, global::System.Decimal fee, global::System.String paymentMethod, global::System.String status)
         {
             ms_paymenthistories ms_paymenthistories = new ms_paymenthistories();
             ms_paymenthistories.ID = id;
             ms_paymenthistories.VocaSetID = vocaSetID;
-            ms_paymenthistories.UserName = userName;
+            ms_paymenthistories.UserID = userID;
             ms_paymenthistories.PaymentDate = paymentDate;
             ms_paymenthistories.ReceivedDate = receivedDate;
             ms_paymenthistories.Fee = fee;
@@ -420,24 +1529,24 @@ namespace Nihongo.Dal.Mapping
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String UserName
+        public global::System.Int32 UserID
         {
             get
             {
-                return _UserName;
+                return _UserID;
             }
             set
             {
-                OnUserNameChanging(value);
-                ReportPropertyChanging("UserName");
-                _UserName = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("UserName");
-                OnUserNameChanged();
+                OnUserIDChanging(value);
+                ReportPropertyChanging("UserID");
+                _UserID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserID");
+                OnUserIDChanged();
             }
         }
-        private global::System.String _UserName;
-        partial void OnUserNameChanging(global::System.String value);
-        partial void OnUserNameChanged();
+        private global::System.Int32 _UserID;
+        partial void OnUserIDChanging(global::System.Int32 value);
+        partial void OnUserIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -732,24 +1841,24 @@ namespace Nihongo.Dal.Mapping
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String VoucherCode
+        public Nullable<global::System.Int32> VoucherID
         {
             get
             {
-                return _VoucherCode;
+                return _VoucherID;
             }
             set
             {
-                OnVoucherCodeChanging(value);
-                ReportPropertyChanging("VoucherCode");
-                _VoucherCode = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("VoucherCode");
-                OnVoucherCodeChanged();
+                OnVoucherIDChanging(value);
+                ReportPropertyChanging("VoucherID");
+                _VoucherID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("VoucherID");
+                OnVoucherIDChanged();
             }
         }
-        private global::System.String _VoucherCode;
-        partial void OnVoucherCodeChanging(global::System.String value);
-        partial void OnVoucherCodeChanged();
+        private Nullable<global::System.Int32> _VoucherID;
+        partial void OnVoucherIDChanging(Nullable<global::System.Int32> value);
+        partial void OnVoucherIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -810,6 +1919,44 @@ namespace Nihongo.Dal.Mapping
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mspaymenthistories_UserID_msusers_ID", "ms_users")]
+        public ms_users ms_users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_mspaymenthistories_UserID_msusers_ID", "ms_users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_mspaymenthistories_UserID_msusers_ID", "ms_users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_users> ms_usersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_mspaymenthistories_UserID_msusers_ID", "ms_users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_users>("Models.FK_mspaymenthistories_UserID_msusers_ID", "ms_users", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mspaymenthistories_VocaSetID_msvocasets_ID", "ms_vocasets")]
         public ms_vocasets ms_vocasets
         {
@@ -841,6 +1988,44 @@ namespace Nihongo.Dal.Mapping
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mspaymenthistories_VoucherID_msvouchers_ID", "ms_vouchers")]
+        public ms_vouchers ms_vouchers
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vouchers>("Models.FK_mspaymenthistories_VoucherID_msvouchers_ID", "ms_vouchers").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vouchers>("Models.FK_mspaymenthistories_VoucherID_msvouchers_ID", "ms_vouchers").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_vouchers> ms_vouchersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vouchers>("Models.FK_mspaymenthistories_VoucherID_msvouchers_ID", "ms_vouchers");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_vouchers>("Models.FK_mspaymenthistories_VoucherID_msvouchers_ID", "ms_vouchers", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -861,14 +2046,14 @@ namespace Nihongo.Dal.Mapping
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="vocaSetID">Initial value of the VocaSetID property.</param>
-        /// <param name="userName">Initial value of the UserName property.</param>
+        /// <param name="userID">Initial value of the UserID property.</param>
         /// <param name="status">Initial value of the Status property.</param>
-        public static ms_registedvocasets Createms_registedvocasets(global::System.Int32 id, global::System.Int32 vocaSetID, global::System.String userName, global::System.String status)
+        public static ms_registedvocasets Createms_registedvocasets(global::System.Int32 id, global::System.Int32 vocaSetID, global::System.Int32 userID, global::System.String status)
         {
             ms_registedvocasets ms_registedvocasets = new ms_registedvocasets();
             ms_registedvocasets.ID = id;
             ms_registedvocasets.VocaSetID = vocaSetID;
-            ms_registedvocasets.UserName = userName;
+            ms_registedvocasets.UserID = userID;
             ms_registedvocasets.Status = status;
             return ms_registedvocasets;
         }
@@ -933,24 +2118,24 @@ namespace Nihongo.Dal.Mapping
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String UserName
+        public global::System.Int32 UserID
         {
             get
             {
-                return _UserName;
+                return _UserID;
             }
             set
             {
-                OnUserNameChanging(value);
-                ReportPropertyChanging("UserName");
-                _UserName = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("UserName");
-                OnUserNameChanged();
+                OnUserIDChanging(value);
+                ReportPropertyChanging("UserID");
+                _UserID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserID");
+                OnUserIDChanged();
             }
         }
-        private global::System.String _UserName;
-        partial void OnUserNameChanging(global::System.String value);
-        partial void OnUserNameChanged();
+        private global::System.Int32 _UserID;
+        partial void OnUserIDChanging(global::System.Int32 value);
+        partial void OnUserIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1107,6 +2292,44 @@ namespace Nihongo.Dal.Mapping
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msregistedvocasets_UserID_msusers_ID", "ms_users")]
+        public ms_users ms_users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msregistedvocasets_UserID_msusers_ID", "ms_users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msregistedvocasets_UserID_msusers_ID", "ms_users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_users> ms_usersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msregistedvocasets_UserID_msusers_ID", "ms_users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_users>("Models.FK_msregistedvocasets_UserID_msusers_ID", "ms_users", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msregistedvocasets_VocaSetID_msvocasets_ID", "ms_vocasets")]
         public ms_vocasets ms_vocasets
         {
@@ -1157,15 +2380,15 @@ namespace Nihongo.Dal.Mapping
         /// Create a new ms_testresults object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
-        /// <param name="categoryCode">Initial value of the CategoryCode property.</param>
-        /// <param name="userName">Initial value of the UserName property.</param>
+        /// <param name="categoryID">Initial value of the CategoryID property.</param>
+        /// <param name="userID">Initial value of the UserID property.</param>
         /// <param name="status">Initial value of the Status property.</param>
-        public static ms_testresults Createms_testresults(global::System.Int32 id, global::System.String categoryCode, global::System.String userName, global::System.String status)
+        public static ms_testresults Createms_testresults(global::System.Int32 id, global::System.Int32 categoryID, global::System.Int32 userID, global::System.String status)
         {
             ms_testresults ms_testresults = new ms_testresults();
             ms_testresults.ID = id;
-            ms_testresults.CategoryCode = categoryCode;
-            ms_testresults.UserName = userName;
+            ms_testresults.CategoryID = categoryID;
+            ms_testresults.UserID = userID;
             ms_testresults.Status = status;
             return ms_testresults;
         }
@@ -1230,48 +2453,48 @@ namespace Nihongo.Dal.Mapping
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String CategoryCode
+        public global::System.Int32 CategoryID
         {
             get
             {
-                return _CategoryCode;
+                return _CategoryID;
             }
             set
             {
-                OnCategoryCodeChanging(value);
-                ReportPropertyChanging("CategoryCode");
-                _CategoryCode = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("CategoryCode");
-                OnCategoryCodeChanged();
+                OnCategoryIDChanging(value);
+                ReportPropertyChanging("CategoryID");
+                _CategoryID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CategoryID");
+                OnCategoryIDChanged();
             }
         }
-        private global::System.String _CategoryCode;
-        partial void OnCategoryCodeChanging(global::System.String value);
-        partial void OnCategoryCodeChanged();
+        private global::System.Int32 _CategoryID;
+        partial void OnCategoryIDChanging(global::System.Int32 value);
+        partial void OnCategoryIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String UserName
+        public global::System.Int32 UserID
         {
             get
             {
-                return _UserName;
+                return _UserID;
             }
             set
             {
-                OnUserNameChanging(value);
-                ReportPropertyChanging("UserName");
-                _UserName = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("UserName");
-                OnUserNameChanged();
+                OnUserIDChanging(value);
+                ReportPropertyChanging("UserID");
+                _UserID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserID");
+                OnUserIDChanged();
             }
         }
-        private global::System.String _UserName;
-        partial void OnUserNameChanging(global::System.String value);
-        partial void OnUserNameChanged();
+        private global::System.Int32 _UserID;
+        partial void OnUserIDChanging(global::System.Int32 value);
+        partial void OnUserIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1492,6 +2715,86 @@ namespace Nihongo.Dal.Mapping
         #endregion
 
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mstestresults_CategoryID_msvocacategories_ID", "ms_vocacategories")]
+        public ms_vocacategories ms_vocacategories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocacategories>("Models.FK_mstestresults_CategoryID_msvocacategories_ID", "ms_vocacategories").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocacategories>("Models.FK_mstestresults_CategoryID_msvocacategories_ID", "ms_vocacategories").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_vocacategories> ms_vocacategoriesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocacategories>("Models.FK_mstestresults_CategoryID_msvocacategories_ID", "ms_vocacategories");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_vocacategories>("Models.FK_mstestresults_CategoryID_msvocacategories_ID", "ms_vocacategories", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mstestresults_UserID_msusers_ID", "ms_users")]
+        public ms_users ms_users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_mstestresults_UserID_msusers_ID", "ms_users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_mstestresults_UserID_msusers_ID", "ms_users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_users> ms_usersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_mstestresults_UserID_msusers_ID", "ms_users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_users>("Models.FK_mstestresults_UserID_msusers_ID", "ms_users", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -1751,6 +3054,30 @@ namespace Nihongo.Dal.Mapping
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Views
+        {
+            get
+            {
+                return _Views;
+            }
+            set
+            {
+                OnViewsChanging(value);
+                ReportPropertyChanging("Views");
+                _Views = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Views");
+                OnViewsChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Views;
+        partial void OnViewsChanging(Nullable<global::System.Int32> value);
+        partial void OnViewsChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String Status
@@ -1915,10 +3242,148 @@ namespace Nihongo.Dal.Mapping
         private Nullable<global::System.Int32> _Point;
         partial void OnPointChanging(Nullable<global::System.Int32> value);
         partial void OnPointChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CreatedDate
+        {
+            get
+            {
+                return _CreatedDate;
+            }
+            set
+            {
+                OnCreatedDateChanging(value);
+                ReportPropertyChanging("CreatedDate");
+                _CreatedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedDate");
+                OnCreatedDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CreatedDate;
+        partial void OnCreatedDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnCreatedDateChanged();
 
         #endregion
 
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msanswers_UpdatedBy_msusers_ID", "ms_answers")]
+        public EntityCollection<ms_answers> ms_answers
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_answers>("Models.FK_msanswers_UpdatedBy_msusers_ID", "ms_answers");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_answers>("Models.FK_msanswers_UpdatedBy_msusers_ID", "ms_answers", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mspaymenthistories_UserID_msusers_ID", "ms_paymenthistories")]
+        public EntityCollection<ms_paymenthistories> ms_paymenthistories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_paymenthistories>("Models.FK_mspaymenthistories_UserID_msusers_ID", "ms_paymenthistories");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_paymenthistories>("Models.FK_mspaymenthistories_UserID_msusers_ID", "ms_paymenthistories", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msregistedvocasets_UserID_msusers_ID", "ms_registedvocasets")]
+        public EntityCollection<ms_registedvocasets> ms_registedvocasets
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_registedvocasets>("Models.FK_msregistedvocasets_UserID_msusers_ID", "ms_registedvocasets");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_registedvocasets>("Models.FK_msregistedvocasets_UserID_msusers_ID", "ms_registedvocasets", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mstestresults_UserID_msusers_ID", "ms_testresults")]
+        public EntityCollection<ms_testresults> ms_testresults
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_testresults>("Models.FK_mstestresults_UserID_msusers_ID", "ms_testresults");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_testresults>("Models.FK_mstestresults_UserID_msusers_ID", "ms_testresults", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msuservocabularies_UserID_msusers_ID", "ms_uservocabularies")]
+        public EntityCollection<ms_uservocabularies> ms_uservocabularies
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_uservocabularies>("Models.FK_msuservocabularies_UserID_msusers_ID", "ms_uservocabularies");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_uservocabularies>("Models.FK_msuservocabularies_UserID_msusers_ID", "ms_uservocabularies", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -1936,13 +3401,13 @@ namespace Nihongo.Dal.Mapping
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="vocaDetailID">Initial value of the VocaDetailID property.</param>
-        /// <param name="userName">Initial value of the UserName property.</param>
-        public static ms_uservocabularies Createms_uservocabularies(global::System.Int32 id, global::System.Int32 vocaDetailID, global::System.String userName)
+        /// <param name="userID">Initial value of the UserID property.</param>
+        public static ms_uservocabularies Createms_uservocabularies(global::System.Int32 id, global::System.Int32 vocaDetailID, global::System.Int32 userID)
         {
             ms_uservocabularies ms_uservocabularies = new ms_uservocabularies();
             ms_uservocabularies.ID = id;
             ms_uservocabularies.VocaDetailID = vocaDetailID;
-            ms_uservocabularies.UserName = userName;
+            ms_uservocabularies.UserID = userID;
             return ms_uservocabularies;
         }
 
@@ -2006,24 +3471,24 @@ namespace Nihongo.Dal.Mapping
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String UserName
+        public global::System.Int32 UserID
         {
             get
             {
-                return _UserName;
+                return _UserID;
             }
             set
             {
-                OnUserNameChanging(value);
-                ReportPropertyChanging("UserName");
-                _UserName = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("UserName");
-                OnUserNameChanged();
+                OnUserIDChanging(value);
+                ReportPropertyChanging("UserID");
+                _UserID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserID");
+                OnUserIDChanged();
             }
         }
-        private global::System.String _UserName;
-        partial void OnUserNameChanging(global::System.String value);
-        partial void OnUserNameChanged();
+        private global::System.Int32 _UserID;
+        partial void OnUserIDChanging(global::System.Int32 value);
+        partial void OnUserIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2078,30 +3543,6 @@ namespace Nihongo.Dal.Mapping
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> Update_Date
-        {
-            get
-            {
-                return _Update_Date;
-            }
-            set
-            {
-                OnUpdate_DateChanging(value);
-                ReportPropertyChanging("Update_Date");
-                _Update_Date = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Update_Date");
-                OnUpdate_DateChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _Update_Date;
-        partial void OnUpdate_DateChanging(Nullable<global::System.DateTime> value);
-        partial void OnUpdate_DateChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public Nullable<global::System.DateTime> StartDate
         {
             get
@@ -2150,6 +3591,30 @@ namespace Nihongo.Dal.Mapping
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public global::System.String HasMarked
+        {
+            get
+            {
+                return _HasMarked;
+            }
+            set
+            {
+                OnHasMarkedChanging(value);
+                ReportPropertyChanging("HasMarked");
+                _HasMarked = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("HasMarked");
+                OnHasMarkedChanged();
+            }
+        }
+        private global::System.String _HasMarked;
+        partial void OnHasMarkedChanging(global::System.String value);
+        partial void OnHasMarkedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public global::System.String Description
         {
             get
@@ -2174,29 +3639,115 @@ namespace Nihongo.Dal.Mapping
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String HasMarked
+        public global::System.String UserDefine
         {
             get
             {
-                return _HasMarked;
+                return _UserDefine;
             }
             set
             {
-                OnHasMarkedChanging(value);
-                ReportPropertyChanging("HasMarked");
-                _HasMarked = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("HasMarked");
-                OnHasMarkedChanged();
+                OnUserDefineChanging(value);
+                ReportPropertyChanging("UserDefine");
+                _UserDefine = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("UserDefine");
+                OnUserDefineChanged();
             }
         }
-        private global::System.String _HasMarked;
-        partial void OnHasMarkedChanging(global::System.String value);
-        partial void OnHasMarkedChanged();
+        private global::System.String _UserDefine;
+        partial void OnUserDefineChanging(global::System.String value);
+        partial void OnUserDefineChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> UpdatedDate
+        {
+            get
+            {
+                return _UpdatedDate;
+            }
+            set
+            {
+                OnUpdatedDateChanging(value);
+                ReportPropertyChanging("UpdatedDate");
+                _UpdatedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UpdatedDate");
+                OnUpdatedDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _UpdatedDate;
+        partial void OnUpdatedDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnUpdatedDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> UpdatedBy
+        {
+            get
+            {
+                return _UpdatedBy;
+            }
+            set
+            {
+                OnUpdatedByChanging(value);
+                ReportPropertyChanging("UpdatedBy");
+                _UpdatedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UpdatedBy");
+                OnUpdatedByChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _UpdatedBy;
+        partial void OnUpdatedByChanging(Nullable<global::System.Int32> value);
+        partial void OnUpdatedByChanged();
 
         #endregion
 
     
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msuservocabularies_UserID_msusers_ID", "ms_users")]
+        public ms_users ms_users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msuservocabularies_UserID_msusers_ID", "ms_users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msuservocabularies_UserID_msusers_ID", "ms_users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_users> ms_usersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msuservocabularies_UserID_msusers_ID", "ms_users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_users>("Models.FK_msuservocabularies_UserID_msusers_ID", "ms_users", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2421,6 +3972,54 @@ namespace Nihongo.Dal.Mapping
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public global::System.String Romaji2
+        {
+            get
+            {
+                return _Romaji2;
+            }
+            set
+            {
+                OnRomaji2Changing(value);
+                ReportPropertyChanging("Romaji2");
+                _Romaji2 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Romaji2");
+                OnRomaji2Changed();
+            }
+        }
+        private global::System.String _Romaji2;
+        partial void OnRomaji2Changing(global::System.String value);
+        partial void OnRomaji2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Hiragana2
+        {
+            get
+            {
+                return _Hiragana2;
+            }
+            set
+            {
+                OnHiragana2Changing(value);
+                ReportPropertyChanging("Hiragana2");
+                _Hiragana2 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Hiragana2");
+                OnHiragana2Changed();
+            }
+        }
+        private global::System.String _Hiragana2;
+        partial void OnHiragana2Changing(global::System.String value);
+        partial void OnHiragana2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public global::System.String Romaji_Katakana
         {
             get
@@ -2469,6 +4068,54 @@ namespace Nihongo.Dal.Mapping
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public global::System.String Romaji_Katakana2
+        {
+            get
+            {
+                return _Romaji_Katakana2;
+            }
+            set
+            {
+                OnRomaji_Katakana2Changing(value);
+                ReportPropertyChanging("Romaji_Katakana2");
+                _Romaji_Katakana2 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Romaji_Katakana2");
+                OnRomaji_Katakana2Changed();
+            }
+        }
+        private global::System.String _Romaji_Katakana2;
+        partial void OnRomaji_Katakana2Changing(global::System.String value);
+        partial void OnRomaji_Katakana2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Katakana2
+        {
+            get
+            {
+                return _Katakana2;
+            }
+            set
+            {
+                OnKatakana2Changing(value);
+                ReportPropertyChanging("Katakana2");
+                _Katakana2 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Katakana2");
+                OnKatakana2Changed();
+            }
+        }
+        private global::System.String _Katakana2;
+        partial void OnKatakana2Changing(global::System.String value);
+        partial void OnKatakana2Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public global::System.String Kanji
         {
             get
@@ -2487,198 +4134,6 @@ namespace Nihongo.Dal.Mapping
         private global::System.String _Kanji;
         partial void OnKanjiChanging(global::System.String value);
         partial void OnKanjiChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Pinyin
-        {
-            get
-            {
-                return _Pinyin;
-            }
-            set
-            {
-                OnPinyinChanging(value);
-                ReportPropertyChanging("Pinyin");
-                _Pinyin = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Pinyin");
-                OnPinyinChanged();
-            }
-        }
-        private global::System.String _Pinyin;
-        partial void OnPinyinChanging(global::System.String value);
-        partial void OnPinyinChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Writing
-        {
-            get
-            {
-                return _Writing;
-            }
-            set
-            {
-                OnWritingChanging(value);
-                ReportPropertyChanging("Writing");
-                _Writing = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Writing");
-                OnWritingChanged();
-            }
-        }
-        private global::System.String _Writing;
-        partial void OnWritingChanging(global::System.String value);
-        partial void OnWritingChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String OnReading
-        {
-            get
-            {
-                return _OnReading;
-            }
-            set
-            {
-                OnOnReadingChanging(value);
-                ReportPropertyChanging("OnReading");
-                _OnReading = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("OnReading");
-                OnOnReadingChanged();
-            }
-        }
-        private global::System.String _OnReading;
-        partial void OnOnReadingChanging(global::System.String value);
-        partial void OnOnReadingChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String OnRomaji
-        {
-            get
-            {
-                return _OnRomaji;
-            }
-            set
-            {
-                OnOnRomajiChanging(value);
-                ReportPropertyChanging("OnRomaji");
-                _OnRomaji = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("OnRomaji");
-                OnOnRomajiChanged();
-            }
-        }
-        private global::System.String _OnRomaji;
-        partial void OnOnRomajiChanging(global::System.String value);
-        partial void OnOnRomajiChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String OnUrlAudio
-        {
-            get
-            {
-                return _OnUrlAudio;
-            }
-            set
-            {
-                OnOnUrlAudioChanging(value);
-                ReportPropertyChanging("OnUrlAudio");
-                _OnUrlAudio = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("OnUrlAudio");
-                OnOnUrlAudioChanged();
-            }
-        }
-        private global::System.String _OnUrlAudio;
-        partial void OnOnUrlAudioChanging(global::System.String value);
-        partial void OnOnUrlAudioChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String KunReading
-        {
-            get
-            {
-                return _KunReading;
-            }
-            set
-            {
-                OnKunReadingChanging(value);
-                ReportPropertyChanging("KunReading");
-                _KunReading = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("KunReading");
-                OnKunReadingChanged();
-            }
-        }
-        private global::System.String _KunReading;
-        partial void OnKunReadingChanging(global::System.String value);
-        partial void OnKunReadingChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String KunRomaji
-        {
-            get
-            {
-                return _KunRomaji;
-            }
-            set
-            {
-                OnKunRomajiChanging(value);
-                ReportPropertyChanging("KunRomaji");
-                _KunRomaji = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("KunRomaji");
-                OnKunRomajiChanged();
-            }
-        }
-        private global::System.String _KunRomaji;
-        partial void OnKunRomajiChanging(global::System.String value);
-        partial void OnKunRomajiChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String KunUrlAudio
-        {
-            get
-            {
-                return _KunUrlAudio;
-            }
-            set
-            {
-                OnKunUrlAudioChanging(value);
-                ReportPropertyChanging("KunUrlAudio");
-                _KunUrlAudio = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("KunUrlAudio");
-                OnKunUrlAudioChanged();
-            }
-        }
-        private global::System.String _KunUrlAudio;
-        partial void OnKunUrlAudioChanging(global::System.String value);
-        partial void OnKunUrlAudioChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2919,658 +4374,102 @@ namespace Nihongo.Dal.Mapping
         private global::System.String _HasLongSound;
         partial void OnHasLongSoundChanging(global::System.String value);
         partial void OnHasLongSoundChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String OnReading2
-        {
-            get
-            {
-                return _OnReading2;
-            }
-            set
-            {
-                OnOnReading2Changing(value);
-                ReportPropertyChanging("OnReading2");
-                _OnReading2 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("OnReading2");
-                OnOnReading2Changed();
-            }
-        }
-        private global::System.String _OnReading2;
-        partial void OnOnReading2Changing(global::System.String value);
-        partial void OnOnReading2Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String OnRomaji2
-        {
-            get
-            {
-                return _OnRomaji2;
-            }
-            set
-            {
-                OnOnRomaji2Changing(value);
-                ReportPropertyChanging("OnRomaji2");
-                _OnRomaji2 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("OnRomaji2");
-                OnOnRomaji2Changed();
-            }
-        }
-        private global::System.String _OnRomaji2;
-        partial void OnOnRomaji2Changing(global::System.String value);
-        partial void OnOnRomaji2Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String OnUrlAudio2
-        {
-            get
-            {
-                return _OnUrlAudio2;
-            }
-            set
-            {
-                OnOnUrlAudio2Changing(value);
-                ReportPropertyChanging("OnUrlAudio2");
-                _OnUrlAudio2 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("OnUrlAudio2");
-                OnOnUrlAudio2Changed();
-            }
-        }
-        private global::System.String _OnUrlAudio2;
-        partial void OnOnUrlAudio2Changing(global::System.String value);
-        partial void OnOnUrlAudio2Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String KunReading2
-        {
-            get
-            {
-                return _KunReading2;
-            }
-            set
-            {
-                OnKunReading2Changing(value);
-                ReportPropertyChanging("KunReading2");
-                _KunReading2 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("KunReading2");
-                OnKunReading2Changed();
-            }
-        }
-        private global::System.String _KunReading2;
-        partial void OnKunReading2Changing(global::System.String value);
-        partial void OnKunReading2Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String KunRomaji2
-        {
-            get
-            {
-                return _KunRomaji2;
-            }
-            set
-            {
-                OnKunRomaji2Changing(value);
-                ReportPropertyChanging("KunRomaji2");
-                _KunRomaji2 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("KunRomaji2");
-                OnKunRomaji2Changed();
-            }
-        }
-        private global::System.String _KunRomaji2;
-        partial void OnKunRomaji2Changing(global::System.String value);
-        partial void OnKunRomaji2Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String KunUrlAudio2
-        {
-            get
-            {
-                return _KunUrlAudio2;
-            }
-            set
-            {
-                OnKunUrlAudio2Changing(value);
-                ReportPropertyChanging("KunUrlAudio2");
-                _KunUrlAudio2 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("KunUrlAudio2");
-                OnKunUrlAudio2Changed();
-            }
-        }
-        private global::System.String _KunUrlAudio2;
-        partial void OnKunUrlAudio2Changing(global::System.String value);
-        partial void OnKunUrlAudio2Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Remembering
-        {
-            get
-            {
-                return _Remembering;
-            }
-            set
-            {
-                OnRememberingChanging(value);
-                ReportPropertyChanging("Remembering");
-                _Remembering = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Remembering");
-                OnRememberingChanged();
-            }
-        }
-        private global::System.String _Remembering;
-        partial void OnRememberingChanging(global::System.String value);
-        partial void OnRememberingChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExKanji1
-        {
-            get
-            {
-                return _ExKanji1;
-            }
-            set
-            {
-                OnExKanji1Changing(value);
-                ReportPropertyChanging("ExKanji1");
-                _ExKanji1 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExKanji1");
-                OnExKanji1Changed();
-            }
-        }
-        private global::System.String _ExKanji1;
-        partial void OnExKanji1Changing(global::System.String value);
-        partial void OnExKanji1Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExPinyin1
-        {
-            get
-            {
-                return _ExPinyin1;
-            }
-            set
-            {
-                OnExPinyin1Changing(value);
-                ReportPropertyChanging("ExPinyin1");
-                _ExPinyin1 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExPinyin1");
-                OnExPinyin1Changed();
-            }
-        }
-        private global::System.String _ExPinyin1;
-        partial void OnExPinyin1Changing(global::System.String value);
-        partial void OnExPinyin1Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExRomaji1
-        {
-            get
-            {
-                return _ExRomaji1;
-            }
-            set
-            {
-                OnExRomaji1Changing(value);
-                ReportPropertyChanging("ExRomaji1");
-                _ExRomaji1 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExRomaji1");
-                OnExRomaji1Changed();
-            }
-        }
-        private global::System.String _ExRomaji1;
-        partial void OnExRomaji1Changing(global::System.String value);
-        partial void OnExRomaji1Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExReading1
-        {
-            get
-            {
-                return _ExReading1;
-            }
-            set
-            {
-                OnExReading1Changing(value);
-                ReportPropertyChanging("ExReading1");
-                _ExReading1 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExReading1");
-                OnExReading1Changed();
-            }
-        }
-        private global::System.String _ExReading1;
-        partial void OnExReading1Changing(global::System.String value);
-        partial void OnExReading1Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExVMeaning1
-        {
-            get
-            {
-                return _ExVMeaning1;
-            }
-            set
-            {
-                OnExVMeaning1Changing(value);
-                ReportPropertyChanging("ExVMeaning1");
-                _ExVMeaning1 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExVMeaning1");
-                OnExVMeaning1Changed();
-            }
-        }
-        private global::System.String _ExVMeaning1;
-        partial void OnExVMeaning1Changing(global::System.String value);
-        partial void OnExVMeaning1Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExKanji2
-        {
-            get
-            {
-                return _ExKanji2;
-            }
-            set
-            {
-                OnExKanji2Changing(value);
-                ReportPropertyChanging("ExKanji2");
-                _ExKanji2 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExKanji2");
-                OnExKanji2Changed();
-            }
-        }
-        private global::System.String _ExKanji2;
-        partial void OnExKanji2Changing(global::System.String value);
-        partial void OnExKanji2Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExPinyin2
-        {
-            get
-            {
-                return _ExPinyin2;
-            }
-            set
-            {
-                OnExPinyin2Changing(value);
-                ReportPropertyChanging("ExPinyin2");
-                _ExPinyin2 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExPinyin2");
-                OnExPinyin2Changed();
-            }
-        }
-        private global::System.String _ExPinyin2;
-        partial void OnExPinyin2Changing(global::System.String value);
-        partial void OnExPinyin2Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExRomaji2
-        {
-            get
-            {
-                return _ExRomaji2;
-            }
-            set
-            {
-                OnExRomaji2Changing(value);
-                ReportPropertyChanging("ExRomaji2");
-                _ExRomaji2 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExRomaji2");
-                OnExRomaji2Changed();
-            }
-        }
-        private global::System.String _ExRomaji2;
-        partial void OnExRomaji2Changing(global::System.String value);
-        partial void OnExRomaji2Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExReading2
-        {
-            get
-            {
-                return _ExReading2;
-            }
-            set
-            {
-                OnExReading2Changing(value);
-                ReportPropertyChanging("ExReading2");
-                _ExReading2 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExReading2");
-                OnExReading2Changed();
-            }
-        }
-        private global::System.String _ExReading2;
-        partial void OnExReading2Changing(global::System.String value);
-        partial void OnExReading2Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExVMeaning2
-        {
-            get
-            {
-                return _ExVMeaning2;
-            }
-            set
-            {
-                OnExVMeaning2Changing(value);
-                ReportPropertyChanging("ExVMeaning2");
-                _ExVMeaning2 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExVMeaning2");
-                OnExVMeaning2Changed();
-            }
-        }
-        private global::System.String _ExVMeaning2;
-        partial void OnExVMeaning2Changing(global::System.String value);
-        partial void OnExVMeaning2Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExKanji3
-        {
-            get
-            {
-                return _ExKanji3;
-            }
-            set
-            {
-                OnExKanji3Changing(value);
-                ReportPropertyChanging("ExKanji3");
-                _ExKanji3 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExKanji3");
-                OnExKanji3Changed();
-            }
-        }
-        private global::System.String _ExKanji3;
-        partial void OnExKanji3Changing(global::System.String value);
-        partial void OnExKanji3Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExPinyin3
-        {
-            get
-            {
-                return _ExPinyin3;
-            }
-            set
-            {
-                OnExPinyin3Changing(value);
-                ReportPropertyChanging("ExPinyin3");
-                _ExPinyin3 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExPinyin3");
-                OnExPinyin3Changed();
-            }
-        }
-        private global::System.String _ExPinyin3;
-        partial void OnExPinyin3Changing(global::System.String value);
-        partial void OnExPinyin3Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExRomaji3
-        {
-            get
-            {
-                return _ExRomaji3;
-            }
-            set
-            {
-                OnExRomaji3Changing(value);
-                ReportPropertyChanging("ExRomaji3");
-                _ExRomaji3 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExRomaji3");
-                OnExRomaji3Changed();
-            }
-        }
-        private global::System.String _ExRomaji3;
-        partial void OnExRomaji3Changing(global::System.String value);
-        partial void OnExRomaji3Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExReading3
-        {
-            get
-            {
-                return _ExReading3;
-            }
-            set
-            {
-                OnExReading3Changing(value);
-                ReportPropertyChanging("ExReading3");
-                _ExReading3 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExReading3");
-                OnExReading3Changed();
-            }
-        }
-        private global::System.String _ExReading3;
-        partial void OnExReading3Changing(global::System.String value);
-        partial void OnExReading3Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExVMeaning3
-        {
-            get
-            {
-                return _ExVMeaning3;
-            }
-            set
-            {
-                OnExVMeaning3Changing(value);
-                ReportPropertyChanging("ExVMeaning3");
-                _ExVMeaning3 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExVMeaning3");
-                OnExVMeaning3Changed();
-            }
-        }
-        private global::System.String _ExVMeaning3;
-        partial void OnExVMeaning3Changing(global::System.String value);
-        partial void OnExVMeaning3Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExKanji4
-        {
-            get
-            {
-                return _ExKanji4;
-            }
-            set
-            {
-                OnExKanji4Changing(value);
-                ReportPropertyChanging("ExKanji4");
-                _ExKanji4 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExKanji4");
-                OnExKanji4Changed();
-            }
-        }
-        private global::System.String _ExKanji4;
-        partial void OnExKanji4Changing(global::System.String value);
-        partial void OnExKanji4Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExPinyin4
-        {
-            get
-            {
-                return _ExPinyin4;
-            }
-            set
-            {
-                OnExPinyin4Changing(value);
-                ReportPropertyChanging("ExPinyin4");
-                _ExPinyin4 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExPinyin4");
-                OnExPinyin4Changed();
-            }
-        }
-        private global::System.String _ExPinyin4;
-        partial void OnExPinyin4Changing(global::System.String value);
-        partial void OnExPinyin4Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExRomaji4
-        {
-            get
-            {
-                return _ExRomaji4;
-            }
-            set
-            {
-                OnExRomaji4Changing(value);
-                ReportPropertyChanging("ExRomaji4");
-                _ExRomaji4 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExRomaji4");
-                OnExRomaji4Changed();
-            }
-        }
-        private global::System.String _ExRomaji4;
-        partial void OnExRomaji4Changing(global::System.String value);
-        partial void OnExRomaji4Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExReading4
-        {
-            get
-            {
-                return _ExReading4;
-            }
-            set
-            {
-                OnExReading4Changing(value);
-                ReportPropertyChanging("ExReading4");
-                _ExReading4 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExReading4");
-                OnExReading4Changed();
-            }
-        }
-        private global::System.String _ExReading4;
-        partial void OnExReading4Changing(global::System.String value);
-        partial void OnExReading4Changed();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String ExVMeaning4
-        {
-            get
-            {
-                return _ExVMeaning4;
-            }
-            set
-            {
-                OnExVMeaning4Changing(value);
-                ReportPropertyChanging("ExVMeaning4");
-                _ExVMeaning4 = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ExVMeaning4");
-                OnExVMeaning4Changed();
-            }
-        }
-        private global::System.String _ExVMeaning4;
-        partial void OnExVMeaning4Changing(global::System.String value);
-        partial void OnExVMeaning4Changed();
 
         #endregion
 
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msanswers_VocabularyID_msvocabularies_ID", "ms_answers")]
+        public EntityCollection<ms_answers> ms_answers
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_answers>("Models.FK_msanswers_VocabularyID_msvocabularies_ID", "ms_answers");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_answers>("Models.FK_msanswers_VocabularyID_msvocabularies_ID", "ms_answers", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_kanjiexamples")]
+        public EntityCollection<ms_kanjiexamples> ms_kanjiexamples
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_kanjiexamples>("Models.FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_kanjiexamples");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_kanjiexamples>("Models.FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_kanjiexamples", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularydetails")]
+        public EntityCollection<ms_vocabularydetails> ms_vocabularydetails
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_vocabularydetails>("Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularydetails");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_vocabularydetails>("Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularydetails", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocakanjis_VocabularyID_msvocabularies_ID", "ms_vocakanjis")]
+        public EntityCollection<ms_vocakanjis> ms_vocakanjis
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_vocakanjis>("Models.FK_msvocakanjis_VocabularyID_msvocabularies_ID", "ms_vocakanjis");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_vocakanjis>("Models.FK_msvocakanjis_VocabularyID_msvocabularies_ID", "ms_vocakanjis", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -3587,15 +4486,13 @@ namespace Nihongo.Dal.Mapping
         /// Create a new ms_vocabularydetails object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
-        /// <param name="categoryCode">Initial value of the CategoryCode property.</param>
-        /// <param name="vocabularyCode">Initial value of the VocabularyCode property.</param>
+        /// <param name="categoryID">Initial value of the CategoryID property.</param>
         /// <param name="lineNumber">Initial value of the LineNumber property.</param>
-        public static ms_vocabularydetails Createms_vocabularydetails(global::System.Int32 id, global::System.String categoryCode, global::System.String vocabularyCode, global::System.Int32 lineNumber)
+        public static ms_vocabularydetails Createms_vocabularydetails(global::System.Int32 id, global::System.Int32 categoryID, global::System.Int32 lineNumber)
         {
             ms_vocabularydetails ms_vocabularydetails = new ms_vocabularydetails();
             ms_vocabularydetails.ID = id;
-            ms_vocabularydetails.CategoryCode = categoryCode;
-            ms_vocabularydetails.VocabularyCode = vocabularyCode;
+            ms_vocabularydetails.CategoryID = categoryID;
             ms_vocabularydetails.LineNumber = lineNumber;
             return ms_vocabularydetails;
         }
@@ -3636,48 +4533,72 @@ namespace Nihongo.Dal.Mapping
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String CategoryCode
+        public global::System.Int32 CategoryID
         {
             get
             {
-                return _CategoryCode;
+                return _CategoryID;
             }
             set
             {
-                OnCategoryCodeChanging(value);
-                ReportPropertyChanging("CategoryCode");
-                _CategoryCode = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("CategoryCode");
-                OnCategoryCodeChanged();
+                OnCategoryIDChanging(value);
+                ReportPropertyChanging("CategoryID");
+                _CategoryID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CategoryID");
+                OnCategoryIDChanged();
             }
         }
-        private global::System.String _CategoryCode;
-        partial void OnCategoryCodeChanging(global::System.String value);
-        partial void OnCategoryCodeChanged();
+        private global::System.Int32 _CategoryID;
+        partial void OnCategoryIDChanging(global::System.Int32 value);
+        partial void OnCategoryIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String VocabularyCode
+        public Nullable<global::System.Int32> VocabularyID
         {
             get
             {
-                return _VocabularyCode;
+                return _VocabularyID;
             }
             set
             {
-                OnVocabularyCodeChanging(value);
-                ReportPropertyChanging("VocabularyCode");
-                _VocabularyCode = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("VocabularyCode");
-                OnVocabularyCodeChanged();
+                OnVocabularyIDChanging(value);
+                ReportPropertyChanging("VocabularyID");
+                _VocabularyID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("VocabularyID");
+                OnVocabularyIDChanged();
             }
         }
-        private global::System.String _VocabularyCode;
-        partial void OnVocabularyCodeChanging(global::System.String value);
-        partial void OnVocabularyCodeChanged();
+        private Nullable<global::System.Int32> _VocabularyID;
+        partial void OnVocabularyIDChanging(Nullable<global::System.Int32> value);
+        partial void OnVocabularyIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> KanjiID
+        {
+            get
+            {
+                return _KanjiID;
+            }
+            set
+            {
+                OnKanjiIDChanging(value);
+                ReportPropertyChanging("KanjiID");
+                _KanjiID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("KanjiID");
+                OnKanjiIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _KanjiID;
+        partial void OnKanjiIDChanging(Nullable<global::System.Int32> value);
+        partial void OnKanjiIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3702,35 +4623,49 @@ namespace Nihongo.Dal.Mapping
         private global::System.Int32 _LineNumber;
         partial void OnLineNumberChanging(global::System.Int32 value);
         partial void OnLineNumberChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Status
-        {
-            get
-            {
-                return _Status;
-            }
-            set
-            {
-                OnStatusChanging(value);
-                ReportPropertyChanging("Status");
-                _Status = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Status");
-                OnStatusChanged();
-            }
-        }
-        private global::System.String _Status;
-        partial void OnStatusChanging(global::System.String value);
-        partial void OnStatusChanged();
 
         #endregion
 
     
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocabularydetails_KanjiID_mskanjis_ID", "ms_kanjis")]
+        public ms_kanjis ms_kanjis
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_kanjis>("Models.FK_msvocabularydetails_KanjiID_mskanjis_ID", "ms_kanjis").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_kanjis>("Models.FK_msvocabularydetails_KanjiID_mskanjis_ID", "ms_kanjis").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_kanjis> ms_kanjisReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_kanjis>("Models.FK_msvocabularydetails_KanjiID_mskanjis_ID", "ms_kanjis");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_kanjis>("Models.FK_msvocabularydetails_KanjiID_mskanjis_ID", "ms_kanjis", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3750,6 +4685,82 @@ namespace Nihongo.Dal.Mapping
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_uservocabularies>("Models.FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID", "ms_uservocabularies", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies")]
+        public ms_vocabularies ms_vocabularies
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_vocabularies> ms_vocabulariesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_vocabularies>("Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocabularydetails_CategoryID_msvocacategories_ID", "ms_vocacategories")]
+        public ms_vocacategories ms_vocacategories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocacategories>("Models.FK_msvocabularydetails_CategoryID_msvocacategories_ID", "ms_vocacategories").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocacategories>("Models.FK_msvocabularydetails_CategoryID_msvocacategories_ID", "ms_vocacategories").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_vocacategories> ms_vocacategoriesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocacategories>("Models.FK_msvocabularydetails_CategoryID_msvocacategories_ID", "ms_vocacategories");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_vocacategories>("Models.FK_msvocabularydetails_CategoryID_msvocacategories_ID", "ms_vocacategories", value);
                 }
             }
         }
@@ -3867,6 +4878,54 @@ namespace Nihongo.Dal.Mapping
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> VocaSetID
+        {
+            get
+            {
+                return _VocaSetID;
+            }
+            set
+            {
+                OnVocaSetIDChanging(value);
+                ReportPropertyChanging("VocaSetID");
+                _VocaSetID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("VocaSetID");
+                OnVocaSetIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _VocaSetID;
+        partial void OnVocaSetIDChanging(Nullable<global::System.Int32> value);
+        partial void OnVocaSetIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IsKanji
+        {
+            get
+            {
+                return _IsKanji;
+            }
+            set
+            {
+                OnIsKanjiChanging(value);
+                ReportPropertyChanging("IsKanji");
+                _IsKanji = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IsKanji");
+                OnIsKanjiChanged();
+            }
+        }
+        private global::System.String _IsKanji;
+        partial void OnIsKanjiChanging(global::System.String value);
+        partial void OnIsKanjiChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String Name1
@@ -3959,30 +5018,6 @@ namespace Nihongo.Dal.Mapping
         private global::System.Int32 _LineNumber;
         partial void OnLineNumberChanging(global::System.Int32 value);
         partial void OnLineNumberChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String VocaSet
-        {
-            get
-            {
-                return _VocaSet;
-            }
-            set
-            {
-                OnVocaSetChanging(value);
-                ReportPropertyChanging("VocaSet");
-                _VocaSet = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("VocaSet");
-                OnVocaSetChanged();
-            }
-        }
-        private global::System.String _VocaSet;
-        partial void OnVocaSetChanging(global::System.String value);
-        partial void OnVocaSetChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4155,6 +5190,281 @@ namespace Nihongo.Dal.Mapping
         #endregion
 
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mstestresults_CategoryID_msvocacategories_ID", "ms_testresults")]
+        public EntityCollection<ms_testresults> ms_testresults
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_testresults>("Models.FK_mstestresults_CategoryID_msvocacategories_ID", "ms_testresults");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_testresults>("Models.FK_mstestresults_CategoryID_msvocacategories_ID", "ms_testresults", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocabularydetails_CategoryID_msvocacategories_ID", "ms_vocabularydetails")]
+        public EntityCollection<ms_vocabularydetails> ms_vocabularydetails
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_vocabularydetails>("Models.FK_msvocabularydetails_CategoryID_msvocacategories_ID", "ms_vocabularydetails");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_vocabularydetails>("Models.FK_msvocabularydetails_CategoryID_msvocacategories_ID", "ms_vocabularydetails", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocacategories_VocaSetID_msvocasets_ID", "ms_vocasets")]
+        public ms_vocasets ms_vocasets
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocasets>("Models.FK_msvocacategories_VocaSetID_msvocasets_ID", "ms_vocasets").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocasets>("Models.FK_msvocacategories_VocaSetID_msvocasets_ID", "ms_vocasets").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_vocasets> ms_vocasetsReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocasets>("Models.FK_msvocacategories_VocaSetID_msvocasets_ID", "ms_vocasets");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_vocasets>("Models.FK_msvocacategories_VocaSetID_msvocasets_ID", "ms_vocasets", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Models", Name="ms_vocakanjis")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ms_vocakanjis : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ms_vocakanjis object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="vocabularyID">Initial value of the VocabularyID property.</param>
+        /// <param name="kanjiID">Initial value of the KanjiID property.</param>
+        public static ms_vocakanjis Createms_vocakanjis(global::System.Int32 id, global::System.Int32 vocabularyID, global::System.Int32 kanjiID)
+        {
+            ms_vocakanjis ms_vocakanjis = new ms_vocakanjis();
+            ms_vocakanjis.ID = id;
+            ms_vocakanjis.VocabularyID = vocabularyID;
+            ms_vocakanjis.KanjiID = kanjiID;
+            return ms_vocakanjis;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 VocabularyID
+        {
+            get
+            {
+                return _VocabularyID;
+            }
+            set
+            {
+                OnVocabularyIDChanging(value);
+                ReportPropertyChanging("VocabularyID");
+                _VocabularyID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("VocabularyID");
+                OnVocabularyIDChanged();
+            }
+        }
+        private global::System.Int32 _VocabularyID;
+        partial void OnVocabularyIDChanging(global::System.Int32 value);
+        partial void OnVocabularyIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 KanjiID
+        {
+            get
+            {
+                return _KanjiID;
+            }
+            set
+            {
+                OnKanjiIDChanging(value);
+                ReportPropertyChanging("KanjiID");
+                _KanjiID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("KanjiID");
+                OnKanjiIDChanged();
+            }
+        }
+        private global::System.Int32 _KanjiID;
+        partial void OnKanjiIDChanging(global::System.Int32 value);
+        partial void OnKanjiIDChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocakanjis_KanjiID_mskanjis_ID", "ms_kanjis")]
+        public ms_kanjis ms_kanjis
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_kanjis>("Models.FK_msvocakanjis_KanjiID_mskanjis_ID", "ms_kanjis").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_kanjis>("Models.FK_msvocakanjis_KanjiID_mskanjis_ID", "ms_kanjis").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_kanjis> ms_kanjisReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_kanjis>("Models.FK_msvocakanjis_KanjiID_mskanjis_ID", "ms_kanjis");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_kanjis>("Models.FK_msvocakanjis_KanjiID_mskanjis_ID", "ms_kanjis", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocakanjis_VocabularyID_msvocabularies_ID", "ms_vocabularies")]
+        public ms_vocabularies ms_vocabularies
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_msvocakanjis_VocabularyID_msvocabularies_ID", "ms_vocabularies").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_msvocakanjis_VocabularyID_msvocabularies_ID", "ms_vocabularies").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_vocabularies> ms_vocabulariesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_msvocakanjis_VocabularyID_msvocabularies_ID", "ms_vocabularies");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_vocabularies>("Models.FK_msvocakanjis_VocabularyID_msvocabularies_ID", "ms_vocabularies", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -4648,11 +5958,57 @@ namespace Nihongo.Dal.Mapping
         private global::System.String _Description;
         partial void OnDescriptionChanging(global::System.String value);
         partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CreatedDate
+        {
+            get
+            {
+                return _CreatedDate;
+            }
+            set
+            {
+                OnCreatedDateChanging(value);
+                ReportPropertyChanging("CreatedDate");
+                _CreatedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedDate");
+                OnCreatedDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CreatedDate;
+        partial void OnCreatedDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnCreatedDateChanged();
 
         #endregion
 
     
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mspaymenthistories_VocaSetID_msvocasets_ID", "ms_paymenthistories")]
+        public EntityCollection<ms_paymenthistories> ms_paymenthistories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_paymenthistories>("Models.FK_mspaymenthistories_VocaSetID_msvocasets_ID", "ms_paymenthistories");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_paymenthistories>("Models.FK_mspaymenthistories_VocaSetID_msvocasets_ID", "ms_paymenthistories", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4682,18 +6038,40 @@ namespace Nihongo.Dal.Mapping
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mspaymenthistories_VocaSetID_msvocasets_ID", "ms_paymenthistories")]
-        public EntityCollection<ms_paymenthistories> ms_paymenthistories
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocacategories_VocaSetID_msvocasets_ID", "ms_vocacategories")]
+        public EntityCollection<ms_vocacategories> ms_vocacategories
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_paymenthistories>("Models.FK_mspaymenthistories_VocaSetID_msvocasets_ID", "ms_paymenthistories");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_vocacategories>("Models.FK_msvocacategories_VocaSetID_msvocasets_ID", "ms_vocacategories");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_paymenthistories>("Models.FK_mspaymenthistories_VocaSetID_msvocasets_ID", "ms_paymenthistories", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_vocacategories>("Models.FK_msvocacategories_VocaSetID_msvocasets_ID", "ms_vocacategories", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvouchers_VocaSetID_msvocasets_ID", "ms_vouchers")]
+        public EntityCollection<ms_vouchers> ms_vouchers
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_vouchers>("Models.FK_msvouchers_VocaSetID_msvocasets_ID", "ms_vouchers");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_vouchers>("Models.FK_msvouchers_VocaSetID_msvocasets_ID", "ms_vouchers", value);
                 }
             }
         }
@@ -4716,13 +6094,13 @@ namespace Nihongo.Dal.Mapping
         /// Create a new ms_vouchers object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
-        /// <param name="vocaSetCode">Initial value of the VocaSetCode property.</param>
+        /// <param name="vocaSetID">Initial value of the VocaSetID property.</param>
         /// <param name="status">Initial value of the Status property.</param>
-        public static ms_vouchers Createms_vouchers(global::System.Int32 id, global::System.String vocaSetCode, global::System.String status)
+        public static ms_vouchers Createms_vouchers(global::System.Int32 id, global::System.Int32 vocaSetID, global::System.String status)
         {
             ms_vouchers ms_vouchers = new ms_vouchers();
             ms_vouchers.ID = id;
-            ms_vouchers.VocaSetCode = vocaSetCode;
+            ms_vouchers.VocaSetID = vocaSetID;
             ms_vouchers.Status = status;
             return ms_vouchers;
         }
@@ -4787,24 +6165,24 @@ namespace Nihongo.Dal.Mapping
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String VocaSetCode
+        public global::System.Int32 VocaSetID
         {
             get
             {
-                return _VocaSetCode;
+                return _VocaSetID;
             }
             set
             {
-                OnVocaSetCodeChanging(value);
-                ReportPropertyChanging("VocaSetCode");
-                _VocaSetCode = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("VocaSetCode");
-                OnVocaSetCodeChanged();
+                OnVocaSetIDChanging(value);
+                ReportPropertyChanging("VocaSetID");
+                _VocaSetID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("VocaSetID");
+                OnVocaSetIDChanged();
             }
         }
-        private global::System.String _VocaSetCode;
-        partial void OnVocaSetCodeChanging(global::System.String value);
-        partial void OnVocaSetCodeChanged();
+        private global::System.Int32 _VocaSetID;
+        partial void OnVocaSetIDChanging(global::System.Int32 value);
+        partial void OnVocaSetIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5001,6 +6379,70 @@ namespace Nihongo.Dal.Mapping
         #endregion
 
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mspaymenthistories_VoucherID_msvouchers_ID", "ms_paymenthistories")]
+        public EntityCollection<ms_paymenthistories> ms_paymenthistories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_paymenthistories>("Models.FK_mspaymenthistories_VoucherID_msvouchers_ID", "ms_paymenthistories");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_paymenthistories>("Models.FK_mspaymenthistories_VoucherID_msvouchers_ID", "ms_paymenthistories", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvouchers_VocaSetID_msvocasets_ID", "ms_vocasets")]
+        public ms_vocasets ms_vocasets
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocasets>("Models.FK_msvouchers_VocaSetID_msvocasets_ID", "ms_vocasets").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocasets>("Models.FK_msvouchers_VocaSetID_msvocasets_ID", "ms_vocasets").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_vocasets> ms_vocasetsReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocasets>("Models.FK_msvouchers_VocaSetID_msvocasets_ID", "ms_vocasets");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_vocasets>("Models.FK_msvouchers_VocaSetID_msvocasets_ID", "ms_vocasets", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
 
     #endregion

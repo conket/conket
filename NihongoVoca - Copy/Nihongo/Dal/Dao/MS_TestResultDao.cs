@@ -20,13 +20,13 @@ namespace Nihongo.Dal.Dao
                 var vocaCate = this.ms_vocacategories.Where(ss => ss.ID == model.CategoryID).AsQueryable();
 
                 results = (from ss in testResult
-                           join ca in vocaCate on ss.CategoryCode equals ca.Code
-                           join us in ms_users on ss.UserName equals us.UserName
+                           join ca in vocaCate on ss.CategoryID equals ca.ID
+                           join us in ms_users on ss.UserID equals us.ID
                            orderby new { ss.NumOfVocas, ss.CompletedTime}
                            select new MS_TestResultModels
                        {
                            ID = ss.ID,
-                           CategoryCode = ss.CategoryCode,
+                           CategoryID = ss.CategoryID,
                            CompletedTime = ss.CompletedTime.Value,
                            CreateDate = ss.CreateDate.Value,
                            NumOfCorrectVocas = ss.NumOfCorrectVocas.Value,

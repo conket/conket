@@ -122,8 +122,11 @@
             <div class="col-md-12">
                 <p>
                     <a href='#' data-toggle="modal" data-target="#modalAddUser" id="aAddUser" class="btn btn-navigator btn-lg require-login"
-                        role="button">Thêm người dùng</a> 
-                    <a href='#' class="btn btn-navigator btn-lg require-login"
+                        role="button">Thêm người dùng</a>
+                    @Html.ActionLink("Tạo từ vựng", "CreateVocaCategory", "Account", null, new { @class= "btn btn-navigator btn-lg require-login"})
+                    @*<a href='#' data-toggle="modal" data-target="#modalCreateVocaCategory" id="aCreateVocaCategory" class="btn btn-navigator btn-lg require-login"
+                        role="button">Tạo bộ từ vựng</a> *@
+                    <a href='#' data-toggle="modal" data-target="#modalRegisUserVoca" id="aRegisUserVoca" class="btn btn-navigator btn-lg require-login"
                         role="button">Đăng ký từ vựng</a>
                     <a href='#' data-toggle="modal" data-target="#modalUpdateData"
                             id="aUpdateData" class="btn btn-navigator btn-lg require-login" role="button">Xử
@@ -217,6 +220,39 @@
 btn-primary">
                             Lưu</button>
                         <button type="button" id="btnCloseUserModal" class="btn
+btn-default" data-dismiss="modal">
+                            Đóng</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade bs-example-modal" id="modalCreateVocaCategory" tabindex="-1" role="dialog"
+    aria-labelledby="modalCreateVocaCategoryLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    Thêm Bộ Từ</h4>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("CreateVocaCategory", "Account", FormMethod.Post, new { @id = "createVocaCategory" }))
+                {
+                    <div id="error-message-create-vocacategory" class="text-danger">@ViewBag.ErrorMessage</div>
+                    @*<div class="form-group">
+                        <label class="control-label">
+                            Bộ từ vựng:</label>
+                        @Html.DropDownList("VocaCategoryID", ViewBag.VocaCategory as SelectList, new {@class="form-control" })
+                    </div>
+                    
+                    *@<div class="form-group text-right">
+                        <button type="submit" id="btnCreateVocaCategoryModal" class="btn
+btn-primary">
+                            Lưu</button>
+                        <button type="button" id="btnCloseCreateVocaCategoryModal" class="btn
 btn-default" data-dismiss="modal">
                             Đóng</button>
                     </div>

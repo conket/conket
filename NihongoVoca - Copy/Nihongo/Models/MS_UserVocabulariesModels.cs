@@ -18,6 +18,7 @@ namespace Nihongo.Models
         public int VocaSetID { get; set; }
         public string VocaSetCode { get; set; }
         public string VocaSetName { get; set; }
+        public int UserID { get; set; }
         public string UserName { get; set; }
         public string VocabularyCode { get; set; }
         public int? Level { get; set; }

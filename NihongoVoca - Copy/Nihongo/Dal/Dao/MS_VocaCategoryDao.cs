@@ -27,9 +27,9 @@ namespace Nihongo.Dal.Dao
                     query = query.Where(ss => ss.Code == model.Code);
                 }
 
-                if (!CommonMethod.IsNullOrEmpty(model.VocaSet))
+                if (!CommonMethod.IsNullOrEmpty(model.VocaSetID))
                 {
-                    query = query.Where(ss => ss.VocaSet == model.VocaSet);
+                    query = query.Where(ss => ss.VocaSetID == model.VocaSetID);
                 }
 
                 results = query.Select(ss => new MS_VocaCategoriesModels
@@ -63,7 +63,7 @@ namespace Nihongo.Dal.Dao
                 var query = this.ms_vocacategories.Where(ss => ss.ID == id).AsQueryable();
 
                 result = (from ss in query
-                          join vs in this.ms_vocasets on ss.VocaSet equals vs.Code
+                          join vs in this.ms_vocasets on ss.VocaSetID equals vs.ID
                           select new MS_VocaCategoriesModels
                   {
                       ID = ss.ID,
@@ -100,7 +100,7 @@ namespace Nihongo.Dal.Dao
             try
             {
                 var vocaCate = (from ca in this.ms_vocacategories
-                                join se in this.ms_vocasets on ca.VocaSet equals se.Code
+                                join se in this.ms_vocasets on ca.VocaSetID equals se.ID
                                 where ca.ID == id
                                 select new { CatePreCode = ca.PreviousCode, CateLineNumber = ca.LineNumber, IsSequence = se.IsSequence, SetCode = se.Code }).FirstOrDefault();
 
@@ -118,9 +118,9 @@ namespace Nihongo.Dal.Dao
                         }
                         else
                         {
-                            isOK = this.ms_testresults.Any(ss => ss.CategoryCode == vocaCate.CatePreCode 
-                                && ss.UserName == userName 
-                                && ss.IsPass == CommonData.Status.Enable);
+                            //isOK = this.ms_testresults.Any(ss => ss.CategoryCode == vocaCate.CatePreCode 
+                            //    && ss.UserName == userName 
+                            //    && ss.IsPass == CommonData.Status.Enable);
                         }
                     }
                 }
@@ -142,7 +142,7 @@ namespace Nihongo.Dal.Dao
             {
                 var vocaCate = this.ms_vocacategories.Where(ss => ss.ID == id);
                 vocaSets = (from ca in vocaCate
-                           join se in this.ms_vocasets on ca.VocaSet equals se.Code
+                           join se in this.ms_vocasets on ca.VocaSetID equals se.ID
                            join re in this.ms_registedvocasets on se.ID equals re.VocaSetID into regis
                            from re in regis.DefaultIfEmpty()
                            select new MS_VocaSetsModels
@@ -163,7 +163,7 @@ namespace Nihongo.Dal.Dao
             return returnCode;
         }
 
-        internal int CheckCompletedCate(int id, string userName, out bool isOK)
+        internal int CheckCompletedCate(int id, int userID, out bool isOK)
         {
             int returnCode = 0;
             isOK = false;
@@ -171,14 +171,14 @@ namespace Nihongo.Dal.Dao
             try
             {
                 var vocaCate = (from ca in this.ms_vocacategories
-                                join se in this.ms_vocasets on ca.VocaSet equals se.Code
+                                join se in this.ms_vocasets on ca.VocaSetID equals se.ID
                                 where ca.ID == id
-                                select new { Code = ca.Code, CateLineNumber = ca.LineNumber, IsSequence = se.IsSequence, SetCode = se.Code }).FirstOrDefault();
+                                select new { ID = ca.ID, Code = ca.Code, CateLineNumber = ca.LineNumber, IsSequence = se.IsSequence, SetCode = se.Code }).FirstOrDefault();
 
                 if (vocaCate != null)
                 {
-                    isOK = this.ms_testresults.Any(ss => ss.CategoryCode == vocaCate.Code
-                                && ss.UserName == userName
+                    isOK = this.ms_testresults.Any(ss => ss.CategoryID == vocaCate.ID
+                                && ss.UserID == userID
                                 && ss.IsPass == CommonData.Status.Enable);
                 }
 
@@ -201,7 +201,7 @@ namespace Nihongo.Dal.Dao
                 if (model.VocaSetID > 0)
                 {
                     results = (from ss in this.ms_vocacategories
-                               join vs in this.ms_vocasets on ss.VocaSet equals vs.Code
+                               join vs in this.ms_vocasets on ss.VocaSetID equals vs.ID
                                where vs.ID == model.VocaSetID
                                select new MS_VocaCategoriesModels
                    {

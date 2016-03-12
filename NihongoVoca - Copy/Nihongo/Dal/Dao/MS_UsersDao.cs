@@ -5,6 +5,7 @@ using System.Web;
 using Nihongo.Models;
 using Ivs.Core.Common;
 using Ivs.Core.Interface;
+using Ivs.Core.Data;
 
 namespace Nihongo.Dal.Dao
 {
@@ -73,14 +74,15 @@ namespace Nihongo.Dal.Dao
 
                 if (insertModel.CreateVoca)
                 {
-                    var vocas = this.ms_vocabularydetails.Where(ss => ss.Status == CommonData.Status.Enable);
+                    var vocas = this.ms_vocabularydetails.AsQueryable();
                     foreach (var voca in vocas)
                     {
                         Nihongo.Dal.Mapping.ms_uservocabularies usv = new Mapping.ms_uservocabularies()
                         {
-                            UserName = insertModel.UserName,
+                            UserID = insertModel.ID,
                             VocaDetailID = voca.ID,
-                            Update_Date = DateTime.Now,
+                            UpdatedDate = DateTime.Now,
+                            
                             Level = 10,
                             HasLearnt = CommonData.Status.Disable,
                             StartDate = DateTime.Now.AddDays(-1),
@@ -219,12 +221,12 @@ namespace Nihongo.Dal.Dao
 
                 //3 ngày chưa ôn giảm 1 level
                 DateTime date = (DateTime.Now.AddDays(-3));
-                var usrVocas = this.ms_uservocabularies.Where(ss => ss.Update_Date <= date).AsQueryable();
+                var usrVocas = this.ms_uservocabularies.Where(ss => ss.UpdatedDate <= date).AsQueryable();
                 foreach (var usrVoca in usrVocas)
                 {
-                    int numOfDecreaseLevel = (DateTime.Now - usrVoca.Update_Date.Value).Days/3;
+                    int numOfDecreaseLevel = (DateTime.Now - usrVoca.UpdatedDate.Value).Days/3;
                     usrVoca.Level = (usrVoca.Level - numOfDecreaseLevel) < 0 ? 0 : (usrVoca.Level - numOfDecreaseLevel);
-                    usrVoca.Update_Date = DateTime.Now;
+                    usrVoca.UpdatedDate = DateTime.Now;
                 }
 
                 returnCode = this.Saves();
@@ -358,16 +360,16 @@ namespace Nihongo.Dal.Dao
             try
             {
                 var groupUserVoca = this.ms_uservocabularies.Where(ss => ss.HasLearnt == CommonData.Status.Enable)
-                    .GroupBy(ss => ss.UserName)
+                    .GroupBy(ss => ss.UserID)
                     .Select(ss => new
                     {
-                        UserName = ss.Key,
+                        UserID = ss.Key,
                         TotalHasLearnt = ss.Count(),
                     });
                     //.ToList();
 
                 results = this.ms_users.Where(ss => ss.Status == CommonData.Status.Enable)//.ToList()
-                            .Join(groupUserVoca, us => us.UserName, uv => uv.UserName, (us, uv) => new { User = us, UserVoca = uv })
+                            .Join(groupUserVoca, us => us.ID, uv => uv.UserID, (us, uv) => new { User = us, UserVoca = uv })
                             .Select(ss => new MS_UsersModels
                             {
                                 ID = ss.User.ID,

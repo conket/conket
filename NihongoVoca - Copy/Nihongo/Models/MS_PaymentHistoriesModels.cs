@@ -9,7 +9,7 @@ namespace Nihongo.Models
     public class MS_PaymentHistoriesModels
     {
         public int VocaSetID { get; set; }
-        public string UserName { get; set; }
+        public int UserID { get; set; }
         public DateTime PaymentDate { get; set; }
         public DateTime ReceivedDate { get; set; }
         public decimal Fee { get; set; }

@@ -850,6 +850,11 @@ namespace Nihongo.Controllers
             }
         }
 
+        public ActionResult CreateVocaCategory()
+        {
+            return View();
+        }
+
         public ActionResult Admin(string id)
         {
             ViewBag.UserName = id;

@@ -369,7 +369,7 @@ namespace Nihongo.Controllers
             else
             {
                 MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
-                returnCode = dao.CheckCompletedCate(id, CommonMethod.ParseString(Session["UserName"]), out isOK);
+                returnCode = dao.CheckCompletedCate(id, CommonMethod.ParseInt(Session["UserID"]), out isOK);
             }
             return Content(isOK ? "Đã hoàn thành" : "Chưa hoàn thành", "text/html");
         }
@@ -409,7 +409,7 @@ namespace Nihongo.Controllers
         {
             List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
-            int returnCode = dao.SelectUserVocaData(id, CommonMethod.ParseString(Session["UserName"]), out results);
+            int returnCode = dao.SelectUserVocaData(id, CommonMethod.ParseInt(Session["UserID"]), out results);
 
             if (results.Count > 0 && results.FirstOrDefault().IsKanji == CommonData.Status.Enable)
             {
@@ -427,7 +427,7 @@ namespace Nihongo.Controllers
         {
             List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
-            int returnCode = dao.SelectNotebookVocas(CommonMethod.ParseString(Session["UserName"]), out results);
+            int returnCode = dao.SelectNotebookVocas(CommonMethod.ParseInt(Session["UserID"]), out results);
 
             return PartialView("_NotebookVocaPartial", results);
         }
@@ -479,7 +479,7 @@ namespace Nihongo.Controllers
             else
             {
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
-                returnCode = dao.SelectNotebookVocas(CommonMethod.ParseString(Session["UserName"]), out results);
+                returnCode = dao.SelectNotebookVocas(CommonMethod.ParseInt(Session["UserID"]), out results);
             }
 
             return Json(new { vocabularies = (results), returnCode = returnCode, numOfHasLearnt = results.Count(ss => ss.HasLearnt == CommonData.Status.Enable) }
@@ -605,7 +605,7 @@ namespace Nihongo.Controllers
             else
             {
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
-                returnCode = dao.SelectNotebookVocas(CommonMethod.ParseString(Session["UserName"]), out results);
+                returnCode = dao.SelectNotebookVocas(CommonMethod.ParseInt(Session["UserID"]), out results);
             }
 
             return Json(new { vocabularies = RandomList(results, results.Count), returnCode = returnCode }, JsonRequestBehavior.AllowGet);
@@ -624,7 +624,7 @@ namespace Nihongo.Controllers
             else
             {
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
-                returnCode = dao.SelectNotebookVocas(CommonMethod.ParseString(Session["UserName"]), out results);
+                returnCode = dao.SelectNotebookVocas(CommonMethod.ParseInt(Session["UserID"]), out results);
             }
 
             return Json(new { vocabularies = RandomList(CreateChoosingList(results), results.Count), returnCode = returnCode }, JsonRequestBehavior.AllowGet);
@@ -643,7 +643,7 @@ namespace Nihongo.Controllers
             else
             {
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
-                returnCode = dao.SelectNotebookVocas(CommonMethod.ParseString(Session["UserName"]), out results);
+                returnCode = dao.SelectNotebookVocas(CommonMethod.ParseInt(Session["UserID"]), out results);
             }
 
             return Json(new { vocabularies = RandomList(CreateTranslatingList(results), results.Count), returnCode = returnCode }, JsonRequestBehavior.AllowGet);
@@ -667,7 +667,7 @@ namespace Nihongo.Controllers
             else
             {
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
-                returnCode = dao.SelectUserVocaData(id, CommonMethod.ParseString(Session["UserName"]), out results);
+                returnCode = dao.SelectUserVocaData(id, CommonMethod.ParseInt(Session["UserID"]), out results);
             }
 
             return PartialView("_VocaWordListPartial", results);
@@ -687,7 +687,7 @@ namespace Nihongo.Controllers
             else
             {
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
-                returnCode = dao.SelectNotebookVocas(CommonMethod.ParseString(Session["UserName"]), out results);
+                returnCode = dao.SelectNotebookVocas(CommonMethod.ParseInt(Session["UserID"]), out results);
             }
 
             return PartialView("_VocaWordListPartial", results);
