@@ -50,7 +50,7 @@ namespace Nihongo.Controllers
             ViewBag.VocaID = id;
             ViewBag.VocaUrlDisplay = urlDisplay;
 
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 return RedirectToAction("RequireLogin", "Account");
             }
@@ -60,34 +60,34 @@ namespace Nihongo.Controllers
             bool isOK = false;
             #region Kiem tra da mua chua
 
-            List<MS_VocaSetsModels> vocaSets = new List<MS_VocaSetsModels>();
-            returnCode = dao.CheckHasBuyVocaSet(id, out vocaSets);
+            //List<MS_VocaSetsModels> vocaSets = new List<MS_VocaSetsModels>();
+            //returnCode = dao.CheckHasBuyVocaSet(id, out vocaSets);
 
-            if (returnCode != 0 || vocaSets == null || vocaSets.Count == 0)
-            {
-                return RedirectToAction("danh-sach", "Library");
-            }
-            else
-            {
-                var vocaSet = vocaSets.FirstOrDefault();
-                decimal fee = CommonMethod.ParseDecimal(vocaSet.Fee);
-                if (fee > 0 && !vocaSets.Any(ss => ss.RemainDays > 0))
-                {
-                    return RedirectToAction("bo", "Payment", new { urlDisplay = vocaSet.UrlDisplay });
-                }
-            }
+            //if (returnCode != 0 || vocaSets == null || vocaSets.Count == 0)
+            //{
+            //    return RedirectToAction("danh-sach", "Library");
+            //}
+            //else
+            //{
+            //    var vocaSet = vocaSets.FirstOrDefault();
+            //    decimal fee = CommonMethod.ParseDecimal(vocaSet.Fee);
+            //    if (fee > 0 && !vocaSets.Any(ss => ss.RemainDays > 0))
+            //    {
+            //        return RedirectToAction("bo", "Payment", new { urlDisplay = vocaSet.UrlDisplay });
+            //    }
+            //}
 
             #endregion
 
             #region Kiem tra bai trc da hoan tat chua
 
-            returnCode = dao.CheckCompletedPreCate(id, CommonMethod.ParseString(Session["UserName"]), out isOK);
-            if (!isOK)
-            {
-                ViewBag.Message = "Bộ tự vựng này yêu cầu bạn phải học thuộc và hoàn thành tuần tự các bài kiểm tra trước.";
-                ViewBag.ReturnUrl = HttpContext.Request.Url.AbsoluteUri;
-                return View("Error");
-            }
+            //returnCode = dao.CheckCompletedPreCate(id, CommonMethod.ParseString(Session["UserID"]), out isOK);
+            //if (!isOK)
+            //{
+            //    ViewBag.Message = "Bộ tự vựng này yêu cầu bạn phải học thuộc và hoàn thành tuần tự các bài kiểm tra trước.";
+            //    ViewBag.ReturnUrl = HttpContext.Request.Url.AbsoluteUri;
+            //    return View("Error");
+            //}
             #endregion
 
             returnCode = dao.SelectVocaCateByID(id, out result);
@@ -98,7 +98,7 @@ namespace Nihongo.Controllers
         [ActionName("so-tay-tu-vung")]
         public ActionResult Notebook()
         {
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 return RedirectToAction("RequireLogin", "Account");
             }
@@ -112,7 +112,7 @@ namespace Nihongo.Controllers
             ViewBag.VocaID = id;
             ViewBag.VocaUrlDisplay = urlDisplay;
 
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 return RedirectToAction("RequireLogin", "Account");
             }
@@ -129,7 +129,7 @@ namespace Nihongo.Controllers
             ViewBag.CategoryID = id;
             ViewBag.CategoryUrlDisplay = urlDisplay;
 
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 return RedirectToAction("RequireLogin", "Account");
             }
@@ -146,7 +146,7 @@ namespace Nihongo.Controllers
         [ActionName("hoc-so-tay")]
         public ActionResult LearningNotebook()
         {
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 return RedirectToAction("RequireLogin", "Account");
             }
@@ -157,7 +157,7 @@ namespace Nihongo.Controllers
         [ActionName("luyen-tap")]
         public ActionResult Practice(int id, string urlDisplay)
         {
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 return RedirectToAction("RequireLogin", "Account");
             }
@@ -173,7 +173,7 @@ namespace Nihongo.Controllers
         [ActionName("luyen-tap-so-tay")]
         public ActionResult PracticeNotebook()
         {
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 return RedirectToAction("RequireLogin", "Account");
             }
@@ -188,7 +188,7 @@ namespace Nihongo.Controllers
             ViewBag.CategoryID = id;
             ViewBag.CategoryUrlDisplay = urlDisplay;
 
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 return RedirectToAction("RequireLogin", "Account");
             }
@@ -209,7 +209,7 @@ namespace Nihongo.Controllers
             ViewBag.CategoryID = id;
             ViewBag.CategoryUrlDisplay = urlDisplay;
 
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 return RedirectToAction("RequireLogin", "Account");
             }
@@ -241,7 +241,7 @@ namespace Nihongo.Controllers
 
             #region Kiem tra bai trc da hoan tat chua
 
-            returnCode = dao.CheckCompletedPreCate(id, CommonMethod.ParseString(Session["UserName"]), out isOK);
+            returnCode = dao.CheckCompletedPreCate(id, CommonMethod.ParseInt(Session["UserID"]), out isOK);
             if (!isOK)
             {
                 ViewBag.Message = "Bộ tự vựng này yêu cầu bạn phải học thuộc và hoàn thành tuần tự các bài kiểm tra trước.";
@@ -261,7 +261,7 @@ namespace Nihongo.Controllers
             ViewBag.CategoryID = id;
             ViewBag.CategoryUrlDisplay = urlDisplay;
 
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 return RedirectToAction("RequireLogin", "Account");
             }
@@ -362,7 +362,7 @@ namespace Nihongo.Controllers
         {
             bool isOK = false;
             int returnCode = 0;
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 returnCode = CommonData.DbReturnCode.AccessDenied;
             }
@@ -443,7 +443,7 @@ namespace Nihongo.Controllers
         {
             List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             int returnCode = 0;
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 returnCode = CommonData.DbReturnCode.AccessDenied;
             }
@@ -453,7 +453,7 @@ namespace Nihongo.Controllers
                 MS_UserVocabulariesModels model = new MS_UserVocabulariesModels()
                 {
                     CategoryID = id,
-                    UserName = CommonMethod.ParseString(Session["UserName"]),
+                    UserID = CommonMethod.ParseInt(Session["UserID"]),
                     //2: weak
                     HasLearnt = type == "2" ? CommonData.StringEmpty : type,
                     VocaGetType = type == "2"? type : CommonData.StringEmpty,
@@ -472,7 +472,7 @@ namespace Nihongo.Controllers
         {
             List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             int returnCode = 0;
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 returnCode = CommonData.DbReturnCode.AccessDenied;
             }
@@ -492,14 +492,14 @@ namespace Nihongo.Controllers
         {
             bool isOK = false;
             int returnCode = 0;
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 returnCode = CommonData.DbReturnCode.AccessDenied;
             }
             else
             {
                 MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
-                returnCode = dao.CheckCompletedPreCate(id, CommonMethod.ParseString(Session["UserName"]), out isOK);
+                returnCode = dao.CheckCompletedPreCate(id, CommonMethod.ParseInt(Session["UserID"]), out isOK);
             }
 
             return Json(new { isOK = isOK, returnCode = returnCode }, JsonRequestBehavior.AllowGet);
@@ -512,7 +512,7 @@ namespace Nihongo.Controllers
         {
             List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             int returnCode = 0;
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 returnCode = CommonData.DbReturnCode.AccessDenied;
             }
@@ -522,7 +522,7 @@ namespace Nihongo.Controllers
                 MS_UserVocabulariesModels model = new MS_UserVocabulariesModels()
                 {
                     CategoryID = id,
-                    UserName = CommonMethod.ParseString(Session["UserName"]),
+                    UserID = CommonMethod.ParseInt(Session["UserID"]),
                     //2: weak
                     HasLearnt = type == "2" ? CommonData.StringEmpty : type,
                     VocaGetType = type == "2" ? type : CommonData.StringEmpty,
@@ -541,7 +541,7 @@ namespace Nihongo.Controllers
         {
             List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             int returnCode = 0;
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 returnCode = CommonData.DbReturnCode.AccessDenied;
             }
@@ -551,7 +551,7 @@ namespace Nihongo.Controllers
                 MS_UserVocabulariesModels model = new MS_UserVocabulariesModels()
                 {
                     CategoryID = id,
-                    UserName = CommonMethod.ParseString(Session["UserName"]),
+                    UserID = CommonMethod.ParseInt(Session["UserID"]),
                     //2: weak
                     HasLearnt = type == "2" ? CommonData.StringEmpty : type,
                     VocaGetType = type == "2" ? type : CommonData.StringEmpty,
@@ -570,7 +570,7 @@ namespace Nihongo.Controllers
         {
             List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             int returnCode = 0;
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 returnCode = CommonData.DbReturnCode.AccessDenied;
             }
@@ -580,7 +580,7 @@ namespace Nihongo.Controllers
                 MS_UserVocabulariesModels model = new MS_UserVocabulariesModels()
                 {
                     CategoryID = id,
-                    UserName = CommonMethod.ParseString(Session["UserName"]),
+                    UserID = CommonMethod.ParseInt(Session["UserID"]),
                     //2: weak
                     HasLearnt = type == "2" ? CommonData.StringEmpty : type,
                     VocaGetType = type == "2" ? type : CommonData.StringEmpty,
@@ -598,7 +598,7 @@ namespace Nihongo.Controllers
         {
             List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             int returnCode = 0;
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 returnCode = CommonData.DbReturnCode.AccessDenied;
             }
@@ -617,7 +617,7 @@ namespace Nihongo.Controllers
         {
             List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             int returnCode = 0;
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 returnCode = CommonData.DbReturnCode.AccessDenied;
             }
@@ -636,7 +636,7 @@ namespace Nihongo.Controllers
         {
             List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             int returnCode = 0;
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 returnCode = CommonData.DbReturnCode.AccessDenied;
             }
@@ -660,7 +660,7 @@ namespace Nihongo.Controllers
         {
             List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             int returnCode = 0;
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 returnCode = CommonData.DbReturnCode.AccessDenied;
             }
@@ -680,7 +680,7 @@ namespace Nihongo.Controllers
         {
             List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             int returnCode = 0;
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 returnCode = CommonData.DbReturnCode.AccessDenied;
             }
@@ -704,19 +704,19 @@ namespace Nihongo.Controllers
         {
             List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             int returnCode = 0;
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 returnCode = CommonData.DbReturnCode.AccessDenied;
             }
             else
             {
                 //MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
-                //returnCode = dao.SelectUserVocaData(id, CommonMethod.ParseString(Session["UserName"]), out results);
+                //returnCode = dao.SelectUserVocaData(id, CommonMethod.ParseString(Session["UserID"]), out results);
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
                 MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
                 model.CategoryID = id;
                 model.Type = CommonData.VocaType.Word;
-                model.UserName = CommonMethod.ParseString(Session["UserName"]);
+                model.UserID = CommonMethod.ParseInt(Session["UserID"]);
                 //model.HasLearnt = CommonData.Status.Disable;
                 returnCode = dao.SelectUserVocaData(model, out results);
             }
@@ -731,7 +731,7 @@ namespace Nihongo.Controllers
         {
             List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             int returnCode = 0;
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 returnCode = CommonData.DbReturnCode.AccessDenied;
             }
@@ -741,7 +741,7 @@ namespace Nihongo.Controllers
                 MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
                 model.CategoryID = id;
                 model.Type = CommonData.VocaType.Word;
-                model.UserName = CommonMethod.ParseString(Session["UserName"]);
+                model.UserID = CommonMethod.ParseInt(Session["UserID"]);
                 //model.HasLearnt = CommonData.Status.Disable;
                 returnCode = dao.SelectUserVocaData(model, out results);
             }
@@ -760,7 +760,7 @@ namespace Nihongo.Controllers
         public ActionResult UpdateHasMarked(MS_UserVocabulariesModels voca)
         {
             int returnCode = 0;
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 returnCode = CommonData.DbReturnCode.AccessDenied;
             }
@@ -778,14 +778,14 @@ namespace Nihongo.Controllers
         public ActionResult UpdateUserVocas(List<MS_UserVocabulariesModels> vocas)
         {
             int returnCode = 0;
-            if (CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 returnCode = CommonData.DbReturnCode.AccessDenied;
             }
             else
             {
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
-                returnCode = dao.UpdateUserVocas(CommonMethod.ParseString(Session["UserName"]), vocas);
+                returnCode = dao.UpdateUserVocas(CommonMethod.ParseInt(Session["UserID"]), vocas);
             }
 
             return Json(new { ReturnCode = returnCode });
@@ -797,7 +797,7 @@ namespace Nihongo.Controllers
         {
             int returnCode = 0;
             int accumulatedPoint = 1;
-            if (!CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (!CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
                 returnCode = dao.UpdateTestResult(vocas, out accumulatedPoint);
@@ -811,7 +811,7 @@ namespace Nihongo.Controllers
         public ActionResult UpdateFastTestVoca(MS_UserVocabulariesModels voca)
         {
             int returnCode = 0;
-            if (!CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (!CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
                 returnCode = dao.UpdateFastTestVoca(voca);

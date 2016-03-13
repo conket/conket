@@ -98,7 +98,7 @@
                     @*<li><a href='@Href("~/Home/About/")'>VỀ CHÚNG TÔI</a></li>*@
 
                     @*<li><a href='@Href("~/Home/Contact/")'>LIÊN HỆ</a></li>*@
-                    @if (Session["UserName"] == null || Ivs.Core.Common.CommonMethod.IsNullOrEmpty(Session["UserName"]))
+                    @if (Session["UserID"] == null || Ivs.Core.Common.CommonMethod.IsNullOrEmpty(Session["UserID"]))
                     {
 @*<li><a href='@Href("~/Account/Register/")'>ĐĂNG KÝ</a></li>*@
                         <li><a href="#" data-toggle="modal" data-target="#modalLogin2">ĐĂNG NHẬP</a></li>
@@ -128,13 +128,13 @@
                             <ul class="dropdown-menu dropdown-user">
                                 @if (Ivs.Core.Common.CommonMethod.ParseString(Session["IsAdmin"]) == Ivs.Core.Common.CommonData.Status.Enable)
                                 {
-                                    <li><a href='@Href("~/Account/Admin/")@Session["UserName"]'>
+                                    <li><a href='@Href("~/Account/Admin/")@Session["UserID"]'>
                                         <i class="fa fa-gear fa-fw"></i>Quản trị</a> </li>
                                     <li class="divider"></li>
                                 }
                                 <li><a href='@Url.Action("so-tay-tu-vung", "Library")'><i class="fa fa-user fa-fw"></i>Sổ tay</a>
                                 <li class="divider"></li>
-                                <li><a href='@Href("~/Account/HomePage/")@Session["UserName"]'><i class="fa fa-user fa-fw"></i>Trang cá nhân</a>
+                                <li><a href='@Href("~/Account/HomePage/")@Session["UserID"]'><i class="fa fa-user fa-fw"></i>Trang cá nhân</a>
                                 <li class="divider"></li>
                                 <li><a href="#" data-toggle="modal" data-target="#modalChangePassword"><i class="fa fa-user fa-fw"></i>Đổi mật khẩu</a>
 
@@ -162,7 +162,7 @@
 
 
     </div>
-    <input type="hidden" value='@Session["UserName"]' id="u"/>
+    <input type="hidden" value='@Session["UserID"]' id="u"/>
 
 
 

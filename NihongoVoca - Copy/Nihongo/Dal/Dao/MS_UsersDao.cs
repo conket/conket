@@ -85,6 +85,7 @@ namespace Nihongo.Dal.Dao
                             
                             Level = 10,
                             HasLearnt = CommonData.Status.Disable,
+                            HasMarked = CommonData.Status.Disable,
                             StartDate = DateTime.Now.AddDays(-1),
                             EndDate = DateTime.Now.AddDays(365),
                         };
@@ -167,7 +168,7 @@ namespace Nihongo.Dal.Dao
             int returnCode = 0;
             try
             {
-                var ur = this.ms_users.FirstOrDefault(ss => ss.UserName == user.UserName);
+                var ur = this.ms_users.FirstOrDefault(ss => ss.ID == user.ID);
                 if (ur != null)
                 {
                     ur.LoginState = user.LoginState;
@@ -249,7 +250,7 @@ namespace Nihongo.Dal.Dao
             int returnCode = 0;
             try
             {
-                var ur = this.ms_users.FirstOrDefault(ss => ss.UserName == user.UserName);
+                var ur = this.ms_users.FirstOrDefault(ss => ss.ID == user.ID);
                 if (ur != null)
                 {
                     ur.Password = user.Password;
@@ -272,7 +273,7 @@ namespace Nihongo.Dal.Dao
             try
             {
                 result = this.ms_users
-                    .Where(ss => ss.UserName == user.UserName && ss.Status == user.Status)
+                    .Where(ss => ss.ID == user.ID && ss.Status == user.Status)
                     .Select(ss => new MS_UsersModels
                     {
                         UserName = ss.UserName,

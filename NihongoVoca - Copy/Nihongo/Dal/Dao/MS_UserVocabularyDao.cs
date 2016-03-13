@@ -365,7 +365,7 @@ namespace Nihongo.Dal.Dao
                     }
 
                     //update for user
-                    var user = this.ms_users.FirstOrDefault(ss => ss.UserName == firstVoca.UserName);
+                    var user = this.ms_users.FirstOrDefault(ss => ss.ID == firstVoca.UserID);
                     if (user != null)
                     {
                         user.AccumulatedPoint = CommonMethod.ParseInt(user.AccumulatedPoint) + accumulatedPoint;
@@ -374,7 +374,7 @@ namespace Nihongo.Dal.Dao
                     #endregion
 
                     Nihongo.Dal.Mapping.ms_testresults test = new Mapping.ms_testresults();
-                    test.Code = firstVoca.UserName + "_" + vocaCate.Code + "_" + (DateTime.Now.ToString(CommonData.DateFormat.YyyyMMddHHmmss));
+                    test.Code = firstVoca.UserID + "_" + vocaCate.Code + "_" + (DateTime.Now.ToString(CommonData.DateFormat.YyyyMMddHHmmss));
                     test.CategoryID = vocaCate.ID;
                     test.UserID = firstVoca.UserID;
                     test.CreateDate = DateTime.Now;
@@ -448,10 +448,10 @@ namespace Nihongo.Dal.Dao
                 }
 
                 //update user's point
-                if (!CommonMethod.IsNullOrEmpty(voca.UserName))
+                if (!CommonMethod.IsNullOrEmpty(voca.UserID))
                 {
 
-                    var us = this.ms_users.FirstOrDefault(ss => ss.UserName == voca.UserName);
+                    var us = this.ms_users.FirstOrDefault(ss => ss.ID == voca.UserID);
                     if (us != null)
                     {
                         if (voca.IsCorrect == CommonData.Status.Enable)
@@ -473,7 +473,7 @@ namespace Nihongo.Dal.Dao
 
 
 
-        internal int UpdateUserVocas(string userName, List<MS_UserVocabulariesModels> vocas)
+        internal int UpdateUserVocas(int userID, List<MS_UserVocabulariesModels> vocas)
         {
             int returnCode = 0;
 
@@ -506,10 +506,10 @@ namespace Nihongo.Dal.Dao
                     }
 
                     //update user's point
-                    if (!CommonMethod.IsNullOrEmpty(userName))
+                    if (!CommonMethod.IsNullOrEmpty(userID))
                     {
 
-                        var us = this.ms_users.FirstOrDefault(ss => ss.UserName == userName);
+                        var us = this.ms_users.FirstOrDefault(ss => ss.ID == userID);
                         if (us != null)
                         {
                             if (vo.IsCorrect == CommonData.Status.Enable)

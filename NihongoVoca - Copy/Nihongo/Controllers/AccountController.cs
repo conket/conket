@@ -14,6 +14,7 @@ using Nihongo.Dal.Dao;
 using Ivs.Core.Common;
 using Ivs.Core.Data;
 using Ivs.Core.Web.Attributes;
+using System.Data.OleDb;
 
 namespace Nihongo.Controllers
 {
@@ -507,11 +508,11 @@ namespace Nihongo.Controllers
             // Attempt to register the user
             try
             {
-                if (!CommonMethod.IsNullOrEmpty(Session["UserName"]))
+                if (!CommonMethod.IsNullOrEmpty(Session["UserID"]))
                 {
                     MS_UsersDao dao = new MS_UsersDao();
                     MS_UsersModels model = new MS_UsersModels();
-                    model.UserName = CommonMethod.ParseString(Session["UserName"]);
+                    model.ID = CommonMethod.ParseInt(Session["UserID"]);
                     model.Password = CommonMethod.Md5(CommonMethod.Md5(CommonMethod.Md5(NewPassword)));
                     returnCode = dao.ChangePassword(model);
                     if (returnCode == 0)
@@ -607,6 +608,7 @@ namespace Nihongo.Controllers
                         model.UserName = user.UserName;
                         //returnCode = vocaDao.SelectWeakVocaSummary(model, out results);
                         //Session["Inbox"] = results.Count;
+                        Session["UserID"] = user.ID;
                         Session["UserName"] = user.UserName;
                         Session["DisplayName"] = user.DisplayName;
                         Session["IsAdmin"] = user.IsAdmin;
@@ -855,13 +857,68 @@ namespace Nihongo.Controllers
             return View();
         }
 
-        public ActionResult Admin(string id)
+        [HttpPost]
+        public ActionResult CreateVocaCategory(HttpPostedFileBase file)
+        {
+            int returnCode = 0;
+            if (file.ContentLength > 0)
+            {
+                string extension = System.IO.Path.GetExtension(file.FileName);
+                string path1 = string.Format("{0}/{1}", Server.MapPath("~/Content/Upload"), file.FileName);
+                if (System.IO.File.Exists(path1))
+                    System.IO.File.Delete(path1);
+
+                file.SaveAs(path1);
+                //string sqlConnectionString = @"Data Source=LEEDHAR2-PC\SQLEXPRESS;Database=Leedhar_Import;Trusted_Connection=true;Persist Security Info=True";
+
+                List<MS_VocabularyDetailModel> list = new List<MS_VocabularyDetailModel>();
+                //Create connection string to Excel work book
+                string excelConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path1 + ";Extended Properties=Excel 12.0;Persist Security Info=False";
+                //Create Connection to Excel work book
+                using (OleDbConnection excelConnection = new OleDbConnection(excelConnectionString))
+                {
+                    excelConnection.Open();
+
+                    System.Data.DataSet ds = new System.Data.DataSet();
+                    using (OleDbDataAdapter dataAdapter = new OleDbDataAdapter("Select * from [Sheet1$]", excelConnection))
+                    {
+                        dataAdapter.Fill(ds);
+                    }
+
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        MS_VocabularyDetailModel detail = new MS_VocabularyDetailModel();
+                        detail.CategoryCode = CommonMethod.ParseString(ds.Tables[0].Rows[i]["CategoryCode"]);
+                        detail.VocabularyCode = CommonMethod.ParseString(ds.Tables[0].Rows[i]["VocabularyCode"]);
+                        detail.KanjiCode = CommonMethod.ParseString(ds.Tables[0].Rows[i]["KanjiCode"]);
+                        detail.LineNumber = CommonMethod.ParseInt(ds.Tables[0].Rows[i]["LineNumber"].ToString());
+                        list.Add(detail);
+                    }
+                    excelConnection.Close();
+                }
+
+                using (MS_VocaCategoryDao dao = new MS_VocaCategoryDao())
+                {
+                    returnCode = dao.CreateVocaCategory(list);
+                    if (returnCode == 0)
+                    {
+                        TempData["ErrorMessage"] = "Tạo bộ từ vựng thành công!!!";
+                        return RedirectToAction("CreateVocaCategory");
+                    }
+                }
+            }
+
+            TempData["ErrorMessage"] = "Tạo bộ từ vựng thất bại!!!";
+            return View();
+        }
+
+        public ActionResult Admin(int id)
         {
             ViewBag.UserName = id;
             MS_UsersDao dao = new MS_UsersDao();
             MS_UsersModels model = new MS_UsersModels()
             {
-                UserName = id,
+                ID = id,
                 Status = CommonData.Status.Enable,
             };
             MS_UsersModels result = new MS_UsersModels();

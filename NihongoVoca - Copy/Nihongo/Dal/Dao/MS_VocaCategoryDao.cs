@@ -92,7 +92,7 @@ namespace Nihongo.Dal.Dao
             return returnCode;
         }
 
-        internal int CheckCompletedPreCate(int id, string userName, out bool isOK)
+        internal int CheckCompletedPreCate(int id, int userID, out bool isOK)
         {
             int returnCode = 0;
             isOK = false;
@@ -118,8 +118,8 @@ namespace Nihongo.Dal.Dao
                         }
                         else
                         {
-                            //isOK = this.ms_testresults.Any(ss => ss.CategoryCode == vocaCate.CatePreCode 
-                            //    && ss.UserName == userName 
+                            //isOK = this.ms_testresults.Any(ss => ss.CategoryID == vocaCate.CatePreCode
+                            //    && ss.UserID == userID
                             //    && ss.IsPass == CommonData.Status.Enable);
                         }
                     }
@@ -216,6 +216,106 @@ namespace Nihongo.Dal.Dao
                    })
                    .OrderBy(ss => ss.ID)
                     .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
+        internal int CreateVocaCategory(List<MS_VocabularyDetailModel> models)
+        {
+            int returnCode = 0;
+
+            try
+            {
+                if (models.Count > 0)
+                {
+                    var cates = this.ms_vocacategories.ToList();
+                    var vocas = this.ms_vocabularies.ToList();
+                    var kanjis = this.ms_kanjis.ToList();
+
+                    foreach (var model in models)
+                    {
+                        var category = cates.FirstOrDefault(ss => ss.Code == model.CategoryCode);
+                        if (category != null)
+                        {
+                            model.CategoryID = category.ID;
+                        }
+                        var voca = vocas.FirstOrDefault(ss => ss.Code == model.VocabularyCode);
+                        if (voca != null)
+                        {
+                            model.VocabularyID = voca.ID;
+                        }
+                        var kanji = vocas.FirstOrDefault(ss => ss.Code == model.KanjiCode);
+                        if (kanji != null)
+                        {
+                            model.KanjiID = kanji.ID;
+                        }
+
+                        if (category != null && (voca != null || kanji != null))
+                        {
+                            Mapping.ms_vocabularydetails detail = this.ms_vocabularydetails
+                                .FirstOrDefault(ss => ss.CategoryID == model.CategoryID
+                                                && (model.VocabularyID == null ? ss.VocabularyID == null : ss.VocabularyID == model.VocabularyID)
+                                                && (model.KanjiID == null ? ss.KanjiID == null : ss.KanjiID == model.KanjiID));
+                            if (detail == null)
+                            {
+                                detail = new Mapping.ms_vocabularydetails()
+                               {
+                                   CategoryID = model.CategoryID,
+                                   VocabularyID = model.VocabularyID,
+                                   KanjiID = model.KanjiID,
+                                   LineNumber = model.LineNumber,
+                               };
+
+                                this.ms_vocabularydetails.AddObject(detail);
+                            }
+                            else
+                            {
+                                detail.LineNumber = model.LineNumber;
+                            }
+                        }
+                    }
+
+                    returnCode = this.Saves();
+
+
+                    if (returnCode == 0)
+                    {
+                        //update user vocas
+                        var users = this.ms_users.AsQueryable();
+                        var vocadetails = this.ms_vocabularydetails.AsQueryable();
+                        foreach (var vocadetail in vocadetails)
+                        {
+                            foreach (var user in users)
+                            {
+                                var uservoca = this.ms_uservocabularies.FirstOrDefault(ss => ss.VocaDetailID == vocadetail.ID && ss.UserID == user.ID);
+                                if (uservoca == null)
+                                {
+                                    uservoca = new Mapping.ms_uservocabularies()
+                                    {
+                                        UserID = user.ID,
+                                        VocaDetailID = vocadetail.ID,
+                                        UpdatedDate = DateTime.Now,
+
+                                        Level = 10,
+                                        HasLearnt = CommonData.Status.Disable,
+                                        HasMarked = CommonData.Status.Disable,
+                                        StartDate = DateTime.Now.AddDays(-1),
+                                        EndDate = DateTime.Now.AddDays(365),
+                                    };
+
+                                    this.ms_uservocabularies.AddObject(uservoca);
+                                }
+                            }
+                        }
+
+                        returnCode = this.Saves();
+                    }
                 }
             }
             catch (Exception ex)
