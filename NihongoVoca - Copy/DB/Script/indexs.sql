@@ -1,5 +1,12 @@
 USE [nihongo_voca]
 GO
+--ms_users
+CREATE NONCLUSTERED INDEX [IX_ms_users_username_password] ON [dbo].[ms_users] 
+(
+	[UserName] ASC,
+	[Password] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
 --ms_vocabularies
 CREATE NONCLUSTERED INDEX [IX_ms_vocabularies_romaji] ON [dbo].[ms_vocabularies] 
 (
