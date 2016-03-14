@@ -1,6 +1,6 @@
 /*
 Database: nihongo_voca
-Generate Date: Friday, March 11, 2016 2:35:55 PM
+Generate Date: Tuesday, March 15, 2016 12:00:53 AM
 *********************************************************************
 */
 
@@ -297,7 +297,7 @@ CREATE TABLE [dbo].[ms_vocabularies](
 ) ON [PRIMARY]
 GO
 /* ***********Object:  Index [IdxUnique] ************/
-CREATE UNIQUE CLUSTERED INDEX IdxUnique  ON [dbo].[ms_vocabularies] ([Code])
+CREATE UNIQUE CLUSTERED INDEX IdxUnique  ON [dbo].[ms_vocabularies] ([Romaji],[Kanji])
 GO
 GO
 /* ***** Object:  Table [dbo].[ms_kanjis]  ******/
@@ -325,7 +325,7 @@ CREATE TABLE [dbo].[ms_kanjis](
 ) ON [PRIMARY]
 GO
 /* ***********Object:  Index [IdxUnique] ************/
-CREATE UNIQUE CLUSTERED INDEX IdxUnique  ON [dbo].[ms_kanjis] ([Code])
+CREATE UNIQUE CLUSTERED INDEX IdxUnique  ON [dbo].[ms_kanjis] ([Kanji])
 GO
 /* *********** Set default value ************/
 ALTER TABLE [dbo].[ms_kanjis] ADD  CONSTRAINT [DF_mskanjis_Strokes]  DEFAULT ((1)) FOR [Strokes]
