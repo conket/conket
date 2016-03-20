@@ -332,13 +332,13 @@ namespace Nihongo.Dal.Dao
 
                 
                 var currentDate = DateTime.Now.Date;
-                var query = this.ms_uservocabularies.Where(ss => ss.Level < 10
-                                                            && (ss.StartDate <= currentDate && currentDate <= ss.EndDate)).AsQueryable();
-
+                var query = this.ms_uservocabularies.AsQueryable();
+                
                 if (!CommonMethod.IsNullOrEmpty(model.UserID))
                 {
                     query = query.Where(ss => ss.UserID == model.UserID);
                 }
+                query = query.Where(ss => ss.Level < 10 && (ss.StartDate <= currentDate && currentDate <= ss.EndDate));
 
                 var userVoca = from vs in this.ms_vocasets
                                 join vc in this.ms_vocacategories on vs.ID equals vc.VocaSetID

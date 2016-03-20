@@ -528,3 +528,26 @@ span.loading-6 {-webkit-animation-delay: 0;animation-delay: 0;-ms-animation-dela
     font-style:italic;
     padding-top:10px;
 }
+
+.btn-top {
+    background-image: url(../images/btn_top.png);
+    background-repeat: no-repeat;
+    background-size:cover;
+    border: medium none;
+    bottom: 50px;
+    cursor: pointer;
+    display: none;
+    height: 50px;
+    outline: medium none;
+    padding: 0;
+    position: fixed;
+    right: 20px;
+    width: 50px;
+    z-index: 9999;
+}
+
+.voca-image
+{
+    width:100%;
+    height:100px;
+}

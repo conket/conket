@@ -455,7 +455,9 @@ namespace Nihongo.Controllers
                     model.UserName = CommonMethod.Md5(UserName.ToLower());
                     model.Password = CommonMethod.Md5(CommonMethod.Md5(CommonMethod.Md5(Password)));
                     model.CreateVoca = CreateVoca;
-                    returnCode = dao.InsertData(model);
+
+                    int userID = -1;
+                    returnCode = dao.InsertData(model, out userID);
                     if (returnCode == 0)
                     {
                         mess = "Thêm thành công";
@@ -613,7 +615,7 @@ namespace Nihongo.Controllers
                         Session["DisplayName"] = user.DisplayName;
                         Session["IsAdmin"] = user.IsAdmin;
                         UserSession.UserName = user.UserName;
-
+                        UserSession.UserID = user.ID;
                         #endregion
 
                         #region Update state
@@ -641,12 +643,12 @@ namespace Nihongo.Controllers
             string mess = string.Empty;
             if (CommonMethod.IsNullOrEmpty(id))
             {
-                return Json(new { ReturnCode = 9 });
+                return Json(new { ReturnCode = 9, Message = "ID not found!" });
             }
-            if (CommonMethod.IsNullOrEmpty(email))
-            {
-                return Json(new { ReturnCode = 9 });
-            }
+            //if (CommonMethod.IsNullOrEmpty(email))
+            //{
+            //    return Json(new { ReturnCode = 9 });
+            //}
 
             //if (ModelState.IsValid)
             //{
@@ -657,10 +659,10 @@ namespace Nihongo.Controllers
                 MS_UsersModels model = new MS_UsersModels();
                 model.DisplayName = name;
                 model.UserName = CommonMethod.Md5(id.ToLower());
-                model.Email = email;
+                model.Email = CommonMethod.IsNullOrEmpty(email) ? CommonData.StringEmpty : CommonMethod.Md5(email.ToLower());
                 model.Password = CommonMethod.Md5(CommonMethod.Md5(CommonMethod.Md5(id)));
                 model.CreateVoca = true;
-
+                //mess = "Insert thành công";
                 returnCode = dao.FLogin(model, out user);
                 if (returnCode == 0)
                 {
@@ -672,11 +674,12 @@ namespace Nihongo.Controllers
                     dmodel.UserName = user.UserName;
                     //returnCode = vocaDao.SelectWeakVocaSummary(model, out results);
                     //Session["Inbox"] = results.Count;
+                    Session["UserID"] = user.ID;
                     Session["UserName"] = user.UserName;
                     Session["DisplayName"] = user.DisplayName;
                     Session["IsAdmin"] = user.IsAdmin;
                     UserSession.UserName = user.UserName;
-
+                    UserSession.UserID = user.ID;
                     #endregion
 
                     #region Update state
@@ -698,7 +701,7 @@ namespace Nihongo.Controllers
                 mess = (e.InnerException.ToString());
             }
 
-            return Json(new { ReturnCode = returnCode, User = user, ReturnUrl = ReturnUrl });//Request.Url.AbsoluteUri });
+            return Json(new { ReturnCode = returnCode, Message = mess, User = user, ReturnUrl = ReturnUrl });//Request.Url.AbsoluteUri });
         }
 
         [HttpPost]
@@ -712,12 +715,12 @@ namespace Nihongo.Controllers
             string mess = string.Empty;
             if (CommonMethod.IsNullOrEmpty(id))
             {
-                return Json(new { ReturnCode = 9 });
+                return Json(new { ReturnCode = 9, Message = "ID not found!" });
             }
-            if (CommonMethod.IsNullOrEmpty(email))
-            {
-                return Json(new { ReturnCode = 9 });
-            }
+            //if (CommonMethod.IsNullOrEmpty(email))
+            //{
+            //    return Json(new { ReturnCode = 9 });
+            //}
 
             //if (ModelState.IsValid)
             //{
@@ -728,7 +731,7 @@ namespace Nihongo.Controllers
                 MS_UsersModels model = new MS_UsersModels();
                 model.DisplayName = name;
                 model.UserName = CommonMethod.Md5(id.ToLower());
-                model.Email = email;
+                model.Email = CommonMethod.IsNullOrEmpty(email) ? CommonData.StringEmpty : CommonMethod.Md5(email.ToLower());
                 model.Password = CommonMethod.Md5(CommonMethod.Md5(CommonMethod.Md5(id)));
                 model.CreateVoca = true;
 
@@ -743,10 +746,12 @@ namespace Nihongo.Controllers
                     dmodel.UserName = user.UserName;
                     //returnCode = vocaDao.SelectWeakVocaSummary(model, out results);
                     //Session["Inbox"] = results.Count;
+                    Session["UserID"] = user.ID;
                     Session["UserName"] = user.UserName;
                     Session["DisplayName"] = user.DisplayName;
                     Session["IsAdmin"] = user.IsAdmin;
                     UserSession.UserName = user.UserName;
+                    UserSession.UserID = user.ID;
 
                     #endregion
 
@@ -769,33 +774,34 @@ namespace Nihongo.Controllers
                 mess = (e.InnerException.ToString());
             }
 
-            return Json(new { ReturnCode = returnCode, User = user, ReturnUrl = ReturnUrl });//Request.Url.AbsoluteUri });
+            return Json(new { ReturnCode = returnCode, Message = mess, User = user, ReturnUrl = ReturnUrl });//Request.Url.AbsoluteUri });
         }
 
         [AllowAnonymous]
         public ActionResult Logout()
         {
             Session["Inbox"] = 0;
+            Session["UserID"] = CommonData.StringEmpty;
             Session["UserName"] = CommonData.StringEmpty;
             Session["DisplayName"] = CommonData.StringEmpty;
             Session["IsAdmin"] = false;
             UserSession.UserName = CommonData.StringEmpty;
-            
-            if (Request.Cookies["Nihongo"] != null)
-            {
-                int returnCode = 0;
-                MS_UsersDao dao = new MS_UsersDao();
-                MS_UsersModels user = new MS_UsersModels();
-                user.UserName = CommonMethod.ParseString(Request.Cookies["Nihongo"].Values["UserName"]);
-                user.Password = CommonMethod.ParseString(Request.Cookies["Nihongo"].Values["Password"]);
-                user.LoginState = CommonData.Status.Disable;
-                user.LastVisitedDate = DateTime.Now;
-                returnCode = dao.UpdateState(user);
+            UserSession.UserID = -1;
+            //if (Request.Cookies["Nihongo"] != null)
+            //{
+            //int returnCode = 0;
+            //MS_UsersDao dao = new MS_UsersDao();
+            //MS_UsersModels user = new MS_UsersModels();
+            //user.UserName = CommonMethod.ParseString(Request.Cookies["Nihongo"].Values["UserName"]);
+            //user.Password = CommonMethod.ParseString(Request.Cookies["Nihongo"].Values["Password"]);
+            //user.LoginState = CommonData.Status.Disable;
+            //user.LastVisitedDate = DateTime.Now;
+            //returnCode = dao.UpdateState(user);
 
-                HttpCookie myCookie = new HttpCookie("Nihongo");
-                myCookie.Expires = DateTime.Now.AddDays(-1d);
-                Response.Cookies.Add(myCookie);
-            }
+            //    HttpCookie myCookie = new HttpCookie("Nihongo");
+            //    myCookie.Expires = DateTime.Now.AddDays(-1d);
+            //    Response.Cookies.Add(myCookie);
+            //}
 
             return RedirectToAction("Index", "Home");
         }
@@ -861,7 +867,7 @@ namespace Nihongo.Controllers
         public ActionResult CreateVocaCategory(HttpPostedFileBase file)
         {
             int returnCode = 0;
-            if (file.ContentLength > 0)
+            if (file != null && file.ContentLength > 0)
             {
                 string extension = System.IO.Path.GetExtension(file.FileName);
                 string path1 = string.Format("{0}/{1}", Server.MapPath("~/Content/Upload"), file.FileName);

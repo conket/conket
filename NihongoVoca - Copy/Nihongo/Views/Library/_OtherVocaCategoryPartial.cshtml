@@ -1,0 +1,19 @@
+﻿@model System.Collections.Generic.IEnumerable<Nihongo.Models.MS_VocaCategoriesModels>
+
+<div class="suggest-content">
+    <span class="suggest-content-title-top">Toàn bộ bài học</span>
+    <ul>
+    @foreach (var category in Model)
+    {
+        <li>
+            <a rel="nofollow" href="@Url.Action("danh-muc", "Library", new { id = category.ID, urlDisplay = category.UrlDisplay})" title="@category.Name1">
+                <img width="61" height="61" data-src="@category.UrlImage" src="" alt="bo-tu-vung-tieng-nhat"></a>
+            <a class="suggest-content-title" href="@Url.Action("danh-muc", "Library", new { id = category.ID, urlDisplay = category.UrlDisplay})" title="@category.Name1">
+                @category.Name1
+            </a>
+            <i>Số từ vựng: @category.NumOfVocas</i>
+        </li>
+
+    }
+    </ul>
+</div>

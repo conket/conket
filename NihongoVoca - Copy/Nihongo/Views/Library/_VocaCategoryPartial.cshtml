@@ -17,7 +17,7 @@
                 <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
                     <div class="media">
                         <div class="pull-left hidden-xs">
-                            <img class="img-rounded" src='@Href("~/" + @voca.UrlImage)' alt="Bộ từ vựng" height="100px" width="100%">
+                            <img class="img-rounded" data-src='@Href("~/" + @voca.UrlImage)' src="" alt="Bộ từ vựng" height="100px" width="100%">
                         </div>
                         <div class="clearfix visible-sm">
                         </div>
@@ -30,10 +30,10 @@
                                 @Html.ActionLink(voca.Name1, "danh-muc", "Library", new { @id = voca.ID, @urlDisplay = voca.UrlDisplay }, new { @target = "_parent", @class = "require-login" })
                                 @if (voca.IsTrial == "1")
                                 {
-                                    <a href="@Url.Action("hoc-thu", "Library", new { @id=voca.ID, @urlDisplay=voca.UrlDisplay })" target="_parent" class="require-login">
+                                    <a href="@Url.Action("hoc-thu", "Library", new { @id = voca.ID, @urlDisplay = voca.UrlDisplay })" target="_parent" class="require-login">
                                         <small class="pull-right">Học thử</small>
                                     </a>
-                                    @*<a href='@Href("~/Library/hoc-thu/")@voca.ID/@voca.UrlDisplay' target="_parent" class="require-login">
+@*<a href='@Href("~/Library/hoc-thu/")@voca.ID/@voca.UrlDisplay' target="_parent" class="require-login">
                                         <small class="pull-right">Học thử</small> </a>   *@
                                 }
                             </h4>
@@ -43,14 +43,15 @@
                             </ul>
                             @*<p class="hidden-xs">*@
                             <p>
-                                @voca.Description</p>
+                                @voca.Description
+                            </p>
                             @*<span class="fnt-smaller fnt-lighter fnt-arial">
                         Học</span>*@
                         </div>
                         <nav class="col-md-12 text-right action">
                             <ul>
                                 <li>@Html.ActionLink("Vào học", "danh-muc", "Library", new { @id = voca.ID, @urlDisplay = voca.UrlDisplay }
-                             , new { @class = "btn btn-navigator btn-theme btn-small require-login"})</li>
+                             , new { @class = "btn btn-navigator btn-theme btn-small require-login" })</li>
                                 @*<li>@Html.ActionLink("Sàng lọc", "kiem-tra-nhanh", "Library", new { @id = voca.ID, @urlDisplay = voca.UrlDisplay }
              , new { @class = "btn-theme btn-small require-login" })</li>*@
                             </ul>
@@ -70,10 +71,12 @@
         max -= numOfColumn;
     }
 }
-@*else
-{
-    <p>
-        Hệ thống sẽ cập nhật bộ từ vựng tiếng Nhật này trong thời gian tới</p>
-}*@
-    @Scripts.Render("~/bundles/mi")
 
+@Scripts.Render("~/bundles/mi")
+<script src="~/Scripts/jQuery.loadScroll.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('img').loadScroll(500); // in ms
+    });
+</script>

@@ -654,7 +654,7 @@ namespace Nihongo.Controllers
         #region Choosing popup
 
         [EncryptActionName(Name = ("GetChoosingVocabularies"))]
-        [OutputCache(CacheProfile = "Cache1HourVaryByIDClient")]
+        //[OutputCache(CacheProfile = "Cache1HourVaryByIDClient")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult GetChoosingVocabularies(int id)
         {

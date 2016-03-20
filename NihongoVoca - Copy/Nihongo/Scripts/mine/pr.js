@@ -7,9 +7,11 @@ var selectedVocaIDs = [];
 var index = 1;
 var count = 1;
 var vocaType = '';
+var isNext = false;
+
 $(document).ready(function () {
     $('#btnOkChoosingWordTypeModal').on('click', function () {
-        
+
         if ($('#rdoSelect').is(':checked')) {
             vocaType = '';
             $('#modalChoosingWord').modal();
@@ -48,71 +50,130 @@ $(document).ready(function () {
         //            vocas[index].IsCorrect = "1";
         //alert(vocas[index].OnReading);
         var isCorrect = "1";
-        if (inputValue != '') {
-            if (vocas[index].DisplayType == "3") {
-                var checkValueOnRomaji = vocas[index].OnRomaji == null ? '' : vocas[index].OnRomaji.toLowerCase().replace(/\s+/g, '');
-                var checkValueOnReading = vocas[index].OnReading == null ? '' : vocas[index].OnReading.toLowerCase().replace(/\s+/g, '');
-                var checkValueOnRomaji2 = vocas[index].OnRomaji2 == null ? '' : vocas[index].OnRomaji2.toLowerCase().replace(/\s+/g, '');
-                var checkValueOnReading2 = vocas[index].OnReading2 == null ? '' : vocas[index].OnReading2.toLowerCase().replace(/\s+/g, '');
-                var checkValueKunRomaji = vocas[index].KunRomaji == null ? '' : vocas[index].KunRomaji.toLowerCase().replace(/\s+/g, '');
-                var checkValueKunReading = vocas[index].KunReading == null ? '' : vocas[index].KunReading.toLowerCase().replace(/\s+/g, '');
-                var checkValueKunRomaji2 = vocas[index].KunRomaji2 == null ? '' : vocas[index].KunRomaji2.toLowerCase().replace(/\s+/g, '');
-                var checkValueKunReading2 = vocas[index].KunReading2 == null ? '' : vocas[index].KunReading2.toLowerCase().replace(/\s+/g, '');
-                var checkValueKanji = vocas[index].Kanji == null ? '' : vocas[index].Kanji.toLowerCase().replace(/\s+/g, '');
-                //show error if wrong
-                if (inputValue != checkValueOnRomaji
-                && inputValue != checkValueOnReading
-                && inputValue != checkValueOnRomaji2
-                && inputValue != checkValueOnReading2
-                && inputValue != checkValueKunRomaji
-                && inputValue != checkValueKunReading
-                && inputValue != checkValueKunRomaji2
-                && inputValue != checkValueKunReading2
-                && inputValue != checkValueKanji
-                ) {
-                    isCorrect = "0";
+        if (!isNext) {
+
+            if (inputValue != '') {
+
+                if (vocas[index].DisplayType == "3") {
+                    var checkValueOnRomaji = vocas[index].OnRomaji == null ? '' : vocas[index].OnRomaji.toLowerCase().replace(/\s+/g, '');
+                    var checkValueOnReading = vocas[index].OnReading == null ? '' : vocas[index].OnReading.toLowerCase().replace(/\s+/g, '');
+                    var checkValueOnRomaji2 = vocas[index].OnRomaji2 == null ? '' : vocas[index].OnRomaji2.toLowerCase().replace(/\s+/g, '');
+                    var checkValueOnReading2 = vocas[index].OnReading2 == null ? '' : vocas[index].OnReading2.toLowerCase().replace(/\s+/g, '');
+                    var checkValueKunRomaji = vocas[index].KunRomaji == null ? '' : vocas[index].KunRomaji.toLowerCase().replace(/\s+/g, '');
+                    var checkValueKunReading = vocas[index].KunReading == null ? '' : vocas[index].KunReading.toLowerCase().replace(/\s+/g, '');
+                    var checkValueKunRomaji2 = vocas[index].KunRomaji2 == null ? '' : vocas[index].KunRomaji2.toLowerCase().replace(/\s+/g, '');
+                    var checkValueKunReading2 = vocas[index].KunReading2 == null ? '' : vocas[index].KunReading2.toLowerCase().replace(/\s+/g, '');
+                    var checkValueKanji = vocas[index].Kanji == null ? '' : vocas[index].Kanji.toLowerCase().replace(/\s+/g, '');
+                    //show error if wrong
+                    if (inputValue != checkValueOnRomaji
+                    && inputValue != checkValueOnReading
+                    && inputValue != checkValueOnRomaji2
+                    && inputValue != checkValueOnReading2
+                    && inputValue != checkValueKunRomaji
+                    && inputValue != checkValueKunReading
+                    && inputValue != checkValueKunRomaji2
+                    && inputValue != checkValueKunReading2
+                    && inputValue != checkValueKanji
+                    ) {
+                        isCorrect = "0";
+                    }
                 }
-            }
-            else {
-                var checkValueRomaji = vocas[index].Romaji.toLowerCase().replace(/\s+/g, '');
-                var checkValueHira = vocas[index].Hiragana.toLowerCase().replace(/\s+/g, '');
-                var checkValueKata = vocas[index].Katakana.toLowerCase().replace(/\s+/g, '');
-                var checkValueKanji = vocas[index].Kanji.toLowerCase().replace(/\s+/g, '');
+                else {
+                    var checkValueRomaji = vocas[index].Romaji.toLowerCase().replace(/\s+/g, '');
+                    var checkValueHira = vocas[index].Hiragana.toLowerCase().replace(/\s+/g, '');
+                    var checkValueKata = vocas[index].Katakana.toLowerCase().replace(/\s+/g, '');
+                    var checkValueKanji = vocas[index].Kanji.toLowerCase().replace(/\s+/g, '');
 
-                //show error if wrong
-                if (inputValue != checkValueRomaji
-                && inputValue != checkValueHira
-                && inputValue != checkValueKata
-                && inputValue != checkValueKanji
-                ) {
-                    isCorrect = "0";
+                    //show error if wrong
+                    if (inputValue != checkValueRomaji
+                    && inputValue != checkValueHira
+                    && inputValue != checkValueKata
+                    && inputValue != checkValueKanji
+                    ) {
+                        isCorrect = "0";
+                    }
                 }
-            }
 
-            if (isCorrect == "0") {
-                if (count < 3) {
-                    count++;
-                    $('#divResultMessageReading').html('<strong>SAI!</strong>');
+                if (isCorrect == "0") {
+                    if (count < 3) {
+                        $('#spanWrong').html(count);
 
-                    speak(vocas[index].UrlAudio);
-                    $('#inputAlphabet').val('');
-                    $('#inputAlphabet').focus();
-                    return false;
+                        count++;
+
+                        speak(vocas[index].UrlAudio);
+                        $('#inputAlphabet').val('');
+                        $('#inputAlphabet').focus();
+                        return false;
+                    }
+
+                    if (count == 3) {
+                        var result = vocas[index].DisplayType == '3'
+                            ? vocas[index].Kanji
+                            : vocas[index].DisplayType == '2'
+                                ? vocas[index].Katakana 
+                                : vocas[index].Hiragana + (vocas[index].Kanji ? '&nbsp&nbsp&nbsp' + vocas[index].Kanji : '');
+
+                        $('#spanWrong').html(count);
+                        $('#inputAlphabet').val('');
+                        $('#divResultMessageReading').html('<strong>Đáp án đúng: ' + result + ' <br>Nhấn [Tiếp theo] để tiếp tục</strong>');
+                        isNext = true;
+                        $('#btnOkReadingModal').focus();
+                        return false;
+                    }
                 }
-            }
-            else {
+                //else {
 
-                $('#divResultMessageReading').html('<strong>ĐÚNG</strong>');
-            }
+                //    $('#divResultMessageReading').html('<strong>ĐÚNG</strong>');
+                //}
 
-            count = 0;
+                //reset
+                $('#spanWrong').html('0');
+                $('#divResultMessageReading').html('');
+                count = 1;
+                isNext = false;
+                vocas[index].IsCorrect = isCorrect;
+
+                //
+                updateVocas.push(vocas[index]);
+
+                //update db
+                //updateFastTestVoca();
+
+                $('#divResultReading').html('<strong>' + (index + 1) + '/' + vocas.length + '</strong>');
+
+                $('#inputAlphabet').val('');
+                $('#inputAlphabet').focus();
+
+                if (index == vocas.length - 1) {
+                    alert('Xong!');
+                    $('#alphabet').html("XONG!");
+                    $('#image').removeAttr('src');
+                    //                    $('#btnCloseReadingModal').focus();
+                    $('#modelTestReading').modal('hide');
+                    //alert('Xong!');
+                }
+                else {
+                    index++;
+                    $('#alphabet').html(vocas[index].Description);
+                    $('#image').prop('src', getLink(vocas[index].UrlImage));
+                    //                speak(vocas[index].UrlAudio);
+                }
+
+            } else {
+                $('#divResultMessageReading').html('<strong>NHẬP GIÁ TRỊ</strong>');
+                $('#inputAlphabet').focus();
+            }
+        }
+        else {
+            //reset
+            $('#spanWrong').html('0');
+            $('#divResultMessageReading').html('');
+            count = 1;
+            isNext = false;
             vocas[index].IsCorrect = isCorrect;
 
             //
             updateVocas.push(vocas[index]);
-
-            //update db
-            //updateFastTestVoca();
 
             $('#divResultReading').html('<strong>' + (index + 1) + '/' + vocas.length + '</strong>');
 
@@ -134,8 +195,6 @@ $(document).ready(function () {
                 //                speak(vocas[index].UrlAudio);
             }
 
-        } else {
-            alert('Nhập từ vựng!');
         }
     });
 
@@ -188,7 +247,7 @@ $(document).ready(function () {
     });
 
     $('.aChoosing').on('click', function () {
-        
+
         $('#hiraganaChoosing').show();
         $('#divHiraganaChoosing').show();
         //$('#katakanaChoosing').show();
@@ -199,9 +258,9 @@ $(document).ready(function () {
         //$('#chkKatakanaChoosing').prop('checked', true);
         $('#chkKanjiChoosing').prop('checked', false);
 
-         (getChoosingVocas());
+        (getChoosingVocas());
 
-         return false;
+        return false;
     });
 
     $('#btnOkChoosingModal').on('click', function () {
@@ -577,7 +636,7 @@ function displayChoosingResult() {
         result3 += (vocas[index].Katakana3 == '' ? '' : ' 。 ' + vocas[index].Katakana3);
         result4 += (vocas[index].Katakana4 == '' ? '' : ' 。 ' + vocas[index].Katakana4);
     }
-            
+
     if ($('#chkKanjiChoosing').is(":checked")) {
         result1 += (result1 == '' ? vocas[index].Kanji1 : ' 。 ' + vocas[index].Kanji1);
         result2 += (result2 == '' ? vocas[index].Kanji2 : ' 。 ' + vocas[index].Kanji2);
@@ -741,11 +800,11 @@ function getReadingVocas() {
             if (result.returnCode == accessDenied) {
                 window.location.href = '/Account/RequireLogin';
             } else {
-                
+
                 $.each(result.vocabularies, function (i, voca) {
                     if (selectedVocaIDs.length > 0) {
                         for (var j = 0; j < selectedVocaIDs.length; j++) {
-                            
+
                             if (voca.ID == selectedVocaIDs[j]) {
                                 vocas.push(voca);
                                 failArray.push(voca);

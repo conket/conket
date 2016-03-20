@@ -11,6 +11,7 @@
         if (response.status === 'connected') {
         
             // Logged into your app and Facebook.
+            
             fLogin();
         } else if (response.status === 'not_authorized') {
             // The person is logged into Facebook, but not your app.
@@ -74,32 +75,38 @@
     // successful.  See statusChangeCallback() for when this call is made.
 
     function fLogin() {
-
-        $.ajax({
-            url: '/Account/' + $('#flog').val(),
-            type: "POST",
-            async: false,
-            //data: { id: 'admin', email: 'admin@conket.com', first_name: 'Admin' },
-            data: JSON.stringify(response),
-            //contentType: 'application/json',
-            success: function (result) {
-                if (result.ReturnCode == 0) {
-                    if (result.ReturnUrl) {
-                        window.location = result.ReturnUrl;
+        console.log($('#u').val());
+        if (!$('#u').val()) {
+            
+            FB.api('/me', function (response) {
+                console.log(JSON.stringify(response));
+                $.ajax({
+                    url: '/Account/' + $('#flog').val(),
+                    type: "POST",
+                    async: false,
+                    //data: { id: 'admin', email: 'admin@conket.com', first_name: 'Admin' },
+                    data: JSON.stringify(response),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (result) {
+                        if (result.ReturnCode == 0) {
+                            if (result.ReturnUrl) {
+                                window.location = result.ReturnUrl;
+                            }
+                            else {
+                                window.location.reload();
+                            }
+                            return false;
+                        }
+                        else {
+                            console.log(result.Message);
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        jsonValue = jQuery.parseJSON(xhr.responseText);
+                        console.log(jsonValue.Message);
+                        return false;
                     }
-                    else {
-                        window.location.reload();
-                    }
-                    return false;
-                }
-                else {
-                    alert('Xảy ra lỗi!');
-                }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                jsonValue = jQuery.parseJSON(xhr.responseText);
-                console.log(jsonValue.Message);
-                return false;
-            }
-        });
+                });
+            });
+        }
     }

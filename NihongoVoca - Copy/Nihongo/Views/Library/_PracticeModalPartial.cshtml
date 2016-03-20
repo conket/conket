@@ -1,0 +1,232 @@
+﻿<!-- Modal Reading -->
+<div class="modal fade bs-example-modal-lg" id="modelTestReading" role="dialog" data-keyboard="false" data-backdrop="static"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Nhập giá trị vào ô trống</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 hidden-xs">
+                        <img id='image' class="img-responsive" src="" style="height: 100px!important" />
+                    </div>
+                    <div class="col-md-6 col-xs-9">
+                        <span style="display: block; text-align: left;" id='alphabet'>a
+                        </span>
+                    </div>
+                    <div class="col-md-2 col-xs-3 text-right">
+                        <button class="btn btn-default" type="button" data-toggle="tooltip" title="Hiển thị số lần trả lời sai của bạn. Mỗi câu bạn chỉ được trả lời sai 3 lần!">
+                            SỐ LẦN SAI <span class="badge" id="spanWrong">0</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon" id="sizing-addon1"><span class="badge" id='divResultReading'></span></span>
+                            <input type="text" class="form-control text-center" id="inputAlphabet" maxlength='100'>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="row">
+                    <div class="col-lg-6">
+                        <button class="btn btn-primary" type="button" id='btnResultReading'>
+                            Kết quả: <span class="badge" id='divResultReading'></span>
+                        </button>
+                    </div>
+                </div>*@
+                <div class="row">
+                    <div class="col-lg-12">
+                        <span class="error" id='divResultMessageReading'></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnOkReadingModal" class="btn
+btn-primary">
+                            Tiếp theo</button>
+                        @*                        <button type="button" id="btnResetReadingModal" class="btn
+btn-warning">
+                            Thử lại</button>*@
+                        <button type="button" id="btnCloseLogin2Modal" class="btn
+btn-default"
+                            data-dismiss="modal">
+                            Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Translating -->
+<div class="modal fade bs-example-modal" id="modelTestTranslating" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static"
+    aria-labelledby="mymodelTestTranslating" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header hidden-xs">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Chọn từ đúng</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 col-xs-6">
+
+                        <h2 class="text-center text-info" id="hiraganaTranslating"></h2>
+                        <h2 class="text-center text-info" id="katakanaTranslating"></h2>
+                        <h2 class="text-center text-info" id="kanjiTranslating" style="font-size: 50px;"></h2>
+                        <input type="hidden" id='selectedValueTranslating' />
+                        <input type="hidden" id='correctValueTranslating' />
+                        <h4><a href="#" id="speakTranslating"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a></h4>
+
+                    </div>
+                    <div class="col-md-8 col-xs-6">
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <div class="list-group">
+                                    <span class="label label-danger">A</span><a href="#" id='result1Translating' class="list-group-item"
+                                        name='resultTranslating'>A</a><input type="hidden" id="urlAudio1Translating" />
+                                    <span class="label label-danger">B</span><a href="#" id='result2Translating' class="list-group-item"
+                                        name='resultTranslating'>B</a><input type="hidden" id="urlAudio2Translating" />
+                                    <span class="label label-danger">C</span><a href="#" id='result3Translating' class="list-group-item"
+                                        name='resultTranslating'>C</a><input type="hidden" id="urlAudio3Translating" />
+                                    <span class="label label-danger">D</span><a href="#" id='result4Translating' class="list-group-item"
+                                        name='resultTranslating'>D</a><input type="hidden" id="urlAudio4Translating" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @*<div class="col-lg-4">
+                        <button class="btn btn-primary" type="button" id='btnResultTranslating'>
+                            Kết quả: <span class="badge" id='divResultTranslating'></span>
+                        </button>
+                    </div>*@
+                    <div class="col-lg-4">
+                        <button class="btn btn-primary" type="button" id='btnResultTranslating'>
+                            Kết quả: <span class="badge" id='divResultTranslating'></span>
+                        </button>
+                        @*<br />*@
+                        <span id='divResultMessageTranslating'></span>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="checkbox-inline" id="divHiraganaTranslating">
+                            <label>
+                                <input type="checkbox" id="chkHiraganaTranslating" value="1" checked="checked">Hiragana/Katakana</label>
+                        </div>
+                        @*<div class="checkbox-inline"id="divKatakanaTranslating">
+                            <label>
+                                <input type="checkbox" id="chkKatakanaTranslating" value="2" checked="checked">Katakana</label>
+                        </div>*@
+                        <div class="checkbox-inline" id="divKanjiTranslating">
+                            <label>
+                                <input type="checkbox" id="chkKanjiTranslating" value="3">Kanji</label>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="row">
+                    <div class="col-lg-6">
+                        <span id='divResultMessageTranslating'></span>
+                    </div>
+                </div>*@
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnOkTranslatingModal" class="btn
+btn-primary">
+                    Tiếp theo</button>
+                @*                        <button type="button" id="btnResetChoosingModal" class="btn
+btn-warning">
+                            Thử lại</button>*@
+                <button type="button" id="btnCloseTranslatingModal" class="btn
+btn-default"
+                    data-dismiss="modal">
+                    Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Choosing -->
+<div class="modal fade bs-example-modal" id="modelTestChoosing" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header hidden-xs">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Chọn từ đúng</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 col-xs-4">
+                        <div class="hidden-xs">
+                            <img id='imageChoosing' class="img-responsive" src="" style="height: 100px!important" alt="" />
+                        </div>
+                        <div class="text-center text-info" id="descriptionChoosing" style="font-size: 20px;"></div>
+                        <div class="text-center text-info" id="vMeaningChoosing"></div>
+                        <input type="hidden" id='selectedValue' />
+                        <input type="hidden" id='correctValue' />
+
+                    </div>
+                    <div class="col-md-8 col-xs-8">
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <div class="list-group">
+                                    <div class="label label-danger">A</div>
+                                    <a href="#" id='result1' class="list-group-item"
+                                        name='resultChoosing'>A</a><input type="hidden" id="urlAudio1" />
+                                    <div class="label label-danger">B</div>
+                                    <a href="#" id='result2' class="list-group-item"
+                                        name='resultChoosing'>B</a><input type="hidden" id="urlAudio2" />
+                                    <div class="label label-danger">C</div>
+                                    <a href="#" id='result3' class="list-group-item"
+                                        name='resultChoosing'>C</a><input type="hidden" id="urlAudio3" />
+                                    <div class="label label-danger">D</div>
+                                    <a href="#" id='result4' class="list-group-item"
+                                        name='resultChoosing'>D</a><input type="hidden" id="urlAudio4" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <button class="btn btn-primary" type="button" id='btnResultChoosing'>
+                            Kết quả: <span class="badge" id='divResultChoosing'></span>
+                        </button>
+                        @*<br />*@
+                        <span id='divResultMessageChoosing'></span>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="checkbox-inline" id="divHiraganaChoosing">
+                            <label>
+                                <input type="checkbox" id="chkHiraganaChoosing" value="1" checked="checked">Hiragana/Katakana</label>
+                        </div>
+                        @*<div class="checkbox-inline"id="divKatakanaChoosing">
+                            <label>
+                                <input type="checkbox" id="chkKatakanaChoosing" value="2" checked="checked">Katakana</label>
+                        </div>*@
+                        <div class="checkbox-inline" id="divKanjiChoosing">
+                            <label>
+                                <input type="checkbox" id="chkKanjiChoosing" value="3">Kanji</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnOkChoosingModal" class="btn
+btn-primary">
+                    Tiếp theo</button>
+                @*                        <button type="button" id="btnResetChoosingModal" class="btn
+btn-warning">
+                            Thử lại</button>*@
+                <button type="button" id="btnCloseChoosingModal" class="btn
+btn-default"
+                    data-dismiss="modal">
+                    Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

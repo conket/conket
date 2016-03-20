@@ -56,6 +56,7 @@
 
         ga('create', 'UA-74750528-1', 'auto');
         ga('send', 'pageview');
+        
 
     </script>
 
@@ -164,8 +165,9 @@
     </div>
     <input type="hidden" value='@Session["UserID"]' id="u"/>
 
-
-
+    <div class="hidden-xs">
+        <a class="btn-top" href="javascript:void(0);" title="Top" style="display: inline;"></a>
+    </div>
     @Html.Partial("_FooterPartial")
     @RenderSection("scripts", required: false)
     @Html.Partial("_ModalPartial")
@@ -176,6 +178,7 @@
     <script src='@Scripts.Url("~/bundles/lazyload")' async> </script>
     <script src='@Scripts.Url("~/bundles/slider")' async> </script>
     <script src='@Scripts.Url("~/bundles/log")' async> </script>
+
 </body>
 </html>
 

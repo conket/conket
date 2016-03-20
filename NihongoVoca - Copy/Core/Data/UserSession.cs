@@ -33,7 +33,11 @@ namespace Ivs.Core.Data
             get;
             set;
         }
-
+        public static int UserID
+        {
+            get;
+            set;
+        }
         public static string UserName
         {
             get;

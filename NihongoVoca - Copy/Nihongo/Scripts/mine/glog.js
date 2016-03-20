@@ -5,7 +5,7 @@ var startApp = function () {
     gapi.load('auth2', function () {
         // Retrieve the singleton for the GoogleAuth library and set up the client.
         auth2 = gapi.auth2.init({
-            client_id: '486695708439-cmun1ae63108cdhl98od4ljva1mo2vaa.apps.googleusercontent.com',
+            client_id: '486695708439-9ou47gpomoc4n3t1c4cdrivfeaj8u6oh.apps.googleusercontent.com',
             cookiepolicy: 'single_host_origin',
             // Request scopes in addition to 'profile' and 'email'
             scope: 'profile email'
@@ -45,7 +45,7 @@ function attachSignin(element) {
             //document.getElementById('name').innerText = "Signed in: " +
             //    googleUser.getBasicProfile().getName();
         }, function (error) {
-            alert(JSON.stringify(error, undefined, 2));
+            console.log(JSON.stringify(error, undefined, 2));
         });
 }
 
@@ -57,7 +57,7 @@ function gLogin(user) {
         async: false,
         //data: { id: 'admin', email: 'admin@conket.com', first_name: 'Admin' },
         data: JSON.stringify(user),
-        //contentType: 'application/json',
+        contentType: 'application/json; charset=utf-8',
         success: function (result) {
             if (result.ReturnCode == 0) {
                 if (result.ReturnUrl) {
@@ -69,7 +69,7 @@ function gLogin(user) {
                 return false;
             }
             else {
-                alert('Xảy ra lỗi!');
+                console.log(result.Message);
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {

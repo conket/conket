@@ -52,11 +52,14 @@ namespace Nihongo.Dal.Dao
             return returnCode;
         }
 
-        public int InsertData(MS_UsersModels insertModel)
+        public int InsertData(MS_UsersModels insertModel, out int id)
         {
             int returnCode = 0;
+            id = -1;
             try
             {
+                this.BeginTransaction();
+
                 //Create new user
                 Nihongo.Dal.Mapping.ms_users user = new Mapping.ms_users()
                 {
@@ -71,33 +74,47 @@ namespace Nihongo.Dal.Dao
                 };
 
                 ms_users.AddObject(user);
-
-                if (insertModel.CreateVoca)
-                {
-                    var vocas = this.ms_vocabularydetails.AsQueryable();
-                    foreach (var voca in vocas)
-                    {
-                        Nihongo.Dal.Mapping.ms_uservocabularies usv = new Mapping.ms_uservocabularies()
-                        {
-                            UserID = insertModel.ID,
-                            VocaDetailID = voca.ID,
-                            UpdatedDate = DateTime.Now,
-                            
-                            Level = 10,
-                            HasLearnt = CommonData.Status.Disable,
-                            HasMarked = CommonData.Status.Disable,
-                            StartDate = DateTime.Now.AddDays(-1),
-                            EndDate = DateTime.Now.AddDays(365),
-                        };
-
-                        ms_uservocabularies.AddObject(usv);
-                    }
-                }
                 returnCode = this.Saves();
 
+                if (returnCode == 0)
+                {
+                    id = user.ID;
+                    if (insertModel.CreateVoca)
+                    {
+                        var vocas = this.ms_vocabularydetails.AsQueryable();
+                        foreach (var voca in vocas)
+                        {
+                            Nihongo.Dal.Mapping.ms_uservocabularies usv = new Mapping.ms_uservocabularies()
+                            {
+                                UserID = user.ID,
+                                VocaDetailID = voca.ID,
+                                UpdatedDate = DateTime.Now,
+
+                                Level = 10,
+                                HasLearnt = CommonData.Status.Disable,
+                                HasMarked = CommonData.Status.Disable,
+                                StartDate = DateTime.Now.AddDays(-1),
+                                EndDate = DateTime.Now.AddDays(365),
+                            };
+
+                            ms_uservocabularies.AddObject(usv);
+                        }
+                    }
+                    returnCode = this.Saves();
+                }
+
+                if (returnCode == 0)
+                {
+                    returnCode = this.Commit();
+                }
+                else
+                {
+                    this.Rollback();
+                }
             }
             catch (Exception ex)
             {
+                this.Rollback();
                 returnCode = ProcessDbException(ex);
             }
 
@@ -415,10 +432,12 @@ namespace Nihongo.Dal.Dao
 
                 if (user == null)
                 {
-                    returnCode = InsertData(model);
+                    int userID = -1;
+                    returnCode = InsertData(model, out userID);
 
                     user = new MS_UsersModels()
                     {
+                        ID = userID,
                         UserName = model.UserName,
                         Password = model.Password,
                         Status = CommonData.Status.Enable,

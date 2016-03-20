@@ -39,7 +39,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1>@Model.Name1</h1>
-                        <p>@Model.Description</p>
+                        @*<p>@Model.Description</p>*@
                     </div>
                 </div>
                 <div class="row">
@@ -47,14 +47,14 @@
                         <a href='#' data-toggle="modal" data-target="#modalChoosingWordType" class="btn btn-navigator btn-lg require-login"
                             role="button">Chọn lọc từ</a>
                         @Html.ActionLink("Luyện tập", "luyen-tap", "Library", new { @id = Model.ID, @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })
-                        @*@Html.ActionLink("Kiểm tra", "kiem-tra", "Library", new { @id = Model.ID, @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })*@
+                        @Html.ActionLink("Kiểm tra", "kiem-tra", "Library", new { @id = Model.ID, @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })
                         <a href='#' class="btn btn-navigator btn-lg require-login" id="btnMark"
                             role="button">Thêm vào sổ tay</a>
                     </div>
                     <div class="col-md-4">
-                        <div class="text-center">
+                        @*<div class="text-center">
                             Số từ vựng đã thuộc/Tổng số từ vựng
-                        </div>
+                        </div>*@
                         <div class="progress" id='progress'>
                             <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
                                 aria-valuemax="100" style="width: 0%; min-width: 2em;">

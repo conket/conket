@@ -23,12 +23,14 @@ namespace Nihongo.Controllers
                 List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
                 MS_VocabulariesDao vocaDao = new MS_VocabulariesDao();
                 MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
+                model.UserID = CommonMethod.ParseInt(Session["UserID"]);
                 model.UserName = CommonMethod.ParseString(Session["UserName"]);
                 returnCode = vocaDao.SelectWeakVocaSummary(model, out results);
                 Session["Inbox"] = results;
 
                 MS_UsersDao dao = new MS_UsersDao();
                 MS_UsersModels user = new MS_UsersModels();
+                user.ID = CommonMethod.ParseInt(Session["UserID"]);
                 user.UserName = CommonMethod.ParseString(Session["UserName"]);
                 user.LoginState = CommonData.Status.Enable;
                 user.LastVisitedDate = DateTime.Now;
@@ -37,10 +39,12 @@ namespace Nihongo.Controllers
             else
             {
                 Session["Inbox"] = new List<MS_UserVocabulariesModels>();
+                Session["UserID"] = CommonData.StringEmpty;
                 Session["UserName"] = CommonData.StringEmpty;
                 Session["DisplayName"] = CommonData.StringEmpty;
                 Session["IsAdmin"] = false;
                 UserSession.UserName = CommonData.StringEmpty;
+                UserSession.UserID = -1;
             }
 
             return View("Index");
