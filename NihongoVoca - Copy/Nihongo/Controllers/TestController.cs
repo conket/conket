@@ -390,9 +390,9 @@ namespace Nihongo.Controllers
         }
 
         [EncryptActionName(Name = ("GetWords"))]
-        [OutputCache(CacheProfile = "Cache5MinutesVaryByIDClient")]
+        //[OutputCache(CacheProfile = "Cache5MinutesVaryByIDClient")]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult GetWords(bool hasNormal, bool hasDA, bool hasLongSound, bool hasTsu, bool hasAA)
+        public ActionResult GetWords(bool hasNormal, bool hasDA, bool hasLongSound, bool hasTsu, bool hasAA, string displayType)
         {
             MS_VocabulariesDao vocaDao = new MS_VocabulariesDao();
             List<MS_VocabulariesModels> results = new List<MS_VocabulariesModels>();
@@ -406,6 +406,7 @@ namespace Nihongo.Controllers
                 HasTsu = hasTsu,
                 HasNormal = hasNormal,
                 HasLongSound = hasLongSound,
+                DisplayType = displayType,
             };
             int returnCode = vocaDao.SelectData(conditionModel, out results);
 

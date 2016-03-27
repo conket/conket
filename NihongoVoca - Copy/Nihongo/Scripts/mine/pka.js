@@ -4,9 +4,9 @@ var associativeArray =
     "1": "ア", "2": "イ", "3": "ウ", "4": "エ", "5": "オ", "6": "カ", "7": "キ", "8": "ク", "9": "ケ", "10": "コ",
     "11": "サ", "12": "シ", "13": "ス", "14": "セ", "15": "ソ", "16": "タ", "17": "チ", "18": "ツ", "19": "テ", "20": "ト",
     "21": "ナ", "22": "ニ", "23": "ヌ", "24": "ネ", "25": "ノ", "26": "ハ", "27": "ヒ", "28": "フ", "29": "ヘ", "30": "ホ",
-    "31": "マ", "32": "ミ", "33": "ム", "34": "メ", "35": "モ", "36": "ヤ", "37": "ユ", "38": "ヨ", "39": "ア", "40": "リ",
+    "31": "マ", "32": "ミ", "33": "ム", "34": "メ", "35": "モ", "36": "ヤ", "37": "ユ", "38": "ヨ", "39": "ラ", "40": "リ",
     "41": "ル", "42": "レ", "43": "ロ", "44": "ワ", "45": "ヲ", "46": "ン", "47": "ガ", "48": "ギ", "49": "グ", "50": "ゲ",
-    "51": "ゴ", "52": "ァ", "53": "ジ", "54": "ズ", "55": "ゼ", "56": "ゾ", "57": "ダ", "58": "ヂ", "59": "ヅ", "60": "デ",
+    "51": "ゴ", "52": "ザ", "53": "ジ", "54": "ズ", "55": "ゼ", "56": "ゾ", "57": "ダ", "58": "ヂ", "59": "ヅ", "60": "デ",
     "61": "ド", "62": "バ", "63": "ビ", "64": "ブ", "65": "ベ", "66": "ボ", "67": "パ", "68": "ピ", "69": "プ", "70": "ペ",
     "71": "ポ", "72": "キャ", "73": "キュ", "74": "キョ", "75": "シャ", "76": "シュ", "77": "ショ", "78": "チャ", "79": "チュ", "80": "チョ",
     "81": "ニャ", "82": "ニュ", "83": "ニョ", "84": "ヒャ", "85": "ヒュ", "86": "ヒョ", "87": "ミャ", "88": "ミュ", "89": "ミョ", "90": "リャ",
@@ -220,8 +220,8 @@ $(document).ready(function () {
             $('#alphabet').html(alphabetArray[index]);
             if ($('#chkVoiceReading').is(':checked')) {
                 usingVoice = true;
-                //speak
-                speak(voiceArray[index]);
+                //readAlphabet
+                readAlphabet(voiceArray[index]);
             }
             else {
                 usingVoice = false;
@@ -238,7 +238,7 @@ $(document).ready(function () {
     $('#btnOkReadingModal').on('click', function () {
         if ($('#inputAlphabet').val() != '') {
             //show error if wrong
-            if ($('#inputAlphabet').val() != voiceArray[index]) {
+            if ($('#inputAlphabet').val().toLowerCase().replace(/\s+/g, '') != voiceArray[index]) {
                 $('#divResultMessageReading').html('<strong>SAI. TỪ ĐÚNG: ' + voiceArray[index] + ' - ' + alphabetArray[index] + '</strong>');
 
                 //                    var messageAudio = new Audio("/Content/media/exclamation.wav");
@@ -259,8 +259,8 @@ $(document).ready(function () {
             //show the first
             $('#alphabet').html(alphabetArray[index]);
             if (usingVoice) {
-                //speak
-                speak(voiceArray[index]);
+                //readAlphabet
+                readAlphabet(voiceArray[index]);
             }
 
             if (index == alphabetArray.length) {
@@ -292,8 +292,14 @@ $(document).ready(function () {
 
             }
         } else {
-            alert('Gõ kí tự Romaji!');
+            $('#inputAlphabet').val('');
+            $('#inputAlphabet').focus();
+            $('#divResultMessageReading').html('Gõ kí tự Romaji!');
         }
+    });
+
+    $('#speakReading').on('click', function () {
+        readAlphabet(voiceArray[index]);
     });
 
     $('#btnResultReading').on('click', function () {
@@ -310,12 +316,27 @@ $(document).ready(function () {
         $('#modelReading').modal();
     });
 
-    $('#inputAlphabet').keypress(function (event) {
+    $('#modelTestReading').keydown(function (event) {
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if (keycode == '13') {
             $("#btnOkReadingModal").trigger("click");
+            return false;
+        }
+        if (event.ctrlKey) {
+            //ctrl space
+            if (keycode == 32) {
+                readAlphabet(voiceArray[index]);
+                return false;
+            }
         }
     });
+
+    //$('#inputAlphabet').keypress(function (event) {
+    //    var keycode = (event.keyCode ? event.keyCode : event.which);
+    //    if (keycode == '13') {
+    //        $("#btnOkReadingModal").trigger("click");
+    //    }
+    //});
 
     $('#chkSelectAllReading').on('change', function () {
         if ($(this).is(':checked')) {
@@ -382,8 +403,8 @@ $(document).ready(function () {
             //show the first
             $('#word').html(writingWordArray[index].Katakana);
             if (usingVoice) {
-                //speak
-                speak(writingWordArray[index].Romaji);
+                //readAlphabet
+                readAlphabet(writingWordArray[index].Romaji);
             }
         }
         else {
@@ -445,7 +466,7 @@ $(document).ready(function () {
             $('#romajiWriting').val(writingWordArray[indexWriting].Romaji);
             //                var messageAudio = new Audio("/Content/media/alphabet/" + writingWordArray[indexWriting].Romaji + ".mp3");
             //                messageAudio.play();
-            speak(writingWordArray[indexWriting].Romaji);
+            readAlphabet(writingWordArray[indexWriting].Romaji);
         }
     });
 
@@ -462,12 +483,12 @@ $(document).ready(function () {
             $('#romajiWriting').val(writingWordArray[indexWriting].Romaji);
             //                var messageAudio = new Audio("/Content/media/alphabet/" + writingWordArray[indexWriting].Romaji + ".mp3");
             //                messageAudio.play();
-            speak(writingWordArray[indexWriting].Romaji);
+            readAlphabet(writingWordArray[indexWriting].Romaji);
         }
     });
 
     $('#repeat').on('click', function () {
-        speak($('#romajiWriting').val());
+        readAlphabet($('#romajiWriting').val());
     });
 
     $('#chkDisplay').on('change', function () {
@@ -568,8 +589,8 @@ function getReadings(hasNormal, hasDA, hasLongSound, hasTsu, hasAA) {
                 $('#word').html(writingWordArray[index].Katakana);
                 if ($('#chkVoiceWordReading').is(':checked')) {
                     usingVoice = true;
-                    //speak
-                    speak(writingWordArray[index].Romaji);
+                    //readAlphabet
+                    readAlphabet(writingWordArray[index].Romaji);
                 }
                 else {
                     usingVoice = false;
@@ -623,7 +644,7 @@ function getWritings(hasNormal, hasDA, hasLongSound, hasTsu, hasAA) {
 
                 //                var messageAudio = new Audio("/Content/media/alphabet/" + writingWordArray[indexWriting].Romaji + ".mp3");
                 //                messageAudio.play();
-                speak(writingWordArray[indexWriting].Romaji);
+                readAlphabet(writingWordArray[indexWriting].Romaji);
             }
             else {
                 alert('Không tìm thấy dữ liệu');
@@ -636,11 +657,12 @@ function getWritings(hasNormal, hasDA, hasLongSound, hasTsu, hasAA) {
     });
 }
 
-function speak(romaji) {
+
+function readAlphabet(id) {
     if (messageAudio != null) {
         messageAudio.pause();
     }
-    messageAudio = new Audio('/Content/media/alphabet/' + romaji + ".mp3");
+    messageAudio = new Audio('/Content/media/alphabet/' + id + ".mp3");
     messageAudio.play();
 }
 

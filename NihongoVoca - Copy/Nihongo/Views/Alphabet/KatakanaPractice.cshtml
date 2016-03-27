@@ -18,6 +18,14 @@
         <h3>
             LUYỆN TẬP KATAKANA</h3>
         <div class="row">
+            <div class="col-md-12">
+                <p>
+                    @Html.ActionLink("Ôn lại", "Katakana", "Alphabet", null, new { @class = "btn btn-navigator btn-lg" })
+                    @Html.ActionLink("Luyện tập Hiragana", "luyen-tap-hiragana", "Alphabet", null, new { @class = "btn btn-navigator btn-lg" })
+                </p>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-4">
                 <div class="featured-box">
                     <a href="#" data-toggle="modal" data-target="#modelReading"><i class="fa fa-eye fa-2x">
@@ -31,7 +39,7 @@
                         <a href="#" data-toggle="modal" data-target="#modelReading">Bắt đầu</a></div>
                 </div>
             </div>
-            <div class="col-md-4">
+            @*<div class="col-md-4">
                 <div class="featured-box">
                     <a href="#" data-toggle="modal" data-target="#modelWordReading"><i class="fa fa-eye fa-2x">
                     </i></a>
@@ -55,7 +63,7 @@
                     <div class="pull-right">
                         <a href="#" data-toggle="modal" data-target="#modelWriting" id="aWriting">Bắt đầu</a></div>
                 </div>
-            </div>
+            </div>*@
         </div>
     </section>
 </div>
@@ -74,6 +82,28 @@
                     Chọn kí tự</h4>
             </div>
             <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="chkVoiceReading" checked="checked">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="Đọc thành tiếng">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="chkSelectAllReading">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="Chọn tất cả">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                    </div>
+                </div>
+                <br />
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="input-group">
@@ -352,30 +382,7 @@
                         <!-- /input-group -->
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <input type="checkbox" aria-label="..." id="chkVoiceReading" checked="checked">
-                            </span>
-                            <input type="text" class="form-control" aria-label="..." value="Đọc thành tiếng">
-                        </div>
-                        <!-- /input-group -->
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <input type="checkbox" aria-label="..." id="chkSelectAllReading">
-                            </span>
-                            <input type="text" class="form-control" aria-label="..." value="Chọn tất cả">
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                    </div>
-                </div>
-                <!-- /.row -->
-                <!-- /.row -->
-                <!-- /.row -->
+                
             </div>
             <div class="modal-footer">
                 <button type="button" id="btnOkModal" class="btn btn-primary">
@@ -399,6 +406,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
+                        <a href="#" id="speakReading"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
                         <span style="display: block; text-align: center; font-size: 50px;" id='alphabet'>a
                         </span>
                     </div>
@@ -427,7 +435,7 @@
                 </div>*@
                 <div class="row">
                     <div class="col-lg-6">
-                        <span id='divResultMessageReading'></span>
+                        <span id='divResultMessageReading' class="error"></span>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="btnOkReadingModal" class="btn
@@ -652,4 +660,4 @@ btn-default" data-dismiss="modal">
         </div>
     </div>
 </div>
-<script src='@Scripts.Url("~/bundles/pka")' async> </script>
+<script src='@Scripts.Url("~/bundles/pka")' > </script>

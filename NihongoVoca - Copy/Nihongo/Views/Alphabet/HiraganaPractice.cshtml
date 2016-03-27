@@ -17,6 +17,14 @@
         <h3>
             LUYỆN TẬP HIRAGANA</h3>
         <div class="row">
+            <div class="col-md-12">
+                <p>
+                    @Html.ActionLink("Ôn lại", "Hiragana", "Alphabet", null, new { @class = "btn btn-navigator btn-lg" })
+                    @Html.ActionLink("Luyện tập Katakana", "luyen-tap-katakana", "Alphabet", null, new { @class = "btn btn-navigator btn-lg" })
+                </p>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-4">
                 <div class="featured-box">
                     <a href="#" data-toggle="modal" data-target="#modelReading"><i class="fa fa-eye fa-2x">
@@ -26,24 +34,25 @@
                             ĐỌC CHỮ CÁI</h3>
                         Ghi nhớ và nhận dạng chữ cái Hiragana
                     </div>
-                    <div class="pull-right">
-                        <a href="#" data-toggle="modal" data-target="#modelReading">Bắt đầu</a></div>
+                    <div class="text-right">
+                        <a href="#" class="btn btn-navigator btn-theme btn-small" data-toggle="modal" data-target="#modelReading">Bắt đầu</a></div>
                 </div>
             </div>
-            <div class="col-md-4">
+
+            @*<div class="col-md-4">
                 <div class="featured-box">
                     <a href="#" data-toggle="modal" data-target="#modelWordReading"><i class="fa fa-eye fa-2x">
                     </i></a>
                     <div class="text">
                         <h3>
                             ĐỌC TỪ VỰNG</h3>
-                        ...
+                        Ghi nhớ và nhận dạng chữ cái Hiragana
                     </div>
                     <div class="pull-right">
                         <a href="#" data-toggle="modal" data-target="#modelWordReading">Bắt đầu</a></div>
                 </div>
-            </div>
-            <div class="col-md-4">
+            </div>*@
+            @*<div class="col-md-4">
                 <div class="featured-box">
                     <i class="fa fa-quote-right fa-2x"></i>
                     <div class="text">
@@ -54,7 +63,7 @@
                     <div class="pull-right">
                         <a href="#" data-toggle="modal" data-target="#modelWriting" id="aWriting">Bắt đầu</a></div>
                 </div>
-            </div>
+            </div>*@
         </div>
     </section>
 </div>
@@ -73,6 +82,28 @@
                     Chọn kí tự</h4>
             </div>
             <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="chkVoiceReading" checked="checked">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="Đọc thành tiếng">
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="chkSelectAllReading">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." value="Chọn tất cả">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <br />
                 <div class="row">
                     <div class="col-md-4">
                         <div class="input-group">
@@ -351,27 +382,7 @@
                         <!-- /input-group -->
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <input type="checkbox" aria-label="..." id="chkVoiceReading" checked="checked">
-                            </span>
-                            <input type="text" class="form-control" aria-label="..." value="Đọc thành tiếng">
-                        </div>
-                        <!-- /input-group -->
-                    </div>
-                    <div class="col-md-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <input type="checkbox" aria-label="..." id="chkSelectAllReading">
-                            </span>
-                            <input type="text" class="form-control" aria-label="..." value="Chọn tất cả">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                    </div>
-                </div>
+                
                 <!-- /.row -->
             </div>
             <div class="modal-footer">
@@ -396,6 +407,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
+                        <a href="#" id="speakReading"><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
                         <span style="display: block; text-align: center; font-size: 50px;" id='alphabet'>a
                         </span>
                     </div>
@@ -425,7 +437,7 @@
                 </div>*@
                 <div class="row">
                     <div class="col-lg-6">
-                        <span id='divResultMessageReading'></span>
+                        <span id='divResultMessageReading' class="error"></span>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="btnOkReadingModal" class="btn
@@ -569,6 +581,7 @@ btn-default" data-dismiss="modal">
                         <div class="input-group input-group-lg">
                             <span class="input-group-addon" id="sizing-addon1"><span class="badge" id='divResultWordReading'>
                             </span></span>
+                            
                             <input type="text" class="form-control text-center" id="inputWord" maxlength='30'>
                         </div>
                     </div>
@@ -582,7 +595,7 @@ btn-default" data-dismiss="modal">
                 </div>*@
                 <div class="row">
                     <div class="col-lg-6">
-                        <span id='divResultMessageWordReading'></span>
+                        <span id='divResultMessageWordReading' class="error"></span>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="btnOkWordReadingModal" class="btn
@@ -651,4 +664,4 @@ btn-default" data-dismiss="modal">
         </div>
     </div>
 </div>
-<script src='@Scripts.Url("~/bundles/phi")' async> </script>
+<script src='@Scripts.Url("~/bundles/phi")' > </script>

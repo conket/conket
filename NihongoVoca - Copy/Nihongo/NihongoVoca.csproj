@@ -2767,7 +2767,7 @@
     <Content Include="Views\Library\_VocaPartial.cshtml" />
     <Content Include="Views\Library\Practice.cshtml" />
     <Content Include="Views\Library\Test.cshtml" />
-    <Content Include="Views\Library\_PracticeNotePartial.cshtml" />
+    <Content Include="Views\Shared\_PracticeNotePartial.cshtml" />
     <Content Include="Views\Library\_PracticeModalPartial.cshtml" />
     <Content Include="Views\Shared\_VocaWordPartial.cshtml" />
     <Content Include="Views\Shared\_VocaWordListPartial.cshtml" />

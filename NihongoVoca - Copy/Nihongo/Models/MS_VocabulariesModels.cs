@@ -14,7 +14,7 @@ namespace Nihongo.Models
         public string Hiragana { get; set; }
         public string Katakana { get; set; }
         public string Kanji { get; set; }
-
+        public string DisplayType { get; set; }
         public string LessonCode { get; set; }
         public string VMeaning { get; set; }
         public string Description { get; set; }

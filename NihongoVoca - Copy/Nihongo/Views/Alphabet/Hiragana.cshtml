@@ -27,6 +27,7 @@
                             Bước 2: Nghe cách phát âm và lặp lại<br />
                             Bước 3: Nhấn chuột vào Luyện viết để viết
                             <br />
+                        
                     </div>
                 </div>
             </div>
@@ -36,12 +37,14 @@
                     <div class="text">
                         <h3>
                             @Html.ActionLink("LUYỆN TẬP", "luyen-tap-hiragana", "Alphabet")</h3>
-                        Ôn luyện và sử dụng những chữ cái Hiragana đã học hằng ngày
+                        Ôn luyện những chữ cái Hiragana đã học hằng ngày
                         là cách đảm bảo nhất giúp bạn tăng khả năng ghi nhớ chữ cái Hiragana
                         và hạn chế quên chữ cái cũ<br />
-                        ...
                     </div>
-                    <div class="pull-right">@Html.ActionLink("Luyện tập", "luyen-tap-hiragana", "Alphabet")</div>
+                    <div class="text-right">
+                        @Html.ActionLink("Luyện tập", "luyen-tap-hiragana", "Alphabet", null
+                             , new { @class = "btn btn-navigator btn-theme btn-small" })
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -53,7 +56,10 @@
                         Katakana(Kanji: 片仮名; Hiragana: かたかな; Katakana: カタカナ) 
                         hay còn gọi là kiểu chữ cứng của tiếng Nhật, là một thành phần trong hệ thống chữ viết truyền thống của Nhật Bản...
                     </div>
-                    <div class="pull-right">@Html.ActionLink("Bắt đầu học", "Katakana", "Alphabet")</div>
+                    <div class="text-right">
+                        @Html.ActionLink("Bắt đầu học", "Katakana", "Alphabet", null
+                             , new { @class = "btn btn-navigator btn-theme btn-small" })
+                    </div>
                 </div>
             </div>
         </div>

@@ -31,9 +31,14 @@ namespace Nihongo.Dal.Dao
                 //{
                 //    query = query.Where(ss => ss.LessonCode == model.LessonCode);
                 //}
-                if (!CommonMethod.IsNullOrEmpty(model.Type))
+                //if (!CommonMethod.IsNullOrEmpty(model.Type))
+                //{
+                query = query.Where(ss => ss.Type == "2");
+                //}
+
+                if (!CommonMethod.IsNullOrEmpty(model.DisplayType))
                 {
-                    query = query.Where(ss => ss.Type == model.Type);
+                    query = query.Where(ss => ss.DisplayType == model.DisplayType);
                 }
 
                 List<MS_VocabulariesModels> normals = new List<MS_VocabulariesModels>();
@@ -56,10 +61,11 @@ namespace Nihongo.Dal.Dao
                             VMeaning = ss.VMeaning,
                             Description = ss.Description,
                         })
+                        .Take(20)
                         .ToList();
                 }
-                
-                if ((model.HasDiacritic && model.HasLongSound&& model.HasTsu && model.HasCombination))
+
+                if ((model.HasDiacritic && model.HasLongSound && model.HasTsu && model.HasCombination))
                 {
                     query = query.Where(ss => ss.HasDiacritic == CommonData.Status.Enable
                         || ss.HasLongSound == CommonData.Status.Enable
@@ -148,44 +154,23 @@ namespace Nihongo.Dal.Dao
                     query = query.Where(ss => ss.HasCombination == CommonData.Status.Enable);
                 }
 
-                //if (!model.HasNormal)
-                //{
-                //    query = query.Where(ss => ss.HasCombination == CommonData.Status.Enable 
-                //                        || ss.HasDiacritic == CommonData.Status.Enable 
-                //                        || ss.HasTsu == CommonData.Status.Enable
-                //                        || ss.HasLongSound == CommonData.Status.Enable);
-                //}
-
-                //if (!model.HasDiacritic)
-                //{
-                //    query = query.Where(ss => ss.HasDiacritic == CommonData.Status.Disable);
-                //}
-                //if (!model.HasLongSound)
-                //{
-                //    query = query.Where(ss => ss.HasLongSound == CommonData.Status.Disable);
-                //}
-                //if (!model.HasCombination)
-                //{
-                //    query = query.Where(ss => ss.HasCombination == CommonData.Status.Disable);
-                //}
-                //if (!model.HasTsu)
-                //{
-                //    query = query.Where(ss => ss.HasTsu == CommonData.Status.Disable);
-                //}
-
-                results = query.Select(ss => new MS_VocabulariesModels
+                if (model.HasDiacritic || model.HasLongSound || model.HasTsu || model.HasCombination)
                 {
-                    ID = ss.ID,
-                    Code = ss.Code,
-                    Romaji = ss.Romaji,
-                    Katakana = ss.Katakana,
-                    Hiragana = ss.Hiragana,
-                    //LessonCode = ss.LessonCode,
-                    Type = ss.Type,
-                    VMeaning = ss.VMeaning,
-                    Description = ss.Description,
-                })
-                .ToList();
+                    results = query.Select(ss => new MS_VocabulariesModels
+                    {
+                        ID = ss.ID,
+                        Code = ss.Code,
+                        Romaji = ss.Romaji,
+                        Katakana = ss.Katakana,
+                        Hiragana = ss.Hiragana,
+                        //LessonCode = ss.LessonCode,
+                        Type = ss.Type,
+                        VMeaning = ss.VMeaning,
+                        Description = ss.Description,
+                    })
+                    .Take(40)
+                    .ToList();
+                }
 
                 results = results.Union(normals).ToList();
             }

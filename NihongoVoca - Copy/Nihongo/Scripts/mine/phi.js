@@ -221,8 +221,8 @@ $(document).ready(function () {
             $('#alphabet').html(alphabetArray[index]);
             if ($('#chkVoiceReading').is(':checked')) {
                 usingVoice = true;
-                //speak
-                speak(voiceArray[index]);
+                //readAlphabet
+                readAlphabet(voiceArray[index]);
             }
             else {
                 usingVoice = false;
@@ -239,7 +239,7 @@ $(document).ready(function () {
     $('#btnOkReadingModal').on('click', function () {
         if ($('#inputAlphabet').val() != '') {
             //show error if wrong
-            if ($('#inputAlphabet').val() != voiceArray[index]) {
+            if ($('#inputAlphabet').val().toLowerCase().replace(/\s+/g, '') != voiceArray[index]) {
                 $('#divResultMessageReading').html('<strong>SAI. TỪ ĐÚNG: ' + voiceArray[index] + ' - ' + alphabetArray[index] + '</strong>');
 
                 //                    var messageAudio = new Audio("/Content/media/exclamation.wav");
@@ -260,8 +260,8 @@ $(document).ready(function () {
             //show the first
             $('#alphabet').html(alphabetArray[index]);
             if (usingVoice) {
-                //speak
-                speak(voiceArray[index]);
+                //readAlphabet
+                readAlphabet(voiceArray[index]);
             }
 
             if (index == alphabetArray.length) {
@@ -293,7 +293,9 @@ $(document).ready(function () {
 
             }
         } else {
-            alert('Gõ kí tự Romaji!');
+            $('#inputAlphabet').val('');
+            $('#inputAlphabet').focus();
+            $('#divResultMessageReading').html('Gõ kí tự Romaji!');
         }
     });
 
@@ -311,12 +313,12 @@ $(document).ready(function () {
         $('#modelReading').modal();
     });
 
-    $('#inputAlphabet').keypress(function (event) {
-        var keycode = (event.keyCode ? event.keyCode : event.which);
-        if (keycode == '13') {
-            $("#btnOkReadingModal").trigger("click");
-        }
-    });
+    //$('#inputAlphabet').keypress(function (event) {
+    //    var keycode = (event.keyCode ? event.keyCode : event.which);
+    //    if (keycode == '13') {
+    //        $("#btnOkReadingModal").trigger("click");
+    //    }
+    //});
 
     $('#chkSelectAllReading').on('change', function () {
         if ($(this).is(':checked')) {
@@ -331,6 +333,21 @@ $(document).ready(function () {
     $('#modelTestReading').on('shown.bs.modal', function () {
         $('#inputAlphabet').focus();
     })
+
+    $('#modelTestReading').keydown(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {
+            $("#btnOkReadingModal").trigger("click");
+            return false;
+        }
+        if (event.ctrlKey) {
+            //ctrl space
+            if (keycode == 32) {
+                readAlphabet(voiceArray[index]);
+                return false;
+            }
+        }
+    });
 
     //reading word
     $('#aWordReading').on('click', function () {
@@ -383,12 +400,12 @@ $(document).ready(function () {
             //show the first
             $('#word').html(writingWordArray[index].Hiragana);
             if (usingVoice) {
-                //speak
-                speak(writingWordArray[index].Romaji);
+                //readAlphabet
+                readAlphabet(writingWordArray[index].Romaji);
             }
         }
         else {
-            alert('Gõ kí tự Romaji!');
+            $('#divResultMessageWordReading').html('Gõ kí tự Romaji!');
         }
     });
 
@@ -396,6 +413,13 @@ $(document).ready(function () {
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if (keycode == '13') {
             $("#btnOkWordReadingModal").trigger("click");
+        }
+        if (event.ctrlKey) {
+            //ctrl space
+            if (keycode == 32) {
+                readAlphabet(writingWordArray[index].Romaji);
+                return false;
+            }
         }
     });
 
@@ -446,7 +470,7 @@ $(document).ready(function () {
             $('#romajiWriting').val(writingWordArray[indexWriting].Romaji);
             //                var messageAudio = new Audio("/Content/media/alphabet/" + writingWordArray[indexWriting].Romaji + ".mp3");
             //                messageAudio.play();
-            speak(writingWordArray[indexWriting].Romaji);
+            readAlphabet(writingWordArray[indexWriting].Romaji);
         }
     });
 
@@ -463,12 +487,16 @@ $(document).ready(function () {
             $('#romajiWriting').val(writingWordArray[indexWriting].Romaji);
             //                var messageAudio = new Audio("/Content/media/alphabet/" + writingWordArray[indexWriting].Romaji + ".mp3");
             //                messageAudio.play();
-            speak(writingWordArray[indexWriting].Romaji);
+            readAlphabet(writingWordArray[indexWriting].Romaji);
         }
     });
 
     $('#repeat').on('click', function () {
-        speak($('#romajiWriting').val());
+        readAlphabet($('#romajiWriting').val());
+    });
+
+    $('#speakReading').on('click', function () {
+        readAlphabet(voiceArray[index]);
     });
 
     $('#chkDisplay').on('change', function () {
@@ -482,6 +510,7 @@ $(document).ready(function () {
         }
     });
 
+    
     $('#modelWriting').keydown(function (event) {
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if (keycode == '13' || keycode == '39') {
@@ -545,7 +574,7 @@ function getWordReadings(hasNormal, hasDA, hasLongSound, hasTsu, hasAA) {
         type: "get",
         async: true,
         url: '/Test/' + $('#gw').val(),
-        data: { "hasNormal": hasNormal, "hasDA": hasDA, "hasLongSound": hasLongSound, "hasTsu": hasTsu, "hasAA": hasAA },
+        data: { "hasNormal": hasNormal, "hasDA": hasDA, "hasLongSound": hasLongSound, "hasTsu": hasTsu, "hasAA": hasAA, "displayType": "1" },
         dataType: "json",
         success: function (result) {
             //                    alert(words.words);
@@ -570,8 +599,8 @@ function getWordReadings(hasNormal, hasDA, hasLongSound, hasTsu, hasAA) {
                 $('#word').html(writingWordArray[index].Hiragana);
                 if ($('#chkVoiceWordReading').is(':checked')) {
                     usingVoice = true;
-                    //speak
-                    speak(writingWordArray[index].Romaji);
+                    //readAlphabet
+                    readAlphabet(writingWordArray[index].Romaji);
                 }
                 else {
                     usingVoice = false;
@@ -581,7 +610,7 @@ function getWordReadings(hasNormal, hasDA, hasLongSound, hasTsu, hasAA) {
                 $('#divResultMessageWordReading').html('');
             }
             else {
-                alert('Chọn!');
+                alert('Không tìm thấy dữ liệu!');
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -625,7 +654,7 @@ function getWordWritings(hasNormal, hasDA, hasLongSound, hasTsu, hasAA) {
 
                 //                var messageAudio = new Audio("/Content/media/alphabet/" + writingWordArray[indexWriting].Romaji + ".mp3");
                 //                messageAudio.play();
-                speak(writingWordArray[indexWriting].Romaji);
+                readAlphabet(writingWordArray[indexWriting].Romaji);
             }
             else {
                 alert('Không tìm thấy dữ liệu');
@@ -638,11 +667,12 @@ function getWordWritings(hasNormal, hasDA, hasLongSound, hasTsu, hasAA) {
     });
 }
 
-function speak(romaji) {
+
+function readAlphabet(id) {
     if (messageAudio != null) {
         messageAudio.pause();
     }
-    messageAudio = new Audio('/Content/media/alphabet/' + romaji + ".mp3");
+    messageAudio = new Audio('/Content/media/alphabet/' + id + ".mp3");
     messageAudio.play();
 }
 

@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-sm-8">
                 <h1>
-                    BẢNG CHỮ CÁI TIẾNG NHẬT</h1>
+                    BẢNG CHỮ CÁI</h1>
             </div>
         </div>
     </div>
@@ -26,7 +26,10 @@
                         Hiragana (Kanji: 平仮名; Hiragana: ひらがな; Katakana: ヒラガナ) 
                         là một dạng văn tự biểu âm truyền thống của tiếng Nhật, một thành phần của hệ thống chữ viết Nhật Bản...
                     </div>
-                    <div class="pull-right">@Html.ActionLink("Bắt đầu học", "Hiragana", "Alphabet")</div>
+                    <div class="text-right">
+                        @Html.ActionLink("Bắt đầu học", "Hiragana", "Alphabet", null
+                             , new { @class = "btn btn-navigator btn-theme btn-small" })
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
@@ -38,7 +41,10 @@
                         Katakana(Kanji: 片仮名; Hiragana: かたかな; Katakana: カタカナ) 
                         hay còn gọi là kiểu chữ cứng của tiếng Nhật, là một thành phần trong hệ thống chữ viết truyền thống của Nhật Bản...
                     </div>
-                    <div class="pull-right">@Html.ActionLink("Bắt đầu học", "Katakana", "Alphabet")</div>
+                    <div class="text-right">
+                        @Html.ActionLink("Bắt đầu học", "Katakana", "Alphabet", null
+                             , new { @class = "btn btn-navigator btn-theme btn-small" })
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,7 +60,10 @@
                         Ôn luyện và sử dụng những chữ cái Hiragana đã học hằng ngày 
                         là cách đảm bảo nhất giúp bạn tăng khả năng ghi nhớ chữ cái Hiragana và hạn chế quên chữ cái cũ
                     </div>
-                    <div class="pull-right">@Html.ActionLink("Luyện tập", "luyen-tap-hiragana", "Alphabet")</div>
+                    <div class="text-right">
+                        @Html.ActionLink("Luyện tập", "luyen-tap-hiragana", "Alphabet", null
+                             , new { @class = "btn btn-navigator btn-theme btn-small" })
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
@@ -66,7 +75,10 @@
                         Ôn luyện và sử dụng những chữ cái Katakana đã học hằng ngày 
                         là cách đảm bảo nhất giúp bạn tăng khả năng ghi nhớ chữ cái Katakana và hạn chế quên chữ cái cũ
                     </div>
-                    <div class="pull-right">@Html.ActionLink("Luyện tập", "luyen-tap-katakana", "Alphabet")</div>
+                    <div class="text-right">
+                        @Html.ActionLink("Luyện tập", "luyen-tap-katakana", "Alphabet", null
+                             , new { @class = "btn btn-navigator btn-theme btn-small" })
+                    </div>
                 </div>
             </div>
         </div>
