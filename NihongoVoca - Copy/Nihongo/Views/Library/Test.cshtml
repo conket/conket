@@ -1,6 +1,6 @@
 ﻿@model Nihongo.Models.MS_VocaCategoriesModels
 @{
-    Layout = "~/Views/Shared/_MasterTestLayout.cshtml";
+    //Layout = "~/Views/Shared/_MasterTestLayout.cshtml";
     ViewBag.Title = "Kiểm tra từ vựng tiếng Nhật - " + Model.VocaSetName1 + " - " + Model.Name1;
 }
 <input type="hidden" id="ale" value='@Url.Action("hoc-tu-vung", "Library", new { id = @ViewBag.CategoryID, urlDisplay = @ViewBag.CategoryUrlDisplay})' />

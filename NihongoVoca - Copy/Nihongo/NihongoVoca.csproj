@@ -2492,6 +2492,10 @@
     <Content Include="Scripts\knockout-2.1.0.min.js">
       <DependentUpon>knockout-2.1.0.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\mine\learningsession.js" />
+    <Content Include="Scripts\mine\Copy of ts.min.js">
+      <DependentUpon>learningsession.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\mine\flog.js" />
     <Content Include="Scripts\mine\flog.min.js">
       <DependentUpon>flog.js</DependentUpon>
@@ -2503,6 +2507,9 @@
     <Content Include="Scripts\mine\keepsessionalive.js" />
     <Content Include="Scripts\mine\keepsessionalive.min.js">
       <DependentUpon>keepsessionalive.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\mine\learningsession.min.js">
+      <DependentUpon>learningsession.js</DependentUpon>
     </Content>
     <Content Include="Scripts\mine\magnify.min.js">
       <DependentUpon>magnify.js</DependentUpon>
@@ -2900,6 +2907,13 @@
     <Content Include="Views\Account\CreateVocaCategory.cshtml" />
     <Content Include="Scripts\jQuery.loadScroll.min.js.map">
       <DependentUpon>jQuery.loadScroll.js</DependentUpon>
+    </Content>
+    <Content Include="Views\Library\LearningSession.cshtml" />
+    <Content Include="Scripts\mine\Copy of ts.min.js.map">
+      <DependentUpon>learningsession.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\mine\learningsession.min.js.map">
+      <DependentUpon>learningsession.js</DependentUpon>
     </Content>
     <None Include="WebMarkupMin.Configuration.xsd">
       <SubType>Designer</SubType>

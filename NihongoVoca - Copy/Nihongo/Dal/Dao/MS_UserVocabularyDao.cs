@@ -9,6 +9,74 @@ namespace Nihongo.Dal.Dao
 {
     public class MS_UserVocabularyDao : BaseDao
     {
+
+        internal int SelectSessionUserVocaData(MS_UserVocabulariesModels model, out List<MS_UserVocabulariesModels> results)
+        {
+            int returnCode = 0;
+            results = new List<MS_UserVocabulariesModels>();
+
+            try
+            {
+                results = (from us in ms_uservocabularies
+                           join de in ms_vocabularydetails on us.VocaDetailID equals de.ID
+                           join vc in ms_vocacategories on de.CategoryID equals vc.ID
+                           join vs in ms_vocasets on vc.VocaSetID equals vs.ID
+                           join ss in ms_vocabularies on de.VocabularyID equals ss.ID
+
+                           where vc.ID == model.CategoryID && us.UserID == model.UserID
+                            && us.Level < 10
+
+                           orderby de.LineNumber
+
+                           select new MS_UserVocabulariesModels
+                           {
+                               //user voca
+                               ID = us.ID,
+                               UserID = us.UserID,
+                               Level = us.Level,
+                               HasLearnt = us.HasLearnt,
+                               //Update_Date = us.Update_Date,
+                               HasMarked = us.HasMarked,
+                               //voca detail
+                               LineNumber = de.LineNumber,
+
+                               //voca set
+                               VocaSetID = vs.ID,
+
+                               //category
+                               CategoryID = vc.ID,
+                               CategoryCode = vc.Code,
+                               CategoryName = vc.Name1,
+                               CategoryDescription = vc.Description,
+                               RequiredTimePerVoca = vc.RequiredTimePerVoca,
+
+                               //voca
+                               VocabularyCode = ss.Code,
+                               Romaji = ss.Romaji,
+                               Romaji_Katakana = ss.Romaji_Katakana,
+                               Katakana = ss.Katakana,
+                               Hiragana = ss.Hiragana,
+                               Kanji = ss.Kanji,
+                               VMeaning = ss.VMeaning,
+                               Description = ss.Description,
+                               UrlAudio = ss.UrlAudio,
+                               UrlAudio_Katakana = ss.UrlAudio_Katakana,
+                               DisplayType = ss.DisplayType,
+                               UrlImage = ss.UrlImage,
+                               Type = ss.Type,
+
+                           })
+                           .Take(5)
+                           .ToList();
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
         public int SelectUserVocaData(int vocaCateId, int userID, out List<MS_UserVocabulariesModels> results)
         {
             int returnCode = 0;
@@ -552,6 +620,7 @@ namespace Nihongo.Dal.Dao
 
             return returnCode;
         }
+
 
     }
 }

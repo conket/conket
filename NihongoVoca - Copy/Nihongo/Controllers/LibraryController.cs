@@ -140,7 +140,7 @@ namespace Nihongo.Controllers
             MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
             MS_VocaCategoriesModels result = new MS_VocaCategoriesModels();
             int returnCode = dao.SelectVocaCateByID(id, out result);
-            return View("Learning", result);
+            return View("LearningSession", result);
         }
 
         [ActionName("hoc-so-tay")]
@@ -430,6 +430,33 @@ namespace Nihongo.Controllers
             int returnCode = dao.SelectNotebookVocas(CommonMethod.ParseInt(Session["UserID"]), out results);
 
             return PartialView("_NotebookVocaPartial", results);
+        }
+
+        [EncryptActionName(Name = ("GetSessionVocas"))]
+        [OutputCache(CacheProfile = "Cache5MinutesVaryByIDClient")]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult GetSessionVocas(int id)
+        {
+            List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
+            int returnCode = 0;
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                returnCode = CommonData.DbReturnCode.AccessDenied;
+            }
+            else
+            {
+                //MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
+                //returnCode = dao.SelectUserVocaData(id, CommonMethod.ParseString(Session["UserID"]), out results);
+                MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
+                MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
+                model.CategoryID = id;
+                model.Type = CommonData.VocaType.Word;
+                model.UserID = CommonMethod.ParseInt(Session["UserID"]);
+                //model.HasLearnt = CommonData.Status.Disable;
+                returnCode = dao.SelectSessionUserVocaData(model, out results);
+            }
+
+            return Json(new { vocabularies = (CreateChoosingList(results)) }, JsonRequestBehavior.AllowGet);
         }
 
         #endregion
@@ -1334,6 +1361,60 @@ namespace Nihongo.Controllers
 
             return results;
         }
+
+        private List<MS_UserVocabulariesModels> CreateSessionLearningList(List<MS_UserVocabulariesModels> list)
+        {
+            //create random list
+            //var results = RandomList(list, list.Count);
+
+            //choosing
+            //int halfList = list.Count / 2;
+            List<MS_UserVocabulariesModels> choosingList = new List<MS_UserVocabulariesModels>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                list[i].TestType = "1";
+                choosingList.Add(list[i]);
+            }
+            choosingList = CreateChoosingList(choosingList);
+            int halfChoosingList = choosingList.Count / 3;
+            for (int i = 0; i < halfChoosingList; i++)
+            {
+                choosingList[i].TestSkill = CommonData.LanguageSkill.Reading;
+            }
+            for (int i = halfChoosingList; i < (halfChoosingList * 2); i++)
+            {
+                choosingList[i].TestSkill = CommonData.LanguageSkill.Translating;
+            }
+            for (int i = (halfChoosingList * 2); i < choosingList.Count; i++)
+            {
+                choosingList[i].TestSkill = CommonData.LanguageSkill.Listening;
+            }
+
+            //input romaji           
+            //List<MS_UserVocabulariesModels> writingList = new List<MS_UserVocabulariesModels>();
+            //for (int i = halfList; i < results.Count; i++)
+            //{
+            //    results[i].TestType = "2";
+            //    writingList.Add(results[i]);
+            //}
+            //int halfWritingList = writingList.Count / 3;
+            //for (int i = 0; i < halfWritingList; i++)
+            //{
+            //    writingList[i].TestSkill = CommonData.LanguageSkill.Reading;
+            //}
+            //for (int i = halfWritingList; i < (halfWritingList * 2); i++)
+            //{
+            //    writingList[i].TestSkill = CommonData.LanguageSkill.Translating;
+            //}
+            //for (int i = (halfWritingList * 2); i < writingList.Count; i++)
+            //{
+            //    writingList[i].TestSkill = CommonData.LanguageSkill.Listening;
+            //}
+
+            //choosingList.AddRange(writingList);
+            return choosingList;
+        }
+
 
         #endregion
     }
