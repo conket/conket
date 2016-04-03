@@ -66,6 +66,7 @@ namespace Nihongo
                         ));
             bundles.Add(new ScriptBundle("~/bundles/session").Include(
                         "~/Scripts/mine/learningsession.min.js"
+                        //"~/Scripts/mine/learningsession.js"
                         ));
             bundles.Add(new ScriptBundle("~/bundles/fts").Include(
                         "~/Scripts/mine/fts.min.js"

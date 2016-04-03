@@ -137,9 +137,20 @@ namespace Nihongo.Controllers
             //MS_UserVocabulariesModels result = new MS_UserVocabulariesModels();
             //MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
             //int returnCode = dao.SelectUserVocaData(id, "chkien", out results);
+            //MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
+            //MS_VocaCategoriesModels result = new MS_VocaCategoriesModels();
+            //int returnCode = dao.SelectVocaCateByID(id, out result);
+            //List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
+            MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
             MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
             MS_VocaCategoriesModels result = new MS_VocaCategoriesModels();
             int returnCode = dao.SelectVocaCateByID(id, out result);
+            //model.HasLearnt = CommonData.Status.Disable;
+            //using (MS_UserVocabularyDao dao = new MS_UserVocabularyDao())
+            //{
+            //    int returnCode = dao.SelectSessionUserVocaData(model, out results);
+            //}
+
             return View("LearningSession", result);
         }
 
@@ -456,7 +467,7 @@ namespace Nihongo.Controllers
                 returnCode = dao.SelectSessionUserVocaData(model, out results);
             }
 
-            return Json(new { vocabularies = (CreateChoosingList(results)) }, JsonRequestBehavior.AllowGet);
+            return Json(new { vocabularies = (CreateSessionLearningList(results)) }, JsonRequestBehavior.AllowGet);
         }
 
         #endregion
@@ -1376,19 +1387,19 @@ namespace Nihongo.Controllers
                 choosingList.Add(list[i]);
             }
             choosingList = CreateChoosingList(choosingList);
-            int halfChoosingList = choosingList.Count / 3;
+            int halfChoosingList = choosingList.Count / 2;
             for (int i = 0; i < halfChoosingList; i++)
             {
                 choosingList[i].TestSkill = CommonData.LanguageSkill.Reading;
             }
-            for (int i = halfChoosingList; i < (halfChoosingList * 2); i++)
+            for (int i = halfChoosingList; i < choosingList.Count; i++)
             {
                 choosingList[i].TestSkill = CommonData.LanguageSkill.Translating;
             }
-            for (int i = (halfChoosingList * 2); i < choosingList.Count; i++)
-            {
-                choosingList[i].TestSkill = CommonData.LanguageSkill.Listening;
-            }
+            //for (int i = (halfChoosingList * 2); i < choosingList.Count; i++)
+            //{
+            //    choosingList[i].TestSkill = CommonData.LanguageSkill.Listening;
+            //}
 
             //input romaji           
             //List<MS_UserVocabulariesModels> writingList = new List<MS_UserVocabulariesModels>();

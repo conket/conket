@@ -42,12 +42,16 @@ namespace Nihongo.Dal.Dao
 
                                //voca set
                                VocaSetID = vs.ID,
+                               VocaSetName = vs.Name1,
+                               VocaSetUrlDisplay = vs.UrlDisplay,
+                               VocaSetFee = vs.Fee ?? 0,
 
                                //category
                                CategoryID = vc.ID,
                                CategoryCode = vc.Code,
                                CategoryName = vc.Name1,
                                CategoryDescription = vc.Description,
+                               CategoryUrlDisplay = vc.UrlDisplay,
                                RequiredTimePerVoca = vc.RequiredTimePerVoca,
 
                                //voca

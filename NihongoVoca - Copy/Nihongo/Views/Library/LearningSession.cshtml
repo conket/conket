@@ -11,7 +11,7 @@
 <input type="hidden" id="rtp" value="@Model.RequiredTimePerVoca"/>
 <input type="hidden" id="vsf" value="@Model.VocaSetFee"/>
 <input type="hidden" id="accessDenied" value="@Ivs.Core.Common.CommonData.DbReturnCode.AccessDenied"/>
-<header id="head" class="secondary">
+@*<header id="head" class="secondary">
     <div class="container">
         <div class="row">
             <div class="col-sm-8">
@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-</header>
+</header>*@
 <br />
 <div id="test-content">
     <section class="container-fluid">
@@ -74,6 +74,7 @@
 
 @*<script type="text/javascript" src='@Href("~/Scripts/assets/js/jquery.isotope.min.js")'></script>*@
 <script type="text/javascript" src='@Href("~/Scripts/jquery-timer-min.js")' async></script>
-<script src='@Scripts.Url("~/bundles/session")' async> </script>
+@*<script src='@Scripts.Url("~/bundles/session")' async> </script>*@
 @*@Scripts.Render("~/bundles/isotope")*@
+<script src="~/Scripts/mine/learningsession.js"></script>
 @Html.Partial("_TestModalPartial")
