@@ -147,6 +147,24 @@ a.btn-action:hover, a.btn-action:focus
     border-radius:1px !important;
 }
 
+.btn-quizz
+{
+    width:120px;
+    background-color:#fff;
+    border:1px solid #ddd !important;
+    border-radius:1px !important;
+    height:120px;
+    text-align: center;
+    /*line-height: 65px;*/
+    white-space: normal;
+    color:black;
+}
+.btn-quizz:hover { 
+    background-color: #337ab7;
+    color: white;
+    /*font-weight:bold;*/
+}
+
 .carousel-inner 
 {
     height:400px;
@@ -183,7 +201,7 @@ a.btn-action:hover, a.btn-action:focus
 
 .ok
 {
-    color:#337ab7;
+    color:#3c763d;
 }
 
 .error

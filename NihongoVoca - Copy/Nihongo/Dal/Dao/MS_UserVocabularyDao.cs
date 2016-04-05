@@ -24,7 +24,7 @@ namespace Nihongo.Dal.Dao
                            join ss in ms_vocabularies on de.VocabularyID equals ss.ID
 
                            where vc.ID == model.CategoryID && us.UserID == model.UserID
-                            && us.Level < 10
+                            && us.Level == 0 && ss.Type == "2"
 
                            orderby de.LineNumber
 
@@ -626,5 +626,46 @@ namespace Nihongo.Dal.Dao
         }
 
 
+
+        internal int UpdateSessionResult(List<MS_UserVocabulariesModels> vocas)
+        {
+            int returnCode = 0;
+            try
+            {
+                if (vocas.Count > 0)
+                {
+                    this.BeginTransaction();
+
+                    //update user vocas
+                    foreach (var vo in vocas)
+                    {
+                        var voca = this.ms_uservocabularies.FirstOrDefault(ss => ss.ID == vo.ID);
+                        if (voca != null)
+                        {
+                            voca.HasLearnt = CommonData.Status.Enable;
+                            voca.UpdatedDate = DateTime.Now;
+                            voca.Level = vo.Level;
+                        }
+                    }
+
+                    returnCode = this.Saves();
+                    if (returnCode == CommonData.DbReturnCode.Succeed)
+                    {
+                        returnCode = this.Commit();
+                    }
+                    else
+                    {
+                        this.Rollback();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                this.Rollback();
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
     }
 }

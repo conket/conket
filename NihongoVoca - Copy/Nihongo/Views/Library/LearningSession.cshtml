@@ -2,10 +2,10 @@
 @{
     ViewBag.Title = "Học từ vựng tiếng Nhật - " + Model.VocaSetName1 + " - " + Model.Name1;
 }
-<input type="hidden" id="ale" value='@Url.Action("hoc-tu-vung", "Library", new { id = @ViewBag.CategoryID, urlDisplay = @ViewBag.CategoryUrlDisplay})' />
-<input type="hidden" id="av" value='@Url.Action("danh-muc", "Library", new { id = @ViewBag.CategoryID, urlDisplay = @ViewBag.CategoryUrlDisplay})' />
+<input type="hidden" id="ale" value='@Url.Action("hoc-tu-vung", "Library", new { id = @ViewBag.CategoryID, urlDisplay = @ViewBag.CategoryUrlDisplay })' />
+<input type="hidden" id="av" value='@Url.Action("danh-muc", "Library", new { id = @ViewBag.CategoryID, urlDisplay = @ViewBag.CategoryUrlDisplay })' />
 <input type="hidden" id="gtv" value='@CommonMethod.EncodeUrl("GetSessionVocas")' />
-<input type="hidden" id="utr" value='@CommonMethod.EncodeUrl("UpdateTestResult")' />
+<input type="hidden" id="utr" value='@CommonMethod.EncodeUrl("UpdateSessionResult")' />
 <input type="hidden" id="uft" value='@CommonMethod.EncodeUrl("UpdateFastTestVoca")' />
 <input type="hidden" id="vcd" value="@ViewBag.CategoryID"/>
 <input type="hidden" id="rtp" value="@Model.RequiredTimePerVoca"/>
@@ -32,8 +32,18 @@
                             <div class="portfolio-items isotopeWrapper clearfix" id="3">
                             </div>
                         </div>
+                        <div class="row hidden-xs">
+                            <div class="col-md-8">
+                                <h3>@Model.VocaSetName1 - @Model.Name1</h3>
+                            </div>
+                        </div>
                         <div class="container">
                             <div class="row">
+                                <div class="progress" id='progress'>
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                                        aria-valuemax="100" style="width: 0%; min-width: 2em;">
+                                    </div>
+                                </div>
                                 <div id="flashCard">
                                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                                         <!-- Indicators -->
@@ -48,10 +58,8 @@
                                         </div>
                                         <!-- Controls -->
                                         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">
-                                                Previous</span> </a><a class="right carousel-control" href="#carousel-example-generic"
-                                                    role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
-                                                    </span><span class="sr-only">Next</span> </a>
+                                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">Previous</span> </a><a class="right carousel-control" href="#carousel-example-generic"
+                                                role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span> </a>
                                     </div>
                                 </div>
                             </div>
@@ -73,8 +81,9 @@
 </div>
 
 @*<script type="text/javascript" src='@Href("~/Scripts/assets/js/jquery.isotope.min.js")'></script>*@
-<script type="text/javascript" src='@Href("~/Scripts/jquery-timer-min.js")' async></script>
+@*<script type="text/javascript" src='@Href("~/Scripts/jquery-timer-min.js")' async></script>*@
 @*<script src='@Scripts.Url("~/bundles/session")' async> </script>*@
 @*@Scripts.Render("~/bundles/isotope")*@
+<script src='@Scripts.Url("~/bundles/dr")' async> </script>
 <script src="~/Scripts/mine/learningsession.js"></script>
 @Html.Partial("_TestModalPartial")

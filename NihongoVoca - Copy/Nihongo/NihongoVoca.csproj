@@ -362,6 +362,10 @@
     <Content Include="Content\bootstrap.min.css">
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
+    <Content Include="Content\circle.css" />
+    <Content Include="Content\circle.min.css">
+      <DependentUpon>circle.css</DependentUpon>
+    </Content>
     <Content Include="Content\media\alphabet\1.MP3" />
     <Content Include="Content\media\alphabet\2.MP3" />
     <Content Include="Content\media\alphabet\3.MP3" />

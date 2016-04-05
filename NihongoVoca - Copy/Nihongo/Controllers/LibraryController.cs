@@ -444,7 +444,7 @@ namespace Nihongo.Controllers
         }
 
         [EncryptActionName(Name = ("GetSessionVocas"))]
-        [OutputCache(CacheProfile = "Cache5MinutesVaryByIDClient")]
+        [OutputCache(CacheProfile = "Cache1MinuteVaryByIDClient")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult GetSessionVocas(int id)
         {
@@ -467,7 +467,7 @@ namespace Nihongo.Controllers
                 returnCode = dao.SelectSessionUserVocaData(model, out results);
             }
 
-            return Json(new { vocabularies = (CreateSessionLearningList(results)) }, JsonRequestBehavior.AllowGet);
+            return Json(new { vocabularies = ((results)) }, JsonRequestBehavior.AllowGet);
         }
 
         #endregion
@@ -842,6 +842,21 @@ namespace Nihongo.Controllers
             }
 
             return Json(new { ReturnCode = returnCode, accumulatedPoint = accumulatedPoint });
+        }
+
+
+        [EncryptActionName(Name = ("UpdateSessionResult"))]
+        [HttpPost]
+        public ActionResult UpdateSessionResult(List<MS_UserVocabulariesModels> vocas)
+        {
+            int returnCode = 0;
+            if (!CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
+                returnCode = dao.UpdateSessionResult(vocas);
+            }
+
+            return Json(new { ReturnCode = returnCode });
         }
 
         [EncryptActionName(Name = ("UpdateFastTestVoca"))]

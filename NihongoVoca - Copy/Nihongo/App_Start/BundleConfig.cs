@@ -136,6 +136,7 @@ namespace Nihongo
             //+++ Custom css in here +++
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 //My CSS
+                "~/Content/circle.min.css",
                         "~/Content/myStyle.min.css",
                 "~/Content/assets/css/da-slider.min.css",
                 "~/Content/assets/css/font-awesome.min.css",
