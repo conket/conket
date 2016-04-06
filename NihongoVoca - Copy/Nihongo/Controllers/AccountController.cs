@@ -625,11 +625,12 @@ namespace Nihongo.Controllers
                         returnCode = dao.UpdateState(user);
 
                         #endregion
+
                     }
                 }
             }
 
-            return Json(new { ReturnCode = returnCode, User = user, ReturnUrl = ReturnUrl });//Request.Url.AbsoluteUri });
+            return Json(new { ReturnCode = returnCode, ID = user == null ? 0 : user.ID, ReturnUrl = ReturnUrl });//Request.Url.AbsoluteUri });
         }
 
         [HttpPost]

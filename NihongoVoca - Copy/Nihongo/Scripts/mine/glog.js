@@ -17,7 +17,7 @@ var startApp = function () {
 };
 
 function attachSignin(element) {
-    
+
     auth2.attachClickHandler(element, {},
         function (googleUser) {
             var profile = googleUser.getBasicProfile();
@@ -60,12 +60,13 @@ function gLogin(user) {
         contentType: 'application/json; charset=utf-8',
         success: function (result) {
             if (result.ReturnCode == 0) {
-                if (result.ReturnUrl) {
-                    window.location = result.ReturnUrl;
-                }
-                else {
-                    window.location.reload();
-                }
+                //if (result.ReturnUrl) {
+                //    window.location = result.ReturnUrl;
+                //}
+                //else {
+                //window.location.reload();
+                window.location = '/Account/HomePage/' + result.ID;
+                //}
                 return false;
             }
             else {

@@ -1,5 +1,5 @@
 ﻿
-    
+
 $(document).ready(function () {
     var c = 1;
     $('#modalLogin2').on('shown.bs.modal', function () {
@@ -12,7 +12,7 @@ $(document).ready(function () {
     });
 
     $('#loginForm').submit(function () {
-        
+
         $('#login-error-message').html("");
         if ($('#usr').val() == '') {
             $('#login-error-message').html("Nhập [Tên đăng nhập]!");
@@ -40,7 +40,7 @@ $(document).ready(function () {
                     //contentType: 'application/json',
                     success: function (result) {
                         if (result.ReturnCode == 0) {
-                            if (result.User == null) {
+                            if (result.ID == 0) {
                                 c++;
                                 var mess = "Sai [Tên Đăng Nhập] hoặc [Mật Khẩu]";
                                 $('#login-error-message').html(mess);
@@ -49,12 +49,13 @@ $(document).ready(function () {
                                 return false;
                             }
                             else {
-                                if (result.ReturnUrl != '') {
-                                    window.location = result.ReturnUrl;
-                                }
-                                else {
-                                    window.location.reload();
-                                }
+                                //if (result.ReturnUrl != '') {
+                                //    window.location = result.ReturnUrl;
+                                //}
+                                //else {
+                                //window.location.reload();
+                                window.location = '/Account/HomePage/' + result.ID;
+                                //}
                             }
 
                             return false;
@@ -70,7 +71,7 @@ $(document).ready(function () {
                     }
                 });
             }
-            
+
         }
         else {
             alert('Bạn đã đăng nhập quá 5 lần. Hãy thử lại sau vài phút!');
@@ -102,7 +103,7 @@ $(document).ready(function () {
         });
         //FB.logout(function (response) {
         //    // Person is now logged out
-            
+
         //});
     });
 });

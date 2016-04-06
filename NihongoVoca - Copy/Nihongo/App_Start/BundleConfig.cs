@@ -14,6 +14,20 @@ namespace Nihongo
 
             #region Jquery
 
+            bundles.Add(new ScriptBundle("~/bundles/usmain").Include(
+                        "~/Scripts/assets/js/main.min.js"
+                        ));
+
+            bundles.Add(new ScriptBundle("~/bundles/us").Include(
+                        "~/Scripts/assets/js/plugins/moment.min.js",
+                        //"~/Scripts/assets/js/plugins/fullcalendar.min.js",
+                        "~/Scripts/assets/js/plugins/jquery.nicescroll.js"
+                        //"~/Scripts/assets/js/plugins/jquery.vmap.min.js",
+                        //"~/Scripts/assets/js/plugins/maps/jquery.vmap.world.js",
+                        //"~/Scripts/assets/js/plugins/jquery.vmap.sampledata.js",
+                        //"~/Scripts/assets/js/plugins/chart.min.js"
+                        ));
+
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
                         "~/Scripts/modernizr-{version}.min.js",
                         "~/Scripts/jquery-{version}.min.js"));
@@ -132,6 +146,14 @@ namespace Nihongo
             #endregion
 
             #region CSS
+
+            bundles.Add(new StyleBundle("~/Content/user").Include(
+                        "~/Content/assets/css/plugins/font-awesome.min.css",
+                        "~/Content/assets/css/plugins/simple-line-icons.css",
+                        "~/Content/assets/css/plugins/animate.min.css",
+                        "~/Content/assets/css/plugins/fullcalendar.min.css",
+                        "~/Content/assets/css/styleuser.min.css"
+                        ));
 
             //+++ Custom css in here +++
             bundles.Add(new StyleBundle("~/Content/css").Include(
