@@ -17,7 +17,7 @@
                 Nihongo.Models.MS_UserVocabulariesModels voca = models[count];
                 <div class="col-md-6">
                     <div class="row brdr-top bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 ">
+                        <div class="col-lg-4 col-md-6 col-sm-6 hidden-xs ">
                             <img class="img-rounded voca-image" data-src='@Href("~/" + @voca.UrlImage)' src="" alt="tu-vung-tieng-nhat" >@*</a>
                         @{ var img = "~/App_Sprites/" + voca.VocabularyCode + ".jpg";}
                         @Sprite.Image(img, new { alt="từ-vựng-tiếng-nhật", style="width: 100%; height: 100px;", @class="img-responsive" })*@

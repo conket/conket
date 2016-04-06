@@ -50,10 +50,10 @@ namespace Nihongo.Controllers
             ViewBag.VocaID = id;
             ViewBag.VocaUrlDisplay = urlDisplay;
 
-            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
-            {
-                return RedirectToAction("RequireLogin", "Account");
-            }
+            //if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            //{
+            //    return RedirectToAction("RequireLogin", "Account");
+            //}
             int returnCode = 0;
             MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
             MS_VocaCategoriesModels result = new MS_VocaCategoriesModels();
@@ -443,6 +443,34 @@ namespace Nihongo.Controllers
             return PartialView("_NotebookVocaPartial", results);
         }
 
+        [EncryptActionName(Name = ("GetPracticeSessionVocas"))]
+        [OutputCache(CacheProfile = "Cache1MinuteVaryByIDClient")]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult GetPracticeSessionVocas(int id)
+        {
+            List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
+            int returnCode = 0;
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                returnCode = CommonData.DbReturnCode.AccessDenied;
+            }
+            else
+            {
+                //MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
+                //returnCode = dao.SelectUserVocaData(id, CommonMethod.ParseString(Session["UserID"]), out results);
+                MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
+                MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
+                model.VocaSetID = id;
+                //model.CategoryID = id;
+                model.Type = CommonData.VocaType.Word;
+                model.UserID = CommonMethod.ParseInt(Session["UserID"]);
+                //model.HasLearnt = CommonData.Status.Disable;
+                returnCode = dao.SelectPracticeSessionUserVocaData(model, out results);
+            }
+
+            return Json(new { vocabularies = ((results)) }, JsonRequestBehavior.AllowGet);
+        }
+
         [EncryptActionName(Name = ("GetSessionVocas"))]
         [OutputCache(CacheProfile = "Cache1MinuteVaryByIDClient")]
         [AcceptVerbs(HttpVerbs.Get)]
@@ -460,7 +488,8 @@ namespace Nihongo.Controllers
                 //returnCode = dao.SelectUserVocaData(id, CommonMethod.ParseString(Session["UserID"]), out results);
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
                 MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
-                model.CategoryID = id;
+                model.VocaSetID = id;
+                //model.CategoryID = id;
                 model.Type = CommonData.VocaType.Word;
                 model.UserID = CommonMethod.ParseInt(Session["UserID"]);
                 //model.HasLearnt = CommonData.Status.Disable;

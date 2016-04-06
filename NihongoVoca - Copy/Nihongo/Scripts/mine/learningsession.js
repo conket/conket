@@ -147,6 +147,10 @@ function updateTestResult() {
 
 function getTestVocas() {
     vocas = [];
+    totalLevel = 0;
+    currentLevel = 0;
+    isPractice = true;
+    currentIndex = 0;
     //        failArray = [];
 
     $.ajax({
@@ -154,7 +158,7 @@ function getTestVocas() {
         type: "get",
         async: true,
         url: '/Library/' + $('#gtv').val(),
-        data: { "id": $('#vcd').val() },
+        data: { "id": $('#vsd').val() },
         dataType: "json",
         success: function (result) {
             if (result.returnCode == $('#accessDenied').val()) {
@@ -207,6 +211,72 @@ function getTestVocas() {
     });
 }
 
+
+function getPracticeVocas() {
+    vocas = [];
+    totalLevel = 0;
+    currentLevel = 0;
+    isPractice = true;
+    currentIndex = 0;
+    //        failArray = [];
+
+    $.ajax({
+        cache: true,
+        type: "get",
+        async: true,
+        url: '/Library/' + $('#gpr').val(),
+        data: { "id": $('#vsd').val() },
+        dataType: "json",
+        success: function (result) {
+            if (result.returnCode == $('#accessDenied').val()) {
+                window.location.href = '/Account/RequireLogin';
+            } else {
+                $.each(result.vocabularies, function (i, voca) {
+                    vocas.push(voca);
+                    //                        failArray.push(voca);
+                    //if (voca.TestSkill == '3') {
+                    var audio = new Audio(voca.UrlAudio);
+                    audio.load();
+                    //}
+
+                    //Calculate total Level
+                    totalLevel += parseInt(10 - voca.Level);
+                });
+
+                completedTime = 0;
+                currentIndex = 0;
+
+
+                //create quizz voca
+                quizzVoca = createQuizz(currentIndex);
+
+                if (quizzVoca.HasLearnt == "1") {
+                    isPractice = true;
+                }
+                else if (quizzVoca.Level == "0") {
+                    isPractice = false;
+                }
+                else if (quizzVoca.Level < 10) {
+                    isPractice = true;
+                }
+                else {
+                    isPractice = false;
+                }
+                showFlashCard(quizzVoca, false);
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.responseText);
+            return false;
+        },
+        //beforeSend: function () {
+        //    $('#loadingModal').modal();
+        //},
+        //complete: function () {
+        //    $('#loadingModal').modal('hide');
+        //}
+    });
+}
 
 function getLink(url) {
     return url;
@@ -601,8 +671,8 @@ function showResultPage()
     html += '           </br>';
     html += '           <div class="row text-center">';
     html += '               <div class="col-lg-12">';
-    html += '                   <a class="btn btn-navigator btn-lg require-login" href="' + urlLearning + '">HỌC TIẾP</a>';
-    html += '                   <a class="btn btn-navigator btn-lg require-login" href="' + urlVoca + '">ÔN TẬP</a>';
+    html += '                   <a class="btn btn-navigator btn-lg require-login" href="#" onclick="location.reload(true); return false;">HỌC TIẾP</a>';
+    html += '                   <a class="btn btn-navigator btn-lg require-login" href="#" onclick="getPracticeVocas(); return false;">ÔN TẬP</a>';
     //if (correctVocas.length < numOfOK) {
     //    //html += '                   <a href="#" role="button" class="btn btn-navigator btn-lg" onclick="showResult(0); return false;">Xem kết quả</a>';
     //    html += '                   <a href="' + urlLearning + '" role="button" class="btn btn-navigator btn-lg" >Ôn lại</a>';
@@ -651,7 +721,7 @@ function showResultPage()
 }
 
 function showFlashCard(index, voice) {
-
+    $('#btnNext').show();
     //$('#inputAlphabet').removeAttr('disabled');
     //document.getElementById("test-content").style.cursor = "auto";
 
@@ -747,6 +817,7 @@ function showFlashCard(index, voice) {
 };
 
 function showFlashCard(voca, voice) {
+    $('#btnNext').show();
 
     if (voca != null) {
 
