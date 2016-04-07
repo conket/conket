@@ -470,6 +470,10 @@
     <Content Include="Content\assets\css\styleuser.min.css">
       <DependentUpon>styleuser.css</DependentUpon>
     </Content>
+    <Content Include="Content\assets\css\usercustom.css" />
+    <Content Include="Content\assets\css\usercustom.min.css">
+      <DependentUpon>usercustom.css</DependentUpon>
+    </Content>
     <Content Include="Content\assets\images\1.jpg" />
     <Content Include="Content\assets\images\about.jpg" />
     <Content Include="Content\assets\images\arrow.png" />
