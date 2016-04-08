@@ -168,7 +168,7 @@ namespace Nihongo.Dal.Dao
                     DisplayName = ss.DisplayName,
                     SystemData = ss.SystemData,
                     IsAdmin = ss.IsAdmin,
-                    
+                    UrlImage = ss.UrlImage,
                 })
                     .FirstOrDefault();
             }

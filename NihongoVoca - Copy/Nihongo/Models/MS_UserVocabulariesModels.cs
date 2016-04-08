@@ -7,6 +7,7 @@ namespace Nihongo.Models
 {
     public class MS_UserVocabulariesModels
     {
+        public int Point { get; set; }
         public int No { get; set; }
         public int ID { get; set; }
         public int CategoryID { get; set; }
@@ -18,7 +19,9 @@ namespace Nihongo.Models
         public int VocaSetID { get; set; }
         public string VocaSetCode { get; set; }
         public string VocaSetName { get; set; }
+        public string VocaSetDescription { get; set; }
         public string VocaSetUrlDisplay { get; set; }
+        public string VocaSetUrlImage { get; set; }
         public decimal VocaSetFee { get; set; }
         public int UserID { get; set; }
         public string UserName { get; set; }
@@ -197,5 +200,26 @@ namespace Nihongo.Models
         public string TestSkill { get; set; }
         public string IsCorrect { get; set; }
         public string SelectedValue { get; set; }
+    }
+
+    public class MS_UserVocaSet
+    {
+        public int ID { get; set; }
+        public int VocaSetID { get; set; }
+        public string VocaSetName { get; set; }
+        public string VocaSetDescription { get; set; }
+        public string VocaSetUrlImage { get; set; }
+        public string VocaSetUrlDisplay { get; set; }
+        public int NumOfHasLearnt { get; set; }
+        public int NumOfWeak { get; set; }
+        public int NumOfVoca { get; set; }
+
+        public decimal PercentHasLearnt
+        {
+            get
+            {
+                return NumOfVoca == 0 ? 0 : (Convert.ToDecimal(NumOfHasLearnt) / Convert.ToDecimal(NumOfVoca) * 100);
+            }
+        }
     }
 }

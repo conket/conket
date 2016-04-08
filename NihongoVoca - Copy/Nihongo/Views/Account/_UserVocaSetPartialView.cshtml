@@ -1,0 +1,70 @@
+﻿@model List<Nihongo.Models.MS_UserVocaSet>
+@if (Model != null && Model.Count > 0)
+{
+    for (int i = 0; i < Model.Count; i++)
+    {
+        var userVocaSet = Model[i];
+        
+    <div class="col-md-12">
+        <div class="panel box-v4">
+            <div class="panel-heading bg-white border-none">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h4><span class="icon-notebook icons"></span>@userVocaSet.VocaSetName</h4>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="icon-list"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><span class="icon-folder"></span>Danh sách bài học</a></li>
+                                <li><a href="#"><span class=" icon-people"></span>Học viên</a></li>
+                            </ul>
+                        </div>
+                        @*<h5><span class="text-primary">Đã hoàn thành</span></h5>*@
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body padding-0">
+                <div class="col-md-12 col-xs-12 col-md-12 padding-0 box-v4-alert">
+
+                    <div class="col-md-12">
+                        <div class="col-sm-3 text-center">
+                            <img class="img-circle" src="~/images/voca/S000000001.jpg" style="width: 100px; height: 100px;">
+                        </div>
+                        <div class="col-sm-9">
+                            <p>@userVocaSet.VocaSetDescription</p>
+                            @*<small>Someone famous</small>*@
+                            <b><span class="icon-clock icons"></span>Cập nhật lúc 15:00</b>
+                        </div>
+                    </div>
+                    @*<h2>Checking Your Server!</h2>*@
+                    @*<p>Daily Check on Server status, mostly looking at servers with alerts/warnings</p>*@
+
+                    <div class="col-md-12">
+                        <div class="media magin-20">
+                            <div class="media-body">
+                                <h5 class="media-heading text-right">Đã học @userVocaSet.NumOfHasLearnt/@userVocaSet.NumOfVoca từ</h5>
+                                <div class="progress progress-mini">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="@userVocaSet.NumOfHasLearnt" aria-valuemin="0" aria-valuemax="@userVocaSet.NumOfVoca" style="width: @userVocaSet.PercentHasLearnt%;">
+                                        <span class="sr-only">60% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        @Html.ActionLink("Tiếp tục", "hoc-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay }, new { @class = "btn btn-outline btn-primary require-login" })
+                        @Html.ActionLink("Ôn tập ("+userVocaSet.NumOfWeak+")", "on-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay }, new { @class = "btn btn-outline btn-primary require-login" })
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    }
+}
+

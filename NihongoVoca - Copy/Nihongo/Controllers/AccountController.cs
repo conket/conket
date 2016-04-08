@@ -614,6 +614,8 @@ namespace Nihongo.Controllers
                         Session["UserName"] = user.UserName;
                         Session["DisplayName"] = user.DisplayName;
                         Session["IsAdmin"] = user.IsAdmin;
+                        Session["UserUrlImage"] = user.UrlImage;
+
                         UserSession.UserName = user.UserName;
                         UserSession.UserID = user.ID;
                         #endregion
@@ -679,6 +681,7 @@ namespace Nihongo.Controllers
                     Session["UserName"] = user.UserName;
                     Session["DisplayName"] = user.DisplayName;
                     Session["IsAdmin"] = user.IsAdmin;
+                    Session["UserUrlImage"] = user.UrlImage;
                     UserSession.UserName = user.UserName;
                     UserSession.UserID = user.ID;
                     #endregion
@@ -751,6 +754,7 @@ namespace Nihongo.Controllers
                     Session["UserName"] = user.UserName;
                     Session["DisplayName"] = user.DisplayName;
                     Session["IsAdmin"] = user.IsAdmin;
+                    Session["UserUrlImage"] = user.UrlImage;
                     UserSession.UserName = user.UserName;
                     UserSession.UserID = user.ID;
 
@@ -785,6 +789,7 @@ namespace Nihongo.Controllers
             Session["UserID"] = CommonData.StringEmpty;
             Session["UserName"] = CommonData.StringEmpty;
             Session["DisplayName"] = CommonData.StringEmpty;
+            Session["UserUrlImage"] = CommonData.StringEmpty;
             Session["IsAdmin"] = false;
             UserSession.UserName = CommonData.StringEmpty;
             UserSession.UserID = -1;
@@ -953,16 +958,22 @@ namespace Nihongo.Controllers
 
         #endregion
 
-        public ActionResult HomePage(string id)
+        public ActionResult HomePage()
         {
-            if (CommonMethod.IsNullOrEmpty(id))
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("RequireLogin", "Account");
             }
 
-            ViewBag.UserName = id;
+            ViewBag.UserID = Session["UserID"];
 
-            return View();
+            MS_UsersModels userModel = new MS_UsersModels();
+            using (MS_UserVocabularyDao dao = new MS_UserVocabularyDao())
+            {
+                int returnCode = dao.SelectUserHomePageData(CommonMethod.ParseInt(Session["UserID"]), out userModel);
+            }
+
+            return View(userModel);
         }
     }
 }

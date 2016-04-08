@@ -168,7 +168,7 @@ namespace Nihongo.Dal.Dao
                            join vc in vocaCate on de.CategoryID equals vc.ID
                            join vs in vocaSet on vc.VocaSetID equals vs.ID
                            join ss in voca on de.VocabularyID equals ss.ID
-                           
+
                            join us in userVoca on de.ID equals us.VocaDetailID into usv
                            from us in usv.DefaultIfEmpty()
 
@@ -338,7 +338,7 @@ namespace Nihongo.Dal.Dao
                                //KunReading2 = ss.KunReading2,
                                //KunRomaji2 = ss.KunRomaji2,
                                //KunUrlAudio2 = ss.KunUrlAudio2,
-                               
+
                            })
                                 .ToList();
             }
@@ -420,7 +420,7 @@ namespace Nihongo.Dal.Dao
                                //KunReading2 = ss.KunReading2,
                                //KunRomaji2 = ss.KunRomaji2,
                                //KunUrlAudio2 = ss.KunUrlAudio2,
-                               
+
                            })
                                 .ToList();
             }
@@ -535,7 +535,7 @@ namespace Nihongo.Dal.Dao
                     ms_testresults.AddObject(test);
 
                     //update vocaset
-                    
+
                     if (vocaSet != null)
                     {
                         vocaSet.NumOfFinishedPerson = CommonMethod.ParseInt(vocaSet.NumOfFinishedPerson) + 1;
@@ -700,7 +700,7 @@ namespace Nihongo.Dal.Dao
 
 
 
-        internal int UpdateSessionResult(List<MS_UserVocabulariesModels> vocas)
+        internal int UpdateSessionResult(int userID, List<MS_UserVocabulariesModels> vocas)
         {
             int returnCode = 0;
             try
@@ -709,6 +709,7 @@ namespace Nihongo.Dal.Dao
                 {
                     this.BeginTransaction();
 
+                    int point = 0;
                     //update user vocas
                     foreach (var vo in vocas)
                     {
@@ -718,10 +719,26 @@ namespace Nihongo.Dal.Dao
                             voca.HasLearnt = CommonData.Status.Enable;
                             voca.UpdatedDate = DateTime.Now;
                             voca.Level = vo.Level;
+
+                            point += vo.Point;
                         }
                     }
 
                     returnCode = this.Saves();
+
+                    if (returnCode == CommonData.DbReturnCode.Succeed)
+                    {
+                        var user = ms_users.FirstOrDefault(ss => ss.ID == userID);
+                        if (user != null)
+                        {
+                            user.NumOfLearntVoca = this.ms_uservocabularies.Count(ss => ss.UserID == userID && ss.HasLearnt == CommonData.Status.Enable);
+                            user.LastVisitedDate = DateTime.Now;
+                            user.Point += point;
+                        }
+
+                        returnCode = this.Saves();
+                    }
+
                     if (returnCode == CommonData.DbReturnCode.Succeed)
                     {
                         returnCode = this.Commit();
@@ -735,6 +752,53 @@ namespace Nihongo.Dal.Dao
             catch (Exception ex)
             {
                 this.Rollback();
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
+        internal int SelectUserHomePageData(int userID, out MS_UsersModels userModel)
+        {
+            int returnCode = 0;
+            userModel = null;
+            try
+            {
+                userModel = ms_users.Where(ss => ss.ID == userID)
+                    .Select(ss => new MS_UsersModels
+                    {
+                        ID = ss.ID,
+                        DisplayName = ss.DisplayName,
+                        LastVisitedDate = ss.LastVisitedDate,
+                        Point = ss.Point ?? 0,
+                        UrlImage = ss.UrlImage,
+                        UserName = ss.UserName,
+                        NumOfLearntVoca = ss.NumOfLearntVoca ?? 0,
+                    })
+                    .FirstOrDefault();
+                if (userModel != null)
+                {
+                    var userVocaSets = (from us in this.ms_uservocabularies.Where(ss => ss.UserID == userID)
+                                        group us by us.ms_vocabularydetails.ms_vocacategories.ms_vocasets.ID into userVoca
+                                        join vs in ms_vocasets on userVoca.Key equals vs.ID
+                                        select new MS_UserVocaSet
+                                        {
+                                            VocaSetID = vs.ID,
+                                            VocaSetName = vs.Name1,
+                                            VocaSetDescription = vs.Description,
+                                            VocaSetUrlDisplay = vs.UrlDisplay,
+                                            VocaSetUrlImage = vs.UrlImage,
+                                            NumOfVoca = vs.NumOfVocas ?? 0,
+                                            NumOfHasLearnt = userVoca.Count(s => s.HasLearnt == CommonData.Status.Enable),
+                                            NumOfWeak = userVoca.Count(s => s.Level < 8),
+                                            
+                                        }).ToList();
+
+                    userModel.UserVocaSets = userVocaSets;
+                }
+            }
+            catch (Exception ex)
+            {
                 returnCode = ProcessDbException(ex);
             }
 

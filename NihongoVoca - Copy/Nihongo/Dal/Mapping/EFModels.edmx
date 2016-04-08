@@ -222,6 +222,7 @@
           <Property Name="AccumulatedPoint" Type="int" />
           <Property Name="Point" Type="int" />
           <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="NumOfLearntVoca" Type="int" />
         </EntityType>
         <EntityType Name="ms_uservocabularies">
           <Key>
@@ -842,6 +843,7 @@
           <NavigationProperty Name="ms_registedvocasets" Relationship="Models.FK_msregistedvocasets_UserID_msusers_ID" FromRole="ms_users" ToRole="ms_registedvocasets" />
           <NavigationProperty Name="ms_testresults" Relationship="Models.FK_mstestresults_UserID_msusers_ID" FromRole="ms_users" ToRole="ms_testresults" />
           <NavigationProperty Name="ms_uservocabularies" Relationship="Models.FK_msuservocabularies_UserID_msusers_ID" FromRole="ms_users" ToRole="ms_uservocabularies" />
+          <Property Type="Int32" Name="NumOfLearntVoca" />
         </EntityType>
         <EntityType Name="ms_uservocabularies">
           <Key>
@@ -1351,6 +1353,7 @@
           <EntitySetMapping Name="ms_users">
             <EntityTypeMapping TypeName="Models.ms_users">
               <MappingFragment StoreEntitySet="ms_users">
+                <ScalarProperty Name="NumOfLearntVoca" ColumnName="NumOfLearntVoca" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Point" ColumnName="Point" />
                 <ScalarProperty Name="AccumulatedPoint" ColumnName="AccumulatedPoint" />

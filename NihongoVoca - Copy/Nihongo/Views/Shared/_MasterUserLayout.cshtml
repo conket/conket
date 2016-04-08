@@ -81,18 +81,24 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right user-nav">
-                    <li class="user-name"><span>Akihiko Avaron</span></li>
+                    <li class="user-name"><span>@Session["DisplayName"]</span></li>
                     <li class="dropdown avatar-dropdown">
-                        <img src="~/images/avatars/avatar.jpg" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" />
+                        <img src="@Session["UserUrlImage"]" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" />
                         <ul class="dropdown-menu user-dropdown">
-                            <li><a href="#"><span class="fa fa-user"></span>My Profile</a></li>
-                            <li><a href="#"><span class="fa fa-calendar"></span>My Calendar</a></li>
+                            @if (Ivs.Core.Common.CommonMethod.ParseString(Session["IsAdmin"]) == Ivs.Core.Common.CommonData.Status.Enable)
+                            {
+                                <li><a href='@Href("~/Account/Admin/")@Session["UserID"]'>
+                                    <i class="fa fa-gear fa-fw"></i>Quản trị</a> </li>
+                                <li role="separator" class="divider"></li>
+                            }
+                            <li><a href='@Href("~/Account/HomePage/")@Session["UserID"]'><span class="fa fa-user"></span>Trang Cá Nhân</a></li>
                             <li role="separator" class="divider"></li>
+                            <li><a href='@Href("~/Account/Logout")' id="btnLogout"><span class="fa fa-user"></span>Đăng xuất</a></li>
                             <li class="more">
                                 <ul>
                                     <li><a href=""><span class="fa fa-cogs"></span></a></li>
                                     <li><a href=""><span class="fa fa-lock"></span></a></li>
-                                    <li><a href=""><span class="fa fa-power-off "></span></a></li>
+                                    @*<li><a href=""><span class="fa fa-power-off "></span></a></li>*@
                                 </ul>
                             </li>
                         </ul>
@@ -141,7 +147,7 @@
 
 
         </div>
-        
+
         <!-- end: content -->
 
     </div>

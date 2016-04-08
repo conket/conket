@@ -882,7 +882,7 @@ namespace Nihongo.Controllers
             if (!CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
-                returnCode = dao.UpdateSessionResult(vocas);
+                returnCode = dao.UpdateSessionResult(CommonMethod.ParseInt(Session["UserID"]), vocas);
             }
 
             return Json(new { ReturnCode = returnCode });

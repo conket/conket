@@ -3261,6 +3261,7 @@
     </Content>
     <Content Include="Views\Shared\_MasterUserLayout.cshtml" />
     <Content Include="Views\Account\HomePage.cshtml" />
+    <Content Include="Views\Account\_UserVocaSetPartialView.cshtml" />
     <None Include="WebMarkupMin.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>

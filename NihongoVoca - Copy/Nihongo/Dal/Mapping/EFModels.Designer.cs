@@ -3266,6 +3266,30 @@ namespace Nihongo.Dal.Mapping
         private Nullable<global::System.DateTime> _CreatedDate;
         partial void OnCreatedDateChanging(Nullable<global::System.DateTime> value);
         partial void OnCreatedDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> NumOfLearntVoca
+        {
+            get
+            {
+                return _NumOfLearntVoca;
+            }
+            set
+            {
+                OnNumOfLearntVocaChanging(value);
+                ReportPropertyChanging("NumOfLearntVoca");
+                _NumOfLearntVoca = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("NumOfLearntVoca");
+                OnNumOfLearntVocaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _NumOfLearntVoca;
+        partial void OnNumOfLearntVocaChanging(Nullable<global::System.Int32> value);
+        partial void OnNumOfLearntVocaChanged();
 
         #endregion
 

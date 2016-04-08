@@ -42,6 +42,15 @@ namespace Nihongo.Models
 
         public DateTime? LastVisitedDate { get; set; }
 
+        public int NumOfLearntVoca { get; set; }
+        public string NumOfLearntVocaDisplay
+        {
+            get
+            {
+                return NumOfLearntVoca.ToString("N0");
+            }
+        }
+
         public int Point { get; set; }
         public string PointDisplay
         {
@@ -70,5 +79,8 @@ namespace Nihongo.Models
         public string Email { get; set; }
         public string Address { get; set; }
         public string UrlImage { get; set; }
+
+
+        public List<MS_UserVocaSet> UserVocaSets { get; set; }
     }
 }

@@ -1,116 +1,14 @@
-﻿@{
+﻿@model Nihongo.Models.MS_UsersModels
+@{
     ViewBag.Title = "Trang Cá Nhân";
     Layout = "~/Views/Shared/_MasterUserLayout.cshtml";
 }
 
 <div id="content">
-    <div class="panel">
-        <div class="panel-body">
-            <div class="col-md-6 col-sm-12">
-                <h3 class="animated fadeInLeft">Customer Service</h3>
-                <p class="animated fadeInDown"><span class="fa  fa-map-marker"></span>Batavia,Indonesia</p>
-
-                @*<ul class="nav navbar-nav">
-                            <li><a href="" >Impedit</a></li>
-                            <li><a href="" class="active">Virtute</a></li>
-                            <li><a href="">Euismod</a></li>
-                            <li><a href="">Explicar</a></li>
-                            <li><a href="">Rebum</a></li>
-                        </ul>*@
-            </div>
-            <div class="col-md-6 col-sm-12">
-                @*<div class="col-md-6 col-sm-6 text-right" style="padding-left:10px;">
-                          <h3 style="color:#DDDDDE;"><span class="fa  fa-map-marker"></span> Banyumas</h3>
-                          <h1 style="margin-top: -10px;color: #ddd;">30<sup>o</sup></h1>
-                        </div>*@
-                <div class="col-md-6 col-sm-6 pull-right">
-                    <div class="wheather">
-                        <div class="stormy rainy animated pulse infinite">
-                            <div class="shadow">
-                            </div>
-                        </div>
-                        <div class="sub-wheather">
-                            <div class="thunder">
-                            </div>
-                            <div class="rain">
-                                <div class="droplet droplet1"></div>
-                                <div class="droplet droplet2"></div>
-                                <div class="droplet droplet3"></div>
-                                <div class="droplet droplet4"></div>
-                                <div class="droplet droplet5"></div>
-                                <div class="droplet droplet6"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="col-md-12" style="padding: 20px;">
         <div class="col-md-12 padding-0">
             <div class="col-md-8 padding-0">
-                <div class="col-md-12">
-                    <div class="panel box-v4">
-                        <div class="panel-heading bg-white border-none">
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <h4><span class="icon-notebook icons"></span>Minna no Nihongo</h4>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="icon-list"></span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#"><span class="icon-folder"></span>Danh sách bài học</a></li>
-                                            <li><a href="#"><span class=" icon-people"></span>Học viên</a></li>
-                                        </ul>
-                                    </div>
-                                    @*<h5><span class="text-primary">Đã hoàn thành</span></h5>*@
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-body padding-0">
-                            <div class="col-md-12 col-xs-12 col-md-12 padding-0 box-v4-alert">
-                                
-                                <div class="col-md-12">
-                                    <div class="col-sm-3 text-center">
-                                        <img class="img-circle" src="~/images/voca/S000000001.jpg" style="width: 100px; height: 100px;">
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor nec lacus ut tempor. Mauris.</p>
-                                        @*<small>Someone famous</small>*@
-                                        <b><span class="icon-clock icons"></span>Cập nhật lúc 15:00</b>
-                                    </div>
-                                </div>
-                                @*<h2>Checking Your Server!</h2>*@
-                                @*<p>Daily Check on Server status, mostly looking at servers with alerts/warnings</p>*@
-
-                                <div class="col-md-12">
-                                    <div class="media magin-20">
-                                        <div class="media-body">
-                                            <h5 class="media-heading text-right">Đã học 20/500 từ</h5>
-                                            <div class="progress progress-mini">
-                                                <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
-                                                    <span class="sr-only">60% Complete</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <input type="button" class=" btn btn-outline btn-primary" value="Tiếp tục">
-                                    <input type="button" class=" btn btn-outline btn-primary" value="Ôn tập (10)">
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
+                @Html.Partial("_UserVocaSetPartialView", Model.UserVocaSets)
             </div>
             <div class="col-md-4">
                 <div class="col-md-12 padding-0">
@@ -118,24 +16,24 @@
                         <div class="panel-heading padding-0">
                             <img src="~/images/flashcard2.jpg" class="box-v2-cover img-responsive" />
                             <div class="box-v2-detail">
-                                <img src="~/images/avatars/avatar.jpg" class="img-responsive" />
-                                <h4>Akihiko Avaron</h4>
+                                <img src="@Model.UrlImage" class="img-responsive" />
+                                <h4>@Model.DisplayName</h4>
                             </div>
                         </div>
                         <div class="panel-body">
                             <div class="col-md-12 padding-0 text-center">
-                                <div class="col-md-4 col-sm-4 col-xs-6 padding-0">
-                                    <h3>2.000</h3>
-                                    <p>Post</p>
+                                <div class="col-md-6 col-sm-6 col-xs-6 padding-0">
+                                    <h3>@Model.NumOfLearntVocaDisplay</h3>
+                                    <p>từ</p>
                                 </div>
-                                <div class="col-md-4 col-sm-4 col-xs-6 padding-0">
-                                    <h3>2.232</h3>
-                                    <p>share</p>
+                                <div class="col-md-6 col-sm-6 col-xs-6 padding-0">
+                                    <h3>@Model.PointDisplay</h3>
+                                    <p>điểm</p>
                                 </div>
-                                <div class="col-md-4 col-sm-4 col-xs-12 padding-0">
+                                @*<div class="col-md-4 col-sm-4 col-xs-12 padding-0">
                                     <h3>4.320</h3>
                                     <p>photos</p>
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                     </div>
