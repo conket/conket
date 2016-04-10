@@ -480,7 +480,7 @@ function checkInput() {
                     speak('/Content/media/fail.wav');
 
                     quizzVoca.IsCorrect = "0";
-
+                    quizzVoca.NumOfWrong += 1;
                     //inCorrectVocas.push(voca);
 
                 }
@@ -489,6 +489,7 @@ function checkInput() {
                     speak('/Content/media/tada.wav');
 
                     quizzVoca.IsCorrect = "1";
+                    quizzVoca.Point += 1;
 
                     var level = parseInt(quizzVoca.Level) + 2;
                     if (level > 10) {

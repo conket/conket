@@ -16,17 +16,17 @@ namespace Nihongo.Controllers
     {
         public ActionResult Index(string id)
         {
-            if (!CommonMethod.IsNullOrEmpty(Session["UserName"]))
+            if (!CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 int returnCode = 0;
 
-                List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
-                MS_VocabulariesDao vocaDao = new MS_VocabulariesDao();
-                MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
-                model.UserID = CommonMethod.ParseInt(Session["UserID"]);
-                model.UserName = CommonMethod.ParseString(Session["UserName"]);
-                returnCode = vocaDao.SelectWeakVocaSummary(model, out results);
-                Session["Inbox"] = results;
+                //List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
+                //MS_VocabulariesDao vocaDao = new MS_VocabulariesDao();
+                //MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
+                //model.UserID = CommonMethod.ParseInt(Session["UserID"]);
+                //model.UserName = CommonMethod.ParseString(Session["UserName"]);
+                //returnCode = vocaDao.SelectWeakVocaSummary(model, out results);
+                //Session["Inbox"] = results;
 
                 MS_UsersDao dao = new MS_UsersDao();
                 MS_UsersModels user = new MS_UsersModels();
@@ -42,6 +42,7 @@ namespace Nihongo.Controllers
                 Session["UserID"] = CommonData.StringEmpty;
                 Session["UserName"] = CommonData.StringEmpty;
                 Session["DisplayName"] = CommonData.StringEmpty;
+                Session["UserUrlImage"] = CommonData.StringEmpty;
                 Session["IsAdmin"] = false;
                 UserSession.UserName = CommonData.StringEmpty;
                 UserSession.UserID = -1;

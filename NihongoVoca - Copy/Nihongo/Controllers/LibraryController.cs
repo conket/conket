@@ -143,15 +143,15 @@ namespace Nihongo.Controllers
             //List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
             MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
-            MS_VocaCategoriesModels result = new MS_VocaCategoriesModels();
-            int returnCode = dao.SelectVocaCateByID(id, out result);
+            MS_VocaSetsModels result = new MS_VocaSetsModels();
+            int returnCode = dao.SelectVocaSetByID(id, CommonMethod.ParseInt(Session["UserID"]), out result);
             //model.HasLearnt = CommonData.Status.Disable;
             //using (MS_UserVocabularyDao dao = new MS_UserVocabularyDao())
             //{
             //    int returnCode = dao.SelectSessionUserVocaData(model, out results);
             //}
 
-            return View("LearningSession", result);
+            return View("LearningSession2", result);
         }
 
         [ActionName("hoc-so-tay")]

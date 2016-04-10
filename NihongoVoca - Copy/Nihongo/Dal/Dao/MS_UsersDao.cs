@@ -453,5 +453,31 @@ namespace Nihongo.Dal.Dao
             }
             return returnCode;
         }
+
+        internal int SelectUsersData(out List<MS_UsersModels> users)
+        {
+            int returnCode = 0;
+            users = new List<MS_UsersModels>();
+            try
+            {
+                users = this.ms_users
+                    .Select(s => new MS_UsersModels
+                    {
+                        ID = s.ID,
+                        DisplayName = s.DisplayName,
+                        LastVisitedDate = s.LastVisitedDate,
+                        LoginState = s.LoginState,
+                        NumOfLearntVoca = s.NumOfLearntVoca ?? 0,
+                        Point = s.Point ?? 0,
+                        UrlImage = s.UrlImage,
+                    })
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+            return returnCode;
+        }
     }
 }

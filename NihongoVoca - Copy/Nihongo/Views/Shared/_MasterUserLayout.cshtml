@@ -63,10 +63,17 @@
                     <span class="middle"></span>
                     <span class="bottom"></span>
                 </div>
-                <a href="index.html" class="navbar-brand">
+                <ul class="nav navbar-nav search-nav">
+                    <li>
+                        <div class="search">
+                            <img src="~/images/conket1.jpg" class="img-circle icon-conket" alt="user name" />
+                        </div>
+                    </li>
+                </ul>
+                <a href='@Href("~/Account/HomePage/")@Session["UserID"]' class="navbar-brand">
                     <b>CONKET</b>
                 </a>
-
+                
                 <ul class="nav navbar-nav search-nav">
                     <li>
                         <div class="search">
@@ -74,7 +81,7 @@
                             <div class="form-group form-animate-text">
                                 <input type="text" class="form-text" required>
                                 <span class="bar"></span>
-                                <label class="label-search">Type anywhere to <b>Search</b> </label>
+                                <label class="label-search">Nhập gì đó để <b>TÌM KIẾM</b> </label>
                             </div>
                         </div>
                     </li>
@@ -123,16 +130,25 @@
                         <p class="animated fadeInRight">Sat,October 1st 2029</p>
                     </li>
                     <li class="active ripple">
-                        <a class="tree-toggle nav-header"><span class="fa-home fa"></span>Dashboard 
+                        <a href="@Url.Action("HomePage", "Account")" class=" nav-header"><span class="fa-home fa"></span>Trang Chủ 
                        
-                            <span class="fa-angle-right fa right-arrow text-right"></span>
+                            @*<span class="fa-angle-right fa right-arrow text-right"></span>*@
                         </a>
-                        <ul class="nav nav-list tree">
+                        @*<ul class="nav nav-list tree">
                             <li><a href="dashboard-v1.html">Dashboard v.1</a></li>
                             <li><a href="dashboard-v2.html">Dashboard v.2</a></li>
-                        </ul>
+                        </ul>*@
                     </li>
-
+                    <li class="active ripple">
+                        <a href="@Url.Action("bo-tu-vung", "Account")" class=" nav-header"><span class="fa fa-pencil-square"></span>Bộ Từ Vựng 
+                       
+                            @*<span class="fa-angle-right fa right-arrow text-right"></span>*@
+                        </a>
+                        @*<ul class="nav nav-list tree">
+                            <li><a href="dashboard-v1.html">Tiếng Nhật</a></li>
+                            <li><a href="dashboard-v2.html">Tiếng Anh</a></li>
+                        </ul>*@
+                    </li>
                 </ul>
             </div>
         </div>
@@ -188,6 +204,9 @@
     <script src='@Scripts.Url("~/bundles/jqueryui")' > </script>
     <!-- plugins -->
     <script src='@Scripts.Url("~/bundles/us")' > </script>
+    <script src='@Scripts.Url("~/bundles/jqueryval")' async> </script>
+    <script src='@Scripts.Url("~/bundles/lazyload")' async> </script>
+    <script src='@Scripts.Url("~/bundles/slider")' async> </script>
     @* <script src="~/Scripts/assets/js/plugins/moment.min.js"></script>
     <script src="~/Scripts/assets/js/plugins/jquery.nicescroll.js"></script>*@
 

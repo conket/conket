@@ -37,6 +37,7 @@ namespace Nihongo.Models
         public string Kanji { get; set; }
         public string HasLearnt { get; set; }
         public string HasMarked { get; set; }
+        public int NumOfWrong { get; set; }
         public string VocaGetType { get; set; }
         public string Pinyin { get; set; }
         public string Remembering { get; set; }
@@ -204,6 +205,7 @@ namespace Nihongo.Models
 
     public class MS_UserVocaSet
     {
+        public bool HasRegis { get; set; }
         public int ID { get; set; }
         public int VocaSetID { get; set; }
         public string VocaSetName { get; set; }
@@ -213,7 +215,9 @@ namespace Nihongo.Models
         public int NumOfHasLearnt { get; set; }
         public int NumOfWeak { get; set; }
         public int NumOfVoca { get; set; }
-
+        public int NumOfRegistedPerson { get; set; }
+        public int NumOfCategories { get; set; }
+        public int NumOfFinishedPerson { get; set; }
         public decimal PercentHasLearnt
         {
             get

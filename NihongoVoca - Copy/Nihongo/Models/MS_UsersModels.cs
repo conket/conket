@@ -41,7 +41,6 @@ namespace Nihongo.Models
         }
 
         public DateTime? LastVisitedDate { get; set; }
-
         public int NumOfLearntVoca { get; set; }
         public string NumOfLearntVocaDisplay
         {
@@ -82,5 +81,6 @@ namespace Nihongo.Models
 
 
         public List<MS_UserVocaSet> UserVocaSets { get; set; }
+        public List<MS_UsersModels> Users { get; set; }
     }
 }

@@ -1,10 +1,13 @@
 ﻿@model List<Nihongo.Models.MS_UserVocaSet>
 @if (Model != null && Model.Count > 0)
 {
-    for (int i = 0; i < Model.Count; i++)
+    bool hasRegis = Model.FirstOrDefault().HasRegis;
+    if (hasRegis)
     {
-        var userVocaSet = Model[i];
-        
+        for (int i = 0; i < Model.Count; i++)
+        {
+            var userVocaSet = Model[i];
+       
     <div class="col-md-12">
         <div class="panel box-v4">
             <div class="panel-heading bg-white border-none">
@@ -31,7 +34,7 @@
 
                     <div class="col-md-12">
                         <div class="col-sm-3 text-center">
-                            <img class="img-circle" src="~/images/voca/S000000001.jpg" style="width: 100px; height: 100px;">
+                            <img class="img-circle" src="@userVocaSet.VocaSetUrlImage" style="width: 100px; height: 100px;">
                         </div>
                         <div class="col-sm-9">
                             <p>@userVocaSet.VocaSetDescription</p>
@@ -54,9 +57,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        @Html.ActionLink("Tiếp tục", "hoc-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay }, new { @class = "btn btn-outline btn-primary require-login" })
-                        @Html.ActionLink("Ôn tập ("+userVocaSet.NumOfWeak+")", "on-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay }, new { @class = "btn btn-outline btn-primary require-login" })
+                    <div class="col-md-12 text-center">
+                        @if (userVocaSet.NumOfHasLearnt == userVocaSet.NumOfVoca)
+                        {
+                            <a href="@Url.Action("hoc-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login disabled"><i class="icon-login"></i> Tiếp tục</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("hoc-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login"><i class="icon-login"></i> Tiếp tục</a>
+                        }
+                        @if (userVocaSet.NumOfWeak == 0)
+                        {
+                            <a href="@Url.Action("on-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login disabled"><i class=" icon-compass"></i> Ôn tập</a>
+                        }
+                        else
+                        {
+                            var str = userVocaSet.NumOfWeak == 0 ? "" : "(" + userVocaSet.NumOfWeak + ")";
+                            <a href="@Url.Action("on-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login"><i class=" icon-compass"></i> Ôn tập @str</a>
+                        }
                     </div>
                 </div>
 
@@ -65,6 +83,58 @@
         </div>
 
     </div>
+        }
+    }
+    else
+    {
+    <div class="col-md-12 padding-0">
+        <h4>Hãy chọn Bộ Từ Vựng mà bạn quan tâm</h4>
+    </div>
+        for (int i = 0; i < Model.Count; i++)
+        {
+            var userVocaSet = Model[i];
+       
+    <div class="col-md-12 padding-0">
+        <div class="col-md-12">
+            <div class="panel box-v1">
+                <div class="panel-heading bg-white border-none">
+                    <div class="col-md-6 col-sm-6 col-xs-6 text-left padding-0">
+                        <h4 class="text-left">@userVocaSet.VocaSetName</h4>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                        <h4>
+                            <span class="icon-user icons icon text-right"></span>
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                    <div class="col-md-12">
+                        <div class="col-md-3 col-sm-3 col-xs-12 text-center">
+                            <img class="img-circle" src="@userVocaSet.VocaSetUrlImage" style="width: 100px; height: 100px;">
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-12 text-left">
+                            <p>@userVocaSet.VocaSetDescription</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <h3>@userVocaSet.NumOfCategories</h3>
+                        <p>bài học</p>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <h3>@userVocaSet.NumOfRegistedPerson</h3>
+                        <p>người học</p>
+                    </div>
+                    <hr />
+                    <div class="col-md-12">
+                        @Html.ActionLink("Học bộ này", "hoc-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay }, new { @class = "btn btn-outline btn-primary require-login" })
+                        @Html.ActionLink("Danh sách bài học", "bo-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay }, new { @class = "btn btn-outline btn-primary require-login" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        }
     }
 }
 

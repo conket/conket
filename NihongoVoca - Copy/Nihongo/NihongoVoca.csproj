@@ -3262,6 +3262,10 @@
     <Content Include="Views\Shared\_MasterUserLayout.cshtml" />
     <Content Include="Views\Account\HomePage.cshtml" />
     <Content Include="Views\Account\_UserVocaSetPartialView.cshtml" />
+    <Content Include="Views\Account\_UserPartialView.cshtml" />
+    <Content Include="Views\Account\VocaCate.cshtml" />
+    <Content Include="Views\Library\LearningSession2.cshtml" />
+    <Content Include="Views\Shared\_MasterUserLessonLayout.cshtml" />
     <None Include="WebMarkupMin.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>

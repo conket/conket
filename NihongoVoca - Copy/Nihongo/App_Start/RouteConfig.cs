@@ -65,6 +65,12 @@ namespace Nihongo
             );
 
             routes.MapRoute(
+                name: "Account",
+                url: "trang-ca-nhan/{action}/{id}/{urlDisplay}",
+                defaults: new { controller = "Account", action = "Index", id = UrlParameter.Optional, urlDisplay = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default1",
                 url: "{controller}/{action}/{id}/{urlDisplay}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, urlDisplay = UrlParameter.Optional }

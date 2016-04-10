@@ -3729,6 +3729,30 @@ namespace Nihongo.Dal.Mapping
         private Nullable<global::System.Int32> _UpdatedBy;
         partial void OnUpdatedByChanging(Nullable<global::System.Int32> value);
         partial void OnUpdatedByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> NumOfWrong
+        {
+            get
+            {
+                return _NumOfWrong;
+            }
+            set
+            {
+                OnNumOfWrongChanging(value);
+                ReportPropertyChanging("NumOfWrong");
+                _NumOfWrong = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("NumOfWrong");
+                OnNumOfWrongChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _NumOfWrong;
+        partial void OnNumOfWrongChanging(Nullable<global::System.Int32> value);
+        partial void OnNumOfWrongChanged();
 
         #endregion
 

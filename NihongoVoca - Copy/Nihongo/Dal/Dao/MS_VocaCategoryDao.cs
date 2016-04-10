@@ -83,6 +83,7 @@ namespace Nihongo.Dal.Dao
                       IsKanji = vs.IsKanji,
                   })
                     .FirstOrDefault();
+
             }
             catch (Exception ex)
             {
@@ -91,6 +92,104 @@ namespace Nihongo.Dal.Dao
 
             return returnCode;
         }
+
+        internal int SelectVocaSetByID(int id, int userID, out MS_VocaSetsModels result)
+        {
+            int returnCode = 0;
+            result = new MS_VocaSetsModels();
+
+            try
+            {
+                result = (from ss in this.ms_vocasets
+                          where ss.ID == id
+                          select new MS_VocaSetsModels
+                  {
+                      ID = ss.ID,
+                      Code = ss.Code,
+                      Name1 = ss.Name1,
+                      UrlImage = ss.UrlImage,
+                      UrlDisplay = ss.UrlDisplay,
+                      Description = ss.Description,
+                      NumOfVocas = ss.NumOfVocas,
+                      IsKanji = ss.IsKanji,
+                  })
+                    .FirstOrDefault();
+
+                
+                if (result != null)
+                {
+                    this.BeginTransaction();
+
+                    bool hasRegis = false;
+                    if (returnCode == CommonData.DbReturnCode.Succeed)
+                    {
+                        //register for user
+                        var vocaDetails = from vcd in this.ms_vocabularydetails
+                                          join vc in this.ms_vocacategories on vcd.CategoryID equals vc.ID
+                                              join vs in this.ms_vocasets on vc.VocaSetID equals vs.ID
+                                              where vs.ID == id
+                                              select vcd;
+                        foreach (var vocaDetail in vocaDetails)
+                        {
+                            Nihongo.Dal.Mapping.ms_uservocabularies usVoca = ms_uservocabularies.FirstOrDefault(ss => ss.UserID == userID && ss.VocaDetailID == vocaDetail.ID);
+                            if (usVoca == null)
+                            {
+                                usVoca = new Mapping.ms_uservocabularies()
+                                {
+                                    UserID = userID,
+                                    VocaDetailID = vocaDetail.ID,
+                                    HasLearnt = CommonData.Status.Disable,
+                                    HasMarked = CommonData.Status.Disable,
+                                    Level = 0,
+                                    StartDate = DateTime.Now.Date,
+                                    EndDate = DateTime.Now.Date.AddYears(1),
+                                    NumOfWrong = 0,
+                                };
+                                ms_uservocabularies.AddObject(usVoca);
+                            }
+                            else
+                            {
+                                hasRegis = true;
+                            }
+                        }
+
+                        returnCode = this.Saves();
+                    }
+
+                    if (returnCode == CommonData.DbReturnCode.Succeed)
+                    {
+                        if (!hasRegis)
+                        {
+                            //update voca set
+                            Nihongo.Dal.Mapping.ms_vocasets vocaSet = this.ms_vocasets.FirstOrDefault(s => s.ID == id);
+                            if (vocaSet != null)
+                            {
+                                vocaSet.NumOfRegistedPerson += 1;
+                            }
+
+                            returnCode = this.Saves();
+                        }
+                    }
+
+                    if (returnCode == CommonData.DbReturnCode.Succeed)
+                    {
+                        returnCode = this.Commit();
+                    }
+                    else
+                    {
+                        this.Rollback();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                this.Rollback();
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
 
         internal int CheckCompletedPreCate(int id, int userID, out bool isOK)
         {

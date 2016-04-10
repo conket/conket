@@ -958,6 +958,7 @@ namespace Nihongo.Controllers
 
         #endregion
 
+        [ActionName("HomePage")]
         public ActionResult HomePage()
         {
             if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
@@ -973,7 +974,37 @@ namespace Nihongo.Controllers
                 int returnCode = dao.SelectUserHomePageData(CommonMethod.ParseInt(Session["UserID"]), out userModel);
             }
 
-            return View(userModel);
+            return View("HomePage", userModel);
+        }
+
+        [ActionName("bo-tu-vung")]
+        public ActionResult VocaCate()
+        {
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                return RedirectToAction("RequireLogin", "Account");
+            }
+
+            ViewBag.UserID = Session["UserID"];
+
+            MS_UsersModels userModel = new MS_UsersModels();
+            using (MS_UserVocabularyDao dao = new MS_UserVocabularyDao())
+            {
+                int returnCode = dao.SelectUserVocaCateData(CommonMethod.ParseInt(Session["UserID"]), out userModel);
+            }
+
+            return View("VocaCate", userModel);
+        }
+
+        public ActionResult GetUsers()
+        {
+            MS_UsersModels userModel = new MS_UsersModels();
+            using (MS_UsersDao dao = new MS_UsersDao())
+            {
+                List<MS_UsersModels> users = new List<MS_UsersModels>();
+                int returnCode = dao.SelectUsersData(out users);
+                return PartialView("_UserPartialView", users);
+            }
         }
     }
 }

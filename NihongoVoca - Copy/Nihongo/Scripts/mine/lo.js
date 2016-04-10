@@ -54,7 +54,7 @@ $(document).ready(function () {
                                 //}
                                 //else {
                                 //window.location.reload();
-                                window.location = '/Account/HomePage/' + result.ID;
+                                window.location = '/trang-ca-nhan/HomePage/' + result.ID;
                                 //}
                             }
 

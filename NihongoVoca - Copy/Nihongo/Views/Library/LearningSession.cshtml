@@ -1,6 +1,6 @@
-﻿@model Nihongo.Models.MS_VocaCategoriesModels
+﻿@model Nihongo.Models.MS_VocaSetsModels
 @{
-    ViewBag.Title = "Học từ vựng tiếng Nhật - " + Model.VocaSetName1 + " - " + Model.Name1;
+    ViewBag.Title = "Học từ vựng tiếng Nhật - " + Model.Name1 ;
 }
 <input type="hidden" id="ale" value='@Url.Action("hoc-tu-vung", "Library", new { id = @ViewBag.CategoryID, urlDisplay = @ViewBag.CategoryUrlDisplay })' />
 <input type="hidden" id="av" value='@Url.Action("danh-muc", "Library", new { id = @ViewBag.CategoryID, urlDisplay = @ViewBag.CategoryUrlDisplay })' />
@@ -8,21 +8,10 @@
 <input type="hidden" id="gpr" value='@CommonMethod.EncodeUrl("GetPracticeSessionVocas")' />
 <input type="hidden" id="utr" value='@CommonMethod.EncodeUrl("UpdateSessionResult")' />
 <input type="hidden" id="uft" value='@CommonMethod.EncodeUrl("UpdateFastTestVoca")' />
-<input type="hidden" id="vcd" value="@ViewBag.CategoryID"/>
-<input type="hidden" id="rtp" value="@Model.RequiredTimePerVoca"/>
-<input type="hidden" id="vsd" value="@Model.VocaSetID"/>
-<input type="hidden" id="vsf" value="@Model.VocaSetFee"/>
+<input type="hidden" id="vsd" value="@Model.ID"/>
+<input type="hidden" id="vsf" value="@Model.Fee"/>
 <input type="hidden" id="accessDenied" value="@Ivs.Core.Common.CommonData.DbReturnCode.AccessDenied"/>
-@*<header id="head" class="secondary">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8">
-                <h1>
-                    KIỂM TRA</h1>
-            </div>
-        </div>
-    </div>
-</header>*@
+
 <br />
 <div id="test-content">
     <section class="container-fluid">
@@ -36,7 +25,7 @@
                         </div>
                         <div class="row hidden-xs">
                             <div class="col-md-8">
-                                <h3>@Model.VocaSetName1</h3>
+                                <h3>@Model.Name1</h3>
                             </div>
                         </div>
                         <div class="container">
