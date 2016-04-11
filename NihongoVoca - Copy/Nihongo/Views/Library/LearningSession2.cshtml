@@ -21,34 +21,70 @@
                     <div class="panel-body">
                         <div class="col-md-12 padding-0">
                             <div class="col-md-12 padding-0">
-                                <div class="badges-v1" style="width: 100%">
-                                    <div class="col-md-4">
-                                        <img src="~/images/voca/V000000001.jpg" />
-                                    </div>
-                                    <div class="col-md-8">
-                                        <h4>Hiragana
-                                        </h4>
-                                        <p class="text-default">
-                                            Roomaji
+                                <div class="badges-v1" style="width: 100%; height: 420px;" id="flashCard">
+                                    <div class="col-md-12 padding-0">
+                                        <div class="col-md-4 hidden-xs hidden-sm">
+                                            <img class="img-responsive" src="/Images/Voca/V000000001.jpg" alt="Từ vựng tiếng Nhật" style="height: 250px">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4>Hiragana <a href="../icon/volume-up"><i class="fa fa-volume-up"></i></a>
+                                            </h4>
+                                            <p class="text-default">
+                                                Roomaji
+                                            </p>
                                             <h4>Kanji
                                             </h4>
-                                        <p class="text-default">Meaning</p>'
+                                            <p>Meaning</p>
+                                            '
+                                        </div>
+                                        <div class="col-md-2 text-right">
+                                            <button class=" btn btn-circle btn-outline btn-sm btn-default" value="primary" id="btnMark">
+                                                <div id="mark" data-value="unmarked">
+                                                    <span class="fa fa-plus"></span>
+                                                </div>
+                                            </button>
+                                            <button class=" btn btn-circle btn-outline btn-sm btn-default" value="primary" id="btnIgnore">
+                                                <div id="ignore" data-value="unmarked">
+                                                    <span class="fa fa-trash"></span>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="col-md-12 padding-0">
+                                        <div class="col-md-4">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <button onclick="draw();" class="btn btn-default">Viết</button>
+                                            <input id="rdoHiragana" type="radio" name="rdoDraw">Hiragana
+                                                <input id="rdoKatakana" type="radio" name="rdoDraw">Katakana
+                                        <input id="rdoKanji" type="radio" name="rdoDraw">Kanji
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 padding-0">
+                                        <div class="col-md-12" id="draw"></div>
+                                        '
                                     </div>
                                 </div>
-                            </div>
 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-primary navigator" id="btnNext">
+                                    Tiếp
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-@*<script type="text/javascript" src='@Href("~/Scripts/assets/js/jquery.isotope.min.js")'></script>*@
-@*<script type="text/javascript" src='@Href("~/Scripts/jquery-timer-min.js")' async></script>*@
-@*<script src='@Scripts.Url("~/bundles/session")' async> </script>*@
-@*@Scripts.Render("~/bundles/isotope")*@
-<script src='@Scripts.Url("~/bundles/dr")' async> </script>
-<script src="~/Scripts/mine/learningsession.js"></script>
-@Html.Partial("_TestModalPartial")
+    <script src='@Scripts.Url("~/bundles/dr")' async> </script>
+    <script src="~/Scripts/mine/learningsession.js"></script>
+    @Html.Partial("_TestModalPartial")
+

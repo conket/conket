@@ -2797,6 +2797,13 @@
     <Content Include="Scripts\knockout-2.1.0.min.js">
       <DependentUpon>knockout-2.1.0.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\mine\Copy of Copy of ts.min.js">
+      <DependentUpon>Copy of learningsession.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\mine\Copy of learningsession.js" />
+    <Content Include="Scripts\mine\Copy of learningsession.min.js">
+      <DependentUpon>Copy of learningsession.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\mine\learningsession.js" />
     <Content Include="Scripts\mine\Copy of ts.min.js">
       <DependentUpon>learningsession.js</DependentUpon>
@@ -3266,6 +3273,12 @@
     <Content Include="Views\Account\VocaCate.cshtml" />
     <Content Include="Views\Library\LearningSession2.cshtml" />
     <Content Include="Views\Shared\_MasterUserLessonLayout.cshtml" />
+    <Content Include="Scripts\mine\Copy of Copy of ts.min.js.map">
+      <DependentUpon>Copy of learningsession.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\mine\Copy of learningsession.min.js.map">
+      <DependentUpon>Copy of learningsession.js</DependentUpon>
+    </Content>
     <None Include="WebMarkupMin.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>

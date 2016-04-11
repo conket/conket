@@ -151,7 +151,6 @@ namespace Nihongo
                         "~/Content/assets/css/plugins/font-awesome.min.css",
                         "~/Content/assets/css/plugins/simple-line-icons.css",
                         "~/Content/assets/css/plugins/animate.min.css",
-                        "~/Content/assets/css/plugins/fullcalendar.min.css",
                         "~/Content/assets/css/usercustom.min.css",
                         "~/Content/assets/css/styleuser.min.css"
                         ));

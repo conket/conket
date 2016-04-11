@@ -1273,226 +1273,180 @@ function showResult(index) {
 };
 
 function showLearning(voca) {
-    
     var html = '';
-
-    html += '<div class="col-md-12 padding-0">';
-    html += '   <div class="col-md-4 hidden-xs hidden-sm">';
-    html += '       <img class="img-responsive" src="' + getLink(voca.UrlImage) + '" alt="Từ vựng tiếng Nhật"  style="height: 250px">';
-    html += '   </div>';
-    if (voca.Hiragana != '') {
-        html += '   <div class="col-md-6"><h3><strong>' + voca.Hiragana + '  </strong><a href="#" onclick="speak(\'' + voca.UrlAudio + '\'); return false;"><i class="fa fa-volume-up"></i></a></h3>';
-        html += '       <p><strong>' + voca.Romaji + '</strong></p>';
-    }
-    else if (voca.Katakana != '') {
-        html += '   <div class="col-md-6"><h3><strong>' + voca.Katakana + '  </strong><a href="#" onclick="speak(\'' + voca.UrlAudio_Katakana + '\'); return false;"><i class="fa fa-volume-up"></i></a></h3>';
-        html += '       <p><strong>' + voca.Romaji_Katakana + '</strong></p>';
-    }
-    html += '       <h3><strong>' + voca.Kanji + '</strong></h3>';
-    html += '       <h4><strong>' + voca.VMeaning + '</strong></h4>';
-    html += '   </div>';
-    html += '   <div class="col-md-2 text-right">';
-    html += '       <button class=" btn btn-circle btn-outline btn-sm btn-default" value="primary" onclick="mark();">';
-    html += '           <div id="mark" data-value="unmarked"><span class="fa fa-plus"></span>';
-    html += '           </div>';
-    html += '       </button>';
-    html += '       <button class=" btn btn-circle btn-outline btn-sm btn-default" value="primary" onclick="ignore();">';
-    html += '           <div id="ignore" data-value="unmarked"><span class="fa fa-trash"></span>';
-    html += '           </div>';
-    html += '       </button>';
-    html += '   </div>';
-    html += '</div>';
-    html += '<hr />';
-    html += '<div class="col-md-12 padding-0">';
-    html += '   <div class="col-md-4">';
-    html += '   </div>';
-    html += '   <div class="col-md-8">';
-    html += '       <button onclick="draw();" class="btn btn-default">Viết</button>';
-    var hiraChecked = (voca.DisplayType == "1" && voca.Kanji == '') ? "checked = 'checked'" : "";
-    var kataChecked = (voca.DisplayType == "2") ? "checked = 'checked'" : "";
-    var kanjiChecked = (voca.DisplayType == "3" || (voca.DisplayType == "1" && voca.Kanji != '')) ? "checked = 'checked'" : "";
-    html += '       <input id="rdoHiragana" type="radio" name="rdoDraw" ' + hiraChecked + '>Hiragana';
-    html += '       <input id="rdoKatakana" type="radio" name="rdoDraw" ' + kataChecked + '>Katakana';
-    html += '       <input id="rdoKanji" type="radio" name="rdoDraw" ' + kanjiChecked + '>Kanji';
-    html += '   </div>';
-    html += '</div>';
-    html += '<div class="col-md-12 padding-0">';
-    html += '   <div class="col-md-12 text-center" id="draw"></div>';
-    html += '</div>';
-
-    //html += '<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">';
-    //html += '   <div class="carousel-inner" role="listbox">';
-    ////html += '       <div class="item active">';
-    ////html += '           <div class="row">';
-    ////html += '               <div class="col-lg-4 col-md-4 col-xs-12">';
-    ////if (voca.DisplayType == '3') {
-    ////    html += '                   <p class="text-info text-center" style="font-size: 150px;">' + voca.Kanji + '</p>';
-    ////}
-    ////else {
-    ////    html += '                   <img class="img-responsive" src="' + getLink(voca.UrlImage) + '" alt="Từ vựng tiếng Nhật" style="height: 300px" />';
-    ////}
-    ////html += '               </div>';
-    ////html += '               <div class="col-lg-8 col-md-8 col-xs-12">';
-    ////html += '                   <p class="text-info">Định nghĩa</p>';
-    ////html += '                   <p class="text-default">' + voca.Description + '</p>';
-    ////if (voca.DisplayType == '3') {
-    ////    html += '                   <p class="text-default">' + voca.Remembering + '</p>';
-    ////}
-    ////html += '               </div>';
-    ////html += '           </div>';
-    ////html += '       </div>';
+    html += '<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">';
+    html += '   <div class="carousel-inner" role="listbox">';
     //html += '       <div class="item active">';
-    ////html += '           <div class="row">';
-    ////kanji
+    //html += '           <div class="row">';
+    //html += '               <div class="col-lg-4 col-md-4 col-xs-12">';
     //if (voca.DisplayType == '3') {
-    //    html += '           <div class="row">';
-    //    html += '               <div class="col-md-2 col-xs-2">';
-    //    html += '               </div>';
-    //    html += '               <div class="col-md-3 col-xs-3">';
-    //    html += '                   <h3><p class="text-info" style="font-size: 50px;">' + voca.Kanji + '</p><span class="selected glyphicon glyphicon-volume-up" aria-hidden="true" onclick="speak(\'' + voca.UrlAudio + '\');"></span></h3>';
-    //    html += '               </div>';
-    //    html += '               <div class="col-md-7 col-xs-7">';
-    //    html += '                   <p class="text-default"><strong>Hán Việt</strong>: ' + voca.Pinyin + '</p>';
-    //    html += '                   <p class="text-default"><strong>Nghĩa</strong>: ' + voca.VMeaning + '</p>';
-    //    html += '                   <p class="text-default"><strong>Cách nhớ</strong>: ' + voca.Remembering + '</p>';
-    //    html += '               </div>';
-    //    html += '           </div>';
-
-    //    html += '           <div class="row">';
-    //    html += '               <div class="col-md-2 hidden-xs">';
-    //    html += '               </div>';
-    //    html += '               <div class="col-md-3 col-xs-3">';
-    //    html += '                   <div class="row">';
-    //    html += '                       <div class="col-md-12">';
-    //    html += '                           <p class="text-default"><strong>On</strong>:</p>';
-    //    if (voca.OnReading != '') {
-    //        html += '                       <p class="text-default">' + voca.OnReading + '</p>';
-    //    }
-    //    if (voca.OnReading2 != '') {
-    //        html += '                       <p class="text-default">' + voca.OnReading2 + '</p>';
-    //    }
-    //    html += '                           <p class="text-default"><strong>Kun</strong>:</p>';
-    //    if (voca.KunReading != '') {
-    //        html += '                       <p class="text-default">' + voca.KunReading + '</p>';
-    //    }
-    //    if (voca.KunReading2 != '') {
-    //        html += '                       <p class="text-default">' + voca.KunReading2 + '</p>';
-    //    }
-    //    html += '                       </div>';
-    //    html += '                   </div>';
-    //    html += '               </div>';
-    //    html += '               <div class="col-md-7 col-xs-9">';
-    //    html += '                   <div class="row">';
-    //    html += '                       <div class="col-md-2 col-xs-3">';
-    //    html += '                           <p class="text-default"><a href="#" class="drawKanji" data-toggle="tooltip" title="Nhấp để xem cách viết" onclick="drawKanji(event, this);">' + voca.ExKanji1 + '</a></p>';
-    //    html += '                       </div>';
-    //    html += '                       <div class="col-md-2 col-xs-3">';
-    //    html += '                           <p class="text-default">' + voca.ExReading1 + '</p>';
-    //    html += '                       </div>';
-    //    html += '                       <div class="col-md-3 col-xs-3">';
-    //    html += '                           <p class="text-default">' + voca.ExVMeaning1 + '</p>';
-    //    html += '                       </div>';
-    //    html += '                   </div>';
-    //    html += '                   <div class="row">';
-    //    html += '                       <div class="col-md-2 col-xs-3">';
-    //    html += '                           <p class="text-default"><a href="#" class="drawKanji" data-toggle="tooltip" title="Nhấp để xem cách viết" onclick="drawKanji(event, this);">' + voca.ExKanji2 + '</a></p>';
-    //    html += '                       </div>';
-    //    html += '                       <div class="col-md-2 col-xs-3">';
-    //    html += '                           <p class="text-default">' + voca.ExReading2 + '</p>';
-    //    html += '                       </div>';
-    //    html += '                       <div class="col-md-3 col-xs-3">';
-    //    html += '                           <p class="text-default">' + voca.ExVMeaning2 + '</p>';
-    //    html += '                       </div>';
-    //    html += '                   </div>';
-    //    html += '                   <div class="row">';
-    //    html += '                       <div class="col-md-2 col-xs-3">';
-    //    html += '                           <p class="text-default"><a href="#" class="drawKanji" data-toggle="tooltip" title="Nhấp để xem cách viết" onclick="drawKanji(event, this);">' + voca.ExKanji3 + '</a></p>';
-    //    html += '                       </div>';
-    //    html += '                       <div class="col-md-2 col-xs-3">';
-    //    html += '                           <p class="text-default">' + voca.ExReading3 + '</p>';
-    //    html += '                       </div>';
-    //    html += '                       <div class="col-md-3 col-xs-3">';
-    //    html += '                           <p class="text-default">' + voca.ExVMeaning3 + '</p>';
-    //    html += '                       </div>';
-    //    html += '                   </div>';
-    //    html += '               </div>';
-    //    html += '           </div>';
-
-    //    html += '           <div class="row">';
-    //    html += '               <div class="col-md-2 col-xs-2">';
-    //    html += '               </div>';
-    //    html += '               <div class="col-md-2 col-xs-10">';
-    //    html += '                   <button onclick="draw();" class="btn btn-default" data-toggle="tooltip" title="Nhấp để xem cách viết (Ctrl-D)">Cách viết</button>';
-    //    html += '               </div>';
-    //    html += '               <div class="col-md-6">';
-    //    html += '                   <div class="col-md-10 col-xs-10" id="draw"></div>';
-    //    html += '               </div>';
-    //    html += '               <div class="col-md-1 hidden">';
-    //    html += '                   <label class="radio-inline"><input type="radio" name="rdoDraw" id="rdoKanji" checked="checked">Kanji</label>';
-    //    html += '               </div>';
-    //    html += '           </div>';
-    //    //html += '           <div class="row">';
-    //    //html += '               <div class="col-md-2 col-xs-2">';
-    //    //html += '               </div>';
-    //    //html += '               <div class="col-md-10 col-xs-10" id="draw"></div>';
-    //    //html += '           </div>';
+    //    html += '                   <p class="text-info text-center" style="font-size: 150px;">' + voca.Kanji + '</p>';
     //}
     //else {
-    //    html += '           <div class="row">';
-    //    html += '               <div class="col-lg-4 col-md-4 hidden-xs hidden-sm">';
     //    html += '                   <img class="img-responsive" src="' + getLink(voca.UrlImage) + '" alt="Từ vựng tiếng Nhật" style="height: 300px" />';
-    //    html += '               </div>';
-    //    html += '               <div class="col-lg-8 col-md-8">';
-    //    html += '                   <div class="row">';
-    //    html += '                       <div class="col-xs-2">';
-    //    html += '                       </div>';
-    //    html += '                       <div class="col-md-12 col-xs-10">';
-    //    html += '                           <h4><a href="#" onclick="speak(\'' + voca.UrlAudio + '\'); return false;" data-toggle="tooltip" title="Nhấp để nghe đọc"><p class="text-info zoom-content-learning">' + voca.Hiragana + '</p></a></h4>';
-    //    if (voca.Hiragana != '') {
-    //        html += '                       <p class="text-default">' + voca.Romaji;
-    //    }
-    //    html += '                           <h4><a href="#" onclick="speak(\'' + voca.UrlAudio_Katakana + '\'); return false;" data-toggle="tooltip" title="Nhấp để nghe đọc"><p class="text-info zoom-content-learning">' + voca.Katakana + '</p></a></h4>';
-    //    if (voca.Katakana != '') {
-    //        html += '                       <p class="text-default">' + voca.Romaji_Katakana;
-    //    }
-    //    html += '                           <h4><a href="#" onclick="speak(\'' + voca.UrlAudio + '\'); return false;" data-toggle="tooltip" title="Nhấp để nghe đọc"><p class="text-info zoom-content-learning">' + voca.Kanji + '</p></a></h4>';
-
-    //    //    //html += '                   <span class="selected glyphicon glyphicon-volume-up" aria-hidden="true" onclick="speak(\'' + voca.UrlAudio + '\');"></span>';
-    //    //html += '                   </p>';
-    //    html += '                           <p class="text-default">' + voca.VMeaning + '</p>';
-    //    html += '                       </div>';
-    //    html += '                   </div>';
-    //    html += '                   <hr class="divider" />';
-    //    html += '                   <div class="row">';
-    //    html += '                       <div class="col-xs-2">';
-    //    html += '                       </div>';
-    //    html += '                       <div class="col-md-12 col-xs-10">';
-    //    html += '                           <button onclick="draw();" class="btn btn-default" data-toggle="tooltip" title="Nhấp để xem cách viết (Ctrl-D)">Cách viết</button>';
-    //    var hiraChecked = (voca.DisplayType == "1") ? "checked = 'checked'" : "";
-    //    var kataChecked = (voca.DisplayType == "2") ? "checked = 'checked'" : "";
-    //    var kanjiChecked = (voca.DisplayType == "3") ? "checked = 'checked'" : "";
-    //    html += '                           <label class="radio-inline"><input type="radio" name="rdoDraw" id="rdoHiragana" ' + hiraChecked + '">Hiragana</label>';
-    //    html += '                           <label class="radio-inline"><input type="radio" name="rdoDraw" id="rdoKatakana" ' + kataChecked + '">Katakana</label>';
-    //    html += '                           <label class="radio-inline"><input type="radio" name="rdoDraw" id="rdoKanji" "' + kanjiChecked + '">Kanji</label>';
-    //    html += '                       </div>';
-    //    html += '                   </div>';
-    //    html += '                   <div class="row">';
-    //    html += '                       <div class="col-md-12" id="draw"></div>';
-    //    html += '                   </div>';
-    //    html += '               </div>';
-    //    html += '           </div>';
     //}
+    //html += '               </div>';
+    //html += '               <div class="col-lg-8 col-md-8 col-xs-12">';
+    //html += '                   <p class="text-info">Định nghĩa</p>';
+    //html += '                   <p class="text-default">' + voca.Description + '</p>';
+    //if (voca.DisplayType == '3') {
+    //    html += '                   <p class="text-default">' + voca.Remembering + '</p>';
+    //}
+    //html += '               </div>';
+    //html += '           </div>';
     //html += '       </div>';
-    ////html += '       <a id="flashPre" class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">';
-    ////html += '           <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>';
-    ////html += '           <span class="sr-only">Previous</span>';
-    ////html += '       </a>';
-    ////html += '       <a id="flashNext" class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">';
-    ////html += '           <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">';
-    ////html += '           </span><span class="sr-only">Next</span>';
-    ////html += '       </a>';
-    //html += '   </div>';
-    //html += '</div>';
+    html += '       <div class="item active">';
+    //html += '           <div class="row">';
+    //kanji
+    if (voca.DisplayType == '3') {
+        html += '           <div class="row">';
+        html += '               <div class="col-md-2 col-xs-2">';
+        html += '               </div>';
+        html += '               <div class="col-md-3 col-xs-3">';
+        html += '                   <h3><p class="text-info" style="font-size: 50px;">' + voca.Kanji + '</p><span class="selected glyphicon glyphicon-volume-up" aria-hidden="true" onclick="speak(\'' + voca.UrlAudio + '\');"></span></h3>';
+        html += '               </div>';
+        html += '               <div class="col-md-7 col-xs-7">';
+        html += '                   <p class="text-default"><strong>Hán Việt</strong>: ' + voca.Pinyin + '</p>';
+        html += '                   <p class="text-default"><strong>Nghĩa</strong>: ' + voca.VMeaning + '</p>';
+        html += '                   <p class="text-default"><strong>Cách nhớ</strong>: ' + voca.Remembering + '</p>';
+        html += '               </div>';
+        html += '           </div>';
+
+        html += '           <div class="row">';
+        html += '               <div class="col-md-2 hidden-xs">';
+        html += '               </div>';
+        html += '               <div class="col-md-3 col-xs-3">';
+        html += '                   <div class="row">';
+        html += '                       <div class="col-md-12">';
+        html += '                           <p class="text-default"><strong>On</strong>:</p>';
+        if (voca.OnReading != '') {
+            html += '                       <p class="text-default">' + voca.OnReading + '</p>';
+        }
+        if (voca.OnReading2 != '') {
+            html += '                       <p class="text-default">' + voca.OnReading2 + '</p>';
+        }
+        html += '                           <p class="text-default"><strong>Kun</strong>:</p>';
+        if (voca.KunReading != '') {
+            html += '                       <p class="text-default">' + voca.KunReading + '</p>';
+        }
+        if (voca.KunReading2 != '') {
+            html += '                       <p class="text-default">' + voca.KunReading2 + '</p>';
+        }
+        html += '                       </div>';
+        html += '                   </div>';
+        html += '               </div>';
+        html += '               <div class="col-md-7 col-xs-9">';
+        html += '                   <div class="row">';
+        html += '                       <div class="col-md-2 col-xs-3">';
+        html += '                           <p class="text-default"><a href="#" class="drawKanji" data-toggle="tooltip" title="Nhấp để xem cách viết" onclick="drawKanji(event, this);">' + voca.ExKanji1 + '</a></p>';
+        html += '                       </div>';
+        html += '                       <div class="col-md-2 col-xs-3">';
+        html += '                           <p class="text-default">' + voca.ExReading1 + '</p>';
+        html += '                       </div>';
+        html += '                       <div class="col-md-3 col-xs-3">';
+        html += '                           <p class="text-default">' + voca.ExVMeaning1 + '</p>';
+        html += '                       </div>';
+        html += '                   </div>';
+        html += '                   <div class="row">';
+        html += '                       <div class="col-md-2 col-xs-3">';
+        html += '                           <p class="text-default"><a href="#" class="drawKanji" data-toggle="tooltip" title="Nhấp để xem cách viết" onclick="drawKanji(event, this);">' + voca.ExKanji2 + '</a></p>';
+        html += '                       </div>';
+        html += '                       <div class="col-md-2 col-xs-3">';
+        html += '                           <p class="text-default">' + voca.ExReading2 + '</p>';
+        html += '                       </div>';
+        html += '                       <div class="col-md-3 col-xs-3">';
+        html += '                           <p class="text-default">' + voca.ExVMeaning2 + '</p>';
+        html += '                       </div>';
+        html += '                   </div>';
+        html += '                   <div class="row">';
+        html += '                       <div class="col-md-2 col-xs-3">';
+        html += '                           <p class="text-default"><a href="#" class="drawKanji" data-toggle="tooltip" title="Nhấp để xem cách viết" onclick="drawKanji(event, this);">' + voca.ExKanji3 + '</a></p>';
+        html += '                       </div>';
+        html += '                       <div class="col-md-2 col-xs-3">';
+        html += '                           <p class="text-default">' + voca.ExReading3 + '</p>';
+        html += '                       </div>';
+        html += '                       <div class="col-md-3 col-xs-3">';
+        html += '                           <p class="text-default">' + voca.ExVMeaning3 + '</p>';
+        html += '                       </div>';
+        html += '                   </div>';
+        html += '               </div>';
+        html += '           </div>';
+
+        html += '           <div class="row">';
+        html += '               <div class="col-md-2 col-xs-2">';
+        html += '               </div>';
+        html += '               <div class="col-md-2 col-xs-10">';
+        html += '                   <button onclick="draw();" class="btn btn-default" data-toggle="tooltip" title="Nhấp để xem cách viết (Ctrl-D)">Cách viết</button>';
+        html += '               </div>';
+        html += '               <div class="col-md-6">';
+        html += '                   <div class="col-md-10 col-xs-10" id="draw"></div>';
+        html += '               </div>';
+        html += '               <div class="col-md-1 hidden">';
+        html += '                   <label class="radio-inline"><input type="radio" name="rdoDraw" id="rdoKanji" checked="checked">Kanji</label>';
+        html += '               </div>';
+        html += '           </div>';
+        //html += '           <div class="row">';
+        //html += '               <div class="col-md-2 col-xs-2">';
+        //html += '               </div>';
+        //html += '               <div class="col-md-10 col-xs-10" id="draw"></div>';
+        //html += '           </div>';
+    }
+    else {
+        html += '           <div class="row">';
+        html += '               <div class="col-lg-4 col-md-4 hidden-xs hidden-sm">';
+        html += '                   <img class="img-responsive" src="' + getLink(voca.UrlImage) + '" alt="Từ vựng tiếng Nhật" style="height: 300px" />';
+        html += '               </div>';
+        html += '               <div class="col-lg-8 col-md-8">';
+        html += '                   <div class="row">';
+        html += '                       <div class="col-xs-2">';
+        html += '                       </div>';
+        html += '                       <div class="col-md-12 col-xs-10">';
+        html += '                           <h4><a href="#" onclick="speak(\'' + voca.UrlAudio + '\'); return false;" data-toggle="tooltip" title="Nhấp để nghe đọc"><p class="text-info zoom-content-learning">' + voca.Hiragana + '</p></a></h4>';
+        if (voca.Hiragana != '') {
+            html += '                       <p class="text-default">' + voca.Romaji;
+        }
+        html += '                           <h4><a href="#" onclick="speak(\'' + voca.UrlAudio_Katakana + '\'); return false;" data-toggle="tooltip" title="Nhấp để nghe đọc"><p class="text-info zoom-content-learning">' + voca.Katakana + '</p></a></h4>';
+        if (voca.Katakana != '') {
+            html += '                       <p class="text-default">' + voca.Romaji_Katakana;
+        }
+        html += '                           <h4><a href="#" onclick="speak(\'' + voca.UrlAudio + '\'); return false;" data-toggle="tooltip" title="Nhấp để nghe đọc"><p class="text-info zoom-content-learning">' + voca.Kanji + '</p></a></h4>';
+
+        //    //html += '                   <span class="selected glyphicon glyphicon-volume-up" aria-hidden="true" onclick="speak(\'' + voca.UrlAudio + '\');"></span>';
+        //html += '                   </p>';
+        html += '                           <p class="text-default">' + voca.VMeaning + '</p>';
+        html += '                       </div>';
+        html += '                   </div>';
+        html += '                   <hr class="divider" />';
+        html += '                   <div class="row">';
+        html += '                       <div class="col-xs-2">';
+        html += '                       </div>';
+        html += '                       <div class="col-md-12 col-xs-10">';
+        html += '                           <button onclick="draw();" class="btn btn-default" data-toggle="tooltip" title="Nhấp để xem cách viết (Ctrl-D)">Cách viết</button>';
+        var hiraChecked = (voca.DisplayType == "1") ? "checked = 'checked'" : "";
+        var kataChecked = (voca.DisplayType == "2") ? "checked = 'checked'" : "";
+        var kanjiChecked = (voca.DisplayType == "3") ? "checked = 'checked'" : "";
+        html += '                           <label class="radio-inline"><input type="radio" name="rdoDraw" id="rdoHiragana" ' + hiraChecked + '">Hiragana</label>';
+        html += '                           <label class="radio-inline"><input type="radio" name="rdoDraw" id="rdoKatakana" ' + kataChecked + '">Katakana</label>';
+        html += '                           <label class="radio-inline"><input type="radio" name="rdoDraw" id="rdoKanji" "' + kanjiChecked + '">Kanji</label>';
+        html += '                       </div>';
+        html += '                   </div>';
+        html += '                   <div class="row">';
+        html += '                       <div class="col-md-12" id="draw"></div>';
+        html += '                   </div>';
+        html += '               </div>';
+        html += '           </div>';
+    }
+    html += '       </div>';
+    //html += '       <a id="flashPre" class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">';
+    //html += '           <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>';
+    //html += '           <span class="sr-only">Previous</span>';
+    //html += '       </a>';
+    //html += '       <a id="flashNext" class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">';
+    //html += '           <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">';
+    //html += '           </span><span class="sr-only">Next</span>';
+    //html += '       </a>';
+    html += '   </div>';
+    html += '</div>';
 
     return html;
 };
@@ -1599,7 +1553,7 @@ function searchVoca(index) {
 
 
 function draw() {
-    var voca = vocas[currentIndex];
+    var voca = voca;
     //        speak(voca.UrlAudio);
 
     $('#draw').html('');
@@ -1607,6 +1561,9 @@ function draw() {
     if (voca != null) {
         if ($('#rdoHiragana').is(':checked') && voca.Hiragana != '') {
             text = voca.Hiragana;
+            //var dmak = new Dmak(voca.Hiragana, {
+            //    'element': "draw"
+            //});
         }
         else if ($('#rdoKatakana').is(':checked') && voca.Katakana != '') {
             text = voca.Katakana;
@@ -1622,24 +1579,4 @@ function draw() {
 
 function showDrawing() {
     $('#modalDraw').modal();
-}
-
-function mark() {
-    var obj = $('#mark');
-    if (obj.attr('data-value') == 'unmarked') {
-        obj.animate().replaceWith("<div id='mark' data-value='marked'><span class='fa fa-book'></span></div>");
-    }
-    else {
-        obj.animate().replaceWith("<div id='mark' data-value='unmarked'><span class='fa fa-plus'></span></div>");
-    }
-}
-
-function ignore() {
-    var obj = $('#ignore');
-    if (obj.attr('data-value') == 'unmarked') {
-        obj.animate().replaceWith("<div id='ignore' data-value='marked'><span class='fa fa-unlock-alt'></span></div>");
-    }
-    else {
-        obj.animate().replaceWith("<div id='ignore' data-value='unmarked'><span class='fa fa-trash'></span></div>");
-    }
 }
