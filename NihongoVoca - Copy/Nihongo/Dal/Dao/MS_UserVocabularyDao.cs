@@ -24,7 +24,7 @@ namespace Nihongo.Dal.Dao
                            join ss in ms_vocabularies on de.VocabularyID equals ss.ID
 
                            where vs.ID == model.VocaSetID && ss.Type == model.Type && us.UserID == model.UserID
-
+                            && us.IsIgnore != CommonData.Status.Enable
                            orderby vc.LineNumber ascending, us.Level ascending, us.NumOfWrong descending, de.LineNumber ascending
 
                            select new MS_UserVocabulariesModels
@@ -34,6 +34,7 @@ namespace Nihongo.Dal.Dao
                                UserID = us.UserID,
                                Level = us.Level,
                                HasLearnt = us.HasLearnt,
+                               IsIgnore = us.IsIgnore,
                                //Update_Date = us.Update_Date,
                                NumOfWrong = us.NumOfWrong ?? 0,
                                HasMarked = us.HasMarked,
@@ -97,7 +98,7 @@ namespace Nihongo.Dal.Dao
                            join ss in ms_vocabularies on de.VocabularyID equals ss.ID
 
                            where vs.ID == model.VocaSetID && ss.Type == model.Type && us.UserID == model.UserID
-
+                                && us.IsIgnore != CommonData.Status.Enable
                            orderby us.HasLearnt descending, us.Level ascending, us.NumOfWrong descending
 
                            select new MS_UserVocabulariesModels
@@ -107,6 +108,7 @@ namespace Nihongo.Dal.Dao
                                UserID = us.UserID,
                                Level = us.Level,
                                HasLearnt = us.HasLearnt,
+                               IsIgnore = us.IsIgnore,
                                //Update_Date = us.Update_Date,
                                HasMarked = us.HasMarked,
                                //voca detail
@@ -174,6 +176,8 @@ namespace Nihongo.Dal.Dao
 
                            join us in userVoca on de.ID equals us.VocaDetailID into usv
                            from us in usv.DefaultIfEmpty()
+
+                           where us.IsIgnore != CommonData.Status.Enable
 
                            orderby de.LineNumber
                            select new MS_UserVocabulariesModels
@@ -720,6 +724,8 @@ namespace Nihongo.Dal.Dao
                         if (voca != null)
                         {
                             voca.HasLearnt = CommonData.Status.Enable;
+                            voca.HasMarked = vo.HasMarked;
+                            voca.IsIgnore = vo.IsIgnore;
                             voca.UpdatedDate = DateTime.Now;
                             voca.Level = vo.Level;
                             voca.NumOfWrong = (voca.NumOfWrong ?? 0) + vo.NumOfWrong;
@@ -792,7 +798,7 @@ namespace Nihongo.Dal.Dao
                             if (usVoca.Level > 0)
                             {
                                 int minutes = (DateTime.Now - usVoca.UpdatedDate.Value).Minutes;
-                                int hours = minutes * 60;
+                                int hours = minutes / 60;
                                 usVoca.Level -= (hours / 12);
                                 if (usVoca.Level < 0)
                                 {

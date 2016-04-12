@@ -37,6 +37,7 @@ namespace Nihongo.Models
         public string Kanji { get; set; }
         public string HasLearnt { get; set; }
         public string HasMarked { get; set; }
+        public string IsIgnore { get; set; }
         public int NumOfWrong { get; set; }
         public string VocaGetType { get; set; }
         public string Pinyin { get; set; }

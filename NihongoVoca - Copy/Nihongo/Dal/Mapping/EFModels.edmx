@@ -241,6 +241,7 @@
           <Property Name="UpdatedDate" Type="datetime" />
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="NumOfWrong" Type="int" />
+          <Property Name="IsIgnore" Type="nvarchar" MaxLength="1" />
         </EntityType>
         <EntityType Name="ms_vocabularies">
           <Key>
@@ -865,6 +866,7 @@
           <NavigationProperty Name="ms_users" Relationship="Models.FK_msuservocabularies_UserID_msusers_ID" FromRole="ms_uservocabularies" ToRole="ms_users" />
           <NavigationProperty Name="ms_vocabularydetails" Relationship="Models.FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID" FromRole="ms_uservocabularies" ToRole="ms_vocabularydetails" />
           <Property Type="Int32" Name="NumOfWrong" />
+          <Property Type="String" Name="IsIgnore" MaxLength="1" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ms_vocabularies">
           <Key>
@@ -1380,6 +1382,7 @@
           <EntitySetMapping Name="ms_uservocabularies">
             <EntityTypeMapping TypeName="Models.ms_uservocabularies">
               <MappingFragment StoreEntitySet="ms_uservocabularies">
+                <ScalarProperty Name="IsIgnore" ColumnName="IsIgnore" />
                 <ScalarProperty Name="NumOfWrong" ColumnName="NumOfWrong" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />

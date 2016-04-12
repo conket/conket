@@ -66,7 +66,7 @@
                 <ul class="nav navbar-nav search-nav">
                     <li>
                         <div class="search">
-                            <img src="~/images/conket1.jpg" class="img-circle icon-conket" alt="user name" />
+                            <img src="~/images/conket1.jpg" class="img-circle icon-conket" alt="tu-vung-tieng-nhat" />
                         </div>
                     </li>
                 </ul>
@@ -74,7 +74,7 @@
                     <b>CONKET</b>
                 </a>
                 
-                <ul class="nav navbar-nav search-nav">
+                @*<ul class="nav navbar-nav search-nav">
                     <li>
                         <div class="search">
                             <span class="fa fa-search icon-search" style="font-size: 23px;"></span>
@@ -85,7 +85,7 @@
                             </div>
                         </div>
                     </li>
-                </ul>
+                </ul>*@
 
                 <ul class="nav navbar-nav navbar-right user-nav">
                     <li class="user-name"><span>@Session["DisplayName"]</span></li>
@@ -95,12 +95,12 @@
                             @if (Ivs.Core.Common.CommonMethod.ParseString(Session["IsAdmin"]) == Ivs.Core.Common.CommonData.Status.Enable)
                             {
                                 <li><a href='@Href("~/Account/Admin/")@Session["UserID"]'>
-                                    <i class="fa fa-gear fa-fw"></i>Quản trị</a> </li>
+                                    <span class="fa fa-gear fa-fw"></span> Quản trị</a> </li>
                                 <li role="separator" class="divider"></li>
                             }
-                            <li><a href='@Href("~/Account/HomePage/")@Session["UserID"]'><span class="fa fa-user"></span>Trang Cá Nhân</a></li>
+                            <li><a href='@Href("~/Account/HomePage/")@Session["UserID"]'><span class="fa fa-user"></span> Trang Cá Nhân</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href='@Href("~/Account/Logout")' id="btnLogout"><span class="fa fa-user"></span>Đăng xuất</a></li>
+                            <li><a href='@Href("~/Account/Logout")' id="btnLogout"><span class="fa fa-user"></span> Đăng xuất</a></li>
                             <li class="more">
                                 <ul>
                                     <li><a href=""><span class="fa fa-cogs"></span></a></li>
@@ -130,7 +130,7 @@
                         <p class="animated fadeInRight">Sat,October 1st 2029</p>
                     </li>
                     <li class="active ripple">
-                        <a href="@Url.Action("HomePage", "Account")" class=" nav-header"><span class="fa-home fa"></span>Trang Chủ 
+                        <a href="@Url.Action("HomePage", "Account")" class=" nav-header"><span class="fa-home fa"></span>Trang Cá Nhân 
                        
                             @*<span class="fa-angle-right fa right-arrow text-right"></span>*@
                         </a>

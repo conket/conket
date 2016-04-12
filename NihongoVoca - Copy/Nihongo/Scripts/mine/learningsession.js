@@ -16,6 +16,8 @@ var isPractice = true;
 var currentIndex = 0;
 var quizzVoca = [];
 
+var maxLevel = 10;
+
 $(document).ready(function () {
 
     window.onbeforeunload = function confirmExit() {
@@ -24,6 +26,10 @@ $(document).ready(function () {
             return "Kết quả bài học sẽ không được ghi nhận nếu bạn thoát khỏi trang";
         }
     }
+
+    //
+    $('.result').hide();
+    $('.lesson').show();
 
     var f = new Audio('/Content/media/fail.wav');
     f.load();
@@ -146,12 +152,16 @@ function updateTestResult() {
 
 
 function getTestVocas() {
+    $('.result').hide();
+    $('.lesson').show();
+
     vocas = [];
     totalLevel = 0;
     currentLevel = 0;
     isPractice = true;
     currentIndex = 0;
     //        failArray = [];
+    showProgress()
 
     $.ajax({
         cache: true,
@@ -213,12 +223,16 @@ function getTestVocas() {
 
 
 function getPracticeVocas() {
+    $('.result').hide();
+    $('.lesson').show();
+
     vocas = [];
     totalLevel = 0;
     currentLevel = 0;
     isPractice = true;
     currentIndex = 0;
     //        failArray = [];
+    showProgress()
 
     $.ajax({
         cache: true,
@@ -483,6 +497,16 @@ function checkInput() {
                     quizzVoca.NumOfWrong += 1;
                     //inCorrectVocas.push(voca);
 
+                    var level = parseInt(quizzVoca.Level) - 1;
+                    if (level < 0) {
+                        level = 0;
+                    }
+                    quizzVoca.Level = level;
+
+                    currentLevel -= 1;
+                    if (level < 0) {
+                        currentLevel += 1;
+                    }
                 }
                 else {
                     //speak corrent voca
@@ -548,37 +572,7 @@ function checkInput() {
 
                 }
                 else {
-                    currentIndex++;
-                    if (currentIndex == vocas.length) {
-                        currentIndex = 0;
-                    }
-                    while (currentIndex < vocas.length && vocas[currentIndex].Level == 4) {
-                        currentIndex++;
-                    }
-
-                    if (currentIndex < vocas.length) {
-
-                        quizzVoca = createQuizz(currentIndex);
-                        if (quizzVoca.HasLearnt == "1") {
-                            isPractice = true;
-                        }
-                        else if (quizzVoca.Level == "0") {
-                            isPractice = false;
-                        }
-                        else if (quizzVoca.Level < 10) {
-                            isPractice = true;
-                        }
-                        else {
-                            isPractice = false;
-                        }
-
-                        showFlashCard(quizzVoca, false);
-
-                        if (isPractice) {
-                            showProgress();
-                        }
-                    }
-                    else {
+                    if (isFinish()) {
                         //show result
                         currentIndex = -1;
                         currentLevel = totalLevel;
@@ -586,12 +580,64 @@ function checkInput() {
 
                         showResultPage();
                         showProgress();
-                        
+
                         //update result
                         isPass = (correctVocas.length >= vocas.length * 8 / 10) ? true : false;
                         updateTestResult();
                     }
+                    else {
+                        if (isAllLearnt()) {
+                            currentIndex = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                            while (vocas[currentIndex].Level == maxLevel) {
+                                currentIndex = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                            }
+                        }
+                        else {
+                            currentIndex++;
+                            if (currentIndex == vocas.length) {
+                                currentIndex = 0;
+                            }
+                            while (currentIndex < vocas.length && vocas[currentIndex].Level == maxLevel) {
+                                currentIndex++;
+                            }
+                        }
 
+                        if (currentIndex < vocas.length) {
+
+                            quizzVoca = createQuizz(currentIndex);
+                            if (quizzVoca.HasLearnt == "1") {
+                                isPractice = true;
+                            }
+                            else if (quizzVoca.Level == "0") {
+                                isPractice = false;
+                            }
+                            else if (quizzVoca.Level < 10) {
+                                isPractice = true;
+                            }
+                            else {
+                                isPractice = false;
+                            }
+
+                            showFlashCard(quizzVoca, false);
+
+                            if (isPractice) {
+                                showProgress();
+                            }
+                        }
+                        //else {
+                        //    //show result
+                        //    currentIndex = -1;
+                        //    currentLevel = totalLevel;
+                        //    //showFlashCard(-1, false);
+
+                        //    showResultPage();
+                        //    showProgress();
+
+                        //    //update result
+                        //    isPass = (correctVocas.length >= vocas.length * 8 / 10) ? true : false;
+                        //    updateTestResult();
+                        //}
+                    }
                 }
                 //}
                 //else {
@@ -628,6 +674,30 @@ function checkInput() {
 
 }
 
+function isAllLearnt() {
+    var result = true;
+    for (var i = 0; i < vocas.length; i++) {
+        if (vocas[i].HasLearnt == '0') {
+            result = false;
+            break;
+        }
+    }
+    return result;
+}
+
+function isFinish() {
+    var result = true;
+    for (var i = 0; i < vocas.length; i++) {
+        //console.log(vocas[i].Hiragana +  ' - '+ vocas[i].HasLearnt + ' - ' + vocas[i].Level);
+        if (vocas[i].HasLearnt == '0' || vocas[i].Level < maxLevel) {
+            result = false;
+            break;
+        }
+    }
+    //console.log(result);
+    return result;
+}
+
 function sleep(milliseconds) {
     var start = new Date().getTime();
     for (var i = 0; i < 1e7; i++) {
@@ -638,10 +708,10 @@ function sleep(milliseconds) {
 }
 
 function showProgress() {
-    var progressHtml = '<div class="progress-bar" role="progressbar" aria-valuenow="' + (currentLevel)
+    var progressHtml = '<div class="progress-bar progress-bar-primary progress-bar-striped active" role="progressbar" aria-valuenow="' + (currentLevel)
                     + '" aria-valuemin="0" '
                     + '" aria-valuemax="' + (totalLevel)
-                    + '" style="width: ' + (totalLevel == 0 ? 0 : (currentLevel / totalLevel * 100)) + '%; min-width: 2em;">'
+                    + '" style="width: ' + (totalLevel == 0 ? 0 : (currentLevel / totalLevel * 100)) + '%;">'
                     //+ (index + 1) + '/' + (vocas.length)
                     + '</div>';
     $('#progress').html(progressHtml);
@@ -656,69 +726,101 @@ function showResultPage()
     //result
     var numOfOK = parseInt(vocas.length * 8 / 10);
     var html = '';
-    html += '<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">';
-    html += '   <div class="carousel-inner" role="listbox">';
-    html += '       <div class="item active">';
+
+    //html += '<div class="col-md-12 padding-0">';
+    //html += '   <button class="btn ripple btn-outline btn-primary require-login" onclick="location.reload(true);">';
+    //html += '   <div><span><strong>TIẾP TỤC</strong></span><span class="ink animate" ></span>';
+    //html += '   </div>';
+    //html += '   </button>';
+    //html += '</div>';
+    //html += '<div class="col-md-12 padding-0">';
+    //html += '   <button class="btn ripple btn-outline btn-primary require-login" onclick="getPracticeVocas(); return false;">';
+    //html += '   <div><span><strong>ÔN TẬP</strong></span><span class="ink animate" ></span>';
+    //html += '   </div>';
+    //html += '   </button>';
+    //html += '</div>';
+    //html += '<div class="col-md-12 padding-0">';
+    //html += '   <button class="btn ripple btn-outline btn-primary require-login" onclick="getNotebookVocas(); return false;">';
+    //html += '   <div><span><strong>ÔN SỔ TAY</strong></span><span class="ink animate" ></span>';
+    //html += '   </div>';
+    //html += '   </button>';
+    //html += '</div>';
+
+    //html += '<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">';
+    //html += '   <div class="carousel-inner" role="listbox">';
+    //html += '       <div class="item active">';
+    ////html += '           <div class="row text-center">';
+    //////            html += '               <div class="col-lg-4 col-md-4 col-xs-6">';
+    //////            html += '                   <img class="img-rounded" src="' + getLink(voca.UrlImage) + '" alt="Từ vựng tiếng Nhật" height="300px" width="100%"/>';
+    //////            html += '               </div>';
+    ////html += '               <div class="col-lg-12">';
+    ////html += '                   <p class="text-info">Số câu đúng: ' + correctVocas.length + '/' + vocas.length + '</p>';
+    ////html += '                   <p class="text-info">Thời gian hoàn thành: ' + completedTime + ' giây</p>';
+    ////html += '                   <p class="text-info">Kết quả: ' + (correctVocas.length >= numOfOK ? "Chúc mừng bạn đã vượt qua được bài kiểm tra" : "Bạn đã không vượt qua được bài kiểm tra. Hãy ôn lại") + '</p>';
+    ////html += '               </div>';
+    ////html += '           </div>';
+    //html += '           </br>';
     //html += '           <div class="row text-center">';
-    ////            html += '               <div class="col-lg-4 col-md-4 col-xs-6">';
-    ////            html += '                   <img class="img-rounded" src="' + getLink(voca.UrlImage) + '" alt="Từ vựng tiếng Nhật" height="300px" width="100%"/>';
-    ////            html += '               </div>';
     //html += '               <div class="col-lg-12">';
-    //html += '                   <p class="text-info">Số câu đúng: ' + correctVocas.length + '/' + vocas.length + '</p>';
-    //html += '                   <p class="text-info">Thời gian hoàn thành: ' + completedTime + ' giây</p>';
-    //html += '                   <p class="text-info">Kết quả: ' + (correctVocas.length >= numOfOK ? "Chúc mừng bạn đã vượt qua được bài kiểm tra" : "Bạn đã không vượt qua được bài kiểm tra. Hãy ôn lại") + '</p>';
+    //html += '                   <a class="btn btn-navigator btn-lg require-login" href="#" onclick="location.reload(true); return false;">HỌC TIẾP</a>';
+    //html += '                   <a class="btn btn-navigator btn-lg require-login" href="#" onclick="getPracticeVocas(); return false;">ÔN TẬP</a>';
+    ////if (correctVocas.length < numOfOK) {
+    ////    //html += '                   <a href="#" role="button" class="btn btn-navigator btn-lg" onclick="showResult(0); return false;">Xem kết quả</a>';
+    ////    html += '                   <a href="' + urlLearning + '" role="button" class="btn btn-navigator btn-lg" >Ôn lại</a>';
+    ////}
+    ////else {
+    ////    //html += '                   <a href="#" role="button" class="btn btn-navigator btn-lg" onclick="showResult(0); return false;">Xem kết quả</a>';
+    ////    html += '                   <a href="' + urlVoca + '" class="btn btn-navigator btn-lg" role="button" >Trở về</a>';
+    ////}
     //html += '               </div>';
     //html += '           </div>';
-    html += '           </br>';
-    html += '           <div class="row text-center">';
-    html += '               <div class="col-lg-12">';
-    html += '                   <a class="btn btn-navigator btn-lg require-login" href="#" onclick="location.reload(true); return false;">HỌC TIẾP</a>';
-    html += '                   <a class="btn btn-navigator btn-lg require-login" href="#" onclick="getPracticeVocas(); return false;">ÔN TẬP</a>';
-    //if (correctVocas.length < numOfOK) {
-    //    //html += '                   <a href="#" role="button" class="btn btn-navigator btn-lg" onclick="showResult(0); return false;">Xem kết quả</a>';
-    //    html += '                   <a href="' + urlLearning + '" role="button" class="btn btn-navigator btn-lg" >Ôn lại</a>';
-    //}
-    //else {
-    //    //html += '                   <a href="#" role="button" class="btn btn-navigator btn-lg" onclick="showResult(0); return false;">Xem kết quả</a>';
-    //    html += '                   <a href="' + urlVoca + '" class="btn btn-navigator btn-lg" role="button" >Trở về</a>';
-    //}
-    html += '               </div>';
-    html += '           </div>';
-    html += '           </br>';
-    html += '           <div class="row text-center">';
-    html += '               <div class="col-lg-12">';
-    html += '                   <a class="btn btn-navigator btn-lg require-login" href="' + urlLearning + '">ÔN SỔ TAY</a>';
-    html += '                   <a class="btn btn-navigator btn-lg require-login" href="' + urlVoca + '">TRỞ VỀ</a>';
-    html += '               </div>';
-    html += '           </div>';
-    html += '           <hr>';
-    html += '           <div class="row">';
-    html += '               <div class="col-lg-2">';
-    html += '               </div>';
-    html += '               <div class="col-lg-8">';
-    html += '                   <h3><label>CÁC TỪ VỪA HỌC</label></h3>';
-    html += '<table class="table table-condensed table-hover">';
+    //html += '           </br>';
+    //html += '           <div class="row text-center">';
+    //html += '               <div class="col-lg-12">';
+    //html += '                   <a class="btn btn-navigator btn-lg require-login" href="' + urlLearning + '">ÔN SỔ TAY</a>';
+    //html += '                   <a class="btn btn-navigator btn-lg require-login" href="' + urlVoca + '">TRỞ VỀ</a>';
+    //html += '               </div>';
+    //html += '           </div>';
+    //html += '           <hr>';
+    //html += '           <div class="row">';
+    //html += '               <div class="col-lg-2">';
+    //html += '               </div>';
+    //html += '               <div class="col-lg-8">';
+    //html += '                   <h3><label>CÁC TỪ VỪA HỌC</label></h3>';
+    //html += '<table class="table table-condensed table-hover">';
+    
+    $('#tblLearntWord').html('');
     for (var i = 0; i < vocas.length; i++) {
-        html += '<tr>';
-        html += '<td><strong>' + (i + 1) + '</strong></td>';
-        html += '<td>' + (vocas[i].DisplayType == '1' ? vocas[i].Hiragana : vocas[i].Katakana) + '</td>';
-        html += '<td>' + vocas[i].Kanji + '</td>';
-        html += '<td>' + vocas[i].VMeaning + '</td>';
-        html += '<td>' + vocas[i].Level + '</td>';
-        html += '</tr>';
+        var row = '';
+        row += '<tr>';
+        row += '<td><strong>' + (i + 1) + '</strong></td>';
+        row += '<td>' + (vocas[i].DisplayType == '1' ? vocas[i].Hiragana : vocas[i].Katakana) + '</td>';
+        row += '<td>' + (vocas[i].DisplayType == '1' ? vocas[i].Romaji : vocas[i].Romaji_Katakana) + '</td>';
+        row += '<td>' + vocas[i].Kanji + '</td>';
+        row += '<td>' + vocas[i].VMeaning + '</td>';
+
+        var levelPercent = vocas[i].Level / 10 * 100;
+        row += '<td>';
+        row += '<div class="progress progress-small">';
+        row += '    <div class="progress-bar progress-bar-' + (levelPercent == 100 ? 'primary' : 'danger') + '" role="progressbar" aria-valuenow="' + levelPercent + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + levelPercent + '%"></div>';
+        row += '</div>';
+        row += '</td>';
+        row += '</tr>';
+        $('#tblLearntWord').append(row);
     }
-    html += '</table>';
-    html += '               </div>';
-    html += '               <div class="col-lg-2">';
-    html += '               </div>';
-    html += '           </div>';
-    html += '       </div>';
-    html += '   </div>';
-    html += '</div>';
+    //html += '</table>';
+    //html += '               </div>';
+    //html += '               <div class="col-lg-2">';
+    //html += '               </div>';
+    //html += '           </div>';
+    //html += '       </div>';
+    //html += '   </div>';
+    //html += '</div>';
 
-    $('#flashCard').html(html);
-    $('#btnNext').hide();
+    //$('#flashCard').html(html);
 
+    $('.result').show();
+    $('.lesson').hide();
 }
 
 function showFlashCard(index, voice) {
@@ -880,7 +982,7 @@ function createQuizz(index) {
             item.ResultUrlAudio1 = item.UrlAudio;
 
             while (item.VocabularyCode == vocas[n2].VocabularyCode) {
-                n2 = Math.floor((Math.random() * (vocas.length - 1)) + 0);
+                n2 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
             }
             item.Hiragana2 = vocas[n2].Hiragana;
             item.Katakana2 = vocas[n2].Katakana;
@@ -897,7 +999,7 @@ function createQuizz(index) {
             item.ResultUrlAudio2 = vocas[n2].UrlAudio;
 
             while (item.VocabularyCode == vocas[n3].VocabularyCode || vocas[n2].VocabularyCode == vocas[n3].VocabularyCode) {
-                n3 = Math.floor((Math.random() * (vocas.length - 1)) + 0);
+                n3 = Math.floor((Math.random() * (vocas.length)) + 1);
             }
             item.Hiragana3 = vocas[n3].Hiragana;
             item.Katakana3 = vocas[n3].Katakana;
@@ -914,7 +1016,7 @@ function createQuizz(index) {
             item.ResultUrlAudio3 = vocas[n3].UrlAudio;
 
             while (item.VocabularyCode == vocas[n4].VocabularyCode || vocas[n2].VocabularyCode == vocas[n4].VocabularyCode || vocas[n3].VocabularyCode == vocas[n4].VocabularyCode) {
-                n4 = Math.floor((Math.random() * (vocas.length - 1)) + 0);
+                n4 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
             }
             item.Hiragana4 = vocas[n4].Hiragana;
             item.Katakana4 = vocas[n4].Katakana;
@@ -950,7 +1052,7 @@ function createQuizz(index) {
             item.ResultUrlAudio2 = item.UrlAudio;
 
             while (item.VocabularyCode == vocas[n2].VocabularyCode) {
-                n2 = Math.floor((Math.random() * (vocas.length - 1)) + 0);
+                n2 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
             }
             item.Hiragana1 = vocas[n2].Hiragana;
             item.Katakana1 = vocas[n2].Katakana;
@@ -967,7 +1069,7 @@ function createQuizz(index) {
             item.ResultUrlAudio1 = vocas[n2].UrlAudio;
 
             while (item.VocabularyCode == vocas[n3].VocabularyCode || vocas[n2].VocabularyCode == vocas[n3].VocabularyCode) {
-                n3 = Math.floor((Math.random() * (vocas.length - 1)) + 0);
+                n3 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
             }
             item.Hiragana3 = vocas[n3].Hiragana;
             item.Katakana3 = vocas[n3].Katakana;
@@ -984,7 +1086,7 @@ function createQuizz(index) {
             item.ResultUrlAudio3 = vocas[n3].UrlAudio;
 
             while (item.VocabularyCode == vocas[n4].VocabularyCode || vocas[n2].VocabularyCode == vocas[n4].VocabularyCode || vocas[n3].VocabularyCode == vocas[n4].VocabularyCode) {
-                n4 = Math.floor((Math.random() * (vocas.length - 1)) + 0);
+                n4 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
             }
             item.Hiragana4 = vocas[n4].Hiragana;
             item.Katakana4 = vocas[n4].Katakana;
@@ -1020,7 +1122,7 @@ function createQuizz(index) {
             item.ResultUrlAudio3 = item.UrlAudio;
 
             while (item.VocabularyCode == vocas[n2].VocabularyCode) {
-                n2 = Math.floor((Math.random() * (vocas.length - 1)) + 0);
+                n2 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
             }
             item.Hiragana1 = vocas[n2].Hiragana;
             item.Katakana1 = vocas[n2].Katakana;
@@ -1037,7 +1139,7 @@ function createQuizz(index) {
             item.ResultUrlAudio1 = vocas[n2].UrlAudio;
 
             while (item.VocabularyCode == vocas[n3].VocabularyCode || vocas[n2].VocabularyCode == vocas[n3].VocabularyCode) {
-                n3 = Math.floor((Math.random() * (vocas.length - 1)) + 0);
+                n3 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
             }
             item.Hiragana2 = vocas[n3].Hiragana;
             item.Katakana2 = vocas[n3].Katakana;
@@ -1054,7 +1156,7 @@ function createQuizz(index) {
             item.ResultUrlAudio2 = vocas[n3].UrlAudio;
 
             while (item.VocabularyCode == vocas[n4].VocabularyCode || vocas[n2].VocabularyCode == vocas[n4].VocabularyCode || vocas[n3].VocabularyCode == vocas[n4].VocabularyCode) {
-                n4 = Math.floor((Math.random() * (vocas.length - 1)) + 0);
+                n4 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
             }
             item.Hiragana4 = vocas[n4].Hiragana;
             item.Katakana4 = vocas[n4].Katakana;
@@ -1090,7 +1192,7 @@ function createQuizz(index) {
             }
 
             while (item.VocabularyCode == vocas[n2].VocabularyCode) {
-                n2 = Math.floor((Math.random() * (vocas.length - 1)) + 0);
+                n2 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
             }
             item.Hiragana1 = vocas[n2].Hiragana;
             item.Katakana1 = vocas[n2].Katakana;
@@ -1107,7 +1209,7 @@ function createQuizz(index) {
             item.ResultUrlAudio1 = vocas[n2].UrlAudio;
 
             while (item.VocabularyCode == vocas[n3].VocabularyCode || vocas[n2].VocabularyCode == vocas[n3].VocabularyCode) {
-                n3 = Math.floor((Math.random() * (vocas.length - 1)) + 0);
+                n3 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
             }
             item.Hiragana2 = vocas[n3].Hiragana;
             item.Katakana2 = vocas[n3].Katakana;
@@ -1124,7 +1226,7 @@ function createQuizz(index) {
             item.ResultUrlAudio2 = vocas[n3].UrlAudio;
 
             while (item.VocabularyCode == vocas[n4].VocabularyCode || vocas[n2].VocabularyCode == vocas[n4].VocabularyCode || vocas[n3].VocabularyCode == vocas[n4].VocabularyCode) {
-                n4 = Math.floor((Math.random() * (vocas.length - 1)) + 0);
+                n4 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
             }
             item.Hiragana3 = vocas[n4].Hiragana;
             item.Katakana3 = vocas[n4].Katakana;
@@ -1277,30 +1379,61 @@ function showLearning(voca) {
     var html = '';
 
     html += '<div class="col-md-12 padding-0">';
-    html += '   <div class="col-md-4 hidden-xs hidden-sm">';
+    html += '   <div class="col-lg-4 col-md-4 hidden-xs hidden-sm">';
     html += '       <img class="img-responsive" src="' + getLink(voca.UrlImage) + '" alt="Từ vựng tiếng Nhật"  style="height: 250px">';
     html += '   </div>';
     if (voca.Hiragana != '') {
-        html += '   <div class="col-md-6"><h3><strong>' + voca.Hiragana + '  </strong><a href="#" onclick="speak(\'' + voca.UrlAudio + '\'); return false;"><i class="fa fa-volume-up"></i></a></h3>';
+        html += '   <div class="col-lg-7 col-md-7 col-xs-10"><h3><strong>' + voca.Hiragana + '  </strong><a href="#" onclick="speak(\'' + voca.UrlAudio + '\'); return false;"><i class="fa fa-volume-up"></i></a></h3>';
         html += '       <p><strong>' + voca.Romaji + '</strong></p>';
     }
     else if (voca.Katakana != '') {
-        html += '   <div class="col-md-6"><h3><strong>' + voca.Katakana + '  </strong><a href="#" onclick="speak(\'' + voca.UrlAudio_Katakana + '\'); return false;"><i class="fa fa-volume-up"></i></a></h3>';
+        html += '   <div class="col-lg-7 col-md-7 col-xs-10"><h3><strong>' + voca.Katakana + '  </strong><a href="#" onclick="speak(\'' + voca.UrlAudio_Katakana + '\'); return false;"><i class="fa fa-volume-up"></i></a></h3>';
         html += '       <p><strong>' + voca.Romaji_Katakana + '</strong></p>';
     }
     html += '       <h3><strong>' + voca.Kanji + '</strong></h3>';
     html += '       <h4><strong>' + voca.VMeaning + '</strong></h4>';
     html += '   </div>';
-    html += '   <div class="col-md-2 text-right">';
-    html += '       <button class=" btn btn-circle btn-outline btn-sm btn-default" value="primary" onclick="mark();">';
-    html += '           <div id="mark" data-value="unmarked"><span class="fa fa-plus"></span>';
-    html += '           </div>';
-    html += '       </button>';
-    html += '       <button class=" btn btn-circle btn-outline btn-sm btn-default" value="primary" onclick="ignore();">';
-    html += '           <div id="ignore" data-value="unmarked"><span class="fa fa-trash"></span>';
-    html += '           </div>';
-    html += '       </button>';
-    html += '   </div>';
+    html += '<div class="col-lg-1 col-md-1 col-xs-2">';
+    html += '   <div class="btn-group" role="group">';
+    html += '   <button type="button" class="btn btn-circle btn-mn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+    html += '       <span class="icon-list"></span>';
+    html += '   </button>';
+    html += '   <ul class="dropdown-menu">';
+    if (voca.HasMarked == '1') {
+        html += '<li><a href="#" onclick="mark();" class="mark" data-value="marked"><span class="fa fa-book"></span> Đã lưu</a></li>';
+    }
+    else {
+        html += '<li><a href="#" onclick="mark();" class="mark" data-value="unmarked"><span class="fa fa-plus"></span> Lưu sổ tay</a></li>';
+    }
+    if (voca.IsIgnore == '1') {
+        html += '<li><a href="#" onclick="ignore();" class="ignore" data-value="marked"><span class="fa fa-unlock-alt"></span> Đã bỏ</a></li>';
+    }
+    else {
+        html += '<li><a href="#" onclick="ignore();" class="ignore" data-value="unmarked"><span class="fa fa-trash"></span> Bỏ qua</a></li>';
+    }
+    html += '   </ul>';
+    html += '</div>';
+    //html += '   <div class="col-md-2 text-right">';
+    //html += '       <button class=" btn btn-circle btn-outline btn-sm btn-default" value="primary" onclick="mark();">';
+    //if (voca.HasMarked == '1') {
+    //    html += '           <div id="mark" data-value="marked"><span class="fa fa-book"></span>';
+    //}
+    //else {
+    //    html += '           <div id="mark" data-value="unmarked"><span class="fa fa-plus"></span>';
+    //}
+    //html += '           </div>';
+    //html += '       </button>';
+    //html += '       <button class=" btn btn-circle btn-outline btn-sm btn-default" value="primary" onclick="ignore();">';
+    //if (voca.IsIgnore == '1') {
+    //    html += '           <div id="ignore" data-value="marked"><span class="fa fa-unlock-alt"></span>';
+    //}
+    //else {
+    //    html += '           <div id="ignore" data-value="unmarked"><span class="fa fa-trash"></span>';
+    //}
+    //html += '           </div>';
+    //html += '       </button>';
+    //html += '   </div>';
+    html += '</div>';
     html += '</div>';
     html += '<hr />';
     html += '<div class="col-md-12 padding-0">';
@@ -1503,14 +1636,14 @@ function showPractise(voca) {
     var fee = parseFloat($('#vsf').val());
 
     var html = '';
-    html += '<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">';
-    html += '   <div class="carousel-inner" role="listbox">';
+    //html += '<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">';
+    //html += '   <div class="carousel-inner" role="listbox">';
     html += '       <div class="item active">';
     html += '           <div class="row text-center" id="item-active">';
     //html += '   <div class="col-lg-1 col-md-1 hidden-xs">';
     //html += '       <div class="c100 p25 small ' + (voca.Level < 10 ? "orange" : "") + '"><span>' + (voca.Level / 10 * 100) + '%</span><div class="slice"><div class="bar"></div><div class="fill"></div></div></div>';
     //html += '   </div>';
-    html += '   <div class="col-lg-12 col-md-12 col-xs-12">';
+    html += '   <div class="col-lg-11 col-md-11 col-xs-10">';
     //html += '               <div class="col-lg-4 col-md-4 col-xs-6  text-center">';
     ////reading
     ////if (voca.TestSkill == '3') {
@@ -1531,7 +1664,35 @@ function showPractise(voca) {
     //html += '               </div>';
     //html += '               <div class="col-lg-8 col-md-8 col-xs-6">';
     html += '</div>';
-
+    html += '<div class="col-lg-1 col-md-1 col-xs-2">';
+    html += '   <div class="btn-group" role="group">';
+    html += '   <button type="button" class="btn btn-circle btn-mn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+    html += '       <span class="icon-list"></span>';
+    html += '   </button>';
+    html += '   <ul class="dropdown-menu">';
+    if (voca.HasMarked == '1') {
+        html += '<li><a href="#" onclick="mark();" class="mark" data-value="marked"><span class="fa fa-book"></span> Đã lưu</a></li>';
+    }
+    else {
+        html += '<li><a href="#" onclick="mark();" class="mark" data-value="unmarked"><span class="fa fa-plus"></span> Lưu sổ tay</a></li>';
+    }
+    if (voca.IsIgnore == '1') {
+        html += '<li><a href="#" onclick="ignore();" class="ignore" data-value="marked"><span class="fa fa-unlock-alt"></span> Đã bỏ</a></li>';
+    }
+    else {
+        html += '<li><a href="#" onclick="ignore();" class="ignore" data-value="unmarked"><span class="fa fa-trash"></span> Bỏ qua</a></li>';
+    }
+    html += '   </ul>';
+    html += '</div>';
+    //html += '<button class="  btn btn-circle btn-mn btn-default" value="primary" onclick="mark();">';
+    //if (voca.HasMarked == '1') {
+    //    html += '   <div id="mark" data-value="marked"><span class="fa fa-book"></span></div>';
+    //}
+    //else {
+    //    html += '   <div id="mark" data-value="unmarked"><span class="fa fa-plus"></span></div>';
+    //}
+    //html += '</button>';
+    html += '</div>';
     html += '</div>';
     //choosing
     if (voca.TestType == "1") {
@@ -1569,8 +1730,8 @@ function showPractise(voca) {
     html += '               </div>';
     html += '           </div>';
     html += '       </div>';
-    html += '   </div>';
-    html += '</div>';
+    //html += '   </div>';
+    //html += '</div>';
 
     return html;
 };
@@ -1625,21 +1786,29 @@ function showDrawing() {
 }
 
 function mark() {
-    var obj = $('#mark');
+    var obj = $('.mark');
     if (obj.attr('data-value') == 'unmarked') {
-        obj.animate().replaceWith("<div id='mark' data-value='marked'><span class='fa fa-book'></span></div>");
+        obj.animate().replaceWith('<a href="#" onclick="mark();" class="mark" data-value="marked"><span class="fa fa-book"></span> Đã lưu</a>');
+
+        vocas[currentIndex].HasMarked = '1';
     }
     else {
-        obj.animate().replaceWith("<div id='mark' data-value='unmarked'><span class='fa fa-plus'></span></div>");
+        obj.animate().replaceWith('<a href="#" onclick="mark();" class="mark" data-value="unmarked"><span class="fa fa-plus"></span> Lưu sổ tay</a>');
+
+        vocas[currentIndex].HasMarked = '0';
     }
 }
 
 function ignore() {
-    var obj = $('#ignore');
+    var obj = $('.ignore');
     if (obj.attr('data-value') == 'unmarked') {
-        obj.animate().replaceWith("<div id='ignore' data-value='marked'><span class='fa fa-unlock-alt'></span></div>");
+        obj.animate().replaceWith('<a href="#" onclick="ignore();" class="ignore" data-value="marked"><span class="fa fa-unlock-alt"></span> Đã bỏ</a>');
+
+        vocas[currentIndex].IsIgnore = '1';
     }
     else {
-        obj.animate().replaceWith("<div id='ignore' data-value='unmarked'><span class='fa fa-trash'></span></div>");
+        obj.animate().replaceWith('<a href="#" onclick="ignore();" class="ignore" data-value="unmarked"><span class="fa fa-trash"></span> Bỏ qua</a>');
+
+        vocas[currentIndex].IsIgnore = '0';
     }
 }

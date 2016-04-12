@@ -3753,6 +3753,30 @@ namespace Nihongo.Dal.Mapping
         private Nullable<global::System.Int32> _NumOfWrong;
         partial void OnNumOfWrongChanging(Nullable<global::System.Int32> value);
         partial void OnNumOfWrongChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IsIgnore
+        {
+            get
+            {
+                return _IsIgnore;
+            }
+            set
+            {
+                OnIsIgnoreChanging(value);
+                ReportPropertyChanging("IsIgnore");
+                _IsIgnore = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IsIgnore");
+                OnIsIgnoreChanged();
+            }
+        }
+        private global::System.String _IsIgnore;
+        partial void OnIsIgnoreChanging(global::System.String value);
+        partial void OnIsIgnoreChanged();
 
         #endregion
 
