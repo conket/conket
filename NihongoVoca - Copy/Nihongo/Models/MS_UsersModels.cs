@@ -79,8 +79,30 @@ namespace Nihongo.Models
         public string Address { get; set; }
         public string UrlImage { get; set; }
 
+        private List<MS_UserVocaSet> _userVocaSets = new List<MS_UserVocaSet>();
+        public List<MS_UserVocaSet> UserVocaSets 
+        {
+            get
+            {
+                return _userVocaSets;
+            }
+            set
+            {
+                _userVocaSets = value;
+            }
+        }
 
-        public List<MS_UserVocaSet> UserVocaSets { get; set; }
-        public List<MS_UsersModels> Users { get; set; }
+        private List<MS_UsersModels> _users = new List<MS_UsersModels>();
+        public List<MS_UsersModels> Users
+        {
+            get
+            {
+                return _users;
+            }
+            set
+            {
+                _users = value;
+            }
+        }
     }
 }

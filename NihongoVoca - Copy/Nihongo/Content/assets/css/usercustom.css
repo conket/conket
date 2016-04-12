@@ -22,12 +22,16 @@
     text-align: center;
     /*line-height: 65px;*/
     white-space: normal;
-    color: black;
+    color: black !important;
+
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    
 }
 
     .btn-quizz:hover
     {
         background-color: #337ab7;
-        color: white;
+        color: white !important;
         /*font-weight:bold;*/
     }
