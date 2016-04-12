@@ -140,6 +140,7 @@ namespace Nihongo.Dal.Dao
                                     VocaDetailID = vocaDetail.ID,
                                     HasLearnt = CommonData.Status.Disable,
                                     HasMarked = CommonData.Status.Disable,
+                                    IsIgnore = CommonData.Status.Disable,
                                     Level = 0,
                                     StartDate = DateTime.Now.Date,
                                     EndDate = DateTime.Now.Date.AddYears(1),
