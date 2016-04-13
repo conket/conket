@@ -120,20 +120,20 @@ namespace Nihongo.Dal.Dao
                 {
                     this.BeginTransaction();
 
-                    bool hasRegis = false;
-                    if (returnCode == CommonData.DbReturnCode.Succeed)
+                    bool hasRegis = this.ms_uservocabularies.Any(ss => ss.ms_vocabularydetails.ms_vocacategories.ms_vocasets.ID == id);
+                    if (!hasRegis)
                     {
                         //register for user
                         var vocaDetails = from vcd in this.ms_vocabularydetails
                                           join vc in this.ms_vocacategories on vcd.CategoryID equals vc.ID
-                                              join vs in this.ms_vocasets on vc.VocaSetID equals vs.ID
-                                              where vs.ID == id
-                                              select vcd;
+                                          join vs in this.ms_vocasets on vc.VocaSetID equals vs.ID
+                                          where vs.ID == id
+                                          select vcd;
                         foreach (var vocaDetail in vocaDetails)
                         {
-                            Nihongo.Dal.Mapping.ms_uservocabularies usVoca = ms_uservocabularies.FirstOrDefault(ss => ss.UserID == userID && ss.VocaDetailID == vocaDetail.ID);
-                            if (usVoca == null)
-                            {
+                            Nihongo.Dal.Mapping.ms_uservocabularies //usVoca = ms_uservocabularies.FirstOrDefault(ss => ss.UserID == userID && ss.VocaDetailID == vocaDetail.ID);
+                            //if (usVoca == null)
+                            //{
                                 usVoca = new Mapping.ms_uservocabularies()
                                 {
                                     UserID = userID,
@@ -147,19 +147,15 @@ namespace Nihongo.Dal.Dao
                                     NumOfWrong = 0,
                                 };
                                 ms_uservocabularies.AddObject(usVoca);
-                            }
-                            else
-                            {
-                                hasRegis = true;
-                            }
+                            //}
+                            //else
+                            //{
+                            //    hasRegis = true;
+                            //}
                         }
 
                         returnCode = this.Saves();
-                    }
-
-                    if (returnCode == CommonData.DbReturnCode.Succeed)
-                    {
-                        if (!hasRegis)
+                        if (returnCode == CommonData.DbReturnCode.Succeed)
                         {
                             //update voca set
                             Nihongo.Dal.Mapping.ms_vocasets vocaSet = this.ms_vocasets.FirstOrDefault(s => s.ID == id);
@@ -172,6 +168,7 @@ namespace Nihongo.Dal.Dao
                         }
                     }
 
+                    
                     if (returnCode == CommonData.DbReturnCode.Succeed)
                     {
                         returnCode = this.Commit();

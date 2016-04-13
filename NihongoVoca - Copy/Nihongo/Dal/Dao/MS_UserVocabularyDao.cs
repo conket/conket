@@ -27,7 +27,7 @@ namespace Nihongo.Dal.Dao
                                 && ss.Type == CommonData.VocaType.Word
                                 && us.UserID == model.UserID
                                 && us.IsIgnore != CommonData.Status.Enable
-                           orderby vc.LineNumber ascending, us.Level ascending, us.NumOfWrong descending, de.LineNumber ascending
+                           orderby vc.LineNumber ascending, us.Level ascending, de.LineNumber ascending
 
                            select new MS_UserVocabulariesModels
                            {
@@ -148,7 +148,7 @@ namespace Nihongo.Dal.Dao
                                Type = ss.Type,
 
                            })
-                           .Take(5)
+                           .Take(10)
                            .ToList();
             }
             catch (Exception ex)
@@ -824,7 +824,8 @@ namespace Nihongo.Dal.Dao
                                             VocaSetUrlImage = vs.UrlImage,
                                             NumOfVoca = vs.NumOfVocas ?? 0,
                                             NumOfHasLearnt = userVoca.Count(s => s.HasLearnt == CommonData.Status.Enable),
-                                            NumOfWeak = userVoca.Count(s => s.HasLearnt == CommonData.Status.Enable && s.Level < 9),
+                                            NumOfWeak = userVoca.Count(s => s.IsIgnore == CommonData.Status.Disable && s.ms_vocabularydetails.ms_vocabularies.Type == CommonData.VocaType.Word 
+                                                                    && s.HasLearnt == CommonData.Status.Enable && s.Level < 9),
                                             HasRegis = true,
                                         }).ToList();
 

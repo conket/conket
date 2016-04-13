@@ -128,7 +128,8 @@ namespace Nihongo.Controllers
         {
             ViewBag.CategoryID = id;
             ViewBag.CategoryUrlDisplay = urlDisplay;
-
+            //learning
+            ViewBag.LessonType = "1";
             if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 return RedirectToAction("RequireLogin", "Account");
@@ -150,6 +151,25 @@ namespace Nihongo.Controllers
             //{
             //    int returnCode = dao.SelectSessionUserVocaData(model, out results);
             //}
+
+            return View("LearningSession2", result);
+        }
+
+        [ActionName("on-tu-vung")]
+        public ActionResult PracticeLesson(int id, string urlDisplay)
+        {
+            ViewBag.CategoryID = id;
+            ViewBag.CategoryUrlDisplay = urlDisplay;
+            //practice
+            ViewBag.LessonType = "2";
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                return RedirectToAction("RequireLogin", "Account");
+            }
+            MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
+            MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
+            MS_VocaSetsModels result = new MS_VocaSetsModels();
+            int returnCode = dao.SelectVocaSetByID(id, CommonMethod.ParseInt(Session["UserID"]), out result);
 
             return View("LearningSession2", result);
         }

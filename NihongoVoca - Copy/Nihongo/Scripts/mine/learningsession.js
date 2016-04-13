@@ -40,7 +40,12 @@ $(document).ready(function () {
     isPractice = false;
 
     //load datas
-    getTestVocas();
+    if ($('#lessonType').val() == '1') {
+        getTestVocas();
+    }
+    else {
+        getPracticeVocas();
+    }
 
     $('#btnNext').on('click', function () {
         if (isPractice) {
