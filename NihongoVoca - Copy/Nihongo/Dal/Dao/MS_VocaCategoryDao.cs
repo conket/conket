@@ -402,11 +402,12 @@ namespace Nihongo.Dal.Dao
                                         VocaDetailID = vocadetail.ID,
                                         UpdatedDate = DateTime.Now,
 
-                                        Level = 10,
+                                        Level = 0,
                                         HasLearnt = CommonData.Status.Disable,
                                         HasMarked = CommonData.Status.Disable,
+                                        IsIgnore = CommonData.Status.Disable,
                                         StartDate = DateTime.Now.AddDays(-1),
-                                        EndDate = DateTime.Now.AddDays(365),
+                                        EndDate = DateTime.Now.AddYears(1),
                                     };
 
                                     this.ms_uservocabularies.AddObject(uservoca);

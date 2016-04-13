@@ -80,16 +80,37 @@ $(document).ready(function () {
             $("#btnNext").trigger("click");
             return false;
         }
-            //->
-        else if (keycode == 39) {
-            $("#flashNext").trigger("click");
+        else if (keycode == 49 || keycode == 97) {
+            if (isPractice) {
+                selectChoosingResult(1);
+            }
+            return false;
+        } else if (keycode == 50 || keycode == 98) {
+            if (isPractice) {
+                selectChoosingResult(2);
+            }
+            return false;
+        } else if (keycode == 51 || keycode == 99) {
+            if (isPractice) {
+                selectChoosingResult(3);
+            }
+            return false;
+        } else if (keycode == 52 || keycode == 100) {
+            if (isPractice) {
+                selectChoosingResult(4);
+            }
             return false;
         }
-            //<-
-        else if (keycode == 37) {
-            $("#flashPre").trigger("click");
-            return false;
-        }
+        //->
+        //else if (keycode == 39) {
+        //    $("#flashNext").trigger("click");
+        //    return false;
+        //}
+        //    //<-
+        //else if (keycode == 37) {
+        //    $("#flashPre").trigger("click");
+        //    return false;
+        //}
         //space
         //if (keycode == 32) {
         //    if (currentIndex >= 0 && currentIndex < vocas.length) {
@@ -178,8 +199,8 @@ function getTestVocas() {
                     vocas.push(voca);
                     //                        failArray.push(voca);
                     //if (voca.TestSkill == '3') {
-                        var audio = new Audio(voca.UrlAudio);
-                        audio.load();
+                    var audio = new Audio(voca.UrlAudio);
+                    audio.load();
                     //}
 
                     //Calculate total Level
@@ -192,7 +213,7 @@ function getTestVocas() {
 
                 //create quizz voca
                 quizzVoca = createQuizz(currentIndex);
-                
+
                 if (quizzVoca.HasLearnt == "1") {
                     isPractice = true;
                 }
@@ -296,6 +317,25 @@ function getLink(url) {
     return url;
 };
 
+function selectChoosingResult(no) {
+    switch (no) {
+        case 1:
+            $('#selectedValue').val(1);
+            break;
+        case 2:
+            $('#selectedValue').val(2);
+            break;
+        case 3:
+            $('#selectedValue').val(3);
+            break;
+        case 4:
+            $('#selectedValue').val(4);
+            break;
+        default:
+    }
+
+    checkInput();
+};
 
 //function checkInput() {
 
@@ -624,19 +664,20 @@ function checkInput() {
                                 showProgress();
                             }
                         }
-                        //else {
-                        //    //show result
-                        //    currentIndex = -1;
-                        //    currentLevel = totalLevel;
-                        //    //showFlashCard(-1, false);
+                        else {
+                            alert('a');
+                            //    //show result
+                            //    currentIndex = -1;
+                            //    currentLevel = totalLevel;
+                            //    //showFlashCard(-1, false);
 
-                        //    showResultPage();
-                        //    showProgress();
+                            //    showResultPage();
+                            //    showProgress();
 
-                        //    //update result
-                        //    isPass = (correctVocas.length >= vocas.length * 8 / 10) ? true : false;
-                        //    updateTestResult();
-                        //}
+                            //    //update result
+                            //    isPass = (correctVocas.length >= vocas.length * 8 / 10) ? true : false;
+                            //    updateTestResult();
+                        }
                     }
                 }
                 //}
@@ -667,6 +708,7 @@ function checkInput() {
     else {
         //Update to HasLearnt
         quizzVoca.HasLearnt = "1";
+        vocas[currentIndex] = '1';
 
         isPractice = true;
         showFlashCard(currentIndex, false);
@@ -694,7 +736,6 @@ function isFinish() {
             break;
         }
     }
-    //console.log(result);
     return result;
 }
 
@@ -717,8 +758,7 @@ function showProgress() {
     $('#progress').html(progressHtml);
 }
 
-function showResultPage()
-{
+function showResultPage() {
     //SHOW RESULT
     var urlLearning = $('#ale').val();//'@Url.Action("hoc-tu-vung", "Library", new { id = @ViewBag.CategoryID, urlDisplay = @ViewBag.CategoryUrlDisplay})';
     var urlVoca = $('#av').val();//'@Url.Action("danh-muc", "Library", new { id = @ViewBag.CategoryID, urlDisplay = @ViewBag.CategoryUrlDisplay})';
@@ -788,7 +828,7 @@ function showResultPage()
     //html += '               <div class="col-lg-8">';
     //html += '                   <h3><label>CÁC TỪ VỪA HỌC</label></h3>';
     //html += '<table class="table table-condensed table-hover">';
-    
+
     $('#tblLearntWord').html('');
     for (var i = 0; i < vocas.length; i++) {
         var row = '';
@@ -886,6 +926,7 @@ function showFlashCard(index, voice) {
             //If Learning
             if (!isPractice) {
 
+                vocas[currentIndex].HasLearnt = '1';
                 var html = showLearning(voca);
 
                 $('#flashCard').html(html);
@@ -927,6 +968,7 @@ function showFlashCard(voca, voice) {
         //If Learning
         if (!isPractice) {
 
+            vocas[currentIndex].HasLearnt = '1';
             var html = showLearning(voca);
 
             $('#flashCard').html(html);
@@ -950,303 +992,304 @@ function showFlashCard(voca, voice) {
 };
 
 function createQuizz(index) {
+    console.log(index);
     var item = vocas[index];
-    var n1 = Math.floor((Math.random() * 4) + 1);
-    var n2 = 1;
-    var n3 = 2;
-    var n4 = 3;
+    if (item) {
+        var n1 = Math.floor((Math.random() * 4) + 1);
+        var n2 = 1;
+        var n3 = 2;
+        var n4 = 3;
 
-    item.TestType = 1;
-    item.TestSkill = Math.floor((Math.random() * 3) + 1);
+        item.TestType = 1;
+        item.TestSkill = Math.floor((Math.random() * 3) + 1);
 
+        //tìm vị trí đặt kq đúng
+        switch (n1) {
+            case 1:
+                item.CorrectResult = 1;
+                item.CorrectUrlAudio = item.UrlAudio;
 
-    //tìm vị trí đặt kq đúng
-    switch (n1) {
-        case 1:
-            item.CorrectResult = 1;
-            item.CorrectUrlAudio = item.UrlAudio;
+                item.Hiragana1 = item.Hiragana;
+                item.Katakana1 = item.Katakana;
+                item.Kanji1 = item.Kanji;
+                if (item.TestSkill == 2) {
+                    //reading
+                    item.Result1 = item.VMeaning;
+                }
+                else {
+                    //transanlating && listening
+                    item.Result1 = item.DisplayType == "3"
+                                    ? item.Kanji
+                                    : item.DisplayType == "2" ? item.Katakana + '<hr>' : (item.Hiragana + '<hr>' + item.Kanji);
+                }
+                item.ResultUrlAudio1 = item.UrlAudio;
 
-            item.Hiragana1 = item.Hiragana;
-            item.Katakana1 = item.Katakana;
-            item.Kanji1 = item.Kanji;
-            if (item.TestSkill == 2) {
-                //reading
-                item.Result1 = item.VMeaning;
-            }
-            else {
-                //transanlating && listening
-                item.Result1 = item.DisplayType == "3"
-                                ? item.Kanji
-                                : item.DisplayType == "2" ? item.Katakana + '<hr>' : (item.Hiragana + '<hr>' + item.Kanji);
-            }
-            item.ResultUrlAudio1 = item.UrlAudio;
+                while (item.VocabularyCode == vocas[n2].VocabularyCode) {
+                    n2 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                }
+                item.Hiragana2 = vocas[n2].Hiragana;
+                item.Katakana2 = vocas[n2].Katakana;
+                item.Kanji2 = vocas[n2].Kanji;
+                if (item.TestSkill == 2) {
+                    //reading
+                    item.Result2 = vocas[n2].VMeaning;
+                }
+                else {
+                    //transanlating && listening
+                    item.Result2 = vocas[n2].DisplayType == "3" ? vocas[n2].Kanji
+                                    : vocas[n2].DisplayType == "2" ? vocas[n2].Katakana + '<hr>' : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
+                }
+                item.ResultUrlAudio2 = vocas[n2].UrlAudio;
 
-            while (item.VocabularyCode == vocas[n2].VocabularyCode) {
-                n2 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
-            }
-            item.Hiragana2 = vocas[n2].Hiragana;
-            item.Katakana2 = vocas[n2].Katakana;
-            item.Kanji2 = vocas[n2].Kanji;
-            if (item.TestSkill == 2) {
-                //reading
-                item.Result2 = vocas[n2].VMeaning;
-            }
-            else {
-                //transanlating && listening
-                item.Result2 = vocas[n2].DisplayType == "3" ? vocas[n2].Kanji
-                                : vocas[n2].DisplayType == "2" ? vocas[n2].Katakana + '<hr>' : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
-            }
-            item.ResultUrlAudio2 = vocas[n2].UrlAudio;
+                while (item.VocabularyCode == vocas[n3].VocabularyCode || vocas[n2].VocabularyCode == vocas[n3].VocabularyCode) {
+                    n3 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                }
+                item.Hiragana3 = vocas[n3].Hiragana;
+                item.Katakana3 = vocas[n3].Katakana;
+                item.Kanji3 = vocas[n3].Kanji;
+                if (item.TestSkill == 2) {
+                    //reading
+                    item.Result3 = vocas[n3].VMeaning;
+                }
+                else {
+                    //transanlating && listening
+                    item.Result3 = vocas[n3].DisplayType == "3" ? vocas[n3].Kanji
+                                    : vocas[n3].DisplayType == "2" ? vocas[n3].Katakana + '<hr>' : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
+                }
+                item.ResultUrlAudio3 = vocas[n3].UrlAudio;
 
-            while (item.VocabularyCode == vocas[n3].VocabularyCode || vocas[n2].VocabularyCode == vocas[n3].VocabularyCode) {
-                n3 = Math.floor((Math.random() * (vocas.length)) + 1);
-            }
-            item.Hiragana3 = vocas[n3].Hiragana;
-            item.Katakana3 = vocas[n3].Katakana;
-            item.Kanji3 = vocas[n3].Kanji;
-            if (item.TestSkill == 2) {
-                //reading
-                item.Result3 = vocas[n3].VMeaning;
-            }
-            else {
-                //transanlating && listening
-                item.Result3 = vocas[n3].DisplayType == "3" ? vocas[n3].Kanji
-                                : vocas[n3].DisplayType == "2" ? vocas[n3].Katakana + '<hr>' : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
-            }
-            item.ResultUrlAudio3 = vocas[n3].UrlAudio;
+                while (item.VocabularyCode == vocas[n4].VocabularyCode || vocas[n2].VocabularyCode == vocas[n4].VocabularyCode || vocas[n3].VocabularyCode == vocas[n4].VocabularyCode) {
+                    n4 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                }
+                item.Hiragana4 = vocas[n4].Hiragana;
+                item.Katakana4 = vocas[n4].Katakana;
+                item.Kanji4 = vocas[n4].Kanji;
+                if (item.TestSkill == 2) {
+                    //reading
+                    item.Result4 = vocas[n4].VMeaning;
+                }
+                else {
+                    //transanlating && listening
+                    item.Result4 = vocas[n4].DisplayType == "3" ? vocas[n4].Kanji
+                                    : vocas[n4].DisplayType == "2" ? vocas[n4].Katakana + '<hr>' : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
+                }
+                item.ResultUrlAudio4 = vocas[n4].UrlAudio;
+                break;
+            case 2:
+                item.CorrectResult = 2;
+                item.CorrectUrlAudio = item.UrlAudio;
 
-            while (item.VocabularyCode == vocas[n4].VocabularyCode || vocas[n2].VocabularyCode == vocas[n4].VocabularyCode || vocas[n3].VocabularyCode == vocas[n4].VocabularyCode) {
-                n4 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
-            }
-            item.Hiragana4 = vocas[n4].Hiragana;
-            item.Katakana4 = vocas[n4].Katakana;
-            item.Kanji4 = vocas[n4].Kanji;
-            if (item.TestSkill == 2) {
-                //reading
-                item.Result4 = vocas[n4].VMeaning;
-            }
-            else {
-                //transanlating && listening
-                item.Result4 = vocas[n4].DisplayType == "3" ? vocas[n4].Kanji
-                                : vocas[n4].DisplayType == "2" ? vocas[n4].Katakana + '<hr>' : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
-            }
-            item.ResultUrlAudio4 = vocas[n4].UrlAudio;
-            break;
-        case 2:
-            item.CorrectResult = 2;
-            item.CorrectUrlAudio = item.UrlAudio;
+                item.Hiragana2 = item.Hiragana;
+                item.Katakana2 = item.Katakana;
+                item.Kanji2 = item.Kanji;
+                if (item.TestSkill == 2) {
+                    //reading
+                    item.Result2 = item.VMeaning;
+                }
+                else {
+                    //transanlating && listening
+                    item.Result2 = item.DisplayType == "3"
+                                    ? item.Kanji
+                                    : item.DisplayType == "2" ? item.Katakana + '<hr>' : (item.Hiragana + '<hr>' + item.Kanji);
+                }
+                item.ResultUrlAudio2 = item.UrlAudio;
 
-            item.Hiragana2 = item.Hiragana;
-            item.Katakana2 = item.Katakana;
-            item.Kanji2 = item.Kanji;
-            if (item.TestSkill == 2) {
-                //reading
-                item.Result2 = item.VMeaning;
-            }
-            else {
-                //transanlating && listening
-                item.Result2 = item.DisplayType == "3"
-                                ? item.Kanji
-                                : item.DisplayType == "2" ? item.Katakana + '<hr>' : (item.Hiragana + '<hr>' + item.Kanji);
-            }
-            item.ResultUrlAudio2 = item.UrlAudio;
+                while (item.VocabularyCode == vocas[n2].VocabularyCode) {
+                    n2 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                }
+                item.Hiragana1 = vocas[n2].Hiragana;
+                item.Katakana1 = vocas[n2].Katakana;
+                item.Kanji1 = vocas[n2].Kanji;
+                if (item.TestSkill == 2) {
+                    //reading
+                    item.Result1 = vocas[n2].VMeaning;
+                }
+                else {
+                    //transanlating && listening
+                    item.Result1 = vocas[n2].DisplayType == "3" ? vocas[n2].Kanji
+                                    : vocas[n2].DisplayType == "2" ? vocas[n2].Katakana + '<hr>' : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
+                }
+                item.ResultUrlAudio1 = vocas[n2].UrlAudio;
 
-            while (item.VocabularyCode == vocas[n2].VocabularyCode) {
-                n2 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
-            }
-            item.Hiragana1 = vocas[n2].Hiragana;
-            item.Katakana1 = vocas[n2].Katakana;
-            item.Kanji1 = vocas[n2].Kanji;
-            if (item.TestSkill == 2) {
-                //reading
-                item.Result1 = vocas[n2].VMeaning;
-            }
-            else {
-                //transanlating && listening
-                item.Result1 = vocas[n2].DisplayType == "3" ? vocas[n2].Kanji
-                                : vocas[n2].DisplayType == "2" ? vocas[n2].Katakana + '<hr>' : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
-            }
-            item.ResultUrlAudio1 = vocas[n2].UrlAudio;
+                while (item.VocabularyCode == vocas[n3].VocabularyCode || vocas[n2].VocabularyCode == vocas[n3].VocabularyCode) {
+                    n3 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                }
+                item.Hiragana3 = vocas[n3].Hiragana;
+                item.Katakana3 = vocas[n3].Katakana;
+                item.Kanji3 = vocas[n3].Kanji;
+                if (item.TestSkill == 2) {
+                    //reading
+                    item.Result3 = vocas[n3].VMeaning;
+                }
+                else {
+                    //transanlating && listening
+                    item.Result3 = vocas[n3].DisplayType == "3" ? vocas[n3].Kanji
+                                    : vocas[n3].DisplayType == "2" ? vocas[n3].Katakana + '<hr>' : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
+                }
+                item.ResultUrlAudio3 = vocas[n3].UrlAudio;
 
-            while (item.VocabularyCode == vocas[n3].VocabularyCode || vocas[n2].VocabularyCode == vocas[n3].VocabularyCode) {
-                n3 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
-            }
-            item.Hiragana3 = vocas[n3].Hiragana;
-            item.Katakana3 = vocas[n3].Katakana;
-            item.Kanji3 = vocas[n3].Kanji;
-            if (item.TestSkill == 2) {
-                //reading
-                item.Result3 = vocas[n3].VMeaning;
-            }
-            else {
-                //transanlating && listening
-                item.Result3 = vocas[n3].DisplayType == "3" ? vocas[n3].Kanji
-                                : vocas[n3].DisplayType == "2" ? vocas[n3].Katakana + '<hr>' : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
-            }
-            item.ResultUrlAudio3 = vocas[n3].UrlAudio;
+                while (item.VocabularyCode == vocas[n4].VocabularyCode || vocas[n2].VocabularyCode == vocas[n4].VocabularyCode || vocas[n3].VocabularyCode == vocas[n4].VocabularyCode) {
+                    n4 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                }
+                item.Hiragana4 = vocas[n4].Hiragana;
+                item.Katakana4 = vocas[n4].Katakana;
+                item.Kanji4 = vocas[n4].Kanji;
+                if (item.TestSkill == 2) {
+                    //reading
+                    item.Result4 = vocas[n4].VMeaning;
+                }
+                else {
+                    //transanlating && listening
+                    item.Result4 = vocas[n4].DisplayType == "3" ? vocas[n4].Kanji
+                                    : vocas[n4].DisplayType == "2" ? vocas[n4].Katakana + '<hr>' : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
+                }
+                item.ResultUrlAudio4 = vocas[n4].UrlAudio;
+                break;
+            case 3:
+                item.CorrectResult = 3;
+                item.CorrectUrlAudio = item.UrlAudio;
 
-            while (item.VocabularyCode == vocas[n4].VocabularyCode || vocas[n2].VocabularyCode == vocas[n4].VocabularyCode || vocas[n3].VocabularyCode == vocas[n4].VocabularyCode) {
-                n4 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
-            }
-            item.Hiragana4 = vocas[n4].Hiragana;
-            item.Katakana4 = vocas[n4].Katakana;
-            item.Kanji4 = vocas[n4].Kanji;
-            if (item.TestSkill == 2) {
-                //reading
-                item.Result4 = vocas[n4].VMeaning;
-            }
-            else {
-                //transanlating && listening
-                item.Result4 = vocas[n4].DisplayType == "3" ? vocas[n4].Kanji
-                                : vocas[n4].DisplayType == "2" ? vocas[n4].Katakana + '<hr>' : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
-            }
-            item.ResultUrlAudio4 = vocas[n4].UrlAudio;
-            break;
-        case 3:
-            item.CorrectResult = 3;
-            item.CorrectUrlAudio = item.UrlAudio;
+                item.Hiragana3 = item.Hiragana;
+                item.Katakana3 = item.Katakana;
+                item.Kanji3 = item.Kanji;
+                if (item.TestSkill == 2) {
+                    //reading
+                    item.Result3 = item.VMeaning;
+                }
+                else {
+                    //transanlating && listening
+                    item.Result3 = item.DisplayType == "3"
+                                    ? item.Kanji
+                                    : item.DisplayType == "2" ? item.Katakana + '<hr>' : (item.Hiragana + '<hr>' + item.Kanji);
+                }
+                item.ResultUrlAudio3 = item.UrlAudio;
 
-            item.Hiragana3 = item.Hiragana;
-            item.Katakana3 = item.Katakana;
-            item.Kanji3 = item.Kanji;
-            if (item.TestSkill == 2) {
-                //reading
-                item.Result3 = item.VMeaning;
-            }
-            else {
-                //transanlating && listening
-                item.Result3 = item.DisplayType == "3"
-                                ? item.Kanji
-                                : item.DisplayType == "2" ? item.Katakana + '<hr>' : (item.Hiragana + '<hr>' + item.Kanji);
-            }
-            item.ResultUrlAudio3 = item.UrlAudio;
+                while (item.VocabularyCode == vocas[n2].VocabularyCode) {
+                    n2 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                }
+                item.Hiragana1 = vocas[n2].Hiragana;
+                item.Katakana1 = vocas[n2].Katakana;
+                item.Kanji1 = vocas[n2].Kanji;
+                if (item.TestSkill == 2) {
+                    //reading
+                    item.Result1 = vocas[n2].VMeaning;
+                }
+                else {
+                    //transanlating && listening
+                    item.Result1 = vocas[n2].DisplayType == "3" ? vocas[n2].Kanji
+                                    : vocas[n2].DisplayType == "2" ? vocas[n2].Katakana + '<hr>' : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
+                }
+                item.ResultUrlAudio1 = vocas[n2].UrlAudio;
 
-            while (item.VocabularyCode == vocas[n2].VocabularyCode) {
-                n2 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
-            }
-            item.Hiragana1 = vocas[n2].Hiragana;
-            item.Katakana1 = vocas[n2].Katakana;
-            item.Kanji1 = vocas[n2].Kanji;
-            if (item.TestSkill == 2) {
-                //reading
-                item.Result1 = vocas[n2].VMeaning;
-            }
-            else {
-                //transanlating && listening
-                item.Result1 = vocas[n2].DisplayType == "3" ? vocas[n2].Kanji
-                                : vocas[n2].DisplayType == "2" ? vocas[n2].Katakana + '<hr>' : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
-            }
-            item.ResultUrlAudio1 = vocas[n2].UrlAudio;
+                while (item.VocabularyCode == vocas[n3].VocabularyCode || vocas[n2].VocabularyCode == vocas[n3].VocabularyCode) {
+                    n3 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                }
+                item.Hiragana2 = vocas[n3].Hiragana;
+                item.Katakana2 = vocas[n3].Katakana;
+                item.Kanji2 = vocas[n3].Kanji;
+                if (item.TestSkill == 2) {
+                    //reading
+                    item.Result2 = vocas[n3].VMeaning;
+                }
+                else {
+                    //transanlating && listening
+                    item.Result2 = vocas[n3].DisplayType == "3" ? vocas[n3].Kanji
+                                    : vocas[n3].DisplayType == "2" ? vocas[n3].Katakana + '<hr>' : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
+                }
+                item.ResultUrlAudio2 = vocas[n3].UrlAudio;
 
-            while (item.VocabularyCode == vocas[n3].VocabularyCode || vocas[n2].VocabularyCode == vocas[n3].VocabularyCode) {
-                n3 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
-            }
-            item.Hiragana2 = vocas[n3].Hiragana;
-            item.Katakana2 = vocas[n3].Katakana;
-            item.Kanji2 = vocas[n3].Kanji;
-            if (item.TestSkill == 2) {
-                //reading
-                item.Result2 = vocas[n3].VMeaning;
-            }
-            else {
-                //transanlating && listening
-                item.Result2 = vocas[n3].DisplayType == "3" ? vocas[n3].Kanji
-                                : vocas[n3].DisplayType == "2" ? vocas[n3].Katakana + '<hr>' : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
-            }
-            item.ResultUrlAudio2 = vocas[n3].UrlAudio;
+                while (item.VocabularyCode == vocas[n4].VocabularyCode || vocas[n2].VocabularyCode == vocas[n4].VocabularyCode || vocas[n3].VocabularyCode == vocas[n4].VocabularyCode) {
+                    n4 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                }
+                item.Hiragana4 = vocas[n4].Hiragana;
+                item.Katakana4 = vocas[n4].Katakana;
+                item.Kanji4 = vocas[n4].Kanji;
+                if (item.TestSkill == 2) {
+                    //reading
+                    item.Result4 = vocas[n4].VMeaning;
+                }
+                else {
+                    //transanlating && listening
+                    item.Result4 = vocas[n4].DisplayType == "3" ? vocas[n4].Kanji
+                                    : vocas[n4].DisplayType == "2" ? vocas[n4].Katakana + '<hr>' : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
+                }
+                item.ResultUrlAudio4 = vocas[n4].UrlAudio;
+                break;
+            case 4:
+                item.CorrectResult = 4;
+                item.CorrectUrlAudio = item.UrlAudio;
 
-            while (item.VocabularyCode == vocas[n4].VocabularyCode || vocas[n2].VocabularyCode == vocas[n4].VocabularyCode || vocas[n3].VocabularyCode == vocas[n4].VocabularyCode) {
-                n4 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
-            }
-            item.Hiragana4 = vocas[n4].Hiragana;
-            item.Katakana4 = vocas[n4].Katakana;
-            item.Kanji4 = vocas[n4].Kanji;
-            if (item.TestSkill == 2) {
-                //reading
-                item.Result4 = vocas[n4].VMeaning;
-            }
-            else {
-                //transanlating && listening
-                item.Result4 = vocas[n4].DisplayType == "3" ? vocas[n4].Kanji
-                                : vocas[n4].DisplayType == "2" ? vocas[n4].Katakana + '<hr>' : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
-            }
-            item.ResultUrlAudio4 = vocas[n4].UrlAudio;
-            break;
-        case 4:
-            item.CorrectResult = 4;
-            item.CorrectUrlAudio = item.UrlAudio;
+                item.Hiragana4 = item.Hiragana;
+                item.Katakana4 = item.Katakana;
+                item.Kanji4 = item.Kanji;
+                if (item.TestSkill == 2) {
+                    //reading
+                    item.Result4 = item.VMeaning;
+                }
+                else {
+                    //transanlating && listening
+                    item.Result4 = item.DisplayType == "3"
+                                    ? item.Kanji
+                                    : item.DisplayType == "2" ? item.Katakana + '<hr>' : (item.Hiragana + '<hr>' + item.Kanji);
+                    item.ResultUrlAudio4 = item.UrlAudio;
+                }
 
-            item.Hiragana4 = item.Hiragana;
-            item.Katakana4 = item.Katakana;
-            item.Kanji4 = item.Kanji;
-            if (item.TestSkill == 2) {
-                //reading
-                item.Result4 = item.VMeaning;
-            }
-            else {
-                //transanlating && listening
-                item.Result4 = item.DisplayType == "3"
-                                ? item.Kanji
-                                : item.DisplayType == "2" ? item.Katakana + '<hr>' : (item.Hiragana + '<hr>' + item.Kanji);
-                item.ResultUrlAudio4 = item.UrlAudio;
-            }
+                while (item.VocabularyCode == vocas[n2].VocabularyCode) {
+                    n2 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                }
+                item.Hiragana1 = vocas[n2].Hiragana;
+                item.Katakana1 = vocas[n2].Katakana;
+                item.Kanji1 = vocas[n2].Kanji;
+                if (item.TestSkill == 2) {
+                    //reading
+                    item.Result1 = vocas[n2].VMeaning;
+                }
+                else {
+                    //transanlating && listening
+                    item.Result1 = vocas[n2].DisplayType == "3" ? vocas[n2].Kanji
+                                    : vocas[n2].DisplayType == "2" ? vocas[n2].Katakana + '<hr>' : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
+                }
+                item.ResultUrlAudio1 = vocas[n2].UrlAudio;
 
-            while (item.VocabularyCode == vocas[n2].VocabularyCode) {
-                n2 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
-            }
-            item.Hiragana1 = vocas[n2].Hiragana;
-            item.Katakana1 = vocas[n2].Katakana;
-            item.Kanji1 = vocas[n2].Kanji;
-            if (item.TestSkill == 2) {
-                //reading
-                item.Result1 = vocas[n2].VMeaning;
-            }
-            else {
-                //transanlating && listening
-                item.Result1 = vocas[n2].DisplayType == "3" ? vocas[n2].Kanji
-                                : vocas[n2].DisplayType == "2" ? vocas[n2].Katakana + '<hr>' : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
-            }
-            item.ResultUrlAudio1 = vocas[n2].UrlAudio;
+                while (item.VocabularyCode == vocas[n3].VocabularyCode || vocas[n2].VocabularyCode == vocas[n3].VocabularyCode) {
+                    n3 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                }
+                item.Hiragana2 = vocas[n3].Hiragana;
+                item.Katakana2 = vocas[n3].Katakana;
+                item.Kanji2 = vocas[n3].Kanji;
+                if (item.TestSkill == 2) {
+                    //reading
+                    item.Result2 = vocas[n3].VMeaning;
+                }
+                else {
+                    //transanlating && listening
+                    item.Result2 = vocas[n3].DisplayType == "3" ? vocas[n3].Kanji
+                                    : vocas[n3].DisplayType == "2" ? vocas[n3].Katakana + '<hr>' : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
+                }
+                item.ResultUrlAudio2 = vocas[n3].UrlAudio;
 
-            while (item.VocabularyCode == vocas[n3].VocabularyCode || vocas[n2].VocabularyCode == vocas[n3].VocabularyCode) {
-                n3 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
-            }
-            item.Hiragana2 = vocas[n3].Hiragana;
-            item.Katakana2 = vocas[n3].Katakana;
-            item.Kanji2 = vocas[n3].Kanji;
-            if (item.TestSkill == 2) {
-                //reading
-                item.Result2 = vocas[n3].VMeaning;
-            }
-            else {
-                //transanlating && listening
-                item.Result2 = vocas[n3].DisplayType == "3" ? vocas[n3].Kanji
-                                : vocas[n3].DisplayType == "2" ? vocas[n3].Katakana + '<hr>' : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
-            }
-            item.ResultUrlAudio2 = vocas[n3].UrlAudio;
+                while (item.VocabularyCode == vocas[n4].VocabularyCode || vocas[n2].VocabularyCode == vocas[n4].VocabularyCode || vocas[n3].VocabularyCode == vocas[n4].VocabularyCode) {
+                    n4 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                }
+                item.Hiragana3 = vocas[n4].Hiragana;
+                item.Katakana3 = vocas[n4].Katakana;
+                item.Kanji3 = vocas[n4].Kanji;
+                if (item.TestSkill == 2) {
+                    //reading
+                    item.Result3 = vocas[n4].VMeaning;
+                }
+                else {
+                    //transanlating && listening
+                    item.Result3 = vocas[n4].DisplayType == "3" ? vocas[n4].Kanji
+                                    : vocas[n4].DisplayType == "2" ? vocas[n4].Katakana + '<hr>' : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
+                }
+                item.ResultUrlAudio3 = vocas[n4].UrlAudio;
+                break;
+            default:
 
-            while (item.VocabularyCode == vocas[n4].VocabularyCode || vocas[n2].VocabularyCode == vocas[n4].VocabularyCode || vocas[n3].VocabularyCode == vocas[n4].VocabularyCode) {
-                n4 = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
-            }
-            item.Hiragana3 = vocas[n4].Hiragana;
-            item.Katakana3 = vocas[n4].Katakana;
-            item.Kanji3 = vocas[n4].Kanji;
-            if (item.TestSkill == 2) {
-                //reading
-                item.Result3 = vocas[n4].VMeaning;
-            }
-            else {
-                //transanlating && listening
-                item.Result3 = vocas[n4].DisplayType == "3" ? vocas[n4].Kanji
-                                : vocas[n4].DisplayType == "2" ? vocas[n4].Katakana + '<hr>' : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
-            }
-            item.ResultUrlAudio3 = vocas[n4].UrlAudio;
-            break;
-        default:
-
+        }
     }
 
-    
     return item;
 }
 
@@ -1375,7 +1418,7 @@ function showResult(index) {
 };
 
 function showLearning(voca) {
-    
+
     var html = '';
 
     html += '<div class="col-md-12 padding-0">';
@@ -1392,6 +1435,23 @@ function showLearning(voca) {
     }
     html += '       <h3><strong>' + voca.Kanji + '</strong></h3>';
     html += '       <h4><strong>' + voca.VMeaning + '</strong></h4>';
+
+    html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 1 ? 'primary' : 'default') + '" style="width:20px;height:20px;">';
+    html += '<span class="fa fa-heart"></span>';
+    html += '</button>';
+    html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 3 ? 'primary' : 'default') + '" style="width:20px;height:20px;">';
+    html += '<span class="fa fa-heart"></span>';
+    html += '</button>';
+    html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 5 ? 'primary' : 'default') + '" style="width:20px;height:20px;">';
+    html += '<span class="fa fa-heart"></span>';
+    html += '</button>';
+    html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 7 ? 'primary' : 'default') + '" style="width:20px;height:20px;">';
+    html += '<span class="fa fa-heart"></span>';
+    html += '</button>';
+    html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 9 ? 'primary' : 'default') + '" style="width:20px;height:20px;">';
+    html += '<span class="fa fa-heart"></span>';
+    html += '</button>';
+
     html += '   </div>';
     html += '<div class="col-lg-1 col-md-1 col-xs-2">';
     html += '   <div class="btn-group" role="group">';
@@ -1412,7 +1472,16 @@ function showLearning(voca) {
         html += '<li><a href="#" onclick="ignore();" class="ignore" data-value="unmarked"><span class="fa fa-trash"></span> Bỏ qua</a></li>';
     }
     html += '   </ul>';
+
     html += '</div>';
+    
+    //html += '<div class="progress">';
+    //html += '   <div class="progress-bar progress-bar-' + (levelPercent == 100 ? 'primary' : 'danger') + '" role="progressbar" aria-valuenow="' + levelPercent + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + levelPercent + '%"></div>';
+    //html += (voca.Level / 10 + '/5');
+    //html += '   </div>';
+    //html += '</div>';
+
+
     //html += '   <div class="col-md-2 text-right">';
     //html += '       <button class=" btn btn-circle btn-outline btn-sm btn-default" value="primary" onclick="mark();">';
     //if (voca.HasMarked == '1') {
@@ -1631,6 +1700,9 @@ function showLearning(voca) {
 };
 
 function showPractise(voca) {
+    if (voca.TestSkill == '2') {
+        speak(voca.UrlAudio);
+    }
 
     var requiredTimePerVoca = parseInt($('#rtp').val());
     var fee = parseFloat($('#vsf').val());
@@ -1654,7 +1726,7 @@ function showPractise(voca) {
         var displayQuestion = voca.DisplayType == '3' ? voca.Kanji : voca.DisplayType == '1' ? (voca.Hiragana + (voca.Kanji != '' ? ' | ' + voca.Kanji : '')) : voca.Katakana;
         html += '                   <h3><span class="glyphicon glyphicon-question-sign error" aria-hidden="true"></span> <label>' + displayQuestion + '</label></h3>';
     }
-    else  {
+    else {
         html += '                   <h3><span class="glyphicon glyphicon-question-sign error" aria-hidden="true"></span> <label>' + voca.VMeaning + '</label></h3>';
     }
     //    //listening
@@ -1733,6 +1805,23 @@ function showPractise(voca) {
     //html += '   </div>';
     //html += '</div>';
 
+    html += '   <div class="col-lg-12 col-md-12 col-xs-12 text-center">';
+    html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 0 ? 'primary' : 'default') + '" style="width:20px;height:20px;">';
+    html += '<span class="fa fa-heart"></span>';
+    html += '</button>';
+    html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 2 ? 'primary' : 'default') + '" style="width:20px;height:20px;">';
+    html += '<span class="fa fa-heart"></span>';
+    html += '</button>';
+    html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 4 ? 'primary' : 'default') + '" style="width:20px;height:20px;">';
+    html += '<span class="fa fa-heart"></span>';
+    html += '</button>';
+    html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 6 ? 'primary' : 'default') + '" style="width:20px;height:20px;">';
+    html += '<span class="fa fa-heart"></span>';
+    html += '</button>';
+    html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 8 ? 'primary' : 'default') + '" style="width:20px;height:20px;">';
+    html += '<span class="fa fa-heart"></span>';
+    html += '</button>';
+    html += '</div>';
     return html;
 };
 

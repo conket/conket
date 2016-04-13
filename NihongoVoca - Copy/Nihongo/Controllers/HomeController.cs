@@ -35,6 +35,8 @@ namespace Nihongo.Controllers
                 user.LoginState = CommonData.Status.Enable;
                 user.LastVisitedDate = DateTime.Now;
                 returnCode = dao.UpdateState(user);
+
+                return RedirectToAction("HomePage", "Account");
             }
             else
             {

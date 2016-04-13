@@ -23,8 +23,10 @@ namespace Nihongo.Dal.Dao
                            join vs in ms_vocasets on vc.VocaSetID equals vs.ID
                            join ss in ms_vocabularies on de.VocabularyID equals ss.ID
 
-                           where vs.ID == model.VocaSetID && ss.Type == model.Type && us.UserID == model.UserID
-                            && us.IsIgnore != CommonData.Status.Enable
+                           where vs.ID == model.VocaSetID && ss.Type == model.Type 
+                                && ss.Type == CommonData.VocaType.Word
+                                && us.UserID == model.UserID
+                                && us.IsIgnore != CommonData.Status.Enable
                            orderby vc.LineNumber ascending, us.Level ascending, us.NumOfWrong descending, de.LineNumber ascending
 
                            select new MS_UserVocabulariesModels
@@ -97,7 +99,9 @@ namespace Nihongo.Dal.Dao
                            join vs in ms_vocasets on vc.VocaSetID equals vs.ID
                            join ss in ms_vocabularies on de.VocabularyID equals ss.ID
 
-                           where vs.ID == model.VocaSetID && ss.Type == model.Type && us.UserID == model.UserID
+                           where vs.ID == model.VocaSetID && ss.Type == model.Type
+                                && ss.Type == CommonData.VocaType.Word
+                                && us.UserID == model.UserID
                                 && us.IsIgnore != CommonData.Status.Enable
                            orderby us.HasLearnt descending, us.Level ascending, us.NumOfWrong descending
 
@@ -176,8 +180,6 @@ namespace Nihongo.Dal.Dao
 
                            join us in userVoca on de.ID equals us.VocaDetailID into usv
                            from us in usv.DefaultIfEmpty()
-
-                           where us.IsIgnore != CommonData.Status.Enable
 
                            orderby de.LineNumber
                            select new MS_UserVocabulariesModels
