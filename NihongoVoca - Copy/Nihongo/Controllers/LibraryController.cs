@@ -151,7 +151,7 @@ namespace Nihongo.Controllers
             //{
             //    int returnCode = dao.SelectSessionUserVocaData(model, out results);
             //}
-
+            ViewBag.IsKanji = result.IsKanji;
             return View("LearningSession2", result);
         }
 
@@ -171,6 +171,7 @@ namespace Nihongo.Controllers
             MS_VocaSetsModels result = new MS_VocaSetsModels();
             int returnCode = dao.SelectVocaSetByID(id, CommonMethod.ParseInt(Session["UserID"]), out result);
 
+            ViewBag.IsKanji = result.IsKanji;
             return View("LearningSession2", result);
         }
 
@@ -466,7 +467,7 @@ namespace Nihongo.Controllers
         [EncryptActionName(Name = ("GetPracticeSessionVocas"))]
         [OutputCache(CacheProfile = "Cache1MinuteVaryByIDClient")]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult GetPracticeSessionVocas(int id)
+        public ActionResult GetPracticeSessionVocas(int id, string isKanji)
         {
             List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             int returnCode = 0;
@@ -484,6 +485,7 @@ namespace Nihongo.Controllers
                 //model.CategoryID = id;
                 model.Type = CommonData.VocaType.Word;
                 model.UserID = CommonMethod.ParseInt(Session["UserID"]);
+                model.IsKanji = isKanji;
                 //model.HasLearnt = CommonData.Status.Disable;
                 returnCode = dao.SelectPracticeSessionUserVocaData(model, out results);
             }
@@ -494,7 +496,7 @@ namespace Nihongo.Controllers
         [EncryptActionName(Name = ("GetSessionVocas"))]
         [OutputCache(CacheProfile = "Cache1MinuteVaryByIDClient")]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult GetSessionVocas(int id)
+        public ActionResult GetSessionVocas(int id, string isKanji)
         {
             List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
             int returnCode = 0;
@@ -512,6 +514,7 @@ namespace Nihongo.Controllers
                 //model.CategoryID = id;
                 model.Type = CommonData.VocaType.Word;
                 model.UserID = CommonMethod.ParseInt(Session["UserID"]);
+                model.IsKanji = isKanji;
                 //model.HasLearnt = CommonData.Status.Disable;
                 returnCode = dao.SelectSessionUserVocaData(model, out results);
             }

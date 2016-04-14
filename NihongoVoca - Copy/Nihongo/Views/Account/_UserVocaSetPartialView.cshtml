@@ -21,8 +21,8 @@
                                 <span class="icon-list"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a href="#"><span class="icon-folder"></span>Danh sách bài học</a></li>
-                                <li><a href="#"><span class=" icon-people"></span>Học viên</a></li>
+                                <li>@Html.ActionLink("Danh sách bài học", "bo-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay }, new { })
+                                <li><a href="#">Học viên</a></li>
                             </ul>
                         </div>
                         @*<h5><span class="text-primary">Đã hoàn thành</span></h5>*@
@@ -128,7 +128,7 @@
                     <hr />
                     <div class="col-md-12">
                         @Html.ActionLink("Học bộ này", "hoc-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay }, new { @class = "btn btn-outline btn-primary require-login" })
-                        @Html.ActionLink("Danh sách bài học", "bo-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay }, new { @class = "btn btn-outline btn-primary require-login" })
+                        @Html.ActionLink("Danh sách bài học", "bo-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay }, new { @class = "btn btn-outline btn-primary" })
                     </div>
                 </div>
             </div>

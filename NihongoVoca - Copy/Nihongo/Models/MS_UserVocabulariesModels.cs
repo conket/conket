@@ -8,6 +8,7 @@ namespace Nihongo.Models
     public class MS_UserVocabulariesModels
     {
         public int Point { get; set; }
+        public string IsDone { get; set; }
         public int No { get; set; }
         public int ID { get; set; }
         public int CategoryID { get; set; }

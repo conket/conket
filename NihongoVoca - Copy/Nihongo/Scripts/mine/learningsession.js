@@ -40,7 +40,7 @@ $(document).ready(function () {
     isPractice = false;
 
     //load datas
-    if ($('#lessonType').val() == '1') {
+    if ($('#lt').val() == '1') {
         getTestVocas();
     }
     else {
@@ -194,7 +194,7 @@ function getTestVocas() {
         type: "get",
         async: true,
         url: '/Library/' + $('#gtv').val(),
-        data: { "id": $('#vsd').val() },
+        data: { "id": $('#vsd').val(), "isKanji": $('#ik').val() },
         dataType: "json",
         success: function (result) {
             if (result.returnCode == $('#accessDenied').val()) {
@@ -219,7 +219,7 @@ function getTestVocas() {
                 //create quizz voca
                 quizzVoca = createQuizz(currentIndex);
 
-                if (quizzVoca.HasLearnt == "1") {
+                if (quizzVoca.IsDone == "1") {
                     isPractice = true;
                 }
                 else if (quizzVoca.Level == "0") {
@@ -265,7 +265,7 @@ function getPracticeVocas() {
         type: "get",
         async: true,
         url: '/Library/' + $('#gpr').val(),
-        data: { "id": $('#vsd').val() },
+        data: { "id": $('#vsd').val(), "isKanji": $('#ik').val() },
         dataType: "json",
         success: function (result) {
             if (result.returnCode == $('#accessDenied').val()) {
@@ -286,11 +286,10 @@ function getPracticeVocas() {
                 completedTime = 0;
                 currentIndex = 0;
 
-
                 //create quizz voca
                 quizzVoca = createQuizz(currentIndex);
 
-                if (quizzVoca.HasLearnt == "1") {
+                if (quizzVoca.IsDone == "1") {
                     isPractice = true;
                 }
                 else if (quizzVoca.Level == "0") {
@@ -713,7 +712,7 @@ function checkInput() {
     else {
         //Update to HasLearnt
         quizzVoca.HasLearnt = "1";
-        vocas[currentIndex] = '1';
+        quizzVoca.IsDone = "1";
 
         isPractice = true;
         showFlashCard(currentIndex, false);
@@ -724,7 +723,7 @@ function checkInput() {
 function isAllLearnt() {
     var result = true;
     for (var i = 0; i < vocas.length; i++) {
-        if (vocas[i].HasLearnt == '0') {
+        if (vocas[i].IsDone == '0') {
             result = false;
             break;
         }
@@ -736,7 +735,7 @@ function isFinish() {
     var result = true;
     for (var i = 0; i < vocas.length; i++) {
         //console.log(vocas[i].Hiragana +  ' - '+ vocas[i].HasLearnt + ' - ' + vocas[i].Level);
-        if (vocas[i].HasLearnt == '0' || vocas[i].Level < maxLevel) {
+        if (vocas[i].IsDone == '0' || vocas[i].Level < maxLevel) {
             result = false;
             break;
         }
@@ -838,17 +837,33 @@ function showResultPage() {
     for (var i = 0; i < vocas.length; i++) {
         var row = '';
         row += '<tr>';
-        row += '<td><strong>' + (i + 1) + '</strong></td>';
+        row += '<td class="hidden-xs"><strong>' + (i + 1) + '</strong></td>';
         row += '<td>' + (vocas[i].DisplayType == '1' ? vocas[i].Hiragana : vocas[i].Katakana) + '</td>';
-        row += '<td>' + (vocas[i].DisplayType == '1' ? vocas[i].Romaji : vocas[i].Romaji_Katakana) + '</td>';
+        row += '<td class="hidden-xs">' + (vocas[i].DisplayType == '1' ? vocas[i].Romaji : vocas[i].Romaji_Katakana) + '</td>';
         row += '<td>' + vocas[i].Kanji + '</td>';
         row += '<td>' + vocas[i].VMeaning + '</td>';
 
-        var levelPercent = vocas[i].Level / 10 * 100;
+        //var levelPercent = vocas[i].Level / 10 * 100;
         row += '<td>';
-        row += '<div class="progress progress-small">';
-        row += '    <div class="progress-bar progress-bar-' + (levelPercent == 100 ? 'primary' : 'danger') + '" role="progressbar" aria-valuenow="' + levelPercent + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + levelPercent + '%"></div>';
-        row += '</div>';
+        //row += '<div class="progress progress-small">';
+        //row += '    <div class="progress-bar progress-bar-' + (levelPercent == 100 ? 'primary' : 'danger') + '" role="progressbar" aria-valuenow="' + levelPercent + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + levelPercent + '%"></div>';
+        //row += '</div>';
+        row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 1 ? 'primary' : 'default') + '" style="width:20px;height:20px;">';
+        row += '<span class="fa fa-heart"></span>';
+        row += '</button>';
+        row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 3 ? 'primary' : 'default') + '" style="width:20px;height:20px;">';
+        row += '<span class="fa fa-heart"></span>';
+        row += '</button>';
+        row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 5 ? 'primary' : 'default') + '" style="width:20px;height:20px;">';
+        row += '<span class="fa fa-heart"></span>';
+        row += '</button>';
+        row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 7 ? 'primary' : 'default') + '" style="width:20px;height:20px;">';
+        row += '<span class="fa fa-heart"></span>';
+        row += '</button>';
+        row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 9 ? 'primary' : 'default') + '" style="width:20px;height:20px;">';
+        row += '<span class="fa fa-heart"></span>';
+        row += '</button>';
+
         row += '</td>';
         row += '</tr>';
         $('#tblLearntWord').append(row);
@@ -932,6 +947,7 @@ function showFlashCard(index, voice) {
             if (!isPractice) {
 
                 vocas[currentIndex].HasLearnt = '1';
+                vocas[currentIndex].IsDone = '1';
                 var html = showLearning(voca);
 
                 $('#flashCard').html(html);
@@ -974,6 +990,8 @@ function showFlashCard(voca, voice) {
         if (!isPractice) {
 
             vocas[currentIndex].HasLearnt = '1';
+            vocas[currentIndex].IsDone = '1';
+
             var html = showLearning(voca);
 
             $('#flashCard').html(html);
@@ -1705,6 +1723,8 @@ function showLearning(voca) {
 };
 
 function showPractise(voca) {
+    var html = '';
+
     if (voca.TestSkill == '2') {
         speak(voca.UrlAudio);
     }
@@ -1712,7 +1732,6 @@ function showPractise(voca) {
     var requiredTimePerVoca = parseInt($('#rtp').val());
     var fee = parseFloat($('#vsf').val());
 
-    var html = '';
     //html += '<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">';
     //html += '   <div class="carousel-inner" role="listbox">';
     html += '       <div class="item active">';

@@ -12,7 +12,8 @@
 <input type="hidden" id="vsd" value="@Model.ID"/>
 <input type="hidden" id="vsf" value="@Model.Fee"/>
 <input type="hidden" id="accessDenied" value="@Ivs.Core.Common.CommonData.DbReturnCode.AccessDenied"/>
-<input type="hidden" id="lessonType" value="@ViewBag.LessonType"/>
+<input type="hidden" id="lt" value="@ViewBag.LessonType"/>
+<input type="hidden" id="ik" value="@ViewBag.IsKanji"/>
 <div id="content" style="padding-left: 0px !important">
     <div class="notifications-wrapper">
         <div class="col-md-12 padding-0">
@@ -54,7 +55,13 @@
                                 </div>
                                 <div class="col-md-12">
                                     <h3><label>CÁC TỪ VỪA HỌC</label></h3>
-                                    <table class="table table-condensed table-hover table-responsive" id="tblLearntWord">
+                                    <table class="table table-condensed table-hover" id="tblLearntWord">
+                                        <tr>
+                                            <td>aaa</td>
+                                            <td>
+                                                <button class=" btn btn-circle btn-mn btn-primary" style="width:20px;height:20px;"><span class="fa fa-heart"></span></button>
+                                            </td>
+                                        </tr>
                                     </table>
                                 </div>
                                 </div>

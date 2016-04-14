@@ -347,7 +347,7 @@ namespace Nihongo.Dal.Dao
                         {
                             model.VocabularyID = voca.ID;
                         }
-                        var kanji = vocas.FirstOrDefault(ss => ss.Code == model.KanjiCode);
+                        var kanji = kanjis.FirstOrDefault(ss => ss.Code == model.KanjiCode);
                         if (kanji != null)
                         {
                             model.KanjiID = kanji.ID;
