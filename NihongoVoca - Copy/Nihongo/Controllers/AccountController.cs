@@ -996,6 +996,11 @@ namespace Nihongo.Controllers
             return View("VocaCate", userModel);
         }
 
+        public ActionResult Setting()
+        {
+            return View();
+        }
+
         public ActionResult GetUsers()
         {
             MS_UsersModels userModel = new MS_UsersModels();

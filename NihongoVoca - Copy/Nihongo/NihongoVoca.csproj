@@ -3312,6 +3312,7 @@
     <Content Include="Scripts\mine\Copy of learningsession.min.js.map">
       <DependentUpon>Copy of learningsession.js</DependentUpon>
     </Content>
+    <Content Include="Views\Account\Setting.cshtml" />
     <None Include="WebMarkupMin.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>
