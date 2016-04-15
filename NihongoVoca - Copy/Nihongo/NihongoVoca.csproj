@@ -289,6 +289,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\MS_KanjiExampleModel.cs" />
     <Compile Include="Models\MS_TestResultModels.cs" />
     <Compile Include="Models\MS_RegistedVocaModels.cs" />
     <Compile Include="Models\MS_PaymentHistoriesModels.cs" />

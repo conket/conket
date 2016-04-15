@@ -32,14 +32,6 @@
             <End Role="ms_vocabularies" EntitySet="ms_vocabularies" />
             <End Role="ms_answers" EntitySet="ms_answers" />
           </AssociationSet>
-          <AssociationSet Name="FK_mskanjiexamples_KanjiID_mskanjis_ID" Association="Models.Store.FK_mskanjiexamples_KanjiID_mskanjis_ID">
-            <End Role="ms_kanjis" EntitySet="ms_kanjis" />
-            <End Role="ms_kanjiexamples" EntitySet="ms_kanjiexamples" />
-          </AssociationSet>
-          <AssociationSet Name="FK_mskanjiexamples_VocabularyID_msvocabularies_ID" Association="Models.Store.FK_mskanjiexamples_VocabularyID_msvocabularies_ID">
-            <End Role="ms_vocabularies" EntitySet="ms_vocabularies" />
-            <End Role="ms_kanjiexamples" EntitySet="ms_kanjiexamples" />
-          </AssociationSet>
           <AssociationSet Name="FK_mspaymenthistories_UserID_msusers_ID" Association="Models.Store.FK_mspaymenthistories_UserID_msusers_ID">
             <End Role="ms_users" EntitySet="ms_users" />
             <End Role="ms_paymenthistories" EntitySet="ms_paymenthistories" />
@@ -125,7 +117,11 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="KanjiID" Type="int" Nullable="false" />
-          <Property Name="VocabularyID" Type="int" Nullable="false" />
+          <Property Name="VocabularyID" Type="int" />
+          <Property Name="Hiragana" Type="nvarchar" MaxLength="100" />
+          <Property Name="Kanji" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pinyin" Type="nvarchar" MaxLength="50" />
+          <Property Name="VMeaning" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="ms_kanjis">
           <Key>
@@ -144,6 +140,7 @@
           <Property Name="Description" Type="ntext" />
           <Property Name="UrlImage" Type="nvarchar" MaxLength="150" />
           <Property Name="UrlAudio" Type="nvarchar" MaxLength="150" />
+          <Property Name="DisplayType" Type="nvarchar" MaxLength="1" />
         </EntityType>
         <EntityType Name="ms_paymenthistories">
           <Key>
@@ -387,30 +384,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_mskanjiexamples_KanjiID_mskanjis_ID">
-          <End Role="ms_kanjis" Type="Models.Store.ms_kanjis" Multiplicity="1" />
-          <End Role="ms_kanjiexamples" Type="Models.Store.ms_kanjiexamples" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ms_kanjis">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ms_kanjiexamples">
-              <PropertyRef Name="KanjiID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_mskanjiexamples_VocabularyID_msvocabularies_ID">
-          <End Role="ms_vocabularies" Type="Models.Store.ms_vocabularies" Multiplicity="1" />
-          <End Role="ms_kanjiexamples" Type="Models.Store.ms_kanjiexamples" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ms_vocabularies">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ms_kanjiexamples">
-              <PropertyRef Name="VocabularyID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_mspaymenthistories_UserID_msusers_ID">
           <End Role="ms_users" Type="Models.Store.ms_users" Multiplicity="1" />
           <End Role="ms_paymenthistories" Type="Models.Store.ms_paymenthistories" Multiplicity="*" />
@@ -616,7 +589,6 @@
           <EntitySet Name="ms_testresults" EntityType="Models.ms_testresults" />
           <EntitySet Name="ms_users" EntityType="Models.ms_users" />
           <EntitySet Name="ms_uservocabularies" EntityType="Models.ms_uservocabularies" />
-          <EntitySet Name="ms_vocabularies" EntityType="Models.ms_vocabularies" />
           <EntitySet Name="ms_vocabularydetails" EntityType="Models.ms_vocabularydetails" />
           <EntitySet Name="ms_vocacategories" EntityType="Models.ms_vocacategories" />
           <EntitySet Name="ms_vocakanjis" EntityType="Models.ms_vocakanjis" />
@@ -630,16 +602,8 @@
             <End Role="ms_users" EntitySet="ms_users" />
             <End Role="ms_answers" EntitySet="ms_answers" />
           </AssociationSet>
-          <AssociationSet Name="FK_msanswers_VocabularyID_msvocabularies_ID" Association="Models.FK_msanswers_VocabularyID_msvocabularies_ID">
-            <End Role="ms_vocabularies" EntitySet="ms_vocabularies" />
-            <End Role="ms_answers" EntitySet="ms_answers" />
-          </AssociationSet>
           <AssociationSet Name="FK_mskanjiexamples_KanjiID_mskanjis_ID" Association="Models.FK_mskanjiexamples_KanjiID_mskanjis_ID">
             <End Role="ms_kanjis" EntitySet="ms_kanjis" />
-            <End Role="ms_kanjiexamples" EntitySet="ms_kanjiexamples" />
-          </AssociationSet>
-          <AssociationSet Name="FK_mskanjiexamples_VocabularyID_msvocabularies_ID" Association="Models.FK_mskanjiexamples_VocabularyID_msvocabularies_ID">
-            <End Role="ms_vocabularies" EntitySet="ms_vocabularies" />
             <End Role="ms_kanjiexamples" EntitySet="ms_kanjiexamples" />
           </AssociationSet>
           <AssociationSet Name="FK_msvocabularydetails_KanjiID_mskanjis_ID" Association="Models.FK_msvocabularydetails_KanjiID_mskanjis_ID">
@@ -686,14 +650,6 @@
             <End Role="ms_vocabularydetails" EntitySet="ms_vocabularydetails" />
             <End Role="ms_uservocabularies" EntitySet="ms_uservocabularies" />
           </AssociationSet>
-          <AssociationSet Name="FK_msvocabularydetails_VocabularyID_msvocabularies_ID" Association="Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID">
-            <End Role="ms_vocabularies" EntitySet="ms_vocabularies" />
-            <End Role="ms_vocabularydetails" EntitySet="ms_vocabularydetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_msvocakanjis_VocabularyID_msvocabularies_ID" Association="Models.FK_msvocakanjis_VocabularyID_msvocabularies_ID">
-            <End Role="ms_vocabularies" EntitySet="ms_vocabularies" />
-            <End Role="ms_vocakanjis" EntitySet="ms_vocakanjis" />
-          </AssociationSet>
           <AssociationSet Name="FK_msvocabularydetails_CategoryID_msvocacategories_ID" Association="Models.FK_msvocabularydetails_CategoryID_msvocacategories_ID">
             <End Role="ms_vocacategories" EntitySet="ms_vocacategories" />
             <End Role="ms_vocabularydetails" EntitySet="ms_vocabularydetails" />
@@ -705,6 +661,19 @@
           <AssociationSet Name="FK_msvouchers_VocaSetID_msvocasets_ID" Association="Models.FK_msvouchers_VocaSetID_msvocasets_ID">
             <End Role="ms_vocasets" EntitySet="ms_vocasets" />
             <End Role="ms_vouchers" EntitySet="ms_vouchers" />
+          </AssociationSet>
+          <EntitySet Name="ms_vocabularies" EntityType="Models.ms_vocabularies" />
+          <AssociationSet Name="FK_msanswers_VocabularyID_msvocabularies_ID" Association="Models.FK_msanswers_VocabularyID_msvocabularies_ID">
+            <End Role="ms_vocabularies" EntitySet="ms_vocabularies" />
+            <End Role="ms_answers" EntitySet="ms_answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msvocabularydetails_VocabularyID_msvocabularies_ID" Association="Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID">
+            <End Role="ms_vocabularies" EntitySet="ms_vocabularies" />
+            <End Role="ms_vocabularydetails" EntitySet="ms_vocabularydetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msvocakanjis_VocabularyID_msvocabularies_ID" Association="Models.FK_msvocakanjis_VocabularyID_msvocabularies_ID">
+            <End Role="ms_vocabularies" EntitySet="ms_vocabularies" />
+            <End Role="ms_vocakanjis" EntitySet="ms_vocakanjis" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="ms_answers">
@@ -730,9 +699,12 @@
           </Key>
           <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="KanjiID" Nullable="false" />
-          <Property Type="Int32" Name="VocabularyID" Nullable="false" />
+          <Property Type="Int32" Name="VocabularyID" />
           <NavigationProperty Name="ms_kanjis" Relationship="Models.FK_mskanjiexamples_KanjiID_mskanjis_ID" FromRole="ms_kanjiexamples" ToRole="ms_kanjis" />
-          <NavigationProperty Name="ms_vocabularies" Relationship="Models.FK_mskanjiexamples_VocabularyID_msvocabularies_ID" FromRole="ms_kanjiexamples" ToRole="ms_vocabularies" />
+          <Property Type="String" Name="Hiragana" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Kanji" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Pinyin" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VMeaning" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ms_kanjis">
           <Key>
@@ -755,6 +727,7 @@
           <NavigationProperty Name="ms_kanjiexamples" Relationship="Models.FK_mskanjiexamples_KanjiID_mskanjis_ID" FromRole="ms_kanjis" ToRole="ms_kanjiexamples" />
           <NavigationProperty Name="ms_vocabularydetails" Relationship="Models.FK_msvocabularydetails_KanjiID_mskanjis_ID" FromRole="ms_kanjis" ToRole="ms_vocabularydetails" />
           <NavigationProperty Name="ms_vocakanjis" Relationship="Models.FK_msvocakanjis_KanjiID_mskanjis_ID" FromRole="ms_kanjis" ToRole="ms_vocakanjis" />
+          <Property Type="String" Name="DisplayType" MaxLength="1" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ms_paymenthistories">
           <Key>
@@ -868,38 +841,6 @@
           <Property Type="Int32" Name="NumOfWrong" />
           <Property Type="String" Name="IsIgnore" MaxLength="1" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="ms_vocabularies">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="WordClass" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="DisplayType" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Romaji" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Hiragana" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Romaji2" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Hiragana2" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Romaji_Katakana" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Katakana" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Romaji_Katakana2" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Katakana2" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Kanji" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="VMeaning" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Type" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="UrlImage" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="UrlAudio" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="UrlAudio_Katakana" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="HasDiacritic" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="HasCombination" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="HasTsu" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="HasLongSound" MaxLength="1" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ms_answers" Relationship="Models.FK_msanswers_VocabularyID_msvocabularies_ID" FromRole="ms_vocabularies" ToRole="ms_answers" />
-          <NavigationProperty Name="ms_kanjiexamples" Relationship="Models.FK_mskanjiexamples_VocabularyID_msvocabularies_ID" FromRole="ms_vocabularies" ToRole="ms_kanjiexamples" />
-          <NavigationProperty Name="ms_vocabularydetails" Relationship="Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID" FromRole="ms_vocabularies" ToRole="ms_vocabularydetails" />
-          <NavigationProperty Name="ms_vocakanjis" Relationship="Models.FK_msvocakanjis_VocabularyID_msvocabularies_ID" FromRole="ms_vocabularies" ToRole="ms_vocakanjis" />
-        </EntityType>
         <EntityType Name="ms_vocabularydetails">
           <Key>
             <PropertyRef Name="ID" />
@@ -911,8 +852,8 @@
           <Property Type="Int32" Name="LineNumber" Nullable="false" />
           <NavigationProperty Name="ms_kanjis" Relationship="Models.FK_msvocabularydetails_KanjiID_mskanjis_ID" FromRole="ms_vocabularydetails" ToRole="ms_kanjis" />
           <NavigationProperty Name="ms_uservocabularies" Relationship="Models.FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID" FromRole="ms_vocabularydetails" ToRole="ms_uservocabularies" />
-          <NavigationProperty Name="ms_vocabularies" Relationship="Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID" FromRole="ms_vocabularydetails" ToRole="ms_vocabularies" />
           <NavigationProperty Name="ms_vocacategories" Relationship="Models.FK_msvocabularydetails_CategoryID_msvocacategories_ID" FromRole="ms_vocabularydetails" ToRole="ms_vocacategories" />
+          <NavigationProperty Name="ms_vocabularies" Relationship="Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID" FromRole="ms_vocabularydetails" ToRole="ms_vocabularies" />
         </EntityType>
         <EntityType Name="ms_vocacategories">
           <Key>
@@ -1019,18 +960,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_msanswers_VocabularyID_msvocabularies_ID">
-          <End Type="Models.ms_vocabularies" Role="ms_vocabularies" Multiplicity="0..1" />
-          <End Type="Models.ms_answers" Role="ms_answers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ms_vocabularies">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ms_answers">
-              <PropertyRef Name="VocabularyID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_mskanjiexamples_KanjiID_mskanjis_ID">
           <End Type="Models.ms_kanjis" Role="ms_kanjis" Multiplicity="1" />
           <End Type="Models.ms_kanjiexamples" Role="ms_kanjiexamples" Multiplicity="*" />
@@ -1040,18 +969,6 @@
             </Principal>
             <Dependent Role="ms_kanjiexamples">
               <PropertyRef Name="KanjiID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_mskanjiexamples_VocabularyID_msvocabularies_ID">
-          <End Type="Models.ms_vocabularies" Role="ms_vocabularies" Multiplicity="1" />
-          <End Type="Models.ms_kanjiexamples" Role="ms_kanjiexamples" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ms_vocabularies">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ms_kanjiexamples">
-              <PropertyRef Name="VocabularyID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1187,30 +1104,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_msvocabularydetails_VocabularyID_msvocabularies_ID">
-          <End Type="Models.ms_vocabularies" Role="ms_vocabularies" Multiplicity="0..1" />
-          <End Type="Models.ms_vocabularydetails" Role="ms_vocabularydetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ms_vocabularies">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ms_vocabularydetails">
-              <PropertyRef Name="VocabularyID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_msvocakanjis_VocabularyID_msvocabularies_ID">
-          <End Type="Models.ms_vocabularies" Role="ms_vocabularies" Multiplicity="1" />
-          <End Type="Models.ms_vocakanjis" Role="ms_vocakanjis" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ms_vocabularies">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ms_vocakanjis">
-              <PropertyRef Name="VocabularyID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_msvocabularydetails_CategoryID_msvocacategories_ID">
           <End Type="Models.ms_vocacategories" Role="ms_vocacategories" Multiplicity="1" />
           <End Type="Models.ms_vocabularydetails" Role="ms_vocabularydetails" Multiplicity="*" />
@@ -1247,6 +1140,73 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ms_vocabularies">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WordClass" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DisplayType" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Romaji" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Hiragana" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Romaji2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Hiragana2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Romaji_Katakana" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Katakana" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Romaji_Katakana2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Katakana2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Kanji" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VMeaning" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Type" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UrlImage" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UrlAudio" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UrlAudio_Katakana" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HasDiacritic" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HasCombination" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HasTsu" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HasLongSound" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ms_answers" Relationship="Models.FK_msanswers_VocabularyID_msvocabularies_ID" FromRole="ms_vocabularies" ToRole="ms_answers" />
+          <NavigationProperty Name="ms_vocabularydetails" Relationship="Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID" FromRole="ms_vocabularies" ToRole="ms_vocabularydetails" />
+          <NavigationProperty Name="ms_vocakanjis" Relationship="Models.FK_msvocakanjis_VocabularyID_msvocabularies_ID" FromRole="ms_vocabularies" ToRole="ms_vocakanjis" />
+        </EntityType>
+        <Association Name="FK_msanswers_VocabularyID_msvocabularies_ID">
+          <End Type="Models.ms_vocabularies" Role="ms_vocabularies" Multiplicity="0..1" />
+          <End Type="Models.ms_answers" Role="ms_answers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_vocabularies">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_answers">
+              <PropertyRef Name="VocabularyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msvocabularydetails_VocabularyID_msvocabularies_ID">
+          <End Type="Models.ms_vocabularies" Role="ms_vocabularies" Multiplicity="0..1" />
+          <End Type="Models.ms_vocabularydetails" Role="ms_vocabularydetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_vocabularies">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_vocabularydetails">
+              <PropertyRef Name="VocabularyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msvocakanjis_VocabularyID_msvocabularies_ID">
+          <End Type="Models.ms_vocabularies" Role="ms_vocabularies" Multiplicity="1" />
+          <End Type="Models.ms_vocakanjis" Role="ms_vocakanjis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_vocabularies">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_vocakanjis">
+              <PropertyRef Name="VocabularyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1271,6 +1231,10 @@
           <EntitySetMapping Name="ms_kanjiexamples">
             <EntityTypeMapping TypeName="Models.ms_kanjiexamples">
               <MappingFragment StoreEntitySet="ms_kanjiexamples">
+                <ScalarProperty Name="VMeaning" ColumnName="VMeaning" />
+                <ScalarProperty Name="Pinyin" ColumnName="Pinyin" />
+                <ScalarProperty Name="Kanji" ColumnName="Kanji" />
+                <ScalarProperty Name="Hiragana" ColumnName="Hiragana" />
                 <ScalarProperty Name="VocabularyID" ColumnName="VocabularyID" />
                 <ScalarProperty Name="KanjiID" ColumnName="KanjiID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1280,6 +1244,7 @@
           <EntitySetMapping Name="ms_kanjis">
             <EntityTypeMapping TypeName="Models.ms_kanjis">
               <MappingFragment StoreEntitySet="ms_kanjis">
+                <ScalarProperty Name="DisplayType" ColumnName="DisplayType" />
                 <ScalarProperty Name="UrlAudio" ColumnName="UrlAudio" />
                 <ScalarProperty Name="UrlImage" ColumnName="UrlImage" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -1399,35 +1364,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ms_vocabularies">
-            <EntityTypeMapping TypeName="Models.ms_vocabularies">
-              <MappingFragment StoreEntitySet="ms_vocabularies">
-                <ScalarProperty Name="HasLongSound" ColumnName="HasLongSound" />
-                <ScalarProperty Name="HasTsu" ColumnName="HasTsu" />
-                <ScalarProperty Name="HasCombination" ColumnName="HasCombination" />
-                <ScalarProperty Name="HasDiacritic" ColumnName="HasDiacritic" />
-                <ScalarProperty Name="UrlAudio_Katakana" ColumnName="UrlAudio_Katakana" />
-                <ScalarProperty Name="UrlAudio" ColumnName="UrlAudio" />
-                <ScalarProperty Name="UrlImage" ColumnName="UrlImage" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="VMeaning" ColumnName="VMeaning" />
-                <ScalarProperty Name="Kanji" ColumnName="Kanji" />
-                <ScalarProperty Name="Katakana2" ColumnName="Katakana2" />
-                <ScalarProperty Name="Romaji_Katakana2" ColumnName="Romaji_Katakana2" />
-                <ScalarProperty Name="Katakana" ColumnName="Katakana" />
-                <ScalarProperty Name="Romaji_Katakana" ColumnName="Romaji_Katakana" />
-                <ScalarProperty Name="Hiragana2" ColumnName="Hiragana2" />
-                <ScalarProperty Name="Romaji2" ColumnName="Romaji2" />
-                <ScalarProperty Name="Hiragana" ColumnName="Hiragana" />
-                <ScalarProperty Name="Romaji" ColumnName="Romaji" />
-                <ScalarProperty Name="DisplayType" ColumnName="DisplayType" />
-                <ScalarProperty Name="WordClass" ColumnName="WordClass" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ms_vocabularydetails">
             <EntityTypeMapping TypeName="Models.ms_vocabularydetails">
               <MappingFragment StoreEntitySet="ms_vocabularydetails">
@@ -1513,6 +1449,35 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ms_vocabularies">
+            <EntityTypeMapping TypeName="Models.ms_vocabularies">
+              <MappingFragment StoreEntitySet="ms_vocabularies">
+                <ScalarProperty Name="HasLongSound" ColumnName="HasLongSound" />
+                <ScalarProperty Name="HasTsu" ColumnName="HasTsu" />
+                <ScalarProperty Name="HasCombination" ColumnName="HasCombination" />
+                <ScalarProperty Name="HasDiacritic" ColumnName="HasDiacritic" />
+                <ScalarProperty Name="UrlAudio_Katakana" ColumnName="UrlAudio_Katakana" />
+                <ScalarProperty Name="UrlAudio" ColumnName="UrlAudio" />
+                <ScalarProperty Name="UrlImage" ColumnName="UrlImage" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="VMeaning" ColumnName="VMeaning" />
+                <ScalarProperty Name="Kanji" ColumnName="Kanji" />
+                <ScalarProperty Name="Katakana2" ColumnName="Katakana2" />
+                <ScalarProperty Name="Romaji_Katakana2" ColumnName="Romaji_Katakana2" />
+                <ScalarProperty Name="Katakana" ColumnName="Katakana" />
+                <ScalarProperty Name="Romaji_Katakana" ColumnName="Romaji_Katakana" />
+                <ScalarProperty Name="Hiragana2" ColumnName="Hiragana2" />
+                <ScalarProperty Name="Romaji2" ColumnName="Romaji2" />
+                <ScalarProperty Name="Hiragana" ColumnName="Hiragana" />
+                <ScalarProperty Name="Romaji" ColumnName="Romaji" />
+                <ScalarProperty Name="DisplayType" ColumnName="DisplayType" />
+                <ScalarProperty Name="WordClass" ColumnName="WordClass" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1542,7 +1507,6 @@
         <EntityTypeShape EntityType="Models.ms_testresults" Width="1.5" PointX="10.727104648354978" PointY="10.141936336710089" />
         <EntityTypeShape EntityType="Models.ms_users" Width="1.5" PointX="0.86050835850672258" PointY="15.239497832599794" />
         <EntityTypeShape EntityType="Models.ms_uservocabularies" Width="1.5" PointX="4.00585498102282" PointY="9.2490707380925627" />
-        <EntityTypeShape EntityType="Models.ms_vocabularies" Width="1.5" PointX="8.0403279029020709" PointY="9.4643807455265812" />
         <EntityTypeShape EntityType="Models.ms_vocabularydetails" Width="1.5" PointX="3.0450658011460048" PointY="9.047372479479467" />
         <EntityTypeShape EntityType="Models.ms_vocacategories" Width="1.5" PointX="7.7730612977282432" PointY="27.763090787345121" />
         <EntityTypeShape EntityType="Models.ms_vocakanjis" Width="1.5" PointX="6.7339146671508976" PointY="22.499513979302492" />
@@ -1550,9 +1514,7 @@
         <EntityTypeShape EntityType="Models.ms_vouchers" Width="1.5" PointX="11.151918958477637" PointY="14.189443445852698" />
         <AssociationConnector Association="Models.FK_msanswers_KanjiID_mskanjis_ID" />
         <AssociationConnector Association="Models.FK_msanswers_UpdatedBy_msusers_ID" />
-        <AssociationConnector Association="Models.FK_msanswers_VocabularyID_msvocabularies_ID" />
         <AssociationConnector Association="Models.FK_mskanjiexamples_KanjiID_mskanjis_ID" />
-        <AssociationConnector Association="Models.FK_mskanjiexamples_VocabularyID_msvocabularies_ID" />
         <AssociationConnector Association="Models.FK_msvocabularydetails_KanjiID_mskanjis_ID" />
         <AssociationConnector Association="Models.FK_msvocakanjis_KanjiID_mskanjis_ID" />
         <AssociationConnector Association="Models.FK_mspaymenthistories_UserID_msusers_ID" />
@@ -1564,11 +1526,13 @@
         <AssociationConnector Association="Models.FK_mstestresults_UserID_msusers_ID" />
         <AssociationConnector Association="Models.FK_msuservocabularies_UserID_msusers_ID" />
         <AssociationConnector Association="Models.FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID" />
-        <AssociationConnector Association="Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID" />
-        <AssociationConnector Association="Models.FK_msvocakanjis_VocabularyID_msvocabularies_ID" />
         <AssociationConnector Association="Models.FK_msvocabularydetails_CategoryID_msvocacategories_ID" />
         <AssociationConnector Association="Models.FK_msvocacategories_VocaSetID_msvocasets_ID" />
         <AssociationConnector Association="Models.FK_msvouchers_VocaSetID_msvocasets_ID" />
+        <EntityTypeShape EntityType="Models.ms_vocabularies" Width="1.5" PointX="9.844450413177" PointY="31.802543312219225" />
+        <AssociationConnector Association="Models.FK_msanswers_VocabularyID_msvocabularies_ID" />
+        <AssociationConnector Association="Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID" />
+        <AssociationConnector Association="Models.FK_msvocakanjis_VocabularyID_msvocabularies_ID" />
       </Diagram>
     </Diagrams>
   </Designer>

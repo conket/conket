@@ -115,7 +115,7 @@ namespace Nihongo.Dal.Dao
                   })
                     .FirstOrDefault();
 
-                
+
                 if (result != null)
                 {
                     this.BeginTransaction();
@@ -132,8 +132,8 @@ namespace Nihongo.Dal.Dao
                         foreach (var vocaDetail in vocaDetails)
                         {
                             Nihongo.Dal.Mapping.ms_uservocabularies //usVoca = ms_uservocabularies.FirstOrDefault(ss => ss.UserID == userID && ss.VocaDetailID == vocaDetail.ID);
-                            //if (usVoca == null)
-                            //{
+                                //if (usVoca == null)
+                                //{
                                 usVoca = new Mapping.ms_uservocabularies()
                                 {
                                     UserID = userID,
@@ -146,7 +146,7 @@ namespace Nihongo.Dal.Dao
                                     EndDate = DateTime.Now.Date.AddYears(1),
                                     NumOfWrong = 0,
                                 };
-                                ms_uservocabularies.AddObject(usVoca);
+                            ms_uservocabularies.AddObject(usVoca);
                             //}
                             //else
                             //{
@@ -168,7 +168,7 @@ namespace Nihongo.Dal.Dao
                         }
                     }
 
-                    
+
                     if (returnCode == CommonData.DbReturnCode.Succeed)
                     {
                         returnCode = this.Commit();
@@ -239,17 +239,17 @@ namespace Nihongo.Dal.Dao
             {
                 var vocaCate = this.ms_vocacategories.Where(ss => ss.ID == id);
                 vocaSets = (from ca in vocaCate
-                           join se in this.ms_vocasets on ca.VocaSetID equals se.ID
-                           join re in this.ms_registedvocasets on se.ID equals re.VocaSetID into regis
-                           from re in regis.DefaultIfEmpty()
-                           select new MS_VocaSetsModels
-                           {
-                               ID = se.ID,
-                               UrlDisplay = se.UrlDisplay,
-                               Fee = se.Fee,
-                               StartDate = re == null ? null : re.StartDate,
-                               EndDate = re == null ? null : re.EndDate,
-                           })
+                            join se in this.ms_vocasets on ca.VocaSetID equals se.ID
+                            join re in this.ms_registedvocasets on se.ID equals re.VocaSetID into regis
+                            from re in regis.DefaultIfEmpty()
+                            select new MS_VocaSetsModels
+                            {
+                                ID = se.ID,
+                                UrlDisplay = se.UrlDisplay,
+                                Fee = se.Fee,
+                                StartDate = re == null ? null : re.StartDate,
+                                EndDate = re == null ? null : re.EndDate,
+                            })
                            .ToList();
             }
             catch (Exception ex)
@@ -414,6 +414,72 @@ namespace Nihongo.Dal.Dao
 
                         returnCode = this.Saves();
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
+        internal int CreateKanjiExample(List<MS_KanjiExampleModel> models)
+        {
+            int returnCode = 0;
+
+            try
+            {
+                if (models.Count > 0)
+                {
+                    var kanjis = this.ms_kanjis.ToList();
+                    var vocas = this.ms_vocabularies.ToList();
+
+                    foreach (var model in models)
+                    {
+                        var voca = vocas.FirstOrDefault(ss => ss.Code == model.VocabularyCode);
+                        if (voca != null)
+                        {
+                            model.VocabularyID = voca.ID;
+                        }
+                        var kanji = kanjis.FirstOrDefault(ss => ss.Code == model.KanjiCode);
+                        if (kanji != null)
+                        {
+                            model.KanjiID = kanji.ID;
+                        }
+
+                        if (kanji != null)
+                        {
+                            var detail = this.ms_kanjiexamples
+                                .FirstOrDefault(ss => ss.KanjiID == model.KanjiID
+                                                && ss.Kanji == model.Kanji
+                                                && ss.Hiragana == model.Hiragana);
+                            if (detail == null)
+                            {
+                                detail = new Mapping.ms_kanjiexamples()
+                                {
+                                    VocabularyID = model.VocabularyID,
+                                    KanjiID = model.KanjiID,
+                                    Kanji = model.Kanji,
+                                    Pinyin = model.Pinyin,
+                                    VMeaning = model.VMeaning,
+                                    Hiragana = model.Hiragana,
+                                };
+
+                                this.ms_kanjiexamples.AddObject(detail);
+                            }
+                            else
+                            {
+                                detail.VocabularyID = model.VocabularyID;
+                                detail.Kanji = model.Kanji;
+                                detail.Pinyin = model.Pinyin;
+                                detail.VMeaning = model.VMeaning;
+                                detail.Hiragana = model.Hiragana;
+                            }
+                        }
+                    }
+
+                    returnCode = this.Saves();
                 }
             }
             catch (Exception ex)

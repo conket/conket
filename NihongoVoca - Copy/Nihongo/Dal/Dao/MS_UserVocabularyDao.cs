@@ -69,10 +69,21 @@ namespace Nihongo.Dal.Dao
                                    UrlImage = ss.UrlImage,
                                    OnReading = ss.OnReading,
                                    KunReading = ss.KunReading,
-                                   DisplayType = "3",
+                                   DisplayType = ss.DisplayType,
 
                                    Point = 0,
                                    IsDone = CommonData.Status.Disable,
+
+                                   KanjiExamples = (from ex in ms_kanjiexamples
+                                                   where ex.KanjiID == ss.ID
+                                                   select new MS_KanjiExampleModel
+                                                   {
+                                                       KanjiID = ex.KanjiID,
+                                                       Kanji = ex.Kanji,
+                                                       Pinyin = ex.Pinyin,
+                                                       Hiragana = ex.Hiragana,
+                                                       VMeaning = ex.VMeaning,
+                                                   }).AsEnumerable(),
                                })
                                .Take(5)
                                .ToList();
@@ -207,10 +218,21 @@ namespace Nihongo.Dal.Dao
                                    UrlImage = ss.UrlImage,
                                    OnReading = ss.OnReading,
                                    KunReading = ss.KunReading,
-                                   DisplayType = "3",
+                                   DisplayType = ss.DisplayType,
 
                                    Point = 0,
                                    IsDone = CommonData.Status.Disable,
+
+                                   KanjiExamples = (from ex in ms_kanjiexamples
+                                                    where ex.KanjiID == ss.ID
+                                                    select new MS_KanjiExampleModel
+                                                    {
+                                                        KanjiID = ex.KanjiID,
+                                                        Kanji = ex.Kanji,
+                                                        Pinyin = ex.Pinyin,
+                                                        Hiragana = ex.Hiragana,
+                                                        VMeaning = ex.VMeaning,
+                                                    }).AsEnumerable(),
                                })
                                .Take(10)
                                .ToList();

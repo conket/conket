@@ -67,10 +67,10 @@
                                     </div>
                                 </div>
 
-                                <div class="badges-v1 lesson1" style="width: 100%; height: 420px;" id="flashCard1">
+                                <div class="badges-v1 lesson" style="width: 100%; height: 420px;" id="flashCard">
                                     <div class="col-md-12 padding-0">
 
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">
                                             @*<img class="img-responsive hidden-xs" src="~/images/voca/ichi.jpg" alt="Từ vựng tiếng Nhật" style="height: 150px">
                                             <p class="hidden-xs">Một ngón tay</p>
                                             <br />
@@ -78,14 +78,15 @@
                                                 <span class="fa fa-coffee"></span>
                                             </button>*@
                                             <p style="font-size: 70px;">一</p>
-                                            <a href="#" data-toggle="modal" data-target="#kanjiImage"><i class="fa fa-television"></i>Hình ảnh</a>
+                                            <a href="#" data-toggle="modal" data-target="#kanjiImage"><i class="fa fa-television"></i>Ghi nhớ</a>
                                         </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #ccc;border-left: 1px solid #ccc;">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #ccc; border-left: 1px solid #ccc;">
                                             <h4><strong>NHẤT 
                                             </strong>
                                             </h4>
-                                            <p>On: aaa.bbb.cc</p>
-                                            <p>Kun: aaa.bbb.cc</p>
+                                            <p><strong>Một</strong></p>
+                                            <p>On: イチ。イッ。イツ</p>
+                                            <p>Kun: ひと</p>
                                             <button class=" btn btn-circle btn-mn btn-primary" style="width: 15px; height: 15px;">
                                                 <span class="fa fa-heart"></span>
                                             </button>
@@ -115,26 +116,18 @@
                                                 </ul>
                                             </div>
                                             <div class="col-md-12" id="draw"></div>
-                                        </div
+                                        </div>
                                     </div>
-                                    @*<div class="col-md-12 padding-0">
-                                        <div class="col-md-4">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <button onclick="draw();" class="btn btn-default">Viết</button>
-                                            <input id="rdoHiragana" type="radio" name="rdoDraw">Hiragana
-                                                <input id="rdoKatakana" type="radio" name="rdoDraw">Katakana
-                                        <input id="rdoKanji" type="radio" name="rdoDraw">Kanji
-                                        </div>
-                                    </div>*@
                                     <div class="col-md-12 padding-0" style="width: 100%; height: 200px; overflow-y: auto; overflow-x: hidden;">
-
+                                        <label>Ví dụ:</label>
                                         <table class="table table-condensed table-hover" id="tblLearntWord1">
                                             <thead>
-                                                <th>Từ</th>
-                                                <th>Hiragana</th>
-                                                <th>Hán Việt</th>
-                                                <th>Nghĩa</th>
+                                                <tr>
+                                                    <th>Từ</th>
+                                                    <th>Hiragana</th>
+                                                    <th>Hán Việt</th>
+                                                    <th>Nghĩa</th>
+                                                </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>

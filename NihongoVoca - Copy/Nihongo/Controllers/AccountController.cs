@@ -924,6 +924,63 @@ namespace Nihongo.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult CreateKanjiExample(HttpPostedFileBase file)
+        {
+            int returnCode = 0;
+            if (file != null && file.ContentLength > 0)
+            {
+                string extension = System.IO.Path.GetExtension(file.FileName);
+                string path1 = string.Format("{0}/{1}", Server.MapPath("~/Content/Upload"), file.FileName);
+                if (System.IO.File.Exists(path1))
+                    System.IO.File.Delete(path1);
+
+                file.SaveAs(path1);
+                //string sqlConnectionString = @"Data Source=LEEDHAR2-PC\SQLEXPRESS;Database=Leedhar_Import;Trusted_Connection=true;Persist Security Info=True";
+
+                List<MS_KanjiExampleModel> list = new List<MS_KanjiExampleModel>();
+                //Create connection string to Excel work book
+                string excelConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path1 + ";Extended Properties=Excel 12.0;Persist Security Info=False";
+                //Create Connection to Excel work book
+                using (OleDbConnection excelConnection = new OleDbConnection(excelConnectionString))
+                {
+                    excelConnection.Open();
+
+                    System.Data.DataSet ds = new System.Data.DataSet();
+                    using (OleDbDataAdapter dataAdapter = new OleDbDataAdapter("Select * from [Sheet1$]", excelConnection))
+                    {
+                        dataAdapter.Fill(ds);
+                    }
+
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        MS_KanjiExampleModel detail = new MS_KanjiExampleModel();
+                        detail.KanjiCode = CommonMethod.ParseString(ds.Tables[0].Rows[i]["KanjiCode"]);
+                        detail.VocabularyCode = CommonMethod.ParseString(ds.Tables[0].Rows[i]["VocabularyCode"]);
+                        detail.Kanji = CommonMethod.ParseString(ds.Tables[0].Rows[i]["Kanji"]);
+                        detail.Hiragana = CommonMethod.ParseString(ds.Tables[0].Rows[i]["Hiragana"]);
+                        detail.Pinyin = CommonMethod.ParseString(ds.Tables[0].Rows[i]["Pinyin"]);
+                        detail.VMeaning = CommonMethod.ParseString(ds.Tables[0].Rows[i]["VMeaning"]);
+                        list.Add(detail);
+                    }
+                    excelConnection.Close();
+                }
+
+                using (MS_VocaCategoryDao dao = new MS_VocaCategoryDao())
+                {
+                    returnCode = dao.CreateKanjiExample(list);
+                    if (returnCode == 0)
+                    {
+                        TempData["ErrorMessage"] = "Tạo bộ từ vựng thành công!!!";
+                        return RedirectToAction("CreateVocaCategory");
+                    }
+                }
+            }
+
+            TempData["ErrorMessage"] = "Tạo bộ từ vựng thất bại!!!";
+            return View();
+        }
+
         public ActionResult Admin(int id)
         {
             ViewBag.UserName = id;

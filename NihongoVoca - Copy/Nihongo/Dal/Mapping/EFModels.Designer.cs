@@ -21,9 +21,7 @@ using System.Xml.Serialization;
 
 [assembly: EdmRelationshipAttribute("Models", "FK_msanswers_KanjiID_mskanjis_ID", "ms_kanjis", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_kanjis), "ms_answers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_answers), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_msanswers_UpdatedBy_msusers_ID", "ms_users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_users), "ms_answers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_answers), true)]
-[assembly: EdmRelationshipAttribute("Models", "FK_msanswers_VocabularyID_msvocabularies_ID", "ms_vocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_vocabularies), "ms_answers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_answers), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_mskanjiexamples_KanjiID_mskanjis_ID", "ms_kanjis", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_kanjis), "ms_kanjiexamples", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_kanjiexamples), true)]
-[assembly: EdmRelationshipAttribute("Models", "FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_vocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocabularies), "ms_kanjiexamples", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_kanjiexamples), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_msvocabularydetails_KanjiID_mskanjis_ID", "ms_kanjis", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_kanjis), "ms_vocabularydetails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocabularydetails), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_msvocakanjis_KanjiID_mskanjis_ID", "ms_kanjis", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_kanjis), "ms_vocakanjis", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocakanjis), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_mspaymenthistories_UserID_msusers_ID", "ms_users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_users), "ms_paymenthistories", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_paymenthistories), true)]
@@ -35,11 +33,12 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Models", "FK_mstestresults_UserID_msusers_ID", "ms_users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_users), "ms_testresults", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_testresults), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_msuservocabularies_UserID_msusers_ID", "ms_users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_users), "ms_uservocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_uservocabularies), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID", "ms_vocabularydetails", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocabularydetails), "ms_uservocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_uservocabularies), true)]
-[assembly: EdmRelationshipAttribute("Models", "FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_vocabularies), "ms_vocabularydetails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocabularydetails), true)]
-[assembly: EdmRelationshipAttribute("Models", "FK_msvocakanjis_VocabularyID_msvocabularies_ID", "ms_vocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocabularies), "ms_vocakanjis", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocakanjis), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_msvocabularydetails_CategoryID_msvocacategories_ID", "ms_vocacategories", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocacategories), "ms_vocabularydetails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocabularydetails), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_msvocacategories_VocaSetID_msvocasets_ID", "ms_vocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_vocasets), "ms_vocacategories", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocacategories), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_msvouchers_VocaSetID_msvocasets_ID", "ms_vocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocasets), "ms_vouchers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vouchers), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msanswers_VocabularyID_msvocabularies_ID", "ms_vocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_vocabularies), "ms_answers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_answers), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_vocabularies), "ms_vocabularydetails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocabularydetails), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msvocakanjis_VocabularyID_msvocabularies_ID", "ms_vocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocabularies), "ms_vocakanjis", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocakanjis), true)]
 
 #endregion
 
@@ -222,22 +221,6 @@ namespace Nihongo.Dal.Mapping
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<ms_vocabularies> ms_vocabularies
-        {
-            get
-            {
-                if ((_ms_vocabularies == null))
-                {
-                    _ms_vocabularies = base.CreateObjectSet<ms_vocabularies>("ms_vocabularies");
-                }
-                return _ms_vocabularies;
-            }
-        }
-        private ObjectSet<ms_vocabularies> _ms_vocabularies;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<ms_vocabularydetails> ms_vocabularydetails
         {
             get
@@ -314,6 +297,22 @@ namespace Nihongo.Dal.Mapping
             }
         }
         private ObjectSet<ms_vouchers> _ms_vouchers;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ms_vocabularies> ms_vocabularies
+        {
+            get
+            {
+                if ((_ms_vocabularies == null))
+                {
+                    _ms_vocabularies = base.CreateObjectSet<ms_vocabularies>("ms_vocabularies");
+                }
+                return _ms_vocabularies;
+            }
+        }
+        private ObjectSet<ms_vocabularies> _ms_vocabularies;
 
         #endregion
 
@@ -384,14 +383,6 @@ namespace Nihongo.Dal.Mapping
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the ms_vocabularies EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToms_vocabularies(ms_vocabularies ms_vocabularies)
-        {
-            base.AddObject("ms_vocabularies", ms_vocabularies);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the ms_vocabularydetails EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToms_vocabularydetails(ms_vocabularydetails ms_vocabularydetails)
@@ -429,6 +420,14 @@ namespace Nihongo.Dal.Mapping
         public void AddToms_vouchers(ms_vouchers ms_vouchers)
         {
             base.AddObject("ms_vouchers", ms_vouchers);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ms_vocabularies EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToms_vocabularies(ms_vocabularies ms_vocabularies)
+        {
+            base.AddObject("ms_vocabularies", ms_vocabularies);
         }
 
         #endregion
@@ -821,13 +820,11 @@ namespace Nihongo.Dal.Mapping
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="kanjiID">Initial value of the KanjiID property.</param>
-        /// <param name="vocabularyID">Initial value of the VocabularyID property.</param>
-        public static ms_kanjiexamples Createms_kanjiexamples(global::System.Int32 id, global::System.Int32 kanjiID, global::System.Int32 vocabularyID)
+        public static ms_kanjiexamples Createms_kanjiexamples(global::System.Int32 id, global::System.Int32 kanjiID)
         {
             ms_kanjiexamples ms_kanjiexamples = new ms_kanjiexamples();
             ms_kanjiexamples.ID = id;
             ms_kanjiexamples.KanjiID = kanjiID;
-            ms_kanjiexamples.VocabularyID = vocabularyID;
             return ms_kanjiexamples;
         }
 
@@ -889,9 +886,9 @@ namespace Nihongo.Dal.Mapping
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 VocabularyID
+        public Nullable<global::System.Int32> VocabularyID
         {
             get
             {
@@ -906,9 +903,105 @@ namespace Nihongo.Dal.Mapping
                 OnVocabularyIDChanged();
             }
         }
-        private global::System.Int32 _VocabularyID;
-        partial void OnVocabularyIDChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _VocabularyID;
+        partial void OnVocabularyIDChanging(Nullable<global::System.Int32> value);
         partial void OnVocabularyIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Hiragana
+        {
+            get
+            {
+                return _Hiragana;
+            }
+            set
+            {
+                OnHiraganaChanging(value);
+                ReportPropertyChanging("Hiragana");
+                _Hiragana = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Hiragana");
+                OnHiraganaChanged();
+            }
+        }
+        private global::System.String _Hiragana;
+        partial void OnHiraganaChanging(global::System.String value);
+        partial void OnHiraganaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Kanji
+        {
+            get
+            {
+                return _Kanji;
+            }
+            set
+            {
+                OnKanjiChanging(value);
+                ReportPropertyChanging("Kanji");
+                _Kanji = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Kanji");
+                OnKanjiChanged();
+            }
+        }
+        private global::System.String _Kanji;
+        partial void OnKanjiChanging(global::System.String value);
+        partial void OnKanjiChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Pinyin
+        {
+            get
+            {
+                return _Pinyin;
+            }
+            set
+            {
+                OnPinyinChanging(value);
+                ReportPropertyChanging("Pinyin");
+                _Pinyin = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Pinyin");
+                OnPinyinChanged();
+            }
+        }
+        private global::System.String _Pinyin;
+        partial void OnPinyinChanging(global::System.String value);
+        partial void OnPinyinChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String VMeaning
+        {
+            get
+            {
+                return _VMeaning;
+            }
+            set
+            {
+                OnVMeaningChanging(value);
+                ReportPropertyChanging("VMeaning");
+                _VMeaning = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("VMeaning");
+                OnVMeaningChanged();
+            }
+        }
+        private global::System.String _VMeaning;
+        partial void OnVMeaningChanging(global::System.String value);
+        partial void OnVMeaningChanged();
 
         #endregion
 
@@ -949,44 +1042,6 @@ namespace Nihongo.Dal.Mapping
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_kanjis>("Models.FK_mskanjiexamples_KanjiID_mskanjis_ID", "ms_kanjis", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_vocabularies")]
-        public ms_vocabularies ms_vocabularies
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_vocabularies").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_vocabularies").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<ms_vocabularies> ms_vocabulariesReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_vocabularies");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_vocabularies>("Models.FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_vocabularies", value);
                 }
             }
         }
@@ -1336,6 +1391,30 @@ namespace Nihongo.Dal.Mapping
         private global::System.String _UrlAudio;
         partial void OnUrlAudioChanging(global::System.String value);
         partial void OnUrlAudioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DisplayType
+        {
+            get
+            {
+                return _DisplayType;
+            }
+            set
+            {
+                OnDisplayTypeChanging(value);
+                ReportPropertyChanging("DisplayType");
+                _DisplayType = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DisplayType");
+                OnDisplayTypeChanged();
+            }
+        }
+        private global::System.String _DisplayType;
+        partial void OnDisplayTypeChanging(global::System.String value);
+        partial void OnDisplayTypeChanged();
 
         #endregion
 
@@ -4480,28 +4559,6 @@ namespace Nihongo.Dal.Mapping
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_kanjiexamples")]
-        public EntityCollection<ms_kanjiexamples> ms_kanjiexamples
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_kanjiexamples>("Models.FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_kanjiexamples");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_kanjiexamples>("Models.FK_mskanjiexamples_VocabularyID_msvocabularies_ID", "ms_kanjiexamples", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularydetails")]
         public EntityCollection<ms_vocabularydetails> ms_vocabularydetails
         {
@@ -4767,44 +4824,6 @@ namespace Nihongo.Dal.Mapping
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies")]
-        public ms_vocabularies ms_vocabularies
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<ms_vocabularies> ms_vocabulariesReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_vocabularies>("Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocabularydetails_CategoryID_msvocacategories_ID", "ms_vocacategories")]
         public ms_vocacategories ms_vocacategories
         {
@@ -4833,6 +4852,44 @@ namespace Nihongo.Dal.Mapping
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_vocacategories>("Models.FK_msvocabularydetails_CategoryID_msvocacategories_ID", "ms_vocacategories", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies")]
+        public ms_vocabularies ms_vocabularies
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_vocabularies> ms_vocabulariesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocabularies>("Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_vocabularies>("Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies", value);
                 }
             }
         }

@@ -204,8 +204,10 @@ function getTestVocas() {
                     vocas.push(voca);
                     //                        failArray.push(voca);
                     //if (voca.TestSkill == '3') {
-                    var audio = new Audio(voca.UrlAudio);
-                    audio.load();
+                    if (voca.DisplayType != '3') {
+                        var audio = new Audio(voca.UrlAudio);
+                        audio.load();
+                    }
                     //}
 
                     //Calculate total Level
@@ -669,7 +671,7 @@ function checkInput() {
                             }
                         }
                         else {
-                            alert('a');
+                            
                             //    //show result
                             //    currentIndex = -1;
                             //    currentLevel = totalLevel;
@@ -836,36 +838,64 @@ function showResultPage() {
     $('#tblLearntWord').html('');
     for (var i = 0; i < vocas.length; i++) {
         var row = '';
-        row += '<tr>';
-        row += '<td class="hidden-xs"><strong>' + (i + 1) + '</strong></td>';
-        row += '<td>' + (vocas[i].DisplayType == '1' ? vocas[i].Hiragana : vocas[i].Katakana) + '</td>';
-        row += '<td class="hidden-xs">' + (vocas[i].DisplayType == '1' ? vocas[i].Romaji : vocas[i].Romaji_Katakana) + '</td>';
-        row += '<td>' + vocas[i].Kanji + '</td>';
-        row += '<td>' + vocas[i].VMeaning + '</td>';
+        if (vocas[i].DisplayType == '3') {
+            row += '<tr>';
+            row += '<td class="hidden-xs"><strong>' + (i + 1) + '</strong></td>';
+            row += '<td>' + vocas[i].Kanji + '</td>';
+            row += '<td>' + vocas[i].Pinyin + '</td>';
+            row += '<td>' + vocas[i].VMeaning + '</td>';
+            row += '<td>';
+            row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 1 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+            row += '<span class="fa fa-heart"></span>';
+            row += '</button>';
+            row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 3 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+            row += '<span class="fa fa-heart"></span>';
+            row += '</button>';
+            row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 5 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+            row += '<span class="fa fa-heart"></span>';
+            row += '</button>';
+            row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 7 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+            row += '<span class="fa fa-heart"></span>';
+            row += '</button>';
+            row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 9 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+            row += '<span class="fa fa-heart"></span>';
+            row += '</button>';
 
-        //var levelPercent = vocas[i].Level / 10 * 100;
-        row += '<td>';
-        //row += '<div class="progress progress-small">';
-        //row += '    <div class="progress-bar progress-bar-' + (levelPercent == 100 ? 'primary' : 'danger') + '" role="progressbar" aria-valuenow="' + levelPercent + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + levelPercent + '%"></div>';
-        //row += '</div>';
-        row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 1 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
-        row += '<span class="fa fa-heart"></span>';
-        row += '</button>';
-        row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 3 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
-        row += '<span class="fa fa-heart"></span>';
-        row += '</button>';
-        row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 5 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
-        row += '<span class="fa fa-heart"></span>';
-        row += '</button>';
-        row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 7 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
-        row += '<span class="fa fa-heart"></span>';
-        row += '</button>';
-        row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 9 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
-        row += '<span class="fa fa-heart"></span>';
-        row += '</button>';
+            row += '</td>';
+            row += '</tr>';
+        }
+        else {
+            row += '<tr>';
+            row += '<td class="hidden-xs"><strong>' + (i + 1) + '</strong></td>';
+            row += '<td>' + (vocas[i].DisplayType == '1' ? vocas[i].Hiragana : vocas[i].Katakana) + '</td>';
+            row += '<td class="hidden-xs">' + (vocas[i].DisplayType == '1' ? vocas[i].Romaji : vocas[i].Romaji_Katakana) + '</td>';
+            row += '<td>' + vocas[i].Kanji + '</td>';
+            row += '<td>' + vocas[i].VMeaning + '</td>';
 
-        row += '</td>';
-        row += '</tr>';
+            //var levelPercent = vocas[i].Level / 10 * 100;
+            row += '<td>';
+            //row += '<div class="progress progress-small">';
+            //row += '    <div class="progress-bar progress-bar-' + (levelPercent == 100 ? 'primary' : 'danger') + '" role="progressbar" aria-valuenow="' + levelPercent + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + levelPercent + '%"></div>';
+            //row += '</div>';
+            row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 1 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+            row += '<span class="fa fa-heart"></span>';
+            row += '</button>';
+            row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 3 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+            row += '<span class="fa fa-heart"></span>';
+            row += '</button>';
+            row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 5 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+            row += '<span class="fa fa-heart"></span>';
+            row += '</button>';
+            row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 7 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+            row += '<span class="fa fa-heart"></span>';
+            row += '</button>';
+            row += '<button class=" btn btn-circle btn-mn btn-' + (vocas[i].Level > 9 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+            row += '<span class="fa fa-heart"></span>';
+            row += '</button>';
+
+            row += '</td>';
+            row += '</tr>';
+        }
         $('#tblLearntWord').append(row);
     }
     //html += '</table>';
@@ -985,7 +1015,6 @@ function showFlashCard(voca, voice) {
     $('#btnNext').show();
 
     if (voca != null) {
-
         //If Learning
         if (!isPractice) {
 
@@ -996,7 +1025,9 @@ function showFlashCard(voca, voice) {
 
             $('#flashCard').html(html);
 
-            speak(voca.UrlAudio);
+            if (voca.DisplayType != '3') {
+                speak(voca.UrlAudio);
+            }
 
             isPractice = true;
         }
@@ -1015,7 +1046,7 @@ function showFlashCard(voca, voice) {
 };
 
 function createQuizz(index) {
-    console.log(index);
+    //console.log(index);
     var item = vocas[index];
     if (item) {
         var n1 = Math.floor((Math.random() * 4) + 1);
@@ -1037,13 +1068,15 @@ function createQuizz(index) {
                 item.Kanji1 = item.Kanji;
                 if (item.TestSkill == 2) {
                     //reading
-                    item.Result1 = item.VMeaning;
+                    item.Result1 = item.DisplayType == '3'
+                            ? (item.Pinyin + '<hr>' + item.VMeaning)
+                            : item.VMeaning;
                 }
                 else {
                     //transanlating && listening
-                    item.Result1 = item.DisplayType == "3"
+                    item.Result1 = item.DisplayType == '3'
                                     ? item.Kanji
-                                    : item.DisplayType == "2" ? item.Katakana + '<hr>' : (item.Hiragana + '<hr>' + item.Kanji);
+                                    : item.DisplayType == "2" ? (item.Katakana + '<hr>') : (item.Hiragana + '<hr>' + item.Kanji);
                 }
                 item.ResultUrlAudio1 = item.UrlAudio;
 
@@ -1055,12 +1088,15 @@ function createQuizz(index) {
                 item.Kanji2 = vocas[n2].Kanji;
                 if (item.TestSkill == 2) {
                     //reading
-                    item.Result2 = vocas[n2].VMeaning;
+                    item.Result2 = vocas[n2].DisplayType == '3'
+                            ? (vocas[n2].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            : vocas[n2].VMeaning;
                 }
                 else {
                     //transanlating && listening
-                    item.Result2 = vocas[n2].DisplayType == "3" ? vocas[n2].Kanji
-                                    : vocas[n2].DisplayType == "2" ? vocas[n2].Katakana + '<hr>' : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
+                    item.Result2 = vocas[n2].DisplayType == '3'
+                                    ? vocas[n2].Kanji
+                                    : vocas[n2].DisplayType == "2" ? (vocas[n2].Katakana + '<hr>') : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
                 }
                 item.ResultUrlAudio2 = vocas[n2].UrlAudio;
 
@@ -1072,12 +1108,15 @@ function createQuizz(index) {
                 item.Kanji3 = vocas[n3].Kanji;
                 if (item.TestSkill == 2) {
                     //reading
-                    item.Result3 = vocas[n3].VMeaning;
+                    item.Result3 = vocas[n3].DisplayType == '3'
+                            ? (vocas[n3].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            : vocas[n3].VMeaning;
                 }
                 else {
                     //transanlating && listening
-                    item.Result3 = vocas[n3].DisplayType == "3" ? vocas[n3].Kanji
-                                    : vocas[n3].DisplayType == "2" ? vocas[n3].Katakana + '<hr>' : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
+                    item.Result3 = vocas[n3].DisplayType == '3'
+                                    ? vocas[n3].Kanji
+                                    : vocas[n3].DisplayType == "2" ? (vocas[n3].Katakana + '<hr>') : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
                 }
                 item.ResultUrlAudio3 = vocas[n3].UrlAudio;
 
@@ -1089,12 +1128,15 @@ function createQuizz(index) {
                 item.Kanji4 = vocas[n4].Kanji;
                 if (item.TestSkill == 2) {
                     //reading
-                    item.Result4 = vocas[n4].VMeaning;
+                    item.Result4 = vocas[n4].DisplayType == '3'
+                            ? (vocas[n4].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            : vocas[n4].VMeaning;
                 }
                 else {
                     //transanlating && listening
-                    item.Result4 = vocas[n4].DisplayType == "3" ? vocas[n4].Kanji
-                                    : vocas[n4].DisplayType == "2" ? vocas[n4].Katakana + '<hr>' : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
+                    item.Result4 = vocas[n4].DisplayType == '3'
+                                    ? vocas[n4].Kanji
+                                    : vocas[n4].DisplayType == "2" ? (vocas[n4].Katakana + '<hr>') : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
                 }
                 item.ResultUrlAudio4 = vocas[n4].UrlAudio;
                 break;
@@ -1107,13 +1149,15 @@ function createQuizz(index) {
                 item.Kanji2 = item.Kanji;
                 if (item.TestSkill == 2) {
                     //reading
-                    item.Result2 = item.VMeaning;
+                    item.Result2 = item.DisplayType == '3'
+                            ? (item.Pinyin + '<hr>' + item.VMeaning)
+                            : item.VMeaning;
                 }
                 else {
                     //transanlating && listening
-                    item.Result2 = item.DisplayType == "3"
+                    item.Result2 = item.DisplayType == '3'
                                     ? item.Kanji
-                                    : item.DisplayType == "2" ? item.Katakana + '<hr>' : (item.Hiragana + '<hr>' + item.Kanji);
+                                    : item.DisplayType == "2" ? (item.Katakana + '<hr>') : (item.Hiragana + '<hr>' + item.Kanji);
                 }
                 item.ResultUrlAudio2 = item.UrlAudio;
 
@@ -1125,12 +1169,15 @@ function createQuizz(index) {
                 item.Kanji1 = vocas[n2].Kanji;
                 if (item.TestSkill == 2) {
                     //reading
-                    item.Result1 = vocas[n2].VMeaning;
+                    item.Result1 = vocas[n2].DisplayType == '3'
+                            ? (vocas[n2].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            : vocas[n2].VMeaning;
                 }
                 else {
                     //transanlating && listening
-                    item.Result1 = vocas[n2].DisplayType == "3" ? vocas[n2].Kanji
-                                    : vocas[n2].DisplayType == "2" ? vocas[n2].Katakana + '<hr>' : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
+                    item.Result1 = vocas[n2].DisplayType == '3'
+                                    ? vocas[n2].Kanji
+                                    : vocas[n2].DisplayType == "2" ? (vocas[n2].Katakana + '<hr>') : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
                 }
                 item.ResultUrlAudio1 = vocas[n2].UrlAudio;
 
@@ -1142,12 +1189,15 @@ function createQuizz(index) {
                 item.Kanji3 = vocas[n3].Kanji;
                 if (item.TestSkill == 2) {
                     //reading
-                    item.Result3 = vocas[n3].VMeaning;
+                    item.Result3 = vocas[n3].DisplayType == '3'
+                            ? (vocas[n3].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            : vocas[n3].VMeaning;
                 }
                 else {
                     //transanlating && listening
-                    item.Result3 = vocas[n3].DisplayType == "3" ? vocas[n3].Kanji
-                                    : vocas[n3].DisplayType == "2" ? vocas[n3].Katakana + '<hr>' : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
+                    item.Result3 = vocas[n3].DisplayType == '3'
+                                    ? vocas[n3].Kanji
+                                    : vocas[n3].DisplayType == "2" ? (vocas[n3].Katakana + '<hr>') : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
                 }
                 item.ResultUrlAudio3 = vocas[n3].UrlAudio;
 
@@ -1159,12 +1209,15 @@ function createQuizz(index) {
                 item.Kanji4 = vocas[n4].Kanji;
                 if (item.TestSkill == 2) {
                     //reading
-                    item.Result4 = vocas[n4].VMeaning;
+                    item.Result4 = vocas[n4].DisplayType == '3'
+                            ? (vocas[n4].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            : vocas[n4].VMeaning;
                 }
                 else {
                     //transanlating && listening
-                    item.Result4 = vocas[n4].DisplayType == "3" ? vocas[n4].Kanji
-                                    : vocas[n4].DisplayType == "2" ? vocas[n4].Katakana + '<hr>' : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
+                    item.Result4 = vocas[n4].DisplayType == '3'
+                                    ? vocas[n4].Kanji
+                                    : vocas[n4].DisplayType == "2" ? (vocas[n4].Katakana + '<hr>') : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
                 }
                 item.ResultUrlAudio4 = vocas[n4].UrlAudio;
                 break;
@@ -1177,13 +1230,15 @@ function createQuizz(index) {
                 item.Kanji3 = item.Kanji;
                 if (item.TestSkill == 2) {
                     //reading
-                    item.Result3 = item.VMeaning;
+                    item.Result3 = item.DisplayType == '3'
+                            ? (item.Pinyin + '<hr>' + item.VMeaning)
+                            : item.VMeaning;
                 }
                 else {
                     //transanlating && listening
-                    item.Result3 = item.DisplayType == "3"
+                    item.Result3 = item.DisplayType == '3'
                                     ? item.Kanji
-                                    : item.DisplayType == "2" ? item.Katakana + '<hr>' : (item.Hiragana + '<hr>' + item.Kanji);
+                                    : item.DisplayType == "2" ? (item.Katakana + '<hr>') : (item.Hiragana + '<hr>' + item.Kanji);
                 }
                 item.ResultUrlAudio3 = item.UrlAudio;
 
@@ -1195,12 +1250,15 @@ function createQuizz(index) {
                 item.Kanji1 = vocas[n2].Kanji;
                 if (item.TestSkill == 2) {
                     //reading
-                    item.Result1 = vocas[n2].VMeaning;
+                    item.Result1 = vocas[n2].DisplayType == '3'
+                            ? (vocas[n2].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            : vocas[n2].VMeaning;
                 }
                 else {
                     //transanlating && listening
-                    item.Result1 = vocas[n2].DisplayType == "3" ? vocas[n2].Kanji
-                                    : vocas[n2].DisplayType == "2" ? vocas[n2].Katakana + '<hr>' : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
+                    item.Result1 = vocas[n2].DisplayType == '3'
+                                    ? vocas[n2].Kanji
+                                    : vocas[n2].DisplayType == "2" ? (vocas[n2].Katakana + '<hr>') : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
                 }
                 item.ResultUrlAudio1 = vocas[n2].UrlAudio;
 
@@ -1212,12 +1270,15 @@ function createQuizz(index) {
                 item.Kanji2 = vocas[n3].Kanji;
                 if (item.TestSkill == 2) {
                     //reading
-                    item.Result2 = vocas[n3].VMeaning;
+                    item.Result2 = vocas[n3].DisplayType == '3'
+                            ? (vocas[n3].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            : vocas[n3].VMeaning;
                 }
                 else {
                     //transanlating && listening
-                    item.Result2 = vocas[n3].DisplayType == "3" ? vocas[n3].Kanji
-                                    : vocas[n3].DisplayType == "2" ? vocas[n3].Katakana + '<hr>' : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
+                    item.Result2 = vocas[n3].DisplayType == '3'
+                                    ? vocas[n3].Kanji
+                                    : vocas[n3].DisplayType == "2" ? (vocas[n3].Katakana + '<hr>') : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
                 }
                 item.ResultUrlAudio2 = vocas[n3].UrlAudio;
 
@@ -1229,12 +1290,15 @@ function createQuizz(index) {
                 item.Kanji4 = vocas[n4].Kanji;
                 if (item.TestSkill == 2) {
                     //reading
-                    item.Result4 = vocas[n4].VMeaning;
+                    item.Result4 = vocas[n4].DisplayType == '3'
+                            ? (vocas[n4].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            : vocas[n4].VMeaning;
                 }
                 else {
                     //transanlating && listening
-                    item.Result4 = vocas[n4].DisplayType == "3" ? vocas[n4].Kanji
-                                    : vocas[n4].DisplayType == "2" ? vocas[n4].Katakana + '<hr>' : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
+                    item.Result4 = vocas[n4].DisplayType == '3'
+                                    ? vocas[n4].Kanji
+                                    : vocas[n4].DisplayType == "2" ? (vocas[n4].Katakana + '<hr>') : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
                 }
                 item.ResultUrlAudio4 = vocas[n4].UrlAudio;
                 break;
@@ -1247,13 +1311,15 @@ function createQuizz(index) {
                 item.Kanji4 = item.Kanji;
                 if (item.TestSkill == 2) {
                     //reading
-                    item.Result4 = item.VMeaning;
+                    item.Result4 = item.DisplayType == '3'
+                            ? (item.Pinyin + '<hr>' + item.VMeaning)
+                            : item.VMeaning;
                 }
                 else {
                     //transanlating && listening
-                    item.Result4 = item.DisplayType == "3"
+                    item.Result4 = item.DisplayType == '3'
                                     ? item.Kanji
-                                    : item.DisplayType == "2" ? item.Katakana + '<hr>' : (item.Hiragana + '<hr>' + item.Kanji);
+                                    : item.DisplayType == "2" ? (item.Katakana + '<hr>') : (item.Hiragana + '<hr>' + item.Kanji);
                     item.ResultUrlAudio4 = item.UrlAudio;
                 }
 
@@ -1265,12 +1331,15 @@ function createQuizz(index) {
                 item.Kanji1 = vocas[n2].Kanji;
                 if (item.TestSkill == 2) {
                     //reading
-                    item.Result1 = vocas[n2].VMeaning;
+                    item.Result1 = vocas[n2].DisplayType == '3'
+                            ? (vocas[n2].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            : vocas[n2].VMeaning;
                 }
                 else {
                     //transanlating && listening
-                    item.Result1 = vocas[n2].DisplayType == "3" ? vocas[n2].Kanji
-                                    : vocas[n2].DisplayType == "2" ? vocas[n2].Katakana + '<hr>' : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
+                    item.Result1 = vocas[n2].DisplayType == '3'
+                                    ? vocas[n2].Kanji
+                                    : vocas[n2].DisplayType == "2" ? (vocas[n2].Katakana + '<hr>') : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
                 }
                 item.ResultUrlAudio1 = vocas[n2].UrlAudio;
 
@@ -1282,12 +1351,15 @@ function createQuizz(index) {
                 item.Kanji2 = vocas[n3].Kanji;
                 if (item.TestSkill == 2) {
                     //reading
-                    item.Result2 = vocas[n3].VMeaning;
+                    item.Result2 = vocas[n3].DisplayType == '3'
+                            ? (vocas[n3].Pinyin + '<hr>' + vocas[n3].VMeaning)
+                            : vocas[n3].VMeaning;
                 }
                 else {
                     //transanlating && listening
-                    item.Result2 = vocas[n3].DisplayType == "3" ? vocas[n3].Kanji
-                                    : vocas[n3].DisplayType == "2" ? vocas[n3].Katakana + '<hr>' : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
+                    item.Result2 = vocas[n3].DisplayType == '3'
+                                    ? vocas[n3].Kanji
+                                    : vocas[n3].DisplayType == "2" ? (vocas[n3].Katakana + '<hr>') : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
                 }
                 item.ResultUrlAudio2 = vocas[n3].UrlAudio;
 
@@ -1299,12 +1371,15 @@ function createQuizz(index) {
                 item.Kanji3 = vocas[n4].Kanji;
                 if (item.TestSkill == 2) {
                     //reading
-                    item.Result3 = vocas[n4].VMeaning;
+                    item.Result3 = vocas[n4].DisplayType == '3'
+                            ? (vocas[n4].Pinyin + '<hr>' + vocas[n3].VMeaning)
+                            : vocas[n4].VMeaning;
                 }
                 else {
                     //transanlating && listening
-                    item.Result3 = vocas[n4].DisplayType == "3" ? vocas[n4].Kanji
-                                    : vocas[n4].DisplayType == "2" ? vocas[n4].Katakana + '<hr>' : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
+                    item.Result3 = vocas[n4].DisplayType == '3'
+                                    ? vocas[n4].Kanji
+                                    : vocas[n4].DisplayType == "2" ? (vocas[n4].Katakana + '<hr>') : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
                 }
                 item.ResultUrlAudio3 = vocas[n4].UrlAudio;
                 break;
@@ -1312,7 +1387,6 @@ function createQuizz(index) {
 
         }
     }
-
     return item;
 }
 
@@ -1446,78 +1520,70 @@ function showLearning(voca) {
     if (voca.DisplayType == '3') {
         //kanji
         html += '<div class="col-md-12 padding-0">';
-        html += '   <div class="col-lg-4 col-md-4 hidden-xs hidden-sm">';
-        html += '       <img class="img-responsive" src="' + getLink(voca.UrlImage) + '" alt="Từ vựng tiếng Nhật"  style="height: 250px">';
+        html += '   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">';
+        html += '       <p style="font-size: 70px;">'+voca.Kanji+'</p>';
+        html += '       <a href="#" data-toggle="modal" data-target="#kanjiImage"><i class="fa fa-television"></i>Ghi nhớ</a>';
         html += '   </div>';
-        if (voca.Hiragana != '') {
-            html += '   <div class="col-lg-7 col-md-7 col-xs-10"><h3><strong>' + voca.Hiragana + '  </strong><a href="#" onclick="speak(\'' + voca.UrlAudio + '\'); return false;"><i class="fa fa-volume-up"></i></a></h3>';
-            html += '       <p><strong>' + voca.Romaji + '</strong></p>';
-        }
-        else if (voca.Katakana != '') {
-            html += '   <div class="col-lg-7 col-md-7 col-xs-10"><h3><strong>' + voca.Katakana + '  </strong><a href="#" onclick="speak(\'' + voca.UrlAudio_Katakana + '\'); return false;"><i class="fa fa-volume-up"></i></a></h3>';
-            html += '       <p><strong>' + voca.Romaji_Katakana + '</strong></p>';
-        }
-        html += '       <h3><strong>' + voca.Kanji + '</strong></h3>';
-        html += '       <h4><strong>' + voca.VMeaning + '</strong></h4>';
-
-        html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 1 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
-        html += '<span class="fa fa-heart"></span>';
-        html += '</button>';
-        html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 3 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
-        html += '<span class="fa fa-heart"></span>';
-        html += '</button>';
-        html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 5 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
-        html += '<span class="fa fa-heart"></span>';
-        html += '</button>';
-        html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 7 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
-        html += '<span class="fa fa-heart"></span>';
-        html += '</button>';
-        html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 9 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
-        html += '<span class="fa fa-heart"></span>';
-        html += '</button>';
-
+        html += '   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #ccc; border-left: 1px solid #ccc;">';
+        html += '       <h4><strong><div class="text-uppercase">' + voca.Pinyin + '</div></strong></h4>';
+        html += '       <p><strong>'+voca.VMeaning+'</strong></p>';
+        html += '       <p>On: '+voca.OnReading+'</p>';
+        html += '       <p>Kun: '+voca.KunReading+'</p>';
+        html += '       <button class=" btn btn-circle btn-mn btn-' + (voca.Level > 1 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+        html += '           <span class="fa fa-heart"></span>';
+        html += '       </button>';
+        html += '       <button class=" btn btn-circle btn-mn btn-' + (voca.Level > 3 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+        html += '           <span class="fa fa-heart"></span>';
+        html += '       </button>';
+        html += '       <button class=" btn btn-circle btn-mn btn-' + (voca.Level > 5 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+        html += '           <span class="fa fa-heart"></span>';
+        html += '       </button>';
+        html += '       <button class=" btn btn-circle btn-mn btn-' + (voca.Level > 7 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+        html += '           <span class="fa fa-heart"></span>';
+        html += '       </button>';
+        html += '       <button class=" btn btn-circle btn-mn btn-' + (voca.Level > 9 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+        html += '           <span class="fa fa-heart"></span>';
+        html += '       </button>';
         html += '   </div>';
-        html += '<div class="col-lg-1 col-md-1 col-xs-2">';
-        html += '   <div class="btn-group" role="group">';
-        html += '   <button type="button" class="btn btn-circle btn-mn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-        html += '       <span class="icon-list"></span>';
-        html += '   </button>';
-        html += '   <ul class="dropdown-menu">';
-        if (voca.HasMarked == '1') {
-            html += '<li><a href="#" onclick="mark();" class="mark" data-value="marked"><span class="fa fa-book"></span> Đã lưu</a></li>';
-        }
-        else {
-            html += '<li><a href="#" onclick="mark();" class="mark" data-value="unmarked"><span class="fa fa-plus"></span> Lưu sổ tay</a></li>';
-        }
-        if (voca.IsIgnore == '1') {
-            html += '<li><a href="#" onclick="ignore();" class="ignore" data-value="marked"><span class="fa fa-unlock-alt"></span> Đã bỏ</a></li>';
-        }
-        else {
-            html += '<li><a href="#" onclick="ignore();" class="ignore" data-value="unmarked"><span class="fa fa-trash"></span> Bỏ qua</a></li>';
-        }
-        html += '   </ul>';
-
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-        html += '<hr />';
-        html += '<div class="col-md-12 padding-0">';
-        html += '   <div class="col-md-4">';
-        html += '   </div>';
-        html += '   <div class="col-md-8">';
-        html += '       <button onclick="draw();" class="btn btn-default">Viết</button>';
-        var hiraChecked = (voca.DisplayType == "1" && voca.Kanji == '') ? "checked = 'checked'" : "";
-        var kataChecked = (voca.DisplayType == "2") ? "checked = 'checked'" : "";
-        var kanjiChecked = (voca.DisplayType == "3" || (voca.DisplayType == "1" && voca.Kanji != '')) ? "checked = 'checked'" : "";
-        html += '       <input id="rdoHiragana" type="radio" name="rdoDraw" ' + hiraChecked + '>Hiragana';
-        html += '       <input id="rdoKatakana" type="radio" name="rdoDraw" ' + kataChecked + '>Katakana';
-        html += '       <input id="rdoKanji" type="radio" name="rdoDraw" ' + kanjiChecked + '>Kanji';
+        html += '   <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-center">';
+        html += '       <button onclick="draw();" class="btn btn-default"><span class="fa fa-edit"></span>Viết</button>';
+        html += '       <div class="btn-group pull-right" role="group">';
+        html += '           <button type="button" class="btn btn-circle btn-mn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
+        html += '               <span class="icon-list"></span>';
+        html += '           </button>';
+        html += '           <ul class="dropdown-menu">';
+        html += '               <li><a href="#" onclick="mark();" class="mark" data-value="marked"><span class="fa fa-book"></span>Đã lưu</a></li>';
+        html += '               <li><a href="#" onclick="mark();" class="mark" data-value="unmarked"><span class="fa fa-plus"></span>Lưu sổ tay</a></li>';
+        html += '           </ul>';
+        html += '       </div>';
+        html += '       <div class="col-md-12" id="draw"></div>';
         html += '   </div>';
         html += '</div>';
-        html += '<div class="col-md-12 padding-0">';
-        html += '   <div class="col-md-12 text-center" id="draw"></div>';
+        html += '<div class="col-md-12 padding-0"';
+        html += '<div class="col-md-12 padding-0" style="width: 100%; height: 200px; overflow-y: auto; overflow-x: hidden;">';
+        html += '   <label>Ví dụ:</label>';
+        html += '   <table class="table table-hover" id="tblExample">';
+        html += '       <thead><tr><th>Từ</th><th>Hiragana</th><th>Hán Việt</th><th>Nghĩa</th></tr></thead>';
+        html += '       <tbody>';
+        if (voca.KanjiExamples != null) {
+            for (var i = 0; i < voca.KanjiExamples.length; i++) {
+                var example = voca.KanjiExamples[i];
+                html += '<tr>';
+                html += '<td><a href="#" class="drawKanji" onclick="drawEx(this); return false;">' + example.Kanji + '</a></td>';
+                html += '<td>' + example.Hiragana + '</td>';
+                html += '<td>' + example.Pinyin + '</td>';
+                html += '<td>' + example.VMeaning + '</td>';
+                html += '</tr>';
+            }
+        }
+        html += '       </tbody>';
+        html += '   </table>';
+        html += '</div>';
         html += '</div>';
 
+        if (voca.DisplayType == '3') {
+            draw();
+        }
     }
     else {
         html += '<div class="col-md-12 padding-0">';
@@ -1611,7 +1677,7 @@ function showLearning(voca) {
         html += '       <button onclick="draw();" class="btn btn-default">Viết</button>';
         var hiraChecked = (voca.DisplayType == "1" && voca.Kanji == '') ? "checked = 'checked'" : "";
         var kataChecked = (voca.DisplayType == "2") ? "checked = 'checked'" : "";
-        var kanjiChecked = (voca.DisplayType == "3" || (voca.DisplayType == "1" && voca.Kanji != '')) ? "checked = 'checked'" : "";
+        var kanjiChecked = (voca.DisplayType == '3' || (voca.DisplayType == "1" && voca.Kanji != '')) ? "checked = 'checked'" : "";
         html += '       <input id="rdoHiragana" type="radio" name="rdoDraw" ' + hiraChecked + '>Hiragana';
         html += '       <input id="rdoKatakana" type="radio" name="rdoDraw" ' + kataChecked + '>Katakana';
         html += '       <input id="rdoKanji" type="radio" name="rdoDraw" ' + kanjiChecked + '>Kanji';
@@ -1771,7 +1837,7 @@ function showLearning(voca) {
         //    html += '                           <button onclick="draw();" class="btn btn-default" data-toggle="tooltip" title="Nhấp để xem cách viết (Ctrl-D)">Cách viết</button>';
         //    var hiraChecked = (voca.DisplayType == "1") ? "checked = 'checked'" : "";
         //    var kataChecked = (voca.DisplayType == "2") ? "checked = 'checked'" : "";
-        //    var kanjiChecked = (voca.DisplayType == "3") ? "checked = 'checked'" : "";
+        //    var kanjiChecked = (voca.DisplayType == '3') ? "checked = 'checked'" : "";
         //    html += '                           <label class="radio-inline"><input type="radio" name="rdoDraw" id="rdoHiragana" ' + hiraChecked + '">Hiragana</label>';
         //    html += '                           <label class="radio-inline"><input type="radio" name="rdoDraw" id="rdoKatakana" ' + kataChecked + '">Katakana</label>';
         //    html += '                           <label class="radio-inline"><input type="radio" name="rdoDraw" id="rdoKanji" "' + kanjiChecked + '">Kanji</label>';
@@ -1802,8 +1868,10 @@ function showLearning(voca) {
 function showPractise(voca) {
     var html = '';
 
-    if (voca.TestSkill == '2') {
-        speak(voca.UrlAudio);
+    if (voca.DisplayType != '3') {
+        if (voca.TestSkill == '2') {
+            speak(voca.UrlAudio);
+        }
     }
 
     var requiredTimePerVoca = parseInt($('#rtp').val());
@@ -1828,7 +1896,8 @@ function showPractise(voca) {
         html += '                   <h3><span class="glyphicon glyphicon-question-sign error" aria-hidden="true"></span> <label>' + displayQuestion + '</label></h3>';
     }
     else {
-        html += '                   <h3><span class="glyphicon glyphicon-question-sign error" aria-hidden="true"></span> <label>' + voca.VMeaning + '</label></h3>';
+        var displayQuestion = voca.DisplayType == '3' ? ('<div class="text-uppercase">' + voca.Pinyin + '</div><small>' + voca.VMeaning + '</small>') : voca.VMeaning;
+        html += '                   <h3><span class="glyphicon glyphicon-question-sign error" aria-hidden="true"></span> <label>' + displayQuestion + '</label></h3>';
     }
     //    //listening
     //else if (voca.TestSkill == '3') {
@@ -1876,19 +1945,24 @@ function showPractise(voca) {
         html += '<input type="hidden" id="selectedValue" />';
         html += '</div>'
         html += '</hr>';
+        
+        var result1 = (voca.DisplayType == '3' && voca.TestSkill != '2') ? ('<div style="font-size: 20px;">' + voca.Result1 + '</div>') : voca.Result1;
+        var result2 = (voca.DisplayType == '3' && voca.TestSkill != '2') ? ('<div style="font-size: 20px;">' + voca.Result2 + '</div>') : voca.Result2;
+        var result3 = (voca.DisplayType == '3' && voca.TestSkill != '2') ? ('<div style="font-size: 20px;">' + voca.Result3 + '</div>') : voca.Result3;
+        var result4 = (voca.DisplayType == '3' && voca.TestSkill != '2') ? ('<div style="font-size: 20px;">' + voca.Result4 + '</div>') : voca.Result4;
         html += '<div class="row text-center">';
         html += '   <div class="col-lg-12 col-md-12 col-xs-12">';
-        html += '       <a class="btn btn-quizz " href="#" id="result1" name="resultChoosing" onclick="selectValue(this, 1);return false;">1<br>' + voca.Result1 + '</a>';
+        html += '       <a class="btn btn-quizz " href="#" id="result1" name="resultChoosing" onclick="selectValue(this, 1);return false;">1<br>' + result1 + '</a>';
         html += '       <input type="hidden" id="urlAudio1" />';
-        html += '       <a class="btn btn-quizz " href="#" id="result2" name="resultChoosing" onclick="selectValue(this, 2);return false;">2<br>' + voca.Result2 + '</a>';
+        html += '       <a class="btn btn-quizz " href="#" id="result2" name="resultChoosing" onclick="selectValue(this, 2);return false;">2<br>' + result2 + '</a>';
         html += '       <input type="hidden" id="urlAudio2" />';
         html += '   </div>';
         html += '</div>'
         html += '<div class="row text-center">';
         html += '   <div class="col-lg-12 col-md-12 col-xs-12">';
-        html += '       <a class="btn btn-quizz " href="#" id="result3" name="resultChoosing" onclick="selectValue(this, 3);return false;">3<br>' + voca.Result3 + '</a>';
+        html += '       <a class="btn btn-quizz " href="#" id="result3" name="resultChoosing" onclick="selectValue(this, 3);return false;">3<br>' + result3 + '</a>';
         html += '       <input type="hidden" id="urlAudio3" />';
-        html += '       <a class="btn btn-quizz " href="#" id="result4" name="resultChoosing" onclick="selectValue(this, 4);return false;">4<br>' + voca.Result4 + '</a>';
+        html += '       <a class="btn btn-quizz " href="#" id="result4" name="resultChoosing" onclick="selectValue(this, 4);return false;">4<br>' + result4 + '</a>';
         html += '       <input type="hidden" id="urlAudio4" />';
         html += '   </div>';
         html += '</div>'
@@ -1948,6 +2022,18 @@ function searchVoca(index) {
     }
 };
 
+function drawEx(obj) {
+    var text = $(obj).text();
+    $('#txtKanji').val(text);
+    $('#drawKanji').html('');
+    ////var text = $('#draw-text').val();
+    if (text != '') {
+        var dmak = new Dmak(text, {
+            'element': "drawKanji"
+        });
+    }
+    $('#drawingModal').modal();
+}
 function draw(obj) {
     $('#draw').html('');
 

@@ -203,6 +203,8 @@ namespace Nihongo.Models
         public string TestSkill { get; set; }
         public string IsCorrect { get; set; }
         public string SelectedValue { get; set; }
+
+        public IEnumerable<MS_KanjiExampleModel> KanjiExamples { get; set; }
     }
 
     public class MS_UserVocaSet

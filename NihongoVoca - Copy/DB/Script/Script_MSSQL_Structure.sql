@@ -1,6 +1,6 @@
 /*
 Database: nihongo_voca
-Generate Date: Tuesday, March 15, 2016 12:00:53 AM
+Generate Date: Friday, April 15, 2016 2:08:40 PM
 *********************************************************************
 */
 
@@ -89,9 +89,6 @@ GO
 IF  EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[ms_vocakanjis]') AND name = N'IdxUnique')
 DROP INDEX [IdxUnique] ON [dbo].[ms_vocakanjis] WITH ( ONLINE = OFF )
 GO
-IF  EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[ms_kanjiexamples]') AND name = N'IdxUnique')
-DROP INDEX [IdxUnique] ON [dbo].[ms_kanjiexamples] WITH ( ONLINE = OFF )
-GO
 IF  EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[ms_answers]') AND name = N'IdxUnique')
 DROP INDEX [IdxUnique] ON [dbo].[ms_answers] WITH ( ONLINE = OFF )
 GO
@@ -138,6 +135,7 @@ CREATE TABLE [dbo].[ms_users](
    [LastVisitedDate] [datetime] NULL ,
    [AccumulatedPoint] [int] NULL ,
    [Point] [int] NULL ,
+   [NumOfLearntVoca] [int] NULL ,
    [CreatedDate] [datetime] NULL ,
  CONSTRAINT [PK_msusers] PRIMARY KEY NONCLUSTERED 
  (
@@ -162,6 +160,8 @@ GO
 ALTER TABLE [dbo].[ms_users] ADD  CONSTRAINT [DF_msusers_AccumulatedPoint]  DEFAULT ((0)) FOR [AccumulatedPoint]
 GO
 ALTER TABLE [dbo].[ms_users] ADD  CONSTRAINT [DF_msusers_Point]  DEFAULT ((0)) FOR [Point]
+GO
+ALTER TABLE [dbo].[ms_users] ADD  CONSTRAINT [DF_msusers_NumOfLearntVoca]  DEFAULT ((0)) FOR [NumOfLearntVoca]
 GO
 GO
 /* ***** Object:  Table [dbo].[ms_vocasets]  ******/
@@ -307,6 +307,7 @@ GO
 CREATE TABLE [dbo].[ms_kanjis](
    [ID] [int] IDENTITY(1,1)  NOT NULL ,
    [Code] [nvarchar] (10) NOT NULL ,
+   [DisplayType] [nvarchar] (1) NOT NULL ,
    [Kanji] [nvarchar] (50) NULL ,
    [Pinyin] [nvarchar] (50) NULL ,
    [Writing] [nvarchar] (100) NULL ,
@@ -356,15 +357,16 @@ GO
 CREATE TABLE [dbo].[ms_kanjiexamples](
    [ID] [int] IDENTITY(1,1)  NOT NULL ,
    [KanjiID] [int] NOT NULL ,
-   [VocabularyID] [int] NOT NULL ,
+   [VocabularyID] [int] NULL ,
+   [Hiragana] [nvarchar] (100) NULL ,
+   [Kanji] [nvarchar] (50) NULL ,
+   [Pinyin] [nvarchar] (50) NULL ,
+   [VMeaning] [nvarchar] (100) NULL ,
  CONSTRAINT [PK_mskanjiexamples] PRIMARY KEY NONCLUSTERED 
  (
      [ID] Asc
  )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-/* ***********Object:  Index [IdxUnique] ************/
-CREATE UNIQUE CLUSTERED INDEX IdxUnique  ON [dbo].[ms_kanjiexamples] ([KanjiID],[VocabularyID])
 GO
 GO
 /* ***** Object:  Table [dbo].[ms_answers]  ******/
@@ -424,9 +426,11 @@ CREATE TABLE [dbo].[ms_uservocabularies](
    [UserID] [int] NOT NULL ,
    [Level] [int] NULL ,
    [HasLearnt] [nvarchar] (1) NULL ,
+   [IsIgnore] [nvarchar] (1) NULL ,
    [StartDate] [datetime] NULL ,
    [EndDate] [datetime] NULL ,
    [HasMarked] [nvarchar] (1) NULL ,
+   [NumOfWrong] [int] NULL ,
    [Description] [ntext] NULL ,
    [UserDefine] [nvarchar] (250) NULL ,
    [UpdatedDate] [datetime] NULL ,
@@ -442,6 +446,8 @@ CREATE UNIQUE CLUSTERED INDEX IdxUnique  ON [dbo].[ms_uservocabularies] ([VocaDe
 GO
 /* *********** Set default value ************/
 ALTER TABLE [dbo].[ms_uservocabularies] ADD  CONSTRAINT [DF_msuservocabularies_HasMarked]  DEFAULT ((0)) FOR [HasMarked]
+GO
+ALTER TABLE [dbo].[ms_uservocabularies] ADD  CONSTRAINT [DF_msuservocabularies_NumOfWrong]  DEFAULT ((0)) FOR [NumOfWrong]
 GO
 GO
 /* ***** Object:  Table [dbo].[ms_testresults]  ******/
