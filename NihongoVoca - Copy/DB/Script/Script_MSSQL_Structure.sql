@@ -1,6 +1,6 @@
 /*
 Database: nihongo_voca
-Generate Date: Friday, April 15, 2016 2:08:40 PM
+Generate Date: Sunday, April 17, 2016 10:39:37 PM
 *********************************************************************
 */
 
@@ -39,6 +39,18 @@ ALTER TABLE [dbo].[ms_vocabularydetails] DROP CONSTRAINT [FK_msvocabularydetails
 GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_msvocabularydetails_KanjiID_mskanjis_ID]')AND parent_object_id = OBJECT_ID(N'[dbo].[ms_vocabularydetails]'))
 ALTER TABLE [dbo].[ms_vocabularydetails] DROP CONSTRAINT [FK_msvocabularydetails_KanjiID_mskanjis_ID]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_msuservocasets_VocaSetID_msvocasets_ID]')AND parent_object_id = OBJECT_ID(N'[dbo].[ms_uservocasets]'))
+ALTER TABLE [dbo].[ms_uservocasets] DROP CONSTRAINT [FK_msuservocasets_VocaSetID_msvocasets_ID]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_msuservocasets_UserID_msusers_ID]')AND parent_object_id = OBJECT_ID(N'[dbo].[ms_uservocasets]'))
+ALTER TABLE [dbo].[ms_uservocasets] DROP CONSTRAINT [FK_msuservocasets_UserID_msusers_ID]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_msusercategories_CategoryID_msvocacategories_ID]')AND parent_object_id = OBJECT_ID(N'[dbo].[ms_usercategories]'))
+ALTER TABLE [dbo].[ms_usercategories] DROP CONSTRAINT [FK_msusercategories_CategoryID_msvocacategories_ID]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_msusercategories_UserID_msusers_ID]')AND parent_object_id = OBJECT_ID(N'[dbo].[ms_usercategories]'))
+ALTER TABLE [dbo].[ms_usercategories] DROP CONSTRAINT [FK_msusercategories_UserID_msusers_ID]
 GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID]')AND parent_object_id = OBJECT_ID(N'[dbo].[ms_uservocabularies]'))
 ALTER TABLE [dbo].[ms_uservocabularies] DROP CONSTRAINT [FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID]
@@ -94,6 +106,12 @@ DROP INDEX [IdxUnique] ON [dbo].[ms_answers] WITH ( ONLINE = OFF )
 GO
 IF  EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[ms_vocabularydetails]') AND name = N'IdxUnique')
 DROP INDEX [IdxUnique] ON [dbo].[ms_vocabularydetails] WITH ( ONLINE = OFF )
+GO
+IF  EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[ms_uservocasets]') AND name = N'IdxUnique')
+DROP INDEX [IdxUnique] ON [dbo].[ms_uservocasets] WITH ( ONLINE = OFF )
+GO
+IF  EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[ms_usercategories]') AND name = N'IdxUnique')
+DROP INDEX [IdxUnique] ON [dbo].[ms_usercategories] WITH ( ONLINE = OFF )
 GO
 IF  EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[ms_uservocabularies]') AND name = N'IdxUnique')
 DROP INDEX [IdxUnique] ON [dbo].[ms_uservocabularies] WITH ( ONLINE = OFF )
@@ -416,6 +434,64 @@ GO
 ALTER TABLE [dbo].[ms_vocabularydetails] ADD  CONSTRAINT [DF_msvocabularydetails_LineNumber]  DEFAULT ((1)) FOR [LineNumber]
 GO
 GO
+/* ***** Object:  Table [dbo].[ms_uservocasets]  ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ms_uservocasets]') AND type in (N'U'))
+DROP TABLE [dbo].[ms_uservocasets]
+GO
+CREATE TABLE [dbo].[ms_uservocasets](
+   [ID] [int] IDENTITY(1,1)  NOT NULL ,
+   [VocaSetID] [int] NOT NULL ,
+   [UserID] [int] NOT NULL ,
+   [HasLearnt] [nvarchar] (1) NULL ,
+   [IsIgnore] [nvarchar] (1) NULL ,
+   [StartDate] [datetime] NULL ,
+   [EndDate] [datetime] NULL ,
+   [HasMarked] [nvarchar] (1) NULL ,
+   [Description] [ntext] NULL ,
+   [UpdatedDate] [datetime] NULL ,
+   [UpdatedBy] [int] NULL ,
+ CONSTRAINT [PK_msuservocasets] PRIMARY KEY NONCLUSTERED 
+ (
+     [ID] Asc
+ )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/* ***********Object:  Index [IdxUnique] ************/
+CREATE UNIQUE CLUSTERED INDEX IdxUnique  ON [dbo].[ms_uservocasets] ([VocaSetID],[UserID])
+GO
+/* *********** Set default value ************/
+ALTER TABLE [dbo].[ms_uservocasets] ADD  CONSTRAINT [DF_msuservocasets_HasMarked]  DEFAULT ((0)) FOR [HasMarked]
+GO
+GO
+/* ***** Object:  Table [dbo].[ms_usercategories]  ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ms_usercategories]') AND type in (N'U'))
+DROP TABLE [dbo].[ms_usercategories]
+GO
+CREATE TABLE [dbo].[ms_usercategories](
+   [ID] [int] IDENTITY(1,1)  NOT NULL ,
+   [CategoryID] [int] NOT NULL ,
+   [UserID] [int] NOT NULL ,
+   [HasLearnt] [nvarchar] (1) NULL ,
+   [IsIgnore] [nvarchar] (1) NULL ,
+   [StartDate] [datetime] NULL ,
+   [EndDate] [datetime] NULL ,
+   [HasMarked] [nvarchar] (1) NULL ,
+   [Description] [ntext] NULL ,
+   [UpdatedDate] [datetime] NULL ,
+   [UpdatedBy] [int] NULL ,
+ CONSTRAINT [PK_msusercategories] PRIMARY KEY NONCLUSTERED 
+ (
+     [ID] Asc
+ )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/* ***********Object:  Index [IdxUnique] ************/
+CREATE UNIQUE CLUSTERED INDEX IdxUnique  ON [dbo].[ms_usercategories] ([CategoryID],[UserID])
+GO
+/* *********** Set default value ************/
+ALTER TABLE [dbo].[ms_usercategories] ADD  CONSTRAINT [DF_msusercategories_HasMarked]  DEFAULT ((0)) FOR [HasMarked]
+GO
+GO
 /* ***** Object:  Table [dbo].[ms_uservocabularies]  ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ms_uservocabularies]') AND type in (N'U'))
 DROP TABLE [dbo].[ms_uservocabularies]
@@ -605,6 +681,14 @@ GO
 ALTER TABLE [dbo].[ms_vocabularydetails]  WITH CHECK ADD  CONSTRAINT [FK_msvocabularydetails_VocabularyID_msvocabularies_ID] FOREIGN KEY([VocabularyID]) REFERENCES [dbo].[ms_vocabularies] ([ID])
 GO
 ALTER TABLE [dbo].[ms_vocabularydetails]  WITH CHECK ADD  CONSTRAINT [FK_msvocabularydetails_KanjiID_mskanjis_ID] FOREIGN KEY([KanjiID]) REFERENCES [dbo].[ms_kanjis] ([ID])
+GO
+ALTER TABLE [dbo].[ms_uservocasets]  WITH CHECK ADD  CONSTRAINT [FK_msuservocasets_VocaSetID_msvocasets_ID] FOREIGN KEY([VocaSetID]) REFERENCES [dbo].[ms_vocasets] ([ID])
+GO
+ALTER TABLE [dbo].[ms_uservocasets]  WITH CHECK ADD  CONSTRAINT [FK_msuservocasets_UserID_msusers_ID] FOREIGN KEY([UserID]) REFERENCES [dbo].[ms_users] ([ID])
+GO
+ALTER TABLE [dbo].[ms_usercategories]  WITH CHECK ADD  CONSTRAINT [FK_msusercategories_CategoryID_msvocacategories_ID] FOREIGN KEY([CategoryID]) REFERENCES [dbo].[ms_vocacategories] ([ID])
+GO
+ALTER TABLE [dbo].[ms_usercategories]  WITH CHECK ADD  CONSTRAINT [FK_msusercategories_UserID_msusers_ID] FOREIGN KEY([UserID]) REFERENCES [dbo].[ms_users] ([ID])
 GO
 ALTER TABLE [dbo].[ms_uservocabularies]  WITH CHECK ADD  CONSTRAINT [FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID] FOREIGN KEY([VocaDetailID]) REFERENCES [dbo].[ms_vocabularydetails] ([ID])
 GO

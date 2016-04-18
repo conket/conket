@@ -26,6 +26,8 @@ namespace Nihongo.Models
         public decimal VocaSetFee { get; set; }
         public int UserID { get; set; }
         public string UserName { get; set; }
+        public int VocabularyID { get; set; }
+
         public string VocabularyCode { get; set; }
         public int? Level { get; set; }
         public DateTime? Update_Date { get; set; }
@@ -38,6 +40,7 @@ namespace Nihongo.Models
         public string Kanji { get; set; }
         public string HasLearnt { get; set; }
         public string HasMarked { get; set; }
+        public string UserDefine { get; set; }
         public string IsIgnore { get; set; }
         public int NumOfWrong { get; set; }
         public string VocaGetType { get; set; }
@@ -214,9 +217,11 @@ namespace Nihongo.Models
         public int VocaSetID { get; set; }
         public string VocaSetName { get; set; }
         public string VocaSetDescription { get; set; }
+        public DateTime? UpdateDate { get; set; }
         public string VocaSetUrlImage { get; set; }
         public string VocaSetUrlDisplay { get; set; }
         public int NumOfHasLearnt { get; set; }
+        public int NumOfHasMarked { get; set; }
         public int NumOfWeak { get; set; }
         public int NumOfVoca { get; set; }
         public int NumOfRegistedPerson { get; set; }

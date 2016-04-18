@@ -1,41 +1,42 @@
 ﻿@model IEnumerable<Nihongo.Models.MS_UserVocabulariesModels>
 <div class="row" id="vocalist">
-@if (Model != null && Model.Count() > 0)
-{
-
-    int count = 0;
-    int numOfColumn = 2;
-    var models = Model.ToList();
-    var max = models.Count;
-    int numOfRows = models.Count % numOfColumn == 0 ? models.Count / numOfColumn : models.Count / numOfColumn + 1;
-    
-    for (int k = 0; k < numOfRows; k++)
+    @if (Model != null && Model.Count() > 0)
     {
-    <div class="row vocalist">
-        @for (int i = 0; i < (max > numOfColumn ? numOfColumn : max); i++)
+
+        int count = 0;
+        int numOfColumn = 2;
+        var models = Model.ToList();
+        var max = models.Count;
+        int numOfRows = models.Count % numOfColumn == 0 ? models.Count / numOfColumn : models.Count / numOfColumn + 1;
+
+        for (int k = 0; k < numOfRows; k++)
         {
-            Nihongo.Models.MS_UserVocabulariesModels voca = models[count];
-            <div class="col-md-6">
-                <div class="row brdr-top bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 text-center">
-                        <span style="font-size:100px;">@voca.Kanji</span>
-                    </div>
-                    <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
-                        <div class="media">
-                            <div class="media-body fnt-smaller">
-                                <h4 class="media-heading">
-                                    <span class="label label-primary">@(count + 1)</span> @voca.Pinyin<small class="pull-right">
-                                            @if (voca.HasLearnt == Ivs.Core.Common.CommonData.Status.Enable)
+        <div class="row vocalist">
+            @for (int i = 0; i < (max > numOfColumn ? numOfColumn : max); i++)
+            {
+                Nihongo.Models.MS_UserVocabulariesModels voca = models[count];
+                <div class="col-md-6">
+                    <div class="row brdr-top bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <span style="font-size: 100px;">@voca.Kanji</span>
+                        </div>
+                        <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
+                            <div class="media">
+                                <div class="media-body fnt-smaller">
+                                    <h4 class="media-heading">
+                                        <span class="label label-primary">@(count + 1)</span> @voca.Pinyin<small class="pull-right">
+                                            @{Html.RenderAction("CheckCompletedVoca", "Library", new { @id = @voca.ID });}
+                                            @*@if (voca.HasLearnt == Ivs.Core.Common.CommonData.Status.Enable)
                                             {
                                                 <span class="label label-info">Đã thuộc</span>
                                             }
                                             else
                                             {
                                                 <span class="label label-danger">Chưa thuộc</span>
-                                            }
+                                            }*@
                                         </small>
-                                </h4>
-                               @* <ul class="mrg-0 btm-mrg-10 clr-535353">
+                                    </h4>
+                                    @* <ul class="mrg-0 btm-mrg-10 clr-535353">
                                     <li>
                                         <div class="zoom-content"></div>
                                     </li>
@@ -44,30 +45,30 @@
                                         <div class="zoom-content"><a href="#" class="drawKanji" data-toggle="tooltip" title="Nhấp để xem cách viết">@voca.Kanji</a></div>
                                     </li>
                                 </ul>*@
-                                <p>
-                                    @voca.VMeaning
-                                </p>
-                                <div class="text-right">
-                                    <a href="#" class="drawKanji btn btn-default btn-sm " data-toggle="tooltip" title="Nhấp để xem cách viết">@voca.Kanji</a>
-                                    <a href='#' class="btn btn-default btn-sm require-login" onclick="updateHasMarked(@voca.ID); return false;"
+                                    <p>
+                                        @voca.VMeaning
+                                    </p>
+                                    <div class="text-right">
+                                        <a href="#" class="drawKanji btn btn-default btn-sm " data-toggle="tooltip" title="Nhấp để xem cách viết">@voca.Kanji</a>
+                                        <a href='#' class="btn btn-default btn-sm require-login" onclick="updateHasMarked(@voca.ID); return false;"
                             role="button">Thêm vào sổ tay</a>
-                                </div>
-                                @*<span class="fnt-smaller fnt-lighter fnt-arial">
+                                    </div>
+                                    @*<span class="fnt-smaller fnt-lighter fnt-arial">
                        
                                         </span>*@
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-                                            count++;
+                                              count++;
+            }
+        </div>   
+            max -= numOfColumn;
         }
-    </div>   
-        max -= numOfColumn;
+
     }
-        
-}
-    </div>
+</div>
 <script src='@Scripts.Url("~/bundles/dr")' async> </script>
 <script src='@Scripts.Url("~/bundles/jqueryui")'> </script>
 <script src='@Scripts.Url("~/bundles/jquerycookie")' async> </script>
@@ -92,7 +93,7 @@
                 }
             }
             jAudio += '}';
-            
+
         }
         /*
          * DEFINE SOUNDS
@@ -134,7 +135,7 @@
             }
         };
 
-        
+
         //$('#vocalist .vocalist').sortable({
         //    connectWith: '#vocalist .vocalist'
         //});
@@ -143,7 +144,7 @@
     })
 
     function playAudio(id) {
-        
+
         $.mbAudio.play('vocaAudio', id)
     }
 
@@ -162,7 +163,7 @@
         //otherwise sound is initialized on the first tap loosing time and UX
         $.mbAudio.pause('vocaAudio', audioIsReady);
     });
-        
+
     function getVoca(id) {
         for (var i = 0; i < vocas.length; i++) {
             if (vocas[i].ID == id) {
@@ -213,3 +214,10 @@
         }
 </script>
 
+<script src="~/Scripts/jQuery.loadScroll.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('img').loadScroll(500); // in ms
+    });
+</script>

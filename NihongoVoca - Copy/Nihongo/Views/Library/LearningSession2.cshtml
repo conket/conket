@@ -7,6 +7,7 @@
 <input type="hidden" id="av" value='@Url.Action("danh-muc", "Library", new { id = @ViewBag.CategoryID, urlDisplay = @ViewBag.CategoryUrlDisplay })' />
 <input type="hidden" id="gtv" value='@CommonMethod.EncodeUrl("GetSessionVocas")' />
 <input type="hidden" id="gpr" value='@CommonMethod.EncodeUrl("GetPracticeSessionVocas")' />
+<input type="hidden" id="gnk" value='@CommonMethod.EncodeUrl("GetNotebookSessionVocas")' />
 <input type="hidden" id="utr" value='@CommonMethod.EncodeUrl("UpdateSessionResult")' />
 <input type="hidden" id="uft" value='@CommonMethod.EncodeUrl("UpdateFastTestVoca")' />
 <input type="hidden" id="vsd" value="@Model.ID"/>
@@ -14,6 +15,7 @@
 <input type="hidden" id="accessDenied" value="@Ivs.Core.Common.CommonData.DbReturnCode.AccessDenied"/>
 <input type="hidden" id="lt" value="@ViewBag.LessonType"/>
 <input type="hidden" id="ik" value="@ViewBag.IsKanji"/>
+
 <div id="content" style="padding-left: 0px !important">
     <div class="notifications-wrapper">
         <div class="col-md-12 padding-0">
@@ -28,7 +30,7 @@
                         @*</div>*@
                         <div class="col-md-12 padding-0">
                             <div class="col-md-12 padding-0">
-                                <div class="result">
+                                <div class="result" style="display:none">
                                     <div class="col-md-12 padding-0">
                                         <button class="btn ripple btn-outline btn-primary" onclick="getTestVocas(); return false;">
                                             <div>
@@ -68,17 +70,11 @@
                                 </div>
 
                                 <div class="badges-v1 lesson" style="width: 100%; height: 420px;" id="flashCard">
-                                    <div class="col-md-12 padding-0">
+                                    @*<div class="col-md-12 padding-0">
 
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">
-                                            @*<img class="img-responsive hidden-xs" src="~/images/voca/ichi.jpg" alt="Từ vựng tiếng Nhật" style="height: 150px">
-                                            <p class="hidden-xs">Một ngón tay</p>
-                                            <br />
-                                            <button class=" btn btn-circle btn-mn btn-info hidden-lg hidden-md" value="primary">
-                                                <span class="fa fa-coffee"></span>
-                                            </button>*@
                                             <p style="font-size: 70px;">一</p>
-                                            <a href="#" data-toggle="modal" data-target="#kanjiImage"><i class="fa fa-television"></i>Ghi nhớ</a>
+
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #ccc; border-left: 1px solid #ccc;">
                                             <h4><strong>NHẤT 
@@ -118,58 +114,69 @@
                                             <div class="col-md-12" id="draw"></div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 padding-0" style="width: 100%; height: 200px; overflow-y: auto; overflow-x: hidden;">
-                                        <label>Ví dụ:</label>
-                                        <table class="table table-condensed table-hover" id="tblLearntWord1">
-                                            <thead>
-                                                <tr>
-                                                    <th>Từ</th>
-                                                    <th>Hiragana</th>
-                                                    <th>Hán Việt</th>
-                                                    <th>Nghĩa</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><a href="#" class="drawKanji">一</a></td>
-                                                    <td>いち</td>
-                                                    <td>Nhất</td>
-                                                    <td>Một</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>一</td>
-                                                    <td>いち</td>
-                                                    <td>Nhất</td>
-                                                    <td>Một</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>一</td>
-                                                    <td>いち</td>
-                                                    <td>Nhất</td>
-                                                    <td>Một</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>一</td>
-                                                    <td>いち</td>
-                                                    <td>Nhất</td>
-                                                    <td>Một</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>一</td>
-                                                    <td>いち</td>
-                                                    <td>Nhất</td>
-                                                    <td>Một</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>一</td>
-                                                    <td>いち</td>
-                                                    <td>Nhất</td>
-                                                    <td>Một</td>
 
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    <div class="col-md-12 padding-0">
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="height: 200px; overflow-y: auto; overflow-x: hidden;">
+                                            <label><strong>Ví dụ:</strong></label>
+                                            <table class="table table-condensed table-hover" id="tblLearntWord1">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Từ</th>
+                                                        <th>Hiragana</th>
+                                                        <th>Hán Việt</th>
+                                                        <th>Nghĩa</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><a href="#" class="drawKanji">一</a></td>
+                                                        <td>いち</td>
+                                                        <td>Nhất</td>
+                                                        <td>Một</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>一</td>
+                                                        <td>いち</td>
+                                                        <td>Nhất</td>
+                                                        <td>Một</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>一</td>
+                                                        <td>いち</td>
+                                                        <td>Nhất</td>
+                                                        <td>Một</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>一</td>
+                                                        <td>いち</td>
+                                                        <td>Nhất</td>
+                                                        <td>Một</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>一</td>
+                                                        <td>いち</td>
+                                                        <td>Nhất</td>
+                                                        <td>Một</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>一</td>
+                                                        <td>いち</td>
+                                                        <td>Nhất</td>
+                                                        <td>Một</td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-center">
+                                            <div class="text-center kanjiImage">
+                                                <img class="img-responsive" src="~/images/voca/ichi.jpg" alt="Từ vựng tiếng Nhật" style="height: 150px">
+                                                <p id="divNote">Một ngón tay</p>
+                                                
+                                            </div>
+
+                                        </div>
+                                    </div>*@
                                 </div>
 
                             </div>
@@ -189,27 +196,34 @@
         </div>
     </div>
 
-    <div class="modal fade" id="kanjiImage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="modalKanjiImage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Hình ảnh minh họa</h4>
+                    <h4 class="modal-title" id="myModalLabel">Ghi Nhớ</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="text-center kanjiImage">
+                    @*<div class="text-center kanjiImage">
                         <img class="img-responsive" src="~/images/voca/ichi.jpg" alt="Từ vựng tiếng Nhật" style="height: 150px">
                         <h4>Một ngón tay</h4>
+                    </div>*@
+                    <div class="form-group">
+                        <label for="comment">Nhập gì đó dễ nhớ:</label>
+                        <textarea class="form-control" rows="3" id="txtUserDefine" maxlength="40"></textarea>
                     </div>
                 </div>
-                @*<div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>*@
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="btnSaveNote">Lưu</button>
+                </div>
             </div>
         </div>
     </div>
     @Html.Partial("_ModalPartial")
     <script src='@Scripts.Url("~/bundles/dr")' async> </script>
     <script src="~/Scripts/mine/learningsession.js"></script>
+    <script src='@Scripts.Url("~/bundles/audio")' async> </script>
+
 @Html.Partial("_TestModalPartial")
+
 

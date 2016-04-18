@@ -25,6 +25,10 @@ namespace Nihongo.Models
         public string Description { get; set; }
         public string IsTrial { get; set; }
         public string IsKanji { get; set; }
+        public string IsIgnore { get; set; }
+        public string HasLearnt { get; set; }
+        public string HasMarked { get; set; }
+
         private List<MS_UserVocabulariesModels> _vocas = new List<MS_UserVocabulariesModels>();
         public List<MS_UserVocabulariesModels> Vocabularies 
         { 

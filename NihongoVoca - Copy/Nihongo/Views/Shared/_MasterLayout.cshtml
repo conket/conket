@@ -72,8 +72,19 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href='@Href("~/Home/Index/tu-vung-tieng-nhat")'>
-                    <img src='@Href("~/logo.png")' alt="Từ vựng Tiếng Nhật"></a>
+                <ul class="nav navbar-nav search-nav hidden-xs">
+                    <li>
+                        <div class="search">
+                            <img src="~/images/conket1.jpg" class=" icon-conket" alt="tu-vung-tieng-nhat"/>
+                        </div>
+                    </li>
+                </ul>
+                <a href='@Href("~/Home/Index/tu-vung-tieng-nhat")' class="navbar-brand">
+                    <b class="error">CONKET</b>
+                </a>
+                @*<a class="navbar-brand" href='@Href("~/Home/Index/tu-vung-tieng-nhat")'>
+                    <img src='@Href("~/logo1.png")' alt="Từ vựng Tiếng Nhật" style="height:50px; display:normal !important;">CONKET</a>
+                *@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right mainNav">

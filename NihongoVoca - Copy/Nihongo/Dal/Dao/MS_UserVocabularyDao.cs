@@ -41,9 +41,11 @@ namespace Nihongo.Dal.Dao
                                    //Update_Date = us.Update_Date,
                                    NumOfWrong = us.NumOfWrong ?? 0,
                                    HasMarked = us.HasMarked,
+                                   UserDefine = us.UserDefine,
+
                                    //voca detail
                                    LineNumber = de.LineNumber,
-
+                                   
                                    //voca set
                                    VocaSetID = vs.ID,
                                    VocaSetName = vs.Name1,
@@ -70,6 +72,7 @@ namespace Nihongo.Dal.Dao
                                    OnReading = ss.OnReading,
                                    KunReading = ss.KunReading,
                                    DisplayType = ss.DisplayType,
+                                   Remembering = ss.Remembering,
 
                                    Point = 0,
                                    IsDone = CommonData.Status.Disable,
@@ -112,6 +115,8 @@ namespace Nihongo.Dal.Dao
                                    //Update_Date = us.Update_Date,
                                    NumOfWrong = us.NumOfWrong ?? 0,
                                    HasMarked = us.HasMarked,
+                                   UserDefine = us.UserDefine,
+
                                    //voca detail
                                    LineNumber = de.LineNumber,
 
@@ -179,7 +184,7 @@ namespace Nihongo.Dal.Dao
                                where vs.ID == model.VocaSetID 
                                     && us.UserID == model.UserID
                                     && us.IsIgnore != CommonData.Status.Enable
-                               orderby us.HasLearnt descending, us.Level ascending, us.NumOfWrong descending
+                               orderby us.HasLearnt descending, us.Level ascending, us.NumOfWrong descending, us.UpdatedDate ascending
 
                                select new MS_UserVocabulariesModels
                                {
@@ -191,6 +196,8 @@ namespace Nihongo.Dal.Dao
                                    IsIgnore = us.IsIgnore,
                                    //Update_Date = us.Update_Date,
                                    HasMarked = us.HasMarked,
+                                   UserDefine = us.UserDefine,
+
                                    //voca detail
                                    LineNumber = de.LineNumber,
 
@@ -219,6 +226,7 @@ namespace Nihongo.Dal.Dao
                                    OnReading = ss.OnReading,
                                    KunReading = ss.KunReading,
                                    DisplayType = ss.DisplayType,
+                                   Remembering = ss.Remembering,
 
                                    Point = 0,
                                    IsDone = CommonData.Status.Disable,
@@ -260,6 +268,8 @@ namespace Nihongo.Dal.Dao
                                    IsIgnore = us.IsIgnore,
                                    //Update_Date = us.Update_Date,
                                    HasMarked = us.HasMarked,
+                                   UserDefine = us.UserDefine,
+
                                    //voca detail
                                    LineNumber = de.LineNumber,
 
@@ -307,6 +317,158 @@ namespace Nihongo.Dal.Dao
             return returnCode;
         }
 
+        internal int SelectNotebookSessionUserVocaData(MS_UserVocabulariesModels model, out List<MS_UserVocabulariesModels> results)
+        {
+            int returnCode = 0;
+            results = new List<MS_UserVocabulariesModels>();
+
+            try
+            {
+                if (model.IsKanji == CommonData.Status.Enable)
+                {
+                    results = (from us in ms_uservocabularies
+                               join de in ms_vocabularydetails on us.VocaDetailID equals de.ID
+                               join vc in ms_vocacategories on de.CategoryID equals vc.ID
+                               join vs in ms_vocasets on vc.VocaSetID equals vs.ID
+                               join ss in ms_kanjis on de.KanjiID equals ss.ID
+
+                               where vs.ID == model.VocaSetID
+                                    && us.UserID == model.UserID
+                                    && us.IsIgnore != CommonData.Status.Enable
+                                    && us.HasMarked == CommonData.Status.Enable
+
+                               orderby us.HasMarked descending, us.Level ascending, us.NumOfWrong descending
+
+                               select new MS_UserVocabulariesModels
+                               {
+                                   //user voca
+                                   ID = us.ID,
+                                   UserID = us.UserID,
+                                   Level = us.Level,
+                                   HasLearnt = us.HasLearnt,
+                                   IsIgnore = us.IsIgnore,
+                                   //Update_Date = us.Update_Date,
+                                   HasMarked = us.HasMarked,
+                                   UserDefine = us.UserDefine,
+
+                                   //voca detail
+                                   LineNumber = de.LineNumber,
+
+                                   //voca set
+                                   VocaSetID = vs.ID,
+                                   VocaSetName = vs.Name1,
+                                   VocaSetUrlDisplay = vs.UrlDisplay,
+                                   VocaSetFee = vs.Fee ?? 0,
+
+                                   //category
+                                   CategoryID = vc.ID,
+                                   CategoryCode = vc.Code,
+                                   CategoryName = vc.Name1,
+                                   CategoryDescription = vc.Description,
+                                   CategoryUrlDisplay = vc.UrlDisplay,
+                                   RequiredTimePerVoca = vc.RequiredTimePerVoca,
+
+                                   //voca
+                                   VocabularyCode = ss.Code,
+                                   Kanji = ss.Kanji,
+                                   Pinyin = ss.Pinyin,
+                                   VMeaning = ss.VMeaning,
+                                   Description = ss.Description,
+                                   UrlAudio = ss.UrlAudio,
+                                   UrlImage = ss.UrlImage,
+                                   OnReading = ss.OnReading,
+                                   KunReading = ss.KunReading,
+                                   DisplayType = ss.DisplayType,
+                                   Remembering = ss.Remembering,
+
+                                   Point = 0,
+                                   IsDone = CommonData.Status.Disable,
+
+                                   KanjiExamples = (from ex in ms_kanjiexamples
+                                                    where ex.KanjiID == ss.ID
+                                                    select new MS_KanjiExampleModel
+                                                    {
+                                                        KanjiID = ex.KanjiID,
+                                                        Kanji = ex.Kanji,
+                                                        Pinyin = ex.Pinyin,
+                                                        Hiragana = ex.Hiragana,
+                                                        VMeaning = ex.VMeaning,
+                                                    }).AsEnumerable(),
+                               })
+                               .Take(10)
+                               .ToList();
+                }
+                else
+                {
+                    results = (from us in ms_uservocabularies
+                               join de in ms_vocabularydetails on us.VocaDetailID equals de.ID
+                               join vc in ms_vocacategories on de.CategoryID equals vc.ID
+                               join vs in ms_vocasets on vc.VocaSetID equals vs.ID
+                               join ss in ms_vocabularies on de.VocabularyID equals ss.ID
+
+                               where vs.ID == model.VocaSetID && ss.Type == model.Type
+                                    && us.UserID == model.UserID
+                                    && us.IsIgnore != CommonData.Status.Enable
+                               orderby us.HasLearnt descending, us.Level ascending, us.NumOfWrong descending
+
+                               select new MS_UserVocabulariesModels
+                               {
+                                   //user voca
+                                   ID = us.ID,
+                                   UserID = us.UserID,
+                                   Level = us.Level,
+                                   HasLearnt = us.HasLearnt,
+                                   IsIgnore = us.IsIgnore,
+                                   //Update_Date = us.Update_Date,
+                                   HasMarked = us.HasMarked,
+                                   UserDefine = us.UserDefine,
+
+                                   //voca detail
+                                   LineNumber = de.LineNumber,
+
+                                   //voca set
+                                   VocaSetID = vs.ID,
+                                   VocaSetName = vs.Name1,
+                                   VocaSetUrlDisplay = vs.UrlDisplay,
+                                   VocaSetFee = vs.Fee ?? 0,
+
+                                   //category
+                                   CategoryID = vc.ID,
+                                   CategoryCode = vc.Code,
+                                   CategoryName = vc.Name1,
+                                   CategoryDescription = vc.Description,
+                                   CategoryUrlDisplay = vc.UrlDisplay,
+                                   RequiredTimePerVoca = vc.RequiredTimePerVoca,
+
+                                   //voca
+                                   VocabularyCode = ss.Code,
+                                   Romaji = ss.Romaji,
+                                   Romaji_Katakana = ss.Romaji_Katakana,
+                                   Katakana = ss.Katakana,
+                                   Hiragana = ss.Hiragana,
+                                   Kanji = ss.Kanji,
+                                   VMeaning = ss.VMeaning,
+                                   Description = ss.Description,
+                                   UrlAudio = ss.UrlAudio,
+                                   UrlAudio_Katakana = ss.UrlAudio_Katakana,
+                                   DisplayType = ss.DisplayType,
+                                   UrlImage = ss.UrlImage,
+                                   Type = ss.Type,
+
+                                   Point = 0,
+                                   IsDone = CommonData.Status.Disable,
+                               })
+                               .Take(10)
+                               .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
 
         public int SelectUserVocaData(int vocaCateId, int userID, out List<MS_UserVocabulariesModels> results)
         {
@@ -315,76 +477,55 @@ namespace Nihongo.Dal.Dao
 
             try
             {
-                var vocaSet = this.ms_vocasets.AsQueryable();
-                var vocaCate = this.ms_vocacategories.Where(ss => ss.ID == vocaCateId);
-                var voca = this.ms_vocabularies.AsQueryable();
-                var vocaDetail = this.ms_vocabularydetails.AsQueryable();
-                var userVoca = this.ms_uservocabularies.Where(ss => ss.UserID == userID).AsQueryable();
+                //var vocaSet = this.ms_vocasets.AsQueryable();
+                //var vocaCate = this.ms_vocacategories.AsQueryable();//.Where(ss => ss.ID == vocaCateId);
+                //var voca = this.ms_vocabularies.AsQueryable();
+                //var vocaDetail = this.ms_vocabularydetails.AsQueryable();
+                //var userVoca = this.ms_uservocabularies.AsQueryable();//.Where(ss => ss.UserID == userID).AsQueryable();
 
-                results = (from de in vocaDetail
-                           join vc in vocaCate on de.CategoryID equals vc.ID
-                           join vs in vocaSet on vc.VocaSetID equals vs.ID
-                           join ss in voca on de.VocabularyID equals ss.ID
+                //var xx = this.ms_vocabularydetails.Where(ss => ss.ms_vocabularies.ID == vocaCateId).ToList();
+                var cate = this.ms_vocacategories.FirstOrDefault(ss => ss.ID == vocaCateId);
+                if (cate != null)
+                {
+                    results = cate.ms_vocabularydetails
+                        .OrderBy(s => s.LineNumber)
+                        .Select(ss => new MS_UserVocabulariesModels
+                        {
+                            ID = ss.ID,
+                            LineNumber = ss.LineNumber,
 
-                           join us in userVoca on de.ID equals us.VocaDetailID into usv
-                           from us in usv.DefaultIfEmpty()
+                            //voca set
+                            VocaSetID = ss.ms_vocacategories.VocaSetID ?? 0,
+                            //IsKanji = vs.IsKanji,
 
-                           orderby de.LineNumber
-                           select new MS_UserVocabulariesModels
-                           {
-                               //user voca
-                               ID = us == null ? 0 : us.ID,
-                               UserID = us == null ? 0 : us.UserID,
-                               Level = us == null ? 0 : us.Level,
-                               HasLearnt = us == null ? CommonData.Status.Disable : us.HasLearnt,
-                               //Update_Date = us.Update_Date,
-                               HasMarked = us == null ? CommonData.Status.Disable : us.HasMarked,
-                               //voca detail
-                               LineNumber = de.LineNumber,
+                            //category
+                            CategoryID = ss.ms_vocacategories.ID,
+                            CategoryCode = ss.ms_vocacategories.Code,
+                            CategoryName = ss.ms_vocacategories.Name1,
+                            CategoryDescription = ss.ms_vocacategories.Description,
+                            IsKanji = ss.ms_vocacategories.IsKanji,
 
-                               //voca set
-                               VocaSetID = vs.ID,
-                               IsKanji = vs.IsKanji,
+                            //voca
+                            VocabularyID = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.ID : ss.ms_vocabularies.ID,
+                            VocabularyCode = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Code : ss.ms_vocabularies.Code,
+                            Romaji = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Romaji,
+                            Romaji_Katakana = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Romaji_Katakana,
+                            Katakana = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Katakana,
+                            Hiragana = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Hiragana,
+                            UrlAudio = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.UrlAudio,
+                            UrlAudio_Katakana = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.UrlAudio_Katakana,
+                            DisplayType = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.DisplayType,
+                            UrlImage = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.UrlImage : ss.ms_vocabularies.UrlImage,
+                            Type = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Type,
 
-                               //category
-                               CategoryID = vc.ID,
-                               CategoryCode = vc.Code,
-                               CategoryName = vc.Name1,
-                               CategoryDescription = vc.Description,
-
-                               //voca
-                               VocabularyCode = ss.Code,
-                               Romaji = ss.Romaji,
-                               Romaji_Katakana = ss.Romaji_Katakana,
-                               Katakana = ss.Katakana,
-                               Hiragana = ss.Hiragana,
-                               Kanji = ss.Kanji,
-                               VMeaning = ss.VMeaning,
-                               Description = ss.Description,
-                               UrlAudio = ss.UrlAudio,
-                               UrlAudio_Katakana = ss.UrlAudio_Katakana,
-                               DisplayType = ss.DisplayType,
-                               UrlImage = ss.UrlImage,
-                               Type = ss.Type,
-
-                               //kanji
-                               //Pinyin = ss.Pinyin,
-                               //OnReading = ss.OnReading,
-                               //OnRomaji = ss.OnRomaji,
-                               //OnUrlAudio = ss.OnUrlAudio,
-                               //OnReading2 = ss.OnReading2,
-                               //OnRomaji2 = ss.OnRomaji2,
-                               //OnUrlAudio2 = ss.OnUrlAudio2,
-                               //Remembering = ss.Remembering,
-
-                               //KunReading = ss.KunReading,
-                               //KunRomaji = ss.KunRomaji,
-                               //KunUrlAudio = ss.KunUrlAudio,
-                               //KunReading2 = ss.KunReading2,
-                               //KunRomaji2 = ss.KunRomaji2,
-                               //KunUrlAudio2 = ss.KunUrlAudio2,
-                           })
-                                .ToList();
+                            Kanji = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Kanji : ss.ms_vocabularies.Kanji,
+                            Pinyin = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Pinyin : string.Empty,
+                            VMeaning = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.VMeaning : ss.ms_vocabularies.VMeaning,
+                            Description = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Description : ss.ms_vocabularies.Description,
+                            
+                        })
+                        .ToList();
+                }
             }
             catch (Exception ex)
             {
@@ -879,6 +1020,7 @@ namespace Nihongo.Dal.Dao
                             voca.UpdatedDate = DateTime.Now;
                             voca.Level = vo.Level;
                             voca.NumOfWrong = (voca.NumOfWrong ?? 0) + vo.NumOfWrong;
+                            voca.UserDefine = vo.UserDefine;
 
                             point += vo.Point;
                         }
@@ -886,6 +1028,7 @@ namespace Nihongo.Dal.Dao
 
                     returnCode = this.Saves();
 
+                    //update user info
                     if (returnCode == CommonData.DbReturnCode.Succeed)
                     {
                         var user = ms_users.FirstOrDefault(ss => ss.ID == userID);
@@ -897,6 +1040,63 @@ namespace Nihongo.Dal.Dao
                         }
 
                         returnCode = this.Saves();
+                    }
+
+                    //update test result
+                    if (returnCode == CommonData.DbReturnCode.Succeed)
+                    {
+                        if (vocas.Count > 0)
+                        {
+                            var userCates = vocas.GroupBy(ss => new { ss.UserID, ss.CategoryID })
+                                .Select(ss => new
+                                {
+                                    ss.Key.UserID, ss.Key.CategoryID,
+                                });
+                            foreach (var userCate in userCates)
+                            {
+                                Nihongo.Dal.Mapping.ms_testresults test = this.ms_testresults
+                                    .FirstOrDefault(ss => ss.UserID == userCate.UserID && ss.CategoryID == userCate.CategoryID);
+                                if (test == null)
+                                {
+                                    var numOfHasLearnt = (from us in this.ms_uservocabularies
+                                                          join vd in this.ms_vocabularydetails on us.VocaDetailID equals vd.ID
+                                                          join vc in this.ms_vocacategories on vd.CategoryID equals vc.ID
+                                                          where us.UserID == userCate.UserID
+                                                                && us.HasLearnt == CommonData.Status.Enable
+                                                                 && vc.ID == userCate.CategoryID
+                                                          select us).Count();
+                                                             
+                                    //create test result
+                                    //var firstVoca = vocas.FirstOrDefault();
+                                    //if (firstVoca != null)
+                                    //{
+                                    var vocaCate = this.ms_vocacategories.FirstOrDefault(ss => ss.ID == userCate.CategoryID);
+                                    //var vocaSet = this.ms_vocasets.FirstOrDefault(ss => ss.ID == vocaCate.VocaSetID);
+                                    //var numOfCorrectVocas = vocas.Count(ss => ss.IsCorrect == CommonData.Status.Enable);
+                                    if (numOfHasLearnt == vocaCate.NumOfVocas)
+                                    {
+                                        test = new Mapping.ms_testresults();
+                                        test.Code = userCate.UserID + "_" + vocaCate.Code + "_" + (DateTime.Now.ToString(CommonData.DateFormat.YyyyMMddHHmmss));
+                                        test.CategoryID = userCate.CategoryID;
+                                        test.UserID = userCate.UserID;
+                                        test.CreateDate = DateTime.Now;
+                                        test.NumOfVocas = vocaCate.NumOfVocas;
+                                        test.NumOfCorrectVocas = vocaCate.NumOfVocas;
+                                        test.IsPass = CommonData.Status.Enable;//(numOfCorrectVocas >= (vocas.Count * 8 / 10)) ? CommonData.Status.Enable : CommonData.Status.Disable;
+                                        test.RequiredTimePerVoca = vocaCate.RequiredTimePerVoca;
+                                        test.TotalRequiredTime = vocaCate.RequiredTimePerVoca * vocas.Count;
+                                        //test.CompletedTime = firstVoca.CompletedTime;
+                                        test.Status = CommonData.Status.Enable;
+                                        //test.Description = (numOfCorrectVocas >= (vocas.Count * 8 / 10)) ? "Chúc mừng bạn đã vượt qua được bài kiểm tra" : "Bạn đã không vượt qua được bài kiểm tra. Hãy ôn lại";
+
+                                        ms_testresults.AddObject(test);
+                                        returnCode = this.Saves();
+                                    }
+                                }
+                                //}
+                            }
+                            
+                        }
                     }
 
                     if (returnCode == CommonData.DbReturnCode.Succeed)
@@ -962,15 +1162,23 @@ namespace Nihongo.Dal.Dao
 
                     var userVocaSets = (from us in this.ms_uservocabularies.Where(ss => ss.UserID == userID)
                                         group us by us.ms_vocabularydetails.ms_vocacategories.ms_vocasets.ID into userVoca
+                                        
+                                        join uvs in ms_uservocasets.Where(ss => ss.UserID == userID) on userVoca.Key equals uvs.VocaSetID into userSet
+                                        from uvs in userSet.DefaultIfEmpty()
+
                                         join vs in ms_vocasets on userVoca.Key equals vs.ID
+                                        
                                         select new MS_UserVocaSet
                                         {
                                             VocaSetID = vs.ID,
                                             VocaSetName = vs.Name1,
                                             VocaSetDescription = vs.Description,
+                                            UpdateDate = uvs == null ? null : uvs.UpdatedDate,
+
                                             VocaSetUrlDisplay = vs.UrlDisplay,
                                             VocaSetUrlImage = vs.UrlImage,
                                             NumOfVoca = vs.NumOfVocas ?? 0,
+                                            NumOfHasMarked = userVoca.Count(s => s.HasMarked == CommonData.Status.Enable),
                                             NumOfHasLearnt = userVoca.Count(s => s.HasLearnt == CommonData.Status.Enable),
                                             NumOfWeak = userVoca.Count(s => s.IsIgnore == CommonData.Status.Disable && s.ms_vocabularydetails.ms_vocabularies.Type == CommonData.VocaType.Word 
                                                                     && s.HasLearnt == CommonData.Status.Enable && s.Level < 9),
@@ -1046,6 +1254,37 @@ namespace Nihongo.Dal.Dao
 
                     userModel.UserVocaSets = userVocaSets;
                 }
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
+
+
+        internal int IgnoreCategory(int userID, MS_VocaCategoriesModels voca)
+        {
+            int returnCode = 0;
+            try
+            {
+                var userCate = this.ms_usercategories.FirstOrDefault(ss => ss.UserID == userID && ss.CategoryID == voca.ID);
+                if (userCate != null)
+                {
+                    userCate.IsIgnore = voca.IsIgnore;
+
+                    var userVocas = this.ms_uservocabularies.Where(ss => ss.UserID == userID
+                    && ss.ms_vocabularydetails.ms_vocacategories.ID == voca.ID);
+                    foreach (var userVoca in userVocas)
+                    {
+                        userVoca.IsIgnore = voca.IsIgnore;
+                    }
+
+                }
+                
+                returnCode = this.Saves();
             }
             catch (Exception ex)
             {

@@ -31,14 +31,18 @@
                                             @*onclick="playAudio('@voca.VocabularyCode'); return false;">*@
                                             @voca.DisplayVoca
                                             <span class="glyphicon glyphicon-volume-up"></span></a><small class="pull-right">
-                                                @if (voca.HasLearnt == Ivs.Core.Common.CommonData.Status.Enable)
+                                                @if (CommonMethod.ParseString(Session["UserID"]) != "")
+                                                {
+                                                    { Html.RenderAction("CheckCompletedVoca", "Library", new { @id = @voca.ID }); }
+                                                }
+@*@if (voca.HasLearnt == Ivs.Core.Common.CommonData.Status.Enable)
                                                 {
                                                     <span class="label label-info">Đã thuộc</span>
                                                 }
                                                 else
                                                 {
                                                     <span class="label label-danger">Chưa thuộc</span>
-                                                }
+                                                }*@
                                             </small>
                                     </h4>
                                     <ul class="mrg-0 btm-mrg-10 clr-535353">
@@ -56,8 +60,11 @@
                                         @voca.Description
                                     </p>
                                     <div class="text-right">
-                                        <a href='#' class="btn btn-default btn-sm require-login" onclick="updateHasMarked(@voca.ID); return false;"
+                                        @if (CommonMethod.ParseString(Session["UserID"]) != "")
+                                        {
+                                            <a href='#' class="btn btn-default btn-sm require-login" onclick="updateHasMarked(@voca.ID); return false;"
                             role="button">Thêm vào sổ tay</a>
+                                        }
                                     </div>
                                     @*<span class="fnt-smaller fnt-lighter fnt-arial">
                        
@@ -67,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                                                count++;
+                                        count++;
             }
         </div>   
             max -= numOfColumn;

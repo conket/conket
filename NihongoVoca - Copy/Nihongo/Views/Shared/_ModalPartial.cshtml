@@ -22,8 +22,8 @@
             </div>
             <div class="modal-body">
                 <input type="hidden" id="txtKanji" />
-                <div class="text-center" id="drawKanji" style="border: 1px solid #ddd; width:100%">
-                            </div>
+                <div class="text-center" id="drawKanji" style="border: 1px solid #ddd; width: 100%">
+                </div>
                 <button class="btn btn-navigator" id="btnReDraw" onclick="dr($('#txtKanji').val())">Viết lại</button>
             </div>
         </div>
@@ -108,5 +108,31 @@
             </div>
         </div>
     </div>
+</div>
+
+<!--Info Modal Templates-->
+<div id="modal-info" class="modal modal-message modal-info fade" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa fa-envelope"></i>
+            </div>
+            @*<div class="modal-title">Thông tin</div>*@
+
+            <div class="modal-body">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <div id="divInfo">Chúc mừng bạn....</div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <img src="~/images/conket1.jpg" alt="conket" class="img-responsive" style="height:100px;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+        <!-- / .modal-content -->
+    </div>
+    <!-- / .modal-dialog -->
 </div>
 

@@ -16,9 +16,24 @@ namespace Nihongo.Controllers
     {
         public ActionResult Index(string id)
         {
-            if (!CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            if (Request.Cookies["NihongoVoca"] != null)
             {
                 int returnCode = 0;
+                MS_UsersDao dao = new MS_UsersDao();
+                MS_UsersModels user = new MS_UsersModels();
+                user.ID = CommonMethod.ParseInt(Request.Cookies["NihongoVoca"].Values["UserID"]);
+                //user.UserName = CommonMethod.ParseString(Request.Cookies["NihongoVoca"].Values["UserName"]);
+                //user.Email = CommonMethod.ParseString(Request.Cookies["NihongoVoca"].Values["Email"]);
+                //user.UrlImage = CommonMethod.ParseString(Request.Cookies["NihongoVoca"].Values["UrlImage"]);
+                //user.Password = CommonMethod.ParseString(Request.Cookies["NihongoVoca"].Values["Password"]);
+                user.LoginState = CommonData.Status.Disable;
+                user.LastVisitedDate = DateTime.Now;
+                returnCode = dao.UpdateState(ref user);
+            //}
+
+            //if (!CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            //{
+            //    int returnCode = 0;
 
                 //List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
                 //MS_VocabulariesDao vocaDao = new MS_VocabulariesDao();
@@ -28,13 +43,14 @@ namespace Nihongo.Controllers
                 //returnCode = vocaDao.SelectWeakVocaSummary(model, out results);
                 //Session["Inbox"] = results;
 
-                MS_UsersDao dao = new MS_UsersDao();
-                MS_UsersModels user = new MS_UsersModels();
-                user.ID = CommonMethod.ParseInt(Session["UserID"]);
-                user.UserName = CommonMethod.ParseString(Session["UserName"]);
-                user.LoginState = CommonData.Status.Enable;
-                user.LastVisitedDate = DateTime.Now;
-                returnCode = dao.UpdateState(user);
+                Session["UserID"] = user.ID;
+                Session["UserName"] = user.UserName;
+                Session["Email"] = user.Email;
+                Session["DisplayName"] = user.DisplayName;
+                Session["IsAdmin"] = user.IsAdmin;
+                Session["UrlImage"] = user.UrlImage;
+                UserSession.UserName = user.UserName;
+                UserSession.UserID = user.ID;
 
                 return RedirectToAction("HomePage", "Account");
             }
@@ -43,8 +59,9 @@ namespace Nihongo.Controllers
                 Session["Inbox"] = new List<MS_UserVocabulariesModels>();
                 Session["UserID"] = CommonData.StringEmpty;
                 Session["UserName"] = CommonData.StringEmpty;
+                Session["Email"] = CommonData.StringEmpty;
                 Session["DisplayName"] = CommonData.StringEmpty;
-                Session["UserUrlImage"] = CommonData.StringEmpty;
+                Session["UrlImage"] = CommonData.StringEmpty;
                 Session["IsAdmin"] = false;
                 UserSession.UserName = CommonData.StringEmpty;
                 UserSession.UserID = -1;

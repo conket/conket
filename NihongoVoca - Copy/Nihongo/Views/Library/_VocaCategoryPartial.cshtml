@@ -30,11 +30,18 @@
                                 @Html.ActionLink(voca.Name1, "danh-muc", "Library", new { @id = voca.ID, @urlDisplay = voca.UrlDisplay }, new { @target = "_parent", @class = "require-login" })
                                 @if (voca.IsTrial == "1")
                                 {
-                                    <a href="@Url.Action("hoc-thu", "Library", new { @id = voca.ID, @urlDisplay = voca.UrlDisplay })" target="_parent" class="require-login">
+@*<a href="@Url.Action("hoc-thu", "Library", new { @id = voca.ID, @urlDisplay = voca.UrlDisplay })" target="_parent" class="require-login">
                                         <small class="pull-right">Học thử</small>
-                                    </a>
+                                    </a>*@
 @*<a href='@Href("~/Library/hoc-thu/")@voca.ID/@voca.UrlDisplay' target="_parent" class="require-login">
                                         <small class="pull-right">Học thử</small> </a>   *@
+                                }
+                                @if (CommonMethod.ParseString(Session["UserID"]) != "")
+                                {
+                                    if (voca.IsIgnore == CommonData.Status.Enable)
+                                    {
+                                    <small class="pull-right"><span class="label label-danger">Đã bỏ qua</span></small>
+                                    }
                                 }
                             </h4>
                             @*list-inline*@
@@ -51,21 +58,44 @@
                         <nav class="col-md-12 text-right action">
                             <ul>
                                 <li>@Html.ActionLink("VÀO XEM", "danh-muc", "Library", new { @id = voca.ID, @urlDisplay = voca.UrlDisplay }
-                             , new { @class = "btn btn-navigator btn-theme btn-small" })</li>
+                             , new { @class = "btn btn-navigator btn-theme btn-small" })
+
+                                    @if (CommonMethod.ParseString(Session["UserID"]) != "")
+                                    {
+                                        if (voca.IsIgnore == CommonData.Status.Enable)
+                                        {
+                                        <a href='#' class='btn btn-navigator btn-theme btn-small require-login' onclick='ignoreCate(this, @voca.ID); return false;' role='button'>HỌC LẠI</a>   
+                                        }
+                                        else
+                                        {
+                                        <a href='#' class='btn btn-navigator btn-theme btn-small require-login' onclick='ignoreCate(this, @voca.ID); return false;' role='button'>BỎ QUA</a>   
+                                        }
+                                    }
+                                </li>
                                 @*<li>@Html.ActionLink("Sàng lọc", "kiem-tra-nhanh", "Library", new { @id = voca.ID, @urlDisplay = voca.UrlDisplay }
              , new { @class = "btn-theme btn-small require-login" })</li>*@
                             </ul>
                         </nav>
                         <div class="pull-right">
-                            <span class="label label-danger">
-                                @{Html.RenderAction("CheckCompletedCate", "Library", new { @id = @voca.ID });}
-                            </span>
+
+                            @*@{Html.RenderAction("CheckCompletedCate", "Library", new { @id = @voca.ID });}*@
+                            @if (CommonMethod.ParseString(Session["UserID"]) != "")
+                            {
+                                if (voca.HasLearnt == CommonData.Status.Enable)
+                                {
+                                <span class="label label-danger">Đã hoàn thành</span>
+                                }
+                                else
+                                {
+                                <span class="label label-danger">Chưa hoàn thành</span>
+                                }
+                            }
                         </div>
                     </div>
                 </div>
             </div>
 
-                                  count++;
+                            count++;
         }
     </div>   
         max -= numOfColumn;
@@ -76,7 +106,76 @@
 <script src="~/Scripts/jQuery.loadScroll.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-
+        vocas = set(@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)));
         $('img').loadScroll(500); // in ms
     });
+    function getVoca(id) {
+        for (var i = 0; i < vocas.length; i++) {
+            if (vocas[i].ID == id) {
+                return vocas[i];
+            }
+        }
+        return null;
+    }
+    function set(value) {
+        return value;
+    }
+    function ignoreCate(obj, id) {
+        var voca = getVoca(id);
+        if (voca != null) {
+            //if (voca.HasMarked == "1") {
+            //    alert('Từ vựng này đã có trong Sổ tay');
+            //    return;
+            //}
+            if (voca.IsIgnore == '0') {
+                voca.IsIgnore = "1";
+            }
+            else {
+                voca.IsIgnore = "0";
+            }
+            $.ajax({
+                cache: true,
+                type: "post",
+                async: false,
+                url: '/Library/' + '@CommonMethod.EncodeUrl("IgnoreCategory")',
+                data: JSON.stringify(voca),
+                dataType: "json",
+                contentType: 'application/json',
+                success: function (result) {
+                    if (result.ReturnCode == '@CommonData.DbReturnCode.AccessDenied') {
+                        if (voca.IsIgnore == '0') {
+                            voca.IsIgnore = "1";
+                        }
+                        else {
+                            voca.IsIgnore = "0";
+                        }
+                        window.location.href = '/Account/RequireLogin';
+                    }
+                    else if (result.ReturnCode != 0) {
+                        if (voca.IsIgnore == '0') {
+                            voca.IsIgnore = "1";
+                        }
+                        else {
+                            voca.IsIgnore = "0";
+                        }
+                        alert('Có lỗi xảy ra');
+                    }
+                    else {
+                        if (voca.IsIgnore == '0') {
+                            $(obj).html('BỎ QUA');
+                        }
+                        else {
+                            $(obj).html('HỌC LẠI');
+                        }
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.responseText);
+                    return false;
+                }
+            });
+            }
+        }
+
+
 </script>

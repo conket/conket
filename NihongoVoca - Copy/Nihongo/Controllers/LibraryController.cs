@@ -175,6 +175,26 @@ namespace Nihongo.Controllers
             return View("LearningSession2", result);
         }
 
+        [ActionName("on-so-tay")]
+        public ActionResult NotebookLesson(int id, string urlDisplay)
+        {
+            ViewBag.CategoryID = id;
+            ViewBag.CategoryUrlDisplay = urlDisplay;
+            //notebook
+            ViewBag.LessonType = "3";
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                return RedirectToAction("RequireLogin", "Account");
+            }
+            MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
+            MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
+            MS_VocaSetsModels result = new MS_VocaSetsModels();
+            int returnCode = dao.SelectVocaSetByID(id, CommonMethod.ParseInt(Session["UserID"]), out result);
+
+            ViewBag.IsKanji = result.IsKanji;
+            return View("LearningSession2", result);
+        }
+
         [ActionName("hoc-so-tay")]
         public ActionResult LearningNotebook()
         {
@@ -377,7 +397,7 @@ namespace Nihongo.Controllers
         #region Voca cate
 
         [EncryptActionName(Name = ("SelectVocaCategoryBySet"))]
-        [OutputCache(CacheProfile = "Cache5MinutesVaryByIDClient")]
+        [OutputCache(CacheProfile = "Cache1MinuteVaryByIDClient")]
         public ActionResult SelectVocaCategoryBySet(int id)
         {
             List<MS_VocaCategoriesModels> result = new List<MS_VocaCategoriesModels>();
@@ -404,6 +424,43 @@ namespace Nihongo.Controllers
                 returnCode = dao.CheckCompletedCate(id, CommonMethod.ParseInt(Session["UserID"]), out isOK);
             }
             return Content(isOK ? "Đã hoàn thành" : "Chưa hoàn thành", "text/html");
+        }
+
+        [ChildActionOnly]
+        public ActionResult CheckCompletedVoca(int id)
+        {
+            bool isOK = false;
+            int returnCode = 0;
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                returnCode = CommonData.DbReturnCode.AccessDenied;
+            }
+            else
+            {
+                MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
+                returnCode = dao.CheckCompletedVoca(id, CommonMethod.ParseInt(Session["UserID"]), out isOK);
+            }
+            return Content(isOK ? "<span class='label label-info'>Đã thuộc</span>" : "<span class='label label-danger'>Chưa thuộc</span>", "text/html");
+        }
+
+        [ChildActionOnly]
+        public ActionResult CheckIsIgnoreCate(int id)
+        {
+            bool isOK = false;
+            int returnCode = 0;
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                returnCode = CommonData.DbReturnCode.AccessDenied;
+            }
+            else
+            {
+                MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
+                returnCode = dao.CheckIsIgnoreCate(id, CommonMethod.ParseInt(Session["UserID"]), out isOK);
+            }
+            return Content(isOK 
+                ? "<a href='#' class='btn btn-navigator btn-theme btn-small require-login' onclick='ignoreCate(this, " + id + "); return false;' role='button'>HỌC LẠI</a>"
+                : "<a href='#' class='btn btn-navigator btn-theme btn-small require-login' onclick='ignoreCate(this, " + id + "); return false;' role='button'>BỎ QUA</a>" 
+                , "text/html");
         }
 
         [ChildActionOnly]
@@ -517,6 +574,35 @@ namespace Nihongo.Controllers
                 model.IsKanji = isKanji;
                 //model.HasLearnt = CommonData.Status.Disable;
                 returnCode = dao.SelectSessionUserVocaData(model, out results);
+            }
+
+            return Json(new { vocabularies = ((results)) }, JsonRequestBehavior.AllowGet);
+        }
+
+        [EncryptActionName(Name = ("GetNotebookSessionVocas"))]
+        [OutputCache(CacheProfile = "Cache1MinuteVaryByIDClient")]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult GetNotebookSessionVocas(int id, string isKanji)
+        {
+            List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
+            int returnCode = 0;
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                returnCode = CommonData.DbReturnCode.AccessDenied;
+            }
+            else
+            {
+                //MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
+                //returnCode = dao.SelectUserVocaData(id, CommonMethod.ParseString(Session["UserID"]), out results);
+                MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
+                MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
+                model.VocaSetID = id;
+                //model.CategoryID = id;
+                model.Type = CommonData.VocaType.Word;
+                model.UserID = CommonMethod.ParseInt(Session["UserID"]);
+                model.IsKanji = isKanji;
+                //model.HasLearnt = CommonData.Status.Disable;
+                returnCode = dao.SelectNotebookSessionUserVocaData(model, out results);
             }
 
             return Json(new { vocabularies = ((results)) }, JsonRequestBehavior.AllowGet);
@@ -858,6 +944,24 @@ namespace Nihongo.Controllers
             {
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
                 returnCode = dao.UpdateHasMarked(voca);
+            }
+
+            return Json(new { ReturnCode = returnCode });
+        }
+
+        [EncryptActionName(Name = ("IgnoreCategory"))]
+        [HttpPost]
+        public ActionResult IgnoreCategory(MS_VocaCategoriesModels voca)
+        {
+            int returnCode = 0;
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                returnCode = CommonData.DbReturnCode.AccessDenied;
+            }
+            else
+            {
+                MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
+                returnCode = dao.IgnoreCategory(CommonMethod.ParseInt(Session["UserID"]), voca);
             }
 
             return Json(new { ReturnCode = returnCode });

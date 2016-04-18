@@ -81,7 +81,7 @@ $(document).ready(function () {
     });
 
     $('#btnLogout').on('click', function () {
-
+        
         FB.getLoginStatus(function (response) {
             if (response.status === 'connected') {
                 // the user is logged in and has authenticated your
@@ -91,8 +91,7 @@ $(document).ready(function () {
                 // and signed request each expire
                 var uid = response.authResponse.userID;
                 var accessToken = response.authResponse.accessToken;
-
-                FB.api('/' + uid + '/permissions', 'delete', function (response) { });
+                FB.api('/' + uid + '/permissions', 'delete', function (response) { console.log('logout f!!');});
 
             } else if (response.status === 'not_authorized') {
                 // the user is logged in to Facebook, 

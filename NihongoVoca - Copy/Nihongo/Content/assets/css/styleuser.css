@@ -5645,7 +5645,7 @@ ul li a:focus {
   background: #ef5949;
 }
 .sub-mimin-mobile-menu-list {
-  display: none;
+  display: block;
   padding: 0;
   height: 300px;
   font-weight: 100;

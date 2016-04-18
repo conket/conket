@@ -577,6 +577,7 @@ namespace Nihongo.Controllers
         {
             int returnCode = 0;
             MS_UsersModels user = null;
+            string error = string.Empty;
 
             if (!CommonMethod.IsNullOrEmpty(UserName) && !CommonMethod.IsNullOrEmpty(Password))
             {
@@ -585,7 +586,8 @@ namespace Nihongo.Controllers
                 string notEncryptUsr = UserName.ToLower();
                 Password = CommonMethod.Md5(CommonMethod.Md5(CommonMethod.Md5(Password)));
                 UserName = CommonMethod.Md5(UserName.ToLower());
-                returnCode = dao.SelectDataByUserName(UserName, Password, out user);
+
+                returnCode = dao.SelectDataByUserName(UserName, Password, out user, out error);
 
                 if (returnCode == 0)
                 {
@@ -593,52 +595,58 @@ namespace Nihongo.Controllers
                     {
                         //if (RememberMe)
                         //{
-                        //    HttpCookie cookie = new HttpCookie("Nihongo");
-                        //    cookie.Values.Add("UserName", user.UserName);
-                        //    cookie.Values.Add("DisplayName", user.DisplayName);
-                        //    cookie.Values.Add("Password", Password);
-                        //    cookie.Values.Add("IsAdmin", user.IsAdmin);
-                        //    cookie.Expires = DateTime.Now.AddDays(15);
-                        //    Response.Cookies.Add(cookie);
+                        HttpCookie cookie = new HttpCookie("NihongoVoca");
+                        cookie.Values.Add("UserID", user.ID.ToString());
+                        cookie.Values.Add("UserName", user.UserName);
+                        cookie.Values.Add("Email", user.Email);
+                        cookie.Values.Add("UrlImage", user.UrlImage);
+                        cookie.Values.Add("DisplayName", user.DisplayName);
+                        cookie.Values.Add("Password", Password);
+                        cookie.Values.Add("IsAdmin", user.IsAdmin);
+                        cookie.Expires = DateTime.Now.AddDays(15);
+                        Response.Cookies.Add(cookie);
                         //}
 
                         #region Select notification
 
-                        List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
-                        MS_VocabulariesDao vocaDao = new MS_VocabulariesDao();
-                        MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
-                        model.UserName = user.UserName;
+                        //List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
+                        //MS_VocabulariesDao vocaDao = new MS_VocabulariesDao();
+                        //MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
+                        //model.UserName = user.UserName;
+                        //model.UserID = user.ID;
                         //returnCode = vocaDao.SelectWeakVocaSummary(model, out results);
                         //Session["Inbox"] = results.Count;
-                        Session["UserID"] = user.ID;
-                        Session["UserName"] = user.UserName;
-                        Session["DisplayName"] = user.DisplayName;
-                        Session["IsAdmin"] = user.IsAdmin;
-                        Session["UserUrlImage"] = user.UrlImage;
-
-                        UserSession.UserName = user.UserName;
-                        UserSession.UserID = user.ID;
+                        
                         #endregion
 
                         #region Update state
 
                         user.LoginState = CommonData.Status.Enable;
                         user.LastVisitedDate = DateTime.Now;
-                        returnCode = dao.UpdateState(user);
+                        returnCode = dao.UpdateState(ref user);
 
                         #endregion
 
+                        Session["UserID"] = user.ID;
+                        Session["UserName"] = user.UserName;
+                        Session["Email"] = user.Email;
+                        Session["DisplayName"] = user.DisplayName;
+                        Session["IsAdmin"] = user.IsAdmin;
+                        Session["UrlImage"] = user.UrlImage;
+
+                        UserSession.UserName = user.UserName;
+                        UserSession.UserID = user.ID;
                     }
                 }
             }
 
-            return Json(new { ReturnCode = returnCode, ID = user == null ? 0 : user.ID, ReturnUrl = ReturnUrl });//Request.Url.AbsoluteUri });
+            return Json(new { ReturnCode = returnCode, Error = error, ID = user == null ? 0 : user.ID, ReturnUrl = ReturnUrl });//Request.Url.AbsoluteUri });
         }
 
         [HttpPost]
         [EncryptActionName(Name = ("FLogin"))]
         [AllowAnonymous]
-        public ActionResult FLogin(string id, string email, string name, string ReturnUrl)
+        public ActionResult FLogin(string id, string email, string name, string urlImage, string ReturnUrl)
         {
             int returnCode = 0;
             MS_UsersModels user = null;
@@ -662,37 +670,52 @@ namespace Nihongo.Controllers
                 MS_UsersModels model = new MS_UsersModels();
                 model.DisplayName = name;
                 model.UserName = CommonMethod.Md5(id.ToLower());
-                model.Email = CommonMethod.IsNullOrEmpty(email) ? CommonData.StringEmpty : CommonMethod.Md5(email.ToLower());
+                model.UrlImage = urlImage;
+                model.Email = CommonMethod.IsNullOrEmpty(email) ? CommonData.StringEmpty : (email.ToLower());
                 model.Password = CommonMethod.Md5(CommonMethod.Md5(CommonMethod.Md5(id)));
-                model.CreateVoca = true;
+                //model.CreateVoca = false;
                 //mess = "Insert thành công";
                 returnCode = dao.FLogin(model, out user);
                 if (returnCode == 0)
                 {
+                    HttpCookie cookie = new HttpCookie("NihongoVoca");
+                    cookie.Values.Add("UserID", user.ID.ToString());
+                    cookie.Values.Add("UserName", user.UserName);
+                    cookie.Values.Add("Email", user.Email);
+                    cookie.Values.Add("UrlImage", user.UrlImage);
+                    cookie.Values.Add("DisplayName", user.DisplayName);
+                    cookie.Values.Add("Password", user.Password);
+                    cookie.Values.Add("IsAdmin", user.IsAdmin);
+                    cookie.Expires = DateTime.Now.AddDays(15);
+                    Response.Cookies.Add(cookie);
+
                     #region Select notification
 
-                    List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
-                    MS_VocabulariesDao vocaDao = new MS_VocabulariesDao();
-                    MS_UserVocabulariesModels dmodel = new MS_UserVocabulariesModels();
-                    dmodel.UserName = user.UserName;
+                    //List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
+                    //MS_VocabulariesDao vocaDao = new MS_VocabulariesDao();
+                    //MS_UserVocabulariesModels dmodel = new MS_UserVocabulariesModels();
+                    //dmodel.UserName = user.UserName;
                     //returnCode = vocaDao.SelectWeakVocaSummary(model, out results);
                     //Session["Inbox"] = results.Count;
-                    Session["UserID"] = user.ID;
-                    Session["UserName"] = user.UserName;
-                    Session["DisplayName"] = user.DisplayName;
-                    Session["IsAdmin"] = user.IsAdmin;
-                    Session["UserUrlImage"] = user.UrlImage;
-                    UserSession.UserName = user.UserName;
-                    UserSession.UserID = user.ID;
+                    
                     #endregion
 
                     #region Update state
 
                     user.LoginState = CommonData.Status.Enable;
                     user.LastVisitedDate = DateTime.Now;
-                    returnCode = dao.UpdateState(user);
+                    returnCode = dao.UpdateState(ref user);
 
                     #endregion
+
+                    Session["UserID"] = user.ID;
+                    Session["UserName"] = user.UserName;
+                    Session["Email"] = user.Email;
+                    Session["DisplayName"] = user.DisplayName;
+                    Session["IsAdmin"] = user.IsAdmin;
+                    Session["UrlImage"] = user.UrlImage;
+                    UserSession.UserName = user.UserName;
+                    UserSession.UserID = user.ID;
                 }
                 else
                 {
@@ -711,7 +734,7 @@ namespace Nihongo.Controllers
         [HttpPost]
         [EncryptActionName(Name = ("GLogin"))]
         [AllowAnonymous]
-        public ActionResult GLogin(string id, string email, string name, string ReturnUrl)
+        public ActionResult GLogin(string id, string email, string name, string urlImage, string ReturnUrl)
         {
             int returnCode = 0;
             MS_UsersModels user = null;
@@ -735,28 +758,35 @@ namespace Nihongo.Controllers
                 MS_UsersModels model = new MS_UsersModels();
                 model.DisplayName = name;
                 model.UserName = CommonMethod.Md5(id.ToLower());
-                model.Email = CommonMethod.IsNullOrEmpty(email) ? CommonData.StringEmpty : CommonMethod.Md5(email.ToLower());
+                model.Email = CommonMethod.IsNullOrEmpty(email) ? CommonData.StringEmpty : (email.ToLower());
                 model.Password = CommonMethod.Md5(CommonMethod.Md5(CommonMethod.Md5(id)));
-                model.CreateVoca = true;
+                model.UrlImage = urlImage;
+                //model.CreateVoca = true;
 
-                returnCode = dao.FLogin(model, out user);
+                returnCode = dao.GLogin(model, out user);
                 if (returnCode == 0)
                 {
+                    HttpCookie cookie = new HttpCookie("NihongoVoca");
+                    cookie.Values.Add("UserID", user.ID.ToString());
+                    cookie.Values.Add("UserName", user.UserName);
+                    cookie.Values.Add("Email", user.Email);
+                    cookie.Values.Add("UrlImage", user.UrlImage);
+                    cookie.Values.Add("DisplayName", user.DisplayName);
+                    cookie.Values.Add("UrlImage", user.UrlImage);
+                    cookie.Values.Add("Password", user.Password);
+                    cookie.Values.Add("IsAdmin", user.IsAdmin);
+                    cookie.Expires = DateTime.Now.AddDays(15);
+                    Response.Cookies.Add(cookie);
+
                     #region Select notification
 
-                    List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
-                    MS_VocabulariesDao vocaDao = new MS_VocabulariesDao();
-                    MS_UserVocabulariesModels dmodel = new MS_UserVocabulariesModels();
-                    dmodel.UserName = user.UserName;
+                    //List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
+                    //MS_VocabulariesDao vocaDao = new MS_VocabulariesDao();
+                    //MS_UserVocabulariesModels dmodel = new MS_UserVocabulariesModels();
+                    //dmodel.UserName = user.UserName;
                     //returnCode = vocaDao.SelectWeakVocaSummary(model, out results);
                     //Session["Inbox"] = results.Count;
-                    Session["UserID"] = user.ID;
-                    Session["UserName"] = user.UserName;
-                    Session["DisplayName"] = user.DisplayName;
-                    Session["IsAdmin"] = user.IsAdmin;
-                    Session["UserUrlImage"] = user.UrlImage;
-                    UserSession.UserName = user.UserName;
-                    UserSession.UserID = user.ID;
+                    
 
                     #endregion
 
@@ -764,9 +794,18 @@ namespace Nihongo.Controllers
 
                     user.LoginState = CommonData.Status.Enable;
                     user.LastVisitedDate = DateTime.Now;
-                    returnCode = dao.UpdateState(user);
+                    returnCode = dao.UpdateState(ref user);
 
                     #endregion
+
+                    Session["UserID"] = user.ID;
+                    Session["UserName"] = user.UserName;
+                    Session["Email"] = user.Email;
+                    Session["DisplayName"] = user.DisplayName;
+                    Session["IsAdmin"] = user.IsAdmin;
+                    Session["UrlImage"] = user.UrlImage;
+                    UserSession.UserName = user.UserName;
+                    UserSession.UserID = user.ID;
                 }
                 else
                 {
@@ -789,25 +828,27 @@ namespace Nihongo.Controllers
             Session["UserID"] = CommonData.StringEmpty;
             Session["UserName"] = CommonData.StringEmpty;
             Session["DisplayName"] = CommonData.StringEmpty;
-            Session["UserUrlImage"] = CommonData.StringEmpty;
+            Session["UrlImage"] = CommonData.StringEmpty;
+            Session["Email"] = CommonData.StringEmpty;
             Session["IsAdmin"] = false;
             UserSession.UserName = CommonData.StringEmpty;
             UserSession.UserID = -1;
-            //if (Request.Cookies["Nihongo"] != null)
-            //{
-            //int returnCode = 0;
-            //MS_UsersDao dao = new MS_UsersDao();
-            //MS_UsersModels user = new MS_UsersModels();
-            //user.UserName = CommonMethod.ParseString(Request.Cookies["Nihongo"].Values["UserName"]);
-            //user.Password = CommonMethod.ParseString(Request.Cookies["Nihongo"].Values["Password"]);
-            //user.LoginState = CommonData.Status.Disable;
-            //user.LastVisitedDate = DateTime.Now;
-            //returnCode = dao.UpdateState(user);
+            if (Request.Cookies["NihongoVoca"] != null)
+            {
+                int returnCode = 0;
+                MS_UsersDao dao = new MS_UsersDao();
+                MS_UsersModels user = new MS_UsersModels();
+                user.ID = CommonMethod.ParseInt(Request.Cookies["NihongoVoca"].Values["UserID"]);
+                user.UserName = CommonMethod.ParseString(Request.Cookies["NihongoVoca"].Values["UserName"]);
+                user.Password = CommonMethod.ParseString(Request.Cookies["NihongoVoca"].Values["Password"]);
+                user.LoginState = CommonData.Status.Disable;
+                user.LastVisitedDate = DateTime.Now;
+                returnCode = dao.UpdateState(ref user);
 
-            //    HttpCookie myCookie = new HttpCookie("Nihongo");
-            //    myCookie.Expires = DateTime.Now.AddDays(-1d);
-            //    Response.Cookies.Add(myCookie);
-            //}
+                HttpCookie myCookie = new HttpCookie("NihongoVoca");
+                myCookie.Expires = DateTime.Now.AddDays(-1d);
+                Response.Cookies.Add(myCookie);
+            }
 
             return RedirectToAction("Index", "Home");
         }
@@ -856,7 +897,7 @@ namespace Nihongo.Controllers
 
         private void ClearUserCookie()
         {
-            if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("Nihongo"))
+            if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("NihongoVoca"))
             {
                 this.ControllerContext.HttpContext.Request.Cookies.Clear();
                 //HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["Nihongo"];
@@ -1029,6 +1070,10 @@ namespace Nihongo.Controllers
             using (MS_UserVocabularyDao dao = new MS_UserVocabularyDao())
             {
                 int returnCode = dao.SelectUserHomePageData(CommonMethod.ParseInt(Session["UserID"]), out userModel);
+                if (userModel == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
 
             return View("HomePage", userModel);

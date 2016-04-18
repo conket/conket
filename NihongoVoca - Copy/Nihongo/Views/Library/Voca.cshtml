@@ -41,9 +41,9 @@
                 </div>
                 <div class="row">
                     <div class="col-md-10">
-                        @Html.ActionLink("BẮT ĐẦU HỌC", "hoc-tu-vung", "Library", new { @id = Model.ID, @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })
-                        @Html.ActionLink("ÔN TẬP", "on-tap", "Library", new { @id = Model.ID, @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })
-                        @Html.ActionLink("ÔN SỔ TAY", "on-so-tay", "Library", new { @id = Model.ID, @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })
+                        @Html.ActionLink("BẮT ĐẦU HỌC", "hoc-tu-vung", "Library", new { @id = Model.VocaSetID, @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })
+                        @Html.ActionLink("ÔN TẬP", "on-tu-vung", "Library", new { @id = Model.VocaSetID, @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })
+                        @Html.ActionLink("ÔN SỔ TAY", "on-so-tay", "Library", new { @id = Model.VocaSetID, @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })
                         @*@Html.ActionLink("Sàng lọc", "kiem-tra-nhanh", "Library", new { @id = Model.ID, @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })*@
 @*                        @Html.ActionLink("Luyện tập", "luyen-tap", "Library", new { @id = Model.ID, @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })*@
                         @*@Html.ActionLink("Kiểm tra", "kiem-tra", "Library", new { @id = Model.ID, @urlDisplay = Model.UrlDisplay }, new { @class = "btn btn-navigator btn-lg require-login" })*@

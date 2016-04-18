@@ -50,7 +50,8 @@
     <div class="col-md-12" style="padding: 20px;">
         <div class="col-md-12 padding-0">
             <div class="col-md-8 padding-0">
-                @Html.Partial("_UserVocaSetPartialView", Model.UserVocaSets)
+                
+                    @Html.Partial("_UserVocaSetPartialView", Model.UserVocaSets);
             </div>
             <div class="col-md-4">
                 <div class="col-md-12 padding-0">
@@ -58,7 +59,7 @@
                         <div class="panel-heading padding-0">
                             <img src="~/images/flashcard2.jpg" class="box-v2-cover img-responsive" />
                             <div class="box-v2-detail">
-                                <img src="@Model.UrlImage" class="img-responsive" />
+                                <img src="@Html.Raw(Session["UrlImage"])" class="img-responsive" />
                                 <h4>@Model.DisplayName</h4>
                             </div>
                         </div>
@@ -81,7 +82,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 padding-0">
+                @*<div class="col-md-12 padding-0">
                     <div class="panel box-v3">
                         <div class="panel-heading bg-white border-none">
                             <h4>Report</h4>
@@ -164,7 +165,7 @@
                                     </center>
                         </div>
                     </div>
-                </div>
+                </div>*@
 
 
             </div>

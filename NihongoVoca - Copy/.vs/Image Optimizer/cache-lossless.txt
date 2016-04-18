@@ -712,3 +712,6 @@ E:\Work\Personal\NihongoVoca - Copy\Nihongo\Content\assets\images\portfolio\img1
 E:\Work\Personal\NihongoVoca - Copy\Nihongo\Content\assets\images\logo.png|2464
 E:\Work\Personal\NihongoVoca - Copy\Nihongo\Content\assets\images\ny.png|72140
 E:\Work\Personal\NihongoVoca - Copy\Nihongo\Content\assets\images\photo-1.jpg|16758
+E:\Work\GitHub\conket\NihongoVoca - Copy\Nihongo\Images\voca\V000000651.jpg|53234
+E:\Work\GitHub\conket\NihongoVoca - Copy\Nihongo\Images\1.jpg|77172
+E:\Work\GitHub\conket\NihongoVoca - Copy\Nihongo\Images\voca\V000001231.jpg|55964

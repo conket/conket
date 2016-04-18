@@ -1,8 +1,7 @@
 ﻿
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
+
     // The response object is returned with a status field that lets the
     // app know the current login status of the person.
     // Full docs on the response object can be found in the documentation
@@ -11,7 +10,6 @@ function statusChangeCallback(response) {
     if (response.status === 'connected') {
 
         // Logged into your app and Facebook.
-
         fLogin();
     } else if (response.status === 'not_authorized') {
         // The person is logged into Facebook, but not your app.
@@ -44,22 +42,6 @@ window.fbAsyncInit = function () {
         version: 'v2.5' // use graph api version 2.5
     });
 
-    // Now that we've initialized the JavaScript SDK, we call 
-    // FB.getLoginStatus().  This function gets the state of the
-    // person visiting this page and can return one of three states to
-    // the callback you provide.  They can be:
-    //
-    // 1. Logged into your app ('connected')
-    // 2. Logged into Facebook, but not your app ('not_authorized')
-    // 3. Not logged into Facebook and can't tell if they are logged into
-    //    your app or not.
-    //
-    // These three cases are handled in the callback function.
-
-    FB.getLoginStatus(function (response) {
-        statusChangeCallback(response);
-    });
-
 };
 
 // Load the SDK asynchronously
@@ -74,18 +56,44 @@ window.fbAsyncInit = function () {
 // Here we run a very simple test of the Graph API after login is
 // successful.  See statusChangeCallback() for when this call is made.
 
-function fLogin() {
-    console.log($('#u').val());
-    if (!$('#u').val()) {
+// Now that we've initialized the JavaScript SDK, we call 
+// FB.getLoginStatus().  This function gets the state of the
+// person visiting this page and can return one of three states to
+// the callback you provide.  They can be:
+//
+// 1. Logged into your app ('connected')
+// 2. Logged into Facebook, but not your app ('not_authorized')
+// 3. Not logged into Facebook and can't tell if they are logged into
+//    your app or not.
+//
+// These three cases are handled in the callback function.
 
-        FB.api('/me', function (response) {
-            console.log(JSON.stringify(response));
+function fLoginStatus() {
+    FB.getLoginStatus(function (response) {
+        statusChangeCallback(response);
+    });
+}
+
+function fLogin() {
+
+    FB.api('/me', { locale: 'en_US', fields: 'id, name, email, picture' }, function (response) {
+        //console.log(JSON.stringify(response));
+        if (response && !response.error) {
+            var user =
+                {
+                    id: response.id,
+                    name: response.name,
+                    email: response.email,
+                    urlImage: response.picture.data.url,
+                };
+            console.log(JSON.stringify(user));
+            /* handle the result */
             $.ajax({
                 url: '/Account/' + $('#flog').val(),
                 type: "POST",
                 async: false,
                 //data: { id: 'admin', email: 'admin@conket.com', first_name: 'Admin' },
-                data: JSON.stringify(response),
+                data: JSON.stringify(user),
                 contentType: 'application/json; charset=utf-8',
                 success: function (result) {
                     if (result.ReturnCode == 0) {
@@ -94,7 +102,7 @@ function fLogin() {
                         //}
                         //else {
                         //window.location.reload();
-                        window.location = '/Account/HomePage/' + result.ID;
+                        window.location = '/Account/HomePage/';
                         //}
                         return false;
                     }
@@ -108,6 +116,8 @@ function fLogin() {
                     return false;
                 }
             });
-        });
-    }
+        }
+    });
+
 }
+

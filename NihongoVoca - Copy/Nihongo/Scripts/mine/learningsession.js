@@ -18,6 +18,8 @@ var quizzVoca = [];
 
 var maxLevel = 10;
 
+var myTimer = null;
+
 $(document).ready(function () {
 
     window.onbeforeunload = function confirmExit() {
@@ -26,6 +28,8 @@ $(document).ready(function () {
             return "Kết quả bài học sẽ không được ghi nhận nếu bạn thoát khỏi trang";
         }
     }
+
+    clearTimeout(myTimer);
 
     //
     $('.result').hide();
@@ -43,8 +47,11 @@ $(document).ready(function () {
     if ($('#lt').val() == '1') {
         getTestVocas();
     }
-    else {
+    else if ($('#lt').val() == '2') {
         getPracticeVocas();
+    }
+    else {
+        getNotebookVocas();
     }
 
     $('#btnNext').on('click', function () {
@@ -57,6 +64,31 @@ $(document).ready(function () {
         }
         //checkInput();
     });
+
+    $('#modalKanjiImage').on('shown.bs.modal', function () {
+        $('#txtUserDefine').val($('#divNote').html());
+        $('#txtUserDefine').focus();
+    })
+
+    $('#btnSaveNote').on('click', function () {
+        var userDefine = $('#txtUserDefine').val();
+        if (userDefine) {
+            quizzVoca.UserDefine = userDefine;
+            vocas[currentIndex].UserDefine = userDefine;
+
+            $('#divNote').html(userDefine);
+        }
+        $('#modalKanjiImage').modal('hide');
+    });
+
+    $('#modalKanjiImage').keydown(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == 13) {
+            $("#btnSaveNote").trigger("click");
+            return false;
+        }
+    });
+
 
     $(document).keydown(function (event) {
         var keycode = (event.keyCode ? event.keyCode : event.which);
@@ -211,7 +243,12 @@ function getTestVocas() {
                     //}
 
                     //Calculate total Level
-                    totalLevel += parseInt(10 - voca.Level);
+                    if (voca.Level == 10 && voca.IsDone == '0') {
+                        totalLevel += 2;
+                    }
+                    else {
+                        totalLevel += parseInt(10 - voca.Level);
+                    }
                 });
 
                 completedTime = 0;
@@ -228,6 +265,9 @@ function getTestVocas() {
                     isPractice = false;
                 }
                 else if (quizzVoca.Level < 10) {
+                    isPractice = true;
+                }
+                else if (quizzVoca.Level == 10 && quizzVoca.IsDone == '0') {
                     isPractice = true;
                 }
                 else {
@@ -277,12 +317,19 @@ function getPracticeVocas() {
                     vocas.push(voca);
                     //                        failArray.push(voca);
                     //if (voca.TestSkill == '3') {
-                    var audio = new Audio(voca.UrlAudio);
-                    audio.load();
+                    if (voca.DisplayType != '3') {
+                        var audio = new Audio(voca.UrlAudio);
+                        audio.load();
+                    }
                     //}
 
                     //Calculate total Level
-                    totalLevel += parseInt(10 - voca.Level);
+                    if (voca.Level == 10 && voca.IsDone == '0') {
+                        totalLevel += 2;
+                    }
+                    else {
+                        totalLevel += parseInt(10 - voca.Level);
+                    }
                 });
 
                 completedTime = 0;
@@ -298,6 +345,88 @@ function getPracticeVocas() {
                     isPractice = false;
                 }
                 else if (quizzVoca.Level < 10) {
+                    isPractice = true;
+                }
+                else if (quizzVoca.Level == 10 && quizzVoca.IsDone == '0') {
+                    isPractice = true;
+                }
+                else {
+                    isPractice = false;
+                }
+                showFlashCard(quizzVoca, false);
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.responseText);
+            return false;
+        },
+        //beforeSend: function () {
+        //    $('#loadingModal').modal();
+        //},
+        //complete: function () {
+        //    $('#loadingModal').modal('hide');
+        //}
+    });
+}
+
+function getNotebookVocas() {
+    $('.result').hide();
+    $('.lesson').show();
+
+    vocas = [];
+    totalLevel = 0;
+    currentLevel = 0;
+    isPractice = true;
+    currentIndex = 0;
+    //        failArray = [];
+    showProgress()
+
+    $.ajax({
+        cache: true,
+        type: "get",
+        async: true,
+        url: '/Library/' + $('#gnk').val(),
+        data: { "id": $('#vsd').val(), "isKanji": $('#ik').val() },
+        dataType: "json",
+        success: function (result) {
+            if (result.returnCode == $('#accessDenied').val()) {
+                window.location.href = '/Account/RequireLogin';
+            } else {
+                $.each(result.vocabularies, function (i, voca) {
+                    vocas.push(voca);
+                    //                        failArray.push(voca);
+                    //if (voca.TestSkill == '3') {
+                    if (voca.DisplayType != '3') {
+                        var audio = new Audio(voca.UrlAudio);
+                        audio.load();
+                    }
+                    //}
+
+                    //Calculate total Level
+                    if (voca.Level == 10 && voca.IsDone == '0') {
+                        totalLevel += 2;
+                    }
+                    else {
+                        totalLevel += parseInt(10 - voca.Level);
+                    }
+                });
+
+                completedTime = 0;
+                currentIndex = 0;
+
+                //create quizz voca
+                quizzVoca = createQuizz(currentIndex);
+
+                if (quizzVoca.IsDone == "1") {
+                    isPractice = true;
+                }
+                else if (quizzVoca.Level == "0") {
+                    isPractice = false;
+                }
+                else if (quizzVoca.Level < 10) {
+                    isPractice = true;
+                }
+                else if (quizzVoca.Level == 10 && quizzVoca.IsDone == '0') {
                     isPractice = true;
                 }
                 else {
@@ -576,6 +705,41 @@ function checkInput() {
                 }
 
                 //sleep(1000);
+                $(".heart1").removeClass("btn-primary btn-default");
+                if (quizzVoca.Level > 0) {
+                    $(".heart1").addClass("btn-primary");
+                }
+                else {
+                    $(".heart1").addClass("btn-default");
+                }
+                $(".heart2").removeClass("btn-primary btn-default");
+                if (quizzVoca.Level > 2) {
+                    $(".heart2").addClass("btn-primary");
+                }
+                else {
+                    $(".heart2").addClass("btn-default");
+                }
+                $(".heart3").removeClass("btn-primary btn-default");
+                if (quizzVoca.Level > 4) {
+                    $(".heart3").addClass("btn-primary");
+                }
+                else {
+                    $(".heart3").addClass("btn-default");
+                }
+                $(".heart4").removeClass("btn-primary btn-default");
+                if (quizzVoca.Level > 6) {
+                    $(".heart4").addClass("btn-primary");
+                }
+                else {
+                    $(".heart4").addClass("btn-default");
+                }
+                $(".heart5").removeClass("btn-primary btn-default");
+                if (quizzVoca.Level > 8) {
+                    $(".heart5").addClass("btn-primary");
+                }
+                else {
+                    $(".heart5").addClass("btn-default");
+                }
 
                 //next
                 //if (currentIndex < vocas.length) {
@@ -614,10 +778,29 @@ function checkInput() {
                     $("a[name='resultChoosing']").attr('disabled', true);
                     //switch to mode Learning
                     isPractice = false;
+
+                    myTimer = setTimeout(doWork, 1000);
                     //showFlashCard(currentIndex, false);
 
                 }
                 else {
+                    switch (quizzVoca.CorrectResult) {
+                        case 1:
+                            $('#result1').html('1 <span class="glyphicon glyphicon-ok ok"></span><br>' + quizzVoca.Result1);
+                            break;
+                        case 2:
+                            $('#result2').html('2 <span class="glyphicon glyphicon-ok ok"></span><br>' + quizzVoca.Result2);
+                            break;
+                        case 3:
+                            $('#result3').html('3 <span class="glyphicon glyphicon-ok ok"></span><br>' + quizzVoca.Result3);
+                            break;
+                        case 4:
+                            $('#result4').html('4 <span class="glyphicon glyphicon-ok ok"></span><br>' + quizzVoca.Result4);
+                            break;
+                        default:
+                    }
+                    $("a[name='resultChoosing']").attr('disabled', true);
+
                     if (isFinish()) {
                         //show result
                         currentIndex = -1;
@@ -639,18 +822,26 @@ function checkInput() {
                             }
                         }
                         else {
-                            currentIndex++;
-                            if (currentIndex == vocas.length) {
-                                currentIndex = 0;
-                            }
-                            while (currentIndex < vocas.length && vocas[currentIndex].Level == maxLevel) {
+                            do {
                                 currentIndex++;
-                            }
+                                if (currentIndex == vocas.length) {
+                                    currentIndex = 0;
+                                }
+                            } while (vocas[currentIndex].IsDone == '1' && vocas[currentIndex].Level == maxLevel);
+
+                            //while (currentIndex < vocas.length && (vocas[currentIndex].IsDone == '1' && vocas[currentIndex].Level == maxLevel)) {
+                            //    currentIndex++;
+                            //    if (currentIndex == vocas.length) {
+                            //        currentIndex = 0;
+                            //    }
+                            //}
                         }
 
                         if (currentIndex < vocas.length) {
 
                             quizzVoca = createQuizz(currentIndex);
+                            quizzVoca.IsDone = '1';
+
                             if (quizzVoca.HasLearnt == "1") {
                                 isPractice = true;
                             }
@@ -664,25 +855,26 @@ function checkInput() {
                                 isPractice = false;
                             }
 
-                            showFlashCard(quizzVoca, false);
+                            myTimer = setTimeout(doWork, 1000);
+                            //showFlashCard(quizzVoca, false);
 
                             if (isPractice) {
                                 showProgress();
                             }
                         }
                         else {
-                            
-                            //    //show result
-                            //    currentIndex = -1;
-                            //    currentLevel = totalLevel;
-                            //    //showFlashCard(-1, false);
 
-                            //    showResultPage();
-                            //    showProgress();
+                            //show result
+                            currentIndex = -1;
+                            currentLevel = totalLevel;
+                            //showFlashCard(-1, false);
 
-                            //    //update result
-                            //    isPass = (correctVocas.length >= vocas.length * 8 / 10) ? true : false;
-                            //    updateTestResult();
+                            showResultPage();
+                            showProgress();
+
+                            //update result
+                            isPass = (correctVocas.length >= vocas.length * 8 / 10) ? true : false;
+                            updateTestResult();
                         }
                     }
                 }
@@ -721,6 +913,7 @@ function checkInput() {
     }
 
 }
+
 
 function isAllLearnt() {
     var result = true;
@@ -973,11 +1166,13 @@ function showFlashCard(index, voice) {
         var voca = searchVoca(index);
         if (voca != null) {
 
+            voca.IsDone = '1';
+
             //If Learning
             if (!isPractice) {
 
-                vocas[currentIndex].HasLearnt = '1';
-                vocas[currentIndex].IsDone = '1';
+                voca.HasLearnt = '1';
+
                 var html = showLearning(voca);
 
                 $('#flashCard').html(html);
@@ -1012,6 +1207,10 @@ function showFlashCard(index, voice) {
 };
 
 function showFlashCard(voca, voice) {
+
+    $('#flashCard').hide();
+    //$("#flashCard").animate({ width: 'toggle' }, 500);
+    $('#flashCard').show("slide", { direction: "right" }, 500);
     $('#btnNext').show();
 
     if (voca != null) {
@@ -1045,8 +1244,13 @@ function showFlashCard(voca, voice) {
     }
 };
 
+function doWork() {
+    showFlashCard(quizzVoca, false);
+    clearTimeout(myTimer);
+}
+
 function createQuizz(index) {
-    //console.log(index);
+    console.log(index);
     var item = vocas[index];
     if (item) {
         var n1 = Math.floor((Math.random() * 4) + 1);
@@ -1069,14 +1273,14 @@ function createQuizz(index) {
                 if (item.TestSkill == 2) {
                     //reading
                     item.Result1 = item.DisplayType == '3'
-                            ? (item.Pinyin + '<hr>' + item.VMeaning)
+                            ? (item.Pinyin + '<hr class="hr-quizz">' + item.VMeaning)
                             : item.VMeaning;
                 }
                 else {
                     //transanlating && listening
                     item.Result1 = item.DisplayType == '3'
                                     ? item.Kanji
-                                    : item.DisplayType == "2" ? (item.Katakana + '<hr>') : (item.Hiragana + '<hr>' + item.Kanji);
+                                    : item.DisplayType == "2" ? (item.Katakana + '<hr class="hr-quizz">') : (item.Hiragana + '<hr class="hr-quizz">' + item.Kanji);
                 }
                 item.ResultUrlAudio1 = item.UrlAudio;
 
@@ -1089,14 +1293,14 @@ function createQuizz(index) {
                 if (item.TestSkill == 2) {
                     //reading
                     item.Result2 = vocas[n2].DisplayType == '3'
-                            ? (vocas[n2].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            ? (vocas[n2].Pinyin + '<hr class="hr-quizz">' + vocas[n2].VMeaning)
                             : vocas[n2].VMeaning;
                 }
                 else {
                     //transanlating && listening
                     item.Result2 = vocas[n2].DisplayType == '3'
                                     ? vocas[n2].Kanji
-                                    : vocas[n2].DisplayType == "2" ? (vocas[n2].Katakana + '<hr>') : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
+                                    : vocas[n2].DisplayType == "2" ? (vocas[n2].Katakana + '<hr class="hr-quizz">') : (vocas[n2].Hiragana + '<hr class="hr-quizz">' + vocas[n2].Kanji);
                 }
                 item.ResultUrlAudio2 = vocas[n2].UrlAudio;
 
@@ -1109,14 +1313,14 @@ function createQuizz(index) {
                 if (item.TestSkill == 2) {
                     //reading
                     item.Result3 = vocas[n3].DisplayType == '3'
-                            ? (vocas[n3].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            ? (vocas[n3].Pinyin + '<hr class="hr-quizz">' + vocas[n3].VMeaning)
                             : vocas[n3].VMeaning;
                 }
                 else {
                     //transanlating && listening
                     item.Result3 = vocas[n3].DisplayType == '3'
                                     ? vocas[n3].Kanji
-                                    : vocas[n3].DisplayType == "2" ? (vocas[n3].Katakana + '<hr>') : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
+                                    : vocas[n3].DisplayType == "2" ? (vocas[n3].Katakana + '<hr class="hr-quizz">') : (vocas[n3].Hiragana + '<hr class="hr-quizz">' + vocas[n3].Kanji);
                 }
                 item.ResultUrlAudio3 = vocas[n3].UrlAudio;
 
@@ -1129,14 +1333,14 @@ function createQuizz(index) {
                 if (item.TestSkill == 2) {
                     //reading
                     item.Result4 = vocas[n4].DisplayType == '3'
-                            ? (vocas[n4].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            ? (vocas[n4].Pinyin + '<hr class="hr-quizz">' + vocas[n4].VMeaning)
                             : vocas[n4].VMeaning;
                 }
                 else {
                     //transanlating && listening
                     item.Result4 = vocas[n4].DisplayType == '3'
                                     ? vocas[n4].Kanji
-                                    : vocas[n4].DisplayType == "2" ? (vocas[n4].Katakana + '<hr>') : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
+                                    : vocas[n4].DisplayType == "2" ? (vocas[n4].Katakana + '<hr class="hr-quizz">') : (vocas[n4].Hiragana + '<hr class="hr-quizz">' + vocas[n4].Kanji);
                 }
                 item.ResultUrlAudio4 = vocas[n4].UrlAudio;
                 break;
@@ -1150,14 +1354,14 @@ function createQuizz(index) {
                 if (item.TestSkill == 2) {
                     //reading
                     item.Result2 = item.DisplayType == '3'
-                            ? (item.Pinyin + '<hr>' + item.VMeaning)
+                            ? (item.Pinyin + '<hr class="hr-quizz">' + item.VMeaning)
                             : item.VMeaning;
                 }
                 else {
                     //transanlating && listening
                     item.Result2 = item.DisplayType == '3'
                                     ? item.Kanji
-                                    : item.DisplayType == "2" ? (item.Katakana + '<hr>') : (item.Hiragana + '<hr>' + item.Kanji);
+                                    : item.DisplayType == "2" ? (item.Katakana + '<hr class="hr-quizz">') : (item.Hiragana + '<hr class="hr-quizz">' + item.Kanji);
                 }
                 item.ResultUrlAudio2 = item.UrlAudio;
 
@@ -1170,14 +1374,14 @@ function createQuizz(index) {
                 if (item.TestSkill == 2) {
                     //reading
                     item.Result1 = vocas[n2].DisplayType == '3'
-                            ? (vocas[n2].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            ? (vocas[n2].Pinyin + '<hr class="hr-quizz">' + vocas[n2].VMeaning)
                             : vocas[n2].VMeaning;
                 }
                 else {
                     //transanlating && listening
                     item.Result1 = vocas[n2].DisplayType == '3'
                                     ? vocas[n2].Kanji
-                                    : vocas[n2].DisplayType == "2" ? (vocas[n2].Katakana + '<hr>') : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
+                                    : vocas[n2].DisplayType == "2" ? (vocas[n2].Katakana + '<hr class="hr-quizz">') : (vocas[n2].Hiragana + '<hr class="hr-quizz">' + vocas[n2].Kanji);
                 }
                 item.ResultUrlAudio1 = vocas[n2].UrlAudio;
 
@@ -1190,14 +1394,14 @@ function createQuizz(index) {
                 if (item.TestSkill == 2) {
                     //reading
                     item.Result3 = vocas[n3].DisplayType == '3'
-                            ? (vocas[n3].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            ? (vocas[n3].Pinyin + '<hr class="hr-quizz">' + vocas[n3].VMeaning)
                             : vocas[n3].VMeaning;
                 }
                 else {
                     //transanlating && listening
                     item.Result3 = vocas[n3].DisplayType == '3'
                                     ? vocas[n3].Kanji
-                                    : vocas[n3].DisplayType == "2" ? (vocas[n3].Katakana + '<hr>') : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
+                                    : vocas[n3].DisplayType == "2" ? (vocas[n3].Katakana + '<hr class="hr-quizz">') : (vocas[n3].Hiragana + '<hr class="hr-quizz">' + vocas[n3].Kanji);
                 }
                 item.ResultUrlAudio3 = vocas[n3].UrlAudio;
 
@@ -1210,14 +1414,14 @@ function createQuizz(index) {
                 if (item.TestSkill == 2) {
                     //reading
                     item.Result4 = vocas[n4].DisplayType == '3'
-                            ? (vocas[n4].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            ? (vocas[n4].Pinyin + '<hr class="hr-quizz">' + vocas[n4].VMeaning)
                             : vocas[n4].VMeaning;
                 }
                 else {
                     //transanlating && listening
                     item.Result4 = vocas[n4].DisplayType == '3'
                                     ? vocas[n4].Kanji
-                                    : vocas[n4].DisplayType == "2" ? (vocas[n4].Katakana + '<hr>') : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
+                                    : vocas[n4].DisplayType == "2" ? (vocas[n4].Katakana + '<hr class="hr-quizz">') : (vocas[n4].Hiragana + '<hr class="hr-quizz">' + vocas[n4].Kanji);
                 }
                 item.ResultUrlAudio4 = vocas[n4].UrlAudio;
                 break;
@@ -1231,14 +1435,14 @@ function createQuizz(index) {
                 if (item.TestSkill == 2) {
                     //reading
                     item.Result3 = item.DisplayType == '3'
-                            ? (item.Pinyin + '<hr>' + item.VMeaning)
+                            ? (item.Pinyin + '<hr class="hr-quizz">' + item.VMeaning)
                             : item.VMeaning;
                 }
                 else {
                     //transanlating && listening
                     item.Result3 = item.DisplayType == '3'
                                     ? item.Kanji
-                                    : item.DisplayType == "2" ? (item.Katakana + '<hr>') : (item.Hiragana + '<hr>' + item.Kanji);
+                                    : item.DisplayType == "2" ? (item.Katakana + '<hr class="hr-quizz">') : (item.Hiragana + '<hr class="hr-quizz">' + item.Kanji);
                 }
                 item.ResultUrlAudio3 = item.UrlAudio;
 
@@ -1251,14 +1455,14 @@ function createQuizz(index) {
                 if (item.TestSkill == 2) {
                     //reading
                     item.Result1 = vocas[n2].DisplayType == '3'
-                            ? (vocas[n2].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            ? (vocas[n2].Pinyin + '<hr class="hr-quizz">' + vocas[n2].VMeaning)
                             : vocas[n2].VMeaning;
                 }
                 else {
                     //transanlating && listening
                     item.Result1 = vocas[n2].DisplayType == '3'
                                     ? vocas[n2].Kanji
-                                    : vocas[n2].DisplayType == "2" ? (vocas[n2].Katakana + '<hr>') : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
+                                    : vocas[n2].DisplayType == "2" ? (vocas[n2].Katakana + '<hr class="hr-quizz">') : (vocas[n2].Hiragana + '<hr class="hr-quizz">' + vocas[n2].Kanji);
                 }
                 item.ResultUrlAudio1 = vocas[n2].UrlAudio;
 
@@ -1271,14 +1475,14 @@ function createQuizz(index) {
                 if (item.TestSkill == 2) {
                     //reading
                     item.Result2 = vocas[n3].DisplayType == '3'
-                            ? (vocas[n3].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            ? (vocas[n3].Pinyin + '<hr class="hr-quizz">' + vocas[n3].VMeaning)
                             : vocas[n3].VMeaning;
                 }
                 else {
                     //transanlating && listening
                     item.Result2 = vocas[n3].DisplayType == '3'
                                     ? vocas[n3].Kanji
-                                    : vocas[n3].DisplayType == "2" ? (vocas[n3].Katakana + '<hr>') : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
+                                    : vocas[n3].DisplayType == "2" ? (vocas[n3].Katakana + '<hr class="hr-quizz">') : (vocas[n3].Hiragana + '<hr class="hr-quizz">' + vocas[n3].Kanji);
                 }
                 item.ResultUrlAudio2 = vocas[n3].UrlAudio;
 
@@ -1291,14 +1495,14 @@ function createQuizz(index) {
                 if (item.TestSkill == 2) {
                     //reading
                     item.Result4 = vocas[n4].DisplayType == '3'
-                            ? (vocas[n4].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            ? (vocas[n4].Pinyin + '<hr class="hr-quizz">' + vocas[n4].VMeaning)
                             : vocas[n4].VMeaning;
                 }
                 else {
                     //transanlating && listening
                     item.Result4 = vocas[n4].DisplayType == '3'
                                     ? vocas[n4].Kanji
-                                    : vocas[n4].DisplayType == "2" ? (vocas[n4].Katakana + '<hr>') : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
+                                    : vocas[n4].DisplayType == "2" ? (vocas[n4].Katakana + '<hr class="hr-quizz">') : (vocas[n4].Hiragana + '<hr class="hr-quizz">' + vocas[n4].Kanji);
                 }
                 item.ResultUrlAudio4 = vocas[n4].UrlAudio;
                 break;
@@ -1312,14 +1516,14 @@ function createQuizz(index) {
                 if (item.TestSkill == 2) {
                     //reading
                     item.Result4 = item.DisplayType == '3'
-                            ? (item.Pinyin + '<hr>' + item.VMeaning)
+                            ? (item.Pinyin + '<hr class="hr-quizz">' + item.VMeaning)
                             : item.VMeaning;
                 }
                 else {
                     //transanlating && listening
                     item.Result4 = item.DisplayType == '3'
                                     ? item.Kanji
-                                    : item.DisplayType == "2" ? (item.Katakana + '<hr>') : (item.Hiragana + '<hr>' + item.Kanji);
+                                    : item.DisplayType == "2" ? (item.Katakana + '<hr class="hr-quizz">') : (item.Hiragana + '<hr class="hr-quizz">' + item.Kanji);
                     item.ResultUrlAudio4 = item.UrlAudio;
                 }
 
@@ -1332,14 +1536,14 @@ function createQuizz(index) {
                 if (item.TestSkill == 2) {
                     //reading
                     item.Result1 = vocas[n2].DisplayType == '3'
-                            ? (vocas[n2].Pinyin + '<hr>' + vocas[n2].VMeaning)
+                            ? (vocas[n2].Pinyin + '<hr class="hr-quizz">' + vocas[n2].VMeaning)
                             : vocas[n2].VMeaning;
                 }
                 else {
                     //transanlating && listening
                     item.Result1 = vocas[n2].DisplayType == '3'
                                     ? vocas[n2].Kanji
-                                    : vocas[n2].DisplayType == "2" ? (vocas[n2].Katakana + '<hr>') : (vocas[n2].Hiragana + '<hr>' + vocas[n2].Kanji);
+                                    : vocas[n2].DisplayType == "2" ? (vocas[n2].Katakana + '<hr class="hr-quizz">') : (vocas[n2].Hiragana + '<hr class="hr-quizz">' + vocas[n2].Kanji);
                 }
                 item.ResultUrlAudio1 = vocas[n2].UrlAudio;
 
@@ -1352,14 +1556,14 @@ function createQuizz(index) {
                 if (item.TestSkill == 2) {
                     //reading
                     item.Result2 = vocas[n3].DisplayType == '3'
-                            ? (vocas[n3].Pinyin + '<hr>' + vocas[n3].VMeaning)
+                            ? (vocas[n3].Pinyin + '<hr class="hr-quizz">' + vocas[n3].VMeaning)
                             : vocas[n3].VMeaning;
                 }
                 else {
                     //transanlating && listening
                     item.Result2 = vocas[n3].DisplayType == '3'
                                     ? vocas[n3].Kanji
-                                    : vocas[n3].DisplayType == "2" ? (vocas[n3].Katakana + '<hr>') : (vocas[n3].Hiragana + '<hr>' + vocas[n3].Kanji);
+                                    : vocas[n3].DisplayType == "2" ? (vocas[n3].Katakana + '<hr class="hr-quizz">') : (vocas[n3].Hiragana + '<hr class="hr-quizz">' + vocas[n3].Kanji);
                 }
                 item.ResultUrlAudio2 = vocas[n3].UrlAudio;
 
@@ -1372,20 +1576,23 @@ function createQuizz(index) {
                 if (item.TestSkill == 2) {
                     //reading
                     item.Result3 = vocas[n4].DisplayType == '3'
-                            ? (vocas[n4].Pinyin + '<hr>' + vocas[n3].VMeaning)
+                            ? (vocas[n4].Pinyin + '<hr class="hr-quizz">' + vocas[n4].VMeaning)
                             : vocas[n4].VMeaning;
                 }
                 else {
                     //transanlating && listening
                     item.Result3 = vocas[n4].DisplayType == '3'
                                     ? vocas[n4].Kanji
-                                    : vocas[n4].DisplayType == "2" ? (vocas[n4].Katakana + '<hr>') : (vocas[n4].Hiragana + '<hr>' + vocas[n4].Kanji);
+                                    : vocas[n4].DisplayType == "2" ? (vocas[n4].Katakana + '<hr class="hr-quizz">') : (vocas[n4].Hiragana + '<hr class="hr-quizz">' + vocas[n4].Kanji);
                 }
                 item.ResultUrlAudio3 = vocas[n4].UrlAudio;
                 break;
             default:
 
         }
+    }
+    else {
+        console.log('item not found');
     }
     return item;
 }
@@ -1521,14 +1728,14 @@ function showLearning(voca) {
         //kanji
         html += '<div class="col-md-12 padding-0">';
         html += '   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">';
-        html += '       <p style="font-size: 70px;">'+voca.Kanji+'</p>';
-        html += '       <a href="#" data-toggle="modal" data-target="#kanjiImage"><i class="fa fa-television"></i>Ghi nhớ</a>';
+        html += '       <p style="font-size: 70px;">' + voca.Kanji + '</p>';
+        //html += '       <a href="#" data-toggle="modal" data-target="#kanjiImage"><i class="fa fa-television"></i>Ghi nhớ</a>';
         html += '   </div>';
         html += '   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="border-right: 1px solid #ccc; border-left: 1px solid #ccc;">';
         html += '       <h4><strong><div class="text-uppercase">' + voca.Pinyin + '</div></strong></h4>';
-        html += '       <p><strong>'+voca.VMeaning+'</strong></p>';
-        html += '       <p>On: '+voca.OnReading+'</p>';
-        html += '       <p>Kun: '+voca.KunReading+'</p>';
+        html += '       <p><strong>' + voca.VMeaning + '</strong></p>';
+        html += '       <p>On: ' + voca.OnReading + '</p>';
+        html += '       <p>Kun: ' + voca.KunReading + '</p>';
         html += '       <button class=" btn btn-circle btn-mn btn-' + (voca.Level > 1 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
         html += '           <span class="fa fa-heart"></span>';
         html += '       </button>';
@@ -1552,16 +1759,26 @@ function showLearning(voca) {
         html += '               <span class="icon-list"></span>';
         html += '           </button>';
         html += '           <ul class="dropdown-menu">';
-        html += '               <li><a href="#" onclick="mark();" class="mark" data-value="marked"><span class="fa fa-book"></span>Đã lưu</a></li>';
-        html += '               <li><a href="#" onclick="mark();" class="mark" data-value="unmarked"><span class="fa fa-plus"></span>Lưu sổ tay</a></li>';
+        if (voca.HasMarked == '1') {
+            html += '<li><a href="#" onclick="mark();" class="mark" data-value="marked"><span class="fa fa-book"></span> Đã lưu</a></li>';
+        }
+        else {
+            html += '<li><a href="#" onclick="mark();" class="mark" data-value="unmarked"><span class="fa fa-plus"></span> Lưu sổ tay</a></li>';
+        }
+        if (voca.IsIgnore == '1') {
+            html += '<li><a href="#" onclick="ignore();" class="ignore" data-value="marked"><span class="fa fa-unlock-alt"></span> Đã bỏ</a></li>';
+        }
+        else {
+            html += '<li><a href="#" onclick="ignore();" class="ignore" data-value="unmarked"><span class="fa fa-trash"></span> Bỏ qua</a></li>';
+        }
         html += '           </ul>';
         html += '       </div>';
         html += '       <div class="col-md-12" id="draw"></div>';
         html += '   </div>';
         html += '</div>';
-        html += '<div class="col-md-12 padding-0"';
-        html += '<div class="col-md-12 padding-0" style="width: 100%; height: 200px; overflow-y: auto; overflow-x: hidden;">';
-        html += '   <label>Ví dụ:</label>';
+        html += '<div class="col-md-12 padding-0">';
+        html += '<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style=" height: 200px; overflow-y: auto; overflow-x: hidden;">';
+        html += '   <label><strong>Ví dụ:</strong></label>';
         html += '   <table class="table table-hover" id="tblExample">';
         html += '       <thead><tr><th>Từ</th><th>Hiragana</th><th>Hán Việt</th><th>Nghĩa</th></tr></thead>';
         html += '       <tbody>';
@@ -1569,7 +1786,7 @@ function showLearning(voca) {
             for (var i = 0; i < voca.KanjiExamples.length; i++) {
                 var example = voca.KanjiExamples[i];
                 html += '<tr>';
-                html += '<td><a href="#" class="drawKanji" onclick="drawEx(this); return false;">' + example.Kanji + '</a></td>';
+                html += '<td><a href="#" class="drawKanji" onclick="drawEx(this); return false;" onmouseover="drawEx(this)">' + example.Kanji + '</a></td>';
                 html += '<td>' + example.Hiragana + '</td>';
                 html += '<td>' + example.Pinyin + '</td>';
                 html += '<td>' + example.VMeaning + '</td>';
@@ -1579,6 +1796,17 @@ function showLearning(voca) {
         html += '       </tbody>';
         html += '   </table>';
         html += '</div>';
+        html += '<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-center">';
+        html += '   <div class="text-center kanjiImage">';
+        html += '   <a href="#" data-toggle="modal" data-target="#modalKanjiImage"><i class="fa fa-television"></i>Tạo ghi nhớ</a>';
+        html += '   <h4><p id="divNote">' + (voca.UserDefine ? voca.UserDefine : (voca.Remembering ? voca.Remembering : '')) + '</p></h4>';
+
+        if (voca.UrlImage) {
+            html += '   <img class="img-responsive" src="' + voca.UrlImage + '" alt="" style="height: 120px">';
+        }
+
+        html += '   </div>';
+        html += '</div>';
         html += '</div>';
 
         if (voca.DisplayType == '3') {
@@ -1587,15 +1815,15 @@ function showLearning(voca) {
     }
     else {
         html += '<div class="col-md-12 padding-0">';
-        html += '   <div class="col-lg-4 col-md-4 hidden-xs hidden-sm">';
-        html += '       <img class="img-responsive" src="' + getLink(voca.UrlImage) + '" alt="Từ vựng tiếng Nhật"  style="height: 250px">';
+        html += '   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">';
+        html += '       <img class="img-responsive" src="' + getLink(voca.UrlImage) + '" alt="Từ vựng tiếng Nhật"  style="height: 200px">';
         html += '   </div>';
         if (voca.Hiragana != '') {
-            html += '   <div class="col-lg-7 col-md-7 col-xs-10"><h3><strong>' + voca.Hiragana + '  </strong><a href="#" onclick="speak(\'' + voca.UrlAudio + '\'); return false;"><i class="fa fa-volume-up"></i></a></h3>';
+            html += '   <div class="col-lg-7 col-md-7 col-sm-7 col-xs-6"><h3><strong>' + voca.Hiragana + '  </strong><a href="#" onclick="speak(\'' + voca.UrlAudio + '\'); return false;"><i class="fa fa-volume-up"></i></a></h3>';
             html += '       <p><strong>' + voca.Romaji + '</strong></p>';
         }
         else if (voca.Katakana != '') {
-            html += '   <div class="col-lg-7 col-md-7 col-xs-10"><h3><strong>' + voca.Katakana + '  </strong><a href="#" onclick="speak(\'' + voca.UrlAudio_Katakana + '\'); return false;"><i class="fa fa-volume-up"></i></a></h3>';
+            html += '   <div class="col-lg-7 col-md-7 col-sm-7 col-xs-6"><h3><strong>' + voca.Katakana + '  </strong><a href="#" onclick="speak(\'' + voca.UrlAudio_Katakana + '\'); return false;"><i class="fa fa-volume-up"></i></a></h3>';
             html += '       <p><strong>' + voca.Romaji_Katakana + '</strong></p>';
         }
         html += '       <h3><strong>' + voca.Kanji + '</strong></h3>';
@@ -1618,7 +1846,7 @@ function showLearning(voca) {
         html += '</button>';
 
         html += '   </div>';
-        html += '<div class="col-lg-1 col-md-1 col-xs-2">';
+        html += '<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 text-right">';
         html += '   <div class="btn-group" role="group">';
         html += '   <button type="button" class="btn btn-circle btn-mn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
         html += '       <span class="icon-list"></span>';
@@ -1669,11 +1897,10 @@ function showLearning(voca) {
         //html += '   </div>';
         html += '</div>';
         html += '</div>';
-        html += '<hr />';
         html += '<div class="col-md-12 padding-0">';
-        html += '   <div class="col-md-4">';
+        html += '   <div class="col-md-4 hidden-sm hidden-xs">';
         html += '   </div>';
-        html += '   <div class="col-md-8">';
+        html += '   <div class="col-md-8 col-sm-12 col-xs-12">';
         html += '       <button onclick="draw();" class="btn btn-default">Viết</button>';
         var hiraChecked = (voca.DisplayType == "1" && voca.Kanji == '') ? "checked = 'checked'" : "";
         var kataChecked = (voca.DisplayType == "2") ? "checked = 'checked'" : "";
@@ -1892,7 +2119,7 @@ function showPractise(voca) {
     ////}
     ////    //translating
     if (voca.TestSkill == '2') {
-        var displayQuestion = voca.DisplayType == '3' ? voca.Kanji : voca.DisplayType == '1' ? (voca.Hiragana + (voca.Kanji != '' ? ' | ' + voca.Kanji : '')) : voca.Katakana;
+        var displayQuestion = voca.DisplayType == '3' ? ('<div class="text-uppercase">' + voca.Kanji + '</div>') : voca.DisplayType == '1' ? (voca.Hiragana + (voca.Kanji != '' ? '<br>' + voca.Kanji : '')) : voca.Katakana;
         html += '                   <h3><span class="glyphicon glyphicon-question-sign error" aria-hidden="true"></span> <label>' + displayQuestion + '</label></h3>';
     }
     else {
@@ -1945,7 +2172,7 @@ function showPractise(voca) {
         html += '<input type="hidden" id="selectedValue" />';
         html += '</div>'
         html += '</hr>';
-        
+
         var result1 = (voca.DisplayType == '3' && voca.TestSkill != '2') ? ('<div style="font-size: 20px;">' + voca.Result1 + '</div>') : voca.Result1;
         var result2 = (voca.DisplayType == '3' && voca.TestSkill != '2') ? ('<div style="font-size: 20px;">' + voca.Result2 + '</div>') : voca.Result2;
         var result3 = (voca.DisplayType == '3' && voca.TestSkill != '2') ? ('<div style="font-size: 20px;">' + voca.Result3 + '</div>') : voca.Result3;
@@ -1981,19 +2208,19 @@ function showPractise(voca) {
     //html += '</div>';
 
     html += '   <div class="col-lg-12 col-md-12 col-xs-12 text-center">';
-    html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 0 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+    html += '<button id="heart1" class="heart1 btn btn-circle btn-mn btn-' + (voca.Level > 0 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
     html += '<span class="fa fa-heart"></span>';
     html += '</button>';
-    html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 2 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+    html += '<button id="heart2" class="heart2 btn btn-circle btn-mn btn-' + (voca.Level > 2 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
     html += '<span class="fa fa-heart"></span>';
     html += '</button>';
-    html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 4 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+    html += '<button id="heart3" class="heart3 btn btn-circle btn-mn btn-' + (voca.Level > 4 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
     html += '<span class="fa fa-heart"></span>';
     html += '</button>';
-    html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 6 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+    html += '<button id="heart4" class="heart4 btn btn-circle btn-mn btn-' + (voca.Level > 6 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
     html += '<span class="fa fa-heart"></span>';
     html += '</button>';
-    html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 8 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
+    html += '<button id="heart5" class="heart5 btn btn-circle btn-mn btn-' + (voca.Level > 8 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
     html += '<span class="fa fa-heart"></span>';
     html += '</button>';
     html += '</div>';

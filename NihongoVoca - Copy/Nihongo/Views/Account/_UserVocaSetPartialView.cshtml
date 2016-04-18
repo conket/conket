@@ -39,7 +39,7 @@
                         <div class="col-sm-9">
                             <p>@userVocaSet.VocaSetDescription</p>
                             @*<small>Someone famous</small>*@
-                            <b><span class="icon-clock icons"></span>Cập nhật lúc 15:00</b>
+                            <b><span class="icon-clock icons"></span> Cập nhật lúc @userVocaSet.UpdateDate</b>
                         </div>
                     </div>
                     @*<h2>Checking Your Server!</h2>*@
@@ -74,6 +74,15 @@
                         {
                             var str = userVocaSet.NumOfWeak == 0 ? "" : "(" + userVocaSet.NumOfWeak + ")";
                             <a href="@Url.Action("on-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login"><i class=" icon-compass"></i> Ôn tập @str</a>
+                        }
+                        @if (userVocaSet.NumOfHasMarked == 0)
+                        {
+                            <a href="@Url.Action("on-so-tay", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login disabled"><i class=" icon-compass"></i> Ôn sổ tay</a>
+                        }
+                        else
+                        {
+                            var str = userVocaSet.NumOfHasMarked == 0 ? "" : "(" + userVocaSet.NumOfHasMarked + ")";
+                            <a href="@Url.Action("on-so-tay", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login"><i class=" icon-compass"></i> Ôn sổ tay @str</a>
                         }
                     </div>
                 </div>

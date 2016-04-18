@@ -65,12 +65,13 @@ namespace Nihongo.Dal.Dao
                 {
                     UserName = insertModel.UserName,
                     Email = insertModel.Email,
+                    UrlImage = insertModel.UrlImage,
                     Password = insertModel.Password,
                     DisplayName = insertModel.DisplayName,
                     IsAdmin = CommonData.Status.Disable,
                     Status = CommonData.Status.Enable,
                     SystemData = CommonData.Status.Disable,
-                    LoginState = CommonData.Status.Disable,
+                    LoginState = CommonData.Status.Enable,
                 };
 
                 ms_users.AddObject(user);
@@ -90,11 +91,14 @@ namespace Nihongo.Dal.Dao
                                 VocaDetailID = voca.ID,
                                 UpdatedDate = DateTime.Now,
 
-                                Level = 10,
+                                Level = 0,
                                 HasLearnt = CommonData.Status.Disable,
                                 HasMarked = CommonData.Status.Disable,
+                                IsIgnore = CommonData.Status.Disable,
+                                NumOfWrong = 0,
+
                                 StartDate = DateTime.Now.AddDays(-1),
-                                EndDate = DateTime.Now.AddDays(365),
+                                EndDate = DateTime.Now.AddYears(1),
                             };
 
                             ms_uservocabularies.AddObject(usv);
@@ -150,11 +154,11 @@ namespace Nihongo.Dal.Dao
             return returnCode;
         }
 
-        internal int SelectDataByUserName(string UserName, string Password, out MS_UsersModels user)
+        internal int SelectDataByUserName(string UserName, string Password, out MS_UsersModels user, out string error)
         {
             int returnCode = 0;
             user = new MS_UsersModels();
-
+            error = string.Empty;
             try
             {
                 var query = this.ms_users.Where(ss => ss.UserName == UserName && ss.Password == Password);
@@ -175,23 +179,37 @@ namespace Nihongo.Dal.Dao
             catch (Exception ex)
             {
                 returnCode = ProcessDbException(ex);
+                error = ex.Message;
             }
 
             return returnCode;
         }
 
-        internal int UpdateState(MS_UsersModels user)
+        internal int UpdateState(ref MS_UsersModels user)
         {
             int returnCode = 0;
             try
             {
-                var ur = this.ms_users.FirstOrDefault(ss => ss.ID == user.ID);
+                int userID = user.ID;
+                var ur = this.ms_users.FirstOrDefault(ss => ss.ID == userID);
                 if (ur != null)
                 {
                     ur.LoginState = user.LoginState;
                     ur.LastVisitedDate = user.LastVisitedDate;
 
                     returnCode = this.Saves();
+
+                    user.DisplayName = ur.DisplayName;
+                    user.Email = ur.Email;
+                    user.IsAdmin = ur.IsAdmin;
+                    user.LastVisitedDate = ur.LastVisitedDate;
+                    user.LoginState = ur.LoginState;
+                    user.Password = ur.Password;
+                    user.Status = ur.Status;
+                    user.SystemData = ur.SystemData;
+                    user.UrlImage = ur.UrlImage;
+                    user.UserName = ur.UserName;
+                    
                 }
             }
             catch (Exception ex)
@@ -416,12 +434,14 @@ namespace Nihongo.Dal.Dao
             user = null;
             try
             {
-                var query = this.ms_users.Where(ss => ss.UserName == model.UserName && ss.Password == model.Password);
+                var query = this.ms_users.Where(ss => ss.Email == model.Email);
                 user = query.Select(ss => new MS_UsersModels
                 {
                     ID = ss.ID,
                     UserName = ss.UserName,
                     Password = ss.Password,
+                    Email = ss.Email,
+                    UrlImage = ss.UrlImage,
                     Status = ss.Status,
                     DisplayName = ss.DisplayName,
                     SystemData = ss.SystemData,
@@ -440,11 +460,23 @@ namespace Nihongo.Dal.Dao
                         ID = userID,
                         UserName = model.UserName,
                         Password = model.Password,
+                        Email = model.Email,
+                        UrlImage = model.UrlImage,
                         Status = CommonData.Status.Enable,
                         DisplayName = model.DisplayName,
                         SystemData = CommonData.Status.Disable,
                         IsAdmin = CommonData.Status.Disable,
                     };
+                }
+                else
+                {
+                    //user.UserName = model.UserName;
+                    user.Email = model.Email;
+                    user.UrlImage = model.UrlImage;
+                    user.DisplayName = model.DisplayName;
+                    user.LoginState = CommonData.Status.Enable;
+
+                    returnCode = this.Saves();
                 }
             }
             catch (Exception ex)
@@ -453,6 +485,63 @@ namespace Nihongo.Dal.Dao
             }
             return returnCode;
         }
+
+        internal int GLogin(MS_UsersModels model, out MS_UsersModels user)
+        {
+            int returnCode = 0;
+            user = null;
+            try
+            {
+                var query = this.ms_users.Where(ss => ss.Email == model.Email);
+                user = query.Select(ss => new MS_UsersModels
+                {
+                    ID = ss.ID,
+                    UserName = ss.UserName,
+                    Password = ss.Password,
+                    UrlImage = ss.UrlImage,
+                    Status = ss.Status,
+                    DisplayName = ss.DisplayName,
+                    SystemData = ss.SystemData,
+                    IsAdmin = ss.IsAdmin,
+
+                })
+                    .FirstOrDefault();
+
+                if (user == null)
+                {
+                    int userID = -1;
+                    returnCode = InsertData(model, out userID);
+
+                    user = new MS_UsersModels()
+                    {
+                        ID = userID,
+                        UserName = model.UserName,
+                        Password = model.Password,
+                        Email = model.Email,
+                        Status = CommonData.Status.Enable,
+                        DisplayName = model.DisplayName,
+                        SystemData = CommonData.Status.Disable,
+                        IsAdmin = CommonData.Status.Disable,
+                    };
+                }
+                else
+                {
+                    //user.UserName = model.UserName;
+                    user.Email = model.Email;
+                    user.UrlImage = model.UrlImage;
+                    user.DisplayName = model.DisplayName;
+                    user.LoginState = CommonData.Status.Enable;
+
+                    returnCode = this.Saves();
+                }
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+            return returnCode;
+        }
+
 
         internal int SelectUsersData(out List<MS_UsersModels> users)
         {

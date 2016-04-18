@@ -24,7 +24,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @*@Scripts.Render("~/bundles/jquery")*@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
     @*<script src='@Scripts.Url("~/bundles/bootstrap")' async> </script>*@
 
     <script>
@@ -73,7 +73,7 @@
                 <a href='@Href("~/Account/HomePage/")@Session["UserID"]' class="navbar-brand">
                     <b>CONKET</b>
                 </a>
-                
+
                 @*<ul class="nav navbar-nav search-nav">
                     <li>
                         <div class="search">
@@ -90,17 +90,17 @@
                 <ul class="nav navbar-nav navbar-right user-nav">
                     <li class="user-name"><span>@Session["DisplayName"]</span></li>
                     <li class="dropdown avatar-dropdown">
-                        <img src="@Session["UserUrlImage"]" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" />
+                        <img src="@Html.Raw(Session["UrlImage"])" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" />
                         <ul class="dropdown-menu user-dropdown">
                             @if (Ivs.Core.Common.CommonMethod.ParseString(Session["IsAdmin"]) == Ivs.Core.Common.CommonData.Status.Enable)
                             {
                                 <li><a href='@Href("~/Account/Admin/")@Session["UserID"]'>
-                                    <span class="fa fa-gear fa-fw"></span> Quản trị</a> </li>
+                                    <span class="fa fa-gear fa-fw"></span>Quản trị</a> </li>
                                 <li role="separator" class="divider"></li>
                             }
-                            <li><a href='@Href("~/Account/HomePage/")@Session["UserID"]'><span class="fa fa-user"></span> Trang Cá Nhân</a></li>
+                            <li><a href='@Href("~/Account/HomePage/")@Session["UserID"]'><span class="fa fa-user"></span>Trang Cá Nhân</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href='@Href("~/Account/Logout")' id="btnLogout"><span class="fa fa-user"></span> Đăng xuất</a></li>
+                            <li><a href='@Href("~/Account/Logout")' id="btnLogout"><span class="fa fa-user"></span>Đăng xuất</a></li>
                             <li class="more">
                                 <ul>
                                     <li><a href=""><span class="fa fa-cogs"></span></a></li>
@@ -184,17 +184,35 @@
             <div class="col-md-12 sub-mimin-mobile-menu-list animated fadeInLeft">
                 <ul class="nav nav-list">
                     <li class="active ripple">
-                        <a class="tree-toggle nav-header">
-                            <span class="fa-home fa"></span>Dashboard 
+                        <a href="@Url.Action("HomePage", "Account")" class="nav-header">
+                            <span class="fa-home fa"></span>Trang Cá Nhân 
                        
-                            <span class="fa-angle-right fa right-arrow text-right"></span>
+                            @*<span class="fa-angle-right fa right-arrow text-right"></span>*@
                         </a>
-                        <ul class="nav nav-list tree">
+                    
+                        @*<ul class="nav nav-list tree">
                             <li><a href="dashboard-v1.html">Dashboard v.1</a></li>
                             <li><a href="dashboard-v2.html">Dashboard v.2</a></li>
-                        </ul>
-                    </li>
+                        </ul>*@
 
+                        
+                    </li>
+                    <li class="ripple">
+                        <a href="@Url.Action("bo-tu-vung", "Account")" class="nav-header">
+                            <span class="fa fa-pencil-square"></span>Bộ Từ Vựng
+                       
+                            @*<span class="fa-angle-right fa right-arrow text-right"></span>*@
+                        </a>
+
+                    </li>
+                    <li class="ripple">
+                        
+                        <a href="@Url.Action("Setting", "Account")" class="nav-header">
+                            <span class="fa fa-pencil-square"></span>Cấu Hình 
+                       
+                            @*<span class="fa-angle-right fa right-arrow text-right"></span>*@
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -212,11 +230,19 @@
 
     <!-- start: Javascript -->
     <script src='@Scripts.Url("~/bundles/jqueryui")' > </script>
+    <script>
+        /*** Handle jQuery plugin naming conflict between jQuery UI and Bootstrap ***/
+        $.widget.bridge('uibutton', $.ui.button);
+        $.widget.bridge('uitooltip', $.ui.tooltip);
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
     <!-- plugins -->
     <script src='@Scripts.Url("~/bundles/us")' > </script>
     <script src='@Scripts.Url("~/bundles/jqueryval")' async> </script>
     <script src='@Scripts.Url("~/bundles/lazyload")' async> </script>
     <script src='@Scripts.Url("~/bundles/slider")' async> </script>
+    <script src='@Scripts.Url("~/bundles/log")' async> </script>
     @* <script src="~/Scripts/assets/js/plugins/moment.min.js"></script>
     <script src="~/Scripts/assets/js/plugins/jquery.nicescroll.js"></script>*@
 

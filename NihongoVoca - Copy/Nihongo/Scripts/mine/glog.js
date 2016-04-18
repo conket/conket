@@ -32,7 +32,7 @@ function attachSignin(element) {
                     id: googleUser.getAuthResponse().id_token,
                     name: profile.getName(),
                     email: profile.getEmail(),
-
+                    urlImage: profile.getImageUrl(),
                 };
             //var user =
             //    {
@@ -50,7 +50,7 @@ function attachSignin(element) {
 }
 
 function gLogin(user) {
-
+    console.log(JSON.stringify(user));
     $.ajax({
         url: '/Account/' + $('#glog').val(),
         type: "POST",
@@ -65,7 +65,7 @@ function gLogin(user) {
                 //}
                 //else {
                 //window.location.reload();
-                window.location = '/Account/HomePage/' + result.ID;
+                window.location = '/Account/HomePage/';
                 //}
                 return false;
             }

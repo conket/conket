@@ -24,7 +24,6 @@
     @Scripts.Render("~/bundles/modernizr")
     @*@Scripts.Render("~/bundles/jquery")*@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     @*<script src='@Scripts.Url("~/bundles/bootstrap")' async> </script>*@
 
     <script>
@@ -90,17 +89,17 @@
                 <ul class="nav navbar-nav navbar-right user-nav">
                     <li class="user-name"><span>@Session["DisplayName"]</span></li>
                     <li class="dropdown avatar-dropdown">
-                        <img src="@Session["UserUrlImage"]" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" />
+                        <img src="@Html.Raw(Session["UrlImage"])" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" />
                         <ul class="dropdown-menu user-dropdown">
                             @if (Ivs.Core.Common.CommonMethod.ParseString(Session["IsAdmin"]) == Ivs.Core.Common.CommonData.Status.Enable)
                             {
                                 <li><a href='@Href("~/Account/Admin/")@Session["UserID"]'>
-                                    <span class="fa fa-gear fa-fw"></span> Quản trị</a> </li>
+                                    <span class="fa fa-gear fa-fw"></span>Quản trị</a> </li>
                                 <li role="separator" class="divider"></li>
                             }
-                            <li><a href='@Href("~/Account/HomePage/")@Session["UserID"]'><span class="fa fa-user"></span> Trang Cá Nhân</a></li>
+                            <li><a href='@Href("~/Account/HomePage/")@Session["UserID"]'><span class="fa fa-user"></span>Trang Cá Nhân</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href='@Href("~/Account/Logout")' id="btnLogout"><span class="fa fa-user"></span> Đăng xuất</a></li>
+                            <li><a href='@Href("~/Account/Logout")' id="btnLogout"><span class="fa fa-user"></span>Đăng xuất</a></li>
                             <li class="more">
                                 <ul>
                                     <li><a href=""><span class="fa fa-cogs"></span></a></li>
@@ -180,6 +179,12 @@
 
     <!-- start: Javascript -->
     <script src='@Scripts.Url("~/bundles/jqueryui")' > </script>
+    <script>
+        /*** Handle jQuery plugin naming conflict between jQuery UI and Bootstrap ***/
+        $.widget.bridge('uibutton', $.ui.button);
+        $.widget.bridge('uitooltip', $.ui.tooltip);
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- plugins -->
     <script src='@Scripts.Url("~/bundles/us")' > </script>
     <script src='@Scripts.Url("~/bundles/jqueryval")' async> </script>

@@ -112,6 +112,7 @@ namespace Nihongo.Dal.Dao
                       Description = ss.Description,
                       NumOfVocas = ss.NumOfVocas,
                       IsKanji = ss.IsKanji,
+                      NumOfRegistedPerson = ss.NumOfRegistedPerson,
                   })
                     .FirstOrDefault();
 
@@ -120,62 +121,103 @@ namespace Nihongo.Dal.Dao
                 {
                     this.BeginTransaction();
 
-                    bool hasRegis = this.ms_uservocabularies.Any(ss => ss.ms_vocabularydetails.ms_vocacategories.ms_vocasets.ID == id);
-                    if (!hasRegis)
+                    //create user vocaset
+                    var userSet = this.ms_uservocasets.FirstOrDefault(ss => ss.UserID == userID && ss.VocaSetID == id);
+                    if (userSet == null)
                     {
-                        //register for user
-                        var vocaDetails = from vcd in this.ms_vocabularydetails
-                                          join vc in this.ms_vocacategories on vcd.CategoryID equals vc.ID
-                                          join vs in this.ms_vocasets on vc.VocaSetID equals vs.ID
-                                          where vs.ID == id
-                                          select vcd;
-                        foreach (var vocaDetail in vocaDetails)
+                        userSet = new Mapping.ms_uservocasets();
+                        userSet.VocaSetID = id;
+                        userSet.UserID = userID;
+                        userSet.StartDate = DateTime.Now.Date.AddDays(-1);
+                        userSet.EndDate = DateTime.Now.Date.AddYears(1);
+                        userSet.HasLearnt = CommonData.Status.Disable;
+                        userSet.HasMarked = CommonData.Status.Disable;
+                        userSet.IsIgnore = CommonData.Status.Disable;
+                        userSet.UpdatedDate = DateTime.Now;
+
+                        ms_uservocasets.AddObject(userSet);
+
+                        var vocaCates = ms_vocacategories.Where(ss => ss.VocaSetID == id);
+                        foreach (var vocaCate in vocaCates)
                         {
-                            Nihongo.Dal.Mapping.ms_uservocabularies //usVoca = ms_uservocabularies.FirstOrDefault(ss => ss.UserID == userID && ss.VocaDetailID == vocaDetail.ID);
-                                //if (usVoca == null)
-                                //{
-                                usVoca = new Mapping.ms_uservocabularies()
-                                {
-                                    UserID = userID,
-                                    VocaDetailID = vocaDetail.ID,
-                                    HasLearnt = CommonData.Status.Disable,
-                                    HasMarked = CommonData.Status.Disable,
-                                    IsIgnore = CommonData.Status.Disable,
-                                    Level = 0,
-                                    StartDate = DateTime.Now.Date,
-                                    EndDate = DateTime.Now.Date.AddYears(1),
-                                    NumOfWrong = 0,
-                                };
-                            ms_uservocabularies.AddObject(usVoca);
-                            //}
-                            //else
-                            //{
-                            //    hasRegis = true;
-                            //}
+                            Mapping.ms_usercategories userCate = new Mapping.ms_usercategories();
+                            userCate.CategoryID = vocaCate.ID;
+                            userCate.UserID = userID;
+                            userCate.StartDate = DateTime.Now.Date.AddDays(-1);
+                            userCate.EndDate = DateTime.Now.Date.AddYears(1);
+                            userCate.HasLearnt = CommonData.Status.Disable;
+                            userCate.HasMarked = CommonData.Status.Disable;
+                            userCate.IsIgnore = CommonData.Status.Disable;
+                            userCate.UpdatedDate = DateTime.Now;
+
+                            ms_usercategories.AddObject(userCate);
                         }
-
-                        returnCode = this.Saves();
-                        if (returnCode == CommonData.DbReturnCode.Succeed)
-                        {
-                            //update voca set
-                            Nihongo.Dal.Mapping.ms_vocasets vocaSet = this.ms_vocasets.FirstOrDefault(s => s.ID == id);
-                            if (vocaSet != null)
-                            {
-                                vocaSet.NumOfRegistedPerson += 1;
-                            }
-
-                            returnCode = this.Saves();
-                        }
-                    }
-
-
-                    if (returnCode == CommonData.DbReturnCode.Succeed)
-                    {
-                        returnCode = this.Commit();
                     }
                     else
                     {
-                        this.Rollback();
+                        userSet.UpdatedDate = DateTime.Now;
+                    }
+
+                    //create user vocacategories
+
+                    returnCode = this.Saves();
+
+                    if (returnCode == CommonData.DbReturnCode.Succeed)
+                    {
+                        bool hasRegis = this.ms_uservocabularies.Any(ss => ss.ms_vocabularydetails.ms_vocacategories.ms_vocasets.ID == id
+                                        && ss.UserID == userID);
+                        if (!hasRegis)
+                        {
+                            //register for user
+                            var vocaDetails = from vcd in this.ms_vocabularydetails
+                                              join vc in this.ms_vocacategories on vcd.CategoryID equals vc.ID
+                                              join vs in this.ms_vocasets on vc.VocaSetID equals vs.ID
+                                              where vs.ID == id
+                                              select vcd;
+                            foreach (var vocaDetail in vocaDetails)
+                            {
+                                Nihongo.Dal.Mapping.ms_uservocabularies //usVoca = ms_uservocabularies.FirstOrDefault(ss => ss.UserID == userID && ss.VocaDetailID == vocaDetail.ID);
+                                    //if (usVoca == null)
+                                    //{
+                                    usVoca = new Mapping.ms_uservocabularies()
+                                    {
+                                        UserID = userID,
+                                        VocaDetailID = vocaDetail.ID,
+                                        HasLearnt = CommonData.Status.Disable,
+                                        HasMarked = CommonData.Status.Disable,
+                                        IsIgnore = CommonData.Status.Disable,
+                                        Level = 0,
+                                        StartDate = DateTime.Now.Date.AddDays(-1),
+                                        EndDate = DateTime.Now.Date.AddYears(1),
+                                        NumOfWrong = 0,
+                                    };
+                                ms_uservocabularies.AddObject(usVoca);
+                            }
+                            //else
+                            //{
+                            //    hasRegis = true;
+                        }
+                    
+
+                        //returnCode = this.Saves();
+                        //if (returnCode == CommonData.DbReturnCode.Succeed)
+                        //{
+                        //update voca set
+                        //Nihongo.Dal.Mapping.ms_vocasets vocaSet = this.ms_vocasets.FirstOrDefault(s => s.ID == id);
+                        result.NumOfRegistedPerson += 1;
+
+                        returnCode = this.Saves();
+                        //}
+                        //}
+
+                        if (returnCode == CommonData.DbReturnCode.Succeed)
+                        {
+                            returnCode = this.Commit();
+                        }
+                        else
+                        {
+                            this.Rollback();
+                        }
                     }
                 }
             }
@@ -299,6 +341,10 @@ namespace Nihongo.Dal.Dao
                 {
                     results = (from ss in this.ms_vocacategories
                                join vs in this.ms_vocasets on ss.VocaSetID equals vs.ID
+                               
+                               join uvc in this.ms_usercategories on ss.ID equals uvc.CategoryID into userCate
+                               from uvc in userCate.DefaultIfEmpty()
+
                                where vs.ID == model.VocaSetID
                                select new MS_VocaCategoriesModels
                    {
@@ -310,6 +356,10 @@ namespace Nihongo.Dal.Dao
                        Description = ss.Description,
                        NumOfVocas = ss.NumOfVocas,
                        IsTrial = ss.IsTrial,
+                       
+                       IsIgnore = uvc == null ? CommonData.Status.Disable : uvc.IsIgnore,
+                       HasMarked = uvc == null ? CommonData.Status.Disable : uvc.HasMarked,
+                       HasLearnt = uvc == null ? CommonData.Status.Disable : uvc.HasLearnt,
                    })
                    .OrderBy(ss => ss.ID)
                     .ToList();
@@ -380,6 +430,22 @@ namespace Nihongo.Dal.Dao
 
                     returnCode = this.Saves();
 
+                    if (returnCode == 0)
+                    {
+                        //update num of voca
+                        var vocaSets = ms_vocasets.AsQueryable();
+                        foreach (var vocaSet in vocaSets)
+                        {
+                            var vocaCates = vocaSet.ms_vocacategories.AsQueryable();
+                            foreach (var vocaCate in vocaCates)
+                            {
+                                vocaCate.NumOfVocas = vocaCate.ms_vocabularydetails.Count;
+                            }
+                            vocaSet.NumOfCategories = vocaSet.ms_vocacategories.Count;
+                            vocaSet.NumOfVocas = vocaSet.ms_vocacategories.SelectMany(ss => ss.ms_vocabularydetails).Count();
+                        }
+                    }
+                    returnCode = this.Saves();
 
                     if (returnCode == 0)
                     {
@@ -480,7 +546,58 @@ namespace Nihongo.Dal.Dao
                     }
 
                     returnCode = this.Saves();
+
+                    if (returnCode == 0)
+                    {
+                        //update num of voca
+                        var vocaSets = ms_vocasets.AsQueryable();
+                        foreach (var vocaSet in vocaSets)
+                        {
+                            var vocaCates = vocaSet.ms_vocacategories.AsQueryable();
+                            foreach (var vocaCate in vocaCates)
+                            {
+                                vocaCate.NumOfVocas = vocaCate.ms_vocabularydetails.Count;
+                            }
+                            vocaSet.NumOfCategories = vocaSet.ms_vocacategories.Count;
+                            vocaSet.NumOfVocas = vocaSet.ms_vocacategories.SelectMany(ss => ss.ms_vocabularydetails).Count();
+                        }
+                    }
+                    returnCode = this.Saves();
                 }
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
+        internal int CheckCompletedVoca(int id, int userID, out bool isOK)
+        {
+            int returnCode = 0;
+            isOK = false;
+
+            try
+            {
+                isOK = this.ms_usercategories.Any(ss => ss.CategoryID == id && ss.UserID == userID && ss.HasLearnt == CommonData.Status.Enable);
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
+        internal int CheckIsIgnoreCate(int id, int userID, out bool isOK)
+        {
+            int returnCode = 0;
+            isOK = false;
+
+            try
+            {
+                isOK = this.ms_usercategories.Any(ss => ss.CategoryID == id && ss.UserID == userID && ss.IsIgnore == CommonData.Status.Enable);
             }
             catch (Exception ex)
             {
