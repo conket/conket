@@ -56,12 +56,206 @@ $(document).ready(function () {
 
     $('#btnNext').on('click', function () {
         if (isPractice) {
-            quizzVoca = createQuizz(currentIndex);
-            showFlashCard(quizzVoca, false);
+            if (vocas[currentIndex].IsIgnore == '1') {
+                if (isFinish()) {
+                    //show result
+                    currentIndex = -1;
+                    currentLevel = totalLevel;
+                    //showFlashCard(-1, false);
+
+                    showResultPage();
+                    showProgress();
+
+                    //update result
+                    isPass = (correctVocas.length >= vocas.length * 8 / 10) ? true : false;
+                    updateTestResult();
+                }
+                else {
+                    if (isAllLearnt()) {
+                        currentIndex = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                        while (vocas[currentIndex].Level == maxLevel || vocas[currentIndex].IsIgnore == '1') {
+                            currentIndex = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                        }
+                    }
+                    else {
+                        do {
+                            currentIndex++;
+                            if (currentIndex == vocas.length) {
+                                currentIndex = 0;
+                            }
+                        } while ((vocas[currentIndex].IsDone == '1' && vocas[currentIndex].Level == maxLevel) || vocas[currentIndex].IsIgnore == '1');
+                    }
+                    if (currentIndex < vocas.length) {
+
+                        quizzVoca = createQuizz(currentIndex);
+                        quizzVoca.IsDone = '1';
+
+                        if (quizzVoca.HasLearnt == "1") {
+                            isPractice = true;
+                        }
+                        else if (quizzVoca.Level == "0") {
+                            isPractice = false;
+                        }
+                        else if (quizzVoca.Level < 10) {
+                            isPractice = true;
+                        }
+                        else {
+                            isPractice = false;
+                        }
+
+                        myTimer = setTimeout(doWork, 300);
+                        //showFlashCard(quizzVoca, false);
+
+                        //if (isPractice) {
+                        //    showProgress();
+                        //}
+                    }
+                    else {
+
+                        //show result
+                        currentIndex = -1;
+                        currentLevel = totalLevel;
+                        //showFlashCard(-1, false);
+
+                        showResultPage();
+                        showProgress();
+
+                        //update result
+                        isPass = (correctVocas.length >= vocas.length * 8 / 10) ? true : false;
+                        updateTestResult();
+                    }
+                }
+
+            }
+            else {
+                return false;
+            }
         }
         else {
-            showFlashCard(quizzVoca, true);
+            if (vocas[currentIndex].IsIgnore == '1') {
+                if (isFinish()) {
+                    //show result
+                    currentIndex = -1;
+                    currentLevel = totalLevel;
+                    //showFlashCard(-1, false);
+
+                    showResultPage();
+                    showProgress();
+
+                    //update result
+                    isPass = (correctVocas.length >= vocas.length * 8 / 10) ? true : false;
+                    updateTestResult();
+                }
+                else {
+                    if (isAllLearnt()) {
+                        currentIndex = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                        while (vocas[currentIndex].Level == maxLevel || vocas[currentIndex].IsIgnore == '1') {
+                            currentIndex = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+                        }
+                    }
+                    else {
+                        do {
+                            currentIndex++;
+                            if (currentIndex == vocas.length) {
+                                currentIndex = 0;
+                            }
+                        } while ((vocas[currentIndex].IsDone == '1' && vocas[currentIndex].Level == maxLevel) || vocas[currentIndex].IsIgnore == '1');
+                    }
+                    if (currentIndex < vocas.length) {
+
+                        quizzVoca = createQuizz(currentIndex);
+                        quizzVoca.IsDone = '1';
+
+                        if (quizzVoca.HasLearnt == "1") {
+                            isPractice = true;
+                        }
+                        else if (quizzVoca.Level == "0") {
+                            isPractice = false;
+                        }
+                        else if (quizzVoca.Level < 10) {
+                            isPractice = true;
+                        }
+                        else {
+                            isPractice = false;
+                        }
+
+                        myTimer = setTimeout(doWork, 300);
+                        //showFlashCard(quizzVoca, false);
+
+                        //if (isPractice) {
+                        //    showProgress();
+                        //}
+                    }
+                    else {
+
+                        //show result
+                        currentIndex = -1;
+                        currentLevel = totalLevel;
+                        //showFlashCard(-1, false);
+
+                        showResultPage();
+                        showProgress();
+
+                        //update result
+                        isPass = (correctVocas.length >= vocas.length * 8 / 10) ? true : false;
+                        updateTestResult();
+                    }
+                }
+                
+            }
+            else {
+                isPractice = true;
+                quizzVoca = createQuizz(currentIndex);
+
+                myTimer = setTimeout(doWork, 300);
+                //showFlashCard(quizzVoca, false);
+
+                //if (isPractice) {
+                //    showProgress();
+                //}
+            }
+
+            //showFlashCard(quizzVoca, false);
         }
+        //if (isPractice) {
+        //    //if (isFinish()) {
+        //    //    //show result
+        //    //    currentIndex = -1;
+        //    //    currentLevel = totalLevel;
+        //    //    //showFlashCard(-1, false);
+
+        //    //    showResultPage();
+        //    //    showProgress();
+
+        //    //    //update result
+        //    //    isPass = (correctVocas.length >= vocas.length * 8 / 10) ? true : false;
+        //    //    updateTestResult();
+        //    //}
+        //    //else {
+        //    //    if (isAllLearnt()) {
+        //    //        currentIndex = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+        //    //        while (vocas[currentIndex].Level == maxLevel && vocas[currentIndex].IsIgnore == '1') {
+        //    //            currentIndex = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
+        //    //        }
+        //    //    }
+        //    //    else {
+        //    //        do {
+        //    //            currentIndex++;
+        //    //            if (currentIndex == vocas.length) {
+        //    //                currentIndex = 0;
+        //    //            }
+        //    //        } while ((vocas[currentIndex].IsDone == '1' && vocas[currentIndex].Level == maxLevel) || vocas[currentIndex].IsIgnore == '1');
+        //    //    }
+
+
+        //    //}
+
+        //    quizzVoca = createQuizz(currentIndex);
+        //    showFlashCard(quizzVoca, false);
+        //}
+        //else {
+        //    showFlashCard(quizzVoca, true);
+        //}
         //checkInput();
     });
 
@@ -115,15 +309,44 @@ $(document).ready(function () {
             //enter
         else if (keycode == 13) {
             if (currentIndex == -1) {
+                var disLe = $("#btnLearning").is(":disabled");
+                var disRe = $("#btnReview").is(":disabled");
+                var disNo = $("#btnNotebook").is(":disabled");
                 //load datas
                 if ($('#lt').val() == '1') {
-                    getTestVocas();
+                    if (disLe) {
+                        if (!disRe) {
+                            getPracticeVocas();
+                        }
+                    }
+                    else {
+                        getTestVocas();
+                    }
                 }
                 else if ($('#lt').val() == '2') {
-                    getPracticeVocas();
+                    if (disRe) {
+                        if (!disLe) {
+                            getTestVocas();
+                        }
+                    }
+                    else {
+                        getPracticeVocas();
+                    }
                 }
                 else {
-                    getNotebookVocas();
+                    if (disNo) {
+                        if (disLe) {
+                            if (!disRe) {
+                                getPracticeVocas();
+                            }
+                        }
+                        else {
+                            getTestVocas();
+                        }
+                    }
+                    else {
+                        getNotebookVocas();
+                    }
                 }
             }
             else {
@@ -197,14 +420,14 @@ $(document).ready(function () {
 //}
 
 function updateTestResult() {
-    for (var i = 0; i < vocas.length; i++) {
-        vocas[i].CompletedTime = completedTime;
-    }
+    //for (var i = 0; i < vocas.length; i++) {
+    //    vocas[i].CompletedTime = completedTime;
+    //}
     if (vocas.length > 0) {
         $.ajax({
             cache: true,
             type: "post",
-            async: true,
+            async: false,
             url: '/Library/' + $('#utr').val(),
             data: JSON.stringify(vocas),
             dataType: "json",
@@ -214,7 +437,23 @@ function updateTestResult() {
                     alert('Có lỗi xảy ra!');
                 }
 
-
+                if (result.Result1 == result.Result2) {
+                    $("#btnLearning").attr("disabled", true);
+                } else {
+                    $("#btnLearning").removeAttr("disabled");
+                }
+                if (result.Result4 < 4) {
+                    $("#btnReview").attr("disabled", true);
+                } else {
+                    $("#btnReview").removeAttr("disabled");
+                    $('#spanReview').html('<strong>ÔN TẬP (' + Result4 + ')</strong>');
+                }
+                if (result.Result3 < 4) {
+                    $("#btnNotebook").attr("disabled", true);
+                } else {
+                    $("#btnNotebook").removeAttr("disabled");
+                    $('#spanNotebook').html('<strong>ÔN SỔ TAY (' + Result3 + ')</strong>');
+                }
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log(xhr.responseText);
@@ -223,7 +462,6 @@ function updateTestResult() {
         });
     }
 }
-
 
 function getTestVocas() {
     $('.result').hide();
@@ -704,7 +942,7 @@ function checkInput() {
                     //speak('/Content/media/tada.wav');
 
                     quizzVoca.IsCorrect = "1";
-                    quizzVoca.NumOfWrong -= 1;
+                    //quizzVoca.NumOfWrong -= 1;
 
                     quizzVoca.Point += 1;
 
@@ -759,6 +997,8 @@ function checkInput() {
                     $(".heart5").addClass("btn-default");
                 }
 
+                console.log(quizzVoca.Romaji + ' - ' + quizzVoca.Level);
+
                 //next
                 //if (currentIndex < vocas.length) {
                 if (quizzVoca.IsCorrect == "0") {
@@ -794,6 +1034,8 @@ function checkInput() {
                     }
 
                     $("a[name='resultChoosing']").attr('disabled', true);
+
+
                     //switch to mode Learning
                     isPractice = false;
 
@@ -819,6 +1061,7 @@ function checkInput() {
                     }
                     $("a[name='resultChoosing']").attr('disabled', true);
 
+
                     if (isFinish()) {
                         //show result
                         currentIndex = -1;
@@ -835,7 +1078,7 @@ function checkInput() {
                     else {
                         if (isAllLearnt()) {
                             currentIndex = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
-                            while (vocas[currentIndex].Level == maxLevel) {
+                            while (vocas[currentIndex].Level == maxLevel || vocas[currentIndex].IsIgnore == '1') {
                                 currentIndex = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
                             }
                         }
@@ -845,7 +1088,7 @@ function checkInput() {
                                 if (currentIndex == vocas.length) {
                                     currentIndex = 0;
                                 }
-                            } while (vocas[currentIndex].IsDone == '1' && vocas[currentIndex].Level == maxLevel);
+                            } while ((vocas[currentIndex].IsDone == '1' && vocas[currentIndex].Level == maxLevel) || vocas[currentIndex].IsIgnore == '1');
 
                             //while (currentIndex < vocas.length && (vocas[currentIndex].IsDone == '1' && vocas[currentIndex].Level == maxLevel)) {
                             //    currentIndex++;
@@ -875,10 +1118,7 @@ function checkInput() {
 
                             myTimer = setTimeout(doWork, 1000);
                             //showFlashCard(quizzVoca, false);
-
-                            if (isPractice) {
-                                showProgress();
-                            }
+                            showProgress();
                         }
                         else {
 
@@ -936,7 +1176,7 @@ function checkInput() {
 function isAllLearnt() {
     var result = true;
     for (var i = 0; i < vocas.length; i++) {
-        if (vocas[i].IsDone == '0') {
+        if ((vocas[i].IsIgnore == '0' && vocas[i].IsDone == '0')) {
             result = false;
             break;
         }
@@ -948,21 +1188,12 @@ function isFinish() {
     var result = true;
     for (var i = 0; i < vocas.length; i++) {
         //console.log(vocas[i].Hiragana +  ' - '+ vocas[i].HasLearnt + ' - ' + vocas[i].Level);
-        if (vocas[i].IsDone == '0' || vocas[i].Level < maxLevel) {
+        if ((vocas[i].IsDone == '0' || vocas[i].Level < maxLevel) && vocas[i].IsIgnore == '0') {
             result = false;
             break;
         }
     }
     return result;
-}
-
-function sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-        if ((new Date().getTime() - start) > milliseconds) {
-            break;
-        }
-    }
 }
 
 function showProgress() {
@@ -972,6 +1203,7 @@ function showProgress() {
                     + '" style="width: ' + (totalLevel == 0 ? 0 : (currentLevel / totalLevel * 100)) + '%;">'
                     //+ (index + 1) + '/' + (vocas.length)
                     + '</div>';
+    console.log(currentLevel + '/' + totalLevel);
     $('#progress').html(progressHtml);
 }
 
@@ -1126,6 +1358,7 @@ function showResultPage() {
 
 function showFlashCard(index, voice) {
     $('#btnNext').show();
+    $("#btnNext").removeAttr('disabled');
     //$('#inputAlphabet').removeAttr('disabled');
     //document.getElementById("test-content").style.cursor = "auto";
 
@@ -1229,11 +1462,11 @@ function showFlashCard(voca, voice) {
     $('#flashCard').hide();
     //$("#flashCard").animate({ width: 'toggle' }, 500);
     $('#flashCard').show("slide", { direction: "right" }, 500);
-    $('#btnNext').show();
 
     if (voca != null) {
         //If Learning
         if (!isPractice) {
+            $('#btnNext').show();
 
             vocas[currentIndex].HasLearnt = '1';
             vocas[currentIndex].IsDone = '1';
@@ -1246,9 +1479,11 @@ function showFlashCard(voca, voice) {
                 speak(voca.UrlAudio);
             }
 
-            isPractice = true;
+            //isPractice = true;
         }
         else {
+            $('#btnNext').hide();
+
             //If Practice
             var html = showPractise(voca);
             $('#flashCard').html(html);
@@ -1268,7 +1503,7 @@ function doWork() {
 }
 
 function createQuizz(index) {
-    console.log(index);
+    //console.log(index);
     var item = vocas[index];
     if (item) {
         var n1 = Math.floor((Math.random() * 4) + 1);
@@ -1772,7 +2007,7 @@ function showLearning(voca) {
         html += '   </div>';
         html += '   <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-center">';
         html += '       <button onclick="draw();" class="btn btn-default"><span class="fa fa-edit"></span>Viết</button>';
-        html += '       <div class="btn-group pull-right" role="group">';
+        html += '       <div class="btn-group pull-right" role="group" onmouseover="expandDetail(this)" ';
         html += '           <button type="button" class="btn btn-circle btn-mn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
         html += '               <span class="icon-list"></span>';
         html += '           </button>';
@@ -1865,7 +2100,7 @@ function showLearning(voca) {
 
         html += '   </div>';
         html += '<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 text-right">';
-        html += '   <div class="btn-group" role="group">';
+        html += '   <div class="btn-group" role="group"  onmouseover="expandDetail(this)">';
         html += '   <button type="button" class="btn btn-circle btn-mn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
         html += '       <span class="icon-list"></span>';
         html += '   </button>';
@@ -2152,7 +2387,7 @@ function showPractise(voca) {
     //html += '               <div class="col-lg-8 col-md-8 col-xs-6">';
     html += '</div>';
     html += '<div class="col-lg-1 col-md-1 col-xs-2">';
-    html += '   <div class="btn-group" role="group">';
+    html += '   <div class="btn-group" role="group" onmouseover="expandDetail(this)">';
     html += '   <button type="button" class="btn btn-circle btn-mn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
     html += '       <span class="icon-list"></span>';
     html += '   </button>';
@@ -2344,4 +2579,10 @@ function ignore() {
 
         vocas[currentIndex].IsIgnore = '0';
     }
+
+    $('#btnNext').trigger('click');
+}
+
+function expandDetail(obj) {
+    $(obj).addClass('open');
 }

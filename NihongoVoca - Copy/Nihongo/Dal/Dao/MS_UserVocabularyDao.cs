@@ -27,7 +27,9 @@ namespace Nihongo.Dal.Dao
 
                                where vs.ID == model.VocaSetID
                                     && us.UserID == model.UserID
-                                    && us.IsIgnore != CommonData.Status.Enable
+                                    && us.IsIgnore == CommonData.Status.Disable
+                                    && us.HasLearnt == CommonData.Status.Disable
+
                                orderby us.Level ascending, vc.LineNumber ascending, de.LineNumber ascending
 
                                select new MS_UserVocabulariesModels
@@ -101,8 +103,10 @@ namespace Nihongo.Dal.Dao
 
                                where vs.ID == model.VocaSetID && ss.Type == model.Type
                                     && us.UserID == model.UserID
-                                    && us.IsIgnore != CommonData.Status.Enable
-                               orderby us.HasLearnt descending, us.Level ascending, us.NumOfWrong descending, us.UpdatedDate ascending
+                                    && us.IsIgnore == CommonData.Status.Disable
+                                    && us.HasLearnt == CommonData.Status.Disable
+
+                               orderby us.Level ascending, vc.LineNumber ascending, de.LineNumber ascending
 
                                select new MS_UserVocabulariesModels
                                {
@@ -183,8 +187,10 @@ namespace Nihongo.Dal.Dao
 
                                where vs.ID == model.VocaSetID 
                                     && us.UserID == model.UserID
-                                    && us.IsIgnore != CommonData.Status.Enable
-                               orderby us.HasLearnt descending, us.Level ascending, us.NumOfWrong descending, us.UpdatedDate ascending
+                                    && us.IsIgnore == CommonData.Status.Disable
+                                    && us.HasLearnt == CommonData.Status.Enable
+
+                               orderby us.Level ascending, us.NumOfWrong descending, us.UpdatedDate ascending
 
                                select new MS_UserVocabulariesModels
                                {
@@ -256,8 +262,10 @@ namespace Nihongo.Dal.Dao
 
                                where vs.ID == model.VocaSetID && ss.Type == model.Type
                                     && us.UserID == model.UserID
-                                    && us.IsIgnore != CommonData.Status.Enable
-                               orderby us.HasLearnt descending, us.Level ascending, us.NumOfWrong descending
+                                    && us.IsIgnore == CommonData.Status.Disable
+                                    && us.HasLearnt == CommonData.Status.Enable
+
+                               orderby us.Level ascending, us.NumOfWrong descending, us.UpdatedDate ascending
 
                                select new MS_UserVocabulariesModels
                                {
@@ -336,10 +344,10 @@ namespace Nihongo.Dal.Dao
 
                                where vs.ID == model.VocaSetID
                                     && us.UserID == model.UserID
-                                    && us.IsIgnore != CommonData.Status.Enable
+                                    && us.IsIgnore == CommonData.Status.Disable
                                     && us.HasMarked == CommonData.Status.Enable
 
-                               orderby us.HasMarked descending, us.Level ascending, us.NumOfWrong descending
+                               orderby us.Level ascending, us.NumOfWrong descending, us.UpdatedDate ascending
 
                                select new MS_UserVocabulariesModels
                                {
@@ -411,8 +419,10 @@ namespace Nihongo.Dal.Dao
 
                                where vs.ID == model.VocaSetID && ss.Type == model.Type
                                     && us.UserID == model.UserID
-                                    && us.IsIgnore != CommonData.Status.Enable
-                               orderby us.HasLearnt descending, us.Level ascending, us.NumOfWrong descending
+                                    && us.IsIgnore == CommonData.Status.Disable
+                                    && us.HasMarked == CommonData.Status.Enable
+
+                               orderby us.Level ascending, us.NumOfWrong descending, us.UpdatedDate ascending
 
                                select new MS_UserVocabulariesModels
                                {
@@ -1052,16 +1062,119 @@ namespace Nihongo.Dal.Dao
             return returnCode;
         }
 
-
-
-        internal int UpdateSessionResult(int userID, List<MS_UserVocabulariesModels> vocas)
+        internal int SelectUserHomePageData1(int userID, out MS_UsersModels userModel)
         {
             int returnCode = 0;
+            userModel = null;
+            try
+            {
+                userModel = ms_users.Where(ss => ss.ID == userID)
+                    .Select(ss => new MS_UsersModels
+                    {
+                        ID = ss.ID,
+                        DisplayName = ss.DisplayName,
+                        LastVisitedDate = ss.LastVisitedDate,
+                        Point = ss.Point ?? 0,
+                        UrlImage = ss.UrlImage,
+                        UserName = ss.UserName,
+                        NumOfLearntVoca = ss.NumOfLearntVoca ?? 0,
+
+                    })
+                    .FirstOrDefault();
+                if (userModel != null)
+                {
+                    //update level
+                    var usVocas = this.ms_uservocabularies.Where(ss => ss.UserID == userID);
+                    foreach (var usVoca in usVocas)
+                    {
+                        if (usVoca.UpdatedDate.HasValue)
+                        {
+                            if (usVoca.Level > 0)
+                            {
+                                int minutes = (DateTime.Now - usVoca.UpdatedDate.Value).Minutes;
+                                int hours = minutes / 60;
+                                usVoca.Level -= (hours / 12);
+                                if (usVoca.Level < 0)
+                                {
+                                    usVoca.Level = 0;
+                                }
+                            }
+                        }
+                    }
+
+                    returnCode = this.Saves();
+
+                    var userVocaSets = (from us in this.ms_uservocabularies.Where(ss => ss.UserID == userID)
+                                        group us by us.ms_vocabularydetails.ms_vocacategories.ms_vocasets.ID into userVoca
+
+                                        join uvs in ms_uservocasets.Where(ss => ss.UserID == userID) on userVoca.Key equals uvs.VocaSetID into userSet
+                                        from uvs in userSet.DefaultIfEmpty()
+
+                                        join vs in ms_vocasets on userVoca.Key equals vs.ID
+
+                                        select new MS_UserVocaSet
+                                        {
+                                            VocaSetID = vs.ID,
+                                            VocaSetName = vs.Name1,
+                                            VocaSetDescription = vs.Description,
+                                            UpdateDate = uvs == null ? null : uvs.UpdatedDate,
+
+                                            VocaSetUrlDisplay = vs.UrlDisplay,
+                                            VocaSetUrlImage = vs.UrlImage,
+                                            NumOfVoca = vs.NumOfVocas ?? 0,
+                                            NumOfHasMarked = userVoca.Count(s => s.HasMarked == CommonData.Status.Enable),
+                                            NumOfHasLearnt = userVoca.Count(s => s.HasLearnt == CommonData.Status.Enable),
+                                            NumOfWeak = userVoca.Count(s => s.IsIgnore == CommonData.Status.Disable && s.ms_vocabularydetails.ms_vocabularies.Type == CommonData.VocaType.Word
+                                                                    && s.HasLearnt == CommonData.Status.Enable && s.Level < 9),
+                                            HasRegis = true,
+                                        }).ToList();
+
+                    if (userVocaSets.Count == 0)
+                    {
+                        //select all voca sets
+                        userVocaSets = (from vs in this.ms_vocasets
+                                        select new MS_UserVocaSet
+                                        {
+                                            VocaSetID = vs.ID,
+                                            VocaSetName = vs.Name1,
+                                            VocaSetDescription = vs.Description,
+                                            VocaSetUrlDisplay = vs.UrlDisplay,
+                                            VocaSetUrlImage = vs.UrlImage,
+                                            NumOfVoca = vs.NumOfVocas ?? 0,
+                                            NumOfRegistedPerson = vs.NumOfRegistedPerson ?? 0,
+                                            NumOfCategories = vs.NumOfCategories ?? 0,
+                                            NumOfFinishedPerson = vs.NumOfFinishedPerson ?? 0,
+                                            HasRegis = false,
+                                        }).ToList();
+                    }
+
+                    userModel.UserVocaSets = userVocaSets;
+                }
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
+
+        internal int UpdateSessionResult(int userID, List<MS_UserVocabulariesModels> vocas, out int numOfVocaOfSet, out int numOfHasLearntOfSet, out int numOfHasMarkedOfSet, out int numOfWeakOfSet)
+        {
+            int returnCode = 0;
+            numOfVocaOfSet = 0;
+            numOfHasMarkedOfSet = 0;
+            numOfHasLearntOfSet = 0;
+            numOfWeakOfSet = 0;
+
             try
             {
                 if (vocas.Count > 0)
                 {
                     this.BeginTransaction();
+
+                    #region Update data
 
                     int point = 0;
                     //update user vocas
@@ -1215,6 +1328,44 @@ namespace Nihongo.Dal.Dao
                     else
                     {
                         this.Rollback();
+                    }
+
+                    #endregion
+
+                    var first = vocas.FirstOrDefault();
+                    if (first != null)
+                    {
+                        var userVocaSets = (from us in this.ms_uservocabularies.Where(ss => ss.UserID == userID && ss.ms_vocabularydetails.ms_vocacategories.VocaSetID == first.VocaSetID)
+                                            group us by us.ms_vocabularydetails.ms_vocacategories.ms_vocasets.ID into userVoca
+
+                                            //join uvs in ms_uservocasets.Where(ss => ss.UserID == userID) on userVoca.Key equals uvs.VocaSetID into userSet
+                                            //from uvs in userSet.DefaultIfEmpty()
+
+                                            join vs in ms_vocasets on userVoca.Key equals vs.ID
+
+                                            select new MS_UserVocaSet
+                                            {
+                                                //VocaSetID = vs.ID,
+                                                //VocaSetName = vs.Name1,
+                                                //VocaSetDescription = vs.Description,
+                                                ////UpdateDate = uvs == null ? null : uvs.UpdatedDate,
+
+                                                //VocaSetUrlDisplay = vs.UrlDisplay,
+                                                //VocaSetUrlImage = vs.UrlImage,
+                                                NumOfVoca = vs.NumOfVocas ?? 0,
+                                                NumOfHasMarked = userVoca.Count(s => s.HasMarked == CommonData.Status.Enable),
+                                                NumOfHasLearnt = userVoca.Count(s => s.HasLearnt == CommonData.Status.Enable),
+                                                NumOfWeak = userVoca.Count(s => s.IsIgnore == CommonData.Status.Disable && s.ms_vocabularydetails.ms_vocabularies.Type == CommonData.VocaType.Word
+                                                                        && s.HasLearnt == CommonData.Status.Enable && s.Level < 9),
+                                                //HasRegis = true,
+                                            }).ToList();
+                        if (userVocaSets.Count > 0)
+                        {
+                            numOfVocaOfSet = userVocaSets.FirstOrDefault().NumOfVoca;
+                            numOfHasMarkedOfSet = userVocaSets.FirstOrDefault().NumOfHasMarked;
+                            numOfHasLearntOfSet = userVocaSets.FirstOrDefault().NumOfHasLearnt;
+                            numOfWeakOfSet = userVocaSets.FirstOrDefault().NumOfWeak;
+                        }
                     }
                 }
             }

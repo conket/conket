@@ -551,7 +551,7 @@ namespace Nihongo.Controllers
         }
 
         [EncryptActionName(Name = ("GetSessionVocas"))]
-        [OutputCache(CacheProfile = "Cache1MinuteVaryByIDClient")]
+        //[OutputCache(CacheProfile = "Cache1MinuteVaryByIDClient")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult GetSessionVocas(int id, string isKanji)
         {
@@ -1006,13 +1006,19 @@ namespace Nihongo.Controllers
         public ActionResult UpdateSessionResult(List<MS_UserVocabulariesModels> vocas)
         {
             int returnCode = 0;
+            int numOfVocaOfSet = 0;
+            int numOfHasLearntOfSet = 0;
+            int numOfHasMarkedOfSet = 0;
+            int numOfWeakOfSet = 0;
             if (!CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
-                returnCode = dao.UpdateSessionResult(CommonMethod.ParseInt(Session["UserID"]), vocas);
+
+                
+                returnCode = dao.UpdateSessionResult(CommonMethod.ParseInt(Session["UserID"]), vocas, out numOfVocaOfSet, out numOfHasLearntOfSet, out numOfHasMarkedOfSet, out numOfWeakOfSet);
             }
 
-            return Json(new { ReturnCode = returnCode });
+            return Json(new { ReturnCode = returnCode, Result1 = numOfVocaOfSet, Result2 = numOfHasLearntOfSet, Result3 = numOfHasMarkedOfSet, Result4 = numOfWeakOfSet });
         }
 
         [EncryptActionName(Name = ("UpdateFastTestVoca"))]

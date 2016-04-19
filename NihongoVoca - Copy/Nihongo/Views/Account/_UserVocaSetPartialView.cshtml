@@ -66,7 +66,7 @@
                         {
                             <a href="@Url.Action("hoc-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login"><i class="icon-login"></i> Học tiếp</a>
                         }
-                        @if (userVocaSet.NumOfWeak == 0)
+                        @if (userVocaSet.NumOfWeak < 4)
                         {
                             <a href="@Url.Action("on-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login"><i class=" icon-compass"></i> Ôn tập</a>
                         }
@@ -75,7 +75,7 @@
                             var str = userVocaSet.NumOfWeak == 0 ? "" : "(" + userVocaSet.NumOfWeak + ")";
                             <a href="@Url.Action("on-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login"><i class=" icon-compass"></i> Ôn tập @str</a>
                         }
-                        @if (userVocaSet.NumOfHasMarked == 0)
+                        @if (userVocaSet.NumOfHasMarked < 4)
                         {
                             <a href="@Url.Action("on-so-tay", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login disabled"><i class=" icon-compass"></i> Ôn sổ tay</a>
                         }
@@ -146,4 +146,15 @@
         }
     }
 }
+
+<script type="text/javascript">
+    $(function () {
+        $('.btn-group').hover(function () {
+            $(this).addClass('open');
+        },
+        function () {
+            $(this).removeClass('open');
+        });
+    });
+</script>
 
