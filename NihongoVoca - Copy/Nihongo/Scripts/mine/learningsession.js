@@ -114,7 +114,21 @@ $(document).ready(function () {
         }
             //enter
         else if (keycode == 13) {
-            $("#btnNext").trigger("click");
+            if (currentIndex == -1) {
+                //load datas
+                if ($('#lt').val() == '1') {
+                    getTestVocas();
+                }
+                else if ($('#lt').val() == '2') {
+                    getPracticeVocas();
+                }
+                else {
+                    getNotebookVocas();
+                }
+            }
+            else {
+                $("#btnNext").trigger("click");
+            }
             return false;
         }
         else if (keycode == 49 || keycode == 97) {
@@ -199,6 +213,8 @@ function updateTestResult() {
                 if (result.ReturnCode != 0) {
                     alert('Có lỗi xảy ra!');
                 }
+
+
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log(xhr.responseText);
@@ -685,9 +701,11 @@ function checkInput() {
                 }
                 else {
                     //speak corrent voca
-                    speak('/Content/media/tada.wav');
+                    //speak('/Content/media/tada.wav');
 
                     quizzVoca.IsCorrect = "1";
+                    quizzVoca.NumOfWrong -= 1;
+
                     quizzVoca.Point += 1;
 
                     var level = parseInt(quizzVoca.Level) + 2;
@@ -1826,8 +1844,8 @@ function showLearning(voca) {
             html += '   <div class="col-lg-7 col-md-7 col-sm-7 col-xs-6"><h3><strong>' + voca.Katakana + '  </strong><a href="#" onclick="speak(\'' + voca.UrlAudio_Katakana + '\'); return false;"><i class="fa fa-volume-up"></i></a></h3>';
             html += '       <p><strong>' + voca.Romaji_Katakana + '</strong></p>';
         }
-        html += '       <h3><strong>' + voca.Kanji + '</strong></h3>';
-        html += '       <h4><strong>' + voca.VMeaning + '</strong></h4>';
+        html += '       <h3>' + voca.Kanji + '</h3>';
+        html += '       <h4>' + voca.VMeaning + '</h4>';
 
         html += '<button class=" btn btn-circle btn-mn btn-' + (voca.Level > 1 ? 'primary' : 'default') + '" style="width:15px;height:15px;">';
         html += '<span class="fa fa-heart"></span>';

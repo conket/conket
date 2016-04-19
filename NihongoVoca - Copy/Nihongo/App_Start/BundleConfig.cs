@@ -108,6 +108,10 @@ namespace Nihongo
                         "~/Scripts/modernizr-{version}.min.js"));
 
             #region Custom scripts
+            bundles.Add(new ScriptBundle("~/bundles/learninglesson").Include(
+                        "~/Scripts/mine/learningsession.min.js"
+                        ));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.min.js"
                         ));

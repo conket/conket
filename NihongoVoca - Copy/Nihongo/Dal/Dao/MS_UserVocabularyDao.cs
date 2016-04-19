@@ -28,7 +28,7 @@ namespace Nihongo.Dal.Dao
                                where vs.ID == model.VocaSetID
                                     && us.UserID == model.UserID
                                     && us.IsIgnore != CommonData.Status.Enable
-                               orderby vc.LineNumber ascending, us.Level ascending, de.LineNumber ascending
+                               orderby us.Level ascending, vc.LineNumber ascending, de.LineNumber ascending
 
                                select new MS_UserVocabulariesModels
                                {
@@ -102,7 +102,7 @@ namespace Nihongo.Dal.Dao
                                where vs.ID == model.VocaSetID && ss.Type == model.Type
                                     && us.UserID == model.UserID
                                     && us.IsIgnore != CommonData.Status.Enable
-                               orderby vc.LineNumber ascending, us.Level ascending, de.LineNumber ascending
+                               orderby us.HasLearnt descending, us.Level ascending, us.NumOfWrong descending, us.UpdatedDate ascending
 
                                select new MS_UserVocabulariesModels
                                {
@@ -196,6 +196,7 @@ namespace Nihongo.Dal.Dao
                                    IsIgnore = us.IsIgnore,
                                    //Update_Date = us.Update_Date,
                                    HasMarked = us.HasMarked,
+                                   NumOfWrong = us.NumOfWrong ?? 0,
                                    UserDefine = us.UserDefine,
 
                                    //voca detail
@@ -267,6 +268,7 @@ namespace Nihongo.Dal.Dao
                                    HasLearnt = us.HasLearnt,
                                    IsIgnore = us.IsIgnore,
                                    //Update_Date = us.Update_Date,
+                                   NumOfWrong = us.NumOfWrong ?? 0,
                                    HasMarked = us.HasMarked,
                                    UserDefine = us.UserDefine,
 
@@ -348,6 +350,7 @@ namespace Nihongo.Dal.Dao
                                    HasLearnt = us.HasLearnt,
                                    IsIgnore = us.IsIgnore,
                                    //Update_Date = us.Update_Date,
+                                   NumOfWrong = us.NumOfWrong ?? 0,
                                    HasMarked = us.HasMarked,
                                    UserDefine = us.UserDefine,
 
@@ -420,6 +423,7 @@ namespace Nihongo.Dal.Dao
                                    HasLearnt = us.HasLearnt,
                                    IsIgnore = us.IsIgnore,
                                    //Update_Date = us.Update_Date,
+                                   NumOfWrong = us.NumOfWrong ?? 0,
                                    HasMarked = us.HasMarked,
                                    UserDefine = us.UserDefine,
 
@@ -979,6 +983,8 @@ namespace Nihongo.Dal.Dao
 
             try
             {
+                this.BeginTransaction();
+
                 var vocaDb = this.ms_uservocabularies.FirstOrDefault(ss => ss.ID == voca.ID);
                 if (vocaDb != null)
                 {
@@ -986,10 +992,60 @@ namespace Nihongo.Dal.Dao
 
                     returnCode = this.Saves();
                 }
+
+                //if (returnCode == CommonData.DbReturnCode.Succeed)
+                //{
+                //    var userCate = this.ms_usercategories.FirstOrDefault(ss => ss.UserID == voca.UserID && ss.CategoryID == voca.CategoryID);
+                //    if (userCate != null)
+                //    {
+                //        var cate = this.ms_vocacategories.FirstOrDefault(ss => ss.ID == voca.CategoryID);
+                //        var numOfHasMarked = this.ms_uservocabularies.Count(s => s.UserID == voca.UserID && s.ms_vocabularydetails.CategoryID == voca.CategoryID && s.HasMarked == CommonData.Status.Enable);
+                //        if (cate != null && cate.NumOfVocas == numOfHasMarked)
+                //        {
+                //            userCate.HasMarked = CommonData.Status.Enable;
+                //        }
+                //        else
+                //        {
+                //            userCate.HasMarked = CommonData.Status.Disable;
+                //        }
+                //    }
+
+                //    returnCode = this.Saves();
+                //}
+
+                //if (returnCode == CommonData.DbReturnCode.Succeed)
+                //{
+                //    var userSet = this.ms_uservocasets.FirstOrDefault(ss => ss.UserID == voca.UserID && ss.VocaSetID == voca.VocaSetID);
+                //    if (userSet != null)
+                //    {
+                //        var set = this.ms_vocasets.FirstOrDefault(ss => ss.ID == voca.VocaSetID);
+                //        var numOfHasMarked = this.ms_uservocabularies.Count(s => s.UserID == voca.UserID && s.ms_vocabularydetails.ms_vocacategories.VocaSetID == voca.VocaSetID && s.HasMarked == CommonData.Status.Enable);
+                //        if (set != null && set.NumOfVocas == numOfHasMarked)
+                //        {
+                //            userSet.HasMarked = CommonData.Status.Enable;
+                //        }
+                //        else
+                //        {
+                //            userSet.HasMarked = CommonData.Status.Disable;
+                //        }
+                //    }
+
+                //    returnCode = this.Saves();
+                //}
+
+                if (returnCode == CommonData.DbReturnCode.Succeed)
+                {
+                    returnCode = this.Commit();
+                }
+                else
+                {
+                    this.Rollback();
+                }
             }
 
             catch (Exception ex)
             {
+                this.Rollback();
                 returnCode = ProcessDbException(ex);
             }
 
@@ -1019,7 +1075,7 @@ namespace Nihongo.Dal.Dao
                             voca.IsIgnore = vo.IsIgnore;
                             voca.UpdatedDate = DateTime.Now;
                             voca.Level = vo.Level;
-                            voca.NumOfWrong = (voca.NumOfWrong ?? 0) + vo.NumOfWrong;
+                            voca.NumOfWrong = vo.NumOfWrong < 0 ? 0 : vo.NumOfWrong;
                             voca.UserDefine = vo.UserDefine;
 
                             point += vo.Point;
@@ -1042,7 +1098,7 @@ namespace Nihongo.Dal.Dao
                         returnCode = this.Saves();
                     }
 
-                    //update test result
+                    //update user category
                     if (returnCode == CommonData.DbReturnCode.Succeed)
                     {
                         if (vocas.Count > 0)
@@ -1050,54 +1106,107 @@ namespace Nihongo.Dal.Dao
                             var userCates = vocas.GroupBy(ss => new { ss.UserID, ss.CategoryID })
                                 .Select(ss => new
                                 {
-                                    ss.Key.UserID, ss.Key.CategoryID,
+                                    ss.Key.UserID,
+                                    ss.Key.CategoryID,
                                 });
+
                             foreach (var userCate in userCates)
                             {
-                                Nihongo.Dal.Mapping.ms_testresults test = this.ms_testresults
-                                    .FirstOrDefault(ss => ss.UserID == userCate.UserID && ss.CategoryID == userCate.CategoryID);
-                                if (test == null)
-                                {
-                                    var numOfHasLearnt = (from us in this.ms_uservocabularies
-                                                          join vd in this.ms_vocabularydetails on us.VocaDetailID equals vd.ID
-                                                          join vc in this.ms_vocacategories on vd.CategoryID equals vc.ID
-                                                          where us.UserID == userCate.UserID
-                                                                && us.HasLearnt == CommonData.Status.Enable
-                                                                 && vc.ID == userCate.CategoryID
-                                                          select us).Count();
-                                                             
-                                    //create test result
-                                    //var firstVoca = vocas.FirstOrDefault();
-                                    //if (firstVoca != null)
-                                    //{
-                                    var vocaCate = this.ms_vocacategories.FirstOrDefault(ss => ss.ID == userCate.CategoryID);
-                                    //var vocaSet = this.ms_vocasets.FirstOrDefault(ss => ss.ID == vocaCate.VocaSetID);
-                                    //var numOfCorrectVocas = vocas.Count(ss => ss.IsCorrect == CommonData.Status.Enable);
-                                    if (numOfHasLearnt == vocaCate.NumOfVocas)
-                                    {
-                                        test = new Mapping.ms_testresults();
-                                        test.Code = userCate.UserID + "_" + vocaCate.Code + "_" + (DateTime.Now.ToString(CommonData.DateFormat.YyyyMMddHHmmss));
-                                        test.CategoryID = userCate.CategoryID;
-                                        test.UserID = userCate.UserID;
-                                        test.CreateDate = DateTime.Now;
-                                        test.NumOfVocas = vocaCate.NumOfVocas;
-                                        test.NumOfCorrectVocas = vocaCate.NumOfVocas;
-                                        test.IsPass = CommonData.Status.Enable;//(numOfCorrectVocas >= (vocas.Count * 8 / 10)) ? CommonData.Status.Enable : CommonData.Status.Disable;
-                                        test.RequiredTimePerVoca = vocaCate.RequiredTimePerVoca;
-                                        test.TotalRequiredTime = vocaCate.RequiredTimePerVoca * vocas.Count;
-                                        //test.CompletedTime = firstVoca.CompletedTime;
-                                        test.Status = CommonData.Status.Enable;
-                                        //test.Description = (numOfCorrectVocas >= (vocas.Count * 8 / 10)) ? "Chúc mừng bạn đã vượt qua được bài kiểm tra" : "Bạn đã không vượt qua được bài kiểm tra. Hãy ôn lại";
+                                Mapping.ms_usercategories userCateDb = this.ms_usercategories.FirstOrDefault(ss => ss.UserID == userCate.UserID && ss.CategoryID == userCate.CategoryID);
+                                var userVocas = (from us in this.ms_uservocabularies
+                                                      join vd in this.ms_vocabularydetails on us.VocaDetailID equals vd.ID
+                                                      join vc in this.ms_vocacategories on vd.CategoryID equals vc.ID
+                                                      where us.UserID == userCate.UserID
+                                                             && vc.ID == userCate.CategoryID
+                                                      select us);
+                                Mapping.ms_vocacategories cate = this.ms_vocacategories.FirstOrDefault(ss => ss.ID == userCate.CategoryID);
 
-                                        ms_testresults.AddObject(test);
-                                        returnCode = this.Saves();
-                                    }
+                                int numOfHasLearnt = userVocas.Count(ss => ss.HasLearnt == CommonData.Status.Enable);
+                                int numOfIgnore = userVocas.Count(ss => ss.IsIgnore == CommonData.Status.Enable);
+                                int numOfHasMarked = userVocas.Count(ss => ss.HasMarked == CommonData.Status.Enable);
+
+                                if (userCateDb != null)
+                                {
+                                    userCateDb.IsIgnore = (cate.NumOfVocas == numOfIgnore) ? CommonData.Status.Enable : CommonData.Status.Disable;
+                                    userCateDb.HasLearnt = (cate.NumOfVocas == numOfHasLearnt) ? CommonData.Status.Enable : CommonData.Status.Disable;
+                                    userCateDb.HasMarked = (cate.NumOfVocas == numOfHasMarked) ? CommonData.Status.Enable : CommonData.Status.Disable;
+                                    userCateDb.UpdatedDate = DateTime.Now;
                                 }
-                                //}
+                                else
+                                {
+                                    userCateDb = new Mapping.ms_usercategories();
+                                    userCateDb.CategoryID = userCate.CategoryID;
+                                    userCateDb.UserID = userCate.UserID;
+                                    userCateDb.IsIgnore = (cate.NumOfVocas == numOfIgnore) ? CommonData.Status.Enable : CommonData.Status.Disable;
+                                    userCateDb.HasLearnt = (cate.NumOfVocas == numOfHasLearnt) ? CommonData.Status.Enable : CommonData.Status.Disable;
+                                    userCateDb.HasMarked = (cate.NumOfVocas == numOfHasMarked) ? CommonData.Status.Enable : CommonData.Status.Disable;
+                                    userCateDb.UpdatedDate = DateTime.Now;
+
+                                    ms_usercategories.AddObject(userCateDb);
+                                }
                             }
-                            
+
+                            returnCode = this.Saves();
                         }
                     }
+
+
+                    //update test result
+                    //if (returnCode == CommonData.DbReturnCode.Succeed)
+                    //{
+                    //    if (vocas.Count > 0)
+                    //    {
+                    //        var userCates = vocas.GroupBy(ss => new { ss.UserID, ss.CategoryID })
+                    //            .Select(ss => new
+                    //            {
+                    //                ss.Key.UserID, ss.Key.CategoryID,
+                    //            });
+                    //        foreach (var userCate in userCates)
+                    //        {
+                    //            Nihongo.Dal.Mapping.ms_testresults test = this.ms_testresults
+                    //                .FirstOrDefault(ss => ss.UserID == userCate.UserID && ss.CategoryID == userCate.CategoryID);
+                    //            if (test == null)
+                    //            {
+                    //                var numOfHasLearnt = (from us in this.ms_uservocabularies
+                    //                                      join vd in this.ms_vocabularydetails on us.VocaDetailID equals vd.ID
+                    //                                      join vc in this.ms_vocacategories on vd.CategoryID equals vc.ID
+                    //                                      where us.UserID == userCate.UserID
+                    //                                            && us.HasLearnt == CommonData.Status.Enable
+                    //                                             && vc.ID == userCate.CategoryID
+                    //                                      select us).Count();
+                                                             
+                    //                //create test result
+                    //                //var firstVoca = vocas.FirstOrDefault();
+                    //                //if (firstVoca != null)
+                    //                //{
+                    //                var vocaCate = this.ms_vocacategories.FirstOrDefault(ss => ss.ID == userCate.CategoryID);
+                    //                //var vocaSet = this.ms_vocasets.FirstOrDefault(ss => ss.ID == vocaCate.VocaSetID);
+                    //                //var numOfCorrectVocas = vocas.Count(ss => ss.IsCorrect == CommonData.Status.Enable);
+                    //                if (numOfHasLearnt == vocaCate.NumOfVocas)
+                    //                {
+                    //                    test = new Mapping.ms_testresults();
+                    //                    test.Code = userCate.UserID + "_" + vocaCate.Code + "_" + (DateTime.Now.ToString(CommonData.DateFormat.YyyyMMddHHmmss));
+                    //                    test.CategoryID = userCate.CategoryID;
+                    //                    test.UserID = userCate.UserID;
+                    //                    test.CreateDate = DateTime.Now;
+                    //                    test.NumOfVocas = vocaCate.NumOfVocas;
+                    //                    test.NumOfCorrectVocas = vocaCate.NumOfVocas;
+                    //                    test.IsPass = CommonData.Status.Enable;//(numOfCorrectVocas >= (vocas.Count * 8 / 10)) ? CommonData.Status.Enable : CommonData.Status.Disable;
+                    //                    test.RequiredTimePerVoca = vocaCate.RequiredTimePerVoca;
+                    //                    test.TotalRequiredTime = vocaCate.RequiredTimePerVoca * vocas.Count;
+                    //                    //test.CompletedTime = firstVoca.CompletedTime;
+                    //                    test.Status = CommonData.Status.Enable;
+                    //                    //test.Description = (numOfCorrectVocas >= (vocas.Count * 8 / 10)) ? "Chúc mừng bạn đã vượt qua được bài kiểm tra" : "Bạn đã không vượt qua được bài kiểm tra. Hãy ôn lại";
+
+                    //                    ms_testresults.AddObject(test);
+                    //                    returnCode = this.Saves();
+                    //                }
+                    //            }
+                    //            //}
+                    //        }
+                            
+                    //    }
+                    //}
 
                     if (returnCode == CommonData.DbReturnCode.Succeed)
                     {

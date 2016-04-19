@@ -60,15 +60,15 @@
                     <div class="col-md-12 text-center">
                         @if (userVocaSet.NumOfHasLearnt == userVocaSet.NumOfVoca)
                         {
-                            <a href="@Url.Action("hoc-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login disabled"><i class="icon-login"></i> Tiếp tục</a>
+                            <a href="@Url.Action("hoc-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login disabled"><i class="icon-login"></i> Học tiếp</a>
                         }
                         else
                         {
-                            <a href="@Url.Action("hoc-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login"><i class="icon-login"></i> Tiếp tục</a>
+                            <a href="@Url.Action("hoc-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login"><i class="icon-login"></i> Học tiếp</a>
                         }
                         @if (userVocaSet.NumOfWeak == 0)
                         {
-                            <a href="@Url.Action("on-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login disabled"><i class=" icon-compass"></i> Ôn tập</a>
+                            <a href="@Url.Action("on-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-primary require-login"><i class=" icon-compass"></i> Ôn tập</a>
                         }
                         else
                         {
