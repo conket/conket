@@ -62,6 +62,14 @@
             <End Role="ms_users" EntitySet="ms_users" />
             <End Role="ms_testresults" EntitySet="ms_testresults" />
           </AssociationSet>
+          <AssociationSet Name="FK_msusercategories_CategoryID_msvocacategories_ID" Association="Models.Store.FK_msusercategories_CategoryID_msvocacategories_ID">
+            <End Role="ms_vocacategories" EntitySet="ms_vocacategories" />
+            <End Role="ms_usercategories" EntitySet="ms_usercategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msusercategories_UserID_msusers_ID" Association="Models.Store.FK_msusercategories_UserID_msusers_ID">
+            <End Role="ms_users" EntitySet="ms_users" />
+            <End Role="ms_usercategories" EntitySet="ms_usercategories" />
+          </AssociationSet>
           <AssociationSet Name="FK_msuservocabularies_UserID_msusers_ID" Association="Models.Store.FK_msuservocabularies_UserID_msusers_ID">
             <End Role="ms_users" EntitySet="ms_users" />
             <End Role="ms_uservocabularies" EntitySet="ms_uservocabularies" />
@@ -69,6 +77,14 @@
           <AssociationSet Name="FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID" Association="Models.Store.FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID">
             <End Role="ms_vocabularydetails" EntitySet="ms_vocabularydetails" />
             <End Role="ms_uservocabularies" EntitySet="ms_uservocabularies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msuservocasets_UserID_msusers_ID" Association="Models.Store.FK_msuservocasets_UserID_msusers_ID">
+            <End Role="ms_users" EntitySet="ms_users" />
+            <End Role="ms_uservocasets" EntitySet="ms_uservocasets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msuservocasets_VocaSetID_msvocasets_ID" Association="Models.Store.FK_msuservocasets_VocaSetID_msvocasets_ID">
+            <End Role="ms_vocasets" EntitySet="ms_vocasets" />
+            <End Role="ms_uservocasets" EntitySet="ms_uservocasets" />
           </AssociationSet>
           <AssociationSet Name="FK_msvocabularydetails_CategoryID_msvocacategories_ID" Association="Models.Store.FK_msvocabularydetails_CategoryID_msvocacategories_ID">
             <End Role="ms_vocacategories" EntitySet="ms_vocacategories" />
@@ -502,6 +518,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_msusercategories_CategoryID_msvocacategories_ID">
+          <End Role="ms_vocacategories" Type="Models.Store.ms_vocacategories" Multiplicity="1" />
+          <End Role="ms_usercategories" Type="Models.Store.ms_usercategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_vocacategories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_usercategories">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msusercategories_UserID_msusers_ID">
+          <End Role="ms_users" Type="Models.Store.ms_users" Multiplicity="1" />
+          <End Role="ms_usercategories" Type="Models.Store.ms_usercategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_usercategories">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_msuservocabularies_UserID_msusers_ID">
           <End Role="ms_users" Type="Models.Store.ms_users" Multiplicity="1" />
           <End Role="ms_uservocabularies" Type="Models.Store.ms_uservocabularies" Multiplicity="*" />
@@ -523,6 +563,30 @@
             </Principal>
             <Dependent Role="ms_uservocabularies">
               <PropertyRef Name="VocaDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msuservocasets_UserID_msusers_ID">
+          <End Role="ms_users" Type="Models.Store.ms_users" Multiplicity="1" />
+          <End Role="ms_uservocasets" Type="Models.Store.ms_uservocasets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_uservocasets">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msuservocasets_VocaSetID_msvocasets_ID">
+          <End Role="ms_vocasets" Type="Models.Store.ms_vocasets" Multiplicity="1" />
+          <End Role="ms_uservocasets" Type="Models.Store.ms_uservocasets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_vocasets">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_uservocasets">
+              <PropertyRef Name="VocaSetID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -679,13 +743,29 @@
             <End Role="ms_users" EntitySet="ms_users" />
             <End Role="ms_testresults" EntitySet="ms_testresults" />
           </AssociationSet>
+          <AssociationSet Name="FK_msusercategories_CategoryID_msvocacategories_ID" Association="Models.FK_msusercategories_CategoryID_msvocacategories_ID">
+            <End Role="ms_vocacategories" EntitySet="ms_vocacategories" />
+            <End Role="ms_usercategories" EntitySet="ms_usercategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msusercategories_UserID_msusers_ID" Association="Models.FK_msusercategories_UserID_msusers_ID">
+            <End Role="ms_users" EntitySet="ms_users" />
+            <End Role="ms_usercategories" EntitySet="ms_usercategories" />
+          </AssociationSet>
           <AssociationSet Name="FK_msuservocabularies_UserID_msusers_ID" Association="Models.FK_msuservocabularies_UserID_msusers_ID">
             <End Role="ms_users" EntitySet="ms_users" />
             <End Role="ms_uservocabularies" EntitySet="ms_uservocabularies" />
           </AssociationSet>
+          <AssociationSet Name="FK_msuservocasets_UserID_msusers_ID" Association="Models.FK_msuservocasets_UserID_msusers_ID">
+            <End Role="ms_users" EntitySet="ms_users" />
+            <End Role="ms_uservocasets" EntitySet="ms_uservocasets" />
+          </AssociationSet>
           <AssociationSet Name="FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID" Association="Models.FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID">
             <End Role="ms_vocabularydetails" EntitySet="ms_vocabularydetails" />
             <End Role="ms_uservocabularies" EntitySet="ms_uservocabularies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msuservocasets_VocaSetID_msvocasets_ID" Association="Models.FK_msuservocasets_VocaSetID_msvocasets_ID">
+            <End Role="ms_vocasets" EntitySet="ms_vocasets" />
+            <End Role="ms_uservocasets" EntitySet="ms_uservocasets" />
           </AssociationSet>
           <AssociationSet Name="FK_msvocabularydetails_VocabularyID_msvocabularies_ID" Association="Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID">
             <End Role="ms_vocabularies" EntitySet="ms_vocabularies" />
@@ -836,6 +916,8 @@
           <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="UpdatedDate" Precision="3" />
           <Property Type="Int32" Name="UpdatedBy" />
+          <NavigationProperty Name="ms_vocacategories" Relationship="Models.FK_msusercategories_CategoryID_msvocacategories_ID" FromRole="ms_usercategories" ToRole="ms_vocacategories" />
+          <NavigationProperty Name="ms_users" Relationship="Models.FK_msusercategories_UserID_msusers_ID" FromRole="ms_usercategories" ToRole="ms_users" />
         </EntityType>
         <EntityType Name="ms_users">
           <Key>
@@ -864,7 +946,9 @@
           <NavigationProperty Name="ms_paymenthistories" Relationship="Models.FK_mspaymenthistories_UserID_msusers_ID" FromRole="ms_users" ToRole="ms_paymenthistories" />
           <NavigationProperty Name="ms_registedvocasets" Relationship="Models.FK_msregistedvocasets_UserID_msusers_ID" FromRole="ms_users" ToRole="ms_registedvocasets" />
           <NavigationProperty Name="ms_testresults" Relationship="Models.FK_mstestresults_UserID_msusers_ID" FromRole="ms_users" ToRole="ms_testresults" />
+          <NavigationProperty Name="ms_usercategories" Relationship="Models.FK_msusercategories_UserID_msusers_ID" FromRole="ms_users" ToRole="ms_usercategories" />
           <NavigationProperty Name="ms_uservocabularies" Relationship="Models.FK_msuservocabularies_UserID_msusers_ID" FromRole="ms_users" ToRole="ms_uservocabularies" />
+          <NavigationProperty Name="ms_uservocasets" Relationship="Models.FK_msuservocasets_UserID_msusers_ID" FromRole="ms_users" ToRole="ms_uservocasets" />
         </EntityType>
         <EntityType Name="ms_uservocabularies">
           <Key>
@@ -902,6 +986,8 @@
           <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="UpdatedDate" Precision="3" />
           <Property Type="Int32" Name="UpdatedBy" />
+          <NavigationProperty Name="ms_users" Relationship="Models.FK_msuservocasets_UserID_msusers_ID" FromRole="ms_uservocasets" ToRole="ms_users" />
+          <NavigationProperty Name="ms_vocasets" Relationship="Models.FK_msuservocasets_VocaSetID_msvocasets_ID" FromRole="ms_uservocasets" ToRole="ms_vocasets" />
         </EntityType>
         <EntityType Name="ms_vocabularies">
           <Key>
@@ -969,6 +1055,7 @@
           <Property Type="Int32" Name="TotalRequiredTime" />
           <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ms_testresults" Relationship="Models.FK_mstestresults_CategoryID_msvocacategories_ID" FromRole="ms_vocacategories" ToRole="ms_testresults" />
+          <NavigationProperty Name="ms_usercategories" Relationship="Models.FK_msusercategories_CategoryID_msvocacategories_ID" FromRole="ms_vocacategories" ToRole="ms_usercategories" />
           <NavigationProperty Name="ms_vocabularydetails" Relationship="Models.FK_msvocabularydetails_CategoryID_msvocacategories_ID" FromRole="ms_vocacategories" ToRole="ms_vocabularydetails" />
           <NavigationProperty Name="ms_vocasets" Relationship="Models.FK_msvocacategories_VocaSetID_msvocasets_ID" FromRole="ms_vocacategories" ToRole="ms_vocasets" />
         </EntityType>
@@ -1008,6 +1095,7 @@
           <Property Type="DateTime" Name="CreatedDate" Precision="3" />
           <NavigationProperty Name="ms_paymenthistories" Relationship="Models.FK_mspaymenthistories_VocaSetID_msvocasets_ID" FromRole="ms_vocasets" ToRole="ms_paymenthistories" />
           <NavigationProperty Name="ms_registedvocasets" Relationship="Models.FK_msregistedvocasets_VocaSetID_msvocasets_ID" FromRole="ms_vocasets" ToRole="ms_registedvocasets" />
+          <NavigationProperty Name="ms_uservocasets" Relationship="Models.FK_msuservocasets_VocaSetID_msvocasets_ID" FromRole="ms_vocasets" ToRole="ms_uservocasets" />
           <NavigationProperty Name="ms_vocacategories" Relationship="Models.FK_msvocacategories_VocaSetID_msvocasets_ID" FromRole="ms_vocasets" ToRole="ms_vocacategories" />
           <NavigationProperty Name="ms_vouchers" Relationship="Models.FK_msvouchers_VocaSetID_msvocasets_ID" FromRole="ms_vocasets" ToRole="ms_vouchers" />
         </EntityType>
@@ -1173,6 +1261,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_msusercategories_CategoryID_msvocacategories_ID">
+          <End Type="Models.ms_vocacategories" Role="ms_vocacategories" Multiplicity="1" />
+          <End Type="Models.ms_usercategories" Role="ms_usercategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_vocacategories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_usercategories">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msusercategories_UserID_msusers_ID">
+          <End Type="Models.ms_users" Role="ms_users" Multiplicity="1" />
+          <End Type="Models.ms_usercategories" Role="ms_usercategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_usercategories">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_msuservocabularies_UserID_msusers_ID">
           <End Type="Models.ms_users" Role="ms_users" Multiplicity="1" />
           <End Type="Models.ms_uservocabularies" Role="ms_uservocabularies" Multiplicity="*" />
@@ -1181,6 +1293,18 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="ms_uservocabularies">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msuservocasets_UserID_msusers_ID">
+          <End Type="Models.ms_users" Role="ms_users" Multiplicity="1" />
+          <End Type="Models.ms_uservocasets" Role="ms_uservocasets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_uservocasets">
               <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1194,6 +1318,18 @@
             </Principal>
             <Dependent Role="ms_uservocabularies">
               <PropertyRef Name="VocaDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msuservocasets_VocaSetID_msvocasets_ID">
+          <End Type="Models.ms_vocasets" Role="ms_vocasets" Multiplicity="1" />
+          <End Type="Models.ms_uservocasets" Role="ms_uservocasets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_vocasets">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_uservocasets">
+              <PropertyRef Name="VocaSetID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1583,22 +1719,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="EFModels">
-        <EntityTypeShape EntityType="Models.ms_answers" Width="1.5" PointX="5.4770704924487834" PointY="19.919895896650804" />
-        <EntityTypeShape EntityType="Models.ms_kanjiexamples" Width="1.5" PointX="5.7615776219226316" PointY="19.265512475401867" />
-        <EntityTypeShape EntityType="Models.ms_kanjis" Width="1.5" PointX="10.745784971278992" PointY="10.329811816257337" />
-        <EntityTypeShape EntityType="Models.ms_paymenthistories" Width="1.5" PointX="1.0204778411521007" PointY="6.2024017005238692" />
-        <EntityTypeShape EntityType="Models.ms_registedvocasets" Width="1.5" PointX="0.41554303114094915" PointY="0.31979064658274436" />
-        <EntityTypeShape EntityType="Models.ms_testresults" Width="1.5" PointX="2.2500769413309532" PointY="16.290805377201551" />
-        <EntityTypeShape EntityType="Models.ms_usercategories" Width="1.5" PointX="10.404968110101748" PointY="16.682339437623668" />
-        <EntityTypeShape EntityType="Models.ms_users" Width="1.5" PointX="10.020922399135735" PointY="16.235488869359479" />
-        <EntityTypeShape EntityType="Models.ms_uservocabularies" Width="1.5" PointX="6.1955104592235344" PointY="6.4898515522898412" />
-        <EntityTypeShape EntityType="Models.ms_uservocasets" Width="1.5" PointX="11.893221784333335" PointY="9.9895954476620989" />
-        <EntityTypeShape EntityType="Models.ms_vocabularies" Width="1.5" PointX="2.1967576547510728" PointY="30.991827472574929" />
-        <EntityTypeShape EntityType="Models.ms_vocabularydetails" Width="1.5" PointX="7.1013537771540474" PointY="2.3152398328833468" />
-        <EntityTypeShape EntityType="Models.ms_vocacategories" Width="1.5" PointX="3.2382368795751768" PointY="0.13897874957834311" />
-        <EntityTypeShape EntityType="Models.ms_vocakanjis" Width="1.5" PointX="6.63680824015141" PointY="13.944038382705319" />
-        <EntityTypeShape EntityType="Models.ms_vocasets" Width="1.5" PointX="1.33756395864187" PointY="27.802076248359903" />
-        <EntityTypeShape EntityType="Models.ms_vouchers" Width="1.5" PointX="3.7572498618426033" PointY="4.454815777230456" />
+        <EntityTypeShape EntityType="Models.ms_answers" Width="1.5" PointX="2.2162347837426863" PointY="24.346068035972337" />
+        <EntityTypeShape EntityType="Models.ms_kanjiexamples" Width="1.5" PointX="11.682465785966471" PointY="3.1402928247769797" />
+        <EntityTypeShape EntityType="Models.ms_kanjis" Width="1.5" PointX="1.520845268629885" PointY="24.442137565669668" />
+        <EntityTypeShape EntityType="Models.ms_paymenthistories" Width="1.5" PointX="3.8912490065634477" PointY="6.7876336904185051" />
+        <EntityTypeShape EntityType="Models.ms_registedvocasets" Width="1.5" PointX="9.3113771124330249" PointY="18.853146755533828" />
+        <EntityTypeShape EntityType="Models.ms_testresults" Width="1.5" PointX="2.2542852825737953" PointY="16.096321485981495" />
+        <EntityTypeShape EntityType="Models.ms_usercategories" Width="1.5" PointX="8.4248286953311542" PointY="10.63753310341273" />
+        <EntityTypeShape EntityType="Models.ms_users" Width="1.5" PointX="8.12123094318492" PointY="9.3871650590501563" />
+        <EntityTypeShape EntityType="Models.ms_uservocabularies" Width="1.5" PointX="11.346428772130249" PointY="16.56320827480555" />
+        <EntityTypeShape EntityType="Models.ms_uservocasets" Width="1.5" PointX="1.4378985862424125" PointY="2.5639338207263189" />
+        <EntityTypeShape EntityType="Models.ms_vocabularies" Width="1.5" PointX="1.0431145229577621" PointY="25.357617524153376" />
+        <EntityTypeShape EntityType="Models.ms_vocabularydetails" Width="1.5" PointX="2.1366272112990856" PointY="12.95178130872165" />
+        <EntityTypeShape EntityType="Models.ms_vocacategories" Width="1.5" PointX="6.3404988322129938" PointY="18.376749389980336" />
+        <EntityTypeShape EntityType="Models.ms_vocakanjis" Width="1.5" PointX="10.644561537841597" PointY="9.29816006556999" />
+        <EntityTypeShape EntityType="Models.ms_vocasets" Width="1.5" PointX="6.3660993661573624" PointY="16.415665127530538" />
+        <EntityTypeShape EntityType="Models.ms_vouchers" Width="1.5" PointX="11.754160383601748" PointY="29.170465184920683" />
         <AssociationConnector Association="Models.FK_msanswers_KanjiID_mskanjis_ID" />
         <AssociationConnector Association="Models.FK_msanswers_UpdatedBy_msusers_ID" />
         <AssociationConnector Association="Models.FK_msanswers_VocabularyID_msvocabularies_ID" />
@@ -1611,8 +1747,12 @@
         <AssociationConnector Association="Models.FK_msregistedvocasets_VocaSetID_msvocasets_ID" />
         <AssociationConnector Association="Models.FK_mstestresults_CategoryID_msvocacategories_ID" />
         <AssociationConnector Association="Models.FK_mstestresults_UserID_msusers_ID" />
+        <AssociationConnector Association="Models.FK_msusercategories_CategoryID_msvocacategories_ID" />
+        <AssociationConnector Association="Models.FK_msusercategories_UserID_msusers_ID" />
         <AssociationConnector Association="Models.FK_msuservocabularies_UserID_msusers_ID" />
+        <AssociationConnector Association="Models.FK_msuservocasets_UserID_msusers_ID" />
         <AssociationConnector Association="Models.FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID" />
+        <AssociationConnector Association="Models.FK_msuservocasets_VocaSetID_msvocasets_ID" />
         <AssociationConnector Association="Models.FK_msvocabularydetails_VocabularyID_msvocabularies_ID" />
         <AssociationConnector Association="Models.FK_msvocakanjis_VocabularyID_msvocabularies_ID" />
         <AssociationConnector Association="Models.FK_msvocabularydetails_CategoryID_msvocacategories_ID" />

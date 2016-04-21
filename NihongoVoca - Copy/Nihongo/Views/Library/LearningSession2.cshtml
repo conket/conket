@@ -8,6 +8,7 @@
 <input type="hidden" id="gtv" value='@CommonMethod.EncodeUrl("GetSessionVocas")' />
 <input type="hidden" id="gpr" value='@CommonMethod.EncodeUrl("GetPracticeSessionVocas")' />
 <input type="hidden" id="gnk" value='@CommonMethod.EncodeUrl("GetNotebookSessionVocas")' />
+<input type="hidden" id="gcv" value='@CommonMethod.EncodeUrl("GetPracticeSessionCateVocas")' />
 <input type="hidden" id="utr" value='@CommonMethod.EncodeUrl("UpdateSessionResult")' />
 <input type="hidden" id="uft" value='@CommonMethod.EncodeUrl("UpdateFastTestVoca")' />
 <input type="hidden" id="vsd" value="@Model.ID"/>
@@ -15,6 +16,7 @@
 <input type="hidden" id="accessDenied" value="@Ivs.Core.Common.CommonData.DbReturnCode.AccessDenied"/>
 <input type="hidden" id="lt" value="@ViewBag.LessonType"/>
 <input type="hidden" id="ik" value="@ViewBag.IsKanji"/>
+<input type="hidden" id="cid" value="@ViewBag.CategoryID"/>
 
 <div id="content" style="padding-left: 0px !important">
     <div class="notifications-wrapper">
@@ -22,6 +24,7 @@
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-body">
+                        
                         @*<div class="col-md-12 padding-0">*@
                         <div class="progress progress-small lesson" style="margin-bottom: 0px !important;" id="progress">
                             <div class="progress-bar progress-bar-primary progress-bar-striped active" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
@@ -30,9 +33,9 @@
                         @*</div>*@
                         <div class="col-md-12 padding-0">
                             <div class="col-md-12 padding-0">
-                                <div class="result" style="display:none">
+                                <div class="result" style="display: none">
                                     <div class="col-md-12 padding-0">
-                                        <button id="btnLearning" class="btn ripple btn-outline btn-primary" onclick="getTestVocas(); return false;">
+                                        <button id="btnLearning" class="btn ripple btn-outline btn-primary">
                                             <div>
                                                 <span id="spanLearning"><strong>HỌC TIẾP </strong></span><i class="fa fa-location-arrow"></i>
                                                 <span class="ink animate"></span>
@@ -40,7 +43,7 @@
                                         </button>
                                     </div>
                                     <div class="col-md-12 padding-0">
-                                        <button id="btnReview" class="btn ripple btn-outline btn-primary" onclick="getPracticeVocas(); return false;">
+                                        <button id="btnReview" class="btn ripple btn-outline btn-primary">
                                             <div>
                                                 <span id="spanReview"><strong>ÔN TẬP </strong></span><i class="fa fa-signal"></i>
                                                 <span class="ink animate"></span>
@@ -48,9 +51,9 @@
                                         </button>
                                     </div>
                                     <div class="col-md-12 padding-0">
-                                        <button id="btnNotebook" class="btn ripple btn-outline btn-primary" onclick="getNotebookVocas(); return false;">
+                                        <button id="btnNotebook" class="btn ripple btn-outline btn-primary">
                                             <div>
-                                                <span id="spanNotebook"><strong>ÔN SỔ TAY </strong>></span><i class="fa fa-book"></i
+                                                <span id="spanNotebook"><strong>ÔN SỔ TAY </strong></span><i class="fa fa-book"></i>
                                                 <span class="ink animate"></span>
                                             </div>
                                         </button>
@@ -191,34 +194,66 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="modalKanjiImage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Ghi Nhớ</h4>
-                </div>
-                <div class="modal-body">
-                    @*<div class="text-center kanjiImage">
+</div>
+<div class="modal fade" id="modalKanjiImage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Tạo Ghi Nhớ</h4>
+            </div>
+            <div class="modal-body">
+                @*<div class="text-center kanjiImage">
                         <img class="img-responsive" src="~/images/voca/ichi.jpg" alt="Từ vựng tiếng Nhật" style="height: 150px">
                         <h4>Một ngón tay</h4>
                     </div>*@
-                    <div class="form-group">
-                        <label for="comment">Nhập gì đó dễ nhớ:</label>
-                        <textarea class="form-control" rows="3" id="txtUserDefine" maxlength="40"></textarea>
-                    </div>
+                <div class="form-group">
+                    <label for="comment">Nhập gì đó dễ nhớ:</label>
+                    <textarea class="form-control" rows="3" id="txtUserDefine" maxlength="40"></textarea>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="btnSaveNote">Lưu</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnSaveNote">Lưu</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
             </div>
         </div>
     </div>
-    @Html.Partial("_ModalPartial")
-    <script src='@Scripts.Url("~/bundles/dr")' async> </script>
-    @*<script src='@Scripts.Url("~/bundles/learninglesson")'> </script>*@
-    <script src="~/Scripts/mine/learningsession.js"></script>
+</div>
+@Html.Partial("_ModalPartial")
+<script src='@Scripts.Url("~/bundles/dr")' async> </script>
+@*<script src='@Scripts.Url("~/bundles/learninglesson")'> </script>*@
+<script src="~/Scripts/mine/learningsession.js"></script>
 @Html.Partial("_TestModalPartial")
 
+<div id="modal-celebrate" class="modal fade modal-v2" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="col-md-3 col-xs-3 modal-content-left" style="background: none;">
+                @*<p class="modal-content-left-text-1">Save Up to</p>
+                <b class="modal-content-left-percent">50<sup>%</sup></b>*@
+                <img src="~/images/conket1.png" alt="conket" class="img-responsive" style="height: 100px;">
+            </div>
+            <div class="col-md-9 col-xs-9 modal-content-right">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <input type="hidden" id="id-celebrate" />
+                <p>
+                    Chúc mừng @Session["DisplayName"] vừa hoàn thành <strong>
+                        <div id="info-celebrate"></div>
+                    </strong>
+                </p>
+                <button id="btnCelebrateReview" class="btn btn-primary" style="width: auto !important;">ÔN LẠI BÀI NHÉ</button>
+                <button data-dismiss="modal" class="btn btn-default" style="width: auto !important;">HỌC TIẾP</button>
+                <div
+                    class="fb-like"
+                    data-share="true"
+                    data-width="450"
+                    data-show-faces="false">
+                </div>
+                @*<input type="text" class="modal-content-right-text-mail">*@
 
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

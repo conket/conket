@@ -12,6 +12,15 @@
     margin-top: -10px;
 }
 
+
+.btn-navigator
+{
+    min-width:150px;
+    background-color:#fff;
+    border:1px solid #ddd !important;
+    border-radius:1px !important;
+}
+
 .btn-quizz
 {
     width: 120px;
@@ -34,6 +43,14 @@
         /*font-weight:bold;*/
     }
 
+.quizz-right{
+    background-color: #337ab7 !important;
+        color: white !important;
+}
+.quizz-wrong{
+    background-color: #b6124a !important;
+        color: white !important;
+}
 .ok
 {
     color: #3c763d;
@@ -130,4 +147,30 @@
 .modal-message.modal-warning .modal-header {
     color: #f4b400;
     border-bottom: 3px solid #ffce55;
+}
+
+@media (max-width: 768px) {
+  .tableExample{
+      height: 100px;
+      overflow:auto;
+  }
+  .imgExample{
+      height: 50px;
+  }
+    
+  #draw > svg {
+      height:60px;
+      width:60px;
+  }
+}
+@media (min-width: 768px) {
+  .tableExample{
+      height: 250px;
+      overflow:auto;
+  }
+  .imgExample{
+      height: 80px;
+  }
+
+
 }

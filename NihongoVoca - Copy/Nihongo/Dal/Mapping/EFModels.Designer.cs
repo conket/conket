@@ -31,8 +31,12 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Models", "FK_msregistedvocasets_VocaSetID_msvocasets_ID", "ms_vocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocasets), "ms_registedvocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_registedvocasets), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_mstestresults_CategoryID_msvocacategories_ID", "ms_vocacategories", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocacategories), "ms_testresults", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_testresults), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_mstestresults_UserID_msusers_ID", "ms_users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_users), "ms_testresults", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_testresults), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msusercategories_CategoryID_msvocacategories_ID", "ms_vocacategories", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocacategories), "ms_usercategories", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_usercategories), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msusercategories_UserID_msusers_ID", "ms_users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_users), "ms_usercategories", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_usercategories), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_msuservocabularies_UserID_msusers_ID", "ms_users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_users), "ms_uservocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_uservocabularies), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msuservocasets_UserID_msusers_ID", "ms_users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_users), "ms_uservocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_uservocasets), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_msuservocabularies_VocaDetailID_msvocabularydetails_ID", "ms_vocabularydetails", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocabularydetails), "ms_uservocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_uservocabularies), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msuservocasets_VocaSetID_msvocasets_ID", "ms_vocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocasets), "ms_uservocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_uservocasets), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_msvocabularydetails_VocabularyID_msvocabularies_ID", "ms_vocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_vocabularies), "ms_vocabularydetails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocabularydetails), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_msvocakanjis_VocabularyID_msvocabularies_ID", "ms_vocabularies", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocabularies), "ms_vocakanjis", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocakanjis), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_msvocabularydetails_CategoryID_msvocacategories_ID", "ms_vocacategories", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocacategories), "ms_vocabularydetails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocabularydetails), true)]
@@ -3158,6 +3162,86 @@ namespace Nihongo.Dal.Mapping
         #endregion
 
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msusercategories_CategoryID_msvocacategories_ID", "ms_vocacategories")]
+        public ms_vocacategories ms_vocacategories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocacategories>("Models.FK_msusercategories_CategoryID_msvocacategories_ID", "ms_vocacategories").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocacategories>("Models.FK_msusercategories_CategoryID_msvocacategories_ID", "ms_vocacategories").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_vocacategories> ms_vocacategoriesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocacategories>("Models.FK_msusercategories_CategoryID_msvocacategories_ID", "ms_vocacategories");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_vocacategories>("Models.FK_msusercategories_CategoryID_msvocacategories_ID", "ms_vocacategories", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msusercategories_UserID_msusers_ID", "ms_users")]
+        public ms_users ms_users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msusercategories_UserID_msusers_ID", "ms_users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msusercategories_UserID_msusers_ID", "ms_users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_users> ms_usersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msusercategories_UserID_msusers_ID", "ms_users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_users>("Models.FK_msusercategories_UserID_msusers_ID", "ms_users", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -3753,6 +3837,28 @@ namespace Nihongo.Dal.Mapping
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msusercategories_UserID_msusers_ID", "ms_usercategories")]
+        public EntityCollection<ms_usercategories> ms_usercategories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_usercategories>("Models.FK_msusercategories_UserID_msusers_ID", "ms_usercategories");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_usercategories>("Models.FK_msusercategories_UserID_msusers_ID", "ms_usercategories", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msuservocabularies_UserID_msusers_ID", "ms_uservocabularies")]
         public EntityCollection<ms_uservocabularies> ms_uservocabularies
         {
@@ -3765,6 +3871,28 @@ namespace Nihongo.Dal.Mapping
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_uservocabularies>("Models.FK_msuservocabularies_UserID_msusers_ID", "ms_uservocabularies", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msuservocasets_UserID_msusers_ID", "ms_uservocasets")]
+        public EntityCollection<ms_uservocasets> ms_uservocasets
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_uservocasets>("Models.FK_msuservocasets_UserID_msusers_ID", "ms_uservocasets");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_uservocasets>("Models.FK_msuservocasets_UserID_msusers_ID", "ms_uservocasets", value);
                 }
             }
         }
@@ -4525,6 +4653,86 @@ namespace Nihongo.Dal.Mapping
         #endregion
 
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msuservocasets_UserID_msusers_ID", "ms_users")]
+        public ms_users ms_users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msuservocasets_UserID_msusers_ID", "ms_users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msuservocasets_UserID_msusers_ID", "ms_users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_users> ms_usersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msuservocasets_UserID_msusers_ID", "ms_users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_users>("Models.FK_msuservocasets_UserID_msusers_ID", "ms_users", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msuservocasets_VocaSetID_msvocasets_ID", "ms_vocasets")]
+        public ms_vocasets ms_vocasets
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocasets>("Models.FK_msuservocasets_VocaSetID_msvocasets_ID", "ms_vocasets").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocasets>("Models.FK_msuservocasets_VocaSetID_msvocasets_ID", "ms_vocasets").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_vocasets> ms_vocasetsReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_vocasets>("Models.FK_msuservocasets_VocaSetID_msvocasets_ID", "ms_vocasets");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_vocasets>("Models.FK_msuservocasets_VocaSetID_msvocasets_ID", "ms_vocasets", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -5934,6 +6142,28 @@ namespace Nihongo.Dal.Mapping
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msusercategories_CategoryID_msvocacategories_ID", "ms_usercategories")]
+        public EntityCollection<ms_usercategories> ms_usercategories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_usercategories>("Models.FK_msusercategories_CategoryID_msvocacategories_ID", "ms_usercategories");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_usercategories>("Models.FK_msusercategories_CategoryID_msvocacategories_ID", "ms_usercategories", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msvocabularydetails_CategoryID_msvocacategories_ID", "ms_vocabularydetails")]
         public EntityCollection<ms_vocabularydetails> ms_vocabularydetails
         {
@@ -6742,6 +6972,28 @@ namespace Nihongo.Dal.Mapping
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_registedvocasets>("Models.FK_msregistedvocasets_VocaSetID_msvocasets_ID", "ms_registedvocasets", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msuservocasets_VocaSetID_msvocasets_ID", "ms_uservocasets")]
+        public EntityCollection<ms_uservocasets> ms_uservocasets
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_uservocasets>("Models.FK_msuservocasets_VocaSetID_msvocasets_ID", "ms_uservocasets");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_uservocasets>("Models.FK_msuservocasets_VocaSetID_msvocasets_ID", "ms_uservocasets", value);
                 }
             }
         }

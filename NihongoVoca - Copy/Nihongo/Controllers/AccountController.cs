@@ -1113,5 +1113,27 @@ namespace Nihongo.Controllers
                 return PartialView("_UserPartialView", users);
             }
         }
+
+        [EncryptActionName(Name = ("GetCategoryBySet"))]
+        [OutputCache(CacheProfile = "Cache1MinuteVaryByIDClient")]
+        public ActionResult GetCategoryBySet(int id)
+        {
+            List<MS_VocaCategoriesModels> results = new List<MS_VocaCategoriesModels>();
+            int returnCode = 0;
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                returnCode = CommonData.DbReturnCode.AccessDenied;
+            }
+            else
+            {
+                using (MS_VocaCategoryDao dao = new MS_VocaCategoryDao())
+                {
+                    returnCode = dao.SelectCategoryBySet(id, CommonMethod.ParseInt(Session["UserID"]), out results);
+                }
+            }
+
+            return PartialView("_CategoryPartial", results);
+        }
+
     }
 }

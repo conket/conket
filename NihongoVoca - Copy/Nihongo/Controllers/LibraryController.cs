@@ -126,8 +126,8 @@ namespace Nihongo.Controllers
         [ActionName("hoc-tu-vung")]
         public ActionResult Learning(int id, string urlDisplay)
         {
-            ViewBag.CategoryID = id;
-            ViewBag.CategoryUrlDisplay = urlDisplay;
+            ViewBag.VocaSetID = id;
+            ViewBag.VocaSetUrlDisplay = urlDisplay;
             //learning
             ViewBag.LessonType = "1";
             if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
@@ -158,8 +158,8 @@ namespace Nihongo.Controllers
         [ActionName("on-tu-vung")]
         public ActionResult PracticeLesson(int id, string urlDisplay)
         {
-            ViewBag.CategoryID = id;
-            ViewBag.CategoryUrlDisplay = urlDisplay;
+            ViewBag.VocaSetID = id;
+            ViewBag.VocaSetUrlDisplay = urlDisplay;
             //practice
             ViewBag.LessonType = "2";
             if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
@@ -175,11 +175,31 @@ namespace Nihongo.Controllers
             return View("LearningSession2", result);
         }
 
-        [ActionName("on-so-tay")]
-        public ActionResult NotebookLesson(int id, string urlDisplay)
+        [ActionName("on-bai-hoc")]
+        public ActionResult PracticeLessonCate(int id, string urlDisplay)
         {
             ViewBag.CategoryID = id;
             ViewBag.CategoryUrlDisplay = urlDisplay;
+            //practice cate
+            ViewBag.LessonType = "4";
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                return RedirectToAction("RequireLogin", "Account");
+            }
+            MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
+            MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
+            MS_VocaSetsModels result = new MS_VocaSetsModels();
+            int returnCode = dao.SelectPracticeLessonCate(id, CommonMethod.ParseInt(Session["UserID"]), out result);
+
+            ViewBag.IsKanji = result.IsKanji;
+            return View("LearningSession2", result);
+        }
+
+        [ActionName("on-so-tay")]
+        public ActionResult NotebookLesson(int id, string urlDisplay)
+        {
+            ViewBag.VocaSetID = id;
+            ViewBag.VocaSetUrlDisplay = urlDisplay;
             //notebook
             ViewBag.LessonType = "3";
             if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
@@ -540,11 +560,40 @@ namespace Nihongo.Controllers
                 MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
                 model.VocaSetID = id;
                 //model.CategoryID = id;
-                model.Type = CommonData.VocaType.Word;
+                //model.Type = CommonData.VocaType.Word;
                 model.UserID = CommonMethod.ParseInt(Session["UserID"]);
                 model.IsKanji = isKanji;
                 //model.HasLearnt = CommonData.Status.Disable;
                 returnCode = dao.SelectPracticeSessionUserVocaData(model, out results);
+            }
+
+            return Json(new { vocabularies = ((results)) }, JsonRequestBehavior.AllowGet);
+        }
+
+        [EncryptActionName(Name = ("GetPracticeSessionCateVocas"))]
+        [OutputCache(CacheProfile = "Cache1MinuteVaryByIDClient")]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult GetPracticeSessionCateVocas(int id, string isKanji)
+        {
+            List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
+            int returnCode = 0;
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                returnCode = CommonData.DbReturnCode.AccessDenied;
+            }
+            else
+            {
+                //MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
+                //returnCode = dao.SelectUserVocaData(id, CommonMethod.ParseString(Session["UserID"]), out results);
+                MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
+                MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
+                model.CategoryID = id;
+                //model.CategoryID = id;
+                //model.Type = CommonData.VocaType.Word;
+                model.UserID = CommonMethod.ParseInt(Session["UserID"]);
+                model.IsKanji = isKanji;
+                //model.HasLearnt = CommonData.Status.Disable;
+                returnCode = dao.SelectPracticeSessionCateVocas(model, out results);
             }
 
             return Json(new { vocabularies = ((results)) }, JsonRequestBehavior.AllowGet);
@@ -569,7 +618,7 @@ namespace Nihongo.Controllers
                 MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
                 model.VocaSetID = id;
                 //model.CategoryID = id;
-                model.Type = CommonData.VocaType.Word;
+                //model.Type = CommonData.VocaType.Word;
                 model.UserID = CommonMethod.ParseInt(Session["UserID"]);
                 model.IsKanji = isKanji;
                 //model.HasLearnt = CommonData.Status.Disable;
@@ -598,7 +647,7 @@ namespace Nihongo.Controllers
                 MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
                 model.VocaSetID = id;
                 //model.CategoryID = id;
-                model.Type = CommonData.VocaType.Word;
+                //model.Type = CommonData.VocaType.Word;
                 model.UserID = CommonMethod.ParseInt(Session["UserID"]);
                 model.IsKanji = isKanji;
                 //model.HasLearnt = CommonData.Status.Disable;
@@ -702,7 +751,7 @@ namespace Nihongo.Controllers
                     //2: weak
                     HasLearnt = type == "2" ? CommonData.StringEmpty : type,
                     VocaGetType = type == "2" ? type : CommonData.StringEmpty,
-                    Type = CommonData.VocaType.Word,
+                    //Type = CommonData.VocaType.Word,
                 };
                 returnCode = dao.SelectUserVocaData(model, out results);
             }
@@ -731,7 +780,7 @@ namespace Nihongo.Controllers
                     //2: weak
                     HasLearnt = type == "2" ? CommonData.StringEmpty : type,
                     VocaGetType = type == "2" ? type : CommonData.StringEmpty,
-                    Type = CommonData.VocaType.Word,
+                    //Type = CommonData.VocaType.Word,
                 };
                 returnCode = dao.SelectUserVocaData(model, out results);
             }
@@ -760,7 +809,7 @@ namespace Nihongo.Controllers
                     //2: weak
                     HasLearnt = type == "2" ? CommonData.StringEmpty : type,
                     VocaGetType = type == "2" ? type : CommonData.StringEmpty,
-                    Type = CommonData.VocaType.Word,
+                    //Type = CommonData.VocaType.Word,
                 };
                 returnCode = dao.SelectUserVocaData(model, out results);
             }
@@ -891,7 +940,7 @@ namespace Nihongo.Controllers
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
                 MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
                 model.CategoryID = id;
-                model.Type = CommonData.VocaType.Word;
+                //model.Type = CommonData.VocaType.Word;
                 model.UserID = CommonMethod.ParseInt(Session["UserID"]);
                 //model.HasLearnt = CommonData.Status.Disable;
                 returnCode = dao.SelectUserVocaData(model, out results);
@@ -916,7 +965,7 @@ namespace Nihongo.Controllers
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
                 MS_UserVocabulariesModels model = new MS_UserVocabulariesModels();
                 model.CategoryID = id;
-                model.Type = CommonData.VocaType.Word;
+                //model.Type = CommonData.VocaType.Word;
                 model.UserID = CommonMethod.ParseInt(Session["UserID"]);
                 //model.HasLearnt = CommonData.Status.Disable;
                 returnCode = dao.SelectUserVocaData(model, out results);
@@ -1010,15 +1059,16 @@ namespace Nihongo.Controllers
             int numOfHasLearntOfSet = 0;
             int numOfHasMarkedOfSet = 0;
             int numOfWeakOfSet = 0;
+            string hasLearntCateName = string.Empty;
+            int hasLearntCateID = 0;
             if (!CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
 
-                
-                returnCode = dao.UpdateSessionResult(CommonMethod.ParseInt(Session["UserID"]), vocas, out numOfVocaOfSet, out numOfHasLearntOfSet, out numOfHasMarkedOfSet, out numOfWeakOfSet);
+                returnCode = dao.UpdateSessionResult(CommonMethod.ParseInt(Session["UserID"]), vocas, out numOfVocaOfSet, out numOfHasLearntOfSet, out numOfHasMarkedOfSet, out numOfWeakOfSet, out hasLearntCateID, out hasLearntCateName);
             }
 
-            return Json(new { ReturnCode = returnCode, Result1 = numOfVocaOfSet, Result2 = numOfHasLearntOfSet, Result3 = numOfHasMarkedOfSet, Result4 = numOfWeakOfSet });
+            return Json(new { ReturnCode = returnCode, Result1 = numOfVocaOfSet, Result2 = numOfHasLearntOfSet, Result3 = numOfHasMarkedOfSet, Result4 = numOfWeakOfSet, Result5 = hasLearntCateID, Result6 = hasLearntCateName });
         }
 
         [EncryptActionName(Name = ("UpdateFastTestVoca"))]

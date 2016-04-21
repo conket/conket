@@ -33,7 +33,7 @@ namespace Nihongo.Dal.Dao
                 //}
                 //if (!CommonMethod.IsNullOrEmpty(model.Type))
                 //{
-                query = query.Where(ss => ss.Type == "2");
+                //query = query.Where(ss => ss.Type == "2");
                 //}
 
                 if (!CommonMethod.IsNullOrEmpty(model.DisplayType))

@@ -93,6 +93,40 @@ namespace Nihongo.Dal.Dao
             return returnCode;
         }
 
+
+        internal int SelectPracticeLessonCate(int id, int userID, out MS_VocaSetsModels result)
+        {
+            int returnCode = 0;
+            result = new MS_VocaSetsModels();
+
+            try
+            {
+                result = (from ss in this.ms_vocacategories
+                          where ss.ID == id
+                          select new MS_VocaSetsModels
+                          {
+                              ID = ss.ms_vocasets.ID,
+                              Code = ss.ms_vocasets.Code,
+                              Name1 = ss.ms_vocasets.Name1,
+                              UrlImage = ss.ms_vocasets.UrlImage,
+                              UrlDisplay = ss.ms_vocasets.UrlDisplay,
+                              Description = ss.ms_vocasets.Description,
+                              NumOfVocas = ss.ms_vocasets.NumOfVocas,
+                              IsKanji = ss.ms_vocasets.IsKanji,
+                              NumOfRegistedPerson = ss.ms_vocasets.NumOfRegistedPerson,
+                          })
+                    .FirstOrDefault();
+                
+            }
+            catch (Exception ex)
+            {
+                this.Rollback();
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
         internal int SelectVocaSetByID(int id, int userID, out MS_VocaSetsModels result)
         {
             int returnCode = 0;
@@ -196,19 +230,9 @@ namespace Nihongo.Dal.Dao
                             //else
                             //{
                             //    hasRegis = true;
+                            result.NumOfRegistedPerson += 1;
+                            returnCode = this.Saves();
                         }
-                    
-
-                        //returnCode = this.Saves();
-                        //if (returnCode == CommonData.DbReturnCode.Succeed)
-                        //{
-                        //update voca set
-                        //Nihongo.Dal.Mapping.ms_vocasets vocaSet = this.ms_vocasets.FirstOrDefault(s => s.ID == id);
-                        result.NumOfRegistedPerson += 1;
-
-                        returnCode = this.Saves();
-                        //}
-                        //}
 
                         if (returnCode == CommonData.DbReturnCode.Succeed)
                         {
@@ -580,7 +604,7 @@ namespace Nihongo.Dal.Dao
 
             try
             {
-                isOK = this.ms_usercategories.Any(ss => ss.CategoryID == id && ss.UserID == userID && ss.HasLearnt == CommonData.Status.Enable);
+                isOK = this.ms_uservocabularies.Any(ss => ss.VocaDetailID == id && ss.UserID == userID && ss.HasLearnt == CommonData.Status.Enable);
             }
             catch (Exception ex)
             {
@@ -606,5 +630,33 @@ namespace Nihongo.Dal.Dao
 
             return returnCode;
         }
+
+        internal int SelectCategoryBySet(int vocaSetID, int userID, out List<MS_VocaCategoriesModels> results)
+        {
+            int returnCode = 0;
+            results = new List<MS_VocaCategoriesModels>();
+
+            try
+            {
+
+                results = this.ms_usercategories.Where(ss => ss.UserID == userID
+                    && ss.ms_vocacategories.VocaSetID == vocaSetID
+                    && (ss.HasLearnt == CommonData.Status.Enable || ss.IsIgnore == CommonData.Status.Enable)
+                    )
+                    .Select(s => new MS_VocaCategoriesModels
+                    {
+                        ID = s.CategoryID,
+                        Name1 = s.ms_vocacategories.Name1,
+                    })
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
     }
 }
