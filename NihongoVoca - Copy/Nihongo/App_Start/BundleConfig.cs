@@ -142,7 +142,8 @@ namespace Nihongo
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/audio").Include(
-                        "~/Scripts/jquery.mb.audio.min.js"
+                        //"~/Scripts/jquery.mb.audio.min.js"
+                        "~/Scripts/ion.sound.min.js"
                         ));
 
             #endregion

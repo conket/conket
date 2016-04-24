@@ -87,7 +87,7 @@
                             var str = userVocaSet.NumOfHasMarked == 0 ? "" : "(" + userVocaSet.NumOfHasMarked + ")";
                             <a href="@Url.Action("on-so-tay", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-navigator btn-primary require-login"><i class="fa fa-tasks"></i>Ôn sổ tay @str</a>
                         }
-                        <a href="#" id="btnReviewCate" class="btn btn-outline btn-navigator btn-primary require-login" data-value="@userVocaSet.VocaSetID"><i class=" icon-compass"></i>Ôn theo bài</a>
+                        <a href="#" class="btn btn-outline btn-navigator btn-primary require-login review-cate" data-value="@userVocaSet.VocaSetID"><i class=" icon-compass"></i>Ôn theo bài</a>
                     </div>
                 </div>
 
@@ -189,7 +189,7 @@
             $(this).stop().removeClass('open');
         });
 
-        $('#btnReviewCate').on('click', function (e) {
+        $('.review-cate').on('click', function (e) {
             e.preventDefault();
             var url = '/Account/' + '@CommonMethod.EncodeUrl("GetCategoryBySet")' + '/' + $(this).attr('data-value');
             $('#choosingCates').load(url);

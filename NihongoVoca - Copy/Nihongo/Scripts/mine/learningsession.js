@@ -528,13 +528,15 @@ function getTestVocas() {
             if (result.returnCode == $('#accessDenied').val()) {
                 window.location.href = '/Account/RequireLogin';
             } else {
+                var vocaSounds = [];
                 $.each(result.vocabularies, function (i, voca) {
                     vocas.push(voca);
                     //                        failArray.push(voca);
                     //if (voca.TestSkill == '3') {
                     if (voca.DisplayType != '3') {
-                        var audio = new Audio(voca.UrlAudio);
-                        audio.load();
+                        //var audio = new Audio(voca.UrlAudio);
+                        //audio.load();
+                        vocaSounds[i] = voca.UrlAudio;
                     }
                     //}
 
@@ -545,6 +547,18 @@ function getTestVocas() {
                     else {
                         totalLevel += parseInt(10 - voca.Level);
                     }
+                });
+
+                //console.log(JSON.stringify(vocaSounds));
+                // init bunch of sounds
+                ion.sound({
+                    sounds: JSON.stringify(vocaSounds),
+
+                    // main config
+                    path: "~/content/media/hiragana/",
+                    preload: true,
+                    multiplay: true,
+                    volume: 0.9
                 });
 
                 completedTime = 0;
@@ -2772,4 +2786,8 @@ function ignore() {
 
 function expandDetail(obj) {
     $(obj).addClass('open');
+}
+
+function speak(name) {
+    ion.sound.play(name);
 }

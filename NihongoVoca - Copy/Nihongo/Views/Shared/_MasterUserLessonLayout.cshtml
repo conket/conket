@@ -24,7 +24,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @*@Scripts.Render("~/bundles/jquery")*@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    @*<script src='@Scripts.Url("~/bundles/bootstrap")' async> </script>*@
+    
 
     <script>
         //(function (i, s, o, g, r, a, m) {
@@ -178,13 +178,14 @@
     </div>
 
     <!-- start: Javascript -->
-    <script src='@Scripts.Url("~/bundles/jqueryui")' > </script>
+    <script src='@Scripts.Url("~/bundles/jqueryui")'> </script>
     <script>
         /*** Handle jQuery plugin naming conflict between jQuery UI and Bootstrap ***/
         $.widget.bridge('uibutton', $.ui.button);
         $.widget.bridge('uitooltip', $.ui.tooltip);
     </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    @*<script src='@Scripts.Url("~/bundles/bootstrap")' async> </script>*@
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- plugins -->
     <script src='@Scripts.Url("~/bundles/us")' > </script>
     <script src='@Scripts.Url("~/bundles/jqueryval")' async> </script>
