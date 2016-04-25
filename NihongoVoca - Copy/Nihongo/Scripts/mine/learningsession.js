@@ -35,10 +35,27 @@ $(document).ready(function () {
     $('.result').hide();
     $('.lesson').show();
 
-    var f = new Audio('/Content/media/fail.wav');
-    f.load();
-    var o = new Audio('/Content/media/tada.wav');
-    o.load();
+    //var f = new Audio('/Content/media/fail.wav');
+    //f.load();
+    //var o = new Audio('/Content/media/tada.wav');
+    //o.load();
+
+    //ion.sound({
+    //    sounds: [
+    //        {
+    //            name: 'boing'
+    //        },
+    //        {
+    //            name: 'success'
+    //        }
+    //    ],
+    //    // main config
+    //    path: "/Content/media/",
+    //    preload: true,
+    //    multiplay: true,
+    //    volume: 0.9
+    //});
+
 
     currentIndex = 0;
     isPractice = false;
@@ -85,7 +102,7 @@ $(document).ready(function () {
         if (isPractice) {
             if (vocas[currentIndex].IsIgnore == '1') {
                 if (isFinish()) {
-                    speak('/Content/media/success.mp3');
+                    sound('success');
 
                     //show result
                     currentIndex = -1;
@@ -140,7 +157,7 @@ $(document).ready(function () {
                         //}
                     }
                     else {
-                        speak('/Content/media/success.mp3');
+                        sound('success');
                         //show result
                         currentIndex = -1;
                         currentLevel = totalLevel;
@@ -163,7 +180,7 @@ $(document).ready(function () {
         else {
             if (vocas[currentIndex].IsIgnore == '1') {
                 if (isFinish()) {
-                    speak('/Content/media/success.mp3');
+                    sound('success');
 
                     //show result
                     currentIndex = -1;
@@ -218,7 +235,7 @@ $(document).ready(function () {
                         //}
                     }
                     else {
-                        speak('/Content/media/success.mp3');
+                        sound('success');
                         //show result
                         currentIndex = -1;
                         currentLevel = totalLevel;
@@ -325,7 +342,7 @@ $(document).ready(function () {
             }
             else if (keycode == 32) {
                 if (!isPractice) {
-                    speak(quizzVoca.UrlAudio);
+                    sound(quizzVoca.UrlAudio);
                     return false;
                 }
             }
@@ -333,7 +350,7 @@ $(document).ready(function () {
             //space
         else if (keycode == 32) {
             if (!isPractice) {
-                speak(quizzVoca.UrlAudio);
+                sound(quizzVoca.UrlAudio);
                 return false;
             }
         }
@@ -424,7 +441,7 @@ $(document).ready(function () {
         //if (keycode == 32) {
         //    if (currentIndex >= 0 && currentIndex < vocas.length) {
         //        if (voca.TestSkill == '1') {
-        //            speak(voca.UrlAudio);
+        //            sound(voca.UrlAudio);
         //        }
         //    }
         //    return false;
@@ -462,7 +479,7 @@ function updateTestResult() {
         $.ajax({
             cache: false,
             type: "post",
-            async: false,
+            async: true,
             url: '/Library/' + $('#utr').val(),
             data: JSON.stringify(vocas),
             dataType: "json",
@@ -536,7 +553,23 @@ function getTestVocas() {
                     if (voca.DisplayType != '3') {
                         //var audio = new Audio(voca.UrlAudio);
                         //audio.load();
-                        vocaSounds[i] = voca.UrlAudio;
+                        if (voca.UrlAudio) {
+                            var item = {};
+                            if (voca.DisplayType == '1') {
+                                item = {
+                                    name: voca.UrlAudio,
+                                    path: "/Content/media/hiragana/"
+                                };
+                            }
+                            else if (voca.DisplayType == '2') {
+                                item = {
+                                    name: voca.UrlAudio,
+                                    path: "/Content/media/katakana/"
+                                };
+                            }
+                            //item.name = voca.UrlAudio;
+                            vocaSounds.push(item);
+                        }
                     }
                     //}
 
@@ -549,13 +582,20 @@ function getTestVocas() {
                     }
                 });
 
-                //console.log(JSON.stringify(vocaSounds));
+                vocaSounds.push({
+                    name: 'boing',
+                    path: '/content/media/'
+                });
+                vocaSounds.push({
+                    name: 'success',
+                    path: '/content/media/'
+                });
+                console.log(JSON.stringify(vocaSounds));
                 // init bunch of sounds
                 ion.sound({
-                    sounds: JSON.stringify(vocaSounds),
-
+                    sounds: (vocaSounds),
                     // main config
-                    path: "~/content/media/hiragana/",
+                    //path: "/Content/media/hiragana/",
                     preload: true,
                     multiplay: true,
                     volume: 0.9
@@ -628,8 +668,25 @@ function getPracticeVocas() {
                     //                        failArray.push(voca);
                     //if (voca.TestSkill == '3') {
                     if (voca.DisplayType != '3') {
-                        var audio = new Audio(voca.UrlAudio);
-                        audio.load();
+                        //var audio = new Audio(voca.UrlAudio);
+                        //audio.load();
+                        if (voca.UrlAudio) {
+                            var item = {};
+                            if (voca.DisplayType == '1') {
+                                item = {
+                                    name: voca.UrlAudio,
+                                    path: "/Content/media/hiragana/"
+                                };
+                            }
+                            else if (voca.DisplayType == '2') {
+                                item = {
+                                    name: voca.UrlAudio,
+                                    path: "/Content/media/katakana/"
+                                };
+                            }
+                            //item.name = voca.UrlAudio;
+                            vocaSounds.push(item);
+                        }
                     }
                     //}
 
@@ -640,6 +697,25 @@ function getPracticeVocas() {
                     else {
                         totalLevel += parseInt(10 - voca.Level);
                     }
+                });
+
+                vocaSounds.push({
+                    name: 'boing',
+                    path: '/content/media/'
+                });
+                vocaSounds.push({
+                    name: 'success',
+                    path: '/content/media/'
+                });
+                //console.log(JSON.stringify(vocaSounds));
+                // init bunch of sounds
+                ion.sound({
+                    sounds: (vocaSounds),
+                    // main config
+                    path: "/Content/media/hiragana/",
+                    preload: true,
+                    multiplay: true,
+                    volume: 0.9
                 });
 
                 completedTime = 0;
@@ -707,8 +783,25 @@ function getNotebookVocas() {
                     //                        failArray.push(voca);
                     //if (voca.TestSkill == '3') {
                     if (voca.DisplayType != '3') {
-                        var audio = new Audio(voca.UrlAudio);
-                        audio.load();
+                        //var audio = new Audio(voca.UrlAudio);
+                        //audio.load();
+                        if (voca.UrlAudio) {
+                            var item = {};
+                            if (voca.DisplayType == '1') {
+                                item = {
+                                    name: voca.UrlAudio,
+                                    path: "/Content/media/hiragana/"
+                                };
+                            }
+                            else if (voca.DisplayType == '2') {
+                                item = {
+                                    name: voca.UrlAudio,
+                                    path: "/Content/media/katakana/"
+                                };
+                            }
+                            //item.name = voca.UrlAudio;
+                            vocaSounds.push(item);
+                        }
                     }
                     //}
 
@@ -720,10 +813,27 @@ function getNotebookVocas() {
                         totalLevel += parseInt(10 - voca.Level);
                     }
                 });
+                vocaSounds.push({
+                    name: 'boing',
+                    path: '/content/media/'
+                });
+                vocaSounds.push({
+                    name: 'success',
+                    path: '/content/media/'
+                });
+                // init bunch of sounds
+                ion.sound({
+                    sounds: (vocaSounds),
+                    // main config
+                    path: "/Content/media/hiragana/",
+                    preload: true,
+                    multiplay: true,
+                    volume: 0.9
+                });
 
                 completedTime = 0;
                 currentIndex = 0;
-
+                
                 //create quizz voca
                 quizzVoca = createQuizz(currentIndex);
 
@@ -884,8 +994,8 @@ function selectChoosingResult(no) {
 
 //                //show error if wrong
 //                if (selectedValue != resultValue) {
-//                    //speak
-//                    speak('/Content/media/fail.wav');
+//                    //sound
+//                    sound('/Content/media/fail.wav');
 
 //                    vocas[currentIndex].IsCorrect = "0";
 
@@ -893,8 +1003,8 @@ function selectChoosingResult(no) {
 
 //                }
 //                else {
-//                    //speak corrent voca
-//                    speak('/Content/media/tada.wav');
+//                    //sound corrent voca
+//                    sound('/Content/media/tada.wav');
 
 //                    vocas[currentIndex].IsCorrect = "1";
 
@@ -1079,8 +1189,8 @@ function checkInput() {
 
                 //show error if wrong
                 if (selectedValue != resultValue) {
-                    //speak
-                    speak('/Content/media/Boing.mp3');
+                    //sound
+                    sound('boing');
 
                     quizzVoca.IsCorrect = "0";
                     quizzVoca.NumOfWrong += 1;
@@ -1098,8 +1208,8 @@ function checkInput() {
                     }
                 }
                 else {
-                    //speak corrent voca
-                    //speak('/Content/media/tada.wav');
+                    //sound corrent voca
+                    //sound('/Content/media/tada.wav');
 
                     quizzVoca.IsCorrect = "1";
                     //quizzVoca.NumOfWrong -= 1;
@@ -1218,28 +1328,28 @@ function checkInput() {
                             $('#result1').addClass('quizz-right');
                             $('#result1').html('1 <span class="glyphicon glyphicon-ok "></span><br>' + quizzVoca.Result1);
                             if (displayType != '3' && quizzTestSkill == '1' && $('#urlAudio1').val() != '') {
-                                speak($('#urlAudio1').val());
+                                sound($('#urlAudio1').val());
                             }
                             break;
                         case 2:
                             $('#result2').addClass('quizz-right');
                             $('#result2').html('2 <span class="glyphicon glyphicon-ok "></span><br>' + quizzVoca.Result2);
                             if (displayType != '3' && quizzTestSkill == '1' && $('#urlAudio2').val() != '') {
-                                speak($('#urlAudio2').val());
+                                sound($('#urlAudio2').val());
                             }
                             break;
                         case 3:
                             $('#result3').addClass('quizz-right');
                             $('#result3').html('3 <span class="glyphicon glyphicon-ok "></span><br>' + quizzVoca.Result3);
                             if (displayType != '3' && quizzTestSkill == '1' && $('#urlAudio3').val() != '') {
-                                speak($('#urlAudio3').val());
+                                sound($('#urlAudio3').val());
                             }
                             break;
                         case 4:
                             $('#result4').addClass('quizz-right');
                             $('#result4').html('4 <span class="glyphicon glyphicon-ok "></span><br>' + quizzVoca.Result4);
                             if (displayType != '3' && quizzTestSkill == '1' && $('#urlAudio4').val() != '') {
-                                speak($('#urlAudio4').val());
+                                sound($('#urlAudio4').val());
                             }
                             break;
                         default:
@@ -1249,7 +1359,7 @@ function checkInput() {
 
 
                     if (isFinish()) {
-                        speak('/Content/media/success.mp3');
+                        sound('success');
 
                         //show result
                         currentIndex = -1;
@@ -1315,7 +1425,7 @@ function checkInput() {
                             showProgress();
                         }
                         else {
-                            speak('/Content/media/success.mp3');
+                            sound('success');
                             //show result
                             currentIndex = -1;
                             currentLevel = totalLevel;
@@ -1623,7 +1733,7 @@ function showFlashCard(index, voice) {
 
                 $('#flashCard').html(html);
 
-                speak(voca.UrlAudio);
+                sound(voca.UrlAudio);
 
                 isPractice = true;
             }
@@ -1644,7 +1754,7 @@ function showFlashCard(index, voice) {
 
                 //listening skill
                 if (voca.TestSkill == '3') {
-                    speak(voca.UrlAudio);
+                    sound(voca.UrlAudio);
                 }
 
             }
@@ -1671,7 +1781,7 @@ function showFlashCard(voca, voice) {
             $('#flashCard').html(html);
 
             if (voca.DisplayType != '3') {
-                speak(voca.UrlAudio);
+                sound(voca.UrlAudio);
             }
 
             //isPractice = true;
@@ -1685,7 +1795,7 @@ function showFlashCard(voca, voice) {
 
             //listening skill
             //if (voca.TestSkill == '3') {
-            //    speak(voca.UrlAudio);
+            //    sound(voca.UrlAudio);
             //}
 
         }
@@ -2272,11 +2382,11 @@ function showLearning(voca) {
         html += '       <img class="img-responsive" src="' + getLink(voca.UrlImage) + '" alt="Từ vựng tiếng Nhật"  style="height: 200px">';
         html += '   </div>';
         if (voca.Hiragana != '') {
-            html += '   <div class="col-lg-7 col-md-7 col-sm-7 col-xs-6"><h3><strong>' + voca.Hiragana + '  </strong><a href="#" onclick="speak(\'' + voca.UrlAudio + '\'); return false;"> <i class="fa fa-volume-up"></i></a></h3>';
+            html += '   <div class="col-lg-7 col-md-7 col-sm-7 col-xs-6"><h3><strong>' + voca.Hiragana + '  </strong><a href="#" onclick="sound(\'' + voca.UrlAudio + '\'); return false;"> <i class="fa fa-volume-up"></i></a></h3>';
             html += '       <p><strong>' + voca.Romaji + '</strong></p>';
         }
         else if (voca.Katakana != '') {
-            html += '   <div class="col-lg-7 col-md-7 col-sm-7 col-xs-6"><h3><strong>' + voca.Katakana + '  </strong><a href="#" onclick="speak(\'' + voca.UrlAudio_Katakana + '\'); return false;"><i class="fa fa-volume-up"></i></a></h3>';
+            html += '   <div class="col-lg-7 col-md-7 col-sm-7 col-xs-6"><h3><strong>' + voca.Katakana + '  </strong><a href="#" onclick="sound(\'' + voca.UrlAudio_Katakana + '\'); return false;"><i class="fa fa-volume-up"></i></a></h3>';
             html += '       <p><strong>' + voca.Romaji_Katakana + '</strong></p>';
         }
         html += '       <h3>' + voca.Kanji + '</h3>';
@@ -2396,7 +2506,7 @@ function showLearning(voca) {
         //    html += '               <div class="col-md-2 col-xs-2">';
         //    html += '               </div>';
         //    html += '               <div class="col-md-3 col-xs-3">';
-        //    html += '                   <h3><p class="text-info" style="font-size: 50px;">' + voca.Kanji + '</p><span class="selected glyphicon glyphicon-volume-up" aria-hidden="true" onclick="speak(\'' + voca.UrlAudio + '\');"></span></h3>';
+        //    html += '                   <h3><p class="text-info" style="font-size: 50px;">' + voca.Kanji + '</p><span class="selected glyphicon glyphicon-volume-up" aria-hidden="true" onclick="sound(\'' + voca.UrlAudio + '\');"></span></h3>';
         //    html += '               </div>';
         //    html += '               <div class="col-md-7 col-xs-7">';
         //    html += '                   <p class="text-default"><strong>Hán Việt</strong>: ' + voca.Pinyin + '</p>';
@@ -2494,17 +2604,17 @@ function showLearning(voca) {
         //    html += '                       <div class="col-xs-2">';
         //    html += '                       </div>';
         //    html += '                       <div class="col-md-12 col-xs-10">';
-        //    html += '                           <h4><a href="#" onclick="speak(\'' + voca.UrlAudio + '\'); return false;" data-toggle="tooltip" title="Nhấp để nghe đọc"><p class="text-info zoom-content-learning">' + voca.Hiragana + '</p></a></h4>';
+        //    html += '                           <h4><a href="#" onclick="sound(\'' + voca.UrlAudio + '\'); return false;" data-toggle="tooltip" title="Nhấp để nghe đọc"><p class="text-info zoom-content-learning">' + voca.Hiragana + '</p></a></h4>';
         //    if (voca.Hiragana != '') {
         //        html += '                       <p class="text-default">' + voca.Romaji;
         //    }
-        //    html += '                           <h4><a href="#" onclick="speak(\'' + voca.UrlAudio_Katakana + '\'); return false;" data-toggle="tooltip" title="Nhấp để nghe đọc"><p class="text-info zoom-content-learning">' + voca.Katakana + '</p></a></h4>';
+        //    html += '                           <h4><a href="#" onclick="sound(\'' + voca.UrlAudio_Katakana + '\'); return false;" data-toggle="tooltip" title="Nhấp để nghe đọc"><p class="text-info zoom-content-learning">' + voca.Katakana + '</p></a></h4>';
         //    if (voca.Katakana != '') {
         //        html += '                       <p class="text-default">' + voca.Romaji_Katakana;
         //    }
-        //    html += '                           <h4><a href="#" onclick="speak(\'' + voca.UrlAudio + '\'); return false;" data-toggle="tooltip" title="Nhấp để nghe đọc"><p class="text-info zoom-content-learning">' + voca.Kanji + '</p></a></h4>';
+        //    html += '                           <h4><a href="#" onclick="sound(\'' + voca.UrlAudio + '\'); return false;" data-toggle="tooltip" title="Nhấp để nghe đọc"><p class="text-info zoom-content-learning">' + voca.Kanji + '</p></a></h4>';
 
-        //    //    //html += '                   <span class="selected glyphicon glyphicon-volume-up" aria-hidden="true" onclick="speak(\'' + voca.UrlAudio + '\');"></span>';
+        //    //    //html += '                   <span class="selected glyphicon glyphicon-volume-up" aria-hidden="true" onclick="sound(\'' + voca.UrlAudio + '\');"></span>';
         //    //html += '                   </p>';
         //    html += '                           <p class="text-default">' + voca.VMeaning + '</p>';
         //    html += '                       </div>';
@@ -2551,7 +2661,7 @@ function showPractise(voca) {
     clearAnswer();
     if (voca.DisplayType != '3') {
         if (voca.TestSkill == '2') {
-            speak(voca.UrlAudio);
+            sound(voca.UrlAudio);
         }
     }
 
@@ -2582,7 +2692,7 @@ function showPractise(voca) {
     }
     //    //listening
     //else if (voca.TestSkill == '3') {
-    //    html += '                   <button type="button" class="btn btn-default btn-lg" onclick="speak(\'' + voca.UrlAudio + '\');"><span class="glyphicon glyphicon-volume-up" aria-hidden="true">Nghe</span></button>';
+    //    html += '                   <button type="button" class="btn btn-default btn-lg" onclick="sound(\'' + voca.UrlAudio + '\');"><span class="glyphicon glyphicon-volume-up" aria-hidden="true">Nghe</span></button>';
     //}
     //html += '               </div>';
     //html += '               <div class="col-lg-8 col-md-8 col-xs-6">';
@@ -2634,17 +2744,17 @@ function showPractise(voca) {
         html += '<div class="row text-center">';
         html += '   <div class="col-lg-12 col-md-12 col-xs-12">';
         html += '       <a class="btn btn-quizz " href="#" id="result1" name="resultChoosing" onclick="selectValue(this, 1);return false;">1<br>' + result1 + '</a>';
-        html += '       <input type="hidden" id="urlAudio1" value=' + voca.ResultUrlAudio1 + '/>';
+        html += '       <input type="hidden" id="urlAudio1" value="' + voca.ResultUrlAudio1 + '"/>';
         html += '       <a class="btn btn-quizz " href="#" id="result2" name="resultChoosing" onclick="selectValue(this, 2);return false;">2<br>' + result2 + '</a>';
-        html += '       <input type="hidden" id="urlAudio2" value=' + voca.ResultUrlAudio2 + '/>';
+        html += '       <input type="hidden" id="urlAudio2" value="' + voca.ResultUrlAudio2 + '"/>';
         html += '   </div>';
         html += '</div>'
         html += '<div class="row text-center">';
         html += '   <div class="col-lg-12 col-md-12 col-xs-12">';
         html += '       <a class="btn btn-quizz " href="#" id="result3" name="resultChoosing" onclick="selectValue(this, 3);return false;">3<br>' + result3 + '</a>';
-        html += '       <input type="hidden" id="urlAudio3" value=' + voca.ResultUrlAudio3 + '/>';
+        html += '       <input type="hidden" id="urlAudio3" value="' + voca.ResultUrlAudio3 + '"/>';
         html += '       <a class="btn btn-quizz " href="#" id="result4" name="resultChoosing" onclick="selectValue(this, 4);return false;">4<br>' + result4 + '</a>';
-        html += '       <input type="hidden" id="urlAudio4" value=' + voca.ResultUrlAudio4 + '/>';
+        html += '       <input type="hidden" id="urlAudio4" value="' + voca.ResultUrlAudio4 + '"/>';
         html += '   </div>';
         html += '</div>'
         //html += '<div class="list-group">';
@@ -2725,7 +2835,7 @@ function draw(obj) {
     }
     else {
         var voca = vocas[currentIndex];
-        //        speak(voca.UrlAudio);
+        //        sound(voca.UrlAudio);
 
         var text = '';
         if (voca.DisplayType == '3') {
@@ -2788,6 +2898,7 @@ function expandDetail(obj) {
     $(obj).addClass('open');
 }
 
-function speak(name) {
+function sound(name) {
+    //console.log(name);
     ion.sound.play(name);
 }
