@@ -590,7 +590,7 @@ function getTestVocas() {
                     name: 'success',
                     path: '/content/media/'
                 });
-                console.log(JSON.stringify(vocaSounds));
+                //console.log(JSON.stringify(vocaSounds));
                 // init bunch of sounds
                 ion.sound({
                     sounds: (vocaSounds),
@@ -598,7 +598,7 @@ function getTestVocas() {
                     //path: "/Content/media/hiragana/",
                     preload: true,
                     multiplay: true,
-                    volume: 0.9
+                    volume: 1
                 });
 
                 completedTime = 0;
@@ -663,6 +663,7 @@ function getPracticeVocas() {
             if (result.returnCode == $('#accessDenied').val()) {
                 window.location.href = '/Account/RequireLogin';
             } else {
+                var vocaSounds = [];
                 $.each(result.vocabularies, function (i, voca) {
                     vocas.push(voca);
                     //                        failArray.push(voca);
@@ -715,7 +716,7 @@ function getPracticeVocas() {
                     path: "/Content/media/hiragana/",
                     preload: true,
                     multiplay: true,
-                    volume: 0.9
+                    volume: 1
                 });
 
                 completedTime = 0;
@@ -778,6 +779,7 @@ function getNotebookVocas() {
             if (result.returnCode == $('#accessDenied').val()) {
                 window.location.href = '/Account/RequireLogin';
             } else {
+                var vocaSounds = [];
                 $.each(result.vocabularies, function (i, voca) {
                     vocas.push(voca);
                     //                        failArray.push(voca);
@@ -828,7 +830,7 @@ function getNotebookVocas() {
                     path: "/Content/media/hiragana/",
                     preload: true,
                     multiplay: true,
-                    volume: 0.9
+                    volume: 1
                 });
 
                 completedTime = 0;

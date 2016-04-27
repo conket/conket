@@ -424,7 +424,7 @@ namespace Nihongo.Controllers
             MS_VocaCategoriesModels model = new MS_VocaCategoriesModels();
             model.VocaSetID = id;
             MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
-            int returnCode = dao.SelectVocaCategoryBySet(model, out result);
+            int returnCode = dao.SelectVocaCategoryBySet(model, CommonMethod.ParseInt(Session["UserID"]), out result);
             return PartialView("_VocaCategoryPartial", result);
         }
 
@@ -490,7 +490,7 @@ namespace Nihongo.Controllers
             MS_VocaCategoriesModels model = new MS_VocaCategoriesModels();
             model.VocaSetID = id;
             MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
-            int returnCode = dao.SelectVocaCategoryBySet(model, out result);
+            int returnCode = dao.SelectVocaCategoryBySet(model, CommonMethod.ParseInt(Session["UserID"]), out result);
             return PartialView("_OtherVocaCategoryPartial", result);
         }
 

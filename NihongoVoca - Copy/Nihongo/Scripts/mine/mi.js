@@ -55,13 +55,13 @@ function clearconsole() {
     }
 }
 
-var audio;
-function speak(url) {
-    if (audio != null) {
-        audio.pause();
-    }
-    audio = new Audio(url);
-    //audio.load();
-    audio.play();
-}
+//var audio;
+//function speak(url) {
+//    if (audio != null) {
+//        audio.pause();
+//    }
+//    audio = new Audio(url);
+//    //audio.load();
+//    audio.play();
+//}
 

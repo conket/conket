@@ -354,7 +354,7 @@ namespace Nihongo.Dal.Dao
             return returnCode;
         }
 
-        internal int SelectVocaCategoryBySet(MS_VocaCategoriesModels model, out List<MS_VocaCategoriesModels> results)
+        internal int SelectVocaCategoryBySet(MS_VocaCategoriesModels model, int userID, out List<MS_VocaCategoriesModels> results)
         {
             int returnCode = 0;
             results = new List<MS_VocaCategoriesModels>();
@@ -366,7 +366,7 @@ namespace Nihongo.Dal.Dao
                     results = (from ss in this.ms_vocacategories
                                join vs in this.ms_vocasets on ss.VocaSetID equals vs.ID
                                
-                               join uvc in this.ms_usercategories on ss.ID equals uvc.CategoryID into userCate
+                               join uvc in this.ms_usercategories.Where(ss => ss.UserID == userID) on ss.ID equals uvc.CategoryID into userCate
                                from uvc in userCate.DefaultIfEmpty()
 
                                where vs.ID == model.VocaSetID

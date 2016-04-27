@@ -60,7 +60,7 @@
                             @if (Model.IsKanji == CommonData.Status.Enable)
                             {
                                 @Html.Partial("_VocaKanjiPartial", Model.Vocabularies)
-                            }   
+                            }
                             else
                             {   
                                 @Html.Partial("_VocaPartial", Model.Vocabularies)
@@ -73,9 +73,9 @@
                         </div>
                         <div class="row">
                             @*<div class="text-center">TOP</div> *@
-                            <div id="divTop" class="person-list">
+                            @*<div id="divTop" class="person-list">
                                 @Html.Partial("_VocaPersonPartial")
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>

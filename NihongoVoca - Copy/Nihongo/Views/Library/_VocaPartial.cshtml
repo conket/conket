@@ -26,11 +26,11 @@
                             <div class="media">
                                 <div class="media-body fnt-smaller">
                                     <h4 class="media-heading">
-                                        <span class="label label-primary">@(count + 1)</span> <a href="#" target="_parent" 
-                                        onclick="speak('@Href("~/" + @voca.DisplayUrlAudio)'); return false;">
-                                            @*onclick="playAudio('@voca.VocabularyCode'); return false;">*@
-                                            @voca.DisplayVoca
-                                            <span class="glyphicon glyphicon-volume-up"></span></a><small class="pull-right">
+                                        <span class="label label-primary">@(count + 1)</span> 
+                                            <a href="#" class="voca-audio" data-audio="@voca.UrlAudio" target="_parent">@voca.DisplayVoca
+                                                <span class="glyphicon glyphicon-volume-up"></span>
+                                            </a>
+                                            <small class="pull-right">
                                                 @if (CommonMethod.ParseString(Session["UserID"]) != "")
                                                 {
                                                     { Html.RenderAction("CheckCompletedVoca", "Library", new { @id = @voca.ID }); }
@@ -85,97 +85,67 @@
 <script src='@Scripts.Url("~/bundles/dr")' async> </script>
 <script src='@Scripts.Url("~/bundles/jqueryui")'> </script>
 <script src='@Scripts.Url("~/bundles/jquerycookie")' async> </script>
-@*<script type="text/javascript" src='@Scripts.Url("~/bundles/audio")'> </script>*@
-<script type="text/javascript" src="~/Scripts/jquery.mb.audio.js"></script>
+<script type="text/javascript" src='@Scripts.Url("~/bundles/audio")'> </script>
+<script src="~/Scripts/jQuery.loadScroll.js" async></script>
 <script type="text/javascript">
     var vocas;
-    var jAudio = [];
-
+    
     $(document).ready(function () {
+        $('img').loadScroll(500); // in ms
+
         vocas = set(@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)));
+
+        var vocaSounds = [];
         if (vocas != null && vocas.length > 0) {
-            jAudio += '{';
             for (var i = 0; i < vocas.length; i++) {
                 //var audio = new Audio(vocas[i].UrlAudio);
                 //audio.load();
-                if (i == vocas.length - 1) {
-                    jAudio += vocas[i].VocabularyCode + ':{ id:' + vocas[i].VocabularyCode + '}';
-                }
-                else {
-                    jAudio += vocas[i].VocabularyCode + ':{ id:' + vocas[i].VocabularyCode + '},';
+                //if (i == vocas.length - 1) {
+                //    jAudio += vocas[i].VocabularyCode + ':{ id:' + vocas[i].VocabularyCode + '}';
+                //}
+                //else {
+                //    jAudio += vocas[i].VocabularyCode + ':{ id:' + vocas[i].VocabularyCode + '},';
+                //}
+                if (vocas[i].UrlAudio) {
+                    var item = {};
+                    if (vocas[i].DisplayType == '1') {
+                        item = {
+                            name: vocas[i].UrlAudio,
+                            path: "/Content/media/hiragana/"
+                        };
+                    }
+                    else if (vocas[i].DisplayType == '2') {
+                        item = {
+                            name: vocas[i].UrlAudio,
+                            path: "/Content/media/katakana/"
+                        };
+                    }
+                    //item.name = voca.UrlAudio;
+                    vocaSounds.push(item);
                 }
             }
-            jAudio += '}';
 
+            ion.sound({
+                sounds: (vocaSounds),
+                // main config
+                path: "/Content/media/hiragana/",
+                preload: true,
+                multiplay: true,
+                volume: 1
+            });
         }
-        /*
-         * DEFINE SOUNDS
-         */
-        $.mbAudio.sounds = vocas;
-        $.mbAudio.sounds = {
 
-            backgroundSprite: {
-                id: "backgroundSprite",
-                ogg: "sounds/bgndsSprite.ogg",
-                mp3: "sounds/bgndsSprite.mp3",
-                //example of sprite
-                sprite: {
-                    intro: { id: "intro", start: 80, end: 116.975, loop: true },
-                    levelIntro: { id: "levelIntro", start: 60, end: 77.470, loop: true },
-                    tellStory: { id: "tellStory", start: 80, end: 116.975, loop: true },
-                    level1: { id: "level1", start: 5, end: 13, loop: true },
-                    level2: { id: "level2", start: 40, end: 56, loop: true },
-                    level3: { id: "level3", start: 120, end: 136.030, loop: true }
-                }
-            },
+        $('.voca-audio').on('click', function (e) {
+            e.preventDefault();
 
-            effectSprite: {
-                id: "effectSprite",
-                ogg: "sounds/effectsSprite.ogg",
-                mp3: "sounds/effectsSprite1.mp3",
-                //example of sprite
-                sprite: {
-                    streak: { id: "streak", start: 0, end: 1.3, loop: 3 },
-                    great: { id: "great", start: 5, end: 8, loop: false },
-                    divine: { id: "divine", start: 10, end: 11.6, loop: false },
-                    wow: { id: "wow", start: 15, end: 20, loop: false },
-                    levelIntro: { id: "levelIntro", start: 20, end: 25, loop: false },
-                    levelCompleted: { id: "levelCompleted", start: 25, end: 30, loop: false },
-                    subLevelLost: { id: "subLevelLost", start: 35, end: 38.1, loop: false },
-                    subLevelWon: { id: "subLevelWon", start: 30, end: 31.9, loop: false },
-                    gameWon: { id: "gameWon", start: 30, end: 31.9, loop: false }
-                }
+            var urlAudio = $(this).attr('data-audio');
+            //alert(urlAudio);
+            if (urlAudio) {
+                ion.sound.play(urlAudio);
             }
-        };
-
-
-        //$('#vocalist .vocalist').sortable({
-        //    connectWith: '#vocalist .vocalist'
-        //});
-
-        //$(document).trigger('initAudio');
+            return false;
+        });
     })
-
-    function playAudio(id) {
-
-        $.mbAudio.play('vocaAudio', id)
-    }
-
-    function audioIsReady() {
-
-        //setTimeout(function () {
-        //    if (isStandAlone || !isDevice)
-        //        $.mbAudio.play('vocaAudio', vocas[0].VocabularyCode);
-
-        //}, 1000);
-
-    }
-
-    $(document).on("initAudio", function () {
-
-        //otherwise sound is initialized on the first tap loosing time and UX
-        $.mbAudio.pause('vocaAudio', audioIsReady);
-    });
 
     function getVoca(id) {
         for (var i = 0; i < vocas.length; i++) {
@@ -225,11 +195,4 @@
         function set(value) {
             return value;
         }
-</script>
-<script src="~/Scripts/jQuery.loadScroll.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        $('img').loadScroll(500); // in ms
-    });
 </script>
