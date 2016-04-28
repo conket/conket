@@ -1319,7 +1319,7 @@ namespace Nihongo.Dal.Dao
         }
 
 
-        internal int UpdateSessionResult(int userID, List<MS_UserVocabulariesModels> vocas, out int numOfVocaOfSet, out int numOfHasLearntOfSet, out int numOfHasMarkedOfSet, out int numOfWeakOfSet, out int hasLearntCateID, out string hasLearntCateName)
+        internal int UpdateSessionResult(int userID, bool isAdmin, List<MS_UserVocabulariesModels> vocas, out int numOfVocaOfSet, out int numOfHasLearntOfSet, out int numOfHasMarkedOfSet, out int numOfWeakOfSet, out int hasLearntCateID, out string hasLearntCateName)
         {
             int returnCode = 0;
             numOfVocaOfSet = 0;
@@ -1347,12 +1347,22 @@ namespace Nihongo.Dal.Dao
                             voca.HasMarked = vo.HasMarked;
                             voca.IsIgnore = vo.IsIgnore;
                             voca.UpdatedDate = DateTime.Now;
-                            voca.Level = vo.Level;
+                            voca.Level = vo.IsIgnore == CommonData.Status.Enable ? 8 : vo.Level;
                             voca.NumOfWrong = vo.NumOfWrong < 0 ? 0 : vo.NumOfWrong;
-                            voca.UserDefine = vo.UserDefine;
+                            voca.UserDefine = CommonMethod.ParseString(vo.UserDefine);
 
                             point += vo.Point;
+
+                            //update remembering of kanji if isadmin
+                            if (isAdmin)
+                            {
+                                if (voca.ms_vocabularydetails.ms_kanjis != null)
+                                {
+                                    voca.ms_vocabularydetails.ms_kanjis.Remembering = CommonMethod.ParseString(vo.UserDefine);
+                                }
+                            }
                         }
+
                     }
 
                     returnCode = this.Saves();
@@ -1713,10 +1723,11 @@ namespace Nihongo.Dal.Dao
                     userCate.IsIgnore = voca.IsIgnore;
 
                     var userVocas = this.ms_uservocabularies.Where(ss => ss.UserID == userID
-                    && ss.ms_vocabularydetails.ms_vocacategories.ID == voca.ID);
+                                        && ss.ms_vocabularydetails.ms_vocacategories.ID == voca.ID);
                     foreach (var userVoca in userVocas)
                     {
                         userVoca.IsIgnore = voca.IsIgnore;
+                        userVoca.Level = 8;
                     }
 
                 }

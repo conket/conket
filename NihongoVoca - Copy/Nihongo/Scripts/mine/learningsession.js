@@ -119,7 +119,7 @@ $(document).ready(function () {
                 else {
                     if (isAllLearnt()) {
                         currentIndex = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
-                        while (vocas[currentIndex].Level == maxLevel || vocas[currentIndex].IsIgnore == '1') {
+                        while (vocas[currentIndex].Level == maxLevel || (vocas[currentIndex].IsIgnore == '1' && $('#lt').val() != '4')) {
                             currentIndex = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
                         }
                     }
@@ -129,7 +129,7 @@ $(document).ready(function () {
                             if (currentIndex == vocas.length) {
                                 currentIndex = 0;
                             }
-                        } while ((vocas[currentIndex].IsDone == '1' && vocas[currentIndex].Level == maxLevel) || vocas[currentIndex].IsIgnore == '1');
+                        } while ((vocas[currentIndex].IsDone == '1' && vocas[currentIndex].Level == maxLevel) || (vocas[currentIndex].IsIgnore == '1' && $('#lt').val() != '4'));
                     }
                     if (currentIndex < vocas.length) {
 
@@ -197,7 +197,7 @@ $(document).ready(function () {
                 else {
                     if (isAllLearnt()) {
                         currentIndex = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
-                        while (vocas[currentIndex].Level == maxLevel || vocas[currentIndex].IsIgnore == '1') {
+                        while (vocas[currentIndex].Level == maxLevel || (vocas[currentIndex].IsIgnore == '1' && $('#lt').val() != '4')) {
                             currentIndex = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
                         }
                     }
@@ -207,7 +207,7 @@ $(document).ready(function () {
                             if (currentIndex == vocas.length) {
                                 currentIndex = 0;
                             }
-                        } while ((vocas[currentIndex].IsDone == '1' && vocas[currentIndex].Level == maxLevel) || vocas[currentIndex].IsIgnore == '1');
+                        } while ((vocas[currentIndex].IsDone == '1' && vocas[currentIndex].Level == maxLevel) || (vocas[currentIndex].IsIgnore == '1' && $('#lt').val() != '4'));
                     }
                     if (currentIndex < vocas.length) {
 
@@ -349,7 +349,7 @@ $(document).ready(function () {
         }
             //space
         else if (keycode == 32) {
-            if (!isPractice) {
+            if (!isPractice && quizzVoca.DisplayType != '3') {
                 sound(quizzVoca.UrlAudio);
                 return false;
             }
@@ -587,6 +587,10 @@ function getTestVocas() {
                     path: '/content/media/'
                 });
                 vocaSounds.push({
+                    name: 'ok',
+                    path: '/content/media/'
+                });
+                vocaSounds.push({
                     name: 'success',
                     path: '/content/media/'
                 });
@@ -705,6 +709,10 @@ function getPracticeVocas() {
                     path: '/content/media/'
                 });
                 vocaSounds.push({
+                    name: 'ok',
+                    path: '/content/media/'
+                });
+                vocaSounds.push({
                     name: 'success',
                     path: '/content/media/'
                 });
@@ -725,21 +733,7 @@ function getPracticeVocas() {
                 //create quizz voca
                 quizzVoca = createQuizz(currentIndex);
 
-                if (quizzVoca.IsDone == "1") {
-                    isPractice = true;
-                }
-                else if (quizzVoca.Level == "0") {
-                    isPractice = false;
-                }
-                else if (quizzVoca.Level < 10) {
-                    isPractice = true;
-                }
-                else if (quizzVoca.Level == 10 && quizzVoca.IsDone == '0') {
-                    isPractice = true;
-                }
-                else {
-                    isPractice = false;
-                }
+                isPractice = true;
                 showFlashCard(quizzVoca, false);
             }
         },
@@ -820,6 +814,10 @@ function getNotebookVocas() {
                     path: '/content/media/'
                 });
                 vocaSounds.push({
+                    name: 'ok',
+                    path: '/content/media/'
+                });
+                vocaSounds.push({
                     name: 'success',
                     path: '/content/media/'
                 });
@@ -839,21 +837,7 @@ function getNotebookVocas() {
                 //create quizz voca
                 quizzVoca = createQuizz(currentIndex);
 
-                if (quizzVoca.IsDone == "1") {
-                    isPractice = true;
-                }
-                else if (quizzVoca.Level == "0") {
-                    isPractice = false;
-                }
-                else if (quizzVoca.Level < 10) {
-                    isPractice = true;
-                }
-                else if (quizzVoca.Level == 10 && quizzVoca.IsDone == '0') {
-                    isPractice = true;
-                }
-                else {
-                    isPractice = false;
-                }
+                isPractice = true;
                 showFlashCard(quizzVoca, false);
             }
         },
@@ -893,13 +877,31 @@ function getPracticeCateVocas(id) {
             if (result.returnCode == $('#accessDenied').val()) {
                 window.location.href = '/Account/RequireLogin';
             } else {
+                var vocaSounds = [];
                 $.each(result.vocabularies, function (i, voca) {
                     vocas.push(voca);
                     //                        failArray.push(voca);
                     //if (voca.TestSkill == '3') {
                     if (voca.DisplayType != '3') {
-                        var audio = new Audio(voca.UrlAudio);
-                        audio.load();
+                        //var audio = new Audio(voca.UrlAudio);
+                        //audio.load();
+                        if (voca.UrlAudio) {
+                            var item = {};
+                            if (voca.DisplayType == '1') {
+                                item = {
+                                    name: voca.UrlAudio,
+                                    path: "/Content/media/hiragana/"
+                                };
+                            }
+                            else if (voca.DisplayType == '2') {
+                                item = {
+                                    name: voca.UrlAudio,
+                                    path: "/Content/media/katakana/"
+                                };
+                            }
+                            //item.name = voca.UrlAudio;
+                            vocaSounds.push(item);
+                        }
                     }
                     //}
 
@@ -911,6 +913,28 @@ function getPracticeCateVocas(id) {
                         totalLevel += parseInt(10 - voca.Level);
                     }
                 });
+                vocaSounds.push({
+                    name: 'boing',
+                    path: '/content/media/'
+                });
+                vocaSounds.push({
+                    name: 'ok',
+                    path: '/content/media/'
+                });
+                vocaSounds.push({
+                    name: 'success',
+                    path: '/content/media/'
+                });
+                //console.log(JSON.stringify(vocaSounds));
+                // init bunch of sounds
+                ion.sound({
+                    sounds: (vocaSounds),
+                    // main config
+                    path: "/Content/media/hiragana/",
+                    preload: true,
+                    multiplay: true,
+                    volume: 1
+                });
 
                 completedTime = 0;
                 currentIndex = 0;
@@ -918,21 +942,7 @@ function getPracticeCateVocas(id) {
                 //create quizz voca
                 quizzVoca = createQuizz(currentIndex);
 
-                if (quizzVoca.IsDone == "1") {
-                    isPractice = true;
-                }
-                else if (quizzVoca.Level == "0") {
-                    isPractice = false;
-                }
-                else if (quizzVoca.Level < 10) {
-                    isPractice = true;
-                }
-                else if (quizzVoca.Level == 10 && quizzVoca.IsDone == '0') {
-                    isPractice = true;
-                }
-                else {
-                    isPractice = false;
-                }
+                isPractice = true;
                 showFlashCard(quizzVoca, false);
             }
         },
@@ -1210,6 +1220,10 @@ function checkInput() {
                     }
                 }
                 else {
+                    if (!isFinish()) {
+                        sound('ok');
+                    }
+
                     //sound corrent voca
                     //sound('/Content/media/tada.wav');
 
@@ -1274,6 +1288,7 @@ function checkInput() {
                 //next
                 //if (currentIndex < vocas.length) {
                 if (quizzVoca.IsCorrect == "0") {
+                    
                     switch (quizzVoca.CorrectResult) {
                         case 1:
                             $('#result1').addClass('quizz-right');
@@ -1379,7 +1394,7 @@ function checkInput() {
                     else {
                         if (isAllLearnt()) {
                             currentIndex = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
-                            while (vocas[currentIndex].Level == maxLevel || vocas[currentIndex].IsIgnore == '1') {
+                            while (vocas[currentIndex].Level == maxLevel || (vocas[currentIndex].IsIgnore == '1' && $('#lt').val() != '4')) {
                                 currentIndex = Math.floor((Math.random() * (vocas.length)) + 1) - 1;
                             }
                         }
@@ -1389,7 +1404,7 @@ function checkInput() {
                                 if (currentIndex == vocas.length) {
                                     currentIndex = 0;
                                 }
-                            } while ((vocas[currentIndex].IsDone == '1' && vocas[currentIndex].Level == maxLevel) || vocas[currentIndex].IsIgnore == '1');
+                            } while ((vocas[currentIndex].IsDone == '1' && vocas[currentIndex].Level == maxLevel) || (vocas[currentIndex].IsIgnore == '1' && $('#lt').val() != '4'));
 
                             //while (currentIndex < vocas.length && (vocas[currentIndex].IsDone == '1' && vocas[currentIndex].Level == maxLevel)) {
                             //    currentIndex++;
@@ -1483,7 +1498,7 @@ function checkInput() {
 function isAllLearnt() {
     var result = true;
     for (var i = 0; i < vocas.length; i++) {
-        if ((vocas[i].IsIgnore == '0' && vocas[i].IsDone == '0')) {
+        if ((vocas[i].IsIgnore == '0' || (vocas[i].IsIgnore == '1' && $('#lt').val() == '4')) && vocas[i].IsDone == '0') {
             result = false;
             break;
         }
@@ -1495,11 +1510,12 @@ function isFinish() {
     var result = true;
     for (var i = 0; i < vocas.length; i++) {
         //console.log(vocas[i].Hiragana +  ' - '+ vocas[i].HasLearnt + ' - ' + vocas[i].Level);
-        if ((vocas[i].IsDone == '0' || vocas[i].Level < maxLevel) && vocas[i].IsIgnore == '0') {
+        if ((vocas[i].IsDone == '0' || vocas[i].Level < maxLevel) && (vocas[i].IsIgnore == '0' || (vocas[i].IsIgnore == '1' && $('#lt').val() == '4'))) {
             result = false;
             break;
         }
     }
+    console.log('finish: ' + result);
     return result;
 }
 
@@ -2739,10 +2755,10 @@ function showPractise(voca) {
         html += '</div>'
         html += '</hr>';
 
-        var result1 = (voca.DisplayType == '3' && voca.TestSkill != '2') ? ('<div style="font-size: 20px;">' + voca.Result1 + '</div>') : voca.Result1;
-        var result2 = (voca.DisplayType == '3' && voca.TestSkill != '2') ? ('<div style="font-size: 20px;">' + voca.Result2 + '</div>') : voca.Result2;
-        var result3 = (voca.DisplayType == '3' && voca.TestSkill != '2') ? ('<div style="font-size: 20px;">' + voca.Result3 + '</div>') : voca.Result3;
-        var result4 = (voca.DisplayType == '3' && voca.TestSkill != '2') ? ('<div style="font-size: 20px;">' + voca.Result4 + '</div>') : voca.Result4;
+        var result1 = (voca.DisplayType == '3' && voca.TestSkill != '2') ? ('<div style="font-size: 24px;">' + voca.Result1 + '</div>') : voca.Result1;
+        var result2 = (voca.DisplayType == '3' && voca.TestSkill != '2') ? ('<div style="font-size: 24px;">' + voca.Result2 + '</div>') : voca.Result2;
+        var result3 = (voca.DisplayType == '3' && voca.TestSkill != '2') ? ('<div style="font-size: 24px;">' + voca.Result3 + '</div>') : voca.Result3;
+        var result4 = (voca.DisplayType == '3' && voca.TestSkill != '2') ? ('<div style="font-size: 24px;">' + voca.Result4 + '</div>') : voca.Result4;
         html += '<div class="row text-center">';
         html += '   <div class="col-lg-12 col-md-12 col-xs-12">';
         html += '       <a class="btn btn-quizz " href="#" id="result1" name="resultChoosing" onclick="selectValue(this, 1);return false;">1<br>' + result1 + '</a>';

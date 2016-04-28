@@ -1064,8 +1064,7 @@ namespace Nihongo.Controllers
             if (!CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
                 MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
-
-                returnCode = dao.UpdateSessionResult(CommonMethod.ParseInt(Session["UserID"]), vocas, out numOfVocaOfSet, out numOfHasLearntOfSet, out numOfHasMarkedOfSet, out numOfWeakOfSet, out hasLearntCateID, out hasLearntCateName);
+                returnCode = dao.UpdateSessionResult(CommonMethod.ParseInt(Session["UserID"]), CommonMethod.ParseBool(Session["IsAdmin"]), vocas, out numOfVocaOfSet, out numOfHasLearntOfSet, out numOfHasMarkedOfSet, out numOfWeakOfSet, out hasLearntCateID, out hasLearntCateName);
             }
 
             return Json(new { ReturnCode = returnCode, Result1 = numOfVocaOfSet, Result2 = numOfHasLearntOfSet, Result3 = numOfHasMarkedOfSet, Result4 = numOfWeakOfSet, Result5 = hasLearntCateID, Result6 = hasLearntCateName });

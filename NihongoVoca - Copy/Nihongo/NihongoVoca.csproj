@@ -813,8 +813,6 @@
     <Content Include="Content\media\beginner\zugai.MP3" />
     <Content Include="Content\media\beginner\zukizuki.MP3" />
     <Content Include="Content\media\Boing.mp3" />
-    <Content Include="Content\media\error.wav" />
-    <Content Include="Content\media\fail.wav" />
     <Content Include="Content\media\hiragana\V000000001.MP3" />
     <Content Include="Content\media\hiragana\V000000002.MP3" />
     <Content Include="Content\media\hiragana\V000000003.MP3" />
@@ -1896,8 +1894,7 @@
     <Content Include="Content\media\katakana\V000007050.mp3" />
     <Content Include="Content\media\katakana\V000007070.mp3" />
     <Content Include="Content\media\katakana\V000007072.mp3" />
-    <Content Include="Content\media\notify.wav" />
-    <Content Include="Content\media\ok.wav" />
+    <Content Include="Content\media\ok.mp3" />
     <Content Include="Content\media\QA\1-1.mp3" />
     <Content Include="Content\media\QA\1-10.mp3" />
     <Content Include="Content\media\QA\1-11.mp3" />
@@ -1995,7 +1992,6 @@
     <Content Include="Content\media\QA\8-8.mp3" />
     <Content Include="Content\media\QA\8-9.mp3" />
     <Content Include="Content\media\success.MP3" />
-    <Content Include="Content\media\tada.wav" />
     <Content Include="Content\myStyle.css" />
     <Content Include="Content\myStyle.min.css">
       <DependentUpon>myStyle.css</DependentUpon>
