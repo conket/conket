@@ -19,6 +19,7 @@ var quizzVoca = [];
 var maxLevel = 10;
 
 var myTimer = null;
+var soundEffect = true;
 
 $(document).ready(function () {
 
@@ -55,7 +56,7 @@ $(document).ready(function () {
     //    multiplay: true,
     //    volume: 0.9
     //});
-
+    soundEffect = ($('#sound').val() && $('#sound').val() == 'True');
 
     currentIndex = 0;
     isPractice = false;
@@ -82,12 +83,7 @@ $(document).ready(function () {
     });
 
     $('#btnLearning').on('click', function () {
-        if ($('#lt').val() == '4') {
-            getPracticeCateVocas();
-        }
-        else {
-            getTestVocas();
-        }
+        getTestVocas();
     });
 
     $('#btnReview').on('click', function () {
@@ -97,12 +93,18 @@ $(document).ready(function () {
     $('#btnNotebook').on('click', function () {
         getNotebookVocas();
     });
+    $('#btnPracticeCate').on('click', function () {
+        getPracticeCateVocas();
+    });
 
     $('#btnNext').on('click', function () {
+        $('#flashCard').html('');
         if (isPractice) {
             if (vocas[currentIndex].IsIgnore == '1') {
                 if (isFinish()) {
-                    sound('success');
+                    if (soundEffect) {
+                        sound('success');
+                    }
 
                     //show result
                     currentIndex = -1;
@@ -157,7 +159,9 @@ $(document).ready(function () {
                         //}
                     }
                     else {
-                        sound('success');
+                        if (soundEffect) {
+                            sound('success');
+                        }
                         //show result
                         currentIndex = -1;
                         currentLevel = totalLevel;
@@ -180,7 +184,9 @@ $(document).ready(function () {
         else {
             if (vocas[currentIndex].IsIgnore == '1') {
                 if (isFinish()) {
-                    sound('success');
+                    if (soundEffect) {
+                        sound('success');
+                    }
 
                     //show result
                     currentIndex = -1;
@@ -235,7 +241,9 @@ $(document).ready(function () {
                         //}
                     }
                     else {
-                        sound('success');
+                        if (soundEffect) {
+                            sound('success');
+                        }
                         //show result
                         currentIndex = -1;
                         currentLevel = totalLevel;
@@ -360,7 +368,7 @@ $(document).ready(function () {
                 var disLe = $("#btnLearning").is(":disabled");
                 var disRe = $("#btnReview").is(":disabled");
                 var disNo = $("#btnNotebook").is(":disabled");
-                var disReCate = $("#btnReviewCate").is(":disabled");
+                var disReCate = $("#btnPracticeCate").is(":disabled");
                 //load datas
                 if ($('#lt').val() == '1') {
                     if (disLe) {
@@ -488,7 +496,7 @@ function updateTestResult() {
                 if (result.ReturnCode != 0) {
                     alert('Có lỗi xảy ra!');
                 }
-                debugger;
+                
                 if (result.Result1 == result.Result2) {
                     $("#btnLearning").attr("disabled", true);
                 } else {
@@ -506,9 +514,13 @@ function updateTestResult() {
                     $("#btnNotebook").removeAttr("disabled");
                     $('#spanNotebook').html('<strong>ÔN SỔ TAY (' + result.Result3 + ')</strong>');
                 }
-
+                if ($('#lt').val() == '4') {
+                    $("#btnPracticeCate").removeAttr("disabled");
+                }
+                else {
+                    $("#btnPracticeCate").attr("disabled", true);
+                }
                 if (result.Result5 != '' && result.Result5 > 0) {
-                    
                     $('#id-celebrate').val(result.Result5);
                     $('#info-celebrate').html(result.Result6);
                     $('#modal-celebrate').modal();
@@ -912,6 +924,7 @@ function getPracticeCateVocas(id) {
                     else {
                         totalLevel += parseInt(10 - voca.Level);
                     }
+                    //console.log(totalLevel);
                 });
                 vocaSounds.push({
                     name: 'boing',
@@ -1198,11 +1211,14 @@ function checkInput() {
 
                 quizzVoca.SelectedValue = selectedValue;
                 quizzVoca.IsCorrect = "1";
+                quizzVoca.IsDone = '1';
 
                 //show error if wrong
                 if (selectedValue != resultValue) {
                     //sound
-                    sound('boing');
+                    if (soundEffect) {
+                        sound('boing');
+                    }
 
                     quizzVoca.IsCorrect = "0";
                     quizzVoca.NumOfWrong += 1;
@@ -1221,7 +1237,9 @@ function checkInput() {
                 }
                 else {
                     if (!isFinish()) {
-                        sound('ok');
+                        if (soundEffect) {
+                            sound('ok');
+                        }
                     }
 
                     //sound corrent voca
@@ -1376,7 +1394,9 @@ function checkInput() {
 
 
                     if (isFinish()) {
-                        sound('success');
+                        if (soundEffect) {
+                            sound('success');
+                        }
 
                         //show result
                         currentIndex = -1;
@@ -1442,7 +1462,9 @@ function checkInput() {
                             showProgress();
                         }
                         else {
-                            sound('success');
+                            if (soundEffect) {
+                                sound('success');
+                            }
                             //show result
                             currentIndex = -1;
                             currentLevel = totalLevel;
@@ -1515,7 +1537,7 @@ function isFinish() {
             break;
         }
     }
-    console.log('finish: ' + result);
+    //console.log('finish: ' + result);
     return result;
 }
 
@@ -1678,107 +1700,6 @@ function showResultPage() {
     $('.result').show();
     $('.lesson').hide();
 }
-
-function showFlashCard(index, voice) {
-    $('#btnNext').show();
-    $("#btnNext").removeAttr('disabled');
-    //$('#inputAlphabet').removeAttr('disabled');
-    //document.getElementById("test-content").style.cursor = "auto";
-
-    if (index == -1) {
-
-        //SHOW RESULT
-        var urlLearning = $('#ale').val();//'@Url.Action("hoc-tu-vung", "Library", new { id = @ViewBag.CategoryID, urlDisplay = @ViewBag.CategoryUrlDisplay})';
-        var urlVoca = $('#av').val();//'@Url.Action("danh-muc", "Library", new { id = @ViewBag.CategoryID, urlDisplay = @ViewBag.CategoryUrlDisplay})';
-
-        //result
-        var numOfOK = parseInt(vocas.length * 8 / 10);
-        var html = '';
-        html += '<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">';
-        html += '   <div class="carousel-inner" role="listbox">';
-        html += '       <div class="item active">';
-        html += '           <div class="row text-center">';
-        //            html += '               <div class="col-lg-4 col-md-4 col-xs-6">';
-        //            html += '                   <img class="img-rounded" src="' + getLink(voca.UrlImage) + '" alt="Từ vựng tiếng Nhật" height="300px" width="100%"/>';
-        //            html += '               </div>';
-        html += '               <div class="col-lg-12">';
-        html += '                   <p class="text-info">Số câu đúng: ' + correctVocas.length + '/' + vocas.length + '</p>';
-        html += '                   <p class="text-info">Thời gian hoàn thành: ' + completedTime + ' giây</p>';
-        html += '                   <p class="text-info">Kết quả: ' + (correctVocas.length >= numOfOK ? "Chúc mừng bạn đã vượt qua được bài kiểm tra" : "Bạn đã không vượt qua được bài kiểm tra. Hãy ôn lại") + '</p>';
-        html += '               </div>';
-        html += '           </div>';
-        html += '           <div class="row text-center">';
-        html += '               <div class="col-lg-12">';
-        html += '                   <a class="btn btn-navigator btn-lg require-login" href="' + urlLearning + '">HỌC TIẾP</a>';
-        html += '                   <a class="btn btn-navigator btn-lg require-login" href="' + urlVoca + '">ÔN TẬP</a>';
-        //if (correctVocas.length < numOfOK) {
-        //    //html += '                   <a href="#" role="button" class="btn btn-navigator btn-lg" onclick="showResult(0); return false;">Xem kết quả</a>';
-        //    html += '                   <a href="' + urlLearning + '" role="button" class="btn btn-navigator btn-lg" >Ôn lại</a>';
-        //}
-        //else {
-        //    //html += '                   <a href="#" role="button" class="btn btn-navigator btn-lg" onclick="showResult(0); return false;">Xem kết quả</a>';
-        //    html += '                   <a href="' + urlVoca + '" class="btn btn-navigator btn-lg" role="button" >Trở về</a>';
-        //}
-        html += '               </div>';
-        html += '           </div>';
-        html += '</br>';
-        html += '           <div class="row text-center">';
-        html += '               <div class="col-lg-12">';
-        html += '                   <a class="btn btn-navigator btn-lg require-login" href="' + urlLearning + '">ÔN SỔ TAY</a>';
-        html += '                   <a class="btn btn-navigator btn-lg require-login" href="' + urlVoca + '">TRỞ VỀ</a>';
-        html += '               </div>';
-        html += '           </div>';
-        html += '       </div>';
-        html += '   </div>';
-        html += '</div>';
-
-        $('#flashCard').html(html);
-        $('#btnNext').hide();
-
-    }
-    else {
-        var voca = searchVoca(index);
-        if (voca != null) {
-
-            voca.IsDone = '1';
-
-            //If Learning
-            if (!isPractice) {
-
-                voca.HasLearnt = '1';
-
-                var html = showLearning(voca);
-
-                $('#flashCard').html(html);
-
-                sound(voca.UrlAudio);
-
-                isPractice = true;
-            }
-            else {
-                //If Practice
-                var html = showPractise(voca);
-                $('#flashCard').html(html);
-
-                //if (voca.TestType == "2") {
-                //    $('#inputAlphabet').val('');
-                //    $('#inputAlphabet').focus();
-
-                //    $('#btnNext').show();
-                //}
-                //else if (voca.TestType == "1") {
-                //    $('#btnNext').hide();
-                //}
-
-                //listening skill
-                if (voca.TestSkill == '3') {
-                    sound(voca.UrlAudio);
-                }
-
-            }
-        }
-    }
-};
 
 function showFlashCard(voca, voice) {
 
@@ -2918,5 +2839,6 @@ function expandDetail(obj) {
 
 function sound(name) {
     //console.log(name);
+
     ion.sound.play(name);
 }

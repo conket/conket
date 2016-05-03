@@ -11,25 +11,40 @@ namespace Nihongo.Models
     {
         public int No { get; set; }
         public int ID { get; set; }
-        [Required(ErrorMessage="Nhập [Tên đăng nhập] đi gái!")]
+        public int VocaPerLearn { get; set; }
+        public int VocaPerReview { get; set; }
+        public string SoundEffect { get; set; }
+
+        [Required(ErrorMessage = "Nhập [Email] đi bạn!")]
+        [StringLength(100)]
+        public string Email { get; set; }
+
+        //[Required(ErrorMessage="Nhập [Tên đăng nhập] đi bạn!")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "Nhập [Mật khẩu] đi gái!")]
+        [StringLength(50, ErrorMessage = "[Mật khẩu] phải có ít nhất {2} kí tự.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Nhập [Mật khẩu] đi bạn!")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Nhập [Nhập lại mật khẩu] đi gái!")]
-        [System.Web.Mvc.Compare("Password", ErrorMessage="Phải giống [Mật khẩu] gái ơi!")]
+        [Required(ErrorMessage = "Nhập [Nhập lại mật khẩu] đi bạn!")]
+        [StringLength(50, ErrorMessage = "[Nhập lại mật khẩu] phải có ít nhất {2} kí tự.", MinimumLength = 6)]
+        [System.Web.Mvc.Compare("Password", ErrorMessage="Phải giống [Mật khẩu] bạn ơi!")]
+        [DataType(DataType.Password)]
         public string RePassword { get; set; }
+
         public bool CreateVoca { get; set; }
+
+        [StringLength(50)]
         public string DisplayName { get; set; }
         public string Status { get; set; }
         public string IsAdmin { get; set; }
         public string SystemData { get; set; }
 
-        [Required(ErrorMessage = "Nhập [Tên đăng nhập] đi gái!")]
+        //[Required(ErrorMessage = "Nhập [Tên đăng nhập] đi bạn!")]
         public string lUserName { get; set; }
 
-        [Required(ErrorMessage = "Nhập [Mật khẩu] đi gái!")]
+        //[Required(ErrorMessage = "Nhập [Mật khẩu] đi bạn!")]
         public string lPassword { get; set; }
 
         public bool RememberMe { get; set; }
@@ -75,10 +90,11 @@ namespace Nihongo.Models
             }
         }
         public string Phone { get; set; }
-        public string Email { get; set; }
         public string Address { get; set; }
         public string UrlImage { get; set; }
-
+        public int Followers { get; set; }
+        public int Followings { get; set; }
+        public bool Followed { get; set; }
         private List<MS_UserVocaSet> _userVocaSets = new List<MS_UserVocaSet>();
         public List<MS_UserVocaSet> UserVocaSets 
         {

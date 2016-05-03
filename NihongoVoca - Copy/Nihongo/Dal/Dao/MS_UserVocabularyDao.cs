@@ -90,7 +90,7 @@ namespace Nihongo.Dal.Dao
                                                        VMeaning = ex.VMeaning,
                                                    }).AsEnumerable(),
                                })
-                               .Take(5)
+                               .Take(model.VocaPerLearn)
                                .ToList();
                 }
                 else
@@ -159,7 +159,7 @@ namespace Nihongo.Dal.Dao
                                    Point = 0,
                                    IsDone = CommonData.Status.Disable,
                                })
-                               .Take(5)
+                               .Take(model.VocaPerLearn)
                                .ToList();
                 }
             }
@@ -250,7 +250,7 @@ namespace Nihongo.Dal.Dao
                                                         VMeaning = ex.VMeaning,
                                                     }).AsEnumerable(),
                                })
-                               .Take(10)
+                               .Take(model.VocaPerReview)
                                .ToList();
                 }
                 else
@@ -317,7 +317,7 @@ namespace Nihongo.Dal.Dao
                                    Point = 0,
                                    IsDone = CommonData.Status.Disable,
                                })
-                               .Take(10)
+                               .Take(model.VocaPerReview)
                                .ToList();
                 }
             }
@@ -408,7 +408,7 @@ namespace Nihongo.Dal.Dao
                                                         VMeaning = ex.VMeaning,
                                                     }).AsEnumerable(),
                                })
-                               .Take(10)
+                               .Take(model.VocaPerReview)
                                .ToList();
                 }
                 else
@@ -475,7 +475,7 @@ namespace Nihongo.Dal.Dao
                                    Point = 0,
                                    IsDone = CommonData.Status.Disable,
                                })
-                               .Take(10)
+                               .Take(model.VocaPerReview)
                                .ToList();
                 }
             }
@@ -565,7 +565,7 @@ namespace Nihongo.Dal.Dao
                                                         VMeaning = ex.VMeaning,
                                                     }).AsEnumerable(),
                                })
-                               .Take(10)
+                               .Take(model.VocaPerReview)
                                .ToList();
                 }
                 else
@@ -630,7 +630,7 @@ namespace Nihongo.Dal.Dao
                                    Point = 0,
                                    IsDone = CommonData.Status.Disable,
                                })
-                               .Take(10)
+                               .Take(model.VocaPerReview)
                                .ToList();
                 }
             }
@@ -1721,12 +1721,14 @@ namespace Nihongo.Dal.Dao
                 if (userCate != null)
                 {
                     userCate.IsIgnore = voca.IsIgnore;
+                    userCate.HasLearnt = CommonData.Status.Enable;
 
                     var userVocas = this.ms_uservocabularies.Where(ss => ss.UserID == userID
                                         && ss.ms_vocabularydetails.ms_vocacategories.ID == voca.ID);
                     foreach (var userVoca in userVocas)
                     {
                         userVoca.IsIgnore = voca.IsIgnore;
+                        userVoca.HasLearnt = CommonData.Status.Enable;
                         userVoca.Level = 8;
                     }
 

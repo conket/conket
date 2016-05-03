@@ -17,6 +17,7 @@
 <input type="hidden" id="lt" value="@ViewBag.LessonType"/>
 <input type="hidden" id="ik" value="@ViewBag.IsKanji"/>
 <input type="hidden" id="cid" value="@ViewBag.CategoryID"/>
+<input type="hidden" id="sound" value="@Session["SoundEffect"]"/>
 
 <div id="content" style="padding-left: 0px !important">
     <div class="notifications-wrapper">
@@ -37,7 +38,7 @@
                                     <div class="col-md-12 padding-0">
                                         <button id="btnLearning" class="btn ripple btn-outline btn-primary">
                                             <div>
-                                                <span id="spanLearning"><strong>HỌC TIẾP </strong></span><i class="fa fa-location-arrow"></i>
+                                                <span id="spanLearning"><strong>HỌC TỪ MỚI </strong></span><i class="fa fa-location-arrow"></i>
                                                 <span class="ink animate"></span>
                                             </div>
                                         </button>
@@ -46,6 +47,14 @@
                                         <button id="btnReview" class="btn ripple btn-outline btn-primary">
                                             <div>
                                                 <span id="spanReview"><strong>ÔN TẬP </strong></span><i class="fa fa-signal"></i>
+                                                <span class="ink animate"></span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-12 padding-0">
+                                        <button id="btnPracticeCate" class="btn ripple btn-outline btn-primary">
+                                            <div>
+                                                <span id="spanPracticeCate"><strong>ÔN TIẾP BÀI </strong></span><i class="fa fa-book"></i>
                                                 <span class="ink animate"></span>
                                             </div>
                                         </button>
@@ -238,7 +247,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 <input type="hidden" id="id-celebrate" />
                 <p>
-                    Chúc mừng @Session["DisplayName"] vừa hoàn thành <strong>
+                    @Session["DisplayName"] vừa hoàn thành <strong>
                         <div id="info-celebrate"></div>
                     </strong>
                 </p>

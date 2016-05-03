@@ -13,6 +13,7 @@
           <EntitySet Name="ms_registedvocasets" EntityType="Models.Store.ms_registedvocasets" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ms_testresults" EntityType="Models.Store.ms_testresults" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ms_usercategories" EntityType="Models.Store.ms_usercategories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ms_userfollowings" EntityType="Models.Store.ms_userfollowings" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ms_users" EntityType="Models.Store.ms_users" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ms_uservocabularies" EntityType="Models.Store.ms_uservocabularies" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ms_uservocasets" EntityType="Models.Store.ms_uservocasets" store:Type="Tables" Schema="dbo" />
@@ -69,6 +70,14 @@
           <AssociationSet Name="FK_msusercategories_UserID_msusers_ID" Association="Models.Store.FK_msusercategories_UserID_msusers_ID">
             <End Role="ms_users" EntitySet="ms_users" />
             <End Role="ms_usercategories" EntitySet="ms_usercategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msuserfollowings_FollowerID_msusers_ID" Association="Models.Store.FK_msuserfollowings_FollowerID_msusers_ID">
+            <End Role="ms_users" EntitySet="ms_users" />
+            <End Role="ms_userfollowings" EntitySet="ms_userfollowings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msuserfollowings_UserID_msusers_ID" Association="Models.Store.FK_msuserfollowings_UserID_msusers_ID">
+            <End Role="ms_users" EntitySet="ms_users" />
+            <End Role="ms_userfollowings" EntitySet="ms_userfollowings" />
           </AssociationSet>
           <AssociationSet Name="FK_msuservocabularies_UserID_msusers_ID" Association="Models.Store.FK_msuservocabularies_UserID_msusers_ID">
             <End Role="ms_users" EntitySet="ms_users" />
@@ -231,6 +240,17 @@
           <Property Name="UpdatedDate" Type="datetime" />
           <Property Name="UpdatedBy" Type="int" />
         </EntityType>
+        <EntityType Name="ms_userfollowings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="FollowerID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="ntext" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
         <EntityType Name="ms_users">
           <Key>
             <PropertyRef Name="ID" />
@@ -254,6 +274,9 @@
           <Property Name="Point" Type="int" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="NumOfLearntVoca" Type="int" />
+          <Property Name="VocaPerLearn" Type="int" />
+          <Property Name="VocaPerReview" Type="int" />
+          <Property Name="SoundEffect" Type="nvarchar" MaxLength="1" />
         </EntityType>
         <EntityType Name="ms_uservocabularies">
           <Key>
@@ -542,6 +565,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_msuserfollowings_FollowerID_msusers_ID">
+          <End Role="ms_users" Type="Models.Store.ms_users" Multiplicity="1" />
+          <End Role="ms_userfollowings" Type="Models.Store.ms_userfollowings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_userfollowings">
+              <PropertyRef Name="FollowerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msuserfollowings_UserID_msusers_ID">
+          <End Role="ms_users" Type="Models.Store.ms_users" Multiplicity="1" />
+          <End Role="ms_userfollowings" Type="Models.Store.ms_userfollowings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_userfollowings">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_msuservocabularies_UserID_msusers_ID">
           <End Role="ms_users" Type="Models.Store.ms_users" Multiplicity="1" />
           <End Role="ms_uservocabularies" Type="Models.Store.ms_uservocabularies" Multiplicity="*" />
@@ -787,6 +834,15 @@
             <End Role="ms_vocasets" EntitySet="ms_vocasets" />
             <End Role="ms_vouchers" EntitySet="ms_vouchers" />
           </AssociationSet>
+          <EntitySet Name="ms_userfollowings" EntityType="Models.ms_userfollowings" />
+          <AssociationSet Name="FK_msuserfollowings_FollowerID_msusers_ID" Association="Models.FK_msuserfollowings_FollowerID_msusers_ID">
+            <End Role="ms_users" EntitySet="ms_users" />
+            <End Role="ms_userfollowings" EntitySet="ms_userfollowings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msuserfollowings_UserID_msusers_ID" Association="Models.FK_msuserfollowings_UserID_msusers_ID">
+            <End Role="ms_users" EntitySet="ms_users" />
+            <End Role="ms_userfollowings" EntitySet="ms_userfollowings" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="ms_answers">
           <Key>
@@ -949,6 +1005,11 @@
           <NavigationProperty Name="ms_usercategories" Relationship="Models.FK_msusercategories_UserID_msusers_ID" FromRole="ms_users" ToRole="ms_usercategories" />
           <NavigationProperty Name="ms_uservocabularies" Relationship="Models.FK_msuservocabularies_UserID_msusers_ID" FromRole="ms_users" ToRole="ms_uservocabularies" />
           <NavigationProperty Name="ms_uservocasets" Relationship="Models.FK_msuservocasets_UserID_msusers_ID" FromRole="ms_users" ToRole="ms_uservocasets" />
+          <Property Type="Int32" Name="VocaPerLearn" />
+          <Property Type="Int32" Name="VocaPerReview" />
+          <Property Type="String" Name="SoundEffect" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ms_userfollowings" Relationship="Models.FK_msuserfollowings_FollowerID_msusers_ID" FromRole="ms_users" ToRole="ms_userfollowings" />
+          <NavigationProperty Name="ms_userfollowings1" Relationship="Models.FK_msuserfollowings_UserID_msusers_ID" FromRole="ms_users" ToRole="ms_userfollowings" />
         </EntityType>
         <EntityType Name="ms_uservocabularies">
           <Key>
@@ -1393,6 +1454,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ms_userfollowings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="FollowerID" Nullable="false" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="UpdatedDate" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" />
+          <NavigationProperty Name="ms_users" Relationship="Models.FK_msuserfollowings_FollowerID_msusers_ID" FromRole="ms_userfollowings" ToRole="ms_users" />
+          <NavigationProperty Name="ms_users1" Relationship="Models.FK_msuserfollowings_UserID_msusers_ID" FromRole="ms_userfollowings" ToRole="ms_users" />
+        </EntityType>
+        <Association Name="FK_msuserfollowings_FollowerID_msusers_ID">
+          <End Type="Models.ms_users" Role="ms_users" Multiplicity="1" />
+          <End Type="Models.ms_userfollowings" Role="ms_userfollowings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_userfollowings">
+              <PropertyRef Name="FollowerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msuserfollowings_UserID_msusers_ID">
+          <End Type="Models.ms_users" Role="ms_users" Multiplicity="1" />
+          <End Type="Models.ms_userfollowings" Role="ms_userfollowings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ms_userfollowings">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1525,6 +1623,9 @@
           <EntitySetMapping Name="ms_users">
             <EntityTypeMapping TypeName="Models.ms_users">
               <MappingFragment StoreEntitySet="ms_users">
+                <ScalarProperty Name="SoundEffect" ColumnName="SoundEffect" />
+                <ScalarProperty Name="VocaPerReview" ColumnName="VocaPerReview" />
+                <ScalarProperty Name="VocaPerLearn" ColumnName="VocaPerLearn" />
                 <ScalarProperty Name="NumOfLearntVoca" ColumnName="NumOfLearntVoca" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Point" ColumnName="Point" />
@@ -1698,6 +1799,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ms_userfollowings">
+            <EntityTypeMapping TypeName="Models.ms_userfollowings">
+              <MappingFragment StoreEntitySet="ms_userfollowings">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FollowerID" ColumnName="FollowerID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1758,6 +1871,9 @@
         <AssociationConnector Association="Models.FK_msvocabularydetails_CategoryID_msvocacategories_ID" />
         <AssociationConnector Association="Models.FK_msvocacategories_VocaSetID_msvocasets_ID" />
         <AssociationConnector Association="Models.FK_msvouchers_VocaSetID_msvocasets_ID" />
+        <EntityTypeShape EntityType="Models.ms_userfollowings" Width="1.5" PointX="11.593047229383629" PointY="13.413468888687653" />
+        <AssociationConnector Association="Models.FK_msuserfollowings_FollowerID_msusers_ID" />
+        <AssociationConnector Association="Models.FK_msuserfollowings_UserID_msusers_ID" />
       </Diagram>
     </Diagrams>
   </Designer>

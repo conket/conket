@@ -563,6 +563,8 @@ namespace Nihongo.Controllers
                 //model.Type = CommonData.VocaType.Word;
                 model.UserID = CommonMethod.ParseInt(Session["UserID"]);
                 model.IsKanji = isKanji;
+                model.VocaPerLearn = CommonMethod.ParseInt(Session["VocaPerLearn"]);
+                model.VocaPerReview = CommonMethod.ParseInt(Session["VocaPerReview"]);
                 //model.HasLearnt = CommonData.Status.Disable;
                 returnCode = dao.SelectPracticeSessionUserVocaData(model, out results);
             }
@@ -592,6 +594,8 @@ namespace Nihongo.Controllers
                 //model.Type = CommonData.VocaType.Word;
                 model.UserID = CommonMethod.ParseInt(Session["UserID"]);
                 model.IsKanji = isKanji;
+                model.VocaPerLearn = CommonMethod.ParseInt(Session["VocaPerLearn"]);
+                model.VocaPerReview = CommonMethod.ParseInt(Session["VocaPerReview"]);
                 //model.HasLearnt = CommonData.Status.Disable;
                 returnCode = dao.SelectPracticeSessionCateVocas(model, out results);
             }
@@ -621,6 +625,8 @@ namespace Nihongo.Controllers
                 //model.Type = CommonData.VocaType.Word;
                 model.UserID = CommonMethod.ParseInt(Session["UserID"]);
                 model.IsKanji = isKanji;
+                model.VocaPerLearn = CommonMethod.ParseInt(Session["VocaPerLearn"]);
+                model.VocaPerReview = CommonMethod.ParseInt(Session["VocaPerReview"]);
                 //model.HasLearnt = CommonData.Status.Disable;
                 returnCode = dao.SelectSessionUserVocaData(model, out results);
             }
@@ -650,6 +656,8 @@ namespace Nihongo.Controllers
                 //model.Type = CommonData.VocaType.Word;
                 model.UserID = CommonMethod.ParseInt(Session["UserID"]);
                 model.IsKanji = isKanji;
+                model.VocaPerLearn = CommonMethod.ParseInt(Session["VocaPerLearn"]);
+                model.VocaPerReview = CommonMethod.ParseInt(Session["VocaPerReview"]);
                 //model.HasLearnt = CommonData.Status.Disable;
                 returnCode = dao.SelectNotebookSessionUserVocaData(model, out results);
             }

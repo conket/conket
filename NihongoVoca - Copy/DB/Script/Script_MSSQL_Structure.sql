@@ -1,12 +1,18 @@
 /*
 Database: nihongo_voca
-Generate Date: Sunday, April 17, 2016 10:39:37 PM
+Generate Date: Sunday, May 01, 2016 4:59:55 PM
 *********************************************************************
 */
 
 USE [nihongo_voca]
 GO
 /* ******** Drop Foreign Key ********/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_msuserfollowings_UserID_msusers_ID]')AND parent_object_id = OBJECT_ID(N'[dbo].[ms_userfollowings]'))
+ALTER TABLE [dbo].[ms_userfollowings] DROP CONSTRAINT [FK_msuserfollowings_UserID_msusers_ID]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_msuserfollowings_FollowerID_msusers_ID]')AND parent_object_id = OBJECT_ID(N'[dbo].[ms_userfollowings]'))
+ALTER TABLE [dbo].[ms_userfollowings] DROP CONSTRAINT [FK_msuserfollowings_FollowerID_msusers_ID]
+GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_msvocacategories_VocaSetID_msvocasets_ID]')AND parent_object_id = OBJECT_ID(N'[dbo].[ms_vocacategories]'))
 ALTER TABLE [dbo].[ms_vocacategories] DROP CONSTRAINT [FK_msvocacategories_VocaSetID_msvocasets_ID]
 GO
@@ -86,6 +92,9 @@ GO
 IF  EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[ms_users]') AND name = N'IdxUnique')
 DROP INDEX [IdxUnique] ON [dbo].[ms_users] WITH ( ONLINE = OFF )
 GO
+IF  EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[ms_userfollowings]') AND name = N'IdxUnique')
+DROP INDEX [IdxUnique] ON [dbo].[ms_userfollowings] WITH ( ONLINE = OFF )
+GO
 IF  EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[ms_vocasets]') AND name = N'IdxUnique')
 DROP INDEX [IdxUnique] ON [dbo].[ms_vocasets] WITH ( ONLINE = OFF )
 GO
@@ -155,6 +164,9 @@ CREATE TABLE [dbo].[ms_users](
    [Point] [int] NULL ,
    [NumOfLearntVoca] [int] NULL ,
    [CreatedDate] [datetime] NULL ,
+   [VocaPerLearn] [int] NULL ,
+   [VocaPerReview] [int] NULL ,
+   [SoundEffect] [nvarchar] (1) NULL ,
  CONSTRAINT [PK_msusers] PRIMARY KEY NONCLUSTERED 
  (
      [ID] Asc
@@ -180,6 +192,33 @@ GO
 ALTER TABLE [dbo].[ms_users] ADD  CONSTRAINT [DF_msusers_Point]  DEFAULT ((0)) FOR [Point]
 GO
 ALTER TABLE [dbo].[ms_users] ADD  CONSTRAINT [DF_msusers_NumOfLearntVoca]  DEFAULT ((0)) FOR [NumOfLearntVoca]
+GO
+ALTER TABLE [dbo].[ms_users] ADD  CONSTRAINT [DF_msusers_VocaPerLearn]  DEFAULT ((5)) FOR [VocaPerLearn]
+GO
+ALTER TABLE [dbo].[ms_users] ADD  CONSTRAINT [DF_msusers_VocaPerReview]  DEFAULT ((10)) FOR [VocaPerReview]
+GO
+ALTER TABLE [dbo].[ms_users] ADD  CONSTRAINT [DF_msusers_SoundEffect]  DEFAULT ((1)) FOR [SoundEffect]
+GO
+GO
+/* ***** Object:  Table [dbo].[ms_userfollowings]  ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ms_userfollowings]') AND type in (N'U'))
+DROP TABLE [dbo].[ms_userfollowings]
+GO
+CREATE TABLE [dbo].[ms_userfollowings](
+   [ID] [int] IDENTITY(1,1)  NOT NULL ,
+   [UserID] [int] NOT NULL ,
+   [FollowerID] [int] NOT NULL ,
+   [Description] [ntext] NULL ,
+   [UpdatedDate] [datetime] NULL ,
+   [UpdatedBy] [int] NULL ,
+ CONSTRAINT [PK_msuserfollowings] PRIMARY KEY NONCLUSTERED 
+ (
+     [ID] Asc
+ )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/* ***********Object:  Index [IdxUnique] ************/
+CREATE UNIQUE CLUSTERED INDEX IdxUnique  ON [dbo].[ms_userfollowings] ([UserID],[FollowerID])
 GO
 GO
 /* ***** Object:  Table [dbo].[ms_vocasets]  ******/
@@ -660,6 +699,10 @@ ALTER TABLE [dbo].[ms_paymenthistories] ADD  CONSTRAINT [DF_mspaymenthistories_S
 GO
 GO
 /* ******** Create Foreign Key ********/
+ALTER TABLE [dbo].[ms_userfollowings]  WITH CHECK ADD  CONSTRAINT [FK_msuserfollowings_UserID_msusers_ID] FOREIGN KEY([UserID]) REFERENCES [dbo].[ms_users] ([ID])
+GO
+ALTER TABLE [dbo].[ms_userfollowings]  WITH CHECK ADD  CONSTRAINT [FK_msuserfollowings_FollowerID_msusers_ID] FOREIGN KEY([FollowerID]) REFERENCES [dbo].[ms_users] ([ID])
+GO
 ALTER TABLE [dbo].[ms_vocacategories]  WITH CHECK ADD  CONSTRAINT [FK_msvocacategories_VocaSetID_msvocasets_ID] FOREIGN KEY([VocaSetID]) REFERENCES [dbo].[ms_vocasets] ([ID])
 GO
 ALTER TABLE [dbo].[ms_vocakanjis]  WITH CHECK ADD  CONSTRAINT [FK_msvocakanjis_VocabularyID_msvocabularies_ID] FOREIGN KEY([VocabularyID]) REFERENCES [dbo].[ms_vocabularies] ([ID])

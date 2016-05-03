@@ -1,10 +1,75 @@
-﻿@{
+﻿@model Nihongo.Models.SettingModel
+
+@{
     ViewBag.Title = "Setting";
     Layout = "~/Views/Shared/_MasterUserLayout.cshtml";
 }
 
 <div id="content">
-    <div class="notifications-wrapper">
+
+    <div class="panel box-shadow-none content-header">
+        <div class="panel-body">
+            <div class="col-md-12">
+                <h3 class="animated fadeInLeft">Cấu hình</h3>
+                @*<p class="animated fadeInDown">
+                    Form <span class="fa-angle-right fa"></span>Form Element
+                       
+                </p>*@
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        if (!CommonMethod.IsNullOrEmpty(TempData["Message"]))
+            {
+                <div class="validation-summary-errors" style="padding-left:20px;">
+                    @TempData["Message"]
+                </div>
+            }
+        <div class="col-md-12">
+            <div class="col-md-12 panel" style="padding: 50px; padding-bottom: 70px;">
+                <div class="form-group form-animate-text">
+                    <div class="form-group form-animate-text">
+                        @*<input type="text" class="form-text mask-money" maxlength="2" value="@Session["VocaPerLearn"]" name="VocaPerLearn">*@
+                        @Html.TextBoxFor(ss => ss.VocaPerLearn, new {@maxlength = "2", @class="form-text mask-money"})
+                        <span class="bar"></span>
+                        <label>Số từ mỗi lần học</label>
+                        @Html.ValidationMessageFor(ss => ss.VocaPerLearn)
+                    </div>
+                </div>
+                <div class="form-group form-animate-text">
+                    <div class="form-group form-animate-text">
+                        @*<input type="text" class="form-text mask-money" maxlength="2" value="@Session["VocaPerReview"]" name="VocaPerReview">*@
+                        @Html.TextBoxFor(ss => ss.VocaPerReview, new {@maxlength = "2", @class="form-text mask-money"})
+                        <span class="bar"></span>
+                        <label>Số từ mỗi lần ôn</label>
+                        @Html.ValidationMessageFor(ss => ss.VocaPerReview)
+                    </div>
+                </div>
+                <div class="form-group form-animate-checkbox">
+                    <label>Hiệu ứng âm thanh</label>
+                    @Html.CheckBoxFor(x => x.SoundEffect, new { @class="checkbox" })
+                    @*@if (CommonMethod.ParseBool(Session["SoundEffect"]))
+                    {
+                        <input type="checkbox" class="checkbox" checked="checked" name="SoundEffect" id="SoundEffect">
+                    }
+                    else
+                    {
+                        <input type="checkbox" class="checkbox" name="SoundEffect" id="SoundEffect">
+                    }*@
+                </div>
+
+                <br />
+                <button class="btn ripple-infinite btn-outline btn-primary btn-navigator" type="submit">
+                    <div>
+                        <span>Lưu</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    }
+    @*<div class="notifications-wrapper">
         <div class="col-md-12 padding-0">
             <div class="col-md-12">
                 <div class="panel">
@@ -23,7 +88,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
 </div>
 
-    @Html.Partial("_ModalPartial")
+@Html.Partial("_ModalPartial")

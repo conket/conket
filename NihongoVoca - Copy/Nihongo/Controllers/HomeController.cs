@@ -52,6 +52,10 @@ namespace Nihongo.Controllers
                 UserSession.UserName = user.UserName;
                 UserSession.UserID = user.ID;
 
+                Session["VocaPerLearn"] = user.VocaPerLearn;
+                Session["VocaPerReview"] = user.VocaPerReview;
+                Session["SoundEffect"] = user.SoundEffect == CommonData.Status.Enable ? true : false;
+
                 return RedirectToAction("HomePage", "Account");
             }
             else
@@ -65,6 +69,10 @@ namespace Nihongo.Controllers
                 Session["IsAdmin"] = false;
                 UserSession.UserName = CommonData.StringEmpty;
                 UserSession.UserID = -1;
+
+                Session["VocaPerLearn"] = 5;
+                Session["VocaPerReview"] = 10;
+                Session["SoundEffect"] = true;
             }
 
             return View("Index");
@@ -108,12 +116,12 @@ namespace Nihongo.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public JsonResult LoadSet()
         {
-            List<MS_VocaSetsModels> result = new List<MS_VocaSetsModels>();
-            MS_VocaSetsDao dao = new MS_VocaSetsDao();
-            MS_VocaSetsModels model = new MS_VocaSetsModels();
-            int returnCode = dao.SelectData(model, out result);
-            DataSession.VocaSets = result.ToDictionary(ss => ss.UrlDisplay, ss => ss.ID);
-            return Json(new { returnCode = returnCode }, JsonRequestBehavior.AllowGet);
+            //List<MS_VocaSetsModels> result = new List<MS_VocaSetsModels>();
+            //MS_VocaSetsDao dao = new MS_VocaSetsDao();
+            //MS_VocaSetsModels model = new MS_VocaSetsModels();
+            //int returnCode = dao.SelectData(model, out result);
+            //DataSession.VocaSets = result.ToDictionary(ss => ss.UrlDisplay, ss => ss.ID);
+            return Json(new { returnCode = 0 }, JsonRequestBehavior.AllowGet);
         }
 
         [EncryptActionName(Name = ("LoadCate"))]
@@ -121,12 +129,12 @@ namespace Nihongo.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public JsonResult LoadCate()
         {
-            List<MS_VocaCategoriesModels> result = new List<MS_VocaCategoriesModels>();
-            MS_VocaCategoriesModels model = new MS_VocaCategoriesModels();
-            MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
-            int returnCode = dao.SelectData(model, out result);
+            //List<MS_VocaCategoriesModels> result = new List<MS_VocaCategoriesModels>();
+            //MS_VocaCategoriesModels model = new MS_VocaCategoriesModels();
+            //MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
+            //int returnCode = dao.SelectData(model, out result);
             //DataSession.VocaCates = result.ToDictionary(ss => ss.UrlDisplay, ss => ss.ID);
-            return Json(new { returnCode = returnCode }, JsonRequestBehavior.AllowGet);
+            return Json(new { returnCode = 0 }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

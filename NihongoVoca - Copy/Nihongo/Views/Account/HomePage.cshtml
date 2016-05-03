@@ -5,7 +5,7 @@
 }
 
 <div id="content">
-    <div class="panel hidden-xs" style="margin-bottom: 0px;">
+    @*<div class="panel hidden-xs" style="margin-bottom: 0px;">
         <div class="panel-body">
             <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="panel">
@@ -26,9 +26,8 @@
                                   
                                 </div>
                               </div>
+                        </center>
                     </div>
-                    </center>
-                       
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6">
@@ -45,13 +44,52 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
 
     <div class="col-md-12" style="padding: 20px;">
         <div class="col-md-12 padding-0">
-            <div class="col-md-8 padding-0">
-                
-                    @Html.Partial("_UserVocaSetPartialView", Model.UserVocaSets);
+            <div class="col-md-8 padding-0 ">
+                <ul class="nav nav-tabs nav-tabs-v5 text-center">
+                    <li class="active"><a data-toggle="tab" href="#home">
+                        @*<span class="icons icon-home"></span>*@
+                        <span class="round-tabs one">
+                            <i class="glyphicon glyphicon-home"></i>
+                        </span>
+                    </a>
+                    </li>
+                    <li><a data-toggle="tab" href="#people">
+                        <span class="round-tabs two">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        @*<span class="icons icon-people"></span>*@</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        @Html.Partial("_UserVocaSetPartialView", Model.UserVocaSets);
+                    </div>
+                    <div id="people" class="search-v1 partialcontent tab-pane fade" data-url="@Url.Action(CommonMethod.EncodeUrl("GetUsers"), "Account")">
+
+                    
+                        @*@Html.Partial("_UserPartialView", Model.Users);*@
+                        @*<div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img src="asset/img/avatar2.png" class="media-object search-v1-avatar">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Fulan</h4>
+                                <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                <a href="">
+                                    <i class="icon-user icons"></i>2819 follower
+                                </a>
+                                <a href="">| <i class="icon-user icons"></i>29 following</a>
+                            </div>
+                        </div>*@
+
+                    </div>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="col-md-12 padding-0">
@@ -173,7 +211,7 @@
     </div>
 </div>
 
-@*<script type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function () {
         $('.partialcontent').each(function (i, item) {
             var url = $(item).data('url');
@@ -182,4 +220,4 @@
             }
         });
     });
-</script>*@
+</script>

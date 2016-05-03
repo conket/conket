@@ -209,7 +209,9 @@ namespace Nihongo.Dal.Dao
                     user.SystemData = ur.SystemData;
                     user.UrlImage = ur.UrlImage;
                     user.UserName = ur.UserName;
-                    
+                    user.VocaPerLearn = ur.VocaPerLearn ?? 5;
+                    user.VocaPerReview = ur.VocaPerReview ?? 10;
+                    user.SoundEffect = ur.SoundEffect;
                 }
             }
             catch (Exception ex)
@@ -486,6 +488,57 @@ namespace Nihongo.Dal.Dao
             return returnCode;
         }
 
+
+        internal int Register(MS_UsersModels model, out MS_UsersModels user)
+        {
+            int returnCode = 0;
+            user = null;
+            try
+            {
+                var query = this.ms_users.Where(ss => ss.Email == model.Email);
+                user = query.Select(ss => new MS_UsersModels
+                {
+                    ID = ss.ID,
+                    UserName = ss.UserName,
+                    Password = ss.Password,
+                    UrlImage = ss.UrlImage,
+                    Status = ss.Status,
+                    DisplayName = ss.DisplayName,
+                    SystemData = ss.SystemData,
+                    IsAdmin = ss.IsAdmin,
+
+                })
+                    .FirstOrDefault();
+
+                if (user == null)
+                {
+                    int userID = -1;
+                    returnCode = InsertData(model, out userID);
+
+                    user = new MS_UsersModels()
+                    {
+                        ID = userID,
+                        UserName = model.UserName,
+                        Password = model.Password,
+                        Email = model.Email,
+                        Status = CommonData.Status.Enable,
+                        DisplayName = model.DisplayName,
+                        SystemData = CommonData.Status.Disable,
+                        IsAdmin = CommonData.Status.Disable,
+                    };
+                }
+                else
+                {
+                    returnCode = CommonData.DbReturnCode.DuplicateKey;
+                }
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+            return returnCode;
+        }
+
         internal int GLogin(MS_UsersModels model, out MS_UsersModels user)
         {
             int returnCode = 0;
@@ -543,13 +596,15 @@ namespace Nihongo.Dal.Dao
         }
 
 
-        internal int SelectUsersData(out List<MS_UsersModels> users)
+        internal int SelectUsersData(int userID, out List<MS_UsersModels> users)
         {
             int returnCode = 0;
             users = new List<MS_UsersModels>();
             try
             {
                 users = this.ms_users
+                    .Where(s => s.ID != userID)
+                    .OrderByDescending(ss => ss.Point).ThenByDescending(ss => ss.NumOfLearntVoca)
                     .Select(s => new MS_UsersModels
                     {
                         ID = s.ID,
@@ -559,6 +614,119 @@ namespace Nihongo.Dal.Dao
                         NumOfLearntVoca = s.NumOfLearntVoca ?? 0,
                         Point = s.Point ?? 0,
                         UrlImage = s.UrlImage,
+
+                        Followers = s.ms_userfollowings.Count(ss => ss.FollowerID == s.ID),
+                        Followings = s.ms_userfollowings1.Count(ss => ss.UserID == s.ID),
+                        Followed = s.ms_userfollowings.Any(ss => ss.UserID == userID),
+                    })
+                    .Take(20)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+            return returnCode;
+        }
+
+
+        internal int UpdateSetting(int userID, SettingModel setting)
+        {
+            int returnCode = 0;
+            try
+            {
+                var user = this.ms_users.FirstOrDefault(ss => ss.ID == userID);
+                if (user != null)
+                {
+                    user.VocaPerReview = setting.VocaPerReview;
+                    user.VocaPerLearn = setting.VocaPerLearn;
+                    user.SoundEffect = setting.SoundEffect ? CommonData.Status.Enable : CommonData.Status.Disable;
+                    returnCode = this.Saves();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+            return returnCode;
+        }
+
+        internal int SelectUserByID(ref MS_UsersModels user)
+        {
+            int returnCode = 0;
+            try
+            {
+                int id = user.ID;
+                user = this.ms_users.Where(ss => ss.ID == id)
+                    .Select(ss => new MS_UsersModels
+                    {
+                        ID = ss.ID,
+                        VocaPerReview = ss.VocaPerReview ?? 5,
+                        VocaPerLearn = ss.VocaPerLearn ?? 10,
+                        SoundEffect = ss.SoundEffect,
+                    })
+                    .FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
+        public int Follow(int userID, int followerID, bool follow)
+        {
+            int returnCode = 0;
+            try
+            {
+                Mapping.ms_userfollowings followVal = ms_userfollowings.FirstOrDefault(ss => ss.UserID == userID && ss.FollowerID == followerID);
+                if (followVal == null)
+                {
+                    if (follow)
+                    {
+                        followVal = new Mapping.ms_userfollowings();
+                        followVal.UserID = userID;
+                        followVal.FollowerID = followerID;
+                        followVal.UpdatedDate = DateTime.Now;
+                        ms_userfollowings.AddObject(followVal);
+                    }
+                    returnCode = this.Saves();
+                }
+                else
+                {
+                    if (!follow)
+                    {
+                        ms_userfollowings.DeleteObject(followVal);
+                        returnCode = this.Saves();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
+        internal int SelectFollowersByUser(int id, out List<MS_UsersModels> results)
+        {
+            int returnCode = 0;
+            results = new List<MS_UsersModels>();
+            try
+            {
+                results = ms_userfollowings.Where(ss => ss.FollowerID == id)
+                    .Select(ss => new MS_UsersModels
+                    {
+                        ID = ss.ms_users1.ID,
+                        DisplayName = ss.ms_users1.DisplayName,
+                        UrlImage = ss.ms_users1.UrlImage,
+                        NumOfLearntVoca = ss.ms_users1.NumOfLearntVoca ?? 0,
+                        Point = ss.ms_users1.Point ?? 0,
+                        Followers = ss.ms_users1.ms_userfollowings.Count(),
+                        Followings = ss.ms_users1.ms_userfollowings1.Count(),
                     })
                     .ToList();
             }
@@ -566,6 +734,33 @@ namespace Nihongo.Dal.Dao
             {
                 returnCode = ProcessDbException(ex);
             }
+
+            return returnCode;
+        }
+        internal int SelectFollowingsByUser(int id, out List<MS_UsersModels> results)
+        {
+            int returnCode = 0;
+            results = new List<MS_UsersModels>();
+            try
+            {
+                results = ms_userfollowings.Where(ss => ss.UserID == id)
+                    .Select(ss => new MS_UsersModels
+                    {
+                        ID = ss.ms_users.ID,
+                        DisplayName = ss.ms_users.DisplayName,
+                        UrlImage = ss.ms_users.UrlImage,
+                        NumOfLearntVoca = ss.ms_users.NumOfLearntVoca ?? 0,
+                        Point = ss.ms_users.Point ?? 0,
+                        Followers = ss.ms_users.ms_userfollowings.Count(),
+                        Followings = ss.ms_users.ms_userfollowings1.Count(),
+                    })
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
             return returnCode;
         }
     }

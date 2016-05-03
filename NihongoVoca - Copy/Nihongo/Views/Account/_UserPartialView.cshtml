@@ -4,26 +4,108 @@
 {
     foreach (var user in Model)
     {
-    <div class="media">
+    <div class="media" style="background: #f9f9f9;">
         <div class="media-left">
             <a href="#">
                 <img src="@user.UrlImage" class="media-object search-v1-avatar" />
             </a>
         </div>
         <div class="media-body">
+            @{var pid = "p" + user.ID;}
+            <p class="error pull-right" id="@pid">
+                @if (user.Followed)
+                {
+                    <i class='fa fa-bookmark-o'>Đang theo dõi</i>
+                }
+            </p>
             <h4 class="media-heading">@user.DisplayName</h4>
-            <p></p>
-            <a href="">
-                <i class="icon-user icons"></i>2819 follower
-                                   </a>
-            <a href="">| <i class="icon-user icons"></i>29 following</a>
+            <p>Đã học @user.NumOfLearntVocaDisplay từ | Có @user.PointDisplay điểm</p>
+            @{ var followerID = "follower" + user.ID;}
+            <a href="#" id="@followerID" class="follower" data-value="@user.ID" data-follow="@user.Followers">
+                <i class="icon-user icons"></i>@user.Followers follower
+            </a>
+            @{ var followingID = "following" + user.ID;}
+            <a href="#" id="@followingID" class="following" data-value="@user.ID" data-follow="@user.Followings">| <i class="icon-user icons"></i>@user.Followings following</a>
             <br />
-            <button class="btn ripple-infinite btn-outline btn-primary">
-                                    <div>
-                                      <span>Theo dõi</span>
-                                    </div>
-                                  </button>
+            <button class="btn ripple-infinite btn-outline btn-primary follow" data-value="@user.ID" data-follow="@user.Followed">
+                <span>@(user.Followed ? "Bỏ theo dõi" : "Theo dõi")</span>
+            </button>
         </div>
     </div>
     }
 }
+<script type="text/javascript">
+    var setId = 0;
+    $(function () {
+        $('.follow').on('click', function (e) {
+            var url = '/Account/' + '@CommonMethod.EncodeUrl("Follow")';
+            var obj = this;
+            var id = $(this).attr('data-value');
+            var followed = $(this).attr('data-follow');
+
+            $.post(url, { followerID: id, followed: followed }, function (result, status, xhr) {
+                if (result.ReturnCode == 0) {
+                    if (followed == 'True') {
+                        $('span', obj).html("Theo dõi");
+                        $('#p' + id).html('');
+                        var numOfFollower = parseInt($('#follower' + id).attr('data-follow')) - 1;
+                        $('#follower' + id).attr('data-follow', numOfFollower);
+                        $('#follower' + id).html('<i class="icon-user icons"></i>'+numOfFollower+' follower');
+                        $(obj).attr("data-follow", "False");
+                    }
+                    else {
+                        $('span', obj).html("Bỏ theo dõi");
+                        $('#p' + id).html('<i class="fa fa-bookmark-o"> Đang theo dõi</i>');
+                        var numOfFollower = parseInt($('#follower' + id).attr('data-follow')) + 1;
+                        $('#follower' + id).attr('data-follow', numOfFollower);
+                        $('#follower' + id).html('<i class="icon-user icons"></i>' + numOfFollower + ' follower');
+                        $(obj).attr("data-follow", "True");
+                    }
+                }
+                else {
+                    alert('Có lỗi xảy ra!');
+                    console.log(xhr.responseText);
+                }
+            })
+              //.done(function () {
+
+              //})
+              .fail(function (xhr, textStatus, errorThrown) {
+                  console.log(xhr.responseText);
+              })
+        });
+
+        $('.follower').on('click', function (e) {
+            e.preventDefault();
+            if (parseInt($(this).attr('data-follow')) > 0) {
+                var url = '/Account/' + '@CommonMethod.EncodeUrl("GetFollowersByUser")' + '/' + $(this).attr('data-value');
+                  $('#followers').load(url);
+                  $('#modalFollower').modal();
+              }
+        });
+        $('.following').on('click', function (e) {
+            e.preventDefault();
+            if (parseInt($(this).attr('data-follow')) > 0) {
+                var url = '/Account/' + '@CommonMethod.EncodeUrl("GetFollowingsByUser")' + '/' + $(this).attr('data-value');
+                $('#followers').load(url);
+                $('#modalFollower').modal();
+            }
+        });
+    });
+</script>
+
+<div class="modal fade" id="modalFollower" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div id="followers" style="height:400px; overflow: auto;">
+                    @Html.Partial("_FolllowersPartial", new List<Nihongo.Models.MS_UsersModels>())
+                    <!-- /.row -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -74,7 +74,13 @@ namespace Nihongo.Models
     public class RegisterModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Display(Name = "DisplayName")]
+        public string DisplayName { get; set; }
+
+        [Display(Name = "UserName")]
         public string UserName { get; set; }
 
         [Required]
@@ -83,10 +89,11 @@ namespace Nihongo.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+        [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "RePassword")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; }
+        public string RePassword { get; set; }
     }
 
     public class ExternalLogin

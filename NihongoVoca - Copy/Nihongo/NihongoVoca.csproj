@@ -289,6 +289,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\SettingModel.cs" />
     <Compile Include="Models\MS_KanjiExampleModel.cs" />
     <Compile Include="Models\MS_TestResultModels.cs" />
     <Compile Include="Models\MS_RegistedVocaModels.cs" />
@@ -2056,6 +2057,7 @@
     <Content Include="Images\brain.png" />
     <Content Include="Images\btn_top.png" />
     <Content Include="Images\conket1.jpg" />
+    <Content Include="Images\conket1.png" />
     <Content Include="Images\controls.png" />
     <Content Include="Images\demo-video.png" />
     <Content Include="Images\favicon.png" />
@@ -4272,6 +4274,7 @@
     </Content>
     <Content Include="Views\Account\Setting.cshtml" />
     <Content Include="Views\Account\_CategoryPartial.cshtml" />
+    <Content Include="Views\Account\_FolllowersPartial.cshtml" />
     <None Include="WebMarkupMin.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>

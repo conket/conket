@@ -26,12 +26,13 @@
                                 </p>
                                 <fieldset>
                                     <input type="hidden" id='ReturnUrl' name='ReturnUrl' value='@ViewBag.ReturnUrl' />
-                                    <label>Tên đăng nhập:</label>
+                                    <label>Tên đăng nhập hoặc Email:</label>
                                     <input id="usr" name="UserName" type="text" placeholder=""
                                         class="form-control input-md">
                                     <label>Mật khẩu:</label>
                                     <input id="pss" name="Password" type="password" placeholder="" class="form-control input-md">
                                     <br />
+                                    @Html.ActionLink("Đăng ký tài khoản mới", "Register", "Account")
                                     <button type="button" id="btnCloseReadingModal" class="btn
 btn-default btn-sm pull-right"
                                         data-dismiss="modal">

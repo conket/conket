@@ -79,29 +79,101 @@ namespace Nihongo.Controllers
         //
         // POST: /Account/Register
 
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Register(RegisterModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        // Attempt to register the user
-        //        try
-        //        {
-        //            WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-        //            WebSecurity.Login(model.UserName, model.Password);
-        //            return RedirectToAction("Index", "Home");
-        //        }
-        //        catch (MembershipCreateUserException e)
-        //        {
-        //            ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
-        //        }
-        //    }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(MS_UsersModels model)
+        {
+            if (ModelState.IsValid)
+            {
+                string mess = string.Empty;
+                // Attempt to register the user
+                try
+                {
+                    //WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    //WebSecurity.Login(model.UserName, model.Password);
+                    MS_UsersDao dao = new MS_UsersDao();
+                    //MS_UsersModels userModel = new MS_UsersModels();
+                    if (CommonMethod.IsNullOrEmpty(model.DisplayName))
+                    {
+                        string[] emails = model.Email.Split('@');
+                        if (emails.Length > 0)
+                        {
+                            if (!CommonMethod.IsNullOrEmpty(emails[0]))
+                            {
+                                model.DisplayName = emails[0];
+                            }
+                            else
+                            {
+                                model.DisplayName = model.Email;
+                            }
+                        }
+                        else
+                        {
+                            model.DisplayName = model.Email;
+                        }
+                    }
+                    model.UserName = CommonMethod.Md5(model.Email.ToLower());
+                    //model.Email = model.Email;
+                    model.Password = CommonMethod.Md5(CommonMethod.Md5(CommonMethod.Md5(model.Password)));
+                    //model.UrlImage = urlImage;
+                    //model.CreateVoca = true;
+                    MS_UsersModels user = null;
+                    int returnCode = dao.Register(model, out user);
+                    if (returnCode == 0)
+                    {
+                        HttpCookie cookie = new HttpCookie("NihongoVoca");
+                        cookie.Values.Add("UserID", user.ID.ToString());
+                        cookie.Values.Add("UserName", user.UserName);
+                        cookie.Values.Add("Email", user.Email);
+                        cookie.Values.Add("UrlImage", user.UrlImage);
+                        cookie.Values.Add("DisplayName", user.DisplayName);
+                        cookie.Values.Add("UrlImage", user.UrlImage);
+                        cookie.Values.Add("Password", user.Password);
+                        cookie.Values.Add("IsAdmin", user.IsAdmin);
+                        cookie.Expires = DateTime.Now.AddDays(15);
+                        Response.Cookies.Add(cookie);
 
-        //    // If we got this far, something failed, redisplay form
-        //    return View(model);
-        //}
+                        #region Update state
+
+                        user.LoginState = CommonData.Status.Enable;
+                        user.LastVisitedDate = DateTime.Now;
+                        returnCode = dao.UpdateState(ref user);
+
+                        #endregion
+
+                        Session["UserID"] = user.ID;
+                        Session["UserName"] = user.UserName;
+                        Session["Email"] = user.Email;
+                        Session["DisplayName"] = user.DisplayName;
+                        Session["IsAdmin"] = user.IsAdmin;
+                        Session["UrlImage"] = user.UrlImage;
+                        UserSession.UserName = user.UserName;
+                        UserSession.UserID = user.ID;
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        switch (returnCode)
+                        {
+                            case CommonData.DbReturnCode.DuplicateKey:
+                                TempData["Message"] = "Địa chỉ email đã được đăng ký. Hãy đăng nhập lại.";
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
 
         //
         // POST: /Account/Disassociate
@@ -830,6 +902,10 @@ namespace Nihongo.Controllers
             Session["DisplayName"] = CommonData.StringEmpty;
             Session["UrlImage"] = CommonData.StringEmpty;
             Session["Email"] = CommonData.StringEmpty;
+            Session["VocaPerLearn"] = 5;
+            Session["VocaPerReview"] = 10;
+            Session["SoundEffect"] = true;
+
             Session["IsAdmin"] = false;
             UserSession.UserName = CommonData.StringEmpty;
             UserSession.UserID = -1;
@@ -1072,7 +1148,7 @@ namespace Nihongo.Controllers
                 int returnCode = dao.SelectUserHomePageData(CommonMethod.ParseInt(Session["UserID"]), out userModel);
                 if (userModel == null)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("RequireLogin", "Account");
                 }
             }
 
@@ -1098,20 +1174,115 @@ namespace Nihongo.Controllers
             return View("VocaCate", userModel);
         }
 
+        [HttpGet]
         public ActionResult Setting()
         {
-            return View();
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                return RedirectToAction("RequireLogin", "Account");
+            }
+            SettingModel model = new SettingModel();
+            //model.VocaPerReview = CommonMethod.ParseInt(Session["VocaPerReview"]);
+            //model.VocaPerLearn = CommonMethod.ParseInt(Session["VocaPerLearn"]);
+            //model.SoundEffect = CommonMethod.ParseBool(Session["SoundEffect"]);
+            int returnCode = 0;
+            MS_UsersDao dao = new MS_UsersDao();
+            MS_UsersModels user = new MS_UsersModels();
+            user.ID = CommonMethod.ParseInt(Request.Cookies["NihongoVoca"].Values["UserID"]);
+            returnCode = dao.SelectUserByID(ref user);
+            if (user != null)
+            {
+                model.SoundEffect = user.SoundEffect == CommonData.Status.Enable ? true : false;
+                model.VocaPerLearn = user.VocaPerLearn;
+                model.VocaPerReview = user.VocaPerReview;
+            }
+            return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Setting(SettingModel setting)
+        {
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                return RedirectToAction("RequireLogin", "Account");
+            }
+            if ((setting.VocaPerLearn) < 4)
+            {
+                ModelState.AddModelError("VocaPerLearn", "[Số từ mỗi lần học] ít nhất là 4");
+            }
+            else if (setting.VocaPerLearn.ToString().Length > 2)
+            {
+                ModelState.AddModelError("VocaPerLearn", "[Số từ mỗi lần học] không nhiều hơn 99 từ");
+            }
+
+            if ((setting.VocaPerReview) < 4)
+            {
+                ModelState.AddModelError("VocaPerReview", "[Số từ mỗi lần ôn] ít nhất là 4");
+            }
+            else if (setting.VocaPerReview.ToString().Length > 2)
+            {
+                ModelState.AddModelError("VocaPerReview", "[Số từ mỗi lần ôn] không nhiều hơn 99 từ");
+            }
+            if (ModelState.IsValid)
+            {
+                using (MS_UsersDao dao = new MS_UsersDao())
+                {
+                    int returnCode = dao.UpdateSetting(CommonMethod.ParseInt(Session["UserID"]), setting);
+                    if (returnCode == CommonData.DbReturnCode.Succeed)
+                    {
+                        Session["VocaPerLearn"] = setting.VocaPerLearn.ToString();
+                        Session["VocaPerReview"] = setting.VocaPerReview.ToString();
+                        Session["SoundEffect"] = setting.SoundEffect.ToString();
+
+                        TempData["Message"] = "Lưu cấu hình thành công!";
+                    }
+                    else
+                    {
+                        TempData["Message"] = "Có lỗi xảy ra: " + returnCode;
+
+                        //Session["VocaPerLearn"] = 5;
+                        //Session["VocaPerReview"] = 10;
+                        //Session["SoundEffect"] = true;
+
+                    }
+                }
+            }
+
+            return View(setting);
+        }
+
+        [EncryptActionName(Name = ("GetUsers"))]
+        [OutputCache(CacheProfile = "Cache1MinuteVaryByIDClient")]
         public ActionResult GetUsers()
         {
             MS_UsersModels userModel = new MS_UsersModels();
             using (MS_UsersDao dao = new MS_UsersDao())
             {
                 List<MS_UsersModels> users = new List<MS_UsersModels>();
-                int returnCode = dao.SelectUsersData(out users);
+                int returnCode = dao.SelectUsersData(CommonMethod.ParseInt(Session["UserID"]), out users);
                 return PartialView("_UserPartialView", users);
             }
+        }
+
+        [EncryptActionName(Name = ("Follow"))]
+        [HttpPost]
+        public ActionResult Follow(int followerID, bool followed)
+        {
+            int returnCode = 0;
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                returnCode = CommonData.DbReturnCode.AccessDenied;
+            }
+            else
+            {
+                using (MS_UsersDao dao = new MS_UsersDao())
+                {
+                    returnCode = dao.Follow(CommonMethod.ParseInt(Session["UserID"]), followerID, !followed);
+                }
+            }
+
+            return Json(new { ReturnCode = returnCode });
         }
 
         [EncryptActionName(Name = ("GetCategoryBySet"))]
@@ -1135,5 +1306,46 @@ namespace Nihongo.Controllers
             return PartialView("_CategoryPartial", results);
         }
 
+        [EncryptActionName(Name = ("GetFollowersByUser"))]
+        [OutputCache(CacheProfile = "Cache1MinuteVaryByIDClient")]
+        public ActionResult GetFollowersByUser(int id)
+        {
+            List<MS_UsersModels> results = new List<MS_UsersModels>();
+            int returnCode = 0;
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                returnCode = CommonData.DbReturnCode.AccessDenied;
+            }
+            else
+            {
+                using (MS_UsersDao dao = new MS_UsersDao())
+                {
+                    returnCode = dao.SelectFollowersByUser(id, out results);
+                }
+            }
+
+            return PartialView("_FolllowersPartial", results);
+        }
+
+        [EncryptActionName(Name = ("GetFollowingsByUser"))]
+        [OutputCache(CacheProfile = "Cache1MinuteVaryByIDClient")]
+        public ActionResult GetFollowingsByUser(int id)
+        {
+            List<MS_UsersModels> results = new List<MS_UsersModels>();
+            int returnCode = 0;
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                returnCode = CommonData.DbReturnCode.AccessDenied;
+            }
+            else
+            {
+                using (MS_UsersDao dao = new MS_UsersDao())
+                {
+                    returnCode = dao.SelectFollowingsByUser(id, out results);
+                }
+            }
+
+            return PartialView("_FolllowersPartial", results);
+        }
     }
 }

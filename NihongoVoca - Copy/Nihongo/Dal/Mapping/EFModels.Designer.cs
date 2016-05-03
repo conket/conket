@@ -42,6 +42,8 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Models", "FK_msvocabularydetails_CategoryID_msvocacategories_ID", "ms_vocacategories", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocacategories), "ms_vocabularydetails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocabularydetails), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_msvocacategories_VocaSetID_msvocasets_ID", "ms_vocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nihongo.Dal.Mapping.ms_vocasets), "ms_vocacategories", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vocacategories), true)]
 [assembly: EdmRelationshipAttribute("Models", "FK_msvouchers_VocaSetID_msvocasets_ID", "ms_vocasets", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_vocasets), "ms_vouchers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_vouchers), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msuserfollowings_FollowerID_msusers_ID", "ms_users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_users), "ms_userfollowings", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_userfollowings), true)]
+[assembly: EdmRelationshipAttribute("Models", "FK_msuserfollowings_UserID_msusers_ID", "ms_users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nihongo.Dal.Mapping.ms_users), "ms_userfollowings", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nihongo.Dal.Mapping.ms_userfollowings), true)]
 
 #endregion
 
@@ -348,6 +350,22 @@ namespace Nihongo.Dal.Mapping
             }
         }
         private ObjectSet<ms_vouchers> _ms_vouchers;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ms_userfollowings> ms_userfollowings
+        {
+            get
+            {
+                if ((_ms_userfollowings == null))
+                {
+                    _ms_userfollowings = base.CreateObjectSet<ms_userfollowings>("ms_userfollowings");
+                }
+                return _ms_userfollowings;
+            }
+        }
+        private ObjectSet<ms_userfollowings> _ms_userfollowings;
 
         #endregion
 
@@ -479,6 +497,14 @@ namespace Nihongo.Dal.Mapping
         public void AddToms_vouchers(ms_vouchers ms_vouchers)
         {
             base.AddObject("ms_vouchers", ms_vouchers);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ms_userfollowings EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToms_userfollowings(ms_userfollowings ms_userfollowings)
+        {
+            base.AddObject("ms_userfollowings", ms_userfollowings);
         }
 
         #endregion
@@ -3247,6 +3273,267 @@ namespace Nihongo.Dal.Mapping
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Models", Name="ms_userfollowings")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ms_userfollowings : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ms_userfollowings object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="userID">Initial value of the UserID property.</param>
+        /// <param name="followerID">Initial value of the FollowerID property.</param>
+        public static ms_userfollowings Createms_userfollowings(global::System.Int32 id, global::System.Int32 userID, global::System.Int32 followerID)
+        {
+            ms_userfollowings ms_userfollowings = new ms_userfollowings();
+            ms_userfollowings.ID = id;
+            ms_userfollowings.UserID = userID;
+            ms_userfollowings.FollowerID = followerID;
+            return ms_userfollowings;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserID
+        {
+            get
+            {
+                return _UserID;
+            }
+            set
+            {
+                OnUserIDChanging(value);
+                ReportPropertyChanging("UserID");
+                _UserID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserID");
+                OnUserIDChanged();
+            }
+        }
+        private global::System.Int32 _UserID;
+        partial void OnUserIDChanging(global::System.Int32 value);
+        partial void OnUserIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FollowerID
+        {
+            get
+            {
+                return _FollowerID;
+            }
+            set
+            {
+                OnFollowerIDChanging(value);
+                ReportPropertyChanging("FollowerID");
+                _FollowerID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FollowerID");
+                OnFollowerIDChanged();
+            }
+        }
+        private global::System.Int32 _FollowerID;
+        partial void OnFollowerIDChanging(global::System.Int32 value);
+        partial void OnFollowerIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> UpdatedDate
+        {
+            get
+            {
+                return _UpdatedDate;
+            }
+            set
+            {
+                OnUpdatedDateChanging(value);
+                ReportPropertyChanging("UpdatedDate");
+                _UpdatedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UpdatedDate");
+                OnUpdatedDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _UpdatedDate;
+        partial void OnUpdatedDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnUpdatedDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> UpdatedBy
+        {
+            get
+            {
+                return _UpdatedBy;
+            }
+            set
+            {
+                OnUpdatedByChanging(value);
+                ReportPropertyChanging("UpdatedBy");
+                _UpdatedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UpdatedBy");
+                OnUpdatedByChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _UpdatedBy;
+        partial void OnUpdatedByChanging(Nullable<global::System.Int32> value);
+        partial void OnUpdatedByChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msuserfollowings_FollowerID_msusers_ID", "ms_users")]
+        public ms_users ms_users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msuserfollowings_FollowerID_msusers_ID", "ms_users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msuserfollowings_FollowerID_msusers_ID", "ms_users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_users> ms_usersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msuserfollowings_FollowerID_msusers_ID", "ms_users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_users>("Models.FK_msuserfollowings_FollowerID_msusers_ID", "ms_users", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msuserfollowings_UserID_msusers_ID", "ms_users")]
+        public ms_users ms_users1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msuserfollowings_UserID_msusers_ID", "ms_users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msuserfollowings_UserID_msusers_ID", "ms_users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ms_users> ms_users1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ms_users>("Models.FK_msuserfollowings_UserID_msusers_ID", "ms_users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ms_users>("Models.FK_msuserfollowings_UserID_msusers_ID", "ms_users", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="Models", Name="ms_users")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -3737,6 +4024,78 @@ namespace Nihongo.Dal.Mapping
         private Nullable<global::System.Int32> _NumOfLearntVoca;
         partial void OnNumOfLearntVocaChanging(Nullable<global::System.Int32> value);
         partial void OnNumOfLearntVocaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> VocaPerLearn
+        {
+            get
+            {
+                return _VocaPerLearn;
+            }
+            set
+            {
+                OnVocaPerLearnChanging(value);
+                ReportPropertyChanging("VocaPerLearn");
+                _VocaPerLearn = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("VocaPerLearn");
+                OnVocaPerLearnChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _VocaPerLearn;
+        partial void OnVocaPerLearnChanging(Nullable<global::System.Int32> value);
+        partial void OnVocaPerLearnChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> VocaPerReview
+        {
+            get
+            {
+                return _VocaPerReview;
+            }
+            set
+            {
+                OnVocaPerReviewChanging(value);
+                ReportPropertyChanging("VocaPerReview");
+                _VocaPerReview = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("VocaPerReview");
+                OnVocaPerReviewChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _VocaPerReview;
+        partial void OnVocaPerReviewChanging(Nullable<global::System.Int32> value);
+        partial void OnVocaPerReviewChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SoundEffect
+        {
+            get
+            {
+                return _SoundEffect;
+            }
+            set
+            {
+                OnSoundEffectChanging(value);
+                ReportPropertyChanging("SoundEffect");
+                _SoundEffect = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SoundEffect");
+                OnSoundEffectChanged();
+            }
+        }
+        private global::System.String _SoundEffect;
+        partial void OnSoundEffectChanging(global::System.String value);
+        partial void OnSoundEffectChanged();
 
         #endregion
 
@@ -3893,6 +4252,50 @@ namespace Nihongo.Dal.Mapping
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_uservocasets>("Models.FK_msuservocasets_UserID_msusers_ID", "ms_uservocasets", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msuserfollowings_FollowerID_msusers_ID", "ms_userfollowings")]
+        public EntityCollection<ms_userfollowings> ms_userfollowings
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_userfollowings>("Models.FK_msuserfollowings_FollowerID_msusers_ID", "ms_userfollowings");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_userfollowings>("Models.FK_msuserfollowings_FollowerID_msusers_ID", "ms_userfollowings", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Models", "FK_msuserfollowings_UserID_msusers_ID", "ms_userfollowings")]
+        public EntityCollection<ms_userfollowings> ms_userfollowings1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ms_userfollowings>("Models.FK_msuserfollowings_UserID_msusers_ID", "ms_userfollowings");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ms_userfollowings>("Models.FK_msuserfollowings_UserID_msusers_ID", "ms_userfollowings", value);
                 }
             }
         }

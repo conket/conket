@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Nihongo.Models.MS_UsersModels>
+@if (Model != null && Model.Count() > 0)
+{
+    foreach (var user in Model)
+    {
+    <div class="media" style="background: #f9f9f9;">
+        <div class="media-left">
+            <a href="#">
+                <img src="@user.UrlImage" class="media-object search-v1-avatar" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">@user.DisplayName</h4>
+            <p>Đã học @user.NumOfLearntVocaDisplay từ | Có @user.PointDisplay điểm</p>
+                <i class="icon-user icons"></i>@user.Followers follower
+            | <i class="icon-user icons"></i>@user.Followings following
+        </div>
+    </div>
+}
+}
+

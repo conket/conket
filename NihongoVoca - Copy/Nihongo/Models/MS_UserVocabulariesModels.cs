@@ -27,7 +27,8 @@ namespace Nihongo.Models
         public int UserID { get; set; }
         public string UserName { get; set; }
         public int VocabularyID { get; set; }
-
+        public int VocaPerLearn { get; set; }
+        public int VocaPerReview { get; set; }
         public string VocabularyCode { get; set; }
         public int? Level { get; set; }
         public DateTime? Update_Date { get; set; }
