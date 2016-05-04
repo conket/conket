@@ -1265,6 +1265,18 @@ namespace Nihongo.Controllers
             }
         }
 
+        [EncryptActionName(Name = ("GetActivities"))]
+        [OutputCache(CacheProfile = "Cache1MinuteVaryByIDClient")]
+        public ActionResult GetActivities()
+        {
+            using (MS_UsersDao dao = new MS_UsersDao())
+            {
+                List<MS_TestResultModels> results = new List<MS_TestResultModels>();
+                int returnCode = dao.SelectActivities(CommonMethod.ParseInt(Session["UserID"]), out results);
+                return PartialView("_ActivitiesPartial", results);
+            }
+        }
+
         [EncryptActionName(Name = ("Follow"))]
         [HttpPost]
         public ActionResult Follow(int followerID, bool followed)

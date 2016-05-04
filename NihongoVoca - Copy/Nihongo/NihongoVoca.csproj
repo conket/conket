@@ -4275,6 +4275,7 @@
     <Content Include="Views\Account\Setting.cshtml" />
     <Content Include="Views\Account\_CategoryPartial.cshtml" />
     <Content Include="Views\Account\_FolllowersPartial.cshtml" />
+    <Content Include="Views\Account\_ActivitiesPartial.cshtml" />
     <None Include="WebMarkupMin.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>

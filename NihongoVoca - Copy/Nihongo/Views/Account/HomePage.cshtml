@@ -120,6 +120,13 @@
                     </div>
                 </div>
 
+                <div class="panel">
+                    <div class="panel-heading"><h3>Hoạt động</h3></div>
+                    <div class="panel-body partialcontent" data-url="@Url.Action(CommonMethod.EncodeUrl("GetActivities"), "Account")">
+                        @Html.Partial("_ActivitiesPartial", new List<Nihongo.Models.MS_TestResultModels>())
+                      
+                    </div>
+                  </div>       
                 @*<div class="col-md-12 padding-0">
                     <div class="panel box-v3">
                         <div class="panel-heading bg-white border-none">

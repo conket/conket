@@ -763,5 +763,41 @@ namespace Nihongo.Dal.Dao
 
             return returnCode;
         }
+
+        internal int SelectActivities(int id, out List<MS_TestResultModels> results)
+        {
+            int returnCode = 0;
+            results = new List<MS_TestResultModels>();
+            try
+            {
+                //var users = from fo in ms_userfollowings
+                //            join te in ms_testresults on fo.Fo
+                results = (from te in ms_testresults
+                           join fo in ms_userfollowings on te.UserID equals fo.FollowerID
+                           join us in ms_users on fo.FollowerID equals us.ID
+                           //join ca in ms_vocacategories on te.CategoryID equals ca.ID
+                           //join vs in ms_vocasets on ca.VocaSetID equals vs.ID
+                           where fo.UserID == id
+                           orderby te.CreateDate descending
+                           select new MS_TestResultModels
+                               {
+                                   ID = te.ID,
+                                   CategoryID = te.CategoryID,
+                                   UserID = te.UserID,
+                                   UserDisplayName = us.DisplayName,
+                                   UserUrlImage = us.UrlImage,
+                                   CreateDate = te.CreateDate,
+                                   Description = te.Description,
+                               })
+                    .Take(20)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
     }
 }

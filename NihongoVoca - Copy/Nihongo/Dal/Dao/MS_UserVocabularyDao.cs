@@ -1408,6 +1408,8 @@ namespace Nihongo.Dal.Dao
                                 int numOfIgnore = userVocas.Count(ss => ss.IsIgnore == CommonData.Status.Enable);
                                 int numOfHasMarked = userVocas.Count(ss => ss.HasMarked == CommonData.Status.Enable);
 
+                                #region Update user cate
+
                                 if (userCateDb != null)
                                 {
                                     if (hasLearntCateID == 0)
@@ -1442,6 +1444,38 @@ namespace Nihongo.Dal.Dao
 
                                     ms_usercategories.AddObject(userCateDb);
                                 }
+
+                                #endregion
+
+                                #region Create test result
+
+                                Nihongo.Dal.Mapping.ms_testresults test = this.ms_testresults
+                                    .FirstOrDefault(ss => ss.UserID == userCate.UserID && ss.CategoryID == userCate.CategoryID);
+                                if (test == null)
+                                {
+                                    //var vocaSet = this.ms_vocasets.FirstOrDefault(ss => ss.ID == vocaCate.VocaSetID);
+                                    //var numOfCorrectVocas = vocas.Count(ss => ss.IsCorrect == CommonData.Status.Enable);
+                                    if (numOfHasLearnt == cate.NumOfVocas)
+                                    {
+                                        test = new Mapping.ms_testresults();
+                                        test.Code = userCate.UserID + "_" + cate.Code + "_" + (DateTime.Now.ToString(CommonData.DateFormat.YyyyMMddHHmmss));
+                                        test.CategoryID = userCate.CategoryID;
+                                        test.UserID = userCate.UserID;
+                                        test.CreateDate = DateTime.Now;
+                                        test.NumOfVocas = cate.NumOfVocas;
+                                        test.NumOfCorrectVocas = cate.NumOfVocas;
+                                        test.IsPass = CommonData.Status.Enable;//(numOfCorrectVocas >= (vocas.Count * 8 / 10)) ? CommonData.Status.Enable : CommonData.Status.Disable;
+                                        test.RequiredTimePerVoca = cate.RequiredTimePerVoca;
+                                        test.TotalRequiredTime = cate.RequiredTimePerVoca * vocas.Count;
+                                        //test.CompletedTime = firstVoca.CompletedTime;
+                                        test.Status = CommonData.Status.Enable;
+                                        test.Description = "Hoàn hành " + cate.Name1 + " " + cate.ms_vocasets.Name1;
+                                        //test.Description = (numOfCorrectVocas >= (vocas.Count * 8 / 10)) ? "Chúc mừng bạn đã vượt qua được bài kiểm tra" : "Bạn đã không vượt qua được bài kiểm tra. Hãy ôn lại";
+
+                                        ms_testresults.AddObject(test);
+                                    }
+                                }
+                                #endregion
                             }
 
                             returnCode = this.Saves();

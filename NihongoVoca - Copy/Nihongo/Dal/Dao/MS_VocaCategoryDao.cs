@@ -230,7 +230,13 @@ namespace Nihongo.Dal.Dao
                             //else
                             //{
                             //    hasRegis = true;
-                            result.NumOfRegistedPerson += 1;
+                            //result.NumOfRegistedPerson += 1;
+                            var vocaset = ms_vocasets.FirstOrDefault(ss => ss.ID == id);
+                            if (vocaset != null)
+                            {
+                                vocaset.NumOfRegistedPerson = (vocaset.NumOfRegistedPerson ?? 0) + 1;
+                            }
+
                             returnCode = this.Saves();
                         }
 

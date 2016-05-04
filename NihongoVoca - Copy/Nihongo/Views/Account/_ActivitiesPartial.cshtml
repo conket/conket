@@ -1,0 +1,22 @@
+﻿@model List<Nihongo.Models.MS_TestResultModels>
+
+
+@if (Model != null && Model.Count > 0)
+{
+    <ul class="mini-timeline">
+        @foreach (var user in Model)
+        {
+            <li class="mini-timeline-highlight" style="padding-bottom: 70px;">
+                <div class="mini-timeline-panel">
+                    <p style="margin-top: -15px;">@user.UserDisplayName</p>
+                    <h5 class="time">@user.Timeline</h5>
+                    <p>@user.Description</p>
+                </div>
+            </li>
+        }
+
+    </ul>
+}
+else{
+    <p>Vẫn chưa có hoạt động</p>
+}
