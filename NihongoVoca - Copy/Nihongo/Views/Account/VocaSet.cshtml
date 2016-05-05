@@ -1,0 +1,99 @@
+﻿@model Nihongo.Models.MS_UsersModels
+@{
+    ViewBag.Title = "Trang Cá Nhân";
+    Layout = "~/Views/Shared/_MasterUserLayout.cshtml";
+}
+
+<div id="content">
+    <div class="panel hidden-xs">
+        <div class="panel-body">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="panel">
+                    <div class="panel-body" style="padding-bottom: 75px;">
+                        <center>
+                            <div class="mostly-suny suny">
+                                <div class="sun animated pulse infinite">
+                                </div>
+                                <div class="cloudy animated pulse infinite">
+                                  <div class="shadow">
+                                    
+                                  </div>
+                                </div>
+                            </div>
+
+                            <div class="hazy cloudy animated pulse infinite">
+                                <div class="shadow">
+                                  
+                                </div>
+                              </div>
+                    </div>
+                    </center>
+                       
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="panel">
+                    <div class="panel-body" style="padding-bottom: 160px;">
+                        <center>
+                              <div class="cloudy animated pulse infinite">
+                                <div class="shadow">
+                                  
+                                </div>
+                              </div>
+                            </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12" style="padding: 20px;">
+        <div class="col-md-12 padding-0">
+            <div class="col-md-8 padding-0">
+                @Html.Partial("_UserVocaSetPartialView", Model.UserVocaSets)
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-12 padding-0">
+                    <div class="panel box-v2">
+                        <div class="panel-heading padding-0">
+                            <img src="~/images/flashcard2.jpg" class="box-v2-cover img-responsive" />
+                            <div class="box-v2-detail">
+                                <img src="@Model.UrlImage" class="img-responsive" />
+                                <h4>@Model.DisplayName</h4>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-12 padding-0 text-center">
+                                <div class="col-md-6 col-sm-6 col-xs-6 padding-0">
+                                    <h3>@Model.NumOfLearntVocaDisplay</h3>
+                                    <p>từ</p>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6 padding-0">
+                                    <h3>@Model.PointDisplay</h3>
+                                    <p>điểm</p>
+                                </div>
+                                @*<div class="col-md-4 col-sm-4 col-xs-12 padding-0">
+                                    <h3>4.320</h3>
+                                    <p>photos</p>
+                                </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.partialcontent').each(function (i, item) {
+            var url = $(item).data('url');
+            if (url && url.length > 0) {
+                $(item).load(url);
+            }
+        });
+    });
+</script>

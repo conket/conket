@@ -1156,7 +1156,7 @@ namespace Nihongo.Controllers
         }
 
         [ActionName("bo-tu-vung")]
-        public ActionResult VocaCate()
+        public ActionResult VocaSet()
         {
             if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
             {
@@ -1168,10 +1168,47 @@ namespace Nihongo.Controllers
             MS_UsersModels userModel = new MS_UsersModels();
             using (MS_UserVocabularyDao dao = new MS_UserVocabularyDao())
             {
-                int returnCode = dao.SelectUserVocaCateData(CommonMethod.ParseInt(Session["UserID"]), out userModel);
+                int returnCode = dao.SelectUserVocaSetData(CommonMethod.ParseInt(Session["UserID"]), out userModel);
             }
 
-            return View("VocaCate", userModel);
+            return View("VocaSet", userModel);
+        }
+
+
+        [ActionName("danh-sach-bai-hoc")]
+        public ActionResult VocaCate(int id, string urlDisplay)
+        {
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                return RedirectToAction("RequireLogin", "Account");
+            }
+
+            List<MS_UserCategoriesModels> results = new List<MS_UserCategoriesModels>();
+            MS_VocaCategoryDao dao = new MS_VocaCategoryDao();
+            int returnCode = dao.SelectUserCategoryBySet(id, CommonMethod.ParseInt(Session["UserID"]), out results);
+
+            return View("VocaCate", results);
+        }
+
+        [ActionName("danh-muc-tu-vung")]
+        public ActionResult Voca(int id, string urlDisplay)
+        {
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                return RedirectToAction("RequireLogin", "Account");
+            }
+            List<MS_UserVocabulariesModels> results = new List<MS_UserVocabulariesModels>();
+            MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
+            int returnCode = dao.SelectUserVocaData(id, CommonMethod.ParseInt(Session["UserID"]), out results);
+
+            if (results.Count > 0 && results.FirstOrDefault().IsKanji == CommonData.Status.Enable)
+            {
+                return View("VocaKanji", results);
+            }
+            else
+            {
+                return View("Voca", results);
+            }
         }
 
         [HttpGet]
@@ -1358,6 +1395,24 @@ namespace Nihongo.Controllers
             }
 
             return PartialView("_FolllowersPartial", results);
+        }
+
+        [EncryptActionName(Name = ("IgnoreCategory"))]
+        [HttpPost]
+        public ActionResult IgnoreCategory(MS_UserCategoriesModels voca)
+        {
+            int returnCode = 0;
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                returnCode = CommonData.DbReturnCode.AccessDenied;
+            }
+            else
+            {
+                MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
+                returnCode = dao.IgnoreUserCategory(CommonMethod.ParseInt(Session["UserID"]), ref voca);
+            }
+
+            return Json(new { ReturnCode = returnCode, HasLearnt = voca.HasLearnt });
         }
     }
 }

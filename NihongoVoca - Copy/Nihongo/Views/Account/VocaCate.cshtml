@@ -1,99 +1,227 @@
-﻿@model Nihongo.Models.MS_UsersModels
+﻿@model IEnumerable<Nihongo.Models.MS_UserCategoriesModels>
+
 @{
-    ViewBag.Title = "Trang Cá Nhân";
+    ViewBag.Title = "Danh sách bài học";
     Layout = "~/Views/Shared/_MasterUserLayout.cshtml";
 }
 
-<div id="content">
-    <div class="panel hidden-xs">
-        <div class="panel-body">
-            <div class="col-md-6 col-sm-6 col-xs-6">
-                <div class="panel">
-                    <div class="panel-body" style="padding-bottom: 75px;">
-                        <center>
-                            <div class="mostly-suny suny">
-                                <div class="sun animated pulse infinite">
-                                </div>
-                                <div class="cloudy animated pulse infinite">
-                                  <div class="shadow">
-                                    
-                                  </div>
-                                </div>
-                            </div>
+@{
+    var firstCate = Model != null && Model.Count() > 0 ? Model.FirstOrDefault() : new Nihongo.Models.MS_UserCategoriesModels();
+    
+}
 
-                            <div class="hazy cloudy animated pulse infinite">
-                                <div class="shadow">
-                                  
-                                </div>
-                              </div>
-                    </div>
-                    </center>
+<div id="content">
+    <div class="panel box-shadow-none content-header">
+        <div class="panel-body">
+            <div class="col-md-12">
+                <h3 class="animated fadeInLeft">@firstCate.VocaSetName1</h3>
+                @*<p class="animated fadeInDown">
+                    Pages <span class="fa-angle-right fa"></span>Product Grid
                        
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-6">
-                <div class="panel">
-                    <div class="panel-body" style="padding-bottom: 160px;">
-                        <center>
-                              <div class="cloudy animated pulse infinite">
-                                <div class="shadow">
-                                  
-                                </div>
-                              </div>
-                            </center>
-                    </div>
-                </div>
+                </p>*@
             </div>
         </div>
     </div>
+    <div class="col-md-12">
+        @if (Model != null && Model.Count() > 0)
+        {
+            int count = 0;
+            int numOfColumn = 4;
+            var models = Model.ToList();
+            var max = models.Count;
+            int numOfRows = models.Count % numOfColumn == 0 ? models.Count / numOfColumn : models.Count / numOfColumn + 1;
 
-    <div class="col-md-12" style="padding: 20px;">
-        <div class="col-md-12 padding-0">
-            <div class="col-md-8 padding-0">
-                @Html.Partial("_UserVocaSetPartialView", Model.UserVocaSets)
-            </div>
-            <div class="col-md-4">
-                <div class="col-md-12 padding-0">
-                    <div class="panel box-v2">
-                        <div class="panel-heading padding-0">
-                            <img src="~/images/flashcard2.jpg" class="box-v2-cover img-responsive" />
-                            <div class="box-v2-detail">
-                                <img src="@Model.UrlImage" class="img-responsive" />
-                                <h4>@Model.DisplayName</h4>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="col-md-12 padding-0 text-center">
-                                <div class="col-md-6 col-sm-6 col-xs-6 padding-0">
-                                    <h3>@Model.NumOfLearntVocaDisplay</h3>
-                                    <p>từ</p>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6 padding-0">
-                                    <h3>@Model.PointDisplay</h3>
-                                    <p>điểm</p>
-                                </div>
-                                @*<div class="col-md-4 col-sm-4 col-xs-12 padding-0">
-                                    <h3>4.320</h3>
-                                    <p>photos</p>
-                                </div>*@
+            for (int k = 0; k < numOfRows; k++)
+            {
+            <div class="row">
+                @for (int i = 0; i < (max > numOfColumn ? numOfColumn : max); i++)
+                {
+                    Nihongo.Models.MS_UserCategoriesModels voca = models[count];
+                    <div class="col-sm-6 col-md-3 product-grid">
+                        <div class="thumbnail">
+                            @*<div class="product-price product-price-top">
+                                <h4 class="error">@(voca.HasLearnt == CommonData.Status.Enable ? "ĐÃ HỌC" : "")</h4>
+                            </div>*@
+                            @if (k < 2)
+                            {
+                                <img src="@Href("~/" + @voca.CategoryUrlImage)" alt="Bộ từ vựng">
+                            }
+                            else{
+                                <img data-src='@Href("~/" + @voca.CategoryUrlImage)' src="" alt="Bộ từ vựng">
+                            }
+                            <div class="caption">
+                                @{var divHasLearnt = "h" + voca.CategoryID;}
+                                <small class="error" id="@divHasLearnt">@( voca.HasLearnt == CommonData.Status.Enable ? "Đã học" : "Chưa học")</small>
+                                @{var divIgnore = "i" + voca.CategoryID;}
+                                <small class="pull-right error" id="@divIgnore">@( voca.IsIgnore == CommonData.Status.Enable ? "Đã bỏ qua" : "")</small>
+                                @*<small class="pull-right">
+                                    <span class="rate fa-star fa"></span>
+                                    <span class="rate fa-star fa"></span>
+                                    <span class="rate fa-star fa"></span>
+                                    <span class="rate fa-star fa"></span>
+                                    <span class="rate fa-star-half fa"></span>
+                                </small>*@
+                                <h4>@voca.CategoryName1</h4>
+                                <p>@voca.Description</p>
+                                <p>Bao gồm @voca.NumOfVocas từ</p>
+                                <p>
+                                    @Html.ActionLink("Chi tiết", "danh-muc-tu-vung", "Account", new { @id = voca.CategoryID, @urlDisplay = voca.CategoryUrlDisplay }
+                             , new { @class = "btn btn-primary" })
+                                    <a href="#" class="btn btn-primary ignore" role="button" data-value="@voca.CategoryID">@( voca.IsIgnore == CommonData.Status.Enable ? "Học lại" : "Bỏ qua")</a>
+                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
-
-
-            </div>
-        </div>
+                    count++;
+                }
+            </div>   
+                max -= numOfColumn;
+            }
+        }
     </div>
 </div>
+<!-- end: content -->
 
+<script src="~/Scripts/jQuery.loadScroll.js" async></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.partialcontent').each(function (i, item) {
-            var url = $(item).data('url');
-            if (url && url.length > 0) {
-                $(item).load(url);
+        vocas = set(@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)));
+        $('img').loadScroll(500); // in ms
+
+        $('.ignore').on('click', function (e) {
+            e.preventDefault();
+            
+            var id = $(this).attr('data-value');
+            var obj = this;
+            var voca = getVoca(id);
+            if (voca != null) {
+                if (voca.IsIgnore == '0') {
+                    voca.IsIgnore = "1";
+                }
+                else {
+                    voca.IsIgnore = "0";
+                }
+                $.ajax({
+                    cache: false,
+                    type: "post",
+                    async: false,
+                    url: '/Account/' + '@CommonMethod.EncodeUrl("IgnoreCategory")',
+                    data: JSON.stringify(voca),
+                    dataType: "json",
+                    contentType: 'application/json',
+                    success: function (result) {
+                        if (result.ReturnCode == '@CommonData.DbReturnCode.AccessDenied') {
+                        if (voca.IsIgnore == '0') {
+                            voca.IsIgnore = "1";
+                        }
+                        else {
+                            voca.IsIgnore = "0";
+                        }
+                        window.location.href = '/Account/RequireLogin';
+                    }
+                    else if (result.ReturnCode != 0) {
+                        if (voca.IsIgnore == '0') {
+                            voca.IsIgnore = "1";
+                        }
+                        else {
+                            voca.IsIgnore = "0";
+                        }
+                        alert('Có lỗi xảy ra');
+                    }
+                    else {
+                        if (voca.IsIgnore == '0') {
+                            $(obj).html('Bỏ qua');
+                            $('#i' + id).html('');
+                            
+                        }
+                        else {
+                            $(obj).html('Học lại');
+                            $('#i' + id).html('Đã bỏ qua');
+                        }
+                        voca.HasLearnt = result.HasLearnt;
+                        if (result.HasLearnt == '1') {
+                            $('#h' + id).html('Đã học');
+                        }
+                        else {
+                            $('#h' + id).html('Chưa học');
+                        }
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.responseText);
+                    return false;
+                }
+                });
             }
         });
     });
+    function getVoca(id) {
+        for (var i = 0; i < vocas.length; i++) {
+            if (vocas[i].CategoryID == id) {
+                return vocas[i];
+            }
+        }
+        return null;
+    }
+    function set(value) {
+        return value;
+    }
+    function ignoreCate(obj, id) {
+        var voca = getVoca(id);
+        if (voca != null) {
+            //if (voca.HasMarked == "1") {
+            //    alert('Từ vựng này đã có trong Sổ tay');
+            //    return;
+            //}
+            if (voca.IsIgnore == '0') {
+                voca.IsIgnore = "1";
+            }
+            else {
+                voca.IsIgnore = "0";
+            }
+            $.ajax({
+                cache: true,
+                type: "post",
+                async: false,
+                url: '/Library/' + '@CommonMethod.EncodeUrl("IgnoreCategory")',
+                data: JSON.stringify(voca),
+                dataType: "json",
+                contentType: 'application/json',
+                success: function (result) {
+                    if (result.ReturnCode == '@CommonData.DbReturnCode.AccessDenied') {
+                        if (voca.IsIgnore == '0') {
+                            voca.IsIgnore = "1";
+                        }
+                        else {
+                            voca.IsIgnore = "0";
+                        }
+                        window.location.href = '/Account/RequireLogin';
+                    }
+                    else if (result.ReturnCode != 0) {
+                        if (voca.IsIgnore == '0') {
+                            voca.IsIgnore = "1";
+                        }
+                        else {
+                            voca.IsIgnore = "0";
+                        }
+                        alert('Có lỗi xảy ra');
+                    }
+                    else {
+                        if (voca.IsIgnore == '0') {
+                            $(obj).html('BỎ QUA');
+                        }
+                        else {
+                            $(obj).html('HỌC LẠI');
+                        }
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.responseText);
+                    return false;
+                }
+            });
+            }
+        }
+
+
 </script>

@@ -656,48 +656,91 @@ namespace Nihongo.Dal.Dao
                 //var userVoca = this.ms_uservocabularies.AsQueryable();//.Where(ss => ss.UserID == userID).AsQueryable();
 
                 //var xx = this.ms_vocabularydetails.Where(ss => ss.ms_vocabularies.ID == vocaCateId).ToList();
-                var cate = this.ms_vocacategories.FirstOrDefault(ss => ss.ID == vocaCateId);
-                if (cate != null)
-                {
-                    results = cate.ms_vocabularydetails
-                        .OrderBy(s => s.LineNumber)
-                        .Select(ss => new MS_UserVocabulariesModels
-                        {
-                            ID = ss.ID,
-                            LineNumber = ss.LineNumber,
+                
+                //var cate = this.ms_vocacategories.FirstOrDefault(ss => ss.ID == vocaCateId);
+                //if (cate != null)
+                //{
+                results = (from us in this.ms_uservocabularies
+                          join ss in this.ms_vocabularydetails on us.VocaDetailID equals ss.ID
+                          where us.UserID == userID && ss.CategoryID == vocaCateId
+                          orderby ss.LineNumber
+                          select new MS_UserVocabulariesModels
+                          {
+                              ID = ss.ID,
+                              LineNumber = ss.LineNumber,
 
-                            //voca set
-                            VocaSetID = ss.ms_vocacategories.VocaSetID ?? 0,
-                            //IsKanji = vs.IsKanji,
+                              //voca set
+                              VocaSetID = ss.ms_vocacategories.VocaSetID ?? 0,
+                              VocaSetName = ss.ms_vocacategories.ms_vocasets.Name1,
+                              //IsKanji = vs.IsKanji,
 
-                            //category
-                            CategoryID = ss.ms_vocacategories.ID,
-                            CategoryCode = ss.ms_vocacategories.Code,
-                            CategoryName = ss.ms_vocacategories.Name1,
-                            CategoryDescription = ss.ms_vocacategories.Description,
-                            IsKanji = ss.ms_vocacategories.IsKanji,
+                              //category
+                              CategoryID = ss.ms_vocacategories.ID,
+                              CategoryCode = ss.ms_vocacategories.Code,
+                              CategoryName = ss.ms_vocacategories.Name1,
+                              CategoryDescription = ss.ms_vocacategories.Description,
+                              IsKanji = ss.ms_vocacategories.IsKanji,
 
-                            //voca
-                            VocabularyID = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.ID : ss.ms_vocabularies.ID,
-                            VocabularyCode = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Code : ss.ms_vocabularies.Code,
-                            Romaji = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Romaji,
-                            Romaji_Katakana = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Romaji_Katakana,
-                            Katakana = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Katakana,
-                            Hiragana = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Hiragana,
-                            UrlAudio = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.UrlAudio,
-                            UrlAudio_Katakana = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.UrlAudio_Katakana,
-                            DisplayType = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.DisplayType,
-                            UrlImage = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.UrlImage : ss.ms_vocabularies.UrlImage,
-                            Type = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Type,
+                              //voca
+                              VocabularyID = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.ID : ss.ms_vocabularies.ID,
+                              VocabularyCode = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Code : ss.ms_vocabularies.Code,
+                              Romaji = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Romaji,
+                              Romaji_Katakana = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Romaji_Katakana,
+                              Katakana = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Katakana,
+                              Hiragana = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Hiragana,
+                              UrlAudio = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.UrlAudio,
+                              UrlAudio_Katakana = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.UrlAudio_Katakana,
+                              DisplayType = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.DisplayType,
+                              UrlImage = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.UrlImage : ss.ms_vocabularies.UrlImage,
+                              Type = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Type,
 
-                            Kanji = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Kanji : ss.ms_vocabularies.Kanji,
-                            Pinyin = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Pinyin : string.Empty,
-                            VMeaning = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.VMeaning : ss.ms_vocabularies.VMeaning,
-                            Description = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Description : ss.ms_vocabularies.Description,
-                            
-                        })
-                        .ToList();
-                }
+                              Kanji = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Kanji : ss.ms_vocabularies.Kanji,
+                              Pinyin = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Pinyin : string.Empty,
+                              VMeaning = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.VMeaning : ss.ms_vocabularies.VMeaning,
+                              Description = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Description : ss.ms_vocabularies.Description,
+                              HasMarked = us.HasMarked,
+                              HasLearnt = us.HasLearnt,
+                          })
+                          .ToList();
+                    //.OrderBy(s => s.ms_vocabularydetails.LineNumber)
+                    //.Select(ss => new MS_UserVocabulariesModels
+                    //{
+                    //    ID = ss.ID,
+                    //    LineNumber = ss.LineNumber,
+
+                    //    //voca set
+                    //    VocaSetID = ss.ms_vocacategories.VocaSetID ?? 0,
+                    //    VocaSetName = ss.ms_vocacategories.ms_vocasets.Name1,
+                    //    //IsKanji = vs.IsKanji,
+
+                    //    //category
+                    //    CategoryID = ss.ms_vocacategories.ID,
+                    //    CategoryCode = ss.ms_vocacategories.Code,
+                    //    CategoryName = ss.ms_vocacategories.Name1,
+                    //    CategoryDescription = ss.ms_vocacategories.Description,
+                    //    IsKanji = ss.ms_vocacategories.IsKanji,
+
+                    //    //voca
+                    //    VocabularyID = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.ID : ss.ms_vocabularies.ID,
+                    //    VocabularyCode = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Code : ss.ms_vocabularies.Code,
+                    //    Romaji = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Romaji,
+                    //    Romaji_Katakana = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Romaji_Katakana,
+                    //    Katakana = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Katakana,
+                    //    Hiragana = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Hiragana,
+                    //    UrlAudio = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.UrlAudio,
+                    //    UrlAudio_Katakana = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.UrlAudio_Katakana,
+                    //    DisplayType = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.DisplayType,
+                    //    UrlImage = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.UrlImage : ss.ms_vocabularies.UrlImage,
+                    //    Type = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? string.Empty : ss.ms_vocabularies.Type,
+
+                    //    Kanji = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Kanji : ss.ms_vocabularies.Kanji,
+                    //    Pinyin = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Pinyin : string.Empty,
+                    //    VMeaning = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.VMeaning : ss.ms_vocabularies.VMeaning,
+                    //    Description = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Description : ss.ms_vocabularies.Description,
+
+                    //})
+                    //.ToList();
+                //}
             }
             catch (Exception ex)
             {
@@ -1696,7 +1739,7 @@ namespace Nihongo.Dal.Dao
             return returnCode;
         }
 
-        internal int SelectUserVocaCateData(int userID, out MS_UsersModels userModel)
+        internal int SelectUserVocaSetData(int userID, out MS_UsersModels userModel)
         {
             int returnCode = 0;
             userModel = null;
@@ -1769,6 +1812,41 @@ namespace Nihongo.Dal.Dao
                 }
                 
                 returnCode = this.Saves();
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
+        internal int IgnoreUserCategory(int userID, ref MS_UserCategoriesModels voca)
+        {
+            int returnCode = 0;
+            try
+            {
+                int cateID = voca.CategoryID;
+                var userCate = this.ms_usercategories.FirstOrDefault(ss => ss.UserID == userID && ss.CategoryID == cateID);
+                if (userCate != null)
+                {
+                    userCate.IsIgnore = voca.IsIgnore;
+                    userCate.HasLearnt = CommonData.Status.Enable;
+
+                    var userVocas = this.ms_uservocabularies.Where(ss => ss.UserID == userID
+                                        && ss.ms_vocabularydetails.ms_vocacategories.ID == cateID);
+                    foreach (var userVoca in userVocas)
+                    {
+                        userVoca.IsIgnore = voca.IsIgnore;
+                        userVoca.HasLearnt = CommonData.Status.Enable;
+                        userVoca.Level = 8;
+                    }
+
+                    returnCode = this.Saves();
+
+                    voca.HasLearnt = userCate.HasLearnt;
+                }
+
             }
             catch (Exception ex)
             {

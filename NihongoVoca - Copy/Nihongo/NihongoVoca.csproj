@@ -289,6 +289,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\MS_UserCategoriesModels.cs" />
     <Compile Include="Models\SettingModel.cs" />
     <Compile Include="Models\MS_KanjiExampleModel.cs" />
     <Compile Include="Models\MS_TestResultModels.cs" />
@@ -4263,7 +4264,7 @@
     <Content Include="Views\Account\HomePage.cshtml" />
     <Content Include="Views\Account\_UserVocaSetPartialView.cshtml" />
     <Content Include="Views\Account\_UserPartialView.cshtml" />
-    <Content Include="Views\Account\VocaCate.cshtml" />
+    <Content Include="Views\Account\VocaSet.cshtml" />
     <Content Include="Views\Library\LearningSession2.cshtml" />
     <Content Include="Views\Shared\_MasterUserLessonLayout.cshtml" />
     <Content Include="Scripts\mine\Copy of Copy of ts.min.js.map">
@@ -4276,6 +4277,8 @@
     <Content Include="Views\Account\_CategoryPartial.cshtml" />
     <Content Include="Views\Account\_FolllowersPartial.cshtml" />
     <Content Include="Views\Account\_ActivitiesPartial.cshtml" />
+    <Content Include="Views\Account\VocaCate.cshtml" />
+    <Content Include="Views\Account\Voca.cshtml" />
     <None Include="WebMarkupMin.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>

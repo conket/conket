@@ -72,6 +72,9 @@ namespace Nihongo.Dal.Dao
                     Status = CommonData.Status.Enable,
                     SystemData = CommonData.Status.Disable,
                     LoginState = CommonData.Status.Enable,
+                    VocaPerLearn = 5,
+                    VocaPerReview = 10,
+                    SoundEffect = CommonData.Status.Enable,
                 };
 
                 ms_users.AddObject(user);

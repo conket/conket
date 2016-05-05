@@ -10,7 +10,7 @@ function setupSessionUpdater(actionUrl) {
 }
 
 function checkToKeepSessionAlive() {
-    setTimeout("keepSessionAlive()", 300000);
+    setTimeout("keepSessionAlive()", 200000);
 }
 
 function keepSessionAlive() {
@@ -18,7 +18,7 @@ function keepSessionAlive() {
         $.ajax({
             type: "POST",
             url: _keepSessionAliveUrl,
-            success: function () { _keepSessionAlive = false; }
+            success: function () { _keepSessionAlive = false; console.log('alive');}
         });
     }
     checkToKeepSessionAlive();

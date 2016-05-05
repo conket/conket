@@ -149,6 +149,12 @@
     border-bottom: 3px solid #ffce55;
 }
 
+.voca-image
+{
+    width:100%;
+    height:100px !important;
+}
+
 @media (max-width: 768px) {
   .tableExample{
       height: 100px;
@@ -163,41 +169,52 @@
       width:60px;
   }
 }
-@media (min-width: 768px) {
-  .tableExample{
-      height: 250px;
-      overflow:auto;
-  }
-  .imgExample{
-      height: 200px !important;
-  }
+@media (min-width: 768px)
+{
+    .tableExample
+    {
+        height: 250px;
+        overflow: auto;
+    }
+
+    .imgExample
+    {
+        height: 200px !important;
+    }
 
 
-  /* styles for validation helpers */
-.field-validation-error {
-    color: #e80c4d;
-    font-weight: bold;
+    /* styles for validation helpers */
+    .field-validation-error
+    {
+        color: #e80c4d;
+        font-weight: bold;
+    }
+
+    .field-validation-valid
+    {
+        display: none;
+    }
+
+    input.input-validation-error
+    {
+        border: 1px solid #e80c4d;
+    }
+
+    input[type="checkbox"].input-validation-error
+    {
+        border: 0 none;
+    }
+
+    .validation-summary-errors
+    {
+        color: #e80c4d;
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    .validation-summary-valid
+    {
+        display: none;
+    }
 }
 
-.field-validation-valid {
-    display: none;
-}
-
-input.input-validation-error {
-    border: 1px solid #e80c4d;
-}
-
-input[type="checkbox"].input-validation-error {
-    border: 0 none;
-}
-
-.validation-summary-errors {
-    color: #e80c4d;
-    font-weight: bold;
-    font-size: 1.1em;
-}
-
-.validation-summary-valid {
-    display: none;
-}
-}

@@ -20,7 +20,7 @@
                                 <span class="icon-list"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Danh sách bài học", "bo-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay }, new { })
+                                <li>@Html.ActionLink("Danh sách bài học", "danh-sach-bai-hoc", "Account", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay }, new { })
                                 <li><a href="#">Học viên</a></li>
                                 <li><a href="#">Xóa bài học</a></li>
                             </ul>
@@ -60,11 +60,11 @@
                     <div class="col-md-12 text-center">
                         @if (userVocaSet.NumOfHasLearnt == userVocaSet.NumOfVoca)
                         {
-                            <a href="@Url.Action("hoc-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-navigator btn-primary require-login disabled"><i class="icon-login"></i>Học tiếp</a>
+                            <a href="@Url.Action("hoc-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-navigator btn-primary require-login disabled"><i class="icon-login"></i>Học từ mới</a>
                         }
                         else
                         {
-                            <a href="@Url.Action("hoc-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-navigator btn-primary require-login"><i class="icon-login"></i>Học tiếp</a>
+                            <a href="@Url.Action("hoc-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay })" class="btn btn-outline btn-navigator btn-primary require-login"><i class="icon-login"></i>Học từ mới</a>
                         }
                         @if (userVocaSet.NumOfWeak < 4)
                         {
@@ -150,7 +150,7 @@
                 <hr />
                 <div class="col-md-12">
                     @Html.ActionLink("Học bộ này", "hoc-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay }, new { @class = "btn btn-outline btn-primary require-login" })
-                    @Html.ActionLink("Danh sách bài học", "bo-tu-vung", "Library", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay }, new { @class = "btn btn-outline btn-primary" })
+                    @Html.ActionLink("Danh sách bài học", "danh-sach-bai-hoc", "Account", new { @id = userVocaSet.VocaSetID, @urlDisplay = userVocaSet.VocaSetUrlDisplay }, new { @class = "btn btn-outline btn-primary" })
                 </div>
             </div>
         </div>

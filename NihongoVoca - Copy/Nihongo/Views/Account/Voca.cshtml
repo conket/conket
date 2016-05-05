@@ -1,0 +1,296 @@
+﻿@model IEnumerable<Nihongo.Models.MS_UserVocabulariesModels>
+
+@{
+    ViewBag.Title = "Danh sách từ vựng";
+    Layout = "~/Views/Shared/_MasterUserLayout.cshtml";
+}
+
+@{
+    var firstVoca = Model != null && Model.Count() > 0 ? Model.FirstOrDefault() : new Nihongo.Models.MS_UserVocabulariesModels();
+    
+}
+
+<div id="content">
+    <div class="panel box-shadow-none content-header">
+        <div class="panel-body">
+            <div class="col-md-12">
+                <h3 class="animated fadeInLeft">@firstVoca.CategoryName</h3>
+                <p class="animated fadeInDown">
+                    @firstVoca.VocaSetName <span class="fa-angle-right fa"></span> @firstVoca.CategoryName
+
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        @if (Model != null && Model.Count() > 0)
+        {
+            int count = 0;
+            int numOfColumn = 4;
+            var models = Model.ToList();
+            var max = models.Count;
+            int numOfRows = models.Count % numOfColumn == 0 ? models.Count / numOfColumn : models.Count / numOfColumn + 1;
+
+            for (int k = 0; k < numOfRows; k++)
+            {
+            <div class="row">
+                @for (int i = 0; i < (max > numOfColumn ? numOfColumn : max); i++)
+                {
+                    Nihongo.Models.MS_UserVocabulariesModels voca = models[count];
+                    <div class="col-sm-6 col-md-3 product-grid">
+                        <div class="thumbnail">
+                            @*<div class="product-price product-price-top">
+                                <h4>@(count + 1)</h4>
+                            </div>*@
+                            @if (k < 2)
+                            {
+                                <img class="img-rounded voca-image" src="@Href("~/" + @voca.UrlImage)" alt="tu-vung-tieng-nhat">
+                            }
+                            else
+                            {
+                                <img class="img-rounded voca-image" data-src='@Href("~/" + @voca.UrlImage)' src="" alt="tu-vung-tieng-nhat">
+                            }
+                            <div class="caption">
+                                @{var divHasLearnt = "h" + voca.CategoryID;}
+                                <small class="error" id="@divHasLearnt">@( voca.HasLearnt == CommonData.Status.Enable ? "Đã học" : "Chưa học")</small>
+                                @{var divIgnore = "i" + voca.CategoryID;}
+                                <small class="pull-right error" id="@divIgnore">@( voca.IsIgnore == CommonData.Status.Enable ? "Đã bỏ qua" : "")</small>
+
+                                <h4><a href="#" class="voca-audio" data-audio="@voca.UrlAudio" target="_parent">
+                                    @voca.Hiragana
+                                    <span class="glyphicon glyphicon-volume-up"></span>
+                                </a>
+                                </h4>
+                                <p>@voca.Romaji</p>
+                                @if (!CommonMethod.IsNullOrEmpty(voca.Kanji))
+                                {
+                                    <h4><a href="#" class="drawKanji" data-toggle="tooltip" title="Nhấp để xem cách viết">@voca.Kanji</a></h4>
+                                }
+                                else
+                                {
+                                    <h4>.</h4>
+                                }
+
+                                <p class="text-center">
+                                    <span class="rate fa-star fa"></span>
+                                    <span class="rate fa-star fa"></span>
+                                    <span class="rate fa-star fa"></span>
+                                    <span class="rate fa-star fa"></span>
+                                    <span class="rate fa-star-half fa"></span>
+                                </p>
+
+                                <p class="text-center">
+                                    <a href="#" class="btn btn-primary btn-navigator notebook" role="button" data-value="@voca.ID">@( voca.HasMarked == CommonData.Status.Enable ? "Bỏ sổ tay" : "Thêm sổ tay")</a>
+                                </p>
+                                <p class="text-center">
+                                    <a href="#" class="btn btn-primary btn-navigator ignore" role="button" data-value="@voca.ID">@( voca.IsIgnore == CommonData.Status.Enable ? "Học lại" : "Bỏ qua")</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                                count++;
+                }
+            </div>   
+                max -= numOfColumn;
+            }
+        }
+    </div>
+</div>
+<!-- end: content -->
+<script src='@Scripts.Url("~/bundles/dr")' async> </script>
+<script type="text/javascript" src='@Scripts.Url("~/bundles/audio")'> </script>
+<script src="~/Scripts/jQuery.loadScroll.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        vocas = set(@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)));
+        $('img').loadScroll(500); // in ms
+
+
+        var vocaSounds = [];
+        if (vocas != null && vocas.length > 0) {
+            for (var i = 0; i < vocas.length; i++) {
+                //var audio = new Audio(vocas[i].UrlAudio);
+                //audio.load();
+                //if (i == vocas.length - 1) {
+                //    jAudio += vocas[i].VocabularyCode + ':{ id:' + vocas[i].VocabularyCode + '}';
+                //}
+                //else {
+                //    jAudio += vocas[i].VocabularyCode + ':{ id:' + vocas[i].VocabularyCode + '},';
+                //}
+                if (vocas[i].UrlAudio) {
+                    var item = {};
+                    if (vocas[i].DisplayType == '1') {
+                        item = {
+                            name: vocas[i].UrlAudio,
+                            path: "/Content/media/hiragana/"
+                        };
+                    }
+                    else if (vocas[i].DisplayType == '2') {
+                        item = {
+                            name: vocas[i].UrlAudio,
+                            path: "/Content/media/katakana/"
+                        };
+                    }
+                    //item.name = voca.UrlAudio;
+                    vocaSounds.push(item);
+                }
+            }
+
+            ion.sound({
+                sounds: (vocaSounds),
+                // main config
+                path: "/Content/media/hiragana/",
+                preload: true,
+                multiplay: true,
+                volume: 1
+            });
+        }
+
+        $('.voca-audio').on('click', function (e) {
+            e.preventDefault();
+
+            var urlAudio = $(this).attr('data-audio');
+            //alert(urlAudio);
+            if (urlAudio) {
+                ion.sound.play(urlAudio);
+            }
+            return false;
+        });
+
+        $('.ignore').on('click', function (e) {
+            e.preventDefault();
+
+            var id = $(this).attr('data-value');
+            var obj = this;
+            var voca = getVoca(id);
+            if (voca != null) {
+                if (voca.IsIgnore == '0') {
+                    voca.IsIgnore = "1";
+                }
+                else {
+                    voca.IsIgnore = "0";
+                }
+                $.ajax({
+                    cache: false,
+                    type: "post",
+                    async: false,
+                    url: '/Account/' + '@CommonMethod.EncodeUrl("IgnoreCategory")',
+                    data: JSON.stringify(voca),
+                    dataType: "json",
+                    contentType: 'application/json',
+                    success: function (result) {
+                        if (result.ReturnCode == '@CommonData.DbReturnCode.AccessDenied') {
+                            if (voca.IsIgnore == '0') {
+                                voca.IsIgnore = "1";
+                            }
+                            else {
+                                voca.IsIgnore = "0";
+                            }
+                            window.location.href = '/Account/RequireLogin';
+                        }
+                        else if (result.ReturnCode != 0) {
+                            if (voca.IsIgnore == '0') {
+                                voca.IsIgnore = "1";
+                            }
+                            else {
+                                voca.IsIgnore = "0";
+                            }
+                            alert('Có lỗi xảy ra');
+                        }
+                        else {
+                            if (voca.IsIgnore == '0') {
+                                $(obj).html('Bỏ qua');
+                                $('#i' + id).html('');
+
+                            }
+                            else {
+                                $(obj).html('Học lại');
+                                $('#i' + id).html('Đã bỏ qua');
+                            }
+                            voca.HasLearnt = result.HasLearnt;
+                            if (result.HasLearnt == '1') {
+                                $('#h' + id).html('Đã học');
+                            }
+                            else {
+                                $('#h' + id).html('Chưa học');
+                            }
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        console.log(xhr.responseText);
+                        return false;
+                    }
+                });
+                }
+        });
+    });
+        function getVoca(id) {
+            for (var i = 0; i < vocas.length; i++) {
+                if (vocas[i].CategoryID == id) {
+                    return vocas[i];
+                }
+            }
+            return null;
+        }
+        function set(value) {
+            return value;
+        }
+        function ignoreCate(obj, id) {
+            var voca = getVoca(id);
+            if (voca != null) {
+                //if (voca.HasMarked == "1") {
+                //    alert('Từ vựng này đã có trong Sổ tay');
+                //    return;
+                //}
+                if (voca.IsIgnore == '0') {
+                    voca.IsIgnore = "1";
+                }
+                else {
+                    voca.IsIgnore = "0";
+                }
+                $.ajax({
+                    cache: true,
+                    type: "post",
+                    async: false,
+                    url: '/Library/' + '@CommonMethod.EncodeUrl("IgnoreCategory")',
+                    data: JSON.stringify(voca),
+                    dataType: "json",
+                    contentType: 'application/json',
+                    success: function (result) {
+                        if (result.ReturnCode == '@CommonData.DbReturnCode.AccessDenied') {
+                            if (voca.IsIgnore == '0') {
+                                voca.IsIgnore = "1";
+                            }
+                            else {
+                                voca.IsIgnore = "0";
+                            }
+                            window.location.href = '/Account/RequireLogin';
+                        }
+                        else if (result.ReturnCode != 0) {
+                            if (voca.IsIgnore == '0') {
+                                voca.IsIgnore = "1";
+                            }
+                            else {
+                                voca.IsIgnore = "0";
+                            }
+                            alert('Có lỗi xảy ra');
+                        }
+                        else {
+                            if (voca.IsIgnore == '0') {
+                                $(obj).html('BỎ QUA');
+                            }
+                            else {
+                                $(obj).html('HỌC LẠI');
+                            }
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        console.log(xhr.responseText);
+                        return false;
+                    }
+                });
+                }
+            }
+
+
+</script>

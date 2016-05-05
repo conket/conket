@@ -403,6 +403,53 @@ namespace Nihongo.Dal.Dao
             return returnCode;
         }
 
+        internal int SelectUserCategoryBySet(int id, int userID, out List<MS_UserCategoriesModels> results)
+        {
+            int returnCode = 0;
+            results = new List<MS_UserCategoriesModels>();
+
+            try
+            {
+                if (id > 0)
+                {
+                    results = (from ss in this.ms_vocacategories
+                               join vs in this.ms_vocasets on ss.VocaSetID equals vs.ID
+
+                               join uvc in this.ms_usercategories.Where(ss => ss.UserID == userID) on ss.ID equals uvc.CategoryID into userCate
+                               from uvc in userCate.DefaultIfEmpty()
+
+                               where ss.VocaSetID == id
+                               select new MS_UserCategoriesModels
+                               {
+                                    VocaSetID = ss.VocaSetID,
+                                    VocaSetName1 = vs.Name1,
+                                    
+                                   CategoryID = ss.ID,
+                                   CategoryCode = ss.Code,
+                                   CategoryName1 = ss.Name1,
+                                   CategoryUrlImage = ss.UrlImage,
+                                   CategoryUrlDisplay = ss.UrlDisplay,
+                                   Description = ss.Description,
+                                   NumOfVocas = ss.NumOfVocas,
+                                   IsTrial = ss.IsTrial,
+
+                                   IsIgnore = uvc == null ? CommonData.Status.Disable : uvc.IsIgnore,
+                                   HasMarked = uvc == null ? CommonData.Status.Disable : uvc.HasMarked,
+                                   HasLearnt = uvc == null ? CommonData.Status.Disable : uvc.HasLearnt,
+                               })
+                   .OrderBy(ss => ss.CategoryID)
+                    .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
+
         internal int CreateVocaCategory(List<MS_VocabularyDetailModel> models)
         {
             int returnCode = 0;
