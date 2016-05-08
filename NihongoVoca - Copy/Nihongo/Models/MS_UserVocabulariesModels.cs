@@ -16,6 +16,7 @@ namespace Nihongo.Models
         public string CategoryName { get; set; }
         public string CategoryUrlDisplay { get; set; }
         public string CategoryDescription { get; set; }
+        public int CategoryLineNumber { get; set; }
         public int? RequiredTimePerVoca { get; set; }
         public int VocaSetID { get; set; }
         public string VocaSetCode { get; set; }
@@ -23,6 +24,7 @@ namespace Nihongo.Models
         public string VocaSetDescription { get; set; }
         public string VocaSetUrlDisplay { get; set; }
         public string VocaSetUrlImage { get; set; }
+        public int? VocaSetNumOfCategories { get; set; }
         public decimal VocaSetFee { get; set; }
         public int UserID { get; set; }
         public string UserName { get; set; }

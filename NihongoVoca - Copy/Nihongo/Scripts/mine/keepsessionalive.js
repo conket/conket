@@ -10,7 +10,7 @@ function setupSessionUpdater(actionUrl) {
 }
 
 function checkToKeepSessionAlive() {
-    setTimeout("keepSessionAlive()", 200000);
+    setTimeout("keepSessionAlive()", 60000);
 }
 
 function keepSessionAlive() {
@@ -24,4 +24,4 @@ function keepSessionAlive() {
     checkToKeepSessionAlive();
 }
 
-setupSessionUpdater('/Home/KeepSessionAlive');
+setupSessionUpdater('/Home/Keep');

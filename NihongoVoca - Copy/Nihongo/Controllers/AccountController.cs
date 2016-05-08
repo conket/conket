@@ -148,6 +148,10 @@ namespace Nihongo.Controllers
                         Session["DisplayName"] = user.DisplayName;
                         Session["IsAdmin"] = user.IsAdmin;
                         Session["UrlImage"] = user.UrlImage;
+                        Session["VocaPerLearn"] = user.VocaPerLearn;
+                        Session["VocaPerReview"] = user.VocaPerReview;
+                        Session["SoundEffect"] = user.SoundEffect;
+
                         UserSession.UserName = user.UserName;
                         UserSession.UserID = user.ID;
 
@@ -705,6 +709,9 @@ namespace Nihongo.Controllers
                         Session["DisplayName"] = user.DisplayName;
                         Session["IsAdmin"] = user.IsAdmin;
                         Session["UrlImage"] = user.UrlImage;
+                        Session["VocaPerLearn"] = user.VocaPerLearn;
+                        Session["VocaPerReview"] = user.VocaPerReview;
+                        Session["SoundEffect"] = user.SoundEffect;
 
                         UserSession.UserName = user.UserName;
                         UserSession.UserID = user.ID;
@@ -786,6 +793,10 @@ namespace Nihongo.Controllers
                     Session["DisplayName"] = user.DisplayName;
                     Session["IsAdmin"] = user.IsAdmin;
                     Session["UrlImage"] = user.UrlImage;
+                    Session["VocaPerLearn"] = user.VocaPerLearn;
+                    Session["VocaPerReview"] = user.VocaPerReview;
+                    Session["SoundEffect"] = user.SoundEffect;
+
                     UserSession.UserName = user.UserName;
                     UserSession.UserID = user.ID;
                 }
@@ -876,6 +887,10 @@ namespace Nihongo.Controllers
                     Session["DisplayName"] = user.DisplayName;
                     Session["IsAdmin"] = user.IsAdmin;
                     Session["UrlImage"] = user.UrlImage;
+                    Session["VocaPerLearn"] = user.VocaPerLearn;
+                    Session["VocaPerReview"] = user.VocaPerReview;
+                    Session["SoundEffect"] = user.SoundEffect;
+
                     UserSession.UserName = user.UserName;
                     UserSession.UserID = user.ID;
                 }
@@ -904,7 +919,7 @@ namespace Nihongo.Controllers
             Session["Email"] = CommonData.StringEmpty;
             Session["VocaPerLearn"] = 5;
             Session["VocaPerReview"] = 10;
-            Session["SoundEffect"] = true;
+            Session["SoundEffect"] = CommonData.Status.Enable;
 
             Session["IsAdmin"] = false;
             UserSession.UserName = CommonData.StringEmpty;
@@ -1270,7 +1285,7 @@ namespace Nihongo.Controllers
                     {
                         Session["VocaPerLearn"] = setting.VocaPerLearn.ToString();
                         Session["VocaPerReview"] = setting.VocaPerReview.ToString();
-                        Session["SoundEffect"] = setting.SoundEffect.ToString();
+                        Session["SoundEffect"] = setting.SoundEffect ? CommonData.Status.Enable : CommonData.Status.Disable;
 
                         TempData["Message"] = "Lưu cấu hình thành công!";
                     }
@@ -1311,6 +1326,18 @@ namespace Nihongo.Controllers
                 List<MS_TestResultModels> results = new List<MS_TestResultModels>();
                 int returnCode = dao.SelectActivities(CommonMethod.ParseInt(Session["UserID"]), out results);
                 return PartialView("_ActivitiesPartial", results);
+            }
+        }
+
+        [EncryptActionName(Name = ("GetButtons"))]
+        [OutputCache(CacheProfile = "Cache1MinuteVaryByIDClient")]
+        public ActionResult GetButtons(int id)
+        {
+            using (MS_UserVocabularyDao dao = new MS_UserVocabularyDao())
+            {
+                MS_UserVocaSet result = new MS_UserVocaSet();
+                int returnCode = dao.SelectUserVocaSetData(CommonMethod.ParseInt(Session["UserID"]), id, out result);
+                return PartialView("_CategoryButtonPartial", result);
             }
         }
 
@@ -1413,6 +1440,42 @@ namespace Nihongo.Controllers
             }
 
             return Json(new { ReturnCode = returnCode, HasLearnt = voca.HasLearnt });
+        }
+
+        [EncryptActionName(Name = ("IgnoreVoca"))]
+        [HttpPost]
+        public ActionResult IgnoreVoca(MS_UserVocabulariesModels voca)
+        {
+            int returnCode = 0;
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                returnCode = CommonData.DbReturnCode.AccessDenied;
+            }
+            else
+            {
+                MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
+                returnCode = dao.IgnoreUserVoca(CommonMethod.ParseInt(Session["UserID"]), ref voca);
+            }
+
+            return Json(new { ReturnCode = returnCode, HasLearnt = voca.HasLearnt });
+        }
+
+        [EncryptActionName(Name = ("MarkVoca"))]
+        [HttpPost]
+        public ActionResult MarkVoca(MS_UserVocabulariesModels voca)
+        {
+            int returnCode = 0;
+            if (CommonMethod.IsNullOrEmpty(Session["UserID"]))
+            {
+                returnCode = CommonData.DbReturnCode.AccessDenied;
+            }
+            else
+            {
+                MS_UserVocabularyDao dao = new MS_UserVocabularyDao();
+                returnCode = dao.MarkVoca(CommonMethod.ParseInt(Session["UserID"]), voca);
+            }
+
+            return Json(new { ReturnCode = returnCode });
         }
     }
 }

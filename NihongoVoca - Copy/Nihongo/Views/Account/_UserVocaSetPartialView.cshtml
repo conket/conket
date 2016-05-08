@@ -51,7 +51,7 @@
                                 <h5 class="media-heading text-right">Đã học @userVocaSet.NumOfHasLearnt/@userVocaSet.NumOfVoca từ</h5>
                                 <div class="progress progress-mini">
                                     <div class="progress-bar" role="progressbar" aria-valuenow="@userVocaSet.NumOfHasLearnt" aria-valuemin="0" aria-valuemax="@userVocaSet.NumOfVoca" style="width: @userVocaSet.PercentHasLearnt%;">
-                                        <span class="sr-only">60% Complete</span>
+                                        @*<span class="sr-only">60% Complete</span>*@
                                     </div>
                                 </div>
                             </div>
@@ -190,12 +190,12 @@
 <script type="text/javascript">
     var setId = 0;
     $(function () {
-        $('.btn-group').hover(function () {
-            $(this).addClass('open');
-        },
-        function () {
-            $(this).stop().removeClass('open');
-        });
+        //$('.btn-group').hover(function () {
+        //    $(this).addClass('open');
+        //},
+        //function () {
+        //    $(this).stop().removeClass('open');
+        //});
 
         $('.review-cate').on('click', function (e) {
             e.preventDefault();

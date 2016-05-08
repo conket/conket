@@ -74,34 +74,17 @@
                             @*<div class="product-price product-price-top">
                                 <h4>@(count + 1)</h4>
                             </div>*@
-                            @if (k < 2)
-                            {
-                                <img class="img-rounded voca-image" src="@Href("~/" + @voca.UrlImage)" alt="tu-vung-tieng-nhat">
-                            }
-                            else
-                            {
-                                <img class="img-rounded voca-image" data-src='@Href("~/" + @voca.UrlImage)' src="" alt="tu-vung-tieng-nhat">
-                            }
+
                             <div class="caption">
                                 @{var divHasLearnt = "h" + voca.ID;}
                                 <small class="error" id="@divHasLearnt">@( voca.HasLearnt == CommonData.Status.Enable ? "Đã học" : "Chưa học")</small>
                                 @{var divIgnore = "i" + voca.ID;}
                                 <small class="pull-right error" id="@divIgnore">@( voca.IsIgnore == CommonData.Status.Enable ? "Đã bỏ qua" : "")</small>
 
-                                <h4><a href="#" class="voca-audio" data-audio="@voca.UrlAudio" target="_parent" data-toggle="tooltip" title="Nhấp để nghe phát âm">
-                                    @voca.DisplayText
-                                    <span class="glyphicon glyphicon-volume-up"></span>
-                                </a>
-                                </h4>
-                                <p>@voca.Romaji</p>
-                                @if (!CommonMethod.IsNullOrEmpty(voca.Kanji))
-                                {
-                                    <h4><a href="#" class="drawKanji" data-toggle="tooltip" title="Nhấp để xem cách viết">@voca.Kanji</a></h4>
-                                }
-                                else
-                                {
-                                    <h4>.</h4>
-                                }
+                                <h2 class="text-center">
+                                    <a href="#" class="drawKanji " data-toggle="tooltip" title="Nhấp để xem cách viết">@voca.Kanji</a>
+                                </h2>
+                                <p class="text-center">@voca.Pinyin</p>
 
                                 <p class="text-center">
                                     <span class="fa fa-heart @(voca.Level > 0 ? "text-primary" : "")"></span>
@@ -121,7 +104,7 @@
                             </div>
                         </div>
                     </div>
-                                count++;
+                                      count++;
                 }
             </div>   
                 max -= numOfColumn;
@@ -137,59 +120,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
         vocas = set(@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)));
-        $('img').loadScroll(500); // in ms
-
-
-        var vocaSounds = [];
-        if (vocas != null && vocas.length > 0) {
-            for (var i = 0; i < vocas.length; i++) {
-                //var audio = new Audio(vocas[i].UrlAudio);
-                //audio.load();
-                //if (i == vocas.length - 1) {
-                //    jAudio += vocas[i].VocabularyCode + ':{ id:' + vocas[i].VocabularyCode + '}';
-                //}
-                //else {
-                //    jAudio += vocas[i].VocabularyCode + ':{ id:' + vocas[i].VocabularyCode + '},';
-                //}
-                if (vocas[i].UrlAudio) {
-                    var item = {};
-                    if (vocas[i].DisplayType == '1') {
-                        item = {
-                            name: vocas[i].UrlAudio,
-                            path: "/Content/media/hiragana/"
-                        };
-                    }
-                    else if (vocas[i].DisplayType == '2') {
-                        item = {
-                            name: vocas[i].UrlAudio,
-                            path: "/Content/media/katakana/"
-                        };
-                    }
-                    //item.name = voca.UrlAudio;
-                    vocaSounds.push(item);
-                }
-            }
-
-            ion.sound({
-                sounds: (vocaSounds),
-                // main config
-                path: "/Content/media/hiragana/",
-                preload: true,
-                multiplay: true,
-                volume: 1
-            });
-        }
-
-        $('.voca-audio').on('click', function (e) {
-            e.preventDefault();
-
-            var urlAudio = $(this).attr('data-audio');
-            //alert(urlAudio);
-            if (urlAudio) {
-                ion.sound.play(urlAudio);
-            }
-            return false;
-        });
 
         $('.ignore').on('click', function (e) {
             e.preventDefault();
@@ -235,6 +165,7 @@
                             if (voca.IsIgnore == '0') {
                                 $(obj).html('Bỏ qua');
                                 $('#i' + id).html('');
+
                             }
                             else {
                                 $(obj).html('Học lại');
@@ -247,6 +178,7 @@
                             else {
                                 $('#h' + id).html('Chưa học');
                             }
+
                             voca.HasMarked = '0';
                             $('#n' + id).html('Lưu sổ');
                         }
@@ -270,7 +202,7 @@
                     alert('Từ này đã bị bỏ qua. Chọn học lại nếu bạn muốn thêm vào sổ!');
                     return;
                 }
-                
+
                 if (voca.HasMarked == '0') {
                     voca.HasMarked = "1";
                 }
@@ -307,12 +239,12 @@
                         else {
                             if (voca.HasMarked == '0') {
                                 $(obj).html('Lưu sổ');
-
                             }
                             else {
                                 $(obj).html('Bỏ khỏi sổ');
                             }
                         }
+
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         console.log(xhr.responseText);

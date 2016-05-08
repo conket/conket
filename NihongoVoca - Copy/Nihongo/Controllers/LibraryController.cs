@@ -128,6 +128,7 @@ namespace Nihongo.Controllers
         {
             ViewBag.VocaSetID = id;
             ViewBag.VocaSetUrlDisplay = urlDisplay;
+            //ViewBag.SoundEffect = (Session["SoundEffect"]);
             //learning
             ViewBag.LessonType = "1";
             if (CommonMethod.IsNullOrEmpty(Session["UserID"]))

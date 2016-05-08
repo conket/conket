@@ -1,0 +1,33 @@
+﻿@model Nihongo.Models.MS_UserVocaSet
+<div class="panel-body">
+    <div class="col-md-12">
+        @if (Model.NumOfHasLearnt == Model.NumOfVoca)
+        {
+            <a href="@Url.Action("hoc-tu-vung", "Library", new { @id = Model.VocaSetID, @urlDisplay = Model.VocaSetUrlDisplay })" class="btn btn-outline btn-navigator btn-primary require-login disabled"><i class="icon-login"></i>Học từ mới</a>
+        }
+        else
+        {
+            <a href="@Url.Action("hoc-tu-vung", "Library", new { @id = Model.VocaSetID, @urlDisplay = Model.VocaSetUrlDisplay })" class="btn btn-outline btn-navigator btn-primary require-login"><i class="icon-login"></i>Học từ mới</a>
+        }
+        @if (Model.NumOfWeak < 4)
+        {
+            <a href="@Url.Action("on-tu-vung", "Library", new { @id = Model.VocaSetID, @urlDisplay = Model.VocaSetUrlDisplay })" class="btn btn-outline btn-navigator btn-primary require-login disabled"><i class=" icon-compass"></i>Ôn tập</a>
+        }
+        else
+        {
+            var str = Model.NumOfWeak == 0 ? "" : "(" + Model.NumOfWeak + ")";
+            <a href="@Url.Action("on-tu-vung", "Library", new { @id = Model.VocaSetID, @urlDisplay = Model.VocaSetUrlDisplay })" class="btn btn-outline btn-navigator btn-primary require-login"><i class=" icon-compass"></i>Ôn tập @str</a>
+        }
+        @if (Model.NumOfHasMarked < 4)
+        {
+            <a href="@Url.Action("on-so-tay", "Library", new { @id = Model.VocaSetID, @urlDisplay = Model.VocaSetUrlDisplay })" class="btn btn-outline btn-navigator btn-primary require-login disabled"><i class="fa fa-book"></i>Ôn sổ tay</a>
+        }
+        else
+        {
+            var str = Model.NumOfHasMarked == 0 ? "" : "(" + Model.NumOfHasMarked + ")";
+            <a href="@Url.Action("on-so-tay", "Library", new { @id = Model.VocaSetID, @urlDisplay = Model.VocaSetUrlDisplay })" class="btn btn-outline btn-navigator btn-primary require-login"><i class="fa fa-tasks"></i>Ôn sổ tay @str</a>
+        }
+
+    </div>
+
+</div>

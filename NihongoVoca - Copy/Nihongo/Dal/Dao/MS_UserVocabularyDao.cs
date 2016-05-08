@@ -666,12 +666,14 @@ namespace Nihongo.Dal.Dao
                           orderby ss.LineNumber
                           select new MS_UserVocabulariesModels
                           {
-                              ID = ss.ID,
+                              ID = us.ID,
                               LineNumber = ss.LineNumber,
 
                               //voca set
                               VocaSetID = ss.ms_vocacategories.VocaSetID ?? 0,
                               VocaSetName = ss.ms_vocacategories.ms_vocasets.Name1,
+                              VocaSetUrlDisplay = ss.ms_vocacategories.ms_vocasets.UrlDisplay,
+                              VocaSetNumOfCategories = ss.ms_vocacategories.ms_vocasets.NumOfCategories,
                               //IsKanji = vs.IsKanji,
 
                               //category
@@ -679,6 +681,7 @@ namespace Nihongo.Dal.Dao
                               CategoryCode = ss.ms_vocacategories.Code,
                               CategoryName = ss.ms_vocacategories.Name1,
                               CategoryDescription = ss.ms_vocacategories.Description,
+                              CategoryLineNumber = ss.ms_vocacategories.LineNumber,
                               IsKanji = ss.ms_vocacategories.IsKanji,
 
                               //voca
@@ -698,8 +701,11 @@ namespace Nihongo.Dal.Dao
                               Pinyin = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Pinyin : string.Empty,
                               VMeaning = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.VMeaning : ss.ms_vocabularies.VMeaning,
                               Description = ss.ms_vocacategories.IsKanji == CommonData.Status.Enable ? ss.ms_kanjis.Description : ss.ms_vocabularies.Description,
+                              
                               HasMarked = us.HasMarked,
                               HasLearnt = us.HasLearnt,
+                              IsIgnore = us.IsIgnore,
+                              Level = us.Level,
                           })
                           .ToList();
                     //.OrderBy(s => s.ms_vocabularydetails.LineNumber)
@@ -1418,7 +1424,7 @@ namespace Nihongo.Dal.Dao
                         {
                             user.NumOfLearntVoca = this.ms_uservocabularies.Count(ss => ss.UserID == userID && ss.HasLearnt == CommonData.Status.Enable);
                             user.LastVisitedDate = DateTime.Now;
-                            user.Point += point;
+                            user.Point = (user.Point ?? 0) + point;
                         }
 
                         returnCode = this.Saves();
@@ -1701,7 +1707,7 @@ namespace Nihongo.Dal.Dao
                                             VocaSetUrlDisplay = vs.UrlDisplay,
                                             VocaSetUrlImage = vs.UrlImage,
                                             NumOfVoca = vs.NumOfVocas ?? 0,
-                                            NumOfHasMarked = userVoca.Count(s => s.HasMarked == CommonData.Status.Enable),
+                                            NumOfHasMarked = userVoca.Count(s => s.HasMarked == CommonData.Status.Enable && s.IsIgnore == CommonData.Status.Disable),
                                             NumOfHasLearnt = userVoca.Count(s => s.HasLearnt == CommonData.Status.Enable),
                                             NumOfWeak = userVoca.Count(s => s.IsIgnore == CommonData.Status.Disable 
                                                 //&& s.ms_vocabularydetails.ms_vocabularies.Type == CommonData.VocaType.Word 
@@ -1799,6 +1805,7 @@ namespace Nihongo.Dal.Dao
                 {
                     userCate.IsIgnore = voca.IsIgnore;
                     userCate.HasLearnt = CommonData.Status.Enable;
+                    userCate.HasMarked = CommonData.Status.Disable;
 
                     var userVocas = this.ms_uservocabularies.Where(ss => ss.UserID == userID
                                         && ss.ms_vocabularydetails.ms_vocacategories.ID == voca.ID);
@@ -1806,6 +1813,7 @@ namespace Nihongo.Dal.Dao
                     {
                         userVoca.IsIgnore = voca.IsIgnore;
                         userVoca.HasLearnt = CommonData.Status.Enable;
+                        userCate.HasMarked = CommonData.Status.Disable;
                         userVoca.Level = 8;
                     }
 
@@ -1856,5 +1864,121 @@ namespace Nihongo.Dal.Dao
             return returnCode;
         }
 
+
+        internal int IgnoreUserVoca(int userID, ref MS_UserVocabulariesModels voca)
+        {
+            int returnCode = 0;
+            try
+            {
+                this.BeginTransaction();
+
+                int id = voca.ID;
+                int cateID = voca.CategoryID;
+                var userVoca = this.ms_uservocabularies.FirstOrDefault(ss => ss.ID == id);
+                if (userVoca != null)
+                {
+                    userVoca.IsIgnore = voca.IsIgnore;
+                    userVoca.HasLearnt = CommonData.Status.Enable;
+                    userVoca.HasMarked = CommonData.Status.Disable;
+                    userVoca.Level = 8;
+                    
+                    returnCode = this.Saves();
+                    if (returnCode == CommonData.DbReturnCode.Succeed)
+                    {
+                        voca.HasLearnt = CommonData.Status.Enable;
+
+                        var userCate = ms_usercategories.FirstOrDefault(ss => ss.UserID == userID && ss.CategoryID == cateID);
+                        if (userCate != null)
+                        {
+                            var numOfHasLearnt = ms_uservocabularies.Count(ss => ss.UserID == userID && ss.ms_vocabularydetails.CategoryID == cateID && ss.HasLearnt == CommonData.Status.Enable);
+                            if (userCate.ms_vocacategories.NumOfVocas == numOfHasLearnt)
+                            {
+                                userCate.HasLearnt = CommonData.Status.Enable;
+                            }
+                            else
+                            {
+                                userCate.HasLearnt = CommonData.Status.Disable;
+                            }
+                            returnCode = this.Saves();
+                        }
+                    }
+
+                    if (returnCode == CommonData.DbReturnCode.Succeed)
+                    {
+                        returnCode = this.Commit();
+                    }
+                    else
+                    {
+                        this.Rollback();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                this.Rollback();
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
+        internal int MarkVoca(int userID, MS_UserVocabulariesModels voca)
+        {
+            int returnCode = 0;
+            try
+            {
+                int id = voca.ID;
+                var userVoca = this.ms_uservocabularies.FirstOrDefault(ss => ss.ID == id);
+                if (userVoca != null)
+                {
+                    userVoca.HasMarked = voca.HasMarked;
+                    returnCode = this.Saves();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
+
+        internal int SelectUserVocaSetData(int userID, int vocaSetID, out MS_UserVocaSet result)
+        {
+            int returnCode = 0;
+            result = new MS_UserVocaSet();
+            try
+            {
+                result = (from us in this.ms_uservocabularies.Where(ss => ss.UserID == userID && ss.ms_vocabularydetails.ms_vocacategories.VocaSetID == vocaSetID)
+                          group us by us.ms_vocabularydetails.ms_vocacategories.ms_vocasets.ID into userVoca
+
+                          join uvs in ms_uservocasets.Where(ss => ss.UserID == userID) on userVoca.Key equals uvs.VocaSetID into userSet
+                          from uvs in userSet.DefaultIfEmpty()
+
+                          join vs in ms_vocasets on userVoca.Key equals vs.ID
+
+                          where vs.ID == vocaSetID
+
+                          select new MS_UserVocaSet
+                          {
+                              VocaSetID = vs.ID,
+
+                              NumOfVoca = vs.NumOfVocas ?? 0,
+                              NumOfHasMarked = userVoca.Count(s => s.HasMarked == CommonData.Status.Enable && s.IsIgnore == CommonData.Status.Disable),
+                              NumOfHasLearnt = userVoca.Count(s => s.HasLearnt == CommonData.Status.Enable),
+                              NumOfWeak = userVoca.Count(s => s.IsIgnore == CommonData.Status.Disable
+                                  //&& s.ms_vocabularydetails.ms_vocabularies.Type == CommonData.VocaType.Word 
+                                                      && s.HasLearnt == CommonData.Status.Enable && s.Level < 9),
+                          }).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                returnCode = ProcessDbException(ex);
+            }
+
+            return returnCode;
+        }
     }
 }

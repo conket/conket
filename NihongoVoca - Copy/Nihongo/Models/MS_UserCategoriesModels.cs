@@ -20,6 +20,10 @@ namespace Nihongo.Models
         public string VocaSetName1 { get; set; }
         public string VocaSetUrlDisplay { get; set; }
         public decimal? VocaSetFee { get; set; }
+        public decimal? VocaSetNumOfVoca { get; set; }
+        public decimal? VocaSetNumOfWeak { get; set; }
+        public decimal? VocaSetNumOfHasLearnt { get; set; }
+
         public string CategoryUrlImage { get; set; }
         public int? NumOfVocas { get; set; }
         public int? RequiredTimePerVoca { get; set; }

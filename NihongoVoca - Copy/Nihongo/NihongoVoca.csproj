@@ -4279,6 +4279,8 @@
     <Content Include="Views\Account\_ActivitiesPartial.cshtml" />
     <Content Include="Views\Account\VocaCate.cshtml" />
     <Content Include="Views\Account\Voca.cshtml" />
+    <Content Include="Views\Account\_CategoryButtonPartial.cshtml" />
+    <Content Include="Views\Account\VocaKanji.cshtml" />
     <None Include="WebMarkupMin.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>

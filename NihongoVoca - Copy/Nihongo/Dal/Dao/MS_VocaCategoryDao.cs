@@ -423,7 +423,8 @@ namespace Nihongo.Dal.Dao
                                {
                                     VocaSetID = ss.VocaSetID,
                                     VocaSetName1 = vs.Name1,
-                                    
+                                    VocaSetNumOfVoca = vs.NumOfVocas,
+
                                    CategoryID = ss.ID,
                                    CategoryCode = ss.Code,
                                    CategoryName1 = ss.Name1,
@@ -436,6 +437,7 @@ namespace Nihongo.Dal.Dao
                                    IsIgnore = uvc == null ? CommonData.Status.Disable : uvc.IsIgnore,
                                    HasMarked = uvc == null ? CommonData.Status.Disable : uvc.HasMarked,
                                    HasLearnt = uvc == null ? CommonData.Status.Disable : uvc.HasLearnt,
+
                                })
                    .OrderBy(ss => ss.CategoryID)
                     .ToList();

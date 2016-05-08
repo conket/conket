@@ -54,7 +54,7 @@ namespace Nihongo.Controllers
 
                 Session["VocaPerLearn"] = user.VocaPerLearn;
                 Session["VocaPerReview"] = user.VocaPerReview;
-                Session["SoundEffect"] = user.SoundEffect == CommonData.Status.Enable ? true : false;
+                Session["SoundEffect"] = user.SoundEffect;
 
                 return RedirectToAction("HomePage", "Account");
             }
@@ -72,7 +72,7 @@ namespace Nihongo.Controllers
 
                 Session["VocaPerLearn"] = 5;
                 Session["VocaPerReview"] = 10;
-                Session["SoundEffect"] = true;
+                Session["SoundEffect"] = CommonData.Status.Enable;
             }
 
             return View("Index");
@@ -138,7 +138,7 @@ namespace Nihongo.Controllers
         }
 
         [HttpPost]
-        public JsonResult KeepSessionAlive()
+        public JsonResult Keep()
         {
             return new JsonResult { Data = "Success" };
         }

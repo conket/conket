@@ -56,7 +56,8 @@ $(document).ready(function () {
     //    multiplay: true,
     //    volume: 0.9
     //});
-    soundEffect = ($('#sound').val() && $('#sound').val() == 'True');
+    soundEffect = ($('#sound').val() && $('#sound').val() == '1');
+    console.log(soundEffect);
 
     currentIndex = 0;
     isPractice = false;
@@ -1249,6 +1250,7 @@ function checkInput() {
                     //quizzVoca.NumOfWrong -= 1;
 
                     quizzVoca.Point += 1;
+                    console.log(quizzVoca.Point);
 
                     var level = parseInt(quizzVoca.Level) + 2;
                     if (level > 10) {
@@ -2089,7 +2091,7 @@ function createQuizz(index) {
         }
     }
     else {
-        console.log('item not found');
+        console.log('item not found:' + vocas.length);
     }
     return item;
 }
@@ -2318,7 +2320,7 @@ function showLearning(voca) {
     else {
         html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-0">';
         html += '   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">';
-        html += '       <img class="img-responsive" src="' + getLink(voca.UrlImage) + '" alt="Từ vựng tiếng Nhật"  style="height: 200px">';
+        html += '       <img class="img-responsive" src="' + getLink(voca.UrlImage) + '" alt="Từ vựng tiếng Nhật"  style="height: 150px">';
         html += '   </div>';
         if (voca.Hiragana != '') {
             html += '   <div class="col-lg-7 col-md-7 col-sm-7 col-xs-6"><h3><strong>' + voca.Hiragana + '  </strong><a href="#" onclick="sound(\'' + voca.UrlAudio + '\'); return false;"> <i class="fa fa-volume-up"></i></a></h3>';
@@ -2834,7 +2836,7 @@ function ignore() {
 }
 
 function expandDetail(obj) {
-    $(obj).addClass('open');
+    //$(obj).addClass('open');
 }
 
 function sound(name) {

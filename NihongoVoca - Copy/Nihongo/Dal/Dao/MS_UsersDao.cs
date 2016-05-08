@@ -176,6 +176,9 @@ namespace Nihongo.Dal.Dao
                     SystemData = ss.SystemData,
                     IsAdmin = ss.IsAdmin,
                     UrlImage = ss.UrlImage,
+                    VocaPerLearn = ss.VocaPerLearn ?? 5,
+                    VocaPerReview = ss.VocaPerReview ?? 10,
+                    SoundEffect = ss.SoundEffect,
                 })
                     .FirstOrDefault();
             }
@@ -451,7 +454,9 @@ namespace Nihongo.Dal.Dao
                     DisplayName = ss.DisplayName,
                     SystemData = ss.SystemData,
                     IsAdmin = ss.IsAdmin,
-
+                    VocaPerReview = ss.VocaPerReview ?? 5,
+                    VocaPerLearn = ss.VocaPerLearn ?? 10,
+                    SoundEffect = ss.SoundEffect,
                 })
                     .FirstOrDefault();
 
@@ -471,6 +476,9 @@ namespace Nihongo.Dal.Dao
                         DisplayName = model.DisplayName,
                         SystemData = CommonData.Status.Disable,
                         IsAdmin = CommonData.Status.Disable,
+                        VocaPerReview = 5,
+                        VocaPerLearn = 10,
+                        SoundEffect = CommonData.Status.Enable,
                     };
                 }
                 else
@@ -480,7 +488,7 @@ namespace Nihongo.Dal.Dao
                     user.UrlImage = model.UrlImage;
                     user.DisplayName = model.DisplayName;
                     user.LoginState = CommonData.Status.Enable;
-
+                    
                     returnCode = this.Saves();
                 }
             }
@@ -490,7 +498,6 @@ namespace Nihongo.Dal.Dao
             }
             return returnCode;
         }
-
 
         internal int Register(MS_UsersModels model, out MS_UsersModels user)
         {
@@ -509,7 +516,9 @@ namespace Nihongo.Dal.Dao
                     DisplayName = ss.DisplayName,
                     SystemData = ss.SystemData,
                     IsAdmin = ss.IsAdmin,
-
+                    VocaPerReview = ss.VocaPerReview ?? 5,
+                    VocaPerLearn = ss.VocaPerLearn ?? 10,
+                    SoundEffect = ss.SoundEffect,
                 })
                     .FirstOrDefault();
 
@@ -528,6 +537,9 @@ namespace Nihongo.Dal.Dao
                         DisplayName = model.DisplayName,
                         SystemData = CommonData.Status.Disable,
                         IsAdmin = CommonData.Status.Disable,
+                        VocaPerReview = 5,
+                        VocaPerLearn = 10,
+                        SoundEffect = CommonData.Status.Enable,
                     };
                 }
                 else
@@ -559,7 +571,9 @@ namespace Nihongo.Dal.Dao
                     DisplayName = ss.DisplayName,
                     SystemData = ss.SystemData,
                     IsAdmin = ss.IsAdmin,
-
+                    VocaPerReview = ss.VocaPerReview ?? 5,
+                    VocaPerLearn = ss.VocaPerLearn ?? 10,
+                    SoundEffect = ss.SoundEffect,
                 })
                     .FirstOrDefault();
 
@@ -578,6 +592,9 @@ namespace Nihongo.Dal.Dao
                         DisplayName = model.DisplayName,
                         SystemData = CommonData.Status.Disable,
                         IsAdmin = CommonData.Status.Disable,
+                        VocaPerReview = 5,
+                        VocaPerLearn = 10,
+                        SoundEffect = CommonData.Status.Enable,
                     };
                 }
                 else
